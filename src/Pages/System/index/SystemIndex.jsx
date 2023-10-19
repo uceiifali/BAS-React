@@ -12,7 +12,7 @@ const SystemIndex = () => {
 
     return (
 
-        <div className='system-bg position-relative'>
+        <section className= 'full-system system-bg position-relative'>
             <div className='  d-flex  position-absolute top-3 end-5'>
 
                 <img src='../../../assets/icons/systemlogo.png ' alt='BSA logo' className='system-logo text-white' />
@@ -28,7 +28,7 @@ const SystemIndex = () => {
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
 
 
     )

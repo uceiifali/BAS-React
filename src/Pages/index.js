@@ -37,10 +37,7 @@ const Home = () => {
     const { userData, setUserData, openCongrats, setOpenCongrats,openDesignSteps ,setOpenDesignSteps ,openReviewSteps,setOpenReviewSteps } = useContext(multiStepContext)
     const [carousel, setCarousal] = useState("projects")
     const [openPoper, setOpenPoper] = useState(false)
-  
-
-
-
+    
 
     const Services = [
         {

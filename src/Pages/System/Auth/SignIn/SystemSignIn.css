@@ -3,7 +3,7 @@
   background-size: 100% 100%;
 }
 
-.signInCard {
+.systemLogin .signInCard {
   box-sizing: border-box;
   width: 580.858px  !important;
   height: 600px !important;
@@ -33,7 +33,7 @@
   transform: scale(0.95) rotateZ(1.7deg);
 }
 
-.form-label {
+.systemLogin .form-label {
   float: right !important;
 }
 @media screen and (max-width:760px) {
