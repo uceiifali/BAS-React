@@ -1,6 +1,9 @@
 
-body{
+ /* body{
     background: #151521 ;
+} */
+.system-bg{
+    background: #151521 !important ;
 }
 .system-logo {
     width: 140PX;
@@ -20,4 +23,9 @@ body{
 
 .ps-menu-button:hover{
     background-color: unset !important;
+}
+.css-1dimb5e-singleValue{
+    color: rgba(255, 255, 255, 0.50) !important;
+
+    
 }

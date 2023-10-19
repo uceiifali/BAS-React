@@ -125,12 +125,13 @@ const Home = () => {
             />}
 
             <NavBar />
-            <section id={"Home"} className='Home-section landing  position-relative   mt-1  '>
+           <section>
+             <div id={"Home"} className='Home-section landing  position-relative   mt-1  '>
 
 
 
-          <div className='home-layer  position-absolute w-100 h-100'>
-          <div className='d-flex h-100 w-100 text-center  position-absolute justify-content-between'>
+          <div className='home-layer d-flex align-items-center  justify-content-center position-absolute w-100 h-100'>
+          <div className='d-flex h-100 w-100 text-center  align-items-center align-items-end-sm justify-content-between'>
                     <div className='socail-icons-container '>
                         <div className='mx-5 socail-icons  bg-light d-flex flex-column my-5'>
                             <Link to={"/"}> <FaFacebookF className="mb-3" size={30} color='#E1B67C' /> </Link>
@@ -173,7 +174,8 @@ const Home = () => {
 
 
 
-            </section>
+            </div   >
+           </section>
             <section id="WhoWeAre" className='whoWeAre  position-relative   my-5'>
                 <div className='position-absolute  WhoWeAreshape  ' >
 

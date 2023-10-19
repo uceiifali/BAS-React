@@ -1,12 +1,13 @@
 .bg-initial-video  {
   background-image: url("../../../../public/saudiMovment.gif") !important;
-
+  min-height: 100vh;
+   height: 100%;
   background-size: 100% 100% !important;
 }
 
 .layer{
   background-color: black;
-  opacity: 0.6 ;
+  opacity: 0.6 ;  
   position: absolute;
   top: 0;
   left: 0;
@@ -22,20 +23,20 @@
     content: "";
     height: 1px;
     background-color: #afa6a6;
-    width: 200px;
+    width: 150px;
     position: absolute;
     top: 70%;
-    left: 12%;
+    left:105%;
 }
 
 .line-style::before{
     content: "";
     height: 1px;
     background-color: #afa6a6;
-    width: 200px;
+    width: 150px;
     position: absolute;
     top: 70%;
-    right: 12%;
+    right:105%;
 }
 
 

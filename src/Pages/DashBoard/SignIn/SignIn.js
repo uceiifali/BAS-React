@@ -35,8 +35,8 @@ const SignIn = () => {
 
 
 
-    return <div className='signIn-container  row m-0  p-0  w-100 vh-100'>
-        <div className='col-md-6 h-100 '>
+    return <div className='signIn-container  row m-0  p-0  w-100 '>
+        <div className='col-md-6   '>
             <div className='item position-relative'>
                 <Dropdown className='position-absolute  end-5 top-0 pointer'>
                     <Dropdown.Toggle style={{ backgroundColor: "unset !important", borderColor: "unset" }} className='d-flex  check-lang align-items-center' id="dropdown-basic">
@@ -60,7 +60,7 @@ const SignIn = () => {
                 </Dropdown>
 
                 <div className='mt-5 d-flex  logo-container justify-content-center'>
-                    <Link to="/" >    <img src='../logo.jpg' alt=' logo' width={400} height={200} /></Link>
+                    <Link to="/" >    <img src='../logo.jpg' alt=' logo' width={350} height={180} /></Link>
 
                 </div>
                 <div className='d-flex flex-column align-items-center justify-content-center'>
@@ -77,7 +77,9 @@ const SignIn = () => {
 
                 <p className='text-center line-style position-relative my-5 ' style={{
                     color: "#878787",
-                    fontSize: "18px",
+                    width:"250px",
+                    margin:"auto",
+                    fontSize: "16px",
                     fontStyle: "normal",
                     lineHeight: " 14.5px",
                 }}>او يمكنك التسجيل عبر البريد الالكتروني</p>
@@ -118,7 +120,7 @@ const SignIn = () => {
 
             </div>
         </div>
-        <div className='col-md-6 gif-bg p-0 m-0 h-100'>
+        <div className='col-md-6 gif-bg p-0 m-0  '>
             <div className='item bg-initial-video position-relative h-100 p-0 m-0 w-100'>
 
                 <div className='layer position-absolute top-0 bottom-0 end-0 start-0 d-flex justify-content-center align-items-center '>
