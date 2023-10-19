@@ -1,0 +1,23 @@
+
+body{
+    background: #151521 ;
+}
+.system-logo {
+    width: 140PX;
+    height: 70PX;
+}
+.top-3{
+    top: 3% ;
+}
+.end-5{
+    left: 5%;
+}
+.user-control-model{
+    width: 1200PX;
+    height: 88px;
+    border: 2px solid #1E1E2D    ;
+}   
+
+.ps-menu-button:hover{
+    background-color: unset !important;
+}

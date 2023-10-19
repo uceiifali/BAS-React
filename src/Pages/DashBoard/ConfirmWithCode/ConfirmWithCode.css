@@ -1,0 +1,13 @@
+@media screen and (max-width:760px) {
+    .w-100-sm {
+        width: 100% !important;
+    }
+    .ConfirmMail .logo-container   img {
+        width: 250px !important ;
+        height: 170px !important;
+    }
+}
+
+.danger{
+    color: #6A0411 !important;
+}

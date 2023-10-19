@@ -1,0 +1,54 @@
+.systemLogin {
+  background-image: url("../../../../../public/systemLogin.png");
+  background-size: 100% 100%;
+}
+
+.signInCard {
+  box-sizing: border-box;
+  width: 580.858px  !important;
+  height: 600px !important;
+  background: rgba(255, 255, 255, 0.80);
+
+  border: 1px solid white;
+  box-shadow: 12px 17px 51px rgba(0, 0, 0, 0.22);
+  backdrop-filter: blur(6px);
+  border-radius: 17px;
+  text-align: center;
+
+  transition: all 0.5s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+  font-weight: bolder;
+  color: black;
+}
+
+.signInCard:hover {
+  border: 1px solid black;
+  transform: scale(1.05);
+}
+
+.signInCard:active {
+  transform: scale(0.95) rotateZ(1.7deg);
+}
+
+.form-label {
+  float: right !important;
+}
+@media screen and (max-width:760px) {
+  .signInCard{
+    width: 300px  !important;
+    height: 500px !important;
+
+  }
+  .signInCard img{
+    width: 200px !important;
+    height: 150px !important;
+}
+.signInCard button{
+  width: 150px !important;
+  height: 50px !important;
+}
+  
+}

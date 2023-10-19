@@ -1,0 +1,97 @@
+.bg-initial-video {
+    background-image: url("../../../../public/saudiMovment.gif") !important;
+    background-size: 100% 100% !important;
+}
+
+.layer {
+    background-color: black;
+    opacity: 0.6;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
+.main-text {
+    color: #717174;
+}
+
+.licenseDate-container {
+    width: 100%;
+}
+
+.submit-btn {
+    border: none !important;
+
+}
+
+.react-international-phone-country-selector-dropdown {
+    right: var(--react-international-phone-dropdown-left, 0) !important;
+}
+
+.react-international-phone-input-container {
+    display: flex;
+}
+
+@media screen and (max-width: 760px) {
+
+    .signUp-container {
+        height: auto;
+    }
+    .signUp-container  .logo-container img {
+        width: 200px !important;
+        height: 150px !important;
+      } 
+    .react-international-phone-country-selector-button__dropdown-arrow {
+        margin-right: -2px !important;
+    }
+      
+
+    form{
+        width: 75%;
+        margin: auto;
+    }
+    form input {
+        width: 250px !important;
+      }
+      form  .css-b62m3t-container ,
+      .react-datepicker__input-container,
+      .react-international-phone-input-container
+      {
+        width: 250px !important;
+      } 
+
+    .signUp-container>.gif-bg {
+        display: none !important;
+    }
+
+    .logo-container img {
+        width: 300px !important;
+        height: 250px !important;
+    }
+
+    .saudiFlagicon-container {
+        margin-bottom: 40px !important;
+    }
+}
+
+button {
+    border: 1px solid transparent !important;
+}
+
+.dropdown-toggle {
+    background: unset !important;
+    color: black !important;
+    border: 1px solid transparent !important;
+}   
+
+.check-lang {
+    background: unset !important;
+    border-color: unset !important;
+    border: 1px solid transparent !important;
+
+}
+
+.dropdown-link-active-bg {
+    background-color: unset !important;
+}
