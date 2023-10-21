@@ -202,7 +202,7 @@ const AsideBar = () => {
                                             <div class="card__content d-flex justify-content-center align-items-center  flex-column gap-2 " >
                                                 <img src='../../../assets/icons/hr.png' alt="icon" className='aside-icon mt-3'
                                                 />
-                                                <p style={{ fontSize: "14px" }}>الموارد البشرية  </p>
+                                                <p >الموارد البشرية  </p>
                                             </div>
 
                                         </div>
