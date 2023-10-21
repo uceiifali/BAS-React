@@ -56,7 +56,7 @@ body {
 
   .main-text {
 
-    font-size: 16px;
+    font-size: 14px;
     font-style: normal;
 
   }
@@ -1106,3 +1106,8 @@ ol.progtrckr li.progtrckr-done:hover:before {
 width: 250px !important;
 height: 250px !important;
 } */
+@media screen and (max-width:1400px){
+  .main-text{
+    font-size: 14px !important;
+  }
+}

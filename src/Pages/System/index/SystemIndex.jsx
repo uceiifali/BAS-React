@@ -12,18 +12,18 @@ const SystemIndex = () => {
 
     return (
 
-        <section className= 'full-system system-bg position-relative'>
-            <div className='  d-flex  position-absolute top-3 end-5'>
+        <section className= 'full-system  system-bg position-relative'>
+             <div className='  d-flex  position-absolute  end-5'>
 
                 <img src='../../../assets/icons/systemlogo.png ' alt='BSA logo' className='system-logo text-white' />
-            </div>
-            <div className='vh-100 d-flex align-items-center     '>
-                <div  style={{height: "897px"}} className='row gap-3    align-items-center'>
-                    <div className='col-md-3  h-100' >
-                        <AsideBar />
+            </div> 
+            <div className='system-container d-flex align-items-center     '>
+                <div  className='row w-100 mx-auto  py-5 my-3 ps-5 h-75  align-items-center'>
+                    <div className='col-xxl-3 col-md-4 ' >
+                        <AsideBar  />
                     </div>
 
-                    <div className='col-md-8  h-100'>
+                    <div className='col-md-8 '>
                         <Outlet />
                     </div>
                 </div>

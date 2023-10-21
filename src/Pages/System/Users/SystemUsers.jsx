@@ -41,7 +41,7 @@ const SystemUsers = () => {
 
     }
     return (
-        <div style={{ height: '100%' }} className='Users-component    text-white '>
+        <div  className='Users-component w-100    text-white '>
             <div
                 style={{
 
@@ -249,7 +249,7 @@ const SystemUsers = () => {
 
 
                     <div className='col-md-6'>
-                        <div className='show-employee p-4 w-100 h-100'>
+                        <div className='show-employee py-4 px-2 w-100 h-100'>
                             <div className='show-employee-header'>
                                 <div className='d-flex justify-content-between'>
 
@@ -259,14 +259,14 @@ const SystemUsers = () => {
                                         <Button className='export-bg ms-2'> تصدير Excel     </Button>
                                     </div>
                                 </div>
-                                <div className='d-flex justify-content-between'>
+                                <div className='d-flex justify-content-between w-100'>
                                     <div className='tab d-flex   '>
 
                                         <img src='../People/islam.jpg' alt='user img ' className='user-Personal  ' />
                                         <div className='d-flex flex-column me-3 '>
                                             <h2 className=' name-header     my-0    '> اسلام</h2>
                                             <p className='main-text  my-0   '>islam@bsa.com</p>
-                                            <p className=' main-text my-0    '>01023456789</p>
+                                            <p className=' name-heade my-0    '>01023456789</p>
                                         </div>
 
                                     </div>
