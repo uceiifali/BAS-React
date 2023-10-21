@@ -32,12 +32,15 @@
 }
 
 .system-card {
-    width: 82px;
-    height: 93px;
+    width: 95;
+    height: 100px;
     border-radius: 20px;
     border: unset !important;
 }
 
+.system-card p {
+    font-size: 18px;
+}
 .card__content {
     background: #2B2B40;
     border-radius: 17px;
