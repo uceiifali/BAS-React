@@ -7,7 +7,7 @@ const AsideBar = () => {
     const [rtl, setRtl] = useState(true)
     const [collapsed, setCollapsed] = useState(true);
     return (
-        <div className="align-items-center h-100  mx-5" style={{ display: 'flex', direction: rtl ? 'rtl' : 'ltr', width: "380px", borderRadius: "19px" }}>
+        <div className="align-items-center    mx-5" style={{ display: 'flex', direction: rtl ? 'rtl' : 'ltr', borderRadius: "19px" }}>
 
             <Sidebar
 
@@ -15,7 +15,7 @@ const AsideBar = () => {
                     color: "#FFF",
                     borderRadius: "19px",
                     height: '100%',
-                    width: "380px",
+        
                     border: "2px solid #EFAA20 !important"
   
 
@@ -202,7 +202,7 @@ const AsideBar = () => {
                                             <div class="card__content d-flex justify-content-center align-items-center  flex-column gap-2 " >
                                                 <img src='../../../assets/icons/hr.png' alt="icon" className='aside-icon mt-3'
                                                 />
-                                                <p style={{ fontSize: "14px" }}>الموارد البشرية  </p>
+                                                <p >الموارد البشرية  </p>
                                             </div>
 
                                         </div>

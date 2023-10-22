@@ -33,8 +33,8 @@ import Input from '../../../Components/FormHandler/Input'
 
 
  
-    return <div className='signUp-container row m-0  p-0  w-100 vh-100'>
-        <div className='col-md-6 form-container h-100 '>
+    return <div className='signUp-container row m-0  p-0  w-100 '>
+        <div className='col-md-6 form-container  '>
             <div className='item position-relative'>
             <Dropdown className='position-absolute  end-10 top-0 pointer'>
                     <Dropdown.Toggle style={{ backgroundColor:   "unset !important", borderColor: "unset" }} className='d-flex  check-lang align-items-center' id="dropdown-basic">
@@ -144,7 +144,7 @@ import Input from '../../../Components/FormHandler/Input'
 
             </div>
         </div>
-        <div className='col-md-6 gif-bg p-0 m-0 h-100'>
+        <div className='col-md-6 gif-bg p-0 m-0      '>
             <div className='item bg-initial-video position-relative h-100 p-0 m-0 w-100'>
 
                 <div className='layer position-absolute top-0 bottom-0 end-0 start-0 d-flex justify-content-center align-items-center '>

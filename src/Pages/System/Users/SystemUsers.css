@@ -42,40 +42,40 @@
   background-color: #2B2B40 !important;
 }
 
-input:focus {
+.Users-component input:focus {
   outline: none !important;
   box-shadow: none !important;
 }
 
 
 
-.css-1ng70dv-control:hover {
+.Users-component .css-1ng70dv-control:hover {
   border: unset !important;
   box-shadow: none !important;
 }
 
-.css-1nmdiq5-menu {
+.Users-component .css-1nmdiq5-menu {
   background-color: #2B2B40 !important;
 }
 
-.egypet-roles:focus {
+.Users-component .egypet-roles:focus {
   border: none !important;
 }
 
-.css-qbdosj-Input:hover {
+.Users-component .css-qbdosj-Input:hover {
   opacity: 0 !important;
 }
 
-.css-1u001w8-control {
+.Users-component .css-1u001w8-control {
   border: unset !important;
   box-shadow: none !important;
 }
 
-.search {
+.Users-component .search {
   color: #534D59 !important;
 }
 
-.search::placeholder {
+.Users-component .search::placeholder {
   background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='15' height='15' viewBox='0 0 30 30  '><path fill='%23838D99' d='M13.22 14.63a8 8 0 1 1 1.41-1.41l4.29 4.29a1 1 0 1 1-1.41 1.41l-4.29-4.29zm-.66-2.07a6 6 0 1 0-8.49-8.49 6 6 0 0 0 8.49 8.49z'></path></svg>");
   background-repeat: no-repeat;
 
@@ -94,7 +94,7 @@ input:focus {
   line-height: normal;
 }
 
-.search:focus {
+.Users-component  .search:focus {
   outline: none;
   color: #534D59 !important;
   box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.16);
@@ -105,11 +105,11 @@ input:focus {
   height: 14.792px;
 }
 
-.dropdown-toggle::after {
+.Users-component .dropdown-toggle::after {
   display: none !important
 }
 
-.connected {
+.Users-component .connected {
   width: 8px;
   height: 8px;
   border-radius: 15px;
@@ -123,7 +123,7 @@ input:focus {
   background: #9E0C1E;
 }
 
-a:focus {
+.Users-component a:focus {
   background-color: unset !important;
 }
 
@@ -165,9 +165,15 @@ a:focus {
   border-radius: 40.5px !important;
 }
 
-.action-buttons {
+.Users-component .action-buttons {
   margin-left: 5px;
   width: 51px;
   height: 25px;
   cursor: pointer;
+}
+
+@media screen and (max-width:1400px) {
+  .name-heade{
+      font-size: 14px ;
+  }
 }

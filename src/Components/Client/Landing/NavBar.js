@@ -1,6 +1,6 @@
 
-import React, { useState } from 'react';
-import {Image} from 'react-bootstrap';
+import React, { useEffect, useState } from 'react';
+import { Image } from 'react-bootstrap';
 import { AiOutlineGlobal } from 'react-icons/ai';
 import { BsFillPersonFill } from 'react-icons/bs';
 import Navbar from 'react-bootstrap/Navbar';
@@ -11,6 +11,7 @@ import { Link } from 'react-router-dom';
 const NavBar = () => {
 
   const [collapsed, setCollapsed] = useState(false);
+
 
   const handleCollapsed = () => {
     setCollapsed(!collapsed);
@@ -23,13 +24,15 @@ const NavBar = () => {
       setCollapsed(true)
     }
   };
+  const [checkHidden, setCheckHidden] = useState(false)
 
+ 
 
 
   return (
-   
 
-    <Navbar style={{backgroundColor:"#FFF"}} className='position-fixed   z-3   top-0 end-0 start-0  ' collapseOnSelect expand="lg" >
+
+    <Navbar style={{ backgroundColor: "#FFF" }} className={`position-fixed ${checkHidden ? "" : ""}   z-3   top-0 end-0 start-0  `} collapseOnSelect expand="lg" >
       <Container fluid  >
         <Navbar.Brand className=' me-3' href="#home">
           <Image width={80} height={80} src="/logo.jpg" alt="logo" />
@@ -40,7 +43,7 @@ const NavBar = () => {
             <Nav.Link onClick={closeNavbar} className="fs-5   me-4" href="#Home">
               الرئيسية
             </Nav.Link>
-            <Nav.Link onClick={closeNavbar} className="fs-5   me-4"  href="#WhoWeAre">
+            <Nav.Link onClick={closeNavbar} className="fs-5   me-4" href="#WhoWeAre">
               من نحن
             </Nav.Link>
             <Nav.Link onClick={closeNavbar} className="fs-5   me-4" href="#Services">
@@ -65,19 +68,19 @@ const NavBar = () => {
             <Link onClick={closeNavbar} className="fs-5   ms-4    d-flex    gap-1" to="/Dashboard/SignIn">
               <span className=' '> تسجيل الدخول</span>
               <BsFillPersonFill className="fs-5 mt-1" />
-            </Link> 
+            </Link>
             <NavDropdown className='    fs-5 ' title="    اللغة     " id="collapsible-nav-dropdown">
 
               <NavDropdown.Item className='text-end  d-flex justify-content-between ' href="#action/3.2">
                 <span>   العربيه</span>
                 <img src="saudi.png" alt="saudi flag" width={30} height={20} />
               </NavDropdown.Item>
-              <NavDropdown.Item className='text-end  d-flex justify-content-between' href="#action/3.3"> 
-              <span>الانجليزيه</span>
-              <img src="usa.png" alt="USA flag" width={30} height={20} />
+              <NavDropdown.Item className='text-end  d-flex justify-content-between' href="#action/3.3">
+                <span>الانجليزيه</span>
+                <img src="usa.png" alt="USA flag" width={30} height={20} />
               </NavDropdown.Item>
 
-             
+
 
             </NavDropdown>
 

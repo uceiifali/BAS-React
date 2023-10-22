@@ -10,7 +10,7 @@ import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import { useContext, lazy, Suspense } from 'react';
 
 import Loading from './Components/Loading';
-
+import SystemSignIn from "././Pages/System/Auth/SignIn/SystemSignIn"
 
 import 'react-international-phone/style.css';
 import SystemIndex from './Pages/System/index/SystemIndex';
@@ -18,7 +18,7 @@ import SystemIndex from './Pages/System/index/SystemIndex';
 const Home = lazy(() => import("./Pages"))
 const SignUP = lazy(() => import("././Pages/DashBoard/SignUP/SignUP"))
 const SignIn = lazy(() => import("././Pages/DashBoard/SignIn/SignIn"))
-const SystemSignIn = lazy(() => import("././Pages/System/Auth/SignIn/SystemSignIn"))
+
 const ConfirmWithCode = lazy(() => import("././Pages/DashBoard/ConfirmWithCode/ConfirmWithCode"))
 const ForgetPassword = lazy(() => import("././Pages/DashBoard/ForgetPassword/ForgetPassword"))
 const SystemUsers = lazy(() => import('./Pages/System/Users/SystemUsers'))
@@ -51,7 +51,7 @@ function App() {
     },
     {
       path: "/System/SignIn",
-      element: <Suspense fallback={<Loading />}> <SystemSignIn /></Suspense>
+      element:  <SystemSignIn />
 
     },
     //system routes

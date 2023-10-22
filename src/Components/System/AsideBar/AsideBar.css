@@ -32,12 +32,15 @@
 }
 
 .system-card {
-    width: 94.289px;
-    height: 91px;
+    width: 95;
+    height: 100px;
     border-radius: 20px;
     border: unset !important;
 }
 
+.system-card p {
+    font-size: 18px;
+}
 .card__content {
     background: #2B2B40;
     border-radius: 17px;
@@ -56,4 +59,17 @@
 .system-item {
     margin-bottom: 10px;
     margin-top: 10px;
+}
+
+@media screen and (max-width:1400px) {
+    
+.system-card {
+    width: 75px;
+    height: 85px;
+    border-radius: 20px;
+    border: unset !important;
+}
+.system-card  p{
+    font-size: 12px ;
+}
 }
