@@ -35,9 +35,9 @@ const DesignStepTwo = (props) => {
 
     , "", "Select");
   const email = UseInput(`${userData?.email ? userData.email : ""}`, "email", true);
-  const [phone,setPhone] = useState(`${userData?.phone ? userData.phone : ""}`)
+  const [phone, setPhone] = useState(`${userData?.phone ? userData.phone : ""}`)
   const checkPhoneValidation = isPhoneValid(phone);
-
+  const taxCertificateNumber = UseInput(`${userData?.taxCertificateNumber ? userData.taxCertificateNumber : ""} `, "number", true)
   const [instrumentImage, setInstrumentImage] = useState();
 
 
@@ -80,22 +80,23 @@ const DesignStepTwo = (props) => {
   }
 
   useMemo(() => {
-    if (clientType?.value.label && projectType?.value.label && instrumentImage?.name && email.value && email.isValid && phone && checkPhoneValidation) {
+    if (clientType?.value.label && projectType?.value.label && instrumentImage?.name && email.value && email.isValid && phone && checkPhoneValidation ) {
       const updatedUserData = {
         ...userData,
         instrumentImage: instrumentImage?.name,
         clientType: clientType.value.label,
         projectType: projectType.value.label,
         email: email.value,
-        phone
+        phone,
+        taxCertificateNumber:taxCertificateNumber.value
 
 
       };
       setUserData(updatedUserData)
 
-      console.log (checkPhoneValidation)
+      console.log(checkPhoneValidation)
 
-  
+
       signalParent(true)
     } else {
       signalParent(false)
@@ -105,16 +106,17 @@ const DesignStepTwo = (props) => {
         clientType: clientType.value.label,
         projectType: projectType.value.label,
         email: email.value,
+        taxCertificateNumber:taxCertificateNumber.value,
         phone
 
 
       };
       setUserData(updatedUserData)
 
-      console.log (checkPhoneValidation)
+      console.log(checkPhoneValidation)
     }
 
-  }, [clientType?.value.label && projectType?.value.label && instrumentImage?.name && email.value && email.isValid && phone &&checkPhoneValidation])
+  }, [clientType?.value.label && projectType?.value.label && instrumentImage?.name && email.value && email.isValid && phone && checkPhoneValidation])
 
   useEffect(() => {
 
@@ -161,28 +163,32 @@ const DesignStepTwo = (props) => {
 
           <Form.Group controlId="formBasicImage">
             <Form.Label className="d-flex gap-2 align-items-center">
-               رقم الجوال
+              رقم الجوال
             </Form.Label>
             <PhoneInput
-            defaultCountry="sa"
-            value={phone}
-            className='w-100 h-100'
-            onChange={(phone) => setPhone(phone)}
-          />
-      
+              defaultCountry="sa"
+              value={phone}
+              className='w-100 h-100'
+              onChange={(phone) => setPhone(phone)}
+            />
+
           </Form.Group>
-          {/* { <Input label={"رقم الجوال"}
-
-            {...phone.bind} mandatory /> } */}
 
 
-       
 
 
 
 
         </div>
+        <div className="col-md-6 mb-4">
+          <Input label={"رقم الشهادة الضربية"} {...taxCertificateNumber.bind}  />
 
+
+
+
+
+
+        </div>
       </Form >
     </div >
   )

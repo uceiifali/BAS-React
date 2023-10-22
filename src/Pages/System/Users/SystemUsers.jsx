@@ -1,13 +1,24 @@
-import React from 'react'
+import React, { useState } from 'react'
 import "./SystemUsers.css"
 
 import AddUserButton from '../../../Components/System/AddUserButton/AddUserButton'
 import Select from '../../../Components/FormHandler/Select'
 import Input from "../../../Components/FormHandler/Input"
 import { Button, NavDropdown } from 'react-bootstrap'
+import Genralnformation from '../../../Components/System/Users/Genralnformation/Genralnformation'
+import ProfessinollInformation from '../../../Components/System/Users/ProfessinollInformation/ProfessinollInformation'
+import { AccountaingInformation } from '../../../Components/System/Users/AccountaingInformation/AccountaingInformation'
+
+
+
 
 
 const SystemUsers = () => {
+
+    const [employeeDetails, setEmployeeDetails] = useState("معلومات عامة")
+
+
+
     const egypetRoles = [
         {
             value: "مصر",
@@ -16,8 +27,35 @@ const SystemUsers = () => {
     ]
     const saudiaRoles = [
         {
-            value: "السعودية",
-            label: "السعودية",
+            label: "السعودية", options: [
+                {
+                    label: "مدير مكتب",
+                    options: [
+                        {
+                            label: "بشمهندس ايهاب",
+                            value: "بشمهندس ايهاب"
+                        },
+                        {
+                            label: "بشمهندس اشرف",
+                            value: "بشمهندس اشرف"
+                        }
+                    ]
+                },
+                {
+                    label: "موظف",
+                    options: [
+                        {
+                            label: "بشمهندس حبيب",
+                            value: "بشمهندس حبيب"
+                        },
+                        {
+                            label: "بشمهندسه مروه",
+                            value: "بشمهندسه مروه"
+                        }
+                    ]
+                }
+
+            ]
         }
     ]
     const colourStyles = {
@@ -41,7 +79,7 @@ const SystemUsers = () => {
 
     }
     return (
-        <div  className='Users-component w-100    text-white '>
+        <div className='Users-component w-100    text-white '>
             <div
                 style={{
 
@@ -72,8 +110,9 @@ const SystemUsers = () => {
                                 <div className='all-categories '>
 
                                     <p className='text-center py-2' >كل المستخدمين</p>
-                                    <Select options={egypetRoles} styles={colourStyles} placeholder="مصر " className="mb-4 egypet-roles " />
                                     <Select options={saudiaRoles} styles={colourStyles} placeholder=" السعودية " className="mb-4  saudia-roles" />
+                                    <Select options={egypetRoles} styles={colourStyles} placeholder="مصر " className="mb-4 egypet-roles " />
+                             
                                 </div>
                             </div>
                             <div className='col-md-6'>
@@ -249,7 +288,7 @@ const SystemUsers = () => {
 
 
                     <div className='col-md-6'>
-                        <div className='show-employee py-4 px-2 w-100 h-100'>
+                        <div className='show-employee py-4 px-2 w-100 '>
                             <div className='show-employee-header'>
                                 <div className='d-flex justify-content-between'>
 
@@ -270,15 +309,25 @@ const SystemUsers = () => {
                                         </div>
 
                                     </div>
-                                  <div className='d-flex align-items-center '>
-                                  <img src='../icons/delete.png' alt='user img ' className='action-buttons  ' />
-                                  <img src='../icons/edit.png' alt='user img ' className='action-buttons  ' />
-                                  <img src='../icons/more.png' alt='user img ' className='action-buttons  ' />
+                                    <div className='d-flex align-items-center '>
+                                        <img src='../icons/delete.png' alt='user img ' className='action-buttons  ' />
+                                        <img src='../icons/edit.png' alt='user img ' className='action-buttons  ' />
+                                        <img src='../icons/more.png' alt='user img ' className='action-buttons  ' />
 
-                                  </div>
-                                  
+                                    </div>
+
+
                                 </div>
                             </div>
+
+                            <div className='main-text choose-inf position-relative d-flex justify-content-between mx-5 my-3'>
+                                <p className={`genral-inf ${employeeDetails == "معلومات عامة" && "inf-type"}`} onClick={() => { setEmployeeDetails("معلومات عامة") }} >معلومات عامة</p>
+                                <p className={`genral-inf ${employeeDetails == "معلومات مهنية" && "inf-type"}`} onClick={() => { setEmployeeDetails("معلومات مهنية") }}>معلومات  مهنية</p>
+                                <p className={`genral-inf ${employeeDetails == "معلومات محاسبية" && "inf-type"}`} onClick={() => { setEmployeeDetails("معلومات محاسبية") }}>معلومات  محاسبية</p>
+
+
+                            </div>
+                         {employeeDetails=="معلومات عامة"? <Genralnformation/> :employeeDetails =="معلومات مهنية"? <ProfessinollInformation/>:<AccountaingInformation/>}
 
                         </div>
 

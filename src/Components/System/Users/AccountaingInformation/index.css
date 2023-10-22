@@ -1,0 +1,10 @@
+.wirte-notes{
+    background-color: #1E1E2D !important;
+    border: 1px solid rgba(213, 153, 33, 0.20) !important;
+}
+.wirte-notes::placeholder{
+    color: rgba(255, 255, 255, 0.50);
+}
+.wirte-notes:focus{
+    border: unset !important ;
+}

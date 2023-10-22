@@ -6,6 +6,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 import './App.css';
 import NavBar from './Components/Client/Landing/NavBar';
 
+
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import { useContext, lazy, Suspense } from 'react';
 

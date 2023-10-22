@@ -4,7 +4,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import './index.css';
+import './index.css'; 
 import StepContext from './Context/StepContext'
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

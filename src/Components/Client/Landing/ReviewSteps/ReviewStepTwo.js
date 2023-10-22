@@ -11,11 +11,11 @@ import { PhoneNumberUtil } from 'google-libphonenumber';
 const phoneUtil = PhoneNumberUtil.getInstance();
 
 const isPhoneValid = (phone) => {
-  try {
-    return phoneUtil.isValidNumber(phoneUtil.parseAndKeepRawInput(phone));
-  } catch (error) {
-    return false;
-  }
+    try {
+        return phoneUtil.isValidNumber(phoneUtil.parseAndKeepRawInput(phone));
+    } catch (error) {
+        return false;
+    }
 };
 
 
@@ -43,7 +43,7 @@ const ReviewStepTwo = (props) => {
     const email = UseInput(`${userData.email ? userData.email : ""}`, "email", true);
     const [phone, setPhone] = useState(`${userData?.phone ? userData.phone : ""}`)
     const [instrumentImage, setInstrumentImage] = useState(null);
-
+    const taxCertificateNumber = UseInput(`${userData?.taxCertificateNumber ? userData.taxCertificateNumber : ""} `, "number", true)
 
     const clientTypeRoles = [
         {
@@ -91,6 +91,7 @@ const ReviewStepTwo = (props) => {
                 clientType: clientType.value.label,
                 projectType: projectType.value.label,
                 email: email.value,
+                taxCertificateNumber:taxCertificateNumber.value,
                 phone
 
             };
@@ -107,6 +108,7 @@ const ReviewStepTwo = (props) => {
                 clientType: clientType.value.label,
                 projectType: projectType.value.label,
                 email: email.value,
+                taxCertificateNumber:taxCertificateNumber.value,
                 phone
 
 
@@ -156,7 +158,7 @@ const ReviewStepTwo = (props) => {
                         <PhoneInput
                             defaultCountry="sa"
                             value={phone}
-                           
+
                             onChange={(phone) => setPhone(phone)}
                         />
                     </Form.Group>
@@ -167,7 +169,15 @@ const ReviewStepTwo = (props) => {
                     <Input label={"البريد الالكتروني"} {...email.bind} mandatory />
 
                 </div>
+                <div className="col-md-6 mb-4">
+                    <Input label={"رقم الشهادة الضربية"} {...taxCertificateNumber.bind} mandatory />
 
+
+
+
+
+
+                </div>
 
 
             </Form>
