@@ -8,6 +8,8 @@ const Select = React.forwardRef((props, ref) => {
     label,
     validator,
     mandatory,
+    width,
+    height,
     submitted,
     isMulti = false,
     formGroup = true,
@@ -27,7 +29,8 @@ const Select = React.forwardRef((props, ref) => {
         styles={selectStyles(small, autoHeight)}
         isMulti={isMulti}
         placeholder="اختر"
-     
+        width
+        height
         // menuPlacement='اختر'
         
         className={`react-select ${className} ${(submitted && validator && !validator.valid) ? 'is-invalid' : ''}`}
@@ -39,6 +42,8 @@ const Select = React.forwardRef((props, ref) => {
         placeholder="اختر"
         styles={selectStyles(small)}
         isMulti={isMulti}
+        width
+        height
         className={`react-select ${className} ${(submitted && validator && !validator.valid) ? 'is-invalid' : ''}`}
         {...props}
        

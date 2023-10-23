@@ -14,13 +14,13 @@ export const validationRules = {
       invalid: 'Invalid first name.'
     },
   },
-    text: {
-      pattern: new RegExp(/[a-zA-Z\u0621-\u064Aء-ئ][^#&<>\"~;$^%{}?]{3,20}$/ ), //Alphanumeric string 
-      required:false,
-      message: {
-        empty: 'This filed is required .',
-        invalid: 'Invalid value '
-      }
+  text: {
+    pattern: new RegExp(/[a-zA-Z\u0621-\u064Aء-ئ][^#&<>\"~;$^%{}?]{3,20}$/), //Alphanumeric string 
+    required: false,
+    message: {
+      empty: 'This filed is required .',
+      invalid: 'Invalid value '
+    }
   },
   lastName: {
     pattern: /^[a-z ,'-]+$/i, //Alphanumeric string 
@@ -47,13 +47,13 @@ export const validationRules = {
   },
   password: {
     pattern: new RegExp(/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[~!@#$%^&*_\-+=`|\\(){}\[\]:;"'<>,.?\/]).{8,}$/),
-    required: true,
+    // required: true,  
     message: {
       invalid: 'Password must be at least 8 characters long and contain at least one number, letter and special character'
     }
 
   },
-  ChartNumber :{
+  ChartNumber: {
     pattern: new RegExp(/[\u0600-\u06FF\s]+/g),
     required: false,
     message: {
@@ -61,6 +61,13 @@ export const validationRules = {
     }
   },
   password_optional: {
+    pattern: new RegExp(/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[~!@#$%^&*_\-+=`|\\(){}\[\]:;"'<>,.?\/]).{8,}$/),
+    required: false,
+    message: {
+      invalid: 'Password must be at least 8 characters long and contain at least one number, letter and special character'
+    }
+  },
+  repassword: {
     pattern: new RegExp(/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[~!@#$%^&*_\-+=`|\\(){}\[\]:;"'<>,.?\/]).{8,}$/),
     required: false,
     message: {
@@ -76,14 +83,14 @@ export const validationRules = {
     }
   },
   KSAPhone: {
-    pattern: new RegExp(/^(?:\+966|00966|0)([56789]\d{8})$/ ),
+    pattern: new RegExp(/^(?:\+966|00966|0)([56789]\d{8})$/),
     // required: true,
     message: {
       empty: 'Phone number is required',
       invalid: 'Invalid phone number'
     }
   },
-  
+
   phone: {
     pattern: /^\d{4,14}$/,
     required: false,

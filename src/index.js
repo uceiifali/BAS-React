@@ -4,18 +4,20 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import './index.css'; 
+import './index.css';
 import StepContext from './Context/StepContext'
+import CheckAddUpdateUserVisability from './Context/CheckAddUpdateUserVisability';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
 
 
   <React.StrictMode>
-     <StepContext> 
-      <App />
-      <ToastContainer />
-     </StepContext> 
- 
+    <CheckAddUpdateUserVisability>
+      <StepContext>
+        <App />
+        <ToastContainer />
+      </StepContext>
+    </CheckAddUpdateUserVisability >
   </React.StrictMode>
 );
 

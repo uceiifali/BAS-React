@@ -15,6 +15,8 @@ import SystemSignIn from "././Pages/System/Auth/SignIn/SystemSignIn"
 
 import 'react-international-phone/style.css';
 import SystemIndex from './Pages/System/index/SystemIndex';
+import AllUsersChart from './Pages/System/Users/AllUsersChart/AllUsersChart';
+
 
 const Home = lazy(() => import("./Pages"))
 const SignUP = lazy(() => import("././Pages/DashBoard/SignUP/SignUP"))
@@ -22,7 +24,7 @@ const SignIn = lazy(() => import("././Pages/DashBoard/SignIn/SignIn"))
 
 const ConfirmWithCode = lazy(() => import("././Pages/DashBoard/ConfirmWithCode/ConfirmWithCode"))
 const ForgetPassword = lazy(() => import("././Pages/DashBoard/ForgetPassword/ForgetPassword"))
-const SystemUsers = lazy(() => import('./Pages/System/Users/SystemUsers'))
+const SystemUsers = lazy(() => import('./Pages/System/Users/UserDetails/SystemUsers'))
 function App() {
 
   const router = createBrowserRouter([
@@ -57,10 +59,13 @@ function App() {
     },
     //system routes
     {
-      path: "/System",
+      path: "",
       element: < SystemIndex />,
       children: [
-        { path: "/System/users", element: <Suspense fallback={<Loading />} > <SystemUsers/></Suspense> }
+        { path: "/System/users", element: <Suspense fallback={<Loading />} > <SystemUsers/></Suspense> },
+        { path: "/System/AllUsersChart", element: <Suspense fallback={<Loading />} > <AllUsersChart/></Suspense> }
+        
+
       ]
     },
 
