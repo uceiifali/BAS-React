@@ -1,6 +1,6 @@
 .sytem-users {
   width: 100%;
-  height: 801px ;
+  height: 801px;
   border-radius: 19px;
 }
 
@@ -94,7 +94,7 @@
   line-height: normal;
 }
 
-.Users-component  .search:focus {
+.Users-component .search:focus {
   outline: none;
   color: #534D59 !important;
   box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.16);
@@ -149,10 +149,11 @@
 }
 
 
-.css-1dimb5e-singleValue{
+.css-1dimb5e-singleValue {
   color: rgba(217, 217, 217, 0.50) !important;
 
 }
+
 .export-bg {
 
   border-radius: 3px !important;
@@ -176,39 +177,44 @@
 }
 
 @media screen and (max-width:1400px) {
-  .name-heade{
-      font-size: 14px ;
+  .name-heade {
+    font-size: 14px;
   }
-  .genral-inf{
+
+  .genral-inf {
     font-size: 14px !important;
   }
-  .choose-inf{
+
+  .choose-inf {
     margin-left: 20px !important;
     margin-right: 20px !important;
   }
 }
-.choose-inf{
+
+.choose-inf {
   position: relative;
   cursor: pointer;
 }
 
-.choose-inf::after{
+.choose-inf::after {
   position: absolute;
   content: "";
   width: 100%;
-  height: 2px ;
+  height: 2px;
   background-color: #534D59;
   top: 100%;
 }
-.inf-type{
+
+.inf-type {
   color: #D59921;
   position: relative;
 
 }
 
-.golden-square{
+.golden-square {
   border: 1px solid rgba(213, 153, 33, 0.20);
 }
+
 .show-employee::-webkit-scrollbar-track {
   -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
   background-color: #F5F5F5;
@@ -222,11 +228,24 @@
 .show-employee::-webkit-scrollbar-thumb {
   background-color: #F90;
   background-image: -webkit-linear-gradient(45deg,
-          rgba(255, 255, 255, .2) 25%,
-          transparent 25%,
-          transparent 50%,
-          rgba(255, 255, 255, .2) 50%,
-          rgba(255, 255, 255, .2) 75%,
-          transparent 75%,
-          transparent)
+      rgba(255, 255, 255, .2) 25%,
+      transparent 25%,
+      transparent 50%,
+      rgba(255, 255, 255, .2) 50%,
+      rgba(255, 255, 255, .2) 75%,
+      transparent 75%,
+      transparent)
 }
+
+.No-Delete {
+  
+  background-color: #A83A3A !important;
+  border: unset !important;
+}
+.No-Delete:focus{
+border: unset !important;
+}
+.Delete-button{
+
+background-color: #D59921 !important;
+} 

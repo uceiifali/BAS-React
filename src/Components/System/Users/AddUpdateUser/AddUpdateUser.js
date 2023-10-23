@@ -3,16 +3,21 @@ import "./index.css"
 import Input from '../../../FormHandler/Input'
 import { UseInput, UseSelect } from '../../../../hooks'
 import Select from '../../../FormHandler/Select'
-import { Button, Form } from 'react-bootstrap'
+import { Button, Form, Modal } from 'react-bootstrap'
 import DatePicker from "react-datepicker"
+import { AiOutlineCloseCircle } from 'react-icons/ai'
+import { useContext } from 'react'
+import   { showAddUpdateUser } from '../../../../Context/CheckAddUpdateUserVisability'
 
-const AddUpdateUser = ({id = null}) => {
+const AddUpdateUser = ({ id = null ,setOpenUpdateUser}) => {
+    console.log(id )
+
+    const {showAddUserModel,setShowAddUserModel , showUpdateUserModel ,setShowUpdateUserModel}= useContext(showAddUpdateUser)
     const firstName = UseInput("", "text", true)
     const lastName = UseInput("", "text", true)
     const userName = UseInput("", "text", true)
-    const password = UseInput("", "password_optional", true)
+    const userPassword = UseInput("", "password_optional")
     const rePassword = UseInput("", "", true
-  
     )
     const gender = UseSelect({
         value: "ذكر",
@@ -102,26 +107,93 @@ const AddUpdateUser = ({id = null}) => {
     }, "Select")
     const instrumentNumber = UseInput("", "number", true)
     const [instrumentDate, setInstrumentDate] = useState(null)
-
     const [birthDate, setBirthDate] = useState(null)
+    const [showSubmitPoper, SetShowSubmitPoper] = useState(false)
 
-  console.log(id)
+
+
+
+
+
+
+
+
+
+
+
+
 
 
     const handleAddUpdateUser = (e) => {
+
         e.preventDefault()
         if (id) {
-            ///updateUSer 
+            ///updateUSer
+
+
+
+            //UpdatedUserSuccesfuly
+            SetShowSubmitPoper(true)
 
         }
         else {
             //Adduser
+
+
+
+            //UpdatedUserSuccesfuly
+            SetShowSubmitPoper(true)
+
         }
     }
 
     return (
         <div className='addUpdateUser P-4'>
-            {!id ? <h2 className='golden addupdateheader mt-3  mx-5 mb-1 '>إضافة جديدة</h2> :<h2 className='golden addupdateheader mt-3    mx-5 mb-1   '> تعديل المستخدم</h2> }
+
+
+            {showSubmitPoper &&
+                <Modal
+                    className='submitSystemPoper'
+                    size="lg"
+                    aria-labelledby="contained-modal-title-vcenter"
+                    onHide={() => SetShowSubmitPoper(false)}
+                    show={showSubmitPoper}
+                >
+
+                    <Modal.Body >
+                        <div className='d-flex justify-content-center w-100'>            <img src={"../correct.gif"} width={120} height={120} className='my-3' color='#E1B67C' /></div>
+
+
+                        <div className='d-flex w-75 flex-column mx-auto mt-3 justify-content-center align-items-center '>
+                           {!id? <p className='text-white' style={{ fontSize: "30px" }}>تم اضافة مستخدم جديد بنجاح</p>: <p className='text-white' style={{ fontSize: "30px" }}> تم تعديل بيانات المستخدم بنجاح</p>}
+                            <Button type='submit'
+                              onClick={()=>{
+                                SetShowSubmitPoper(false)
+                                if(id){
+                                    setShowUpdateUserModel(false)
+                                    setOpenUpdateUser({
+                                        id:null
+                                    })
+                                }else{
+                                    setShowAddUserModel(false)
+                                }
+
+                              }}
+                                className='sumbmitAddUpdateUser'>حفظ</Button>
+
+                        </div>
+                    </Modal.Body>
+
+
+                </Modal >}
+
+
+
+
+
+
+
+            {!id ? <h2 className='golden addupdateheader mt-3  mx-5 mb-1 '>إضافة جديدة</h2> : <h2 className='golden addupdateheader mt-3    mx-5 mb-1   '> تعديل المستخدم</h2>}
             {!id ? <p className='text-center'> اضافة مستخدم جديد</p > : <p className='text-center'> تعديل المستخدم  </p >}
 
             <Form onSubmit={handleAddUpdateUser}>
@@ -230,7 +302,7 @@ const AddUpdateUser = ({id = null}) => {
                     <p className='text-center'>كلمة المرور</p>
                     <div className='row '>
                         <div className='col-md-6 '>
-                            <Input label={"كلمه المرور"} type='password' {...password.bind} placeholder='ادخل كلمة المرور' />
+                            <Input label={"كلمه المرور"} type='password' {...userPassword.bind} placeholder='ادخل كلمة المرور' />
 
                         </div>
                         <div className='col-md-6 '>

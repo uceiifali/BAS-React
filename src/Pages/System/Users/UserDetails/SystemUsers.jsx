@@ -4,7 +4,7 @@ import "./SystemUsers.css"
 
 import Select from '../../../../Components/FormHandler/Select'
 import Input from "../../../../Components/FormHandler/Input"
-import { Button, NavDropdown } from 'react-bootstrap'
+import { Button, Modal, NavDropdown } from 'react-bootstrap'
 import Genralnformation from '../../../../Components/System/Users/Genralnformation/Genralnformation'
 import ProfessinollInformation from '../../../../Components/System/Users/ProfessinollInformation/ProfessinollInformation'
 import { AccountaingInformation } from '../../../../Components/System/Users/AccountaingInformation/AccountaingInformation'
@@ -27,7 +27,8 @@ const SystemUsers = () => {
         isOpen: false,
         id: null
     });
-
+    const [deleteUserPoper, setDeleteUserPoper] = useState(false)
+    const [ConfimdeleteUserPoper, setConfirmDeleteUserPoper] = useState(false)
 
     const handleGetUserDetails = () => {
 
@@ -36,7 +37,13 @@ const SystemUsers = () => {
 
     }
 
+    const handleCofirmDeleteUser = () => {
 
+        //confrim deleting user
+        setDeleteUserPoper(false)
+        setConfirmDeleteUserPoper(true)
+
+    }
 
 
 
@@ -113,8 +120,7 @@ const SystemUsers = () => {
                 <UserControler child={showAddUserModel ? <p
                     onClick={() => {
                         setShowAddUserModel(false)
-
-
+                        
                     }}
 
                     className='pointer'>
@@ -123,10 +129,13 @@ const SystemUsers = () => {
                     </svg>
                     المستخدمين  /  <span className='main-text'>إضافة جديدة</span>
 
-                </p> : showUpdateUserModel ? <p
+                </p> : 
+                showUpdateUserModel ? <p
                     onClick={() => {
                         setShowUpdateUserModel(false)
-
+                        setOpenUpdateUser({
+                            id: null
+                        })
 
                     }}
 
@@ -141,7 +150,7 @@ const SystemUsers = () => {
 
                     <AddUserButton />} />
 
-                {showUpdateUserModel || showAddUserModel ? <AddUpdateUser id={OpenUpdateUser.id} /> : <div className='row'>
+                {showUpdateUserModel || showAddUserModel ? <AddUpdateUser setOpenUpdateUser={setOpenUpdateUser} id={OpenUpdateUser.id} /> : <div className='row'>
                     <div className='col-md-6'>
                         <div className='row'>
                             <div className='col-md-6'>
@@ -348,8 +357,80 @@ const SystemUsers = () => {
                                         </div>
 
                                     </div>
+                                    {deleteUserPoper &&
+                                        <Modal
+                                            className='submitSystemPoper'
+                                            size="lg"
+                                            aria-labelledby="contained-modal-title-vcenter"
+                                            onHide={() => setDeleteUserPoper(false)}
+                                            show={deleteUserPoper}
+                                        >
+
+                                            <Modal.Body className='d-flex align-items-center'>
+
+
+                                                <div className='d-flex w-75 flex-column mx-auto mt-3 justify-content-center align-items-center '>
+                                                    {<p className='text-white' style={{ fontSize: "30px" }}>  هل انت متاكد من حذف هذا المستخدم </p>}
+                                                    <div className='d-flex justify-content-center mt-3 gap-3'>
+                                                        <Button
+
+                                                            onClick={() => {
+                                                                setDeleteUserPoper(false)
+                                                            }}
+                                                            className='No-Delete'>لا</Button>
+                                                        <Button
+
+                                                            onClick={() => {
+                                                                handleCofirmDeleteUser()
+                                                            }}
+                                                            className='Delete-button'>نعم</Button>
+                                                    </div>
+
+                                                </div>
+                                            </Modal.Body>
+
+
+                                        </Modal >}
+                                    {ConfimdeleteUserPoper &&
+                                        <Modal
+                                            className='submitSystemPoper'
+                                            size="lg"
+                                            aria-labelledby="contained-modal-title-vcenter"
+                                            onHide={() => setConfirmDeleteUserPoper(false)}
+                                            show={ConfimdeleteUserPoper}
+                                        >
+
+                                            <Modal.Body >
+                                                <div className='d-flex justify-content-center w-100'>            <img src={"../correct.gif"} width={120} height={120} className='my-3' color='#E1B67C' /></div>
+
+
+                                                <div className='d-flex w-75 flex-column mx-auto mt-3 justify-content-center align-items-center '>
+                                                    { <p className='text-white' style={{ fontSize: "30px" }}> تم حذف المستخدم بنجاح    </p>}
+                                                    <Button
+                                                        onClick={() => {
+                                                            setConfirmDeleteUserPoper   (false)
+                                                        }}
+                                                        className='sumbmitAddUpdateUser'>حفظ</Button>
+
+                                                </div>
+                                            </Modal.Body>
+
+
+                                        </Modal >}
+
+
+
+
                                     <div className='d-flex align-items-center '>
-                                        <img src='../../icons/delete.png' alt='user img ' className='action-buttons  ' />
+                                        <img src='../../icons/delete.png' onClick={() => {
+                                            setDeleteUserPoper(true)
+
+                                        }} alt='user img ' className='action-buttons  ' />
+
+
+
+
+
                                         <img src='../icons/edit.png' onClick={() => {
                                             setShowUpdateUserModel(true)
                                             setOpenUpdateUser({

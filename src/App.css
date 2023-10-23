@@ -1101,6 +1101,19 @@ ol.progtrckr li.progtrckr-done:hover:before {
 .react-international-phone-input {
   width: 85% !important;
 }
+/* system style */
+.submitSystemPoper {
+  display: flex !important;
+  align-items: center;
+  height: 100%;
+}
+.submitSystemPoper .modal-content    {
+  width: 771px !important;
+  border-radius: 20.266px !important;
+  border: 1px solid #EFAA20 !important;
+  height: 306px !important;
+  background: #1E1E2D !important;
+}
 
 /* .slider-Container{
 width: 250px !important;

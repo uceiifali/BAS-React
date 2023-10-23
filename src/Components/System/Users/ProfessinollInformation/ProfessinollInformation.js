@@ -141,7 +141,7 @@ const ProfessinollInformation = () => {
         </div>
         <div>
           <p className='golden'>  المشاريع</p>
-          <svg xmlns="http://www.w3.org/2000/svg" width="59" height="2" viewBox="0 0 59 2" fill="none">
+          <svg className='mb-4' xmlns="http://www.w3.org/2000/svg" width="59" height="2" viewBox="0 0 59 2" fill="none">
             <path d="M1 1L58 1" stroke="#D59921" stroke-width="2" stroke-linecap="round" />
           </svg>
           <div className={`d-flex   gap-4 justify-content-center`}>

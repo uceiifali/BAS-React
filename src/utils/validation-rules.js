@@ -62,7 +62,8 @@ export const validationRules = {
   },
   password_optional: {
     pattern: new RegExp(/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[~!@#$%^&*_\-+=`|\\(){}\[\]:;"'<>,.?\/]).{8,}$/),
-    required: false,
+  
+    // required: false,
     message: {
       invalid: 'Password must be at least 8 characters long and contain at least one number, letter and special character'
     }
