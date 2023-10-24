@@ -21,33 +21,33 @@
     line-height: 23.4px;
 }
 
-.addUpdateUser .form-control {
+.full-system .form-control {
     background-color: #2B2B40 !important;
     border: unset !important;
     color: rgba(255, 255, 255, 0.50);
 
 }
 
-.addUpdateUser .form-control::placeholder {
+.full-system .form-control::placeholder {
     color: rgba(255, 255, 255, 0.50);
 }
 
-.addUpdateUser .form-control:focus {
+.full-system .form-control:focus {
     color: rgba(255, 255, 255, 0.50);
     ;
 }
 
-.addUpdateUser .form-group {
+.full-system .form-group {
     width: 190px;
 
 }
 
-.addUpdateUser .css-1ng70dv-control {
+.full-system .css-1ng70dv-control {
     background: #2B2B40 !important;
     border: unset !important;
 }
 
-.addUpdateUser .css-1ng70dv-control:hover {
+.full-system .css-1ng70dv-control:hover {
     background: #2B2B40 !important;
 
 }
@@ -57,7 +57,7 @@
 
 }
 
-.addUpdateUser .licenseDate-container {
+.full-system .licenseDate-container {
     width: 75% !important;
 }
 

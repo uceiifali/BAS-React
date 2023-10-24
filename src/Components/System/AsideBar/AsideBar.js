@@ -79,7 +79,7 @@ const AsideBar = () => {
                             <div className='col-md-4 col-sm-6'>
 
                                 <div className='system-item'>
-                                    <Link>
+                                    <Link to="/System/index">
                                         <div class="system-card">
                                             <div class="card__content d-flex justify-content-center align-items-center  flex-column gap-2 " >
                                                 <img src='../../../assets/icons/Main.png' alt="icon" className='aside-icon mt-3'
@@ -113,7 +113,7 @@ const AsideBar = () => {
                             <div className='col-md-4 col-sm-6'>
 
                                 <div className='system-item'>
-                                    <Link to="/System/users">
+                                    <Link to="/System/AllUsersChart">
                                         <div class="system-card">
                                             <div class="card__content d-flex justify-content-center align-items-center  flex-column gap-2 " >
                                                 <img src='../../../assets/icons/users.png' alt="icon" className='aside-icon mt-3'

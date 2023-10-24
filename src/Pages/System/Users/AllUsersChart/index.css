@@ -1,0 +1,15 @@
+.all-users-Chart {
+    height: 801px;
+    border-radius: 19px;
+    background: #1E1E2D;
+
+}
+.AllUsersPieChart{
+    height: 300px !important;
+}
+.golden-square.all-users-chart{
+    height: 438px ;
+    border: 0.854px solid rgba(213, 153, 33, 0.50) ;
+
+    margin: auto;
+}

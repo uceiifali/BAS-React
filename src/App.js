@@ -3,10 +3,10 @@ import "react-datepicker/dist/react-datepicker.css";
 // import 'react-international-phone/style.css';
 // import 'react-phone-number-input/style.css'
 import 'bootstrap/dist/css/bootstrap.css';
-import './App.css';
+
 import NavBar from './Components/Client/Landing/NavBar';
 
-
+import './App.css';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import { useContext, lazy, Suspense } from 'react';
 
@@ -62,6 +62,7 @@ function App() {
       path: "",
       element: < SystemIndex />,
       children: [
+        { path: "/System/index", element: <Suspense fallback={<Loading />} > <h2></h2></Suspense> },
         { path: "/System/users", element: <Suspense fallback={<Loading />} > <SystemUsers/></Suspense> },
         { path: "/System/AllUsersChart", element: <Suspense fallback={<Loading />} > <AllUsersChart/></Suspense> }
         

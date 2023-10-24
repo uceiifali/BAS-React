@@ -1,15 +1,86 @@
-import React, { useContext } from 'react'
-import UserControler from '../../../../Components/System/Users/UserControler/UserControler'
+import React, { useContext, useState } from 'react'
+import "./index.css"
 import { showAddUpdateUser } from '../../../../Context/CheckAddUpdateUserVisability'
 import AddUserButton from '../../../../Components/System/Users/AddUserButton/AddUserButton'
+import SystemControler from '../../../../Components/System/SystemControler/SystemControler'
+import Select from '../../../../Components/FormHandler/Select'
+import AllUsersPieChart from '../../../../Components/System/Users/AllUsersChart/AllUsersPieChart'
 
-const AllUsersChart = () => {  
 
-      const {showAddUserModel,setShowAddUserModel }  =  useContext(showAddUpdateUser)
+
+const AllUsersChart = () => {
+
+    const { showAddUserModel, setShowAddUserModel } = useContext(showAddUpdateUser)
+    const [showSaudiOption, setShowSaudiOption] = useState(false)
+    const saudiaRoles = [
+        {
+            label: "السعودية",
+            value: "السعودية",
+            options: [
+                {
+                    label: "مدير مكتب ",
+                    value: "مدير مكتب  "
+                },
+                {
+                    label: "مدير قسم ",
+                    value: "مدير قسم  "
+                },
+                {
+                    label: "موظف  ",
+                    value: "موظف   "
+                },
+
+            ]
+        },
+
+    ];
+    const egypetRoles = [
+        {
+            label: "مصر",
+            options: [
+                {
+                    label: "مدير مكتب ",
+                
+            
+                },
+                {
+                    label: "مدير قسم ",
+                    value: "مدير قسم  "
+                },
+                {
+                    label: "موظف  ",
+                    value: "موظف   "
+                },
+
+            ]
+        },
+
+    ];
+    const colourStyles = {
+        placeholder: (defaultStyles) => {
+            return {
+                ...defaultStyles,
+                color: 'rgba(255, 255, 255, 0.50)',
+            }
+        },
+        control: styles => ({ ...styles, backgroundColor: '#2B2B40', border: "unset", color: 'rgba(255, 255, 255, 0.50);' }),
+        option: (styles, { data, isDisabled, isFocused, isSelected, }) => {
+            return {
+                ...styles,
+
+                color: 'rgba(255, 255, 255, 0.50);',
+                backgroundColor: "#2B2B40",
+                border: "none "
+
+            }
+        }
+
+    }
+
     return (
 
         <div className='AllUsersChart'>
-            <UserControler child={showAddUserModel ? <p
+            <SystemControler child={showAddUserModel ? <p
                 onClick={() => {
                     setShowAddUserModel(false)
 
@@ -26,6 +97,37 @@ const AllUsersChart = () => {
 
 
                 <AddUserButton />} />
+            <div className='row'>
+                <div className='col-md-3'>
+                    <div className='all-categories flex-column '  >
+                        <div className='   d-flex  justify-content-center'><Select options={saudiaRoles} placeholder="السعودية " className="mt-3 pointer" styles={colourStyles} /></div>
+                        <div className=' pointer d-flex justify-content-center'><Select options={egypetRoles} placeholder="مصر " className="mt-3 pointer" styles={colourStyles} /></div>
+
+
+                    </div>
+                </div>
+                <div className='col-md-9'>
+          <div className='all-users-Chart p-3'>
+
+            <div className=' AllUsersPieChart d-flex  w-75  justify-content-end'>
+            <AllUsersPieChart/>
+         
+            </div> 
+
+            <fieldset className='  golden-square all-users-chart' >
+            <legend  className=' legand    text-white text-center' >كل المستخدمين </legend>
+        
+
+            
+            </fieldset>
+          </div>
+
+
+
+                </div>
+
+
+            </div>
 
 
         </div>

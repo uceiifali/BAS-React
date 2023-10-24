@@ -25,6 +25,7 @@ const SystemIndex = () => {
 
                     <div className='col-md-8 '>
                         <Outlet />
+                        
                     </div>
                 </div>
             </div>

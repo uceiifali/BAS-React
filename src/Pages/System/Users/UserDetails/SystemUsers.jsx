@@ -8,11 +8,12 @@ import { Button, Modal, NavDropdown } from 'react-bootstrap'
 import Genralnformation from '../../../../Components/System/Users/Genralnformation/Genralnformation'
 import ProfessinollInformation from '../../../../Components/System/Users/ProfessinollInformation/ProfessinollInformation'
 import { AccountaingInformation } from '../../../../Components/System/Users/AccountaingInformation/AccountaingInformation'
-import UserControler from '../../../../Components/System/Users/UserControler/UserControler'
+
 import { showAddUpdateUser } from '../../../../Context/CheckAddUpdateUserVisability'
 import AddUpdateUser from '../../../../Components/System/Users/AddUpdateUser/AddUpdateUser'
 import AddUserButton from '../../../../Components/System/Users/AddUserButton/AddUserButton'
 import { Link } from 'react-router-dom'
+import SystemControler from '../../../../Components/System/SystemControler/SystemControler'
 
 
 
@@ -117,10 +118,10 @@ const SystemUsers = () => {
                     border: "1px solid #EFAA20 !important"
                 }}
             >
-                <UserControler child={showAddUserModel ? <p
+                <SystemControler child={showAddUserModel ? <p
                     onClick={() => {
                         setShowAddUserModel(false)
-                        
+
                     }}
 
                     className='pointer'>
@@ -129,26 +130,26 @@ const SystemUsers = () => {
                     </svg>
                     المستخدمين  /  <span className='main-text'>إضافة جديدة</span>
 
-                </p> : 
-                showUpdateUserModel ? <p
-                    onClick={() => {
-                        setShowUpdateUserModel(false)
-                        setOpenUpdateUser({
-                            id: null
-                        })
-
-                    }}
-
-                    className='pointer'>
-                    <svg className='mx-3' xmlns="http://www.w3.org/2000/svg" width="9" height="15" viewBox="0 0 9 15" fill="none">
-                        <path d="M8.52681 7.88703C8.7714 7.68698 8.7714 7.31302 8.52681 7.11297L0.816557 0.806657C0.490077 0.539626 2.88033e-07 0.771911 3.0647e-07 1.19369L8.57785e-07 13.8063C8.76222e-07 14.2281 0.490078 14.4604 0.816558 14.1933L8.52681 7.88703Z" fill="white" />
-                    </svg>
-                    المستخدمين  /  <span className='main-text' >تعديل المستخدم </span>
-
                 </p> :
+                    showUpdateUserModel ? <p
+                        onClick={() => {
+                            setShowUpdateUserModel(false)
+                            setOpenUpdateUser({
+                                id: null
+                            })
+
+                        }}
+
+                        className='pointer'>
+                        <svg className='mx-3' xmlns="http://www.w3.org/2000/svg" width="9" height="15" viewBox="0 0 9 15" fill="none">
+                            <path d="M8.52681 7.88703C8.7714 7.68698 8.7714 7.31302 8.52681 7.11297L0.816557 0.806657C0.490077 0.539626 2.88033e-07 0.771911 3.0647e-07 1.19369L8.57785e-07 13.8063C8.76222e-07 14.2281 0.490078 14.4604 0.816558 14.1933L8.52681 7.88703Z" fill="white" />
+                        </svg>
+                        المستخدمين  /  <span className='main-text' >تعديل المستخدم </span>
+
+                    </p> :
 
 
-                    <AddUserButton />} />
+                        <AddUserButton />} />
 
                 {showUpdateUserModel || showAddUserModel ? <AddUpdateUser setOpenUpdateUser={setOpenUpdateUser} id={OpenUpdateUser.id} /> : <div className='row'>
                     <div className='col-md-6'>
@@ -372,18 +373,21 @@ const SystemUsers = () => {
                                                 <div className='d-flex w-75 flex-column mx-auto mt-3 justify-content-center align-items-center '>
                                                     {<p className='text-white' style={{ fontSize: "30px" }}>  هل انت متاكد من حذف هذا المستخدم </p>}
                                                     <div className='d-flex justify-content-center mt-3 gap-3'>
-                                                        <Button
 
-                                                            onClick={() => {
-                                                                setDeleteUserPoper(false)
-                                                            }}
-                                                            className='No-Delete'>لا</Button>
                                                         <Button
 
                                                             onClick={() => {
                                                                 handleCofirmDeleteUser()
                                                             }}
                                                             className='Delete-button'>نعم</Button>
+
+                                                        <Button
+
+                                                            onClick={() => {
+                                                                setDeleteUserPoper(false)
+                                                            }}
+                                                            className='No-Delete'>لا</Button>
+
                                                     </div>
 
                                                 </div>
@@ -405,10 +409,10 @@ const SystemUsers = () => {
 
 
                                                 <div className='d-flex w-75 flex-column mx-auto mt-3 justify-content-center align-items-center '>
-                                                    { <p className='text-white' style={{ fontSize: "30px" }}> تم حذف المستخدم بنجاح    </p>}
+                                                    {<p className='text-white' style={{ fontSize: "30px" }}> تم حذف المستخدم بنجاح    </p>}
                                                     <Button
                                                         onClick={() => {
-                                                            setConfirmDeleteUserPoper   (false)
+                                                            setConfirmDeleteUserPoper(false)
                                                         }}
                                                         className='sumbmitAddUpdateUser'>حفظ</Button>
 
