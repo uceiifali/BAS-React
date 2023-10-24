@@ -4,12 +4,33 @@
     background: #1E1E2D;
 
 }
-.AllUsersPieChart{
+
+.AllUsersPieChart {
     height: 300px !important;
 }
-.golden-square.all-users-chart{
-    height: 438px ;
-    border: 0.854px solid rgba(213, 153, 33, 0.50) ;
 
-    margin: auto;
+.golden-square {
+    height: 480px;
+    border: 0.854px solid rgba(213, 153, 33, 0.50);
+
+
+}
+
+.All-users-columnChart-container{
+    height: 460px;
+    border: 0.854px solid rgba(213, 153, 33, 0.50); 
+}
+.All-users-columnChart {
+    height: 350px;
+    border-radius: 17.573px;
+    background: #151521;
+    width: 90%;
+     margin: auto;
+
+}
+
+.sections-slider{
+
+width: 129px !important;
+height: 126px !important    ;
 }

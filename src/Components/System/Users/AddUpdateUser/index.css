@@ -7,9 +7,16 @@
 
 
 }
+.addUpdateUser .form-label{
+    color: #fff !important;;
+} 
 
 .golden {
     color: #EFAA20 !important;
+}
+.small-golden-square{
+    height: 147px;
+    border: 1px solid rgba(213, 153, 33, 0.20);
 }
 
 .addupdateheader {

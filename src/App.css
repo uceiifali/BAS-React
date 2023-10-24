@@ -1118,6 +1118,12 @@ fieldset .legend{
   height: 306px !important;
   background: #1E1E2D !important;
 }
+legend {
+  width: 20% ;
+  float: unset !important;
+  color: #fff;
+  padding: 3px 6px;
+}
 
 /* .slider-Container{
 width: 250px !important;
