@@ -14,6 +14,7 @@ import AddUpdateUser from '../../../../Components/System/Users/AddUpdateUser/Add
 import AddUserButton from '../../../../Components/System/Users/AddUserButton/AddUserButton'
 import { Link } from 'react-router-dom'
 import SystemControler from '../../../../Components/System/SystemControler/SystemControler'
+import AllUserCategories from '../../../../Components/System/Users/AllUserCategories/AllUserCategories'
 
 
 
@@ -156,13 +157,7 @@ const SystemUsers = () => {
                         <div className='row'>
                             <div className='col-md-6'>
 
-                                <div className='all-categories '>
-
-                                    <p className='text-center py-2' >كل المستخدمين</p>
-                                    <Select options={saudiaRoles} styles={colourStyles} placeholder=" السعودية " className="mb-4  saudia-roles" />
-                                    <Select options={egypetRoles} styles={colourStyles} placeholder="مصر " className="mb-4 egypet-roles " />
-
-                                </div>
+                             <AllUserCategories/>   
                             </div>
                             <div className='col-md-6'>
 

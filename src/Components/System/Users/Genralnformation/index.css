@@ -1,3 +1,4 @@
-.golden-square{
+.golden-square.inf-square{
     border: 1px solid rgba(213, 153, 33, 0.20);
+    height: 260px !important;
 }

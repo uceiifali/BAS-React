@@ -16,6 +16,8 @@ import SystemSignIn from "././Pages/System/Auth/SignIn/SystemSignIn"
 import 'react-international-phone/style.css';
 import SystemIndex from './Pages/System/index/SystemIndex';
 import AllUsersChart from './Pages/System/Users/AllUsersChart/AllUsersChart';
+import { CountriesChart } from './Pages/System/Users/AllUsersChart/CountriesChart';
+import CountryChart from './Pages/System/Users/AllUsersChart/CountryChart';
 
 
 const Home = lazy(() => import("./Pages"))
@@ -54,7 +56,7 @@ function App() {
     },
     {
       path: "/System/SignIn",
-      element:  <SystemSignIn />
+      element: <SystemSignIn />
 
     },
     //system routes
@@ -63,9 +65,14 @@ function App() {
       element: < SystemIndex />,
       children: [
         { path: "/System/index", element: <Suspense fallback={<Loading />} > <h2></h2></Suspense> },
-        { path: "/System/users", element: <Suspense fallback={<Loading />} > <SystemUsers/></Suspense> },
-        { path: "/System/AllUsersChart", element: <Suspense fallback={<Loading />} > <AllUsersChart/></Suspense> }
-        
+        { path: "/System/users", element: <Suspense fallback={<Loading />} > <SystemUsers /></Suspense> },
+        {
+          path: "/System/AllUsers", element: <AllUsersChart />, children: [
+            { path: "/System/AllUsers/AllCountries", element: <CountriesChart /> },
+            { path: "/System/AllUsers/Country/:CountryName", element: <CountryChart /> }
+          ]
+        }
+
 
       ]
     },

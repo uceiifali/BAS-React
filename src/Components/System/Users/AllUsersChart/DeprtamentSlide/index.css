@@ -1,0 +1,53 @@
+.deprtament-slider-Container .progress  {
+    width: 60px !important;
+    height: 6px !important;
+}
+
+.deprtament-slider-Container {
+    width: 160px !important;
+    height: 85.862px !important;
+    display: flex;
+    align-items: center;
+
+}
+.slick-arrow {
+    display: none!important;
+}
+
+.slick-track{
+    height: 100% !important;
+    width: 600px !important;
+    display: flex;
+
+}
+.slick-list{
+    width: 100%;
+    overflow-x: scroll;
+}
+
+
+.deprtament-slider-Container img {
+    width: 20px;
+    height: 20px;
+}
+
+.deprtament {
+    color: #A0AEC0;
+
+    /* 14.31px */
+}
+
+.main-text {
+    color: rgba(255, 255, 255, 0.50);
+
+    font-family: Cairo;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 150%;
+}
+.deprtmant-icon{
+    border-radius: 6px;
+    width: 25px !important;
+    height: 25px !important;
+}

@@ -1,7 +1,7 @@
 import React from "react";
 import ReactApexChart from "react-apexcharts";
 
-class AllUsersColumnChart extends React.Component {
+class CountryColumnChart extends React.Component {
     constructor(props) {
         super(props);
 
@@ -105,4 +105,4 @@ class AllUsersColumnChart extends React.Component {
     }
 }
 
-export default AllUsersColumnChart
+export default CountryColumnChart

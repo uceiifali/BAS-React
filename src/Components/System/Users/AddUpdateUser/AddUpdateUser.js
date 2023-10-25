@@ -161,7 +161,7 @@ const AddUpdateUser = ({ id = null, setOpenUpdateUser }) => {
                 >
 
                     <Modal.Body >
-                        <div className='d-flex justify-content-center w-100'>            <img src={"../correct.gif"} width={120} height={120} className='my-3' color='#E1B67C' /></div>
+                        <div className='d-flex justify-content-center w-100'>            <img src={process.env.PUBLIC_URL+"/correct.gif"} width={120} height={120} className='my-3' color='#E1B67C' /></div>
 
 
                         <div className='d-flex w-75 flex-column mx-auto mt-3 justify-content-center align-items-center '>

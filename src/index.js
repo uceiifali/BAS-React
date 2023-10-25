@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { ToastContainer } from 'react-toastify';
+import 'mdb-react-ui-kit/dist/css/mdb.min.css';
 import 'react-toastify/dist/ReactToastify.css';
 import './index.css';
 import StepContext from './Context/StepContext'

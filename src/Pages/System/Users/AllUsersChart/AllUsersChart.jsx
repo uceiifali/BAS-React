@@ -7,6 +7,10 @@ import Select from '../../../../Components/FormHandler/Select'
 import AllUsersPieChart from '../../../../Components/System/Users/AllUsersChart/AllUsersPieChart'
 import AllUsersColumnChart from '../../../../Components/System/Users/AllUsersChart/AllUsersColumnChart'
 import AddUpdateUser from '../../../../Components/System/Users/AddUpdateUser/AddUpdateUser'
+import DeptamentSlider from '../../../../Components/System/Users/AllUsersChart/DeprtamentSlide/DeptamentSlider'
+import { CountriesChart } from './CountriesChart'
+import { Link, Outlet } from 'react-router-dom'
+import AllUserCategories from '../../../../Components/System/Users/AllUserCategories/AllUserCategories'
 
 
 
@@ -14,70 +18,7 @@ const AllUsersChart = () => {
 
     const { showAddUserModel, setShowAddUserModel } = useContext(showAddUpdateUser)
     const [showSaudiOption, setShowSaudiOption] = useState(false)
-    const saudiaRoles = [
-        {
-            label: "السعودية",
-            value: "السعودية",
-            options: [
-                {
-                    label: "مدير مكتب ",
-                    value: "مدير مكتب  "
-                },
-                {
-                    label: "مدير قسم ",
-                    value: "مدير قسم  "
-                },
-                {
-                    label: "موظف  ",
-                    value: "موظف   "
-                },
 
-            ]
-        },
-
-    ];
-    const egypetRoles = [
-        {
-            label: "مصر",
-            options: [
-                {
-                    label: "مدير مكتب ",
-
-
-                },
-                {
-                    label: "مدير قسم ",
-                    value: "مدير قسم  "
-                },
-                {
-                    label: "موظف  ",
-                    value: "موظف   "
-                },
-
-            ]
-        },
-
-    ];
-    const colourStyles = {
-        placeholder: (defaultStyles) => {
-            return {
-                ...defaultStyles,
-                color: 'rgba(255, 255, 255, 0.50)',
-            }
-        },
-        control: styles => ({ ...styles, backgroundColor: '#2B2B40', border: "unset", color: 'rgba(255, 255, 255, 0.50);' }),
-        option: (styles, { data, isDisabled, isFocused, isSelected, }) => {
-            return {
-                ...styles,
-
-                color: 'rgba(255, 255, 255, 0.50);',
-                backgroundColor: "#2B2B40",
-                border: "none "
-
-            }
-        }
-
-    }
 
     return (
 
@@ -101,40 +42,11 @@ const AllUsersChart = () => {
                 <AddUserButton />} />
             {showAddUserModel ? <AddUpdateUser /> : <div className='row'>
                 <div className='col-md-3'>
-                    <div className='all-categories flex-column '  >
-                        <div className='   d-flex  justify-content-center'><Select options={saudiaRoles} placeholder="السعودية " className="mt-3 pointer" styles={colourStyles} /></div>
-                        <div className=' pointer d-flex justify-content-center'><Select options={egypetRoles} placeholder="مصر " className="mt-3 pointer" styles={colourStyles} /></div>
-
-
-                    </div>
+                    <AllUserCategories />
                 </div>
                 <div className='col-md-9'>
-                    <div className='all-users-Chart p-3'>
 
-                        <div className=' AllUsersPieChart d-flex  w-75  justify-content-end'>
-                            <AllUsersPieChart />
-
-                        </div>
-
-                        <form>
-                            <fieldset className='All-users-columnChart-container '>
-                                <legend className='text-white text-center'>كل المستخدمين   </legend>
-
-                                <div className='All-users-columnChart  d-flex   align-items-center flex-column'>
-
-
-                                    <AllUsersColumnChart  />
-
-                                </div>
-                            </fieldset>
-                        </form>
-
-
-
-
-                    </div>
-
-
+                    <Outlet />
 
                 </div>
 

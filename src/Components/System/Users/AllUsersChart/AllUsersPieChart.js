@@ -8,7 +8,7 @@ class AllUsersPieChart extends React.Component {
 
         this.state = {
 
-            series: [30, 70],
+            series: [70, 30],
 
             options: {
                 chart: {
@@ -42,7 +42,7 @@ class AllUsersPieChart extends React.Component {
                 legend: {
                     position: 'left',
                     offsetY: 0,
-                    height: 500,
+                    height: 1000,
                 }
             },
 
@@ -61,8 +61,12 @@ class AllUsersPieChart extends React.Component {
 
 
             <div class="chart-wrap h-100">
-                <div id="chart" className="h-100">
-                    <ReactApexChart options={this.state.options} series={this.state.series} type="donut"  width={"450px"} />
+           
+                <div id="chart"  className="h-100 overflow-x-hidden">
+                
+                    <ReactApexChart options={this.state.options} series={this.state.series} type="donut"  width={"450px"}  >
+                    <h2>Chart Header</h2> {/* Add your header here */} 
+                        </ReactApexChart>
                 </div>
 
 

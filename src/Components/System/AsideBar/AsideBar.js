@@ -27,7 +27,7 @@ const AsideBar = () => {
 
                     <MenuItem className='mt-4  center w-100'>
                         <div className='d-flex justify-content-center flex-column align-items-center'>
-                        <div>  <img src='../people/Badr.png' alt="icon" className='badr-icon ' /></div>
+                        <div>  <img src={process.env.PUBLIC_URL+"/people/Badr.png"} alt="icon" className='badr-icon ' /></div>
 
 
 
@@ -113,7 +113,7 @@ const AsideBar = () => {
                             <div className='col-md-4 col-sm-6'>
 
                                 <div className='system-item'>
-                                    <Link to="/System/AllUsersChart">
+                                    <Link to="/System/AllUsers/AllCountries">
                                         <div class="system-card">
                                             <div class="card__content d-flex justify-content-center align-items-center  flex-column gap-2 " >
                                                 <img src='../../../assets/icons/users.png' alt="icon" className='aside-icon mt-3'

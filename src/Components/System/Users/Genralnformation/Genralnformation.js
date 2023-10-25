@@ -5,7 +5,7 @@ const Genralnformation = () => {
     <div className='genralnformation p-5'>
 
   <div className=''>
-     <div className='row py-3 jutify-content-between golden-square '>
+     <div className='row py-1 jutify-content-between inf-square golden-square '>
         <div className='col-md-6 mb-3'><p> الاسم الاول : <span className='main-text'> اسلام </span></p> </div>
         <div className='col-md-6 mb-3 '><p> الاسم الاخير: <span className='main-text'> اسلام </span></p> </div>
         <div className='col-md-6 mb-3'><p> اسم المستخدم: <span className='main-text'> اسلام_ايهاب</span></p> </div>
