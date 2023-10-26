@@ -67,7 +67,7 @@ function App() {
         { path: "/System/index", element: <Suspense fallback={<Loading />} > <h2></h2></Suspense> },
         { path: "/System/users", element: <Suspense fallback={<Loading />} > <SystemUsers /></Suspense> },
         {
-          path: "/System/AllUsers", element: <AllUsersChart />, children: [
+          path: "", element: <AllUsersChart />, children: [
             { path: "/System/AllUsers/AllCountries", element: <CountriesChart /> },
             { path: "/System/AllUsers/Country/:CountryName", element: <CountryChart /> }
           ]

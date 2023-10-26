@@ -2,22 +2,26 @@
     position: relative;
 }
 
+
 .all-categories .dropdown-menu .dropdown-submenu {
     display: none;
     position: absolute;
-    left: 100%;
-    top: -7px;
+    right: 0%;
+    top: 100%;
 }
 
 .all-categories .dropdown-menu .dropdown-submenu-left {
-    right: 100%;
-    left: auto;
+    right: 50%;
+    top: auto;
 }
+
 
 .all-categories .dropdown-menu>li:hover>.dropdown-submenu {
     display: block;
 }
-
+.all-categories .dropdown-submenu a:hover {
+    display: block !important;
+}
 .all-categories .dropdown-menu {
     width: 100%;
     border-radius: 10px !important;
@@ -43,18 +47,23 @@
     margin-bottom: 6px;
 
 }
-.all-categories .dropdown-toggle{
+
+.all-categories .dropdown-toggle {
     background-color: #2B2B40 !important;
     outline: unset !important;
     box-shadow: unset !important;
-    width: 201px !important; 
-    height: 38px !important ;
+    width: 201px !important;
+    height: 38px !important;
 
 }
-.all-categories .choose-city{
+.all-categories .dropdown-toggle,button{
+    box-shadow: unset !important;
+}
+.all-categories .choose-city {
     font-size: 14px !important;
     color: rgba(255, 255, 255, 0.50) !important;
 }
+
 .all-categories .dropdown-toggle::after {
-margin-right: 25px !important;
+    margin-right: 25px !important;
 }

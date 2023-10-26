@@ -3,11 +3,12 @@ import AllUserCategories from '../../../../Components/System/Users/AllUserCatego
 
 
 import AllUsersPieChart from '../../../../Components/System/Users/AllUsersChart/AllUsersPieChart'
-import "./index.css"
+
 import CountryPieChart from '../../../../Components/System/Users/CountryChart/CountryPieChart'
 import { useParams } from 'react-router-dom'
 import CountryColumnChart from '../../../../Components/System/Users/CountryChart/CountryColumnChart'
 import CountryDeprtamentSlider from '../../../../Components/System/Users/CountryChart/CountryDeprtamentSlider'
+import "./index.css"
 const CountryChart = () => {
 
     const { CountryName } = useParams()

@@ -37,15 +37,15 @@
     
 }
 
-.sections-slider {
+.country-Chart .sections-slider ,.all-users-Chart  .sections-slider{
 
-    width: 129px !important;
-    height: 126px !important;
-}
+        width: 129px !important;
+        height: 126px !important;
+    }
 
-.slick-list::-webkit-scrollbar {
-    display: none;
-}
+    .slick-list::-webkit-scrollbar {
+        display: none;
+    } 
 .country-header{
 
     font-size: 32.268px;
