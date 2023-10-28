@@ -1,7 +1,8 @@
-.add-user-button{
-  
+.add-user-button {
+
     width: 201px !important;
-    height: 38px !important; 
+    height: 38px !important;
     background-color: #2B2B40 !important;
+    font-size: 16px !important;
     border: none !important;
 }

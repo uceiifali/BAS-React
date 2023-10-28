@@ -17,12 +17,12 @@
 }
 
 .All-users-columnChart-container  {
- 
+    height:  470px;
     border: 0.854px solid rgba(213, 153, 33, 0.50);
 }
 
 .All-users-columnChart ,.county-users-columnChart {
-    height: 350px;
+    height: 95%;
     border-radius: 17.573px;
     background: #151521;
     width: 90%;

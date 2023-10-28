@@ -305,7 +305,7 @@ const AddUpdateUser = ({ id = null, setOpenUpdateUser }) => {
                         <legend className='text-center'>كلمة المرور</legend>
                         <div className='row '>
                             <div className='col-md-6 '>
-                                <Input label={"كلمه المرور"} type='password' {...userPassword.bind} placeholder='ادخل كلمة المرور' />
+                                <Input label={"كلمه المرور" } background='#2B2B40' type='password' {...userPassword.bind} placeholder='ادخل كلمة المرور' />
 
                             </div>
                             <div className='col-md-6 '>

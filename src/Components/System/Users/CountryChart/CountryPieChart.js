@@ -67,10 +67,10 @@ class CountryPieChart extends React.Component {
         return (
 
 
-            <div>
+            <div className="countryPiechart">
                 <div class="chart-wrap">
                     <div id="chart">
-                        <ReactApexChart options={this.state.options} series={this.state.series} type="donut" width={"450px"} />
+                        <ReactApexChart options={this.state.options} series={this.state.series} type="donut" width={"400px"} />
                     </div>
                 </div>
 

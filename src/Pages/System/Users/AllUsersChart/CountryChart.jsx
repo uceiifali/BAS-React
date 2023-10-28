@@ -9,6 +9,9 @@ import { useParams } from 'react-router-dom'
 import CountryColumnChart from '../../../../Components/System/Users/CountryChart/CountryColumnChart'
 import CountryDeprtamentSlider from '../../../../Components/System/Users/CountryChart/CountryDeprtamentSlider'
 import "./index.css"
+import SearchCountryUsers from '../../../../Components/System/Users/SearchUsers/SearchCountryUsers'
+
+
 const CountryChart = () => {
 
     const { CountryName } = useParams()
@@ -28,30 +31,39 @@ const CountryChart = () => {
 
     }, [CountryName])
     return (
-        <div className='country-Chart p-5'>
+   <div className='row'>
+    <div className='col-md-3'>
 
-            <div className='d-flex justify-content-center flex-column align-items-center'>
+        <SearchCountryUsers/>   
+    </div>
+    <div className='col-md-9'>
+    <div className='country-Chart p-5'>
 
-                <h2 className='country-header text-center   text-white mb-4'>
+<div className='d-flex justify-content-center flex-column align-items-center'>
 
-                    {countryBase == "Saudia" ? "السعودية" : "مصر"}
+    <h2 className='country-header text-center   text-white mb-4'>
 
-                </h2>
-                <CountryPieChart />
-            </div>
-            <fieldset className='All-users-columnChart-container  py-3 m-auto '>
-                <legend className='text-white text-center'>كل المستخدمين في      {countryBase == "Saudia" ? "السعودية" : "مصر"} </legend>
+        {countryBase == "Saudia" ? "السعودية" : "مصر"}
 
-                <div className='county-users-columnChart  d-flex   align-items-center flex-column'>
+    </h2>
+    <CountryPieChart />
+</div>
+<fieldset className='All-users-columnChart-container  py-3 m-auto '>
+    <legend className='text-white text-center'>كل المستخدمين في      {countryBase == "Saudia" ? "السعودية" : "مصر"} </legend>
 
-                    <CountryColumnChart />
+    <div className='county-users-columnChart  d-flex   align-items-center flex-column'>
 
-                    <CountryDeprtamentSlider />
+        <CountryColumnChart />
 
-                </div>
-            </fieldset>
+        <CountryDeprtamentSlider />
 
-        </div>
+    </div>
+</fieldset>
+
+</div>
+
+    </div>
+   </div>
     )
 }
 

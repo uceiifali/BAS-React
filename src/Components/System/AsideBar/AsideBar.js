@@ -46,7 +46,7 @@ const AsideBar = () => {
                     <MenuItem className='my-2   d-flex flex-column '>
                         <div className=' goals    '><p>الاهداف</p>
                             <ProgressBar className='w-100   ' variant='warning' now={37} />
-                            <p style={{ fontSize: "12px" }} className='my-2'>وصلت إلى 37% من هدفك</p>
+                            <p style={{ fontSize: "14px" }} className='my-2'>وصلت إلى 37% من هدفك</p>
 
                             <div className='d-flex justify-content-center gap-3'>
                                 <svg xmlns="http://www.w3.org/2000/svg" width="134" height="66" viewBox="0 0 134 66" fill="none">

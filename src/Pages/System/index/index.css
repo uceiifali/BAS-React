@@ -2,8 +2,14 @@
  /* body{
     background: #151521 ;
 } */
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;700;800;900&family=Poppins:ital,wght@0,500;1,500;1,600&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;500&family=Poppins:ital,wght@0,500;1,500;1,600&display=swap');
+
 .system-bg{
     background: #151521 !important ;
+    font-family: "Cairo" !important;
+    overflow-y: hidden;
 }
 .system-logo {
     width: 140PX;
