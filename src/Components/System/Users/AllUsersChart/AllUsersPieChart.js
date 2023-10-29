@@ -62,10 +62,10 @@ class AllUsersPieChart extends React.Component {
 
             <div class="chart-wrap h-100">
            
-                <div id="chart"  className="h-100 overflow-x-hidden">
+                <div id="chart"  className="h-100  overflow-x-hidden">
                 
                     <ReactApexChart options={this.state.options} series={this.state.series} type="donut"  width={"450px"}  >
-                    <h2>Chart Header</h2> {/* Add your header here */} 
+                   
                         </ReactApexChart>
                 </div>
 

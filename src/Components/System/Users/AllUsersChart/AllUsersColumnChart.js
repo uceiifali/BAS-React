@@ -98,7 +98,7 @@ class AllUsersColumnChart extends React.Component {
         return (
 
 
-            <div id="chart"className="w-100">
+            <div id="chart"className="w-100 allUsersCoulmnChart">
                 <ReactApexChart  options={this.state.options} series={this.state.series} type="bar" width={"100%"}  height={220} />
             </div>
         )

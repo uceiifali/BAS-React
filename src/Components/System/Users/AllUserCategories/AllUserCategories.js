@@ -7,124 +7,21 @@ import { MDBDropdown, MDBDropdownMenu, MDBDropdownToggle, MDBDropdownItem, MDBCo
 import { PrimeIcons } from 'primereact/api';
 import { TreeSelect } from 'primereact/treeselect';
 import { useEffect } from 'react';
+import { AiOutlineArrowDown } from 'react-icons/ai';
 
 
 const AllUserCategories = ({ countryName = "السعودية" }) => {
-
-  const [Saudianodes, setSaudiaNodes] = useState(null);
-  const [selectedSaudiaNodeKey, setSelectedSaudiaNodeKey] = useState(null);
-  const saudiaNodeService = {
-    getTreeNodesData() {
-
-      return [
-        {
-          key: '0',
-          label: 'مدير مكتب',
-          data: 'مدير مكتب',
-          icon: 'pi pi-fw pi-inbox',
-
-        },
-        {
-          key: '1',
-          label: 'مدير قسم',
-          data: 'مدير قسم ',
-          icon: 'pi-angle-left',
-          children: [
-            { key: '1-0', label: 'معماري', icon: 'pi-chevron-left', data: 'معماري' },
-            { key: '1-1', label: 'مدني', icon: 'pi-chevron-left', data: 'مدني' },
-            { key: '1-2', label: 'كهربا', icon: 'pi-chevron-left', data: 'كهربا' }
-          ]
-        },
-        {
-          key: '2',
-          label: 'موظفين',
-          data: ' موظفين',
-          icon: 'pi pi-fw pi-star-fill',
-          children: [
+  const [openSaudiaUsers, setOpenSaudiaUsers] = useState(false)
 
 
-            { key: '2-0-0', label: 'مدني', icon: 'pi pi-fw pi-video', data: 'مدني ' },
-            { key: '2-0-1', label: 'معماري', icon: 'pi pi-fw pi-video', data: 'معماري ' }
+  const handleOpenUsers = () => {
 
-
-
-          ]
-        }
-      ];
-    },
-
-
-
-    getTreeTableNodes() {
-      return Promise.resolve(this.getTreeTableNodesData());
-    },
-
-    getTreeNodes() {
-      return Promise.resolve(this.getTreeNodesData());
+    if (openSaudiaUsers) {
+      setOpenSaudiaUsers(false)
+    } else {
+      setOpenSaudiaUsers(true)
     }
-
-  };
-
-
-  const [egypetnodes, setEgypetNodes] = useState(null);
-  const [selectedEgypetNodeKey, setSelectedEgypetNodeKey] = useState(null);
-  const egypetNodeService = {
-    getTreeNodesData() {
-      return [
-        {
-          key: '0',
-          label: 'مدير مكتب',
-          data: 'مدير مكتب',
-          icon: 'pi pi-fw pi-inbox',
-
-        },
-        {
-          key: '1',
-          label: 'مدير قسم',
-          data: 'مدير قسم ',
-          icon: 'pi-angle-left',
-          children: [
-            { key: '1-0', label: 'معماري', icon: 'pi-chevron-left', data: 'معماري' },
-            { key: '1-1', label: 'مدني', icon: 'pi-chevron-left', data: 'مدني' },
-            { key: '1-2', label: 'كهربا', icon: 'pi-chevron-left', data: 'كهربا' }
-          ]
-        },
-        {
-          key: '2',
-          label: 'موظفين',
-          data: ' موظفين',
-          icon: 'pi pi-fw pi-star-fill',
-          children: [
-
-
-            { key: '2-0-0', label: 'مدني', icon: 'pi pi-fw pi-video', data: 'مدني ' },
-            { key: '2-0-1', label: 'معماري', icon: 'pi pi-fw pi-video', data: 'معماري ' }
-
-
-
-          ]
-        }
-      ];
-    },
-
-
-
-    getTreeTableNodes() {
-      return Promise.resolve(this.getTreeTableNodesData());
-    },
-
-    getTreeNodes() {
-      return Promise.resolve(this.getTreeNodesData());
-    }
-
-  };
-  console.log(selectedEgypetNodeKey)
-
-  useEffect(() => {
-    egypetNodeService.getTreeNodes().then((data) => setEgypetNodes(data));
-    saudiaNodeService.getTreeNodes().then((data) => setSaudiaNodes(data));
-  }, []);
-
+  }
 
 
 
@@ -169,18 +66,21 @@ const AllUserCategories = ({ countryName = "السعودية" }) => {
 
         </Link>
  */}
-        <Accordion defaultActiveKey={null}  >
+        <Accordion defaultActiveKey={openSaudiaUsers ? "0" : null}  >
           <Accordion.Item eventKey="0">
             <Link to="/System/AllUsers/Country/Saudia">
-              <Accordion.Header>
+              <Accordion.Header onClick={handleOpenUsers} >
+                <div>السعودية</div>
 
-                السعودية
 
+                <AiOutlineArrowDown size={20} />
               </Accordion.Header>
             </Link>
+
+
             <Accordion.Body>
               <div className='tabs d-flex justify-content-center align-items-center flex-column'>
-                <div className='tab text-end w-100'>
+                <div className='tab  text-end w-100'>
                   <Link to={"/System/users"}>         مدير مكتب</Link>
 
                 </div>
@@ -191,6 +91,8 @@ const AllUserCategories = ({ countryName = "السعودية" }) => {
                       <div >
                         مدير قسم
                       </div>
+                      <AiOutlineArrowDown size={20} />
+
                     </Accordion.Header>
                     <Accordion.Body>
                       <div className='tabs d-flex  flex-column'>
@@ -213,8 +115,9 @@ const AllUserCategories = ({ countryName = "السعودية" }) => {
                   <Accordion.Item eventKey="1">
                     <Accordion.Header>
                       <div className='text-start' >
-                       موظف
+                        موظف
                       </div>
+                      <AiOutlineArrowDown size={20} />
                     </Accordion.Header>
                     <Accordion.Body>
                       <div className='tabs d-flex  flex-column'>
@@ -238,28 +141,33 @@ const AllUserCategories = ({ countryName = "السعودية" }) => {
           </Accordion.Item>
 
         </Accordion>
-        <Accordion defaultActiveKey={null} >
-          <Accordion.Item eventKey="1">
+        <Accordion defaultActiveKey={null}  >
+          <Accordion.Item eventKey="0">
             <Link to="/System/AllUsers/Country/egypet">
               <Accordion.Header>
 
-                مصر
+                <div>     مصر</div>
 
+                <AiOutlineArrowDown size={20} />
               </Accordion.Header>
             </Link>
+
             <Accordion.Body>
               <div className='tabs d-flex justify-content-center align-items-center flex-column'>
-                <div className='tab text-end w-100'>
-                  <Link to={"/System/users"}>         مدير مكتب</Link>
+                <Link to={"/System/users"}>
+                  <div className='tab  text-end w-100'>
+                    مدير مكتب
 
-                </div>
-
+                  </div>
+                </Link>
                 <Accordion defaultActiveKey={null}>
-                  <Accordion.Item eventKey="2">
+                  <Accordion.Item eventKey="1">
                     <Accordion.Header>
                       <div >
                         مدير قسم
                       </div>
+                      <AiOutlineArrowDown size={20} />
+
                     </Accordion.Header>
                     <Accordion.Body>
                       <div className='tabs d-flex  flex-column'>
@@ -278,12 +186,37 @@ const AllUserCategories = ({ countryName = "السعودية" }) => {
                   </Accordion.Item>
 
                 </Accordion>
+                <Accordion defaultActiveKey={null}>
+                  <Accordion.Item eventKey="1">
+                    <Accordion.Header>
+                      <div className='text-start' >
+                        موظف
+                      </div>
+                      <AiOutlineArrowDown size={20} />
+                    </Accordion.Header>
+                    <Accordion.Body>
+                      <div className='tabs d-flex  flex-column'>
+                        <div className='tab'>
+                          مدني
 
+                        </div>
+                        <div className='tab'>
+                          معماري
+
+                        </div>
+
+
+                      </div>
+                    </Accordion.Body>
+                  </Accordion.Item>
+
+                </Accordion>
               </div>
             </Accordion.Body>
           </Accordion.Item>
 
         </Accordion>
+
 
       </div>
 
