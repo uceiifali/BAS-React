@@ -8,17 +8,25 @@ import 'react-toastify/dist/ReactToastify.css';
 import './index.css';
 import StepContext from './Context/StepContext'
 import CheckAddUpdateUserVisability from './Context/CheckAddUpdateUserVisability';
+
+import { PrimeReactProvider, PrimeReactContext } from 'primereact/api';
+
+import "primereact/resources/themes/lara-light-indigo/theme.css"; // theme
+
+import 'primereact/resources/primereact.css';     
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
 
 
   <React.StrictMode>
-    <CheckAddUpdateUserVisability>
-      <StepContext>
-        <App />
-        <ToastContainer />
-      </StepContext>
-    </CheckAddUpdateUserVisability >
+    <PrimeReactProvider>
+      <CheckAddUpdateUserVisability>
+        <StepContext>
+          <App />
+          <ToastContainer />
+        </StepContext>
+      </CheckAddUpdateUserVisability >
+    </PrimeReactProvider>
   </React.StrictMode>
 );
 

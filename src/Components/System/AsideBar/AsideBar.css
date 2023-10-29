@@ -22,9 +22,11 @@
 
     /* 242.192% */
 }
-.goals{
-    font-size: 16px ;
+
+.goals {
+    font-size: 16px;
 }
+
 .css-1n9b5ie>.ps-menu-button {
     height: auto !important;
 }
@@ -43,6 +45,7 @@
 .system-card p {
     font-size: 18px;
 }
+
 .card__content {
     background: #2B2B40;
     border-radius: 17px;
@@ -50,28 +53,37 @@
     height: 100%;
 }
 
+.asidePar .progress {
+    width: 326px;
+    height: 18px;
+    border-radius: 13px;
+}
+
 .badr-icon {
     width: 73.77px;
     height: 73.77px;
 }
+
 .aside-icon {
     width: 24px;
     height: 24px;
 }
+
 .system-item {
     margin-bottom: 10px;
     margin-top: 10px;
 }
 
 @media screen and (max-width:1400px) {
-    
-.system-card {
-    width: 75px;
-    height: 85px;
-    border-radius: 20px;
-    border: unset !important;
-}
-.system-card  p{
-    font-size: 12px ;
-}
+
+    .system-card {
+        width: 75px;
+        height: 85px;
+        border-radius: 20px;
+        border: unset !important;
+    }
+
+    .system-card p {
+        font-size: 12px;
+    }
 }

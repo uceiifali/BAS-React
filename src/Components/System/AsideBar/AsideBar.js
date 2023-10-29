@@ -7,7 +7,7 @@ const AsideBar = () => {
     const [rtl, setRtl] = useState(true)
     const [collapsed, setCollapsed] = useState(true);
     return (
-        <div className="align-items-center    mx-5" style={{ display: 'flex', direction: rtl ? 'rtl' : 'ltr', borderRadius: "19px" }}>
+        <div className=" asidePar align-items-center    mx-5" style={{ display: 'flex', direction: rtl ? 'rtl' : 'ltr', borderRadius: "19px" }}>
 
             <Sidebar
 
