@@ -70,7 +70,7 @@ const AllUserCategories = () => {
         }
 
     }
-
+     
     return (
 
         <div className='all-categories d-flex  flex-column  align-items-center '  >
