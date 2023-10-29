@@ -23,7 +23,7 @@ import ReviewCarousal from '../Components/Client/Landing/Carousal/ReviewCarousal
 import ProjectsCarousal from '../Components/Client/Landing/Carousal/ProjectsCarousal';
 import ClientCarousal from '../Components/Client/Landing/Carousal/ClientCarousal';
 
-import { multiStepContext } from  "../Context/StepContext";
+import { multiStepContext } from "../Context/StepContext";
 import { TypeAnimation } from 'react-type-animation';
 
 import Congratus from '../Components/Client/Landing/Congratus/Congratus';
@@ -34,11 +34,11 @@ import ReviewMultiSteps from '../Components/Client/Landing/MultiSteps/ReviewMult
 
 
 const Home = () => {
-    const { userData, setUserData, openCongrats, setOpenCongrats,openDesignSteps ,setOpenDesignSteps ,openReviewSteps,setOpenReviewSteps } = useContext(multiStepContext)
+    const { userData, setUserData, openCongrats, setOpenCongrats, openDesignSteps, setOpenDesignSteps, openReviewSteps, setOpenReviewSteps } = useContext(multiStepContext)
     const [carousel, setCarousal] = useState("projects")
     const [openPoper, setOpenPoper] = useState(false)
-    
 
+    console.log(carousel)
     const Services = [
         {
             Name: "تصاميم",
@@ -48,7 +48,7 @@ const Home = () => {
         {
             Name: "دراسات",
             img: "/studies.png",
-            backCard:"لتقديم لعملائنا جميع الدراسات اللازمة لاستكمال المشروع من خلال فريق مختص بالتنسيق مع جميع التخصصات"
+            backCard: "لتقديم لعملائنا جميع الدراسات اللازمة لاستكمال المشروع من خلال فريق مختص بالتنسيق مع جميع التخصصات"
 
 
         },
@@ -122,57 +122,57 @@ const Home = () => {
             />}
 
             <NavBar />
-           <section>
-             <div id={"Home"} className='Home-section landing  position-relative   mt-1  '>
+            <section>
+                <div id={"Home"} className='Home-section landing  position-relative   mt-1  '>
 
 
 
-          <div className='home-layer d-flex align-items-center  justify-content-center position-absolute w-100 h-100'>
-          <div className='d-flex h-100 w-100 text-center  align-items-center align-items-end-sm justify-content-between'>
-                    <div className='socail-icons-container '>
-                        <div className='mx-5 socail-icons  bg-light d-flex flex-column my-5'>
-                            <Link to={"/"}> <FaFacebookF className="mb-3" size={30} color='#E1B67C' /> </Link>
-                            <Link to={"/"}> <AiFillYoutube className="mb-3" size={30} color='#E1B67C' /> </Link>
-                            <Link to={"/"}>   <AiFillInstagram className="mb-3" size={30} color='#E1B67C' /></Link>
-                            <Link to={"/"}> <BsTwitter className="mb-3" size={30} color='#E1B67C' /> </Link>
-                            <Link to={"/"}> <AiOutlineMail className="mb-3" size={30} color='#E1B67C' /> </Link>
-                            <Link to={"/"}> <FaSnapchatGhost className="mb-3" size={30} color='#E1B67C' /> </Link>
+                    <div className='home-layer d-flex align-items-center  justify-content-center position-absolute w-100 h-100'>
+                        <div className='d-flex h-100 w-100 text-center  align-items-center align-items-end-sm justify-content-between'>
+                            <div className='socail-icons-container '>
+                                <div className='mx-5 socail-icons  bg-light d-flex flex-column my-5'>
+                                    <Link to={"/"}> <FaFacebookF className="mb-3" size={30} color='#E1B67C' /> </Link>
+                                    <Link to={"/"}> <AiFillYoutube className="mb-3" size={30} color='#E1B67C' /> </Link>
+                                    <Link to={"/"}>   <AiFillInstagram className="mb-3" size={30} color='#E1B67C' /></Link>
+                                    <Link to={"/"}> <BsTwitter className="mb-3" size={30} color='#E1B67C' /> </Link>
+                                    <Link to={"/"}> <AiOutlineMail className="mb-3" size={30} color='#E1B67C' /> </Link>
+                                    <Link to={"/"}> <FaSnapchatGhost className="mb-3" size={30} color='#E1B67C' /> </Link>
+                                </div>
+                            </div>
+                            <Container >
+                                <div className='item  w-100 h-100 d-flex justify-content-center align-items-center  flex-column'>
+
+                                    <TypeAnimation
+                                        className='text-white slugon'
+                                        sequence={[
+                                            'خدمات هندسية في جميع مجالات الهندسة وإدارة المشاريع باحترافية وجودة عالية وفقًا لأعلى المعايير والاشتراطات وتتميز بالتزامنا بمفهوم الاحتراف والاستشارة والإبداع بمستوى عالٍ من المهنية لجميع عملائنا',
+                                            500,
+
+
+                                        ]}
+                                        speed={50}
+                                        style={{ fontSize: '2em' }}
+                                        repeat={Infinity}
+                                    />
+
+
+
+
+                                    <div className='d-flex position-relative    justify-content-center sm-justify-center my-5'>
+
+                                        <button onClick={() => { setOpenPoper(true) }} className='click_me' >ابدأ مشروعك</button>
+                                    </div>
+                                </div>
+                            </Container>
                         </div>
                     </div>
-                    <Container >
-                        <div className='item  w-100 h-100 d-flex justify-content-center align-items-center  flex-column'>
-
-                            <TypeAnimation
-                                className='text-white slugon'
-                                sequence={[
-                                    'خدمات هندسية في جميع مجالات الهندسة وإدارة المشاريع باحترافية وجودة عالية وفقًا لأعلى المعايير والاشتراطات وتتميز بالتزامنا بمفهوم الاحتراف والاستشارة والإبداع بمستوى عالٍ من المهنية لجميع عملائنا',
-                                    500,
-                                   
-
-                                ]}
-                                speed={50}
-                                style={{ fontSize: '2em' }}
-                                repeat={Infinity}
-                            />
-
-
-
-
-                                <div className='d-flex position-relative    justify-content-center sm-justify-center my-5'>
-
-                                    <button onClick={() => { setOpenPoper(true) }} className='click_me' >ابدأ مشروعك</button>
-                                </div>
-                        </div>
-                    </Container>
-                </div>
-          </div>
 
 
 
 
 
-            </div   >
-           </section>
+                </div   >
+            </section>
             <section id="WhoWeAre" className='whoWeAre  position-relative   my-5'>
                 <div className='position-absolute  WhoWeAreshape  ' >
 
@@ -225,19 +225,6 @@ const Home = () => {
 
 
 
-                                {/* <div className='item d-flex justify-content-center'>
-<Card style={{ width: '18rem', height: '18rem', border: "none", justifyContent: "center" }}>
-    <Card.Body className='d-flex card-front card-inner align-items-center rounded justify-content-center'>
-        <div className='d-flex flex-column Card'>
-            <img src={ele.img} alt="design" width={100} height={100} />
-            <p className='text-center font-bold mt-3'>{ele.Name}</p>
-        </div>
-        <div className='d-flex card-back  flex-column Card'>
-          
-            {/* <p className='text-center font-bold mt-3'>{cardback.Name}</p> */}
-                                {/* </div>
-    </Card.Body>
-</Card> */}
 
                             </Col>
                         ))}

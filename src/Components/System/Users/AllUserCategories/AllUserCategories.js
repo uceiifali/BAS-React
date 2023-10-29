@@ -1,136 +1,163 @@
-import React from 'react'
+import React, { useState } from 'react'
 import "./index.css"
 import { Link } from 'react-router-dom'
 import Select from '../../../FormHandler/Select'
-import {MDBDropdown, MDBDropdownMenu, MDBDropdownToggle, MDBDropdownItem, MDBContainer } from 'mdb-react-ui-kit';
+import { MDBDropdown, MDBDropdownMenu, MDBDropdownToggle, MDBDropdownItem, MDBContainer } from 'mdb-react-ui-kit';
 
-const AllUserCategories = () => {
-    const saudiaRoles = [
-        {
-            label: "السعودية",
-            value: "السعودية",
-            options: [
-                {
-                    label: "مدير مكتب ",
-                    value: "مدير مكتب  "
-                },
-                {
-                    label: "مدير قسم ",
-                    value: "مدير قسم  "
-                },
-                {
-                    label: "موظف  ",
-                    value: "موظف   "
-                },
+const AllUserCategories = ({ countryName = "السعودية" }) => {
+  // const [showUsers, setShowUsers] = useState(false)
+  // const handleShowUsers = () => {
+  //   if (showUsers) {
+  //     setShowUsers(false)
+  //   } else {
+  //     setShowUsers(true)
+  //   }
 
-            ]
-        },
-
-    ];
-    const egypetRoles = [
-        {
-            label: "مصر",
-            options: [
-                {
-                    label: "مدير مكتب ",
+  // }
+  // console.log(showUsers)
 
 
-                },
-                {
-                    label: "مدير قسم ",
-                    value: "مدير قسم  "
-                },
-                {
-                    label: "موظف  ",
-                    value: "موظف   "
-                },
+  return (
 
-            ]
-        },
+    <div className='all-categories d-flex  flex-column  align-items-center '  >
+      <Link className='pointer' to={"/System/AllUsers/AllCountries"}>
+        <p className='text-center text-white py-2' >كل المستخدمين</p>
+      </Link>
 
-    ];
+      <div className='pointer mt-0' > <div className='   d-flex  justify-content-center'>
 
-      const colourStyles = {
-        placeholder: (defaultStyles) => {
-            return {
-                ...defaultStyles,
-                color: 'rgba(255, 255, 255, 0.50)',
-            }
-        },
-        control: styles => ({ ...styles, backgroundColor: '#2B2B40', border: "unset", color: 'rgba(255, 255, 255, 0.50);' }),
-        option: (styles, { data, isDisabled, isFocused, isSelected, }) => {
-            return {
-                ...styles,
 
-                color: 'rgba(255, 255, 255, 0.50);',
-                backgroundColor: "#2B2B40",
-                border: "none "
-
-            }
-        }
-
-    }
-     
-    return (
-
-        <div className='all-categories d-flex  flex-column  align-items-center '  >
-            <Link className='pointer' to={"/System/AllUsers/AllCountries"}>
-                <p className='text-center text-white py-2' >كل المستخدمين</p>
+        <MDBContainer className="d-flex justify-content-center  basic">
+          <MDBDropdown>
+            <Link to="/System/AllUsers/Country/Saudia">
+              <MDBDropdownToggle className='choose-city'>السعودية</MDBDropdownToggle>
             </Link>
 
-           <Link className='pointer' to="/System/AllUsers/Country/Saudia"> <div className='   d-flex  justify-content-center'>
-            
-            
-           <MDBContainer className="d-flex justify-content-center mt-5 basic">
-      <MDBDropdown>
-        <MDBDropdownToggle className='choose-city'>السعودية</MDBDropdownToggle>
-        <MDBDropdownMenu>
-          <MDBDropdownItem >
-            <Link   className='choose-city'    href="#">مدير مكتب</Link    >
-          </MDBDropdownItem>
-          <MDBDropdownItem>
-            <Link   className='choose-city' href="#">مدير قسم</Link>
-          </MDBDropdownItem>
-          <MDBDropdownItem>
-            <Link   className='choose-city' href="#">موظف &raquo;</Link>
-            <ul className="dropdown-menu dropdown-submenu">
-              <MDBDropdownItem>
-                <Link href="#">حبيب</Link>
-              </MDBDropdownItem>
-              <MDBDropdownItem>
-                <Link href="#">مروة</Link>
-              </MDBDropdownItem>
-              <MDBDropdownItem>
-                <Link href="#">Submenu item 3 &raquo;</Link>
+
+            <MDBDropdownMenu>
+              <MDBDropdownItem >
+                <div className='choose-city' >مدير مكتب
+
+                  <svg className='mx-2' xmlns="http://www.w3.org/2000/svg" width="5" height="8" viewBox="0 0 5 8" fill="none">
+                    <path d="M4.5 7.5L0.5 4L4.5 0.5" stroke="white" stroke-opacity="0.5" stroke-linecap="round" stroke-linejoin="round" />
+                  </svg>
+
+                </div    >
                 <ul className="dropdown-menu dropdown-submenu">
+
+
                   <MDBDropdownItem>
-                    <Link href="#">Multi level 1</Link>
+                    <Link to="/System/users">
+
+                      م .ايهاب  
+            
+                    </Link>
+             
                   </MDBDropdownItem>
-                  <MDBDropdownItem>
-                    <Link href="#">Multi level 2</Link>
-                  </MDBDropdownItem>
+
+
                 </ul>
               </MDBDropdownItem>
               <MDBDropdownItem>
-                <Link href="#">Submenu item 4</Link>
+                <div className='choose-city'>مدير قسم
+                  <svg className='mx-2' xmlns="http://www.w3.org/2000/svg" width="5" height="8" viewBox="0 0 5 8" fill="none">
+                    <path d="M4.5 7.5L0.5 4L4.5 0.5" stroke="white" stroke-opacity="0.5" stroke-linecap="round" stroke-linejoin="round" />
+                  </svg>
+                </div>
+                <ul className="dropdown-menu dropdown-submenu">
+                  <MDBDropdownItem>
+                    <Link to="/System/users">مدني</Link>
+                  </MDBDropdownItem>
+
+
+                </ul>
               </MDBDropdownItem>
               <MDBDropdownItem>
-                <Link href="#">Submenu item 5</Link>
+                <div className='choose-city'  >موظف <svg className='mx-2' xmlns="http://www.w3.org/2000/svg" width="5" height="8" viewBox="0 0 5 8" fill="none">
+                  <path d="M4.5 7.5L0.5 4L4.5 0.5" stroke="white" stroke-opacity="0.5" stroke-linecap="round" stroke-linejoin="round" />
+                </svg></div>
+                <ul className="dropdown-menu dropdown-submenu">
+                  <MDBDropdownItem>
+                    <Link to="/System/users">مدنى</Link>
+                  </MDBDropdownItem>
+                  <MDBDropdownItem>
+                    <Link to="/System/users">معماري</Link>
+                  </MDBDropdownItem>
+
+                </ul>
               </MDBDropdownItem>
-            </ul>
-          </MDBDropdownItem>
-        </MDBDropdownMenu>
-      </MDBDropdown>
-    </MDBContainer>
-            
- 
-            
-            </div></Link>
-           <Link className='pointer' to="/System/AllUsers/Country/egypet">     <div className=' pointer d-flex justify-content-center'><Select options={egypetRoles} placeholder="مصر " className="mt-3 pointer" styles={colourStyles} /></div></Link>
+            </MDBDropdownMenu>
+          </MDBDropdown>
+        </MDBContainer>
 
 
-        </div>
-    )
+
+      </div>
+
+
+      </div>
+      <div className='pointer' >
+        <MDBContainer className="d-flex justify-content-center mt-3 basic">
+          <MDBDropdown>
+            <Link to="/System/AllUsers/Country/egypet">
+              <MDBDropdownToggle className='choose-city'>مصر</MDBDropdownToggle>
+            </Link>
+            <MDBDropdownMenu>
+              <MDBDropdownItem >
+                <div className='choose-city' >مدير مكتب
+
+                  <svg className='mx-2' xmlns="http://www.w3.org/2000/svg" width="5" height="8" viewBox="0 0 5 8" fill="none">
+                    <path d="M4.5 7.5L0.5 4L4.5 0.5" stroke="white" stroke-opacity="0.5" stroke-linecap="round" stroke-linejoin="round" />
+                  </svg>
+
+                </div    >
+                <ul className="dropdown-menu dropdown-submenu">
+
+                  <Link to="/System/users">
+                    <MDBDropdownItem>
+                      م.اشرف
+                    </MDBDropdownItem></Link>
+
+
+                </ul>
+              </MDBDropdownItem>
+              <MDBDropdownItem>
+                <div className='choose-city'>مدير قسم
+                  <svg className='mx-2' xmlns="http://www.w3.org/2000/svg" width="5" height="8" viewBox="0 0 5 8" fill="none">
+                    <path d="M4.5 7.5L0.5 4L4.5 0.5" stroke="white" stroke-opacity="0.5" stroke-linecap="round" stroke-linejoin="round" />
+                  </svg>
+                </div>
+                <ul className="dropdown-menu dropdown-submenu">
+                  <MDBDropdownItem>
+                    <Link to="/System/users">مدني</Link>
+                  </MDBDropdownItem>
+
+
+                </ul>
+              </MDBDropdownItem>
+              <MDBDropdownItem>
+                <div className='choose-city'  >موظف <svg className='mx-2' xmlns="http://www.w3.org/2000/svg" width="5" height="8" viewBox="0 0 5 8" fill="none">
+                  <path d="M4.5 7.5L0.5 4L4.5 0.5" stroke="white" stroke-opacity="0.5" stroke-linecap="round" stroke-linejoin="round" />
+                </svg></div>
+                <ul className="dropdown-menu dropdown-submenu">
+                  <MDBDropdownItem>
+                    <Link to="/System/users">مدنى</Link>
+                  </MDBDropdownItem>
+                  <MDBDropdownItem>
+                    <Link to="/System/users">معماري</Link>
+                  </MDBDropdownItem>
+
+                </ul>
+              </MDBDropdownItem>
+            </MDBDropdownMenu>
+          </MDBDropdown>
+        </MDBContainer>
+      </div>
+
+
+
+    </div>
+  )
 }
 
 export default AllUserCategories

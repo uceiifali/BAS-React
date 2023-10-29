@@ -41,7 +41,7 @@ const CountryDeprtamentSlider = () => {
 
   return (
      
-    <Slider className='d-flex  w-100 '  {...settings}>
+    <Slider className='systemDeprtamentSlider d-flex  w-199 '  {...settings}>
       <div className=' d-flex flex-column mb-2 deprtament-slider-Container  m-auto   '>
         <img src={ process.env.PUBLIC_URL+"/icons/deprtmants.png"} alt='deprtmant img' className='deprtmant-icon' />
         <h2 style={{ color: "#fff", fontSize: "12px" }}>مدنى</h2>
