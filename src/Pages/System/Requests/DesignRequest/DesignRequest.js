@@ -15,7 +15,7 @@ const DesignRequest = () => {
         },
         {
           name: ' رقم الطلب ',
-          selector: row => row.ProjectType,
+          selector: row => row.ProjectNumber,
         },
         {
           name: '  تاريخ الاستلام',
@@ -23,43 +23,31 @@ const DesignRequest = () => {
         },
         {
           name: '   نوع المشروع',
-          selector: row => row.deliveryDate,
+          selector: row => row.ProjectType,
         },
         {
             name: '    الحالة',
-            selector: row => row.deliveryDate,
+            selector: row => row.status,
           },
           {
             name: '    عرض',
-            selector: row => row.deliveryDate,
+            selector: row => row.display,
           },
           {
             name: '    تعديل',
-            selector: row => row.deliveryDate,
+            selector: row => row.edit,
           },
       ];
-      const FinisedProjectData = [
+      const DesignData = [
         {
           id: 1,
           ProjectName: 'BSA',
-          ProjectType: 'تصميم',
+          ProjectNumber: '53543',
           recivedDate: '12-10-2023',
-          deliveryDate: '12-5-2024',
-        },
-    
-        {
-          id: 2,
-          ProjectName: 'BSA',
-          ProjectType: 'تصميم',
-          recivedDate: '12-10-2023',
-          deliveryDate: '12-5-2024',
-        },
-        {
-          id: 3,
-          ProjectName: 'BSA',
-          ProjectType: 'تصميم',
-          recivedDate: '12-10-2023',
-          deliveryDate: '12-5-2024',
+          ProjectType: 'design',
+          status:"قيد الا نتظار",
+          display:"img",
+          edit:"img"
         },
     
     
@@ -76,12 +64,12 @@ const DesignRequest = () => {
 
 
 
-            <fieldset className='designTableContainer mx-auto mt-3'>
-                <legend className='text-center'>طلبات فى الانتظار ( تصميم )</legend>
+            <fieldset className='TableContainer mx-auto mt-3'>
+                <legend className='text-center'>طلبات   ( تصميم )</legend>
   
 
 
-              <DataTableComponent/>
+              <DataTableComponent columns={columns} data={DesignData} />
             </fieldset>
         </div>
     )
