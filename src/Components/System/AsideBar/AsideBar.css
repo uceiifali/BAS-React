@@ -36,14 +36,15 @@
 }
 
 .system-card {
-    width: 95;
-    height: 100px;
+    width: 85px;
+    height: 80px;
     border-radius: 20px;
     border: unset !important;
+   margin: 15px 0px;
 }
 
 .system-card p {
-    font-size: 18px;
+    font-size: 13px;
 }
 
 .card__content {
@@ -60,13 +61,13 @@
 }
 
 .badr-icon {
-    width: 73.77px;
-    height: 73.77px;
+    width: 65px;
+    height: 65px;
 }
 
 .aside-icon {
-    width: 24px;
-    height: 24px;
+    width: 22px;
+    height: 22px;
 }
 
 .system-item {

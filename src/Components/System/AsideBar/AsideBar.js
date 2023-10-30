@@ -14,7 +14,7 @@ const AsideBar = () => {
                 rootStyles={{
                     color: "#FFF",
                     borderRadius: "19px",
-                    height: '100%',
+                    height: '897px  ',
         
                     border: "2px solid #EFAA20 !important"
   
@@ -130,7 +130,7 @@ const AsideBar = () => {
                             <div className='col-md-4 col-sm-6'>
 
                                 <div className='system-item'>
-                                    <Link>
+                                    <Link to="/System/Requests/index">
                                         <div class="system-card">
                                             <div class="card__content d-flex justify-content-center align-items-center  flex-column gap-2 " >
                                                 <img src='../../../assets/icons/orders.png' alt="icon" className='aside-icon mt-3'

@@ -19,7 +19,7 @@ const SystemIndex = () => {
             </div> 
             <div className='system-container d-flex align-items-center     '>
                 <div  className='row w-100 mx-auto  py-5 my-3 ps-5 h-75  align-items-center'>
-                    <div className=' col-md-4 ' >
+                    <div className=' col-md-3 ' >
                         <AsideBar  />
                     </div>
 

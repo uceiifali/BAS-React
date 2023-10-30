@@ -1,79 +1,6 @@
-.all-categories .dropdown-menu li {
-    position: relative;
-}
 
 
-.all-categories .dropdown-menu .dropdown-submenu {
-    display: none;
-    position: absolute;
-    right: 0%;
-    top: 100%;
-}
-
-.all-categories .dropdown-menu .dropdown-submenu-left {
-    right: 50%;
-    top: auto;
-}
-
-
-.all-categories .dropdown-menu>li:hover>.dropdown-submenu {
-    display: block;
-}
-
-.all-categories .dropdown-submenu a:hover {
-    display: block !important;
-}
-
-.all-categories .dropdown-menu {
-    width: 100%;
-    border-radius: 10px !important;
-    background-color: #1E1E2D !important;
-    width: 201px;
-    height: 38px;
-    margin-top: 10px !important;
-    width: 201px;
-    height: 38px;
-}
-
-.all-categories .dropdown-menu li {
-    text-align: center;
-    border-radius: 10px !important;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    background-color: #2B2B40;
-    color: white;
-    width: 201px;
-    height: 38px;
-    margin-bottom: 6px;
-
-}
-
-.all-categories .dropdown-toggle {
-    background-color: #2B2B40 !important;
-    outline: unset !important;
-    box-shadow: unset !important;
-    width: 201px !important;
-    height: 38px !important;
-
-}
-
-.all-categories .dropdown-toggle,
-button {
-    box-shadow: unset !important;
-}
-
-.all-categories .choose-city {
-    font-size: 14px !important;
-    color: rgba(255, 255, 255, 0.50) !important;
-}
-
-.all-categories .dropdown-toggle::after {
-    margin-right: 25px !important;
-}
-
-.p-treeselect {
+/* .p-treeselect {
     width: 201px !important;
     height: 38px !important;
     background-color: #2B2B40 !important;
@@ -135,4 +62,4 @@ button {
     color: unset !important;
 }
 
-  
+   */

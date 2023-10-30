@@ -2,6 +2,7 @@ import React from 'react'
 import Input from '../../../FormHandler/Input'
 import { NavDropdown } from 'react-bootstrap'
 import "./index.css"
+import { SearchComponent } from '../../../SearchComponent/SearchComponent'
 const SearchUsers = () => {
 
     const users = Array.from({ length: 15 })
@@ -9,7 +10,7 @@ const SearchUsers = () => {
         <div>
             <div className='search-users '>
 
-                <div className='d-flex   justify-content-center'>     <Input background='#2B2B40' height='37.06px' width='166px' className='border-0  search' placeholder="Search..." /></div>
+        
 
                 <div className='d-flex justify-content-between m-2'>
                     <p className='text-center ' >كل المستخدمين</p>
