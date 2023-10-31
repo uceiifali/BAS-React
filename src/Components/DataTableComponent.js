@@ -8,7 +8,8 @@ const DataTableComponent = ({className , columns, data ,title}) => {
             columns={columns}
             data={data}
             className={className}
-
+            striped={true}
+ 
         />
     )
 }

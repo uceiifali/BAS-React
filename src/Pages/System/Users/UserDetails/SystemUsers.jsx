@@ -53,45 +53,7 @@ const SystemUsers = () => {
 
 
 
-    const egypetRoles = [
-        {
-            value: "مصر",
-            label: "مصر",
-        }
-    ]
-    const saudiaRoles = [
-        {
-            label: "السعودية", options: [
-                {
-                    label: "مدير مكتب",
-                    options: [
-                        {
-                            label: "بشمهندس ايهاب",
-                            value: "بشمهندس ايهاب"
-                        },
-                        {
-                            label: "بشمهندس اشرف",
-                            value: "بشمهندس اشرف"
-                        }
-                    ]
-                },
-                {
-                    label: "موظف",
-                    options: [
-                        {
-                            label: "بشمهندس حبيب",
-                            value: "بشمهندس حبيب"
-                        },
-                        {
-                            label: "بشمهندسه مروه",
-                            value: "بشمهندسه مروه"
-                        }
-                    ]
-                }
-
-            ]
-        }
-    ]
+  
     const colourStyles = {
         placeholder: (defaultStyles) => {
             return {

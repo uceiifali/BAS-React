@@ -16,6 +16,10 @@
     height: 70PX;
 }
 
+.systemModal .modal-content {
+    background-color: #1E1E2D !important;
+}
+
 .top-3 {
     top: 3%;
 }
@@ -139,19 +143,61 @@
 }
 
 .full-system .jWOtlo {
-    background-color: unset !important;
+    border: 1px solid #EFAA20 !important;
+    background: #34344D !important;
+
     color: white !important;
-    border: 1px solid rgba(213, 153, 33, 0.20);
-}
-
-
-.full-system .idxdtx {
-    background-color: unset !important;
-    color: #EFAA20 !important;
-
 
 }
+
+
 
 .full-system .golden-border {
     border: 1px dashed #EFAA20;
+}
+
+.full-system .idxdtx {
+
+    background: #34344D !important;
+    color: #EFAA20 !important;
+
+    border: 1px solid #EFAA20 !important;
+}
+
+.full-system .cSRQNB {
+    background-color: #1E1E2D;
+    color: #fff;
+
+
+}
+
+.showRequest {
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+.bXLDzR {
+    overflow-y: scroll !important;
+}
+
+.instrutmentimg {
+
+    width: 93px;
+    height: 61px;
+    border-radius: 7px;
+}
+
+.No-Delete {
+
+    background-color: #A83A3A !important;
+    border: unset !important;
+}
+
+.No-Delete:focus {
+    border: unset !important;
+}
+
+.Delete-button {
+
+    background-color: #D59921 !important;
 }

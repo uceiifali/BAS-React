@@ -5,20 +5,28 @@
     border: 1px solid rgba(239, 170, 32, 0.50);
 }
 
-.designTableContainer {
+.TableContainer {
     border-radius: 22px;
     border: 1px solid rgba(239, 170, 32, 0.50);
-    height: 50%;
+
     width: 95%;
+
 
 
 }
 
+.datatableComponent {
+    overflow-x: hidden;
 
-.TableContainer .idxdtx {
-
-    background: #34344D !important;
-    color: #EFAA20 !important;
+    height: 360px;
+}
 
 
+
+
+.display_project,
+.edit_project {
+    width: 28px;
+    height: 28px;
+    cursor: pointer;
 }

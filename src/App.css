@@ -21,12 +21,19 @@ body {
 .navbar{
   z-index: 100 !important;
 }
+button{
+  box-shadow: unset !important;
+}
 .home-layer {
   background-color: rgba(0, 35, 82, 0.5);
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
+}
+.border-golden{
+  border-radius: 19px;
+border: 1px solid rgba(239, 170, 32, 0.50);
 }
 
 .Main-background {
@@ -1102,13 +1109,16 @@ fieldset .legend {
 
 }
 
-
 .react-international-phone-country-selector-button {
   width: 100% !important;
 }
 
 .react-international-phone-input {
   width: 85% !important;
+}
+.export-bg{
+  outline: unset !important;
+  box-shadow: unset !important;
 }
 
 /* system style */
@@ -1127,7 +1137,7 @@ fieldset .legend {
 }
 
 legend {
-  width: 30% !important;
+  width: 25% !important;
   float: unset !important;
   color: #fff;
   padding: 3px 6px;
@@ -1140,6 +1150,12 @@ legend {
   align-items: center;
 }
 
+.bzUdFx{
+  justify-content: center !important;
+}   
+.gnBnkV {
+  justify-content: center;
+}
 /* .slider-Container{
 width: 250px !important;
 height: 250px !important;

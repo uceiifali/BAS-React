@@ -2,86 +2,94 @@ import React from 'react'
 import "./index.css"
 import DesignRequestChart from '../../../../Components/System/Requests/DesignRequestChart/DesignRequestChart'
 import DataTableComponent from '../../../../Components/DataTableComponent'
+import { useState } from 'react'
+import { Button } from 'react-bootstrap'
+import { ShowRequest } from '../../../../Components/System/ShowRequest/ShowRequest'
 const DesignRequest = () => {
-
-    const columns = [
-        {
-          name: 'م',
-          selector: row => row.id,
-        },
-        {
-          name: 'اسم المشروع',
-          selector: row => row.ProjectName,
-        },
-        {
-          name: ' رقم الطلب ',
-          selector: row => row.ProjectNumber,
-        },
-        {
-          name: '  تاريخ الاستلام',
-          selector: row => row.recivedDate,
-        },
-        {
-          name: '   نوع المشروع',
-          selector: row => row.ProjectType,
-        },
-        {
-            name: '    الحالة',
-            selector: row => row.status,
-          },
-          {
-            name: '    عرض',
-            selector: row => row.display,
-          },
-          {
-            name: '    تعديل',
-            selector: row => row.edit,
-          },
-      ];
-      const DesignData = [
-        {
-          id: 1,
-          ProjectName: 'BSA',
-          ProjectNumber: '53543',
-          recivedDate: '12-10-2023',
-          ProjectType: 'تصميم',
-          status:"قيد الا نتظار",
-          display: <img src={process.env.PUBLIC_URL+"/HomeBackground.jpg"}  className='w-50  rounded' alt=' display project'/>,
-          edit:<img src={process.env.PUBLIC_URL+"/HomeBackground.jpg"}  className='w-50  rounded' alt=' edit project'/>
-        },
-        {
-          id: 2,
-          ProjectName: 'BSA',
-          ProjectNumber: '534646',
-          recivedDate: '1-9-2023',
-          ProjectType: 'تصميم',
-          status:"مرفوض",
-          display: <img src={process.env.PUBLIC_URL+"/HomeBackground.jpg"}  className='w-50  rounded' alt=' display project'/>,
-          edit:<img src={process.env.PUBLIC_URL+"/HomeBackground.jpg"}  className='w-50  rounded' alt=' edit project'/>
-        },
-    
-      ]
-    return (
-        <div className='AllRequests'>
+  const [showProject, setShowProject] = useState(false)
 
 
-            <div className='designChartContainer d-flex justify-content-center align-items-center'>
-
-                <DesignRequestChart />
-
-            </div>
+  const DesignProjects = Array.from({ length: 10 }).map((_, index) => {
+    return {
+      id: 1,
+      ProjectName: 'BSA',
+      ProjectNumber: '53543',
+      recivedDate: '12-10-2023',
+      ProjectType: 'تصميم',
+      status: "قيد الا نتظار",
+      display: <img src={process.env.PUBLIC_URL + "/icons/view.png"} onClick={() => { setShowProject(true) }} className='display_project  rounded' alt=' display project' />,
+      edit: <img src={process.env.PUBLIC_URL + "/edit.png"} className=' edit_project  rounded' alt=' edit project' />
+    }
+  });
 
 
 
-            <fieldset className='TableContainer mx-auto mt-3'>
-                <legend className='text-center '>طلبات   ( تصميم )</legend>
-  
+  const columns = [
+    {
+      name: 'م',
+      selector: row => row.id,
+    },
+    {
+      name: 'اسم المشروع',
+      selector: row => row.ProjectName,
+    },
+    {
+      name: ' رقم الطلب ',
+      selector: row => row.ProjectNumber,
+    },
+    {
+      name: '  تاريخ الاستلام',
+      selector: row => row.recivedDate,
+    },
+    {
+      name: '   نوع المشروع',
+      selector: row => row.ProjectType,
+    },
+    {
+      name: '    الحالة',
+      selector: row => row.status,
+    },
+    {
+      name: '    عرض',
+      selector: row => row.display,
+    },
+    {
+      name: '    تعديل',
+      selector: row => row.edit,
+    },
+  ];
 
 
-              <DataTableComponent className={"overflow-x-hidden"}  columns={columns} data={DesignData} />
-            </fieldset>
+
+
+  return (
+    <div className='AllRequests'>
+      {!showProject ? <div className='mt-4  '>
+        <div className='designChartContainer d-flex justify-content-center align-items-center'>
+
+          <DesignRequestChart />
+
         </div>
-    )
+
+
+
+        <fieldset className='TableContainer  py-3 px-2 mx-auto mt-3'>
+          <legend className='text-center '>طلبات   ( تصميم )</legend>
+
+
+
+          <div className='mt-3   '>
+            <DataTableComponent className={"overflow-x-hidden datatableComponent"} columns={columns} data={DesignProjects} />
+          </div>
+        </fieldset>
+      </div> : <ShowRequest/> 
+
+
+      }
+
+
+    </div>
+  )
 }
 
 export default DesignRequest
