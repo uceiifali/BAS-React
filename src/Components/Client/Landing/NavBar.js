@@ -32,7 +32,7 @@ const NavBar = () => {
   return (
 
 
-    <Navbar style={{ backgroundColor: "#FFF" }} className={`position-fixed ${checkHidden ? "" : ""}   z-3   top-0 end-0 start-0  `} collapseOnSelect expand="lg" >
+    <Navbar style={{ backgroundColor: "#FFF" }} className={`position-fixed ${checkHidden ? "" : ""}    top-0 end-0 start-0  `} collapseOnSelect expand="lg" >
       <Container fluid  >
         <Navbar.Brand className=' me-3' href="#home">
           <Image width={80} height={80} src="/logo.jpg" alt="logo" />

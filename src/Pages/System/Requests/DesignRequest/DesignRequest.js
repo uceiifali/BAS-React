@@ -44,12 +44,21 @@ const DesignRequest = () => {
           ProjectName: 'BSA',
           ProjectNumber: '53543',
           recivedDate: '12-10-2023',
-          ProjectType: 'design',
+          ProjectType: 'تصميم',
           status:"قيد الا نتظار",
-          display:"img",
-          edit:"img"
+          display: <img src={process.env.PUBLIC_URL+"/HomeBackground.jpg"}  className='w-50  rounded' alt=' display project'/>,
+          edit:<img src={process.env.PUBLIC_URL+"/HomeBackground.jpg"}  className='w-50  rounded' alt=' edit project'/>
         },
-    
+        {
+          id: 2,
+          ProjectName: 'BSA',
+          ProjectNumber: '534646',
+          recivedDate: '1-9-2023',
+          ProjectType: 'تصميم',
+          status:"مرفوض",
+          display: <img src={process.env.PUBLIC_URL+"/HomeBackground.jpg"}  className='w-50  rounded' alt=' display project'/>,
+          edit:<img src={process.env.PUBLIC_URL+"/HomeBackground.jpg"}  className='w-50  rounded' alt=' edit project'/>
+        },
     
       ]
     return (
@@ -65,11 +74,11 @@ const DesignRequest = () => {
 
 
             <fieldset className='TableContainer mx-auto mt-3'>
-                <legend className='text-center'>طلبات   ( تصميم )</legend>
+                <legend className='text-center '>طلبات   ( تصميم )</legend>
   
 
 
-              <DataTableComponent columns={columns} data={DesignData} />
+              <DataTableComponent className={"overflow-x-hidden"}  columns={columns} data={DesignData} />
             </fieldset>
         </div>
     )
