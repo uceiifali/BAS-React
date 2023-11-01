@@ -31,16 +31,16 @@
 .full-system .form-control {
     background-color: #2B2B40 !important;
     border: unset !important;
-    color: rgba(255, 255, 255, 0.50);
+    color: rgba(255, 255, 255, 0.50) !important;
 
 }
 
 .full-system .form-control::placeholder {
-    color: rgba(255, 255, 255, 0.50);
+    color: rgba(255, 255, 255, 0.50) !important;
 }
 
 .full-system .form-control:focus {
-    color: rgba(255, 255, 255, 0.50);
+    color: rgba(255, 255, 255, 0.50) !important;
     ;
 }
 

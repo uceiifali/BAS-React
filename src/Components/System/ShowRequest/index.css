@@ -1,11 +1,27 @@
-.showRequest{
+.showRequest {
     height: 800px !important;
 }
-.modal-body{
+
+.modal-body {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
 
 
+}
+
+.showRequestImg .modal-content {
+    background-color: transparent !important;
+}
+
+.leaveComment textarea {
+    background-color: transparent !important;
+
+    box-shadow: unset !important;
+}
+
+.leaveComment textarea:focus {
+    border-radius: 7px !important;
+    border: 1px solid rgba(239, 170, 32, 0.50) !important; 
 }

@@ -1,14 +1,15 @@
 import React from 'react'
-import { Button, Image, Modal } from 'react-bootstrap'
+import { Button, Form, Image, Modal } from 'react-bootstrap'
 import "./index.css"
 import { useState } from 'react'
-export const ShowRequest = () => {
+export const ShowRequest = ({setShowProject}) => {
   const [showImg, setShowImg] = useState(false)
   const [imgSrc, setImgSrc] = useState(`${process.env.PUBLIC_URL}/icons/show.png`)
   const [acceptRequest, setAcceptRequest] = useState(false)
   const [ConfirmAcceptRequest, setConfirmAcceptRequest] = useState(false)
   const [refuseRequest, setRefuseRequest] = useState(false)
   const [confirmRefuseRequest, setConfirmRefuseRequest] = useState(false)
+  const [finishedRefuse, setFinishedRefuse] = useState(false)
 
 
   const handleAcceptRequest = () => {
@@ -24,6 +25,10 @@ export const ShowRequest = () => {
   }
   const handleRefuseRequest = () => {
 
+
+    //confirm Refuse Request
+    setConfirmRefuseRequest(false)
+    setFinishedRefuse(true)
 
   }
 
@@ -41,7 +46,7 @@ export const ShowRequest = () => {
           show={showImg}
           onHide={() => setShowImg(false)}
           aria-labelledby="example-modal-sizes-title-lg"
-          className='systemModal '
+          className='systemModal   showRequestImg'
         >
           <Image className='pointer w-100 h-100  instrutmentimg' src={imgSrc} alt='owner img' />
         </Modal>}
@@ -115,53 +120,112 @@ export const ShowRequest = () => {
         </Modal >
       }
 
+      {refuseRequest && <Modal
+        className='submitSystemPoper'
+        size="lg"
+        aria-labelledby="contained-modal-title-vcenter"
+        onHide={() => setRefuseRequest(false)}
+        show={refuseRequest}
+      >
+
+        <Modal.Body className='d-flex align-items-center'>
 
 
+          <div className='d-flex w-75 flex-column mx-auto mt-3 justify-content-center align-items-center '>
+            {<p className='text-white' style={{ fontSize: "30px" }}>  هل انت متاكد من رفض هذا الطلب </p>}
+            <div className='d-flex justify-content-center mt-3 gap-3'>
 
-      {refuseRequest &&  <Modal
-          className='submitSystemPoper'
-          size="lg"
-          aria-labelledby="contained-modal-title-vcenter"
-          onHide={() => setRefuseRequest(false)}
-          show={refuseRequest}
-        >
+              <Button
 
-          <Modal.Body className='d-flex align-items-center'>
+                onClick={() => {
+                  setRefuseRequest(false)
+                  setConfirmRefuseRequest(true)
+
+                }}
+                className='Delete-button'>نعم</Button>
+
+              <Button
+
+                onClick={() => {
+                  setRefuseRequest(false)
+
+                }}
+                className='No-Delete'>لا</Button>
+
+            </div>
+
+          </div>
+        </Modal.Body>
 
 
-            <div className='d-flex w-75 flex-column mx-auto mt-3 justify-content-center align-items-center '>
-              {<p className='text-white' style={{ fontSize: "30px" }}>  هل انت متاكد من رفض هذا الطلب </p>}
-              <div className='d-flex justify-content-center mt-3 gap-3'>
+      </Modal >
 
+      }
+      {confirmRefuseRequest && <Modal
+        className='submitSystemPoper leaveComment'
+        size="lg"
+        aria-labelledby="contained-modal-title-vcenter"
+        onHide={() => setConfirmRefuseRequest(false)}
+        show={confirmRefuseRequest}
+      >
+
+        <Modal.Body >
+
+
+          <div className='w-100   mt-3 '>
+            {<p className='text-white' style={{ fontSize: "30px" }}> اترك تعليقاً .... </p>}
+
+            <Form className='w-100'>
+              <textarea className='form-control w-100' rows={5} placeholder='اترك تعليقاً ....' />
+
+              <div className='d-flex justify-content-center my-3'>
                 <Button
-
                   onClick={() => {
                     handleRefuseRequest()
 
                   }}
-                  className='Delete-button'>نعم</Button>
-
-                <Button
-
-                  onClick={() => {
-                    setRefuseRequest(false)
-
-                  }}
-                  className='No-Delete'>لا</Button>
-
+                  className='sumbmitAddUpdateUser'>حفظ</Button>
               </div>
 
-            </div>
-          </Modal.Body>
-
-
-        </Modal > 
+            </Form>
 
 
 
+          </div>
+        </Modal.Body>
 
+
+      </Modal >
       }
 
+      {finishedRefuse && <Modal
+        className='submitSystemPoper'
+        size="lg"
+        aria-labelledby="contained-modal-title-vcenter"
+        onHide={() => setFinishedRefuse(false)}
+        show={finishedRefuse}
+      >
+
+        <Modal.Body >
+          <div className='d-flex justify-content-center w-100'>            <img src={process.env.PUBLIC_URL + "/correct.gif"} width={120} height={120} className='my-3' color='#E1B67C' /></div>
+
+
+          <div className='d-flex w-75 flex-column mx-auto mt-3 justify-content-center align-items-center '>
+            {<p className='text-white' style={{ fontSize: "30px" }}> تم رفض الطلب بنجاح    </p>}
+            <Button
+              onClick={() => {
+                setFinishedRefuse(false)
+
+              }}
+              className='sumbmitAddUpdateUser'>حفظ</Button>
+
+          </div>
+        </Modal.Body>
+
+
+      </Modal >
+
+      }
 
 
 
@@ -308,7 +372,14 @@ export const ShowRequest = () => {
         </div>
       </fieldset>
 
+      <div className='my-3 mx-2 d-flex justify-content-end'>
+        <Button
+          onClick={() => {
+            setShowProject(false)
 
+          }}
+          className='sumbmitAddUpdateUser'>موافق</Button>
+      </div>
 
     </div>
 

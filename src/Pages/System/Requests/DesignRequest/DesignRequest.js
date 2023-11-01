@@ -5,8 +5,10 @@ import DataTableComponent from '../../../../Components/DataTableComponent'
 import { useState } from 'react'
 import { Button } from 'react-bootstrap'
 import { ShowRequest } from '../../../../Components/System/ShowRequest/ShowRequest'
+import EditDesignRequest from '../../../../Components/System/Requests/EditRequest/EditDesignRequest'
 const DesignRequest = () => {
   const [showProject, setShowProject] = useState(false)
+  const [editRequest, setEditRequest] = useState(false)
 
 
   const DesignProjects = Array.from({ length: 10 }).map((_, index) => {
@@ -18,7 +20,7 @@ const DesignRequest = () => {
       ProjectType: 'تصميم',
       status: "قيد الا نتظار",
       display: <img src={process.env.PUBLIC_URL + "/icons/view.png"} onClick={() => { setShowProject(true) }} className='display_project  rounded' alt=' display project' />,
-      edit: <img src={process.env.PUBLIC_URL + "/edit.png"} className=' edit_project  rounded' alt=' edit project' />
+      edit: <img src={process.env.PUBLIC_URL + "/edit.png"} onClick={() => { setEditRequest(true) }} className=' edit_project  rounded' alt=' edit project' />
     }
   });
 
@@ -58,7 +60,7 @@ const DesignRequest = () => {
       selector: row => row.edit,
     },
   ];
-
+  console.log(editRequest)
 
 
 
@@ -82,11 +84,11 @@ const DesignRequest = () => {
             <DataTableComponent className={"overflow-x-hidden datatableComponent"} columns={columns} data={DesignProjects} />
           </div>
         </fieldset>
-      </div> : <ShowRequest/> 
+      </div> : <ShowRequest setShowProject={setShowProject} />
 
 
       }
-
+      {editRequest && <EditDesignRequest editRequest={editRequest} setEditRequest={setEditRequest} />}
 
     </div>
   )

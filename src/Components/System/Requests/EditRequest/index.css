@@ -1,0 +1,75 @@
+.systemModal .form-control {
+    background-color: #2B2B40 !important;
+    border: unset !important;
+    color: rgba(255, 255, 255, 0.50) !important;
+
+}
+
+.systemModal .form-control::placeholder {
+    color: rgba(255, 255, 255, 0.50) !important;
+}
+
+.systemModal .form-control:focus {
+    color: rgba(255, 255, 255, 0.50) !important;
+    ;
+}
+
+.systemModal .form-label {
+    color: white !important;
+}
+
+.systemModal .css-1ng70dv-control {
+    background: #2B2B40 !important;
+    background-color: #2B2B40 !important;
+    border: unset !important;
+}
+
+.systemModal .css-1ng70dv-control:hover {
+    background: #2B2B40 !important;
+
+}
+
+.systemModal .css-m1smmt-control:hover {
+    background: #2B2B40 !important;
+    background-color: #2B2B40 !important;
+
+
+}
+
+.systemModal .css-m1smmt-control {
+    background: #2B2B40 !important;
+    background-color: #2B2B40 !important;
+
+
+}
+
+.systemModal .licenseDate-container {
+    width: 75% !important;
+}
+
+.systemModal .css-1nmdiq5-menu {
+    background-color: #1E1E2D !important;
+    color: white !important;
+    height: 200px;
+
+}
+
+.systemModal .edit-header {
+
+    border-radius: 5px;
+    border: 1px solid #EFAA20;
+}
+
+.systemModal .css-qbdosj-Input {}
+
+.sumbmitAddUpdateUser {
+    width: 139px !important;
+    height: 35px !important;
+    border-radius: 6px !important;
+    background: #EFAA20 !important;
+    border: unset !important;
+    color: #1E1E2D !important;
+    font-size: 15px !important;
+    line-height: 25.31px;
+    font-weight: 500px !important;
+}

@@ -13,10 +13,10 @@ const AllRequests = () => {
 
 
     return (
-        <div className='all-Requests'>
+        <div className='all-Requests h-100'>
 
             <SystemControler child={<AddUserButton />} />
-            <div className='row'>
+            <div className='row '>
                 <div className='col-md-3'>
                     <AllCategories child={<div className='d-flex  flex-column   align-items-center '>
 
