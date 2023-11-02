@@ -8,17 +8,17 @@
 .TableContainer {
     border-radius: 22px;
     border: 1px solid rgba(239, 170, 32, 0.50);
-
-    width: 95%;
+  
+    width: 98%;
 
 
 
 }
 
 .datatableComponent {
-    overflow-x: hidden;
+    overflow-x: auto;
 
-    height: 360px;
+    height: 400px;
 }
 
 
@@ -30,3 +30,8 @@
     height: 28px;
     cursor: pointer;
 }
+
+.DesignCasesRequest legend{
+    font-size: 16px !important;
+ }
+ 

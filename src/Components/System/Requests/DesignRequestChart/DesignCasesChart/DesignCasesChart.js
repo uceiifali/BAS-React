@@ -1,22 +1,28 @@
 import React from "react";
 import ReactApexChart from "react-apexcharts";
 
-class DesignRequestChart extends React.Component {
+class DesignCasesChart extends React.Component {
     constructor(props) {
         super(props);
 
+
+
+        const { projectType, color } = this.props
+
         this.state = {
 
-            series: [50, 30, 10, 10],
+            series: [2,9],
             options: {
                 chart: {
                     width: 380,
                     type: 'donut',
                 },
-                labels: [`قيد التنفيذ `, `فى الانتظار  `, `منتهية`, `مرفوضة`],
+                labels: [projectType],
 
 
-                colors: ["#4200FF", "#D59921", "#03795D", "#E40038"],
+
+
+                colors: [color,"#151A20"],
                 stroke: {
                     show: false // Set this to false to remove the border of the donut segments
                 },
@@ -47,6 +53,25 @@ class DesignRequestChart extends React.Component {
         };
     }
 
+    componentDidUpdate(prevProps) {
+        // Check if the color prop has changed
+        if (this.props.color !== prevProps.color) {
+            this.updateChart(this.props.color);
+        }
+    }
+    updateChart(newColor) {
+        // Perform actions to update the chart with the new color
+        this.setState((prevState) => ({
+            options: {
+              ...prevState.options,
+              colors: [newColor,"#151A20"],
+            },
+          }));
+
+    }
+    componentDidMount() {
+        this.updateChart(this.props.color);
+    }
 
 
 
@@ -57,7 +82,7 @@ class DesignRequestChart extends React.Component {
             <div>
                 <div class="chart-wrap">
                     <div id="chart">
-                        <ReactApexChart options={this.state.options} series={this.state.series} type="donut" width={400} />
+                        <ReactApexChart options={this.state.options} series={this.state.series} type="donut" height={160} />
                     </div>
                 </div>
 
@@ -65,4 +90,4 @@ class DesignRequestChart extends React.Component {
             </div>)
     }
 }
-export default DesignRequestChart
+export default DesignCasesChart

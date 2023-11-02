@@ -2,7 +2,9 @@ import React from 'react'
 import { Button, Form, Image, Modal } from 'react-bootstrap'
 import "./index.css"
 import { useState } from 'react'
-export const ShowRequest = ({setShowProject}) => {
+import EditDesignRequest from '../Requests/EditRequest/EditDesignRequest'
+import ConfirmPoper from '../ConfirmPoper'
+export const ShowRequest = ({ setShowProject }) => {
   const [showImg, setShowImg] = useState(false)
   const [imgSrc, setImgSrc] = useState(`${process.env.PUBLIC_URL}/icons/show.png`)
   const [acceptRequest, setAcceptRequest] = useState(false)
@@ -10,8 +12,8 @@ export const ShowRequest = ({setShowProject}) => {
   const [refuseRequest, setRefuseRequest] = useState(false)
   const [confirmRefuseRequest, setConfirmRefuseRequest] = useState(false)
   const [finishedRefuse, setFinishedRefuse] = useState(false)
-
-
+  const [editRequest, setEditRequest] = useState(false)
+  const [ConfirmUpdate, setConfirmUpdate] = useState(false)
   const handleAcceptRequest = () => {
     setConfirmAcceptRequest(true)
 
@@ -39,14 +41,14 @@ export const ShowRequest = ({setShowProject}) => {
 
 
   return (
-    <div className='showRequest p-2'>
+    <div className='   p-2'>
       {showImg &&
         <Modal
           size="lg"
           show={showImg}
           onHide={() => setShowImg(false)}
           aria-labelledby="example-modal-sizes-title-lg"
-          className='systemModal   showRequestImg'
+          className='   showRequestImg'
         >
           <Image className='pointer w-100 h-100  instrutmentimg' src={imgSrc} alt='owner img' />
         </Modal>}
@@ -227,7 +229,8 @@ export const ShowRequest = ({setShowProject}) => {
 
       }
 
-
+      {editRequest && <EditDesignRequest editRequest={editRequest} setEditRequest={setEditRequest} setConfirmPoper={setConfirmUpdate} />}
+      {ConfirmUpdate && <ConfirmPoper confirmPoper={ConfirmUpdate} setConfirmPoper={setConfirmUpdate} setEditRequest={setEditRequest} text={"تم تعديل الطلب فى المشاريع بنجاح  "} />}
 
       <div className='border-golden'>
         <div className='row px-2 py-3'>
@@ -273,7 +276,7 @@ export const ShowRequest = ({setShowProject}) => {
                 }}
 
                 src={process.env.PUBLIC_URL + "/icons/declince.png"} />
-              <img className='pointer editIcon' src={process.env.PUBLIC_URL + "/icons/editIcon.png"} />
+              <img className='pointer editIcon' onClick={()=>{setEditRequest(true)}} src={process.env.PUBLIC_URL + "/icons/editIcon.png"} />
 
             </div>
 
@@ -285,7 +288,7 @@ export const ShowRequest = ({setShowProject}) => {
 
           </div>
 
-        </div>
+        </div>  
 
       </div>
       <fieldset className='border-golden my-4'>

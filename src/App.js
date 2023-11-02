@@ -20,7 +20,9 @@ import { CountriesChart } from './Pages/System/Users/AllUsersChart/CountriesChar
 import CountryChart from './Pages/System/Users/AllUsersChart/CountryChart';
 import { AllRequestsCharts } from './Pages/System/Requests/AllRequestsChart/AllRequestsCharts';
 import AllRequests from './Pages/System/Requests/AllRequests/AllRequests';
-
+import SystemUsers from './Pages/System/Users/UserDetails/SystemUsers'
+import DesignRequest from './Pages/System/Requests/DesignRequest/DesignRequest';
+import DesignCasesRequest from './Pages/System/Requests/DesignRequest/DesignCasesRequest/DesignCasesRequest';
 
 
 
@@ -32,10 +34,10 @@ const SignIn = lazy(() => import("././Pages/DashBoard/SignIn/SignIn"))
 
 const ConfirmWithCode = lazy(() => import("././Pages/DashBoard/ConfirmWithCode/ConfirmWithCode"))
 const ForgetPassword = lazy(() => import("././Pages/DashBoard/ForgetPassword/ForgetPassword"))
-const SystemUsers = lazy(() => import('./Pages/System/Users/UserDetails/SystemUsers'))
 
-const PendingRequests = lazy(()=> import ("./Pages/System/Requests/PendingRequest/PendingRequest"))
-const DesignRequest = lazy(()=> import ('./Pages/System/Requests/DesignRequest/DesignRequest'))
+
+const PendingRequests = lazy(() => import("./Pages/System/Requests/DesignRequest/DesignCasesRequest/PendingRequest"))
+
 function App() {
 
   const router = createBrowserRouter([
@@ -74,7 +76,7 @@ function App() {
       element: < SystemIndex />,
       children: [
         //system  users
-        { path: "/System/users", element: <Suspense fallback={<Loading />} > <SystemUsers /></Suspense> },
+        { path: "/System/users", element: <SystemUsers /> },
         // system charts
         {
           path: "", element: <AllUsersChart />, children: [
@@ -85,14 +87,16 @@ function App() {
         },
         // system Requests
         {
-          path: "", element:  <AllRequests /> ,children: [
-            { path: "/System/Requests/index", element: <Suspense fallback={<Loading />} > <AllRequestsCharts/> </Suspense> },
-            { path: "System/Requests/pendingRequest", element: <Suspense fallback={<Loading />} > <PendingRequests /> </Suspense> },
-            { path: "System/Requests/Design", element: <Suspense fallback={<Loading />} > <DesignRequest /> </Suspense> },
+          path: "", element: <AllRequests />, children: [
+            { path: "/System/Requests/index", element: <Suspense fallback={<Loading />} > <AllRequestsCharts /> </Suspense> },
+            {
+              path: "System/Requests/Design", element: <DesignRequest />,
+            },
+            { path: "System/Requests/Design/:DesignProjectType", element: <DesignCasesRequest /> },
 
           ]
         },
-     
+
       ]
     },
 

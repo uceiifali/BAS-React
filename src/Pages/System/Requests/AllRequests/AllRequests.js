@@ -37,33 +37,39 @@ const AllRequests = () => {
 
                             <Accordion defaultActiveKey={null}  >
                                 <Accordion.Item eventKey="0">
-                                  
-                                        <Accordion.Header  >
-                                            <Link to={"System/Requests/Design"}>تصميم</Link>
+
+                                    <Accordion.Header  >
+                                        <Link to={"System/Requests/Design"}>تصميم</Link>
 
 
-                                            <MdKeyboardArrowDown size={20} />
-                                        </Accordion.Header>
-                             
+                                        <MdKeyboardArrowDown size={20} />
+                                    </Accordion.Header>
+
 
 
                                     <Accordion.Body>
                                         <div className='tabs d-flex justify-content-center align-items-center flex-column'>
                                             <div className='tab  text-end w-100'>
-                                                <Link to={"/System/Requests/pendingRequest"} >          طلبات قيد التنفيذ</Link>
+                                                <Link to={"System/Requests/Design/inProgress    "} >          طلبات قيد التنفيذ</Link>
 
                                             </div>
 
                                             <div className='tab  text-end w-100'>
-                                                <Link className='w-100' > طلبات  في انتظار  الموافقة</Link>
+                                                <Link className='w-100'
+                                                    to={"System/Requests/Design/pending"}
+                                                > طلبات  في انتظار  الموافقة</Link>
 
                                             </div>
                                             <div className='tab  text-end w-100'>
-                                                <Link >          طلبات  منتهية  </Link>
+                                                <Link
+                                                    to={"System/Requests/Design/confirm"}
+                                                >          طلبات  منتهية  </Link>
 
                                             </div>
                                             <div className='tab  text-end w-100'>
-                                                <Link >          طلبات  مرفوضة  </Link>
+                                                <Link
+                                                    to={"System/Requests/Design/rejected"}
+                                                >          طلبات  مرفوضة  </Link>
 
                                             </div>
 
@@ -85,14 +91,14 @@ const AllRequests = () => {
                             </Accordion>
                             <Accordion defaultActiveKey={null}  >
                                 <Accordion.Item eventKey="0">
-                              
-                                        <Accordion.Header>
 
-                                            <div>     اشراف علي التنفيذ</div>
+                                    <Accordion.Header>
 
-                                            <MdKeyboardArrowDown size={20} />
-                                        </Accordion.Header>
-                              
+                                        <div>     اشراف علي التنفيذ</div>
+
+                                        <MdKeyboardArrowDown size={20} />
+                                    </Accordion.Header>
+
 
                                     <Accordion.Body>
                                         <div className='tabs d-flex justify-content-center align-items-center flex-column'>

@@ -56,6 +56,14 @@ const ProfessinollInformation = () => {
       recivedDate: '12-10-2023',
       deliveryDate: '12-5-2024',
     },
+    {
+      id: 4,
+      ProjectName: 'BSA',
+      ProjectType: 'تصميم',
+      recivedDate: '12-10-2023',
+      deliveryDate: '12-5-2024',
+    },
+
 
 
   ]
@@ -82,6 +90,13 @@ const ProfessinollInformation = () => {
       recivedDate: '12-10-2023',
       deliveryDate: '12-5-2024',
     },
+    {
+      id: 4,
+      ProjectName: 'BSA',
+      ProjectType: 'ااشراف',
+      recivedDate: '12-10-2023',
+      deliveryDate: '12-5-2024',
+    },
 
 
   ]
@@ -105,6 +120,12 @@ const ProfessinollInformation = () => {
       id: 3,
       ProjectName: 'BSA',
       ProjectType: 'اخراج',
+      recivedDate: '12-10-2023',
+      deliveryDate: '12-5-2024',
+    }, {
+      id: 4,
+      ProjectName: 'BSA',
+      ProjectType: 'دراسات',
       recivedDate: '12-10-2023',
       deliveryDate: '12-5-2024',
     },
@@ -149,7 +170,7 @@ const ProfessinollInformation = () => {
               setProjectType("مشاريع منتهية")
                  
             }}>
-              <p className={`main-text  mb-0`}>مشاريع منتهية </p>
+              <p className={`  mb-0`}>مشاريع منتهية </p>
               <h3>  1</h3>
             </div>
             <div className={`project-card ${projectType=="مشاريع قيد التنفيذ"&& "golden-border"}`}
@@ -158,7 +179,7 @@ const ProfessinollInformation = () => {
 
               }}
             >
-              <p className='main-text mb-0'>مشاريع قيد التنفيذ</p>
+              <p className=' mb-0'>مشاريع قيد التنفيذ</p>
               <h3 className=''>  2</h3>
             </div>
             <div className={`project-card  ${projectType=="مشاريع المتأخرة"&& "golden-border"}`}
@@ -167,7 +188,7 @@ const ProfessinollInformation = () => {
 
               }}
             >
-              <p className='main-text mb-0'>  مشاريع المتأخرة</p>
+              <p className=' mb-0'>  مشاريع المتأخرة</p>
               <h3  >  3</h3>
             </div>
           </div>

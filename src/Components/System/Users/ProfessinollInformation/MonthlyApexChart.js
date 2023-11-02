@@ -24,7 +24,7 @@ class MonthlyApexChart extends React.Component {
                                     from: 60,
                                     to:90,
                                     
-                                    color: '', // Custom color for specific data range
+                                    color: '#FFF    ', // Custom color for specific data range
                                 },
                             ]
                         },
@@ -43,7 +43,7 @@ class MonthlyApexChart extends React.Component {
                     offsetY: -20,
                     style: {
                         fontSize: '12px',
-                        colors: ["#373751"]
+                        colors: ["#FFF"]
                     }
                 },
 
@@ -114,7 +114,7 @@ class MonthlyApexChart extends React.Component {
         return (
 
 
-            <div id="chart">
+            <div id="chart"  className='w-100'>
                 <ReactApexChart options={this.state.options} series={this.state.series} type="bar" height={305} />
             </div>)
     }

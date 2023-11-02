@@ -718,10 +718,6 @@ ol.progtrckr li.progtrckr-done:hover:before {
   display: block;
 }
 
-fieldset .legend {
-
-  width: 35% !important;
-}
 
 
 
@@ -1137,7 +1133,7 @@ fieldset .legend {
 }
 
 legend {
-  width: 25% !important;
+  width: 30% !important;    
   float: unset !important;
   color: #fff;
   padding: 3px 6px;

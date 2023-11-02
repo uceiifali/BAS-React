@@ -29,7 +29,8 @@ export const AccountaingInformation = () => {
                     <p>  بداية من شهر    : <span> ------</span></p>
                 </div>
             </div>
-            <div className='golden-square p-3'>
+            <fieldset className='golden-square  mt-3  p-3'>
+                <legend className='text-center'>الخصومات</legend>
                 <div className=' mt-3 '>
 
                     <p className=' my-4'>  نسبة الخصم : <span>------</span></p>
@@ -38,7 +39,7 @@ export const AccountaingInformation = () => {
                      placeholder='ادخل ملاحظاتك هنا ....' rows={10} cols={10} className='form-control wirte-notes'/>
                 </div>
 
-            </div>
+            </fieldset>
         </div>
     )
 }

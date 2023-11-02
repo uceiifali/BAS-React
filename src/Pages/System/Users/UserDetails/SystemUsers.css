@@ -176,6 +176,9 @@
   cursor: pointer;
 }
 
+
+
+
 @media screen and (max-width:1400px) {
   .name-heade {
     font-size: 14px;
@@ -212,7 +215,7 @@
 }
 
 .golden-square {
-  border: 1px solid rgba(213, 153, 33, 0.20);
+  border:1px solid rgba(213, 153, 33, 0.50) !important
 }
 
 .show-employee::-webkit-scrollbar-track {

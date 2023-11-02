@@ -1,16 +1,16 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Button, Form, Modal } from 'react-bootstrap'
 import "./index.css"
 import Input from '../../../FormHandler/Input'
 import KSACites from '../../../KSACItes'
 import { UseInput, UseSelect } from '../../../../hooks'
 import Select from '../../../FormHandler/Select'
-import { useEffect } from 'react'
+
 import { useState } from 'react'
 import { ConfirmPopup } from 'primereact/confirmpopup'
 import ConfirmPoper from '../../ConfirmPoper'
 
-const EditDesignRequest = ({ editRequest, setEditRequest }) => {
+const EditDesignRequest = ({ editRequest, setEditRequest ,setConfirmPoper }) => {
 
 
 
@@ -155,8 +155,9 @@ const EditDesignRequest = ({ editRequest, setEditRequest }) => {
     //after confirming the data is updated 
 
 
-    setConfirmUpdate(true)
-
+    setEditRequest(false )
+    setConfirmPoper(true)
+    
   }
 
 
@@ -174,7 +175,7 @@ const EditDesignRequest = ({ editRequest, setEditRequest }) => {
   return (
     <div>
 
-      {ConfirmUpdate && <ConfirmPoper confirmPoper={ConfirmUpdate} setConfirmPoper={setConfirmUpdate} setEditRequest={setEditRequest} text={"تم تعديل الطلب فى المشاريع بنجاح  "} />}
+   
       {editRequest && <Modal
         size="lg"
         show={editRequest}
@@ -183,9 +184,9 @@ const EditDesignRequest = ({ editRequest, setEditRequest }) => {
         className='systemModal    '
       >
 
-        <div className='p-1 mx-auto edit-header
+        <div className='p-1 mx-auto my-3 edit-header
          w-50'>
-          <h2 className='golden  text-center'>تعديل فى طلب التصميم</h2>
+          <p className='golden   text-center'>تعديل فى طلب التصميم</p>
         </div>
 
 

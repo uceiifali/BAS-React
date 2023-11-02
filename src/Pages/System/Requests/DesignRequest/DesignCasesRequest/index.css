@@ -1,0 +1,6 @@
+ .DesignCasesRequest    .apexcharts-legend-series    {
+   display: none!important;
+} 
+.DesignCasesRequest .apexcharts-tooltip {
+    display: none !important;
+}

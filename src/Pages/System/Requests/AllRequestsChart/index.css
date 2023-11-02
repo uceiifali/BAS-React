@@ -2,6 +2,7 @@
     width: 100%;
     height: 801px;
     border-radius: 19px;
+    overflow-y: auto;
     background: #1E1E2D;
     
 

@@ -1,15 +1,16 @@
-import React from 'react'
+import React, { useState } from 'react'
 import "./index.css"
 import DesignRequestChart from '../../../../Components/System/Requests/DesignRequestChart/DesignRequestChart'
 import DataTableComponent from '../../../../Components/DataTableComponent'
-import { useState } from 'react'
+
 import { Button } from 'react-bootstrap'
 import { ShowRequest } from '../../../../Components/System/ShowRequest/ShowRequest'
 import EditDesignRequest from '../../../../Components/System/Requests/EditRequest/EditDesignRequest'
+import ConfirmPoper from '../../../../Components/System/ConfirmPoper'
 const DesignRequest = () => {
   const [showProject, setShowProject] = useState(false)
   const [editRequest, setEditRequest] = useState(false)
-
+  const [ConfirmUpdate,setConfirmUpdate]= useState(false)
 
   const DesignProjects = Array.from({ length: 10 }).map((_, index) => {
     return {
@@ -65,8 +66,8 @@ const DesignRequest = () => {
 
 
   return (
-    <div className='AllRequests'>
-      {!showProject ? <div className='mt-4  '>
+    <div className='AllRequests p-3'>
+      {!showProject ? <div className='  '>
         <div className='designChartContainer d-flex justify-content-center align-items-center'>
 
           <DesignRequestChart />
@@ -88,8 +89,8 @@ const DesignRequest = () => {
 
 
       }
-      {editRequest && <EditDesignRequest editRequest={editRequest} setEditRequest={setEditRequest} />}
-
+      {editRequest && <EditDesignRequest editRequest={editRequest} setEditRequest={setEditRequest} setConfirmPoper={setConfirmUpdate} />}
+      {ConfirmUpdate && <ConfirmPoper confirmPoper={ConfirmUpdate} setConfirmPoper={setConfirmUpdate} setEditRequest={setEditRequest} text={"تم تعديل الطلب فى المشاريع بنجاح  "} />}
     </div>
   )
 }
