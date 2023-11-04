@@ -1,4 +1,4 @@
-.designChartContainer {
+.reviewChartContainer {
     height: 40%;
     width: 100%;
     border-radius: 19px;
@@ -8,7 +8,7 @@
 .TableContainer {
     border-radius: 22px;
     border: 1px solid rgba(239, 170, 32, 0.50);
-    
+  
     width: 98%;
 
 
@@ -16,10 +16,9 @@
 }
 
 .datatableComponent {
-    overflow-x: scroll;
+    overflow-x: auto;
 
     height: 400px;
-    
 }
 
 
@@ -32,7 +31,7 @@
     cursor: pointer;
 }
 
-.DesignCasesRequest legend{
+.reviewChartContainer legend{
     font-size: 16px !important;
  }
  

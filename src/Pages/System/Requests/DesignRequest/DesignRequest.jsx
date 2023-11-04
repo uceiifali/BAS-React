@@ -4,7 +4,7 @@ import DesignRequestChart from '../../../../Components/System/Requests/DesignReq
 import DataTableComponent from '../../../../Components/DataTableComponent'
 
 import { Button } from 'react-bootstrap'
-import { ShowRequest } from '../../../../Components/System/ShowRequest/ShowRequest'
+import ShowDesignRequest from '../../../../Components/System/ShowRequest/ShowDesignRequest'
 import EditDesignRequest from '../../../../Components/System/Requests/EditRequest/EditDesignRequest'
 import ConfirmPoper from '../../../../Components/System/ConfirmPoper'
 const DesignRequest = () => {
@@ -18,6 +18,7 @@ const DesignRequest = () => {
       ProjectName: 'BSA',
       ProjectNumber: '53543',
       recivedDate: '12-10-2023',
+      deliverDate :"24-11-2023",
       ProjectType: 'تصميم',
       status: "قيد الا نتظار",
       display: <img src={process.env.PUBLIC_URL + "/icons/view.png"} onClick={() => { setShowProject(true) }} className='display_project  rounded' alt=' display project' />,
@@ -43,6 +44,10 @@ const DesignRequest = () => {
     {
       name: '  تاريخ الاستلام',
       selector: row => row.recivedDate,
+    },
+    {
+      name: '  تاريخ الاستلام',
+      selector: row => row.deliverDate,
     },
     {
       name: '   نوع المشروع',
@@ -85,7 +90,7 @@ const DesignRequest = () => {
             <DataTableComponent className={"overflow-x-hidden datatableComponent"} columns={columns} data={DesignProjects} />
           </div>
         </fieldset>
-      </div> : <ShowRequest setShowProject={setShowProject} />
+      </div> : <ShowDesignRequest setShowProject={setShowProject} />
 
 
       }

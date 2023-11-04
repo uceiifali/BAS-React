@@ -23,6 +23,8 @@ import AllRequests from './Pages/System/Requests/AllRequests/AllRequests';
 import SystemUsers from './Pages/System/Users/UserDetails/SystemUsers'
 import DesignRequest from './Pages/System/Requests/DesignRequest/DesignRequest';
 import DesignCasesRequest from './Pages/System/Requests/DesignRequest/DesignCasesRequest/DesignCasesRequest';
+import ReviewRequest from './Pages/System/Requests/ReviewRequest.jsx/ReviewRequest';
+import ReviewCasesRequest from './Pages/System/Requests/ReviewRequest.jsx/ReviewCasesRquest/ReviewCasesRequest';
 
 
 
@@ -36,7 +38,6 @@ const ConfirmWithCode = lazy(() => import("././Pages/DashBoard/ConfirmWithCode/C
 const ForgetPassword = lazy(() => import("././Pages/DashBoard/ForgetPassword/ForgetPassword"))
 
 
-const PendingRequests = lazy(() => import("./Pages/System/Requests/DesignRequest/DesignCasesRequest/PendingRequest"))
 
 function App() {
 
@@ -93,6 +94,11 @@ function App() {
               path: "System/Requests/Design", element: <DesignRequest />,
             },
             { path: "System/Requests/Design/:DesignProjectType", element: <DesignCasesRequest /> },
+            {
+              path: "System/Requests/Review", element: <ReviewRequest />,
+            },
+            { path: "System/Requests/Review/:ReviewProjectType", element: <ReviewCasesRequest /> },
+
 
           ]
         },

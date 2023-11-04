@@ -35,7 +35,7 @@ const CreateProjectPoper = (props) => {
 
             </Modal.Header>
             <Modal.Body >
-                <section className='choose-filed'>
+                <section className='choose-filed w-100'>
 
                     <div className='d-flex mb-4  justify-content-center'><Image src="/logo.jpg" width={200} height={100} alt='BSA LOGO' className='opacity-75' /></div>
                     <div className='my-4 row justify-content-around g-2'>

@@ -94,7 +94,9 @@ const AllRequests = () => {
 
                                     <Accordion.Header>
 
-                                        <div>     اشراف علي التنفيذ</div>
+                                        <Link
+                                            to={"System/Requests/Review"}
+                                        >     اشراف علي التنفيذ</Link>
 
                                         <MdKeyboardArrowDown size={20} />
                                     </Accordion.Header>
@@ -102,14 +104,32 @@ const AllRequests = () => {
 
                                     <Accordion.Body>
                                         <div className='tabs d-flex justify-content-center align-items-center flex-column'>
-                                            <Link to={"/System/users"}>
-                                                <div className='tab  text-end w-100'>
-                                                    طلبات منتهية
+                                            <div className='tab  text-end w-100'>
+                                                <Link to={"System/Requests/Review/inProgress"} >          طلبات قيد التنفيذ</Link>
 
-                                                </div>
-                                            </Link>
+                                            </div>
+
+                                            <div className='tab  text-end w-100'>
+                                                <Link className='w-100'
+                                                    to={"System/Requests/Review/pending"}
+                                                > طلبات  في انتظار  الموافقة</Link>
+
+                                            </div>
+                                            <div className='tab  text-end w-100'>
+                                                <Link
+                                                    to={"System/Requests/Review/confirm"}
+                                                >          طلبات  منتهية  </Link>
+
+                                            </div>
+                                            <div className='tab  text-end w-100'>
+                                                <Link
+                                                    to={"System/Requests/Review/rejected"}
+                                                >          طلبات  مرفوضة  </Link>
+
+                                            </div>
 
                                         </div>
+
                                     </Accordion.Body>
                                 </Accordion.Item>
 

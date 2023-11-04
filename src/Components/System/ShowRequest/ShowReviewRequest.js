@@ -4,7 +4,7 @@ import "./index.css"
 import { useState } from 'react'
 import EditDesignRequest from '../Requests/EditRequest/EditDesignRequest'
 import ConfirmPoper from '../ConfirmPoper'
-export const ShowRequest = ({ setShowProject }) => {
+const ShowReviewRequest = ({ setShowProject }) => {
   const [showImg, setShowImg] = useState(false)
   const [imgSrc, setImgSrc] = useState(`${process.env.PUBLIC_URL}/icons/show.png`)
   const [acceptRequest, setAcceptRequest] = useState(false)
@@ -246,7 +246,7 @@ export const ShowRequest = ({ setShowProject }) => {
 
           </div>
           <div className='col-md-6 mb-2'>
-            <p className='text-white'>نوع المشروع :   <span>التصميم</span> </p>
+            <p className='text-white'>نوع المشروع :   <span>الاشراف</span> </p>
 
           </div>
           <div className='col-md-6 mb-2'>
@@ -276,7 +276,7 @@ export const ShowRequest = ({ setShowProject }) => {
                 }}
 
                 src={process.env.PUBLIC_URL + "/icons/declince.png"} />
-              <img className='pointer editIcon' onClick={()=>{setEditRequest(true)}} src={process.env.PUBLIC_URL + "/icons/editIcon.png"} />
+              <img className='pointer editIcon' onClick={() => { setEditRequest(true) }} src={process.env.PUBLIC_URL + "/icons/editIcon.png"} />
 
             </div>
 
@@ -288,7 +288,7 @@ export const ShowRequest = ({ setShowProject }) => {
 
           </div>
 
-        </div>  
+        </div>
 
       </div>
       <fieldset className='border-golden my-4'>
@@ -388,3 +388,4 @@ export const ShowRequest = ({ setShowProject }) => {
 
   )
 }
+export default ShowReviewRequest

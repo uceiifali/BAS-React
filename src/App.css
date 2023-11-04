@@ -15,15 +15,19 @@ body {
   padding: 0px !important;
   margin: 0px !important;
 }
-.navbar-toggler-icon{
+
+.navbar-toggler-icon {
   background-image: url("data:image/svg+xml,%3csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 30 30%27%3e%3cpath stroke=%27rgba%280, 0, 0, 0.55%29%27 stroke-linecap=%27round%27 stroke-miterlimit=%2710%27 stroke-width=%272%27 d=%27M4 7h22M4 15h22M4 23h22%27/%3e%3c/svg%3e") !important;
 }
-.navbar{
+
+.navbar {
   z-index: 100 !important;
 }
-button{
+
+button {
   box-shadow: unset !important;
 }
+
 .home-layer {
   background-color: rgba(0, 35, 82, 0.5);
   position: absolute;
@@ -31,9 +35,10 @@ button{
   left: 0;
   width: 100%;
 }
-.border-golden{
+
+.border-golden {
   border-radius: 19px;
-border: 1px solid rgba(239, 170, 32, 0.50);
+  border: 1px solid rgba(239, 170, 32, 0.50);
 }
 
 .Main-background {
@@ -66,17 +71,6 @@ border: 1px solid rgba(239, 170, 32, 0.50);
 
 
 
-@media screen and (max-width:760px) {
-
-  .main-text {
-
-    font-size: 14px;
-    font-style: normal;
-
-  }
-
-
-}
 
 .Design-Step-one .dropdown button {
   width: 100% !important;
@@ -1112,7 +1106,8 @@ ol.progtrckr li.progtrckr-done:hover:before {
 .react-international-phone-input {
   width: 85% !important;
 }
-.export-bg{
+
+.export-bg {
   outline: unset !important;
   box-shadow: unset !important;
 }
@@ -1133,7 +1128,7 @@ ol.progtrckr li.progtrckr-done:hover:before {
 }
 
 legend {
-  width: 30% !important;    
+  width: 30% !important;
   float: unset !important;
   color: #fff;
   padding: 3px 6px;
@@ -1146,12 +1141,14 @@ legend {
   align-items: center;
 }
 
-.bzUdFx{
+.bzUdFx {
   justify-content: center !important;
-}   
+}
+
 .gnBnkV {
   justify-content: center;
 }
+
 /* .slider-Container{
 width: 250px !important;
 height: 250px !important;
@@ -1160,4 +1157,16 @@ height: 250px !important;
   .main-text {
     font-size: 14px !important;
   }
+}
+
+@media screen and (max-width:760px) {
+
+  .main-text {
+
+    font-size: 14px;
+    font-style: normal;
+
+  }
+
+
 }

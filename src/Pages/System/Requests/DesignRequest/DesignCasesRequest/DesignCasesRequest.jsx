@@ -4,7 +4,7 @@ import EditDesignRequest from '../../../../../Components/System/Requests/EditReq
 import { useParams } from 'react-router-dom'
 import DesignRequestChart from '../../../../../Components/System/Requests/DesignRequestChart/DesignRequestChart'
 import DataTableComponent from '../../../../../Components/DataTableComponent'
-import { ShowRequest } from '../../../../../Components/System/ShowRequest/ShowRequest'
+import ShowDesignRequest from '../../../../../Components/System/ShowRequest/ShowDesignRequest'
 import "./index.css"
 import DesignCasesChart from '../../../../../Components/System/Requests/DesignRequestChart/DesignCasesChart/DesignCasesChart'
 const DesignCasesRequest = () => {
@@ -146,7 +146,7 @@ const DesignCasesRequest = () => {
             <DataTableComponent className={"overflow-x-scroll datatableComponent"} columns={columns} data={DesignCasesProjects} />
           </div>
         </fieldset>
-      </div> : <ShowRequest setShowProject={setShowProject} />
+      </div> : <ShowDesignRequest setShowProject={setShowProject} />
 
 
       }
