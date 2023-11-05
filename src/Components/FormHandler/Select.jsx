@@ -17,6 +17,7 @@ const Select = React.forwardRef((props, ref) => {
     async = false,
     autoHeight = false,
     className = '',
+    
     cacheOptions = true } = props;
 
   let hasWarning = submitted && validator && !validator.valid;
@@ -32,6 +33,7 @@ const Select = React.forwardRef((props, ref) => {
         width
         height
         // menuPlacement='اختر'
+        onChange={onchange}
         
         className={`react-select ${className} ${(submitted && validator && !validator.valid) ? 'is-invalid' : ''}`}
         {...props}
@@ -46,7 +48,7 @@ const Select = React.forwardRef((props, ref) => {
         height
         className={`react-select ${className} ${(submitted && validator && !validator.valid) ? 'is-invalid' : ''}`}
         {...props}
-       
+        onChange={onchange}
         cacheOptions={cacheOptions}
         defaultOptions={[]}
       />}

@@ -53,7 +53,7 @@ const SystemUsers = () => {
 
 
 
-  
+
     const colourStyles = {
         placeholder: (defaultStyles) => {
             return {
@@ -120,12 +120,12 @@ const SystemUsers = () => {
                         <div className='row'>
                             <div className='col-md-6'>
 
-                             <AllUserCategories/>   
+                                <AllUserCategories />
                             </div>
                             <div className='col-md-6'>
 
-                           {/* search users */}
-                    <SearchUsers/>
+                                {/* search users */}
+                                <SearchUsers />
                             </div>
                         </div>
                     </div>

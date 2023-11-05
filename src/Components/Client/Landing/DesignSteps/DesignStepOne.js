@@ -45,7 +45,7 @@ const DesignStepOne = (props) => {
         } :""
 
         , "Select", true);
-    const navigate = useNavigate()
+
     const serviceTypeRoles = [
 
         {

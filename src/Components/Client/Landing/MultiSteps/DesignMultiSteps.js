@@ -43,10 +43,10 @@ const DesignMultiSteps = ({ openDesignSteps, setOpenDesignSteps }) => {
                         <DesignStepOne title='  بيانات المشروع   ' />
                         <DesignStepTwo title=' بيانات المالك' />
                         <DesignStepThree title='بيانات الملكية ' />
-                 
+
                     </MultiStep >
 
-             
+
                 </Modal.Body>
 
 

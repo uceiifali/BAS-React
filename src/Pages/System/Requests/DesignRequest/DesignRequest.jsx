@@ -10,22 +10,28 @@ import ConfirmPoper from '../../../../Components/System/ConfirmPoper'
 const DesignRequest = () => {
   const [showProject, setShowProject] = useState(false)
   const [editRequest, setEditRequest] = useState(false)
-  const [ConfirmUpdate,setConfirmUpdate]= useState(false)
-
+  const [ConfirmUpdate, setConfirmUpdate] = useState(false)
+  const [DesignProjectType, SetDesignProjectType] = useState("")
   const DesignProjects = Array.from({ length: 10 }).map((_, index) => {
     return {
       id: 1,
       ProjectName: 'BSA',
       ProjectNumber: '53543',
       recivedDate: '12-10-2023',
-      deliverDate :"24-11-2023",
+      deliverDate: "24-11-2023",
       ProjectType: 'تصميم',
       status: "قيد الا نتظار",
-      display: <img src={process.env.PUBLIC_URL + "/icons/view.png"} onClick={() => { setShowProject(true) }} className='display_project  rounded' alt=' display project' />,
+      enStatus: "inProgress",
+      display: <img src={process.env.PUBLIC_URL + "/icons/view.png"} onClick={() => {
+        setShowProject(true)
+        SetDesignProjectType(DesignProjects[index]?.enStatus)
+
+      }} className='display_project  rounded' alt=' display project' />,
       edit: <img src={process.env.PUBLIC_URL + "/edit.png"} onClick={() => { setEditRequest(true) }} className=' edit_project  rounded' alt=' edit project' />
     }
   });
 
+  console.log(DesignProjectType)
 
 
   const columns = [
@@ -66,7 +72,6 @@ const DesignRequest = () => {
       selector: row => row.edit,
     },
   ];
-  console.log(editRequest)
 
 
 
@@ -90,7 +95,7 @@ const DesignRequest = () => {
             <DataTableComponent className={"overflow-x-hidden datatableComponent"} columns={columns} data={DesignProjects} />
           </div>
         </fieldset>
-      </div> : <ShowDesignRequest setShowProject={setShowProject} />
+      </div> : <ShowDesignRequest DesignProjectType={DesignProjectType} setShowProject={setShowProject} />
 
 
       }

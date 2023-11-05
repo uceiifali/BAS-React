@@ -258,3 +258,8 @@
 
     overflow: unset !important;
 }
+.full-system .kgGExh{
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+    min-width: unset !important;    
+}

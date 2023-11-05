@@ -7,6 +7,8 @@ import { useNavigate } from 'react-router-dom'
 
 export const multiStepContext = React.createContext()
 const StepContext = ({ children }) => {
+    const [checkProjectType,setCheckProjectType] = useState("")
+
     const [openDesignSteps, setOpenDesignSteps] = useState(false)
     const [openReviewSteps, setOpenReviewSteps] = useState(false)
     const [userData, setUserData] = useState([])
@@ -76,7 +78,7 @@ const StepContext = ({ children }) => {
 
     return (
         <div>
-            <multiStepContext.Provider value={{setOpenReviewSteps,openReviewSteps,setOpenDesignSteps,openDesignSteps,openCongrats,setOpenCongrats, userData, setUserData, finalData, setFinalData, currentStep, setStep, openDesign, setOpenDesign, submitDesign, submitReview, Submitted }}>
+            <multiStepContext.Provider value={{setOpenReviewSteps,checkProjectType,setCheckProjectType,openReviewSteps,setOpenDesignSteps,openDesignSteps,openCongrats,setOpenCongrats, userData, setUserData, finalData, setFinalData, currentStep, setStep, openDesign, setOpenDesign, submitDesign, submitReview, Submitted }}>
 
                 {children}
 

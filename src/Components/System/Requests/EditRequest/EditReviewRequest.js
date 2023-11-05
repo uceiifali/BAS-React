@@ -5,7 +5,7 @@ import Input from '../../../FormHandler/Input'
 import KSACites from '../../../KSACItes'
 import { UseInput, UseSelect } from '../../../../hooks'
 import Select from '../../../FormHandler/Select'
-
+import DatePicker from 'react-datepicker';
 import { useState } from 'react'
 import { ConfirmPopup } from 'primereact/confirmpopup'
 import ConfirmPoper from '../../ConfirmPoper'
@@ -69,12 +69,11 @@ const EditReviewRequest = ({ editRequest, setEditRequest, setConfirmPoper }) => 
 
 
     //agent 
-    const agent = UseInput(``, "text", true);
-    const agencyNumber = UseInput(``, "number", true);
-    const [agencyAttachments, setAgencyAttachments] = useState(null)
-    const instrumentNumber = UseInput(``, "number", true);
-    const [InstrumentAttachments, setInstrumentAttachments] = useState(null);
-
+    const licenseNumber = UseInput(``, "number", true);
+    const licenseDeed = UseInput(``, "number", true);
+    const [licenseDate, setlicenseDate] = useState(null)
+    const [licenseAttachments, setlicenseAttachments] = useState(null);
+    const [notes, setNotes] = useState("")
 
 
 
@@ -235,48 +234,65 @@ const EditReviewRequest = ({ editRequest, setEditRequest, setConfirmPoper }) => 
 
                         </fieldset>
                         <fieldset className='p-1 my-3 mx-auto border-golden w-90 p-3 '>
-                            <legend className='text-center'>بيانات الوكيل</legend>
+                            <legend className='text-center'>بيانات الرخصة</legend>
 
                             <div className='row  w-100'>
 
                                 <div className="col-md-6 mb-4">
-                                    <Input label={" الوكيل "} {...agent.bind} mandatory />
+                                    <Input label={" رقم الرخصة "} {...licenseNumber.bind} mandatory />
                                 </div>
+
+                                <div className='col-md-6  mb-4'>
+                                    <div>
+                                        <Form.Group className='licenseDate-container' controlId="licenseDate">
+                                            <Form.Label className="d-flex gap-2 align-items-center">
+                                                تاريخ الرخصة
+                                            </Form.Label>
+
+                                            <DatePicker
+
+                                                selected={licenseDate}
+                                                placeholderText=" ادخل تاريخ الرخصة "
+                                                onChange={date => setlicenseDate(date)}
+                                                dateFormat="dd-MM-yyyy"
+                                                className='w-100 form-control'
+                                            />
+
+
+
+
+
+                                        </Form.Group>
+                                    </div>
+
+                                </div>
+
                                 <div className="col-md-6 mb-4">
-                                    <Input label={" رقم الوكيل "} {...agencyNumber.bind} mandatory />
+                                    <Input label={" سند الرخصة "} {...licenseDeed.bind} mandatory />
 
                                 </div>
-
-                                <div className='col-md-6 mb-4'>
-                                    <Form.Group controlId="formBasicImage">
-                                        <Form.Label className="d-flex gap-2 align-items-center">
-                                            ارفاق الوكالة
-                                        </Form.Label>
-                                        <Form.Control
-                                            type="file"
-                                            placeholder="صورة الهويه"
-                                            name="imageFile"
-                                            onChange={(e) => setAgencyAttachments(e.currentTarget.files[0])}
-                                        />
+                                <div className="col-md-12 mb-4">
+                                    <Form.Group>
+                                        <Form.Label> الوصف المرفق</Form.Label>
+                                        <textarea onChange={(e) => { setNotes(e.target.value) }} placeholder='الوصف المرفق' className='form-control' cols={5} rows={5} />
                                     </Form.Group>
+
+
                                 </div>
 
 
 
-                                <div className="col-md-6 mb-4">
-                                    <Input label={"رقم الصك"} {...instrumentNumber.bind} mandatory />
 
-                                </div>
                                 <div className='col-md-6 mb-4'>
                                     <Form.Group controlId="formBasicImage">
                                         <Form.Label className="d-flex gap-2 align-items-center">
-                                            صورة الصك
+                                            صورة الهوية
                                         </Form.Label>
                                         <Form.Control
                                             type="file"
-                                            placeholder="صورة الصك"
+                                            placeholder="صورة الهوية"
                                             name="imageFile"
-                                            onChange={(e) => setInstrumentAttachments(e.currentTarget.files[0])}
+                                            onChange={(e) => setlicenseAttachments(e.currentTarget.files[0])}
                                         />
                                     </Form.Group>
                                 </div>

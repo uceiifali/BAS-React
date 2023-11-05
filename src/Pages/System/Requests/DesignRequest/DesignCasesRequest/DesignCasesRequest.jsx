@@ -146,7 +146,7 @@ const DesignCasesRequest = () => {
             <DataTableComponent className={"overflow-x-scroll datatableComponent"} columns={columns} data={DesignCasesProjects} />
           </div>
         </fieldset>
-      </div> : <ShowDesignRequest setShowProject={setShowProject} />
+      </div> : <ShowDesignRequest DesignProjectType={DesignProjectType} setShowProject={setShowProject} />
 
 
       }
