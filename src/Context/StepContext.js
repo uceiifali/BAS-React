@@ -1,14 +1,18 @@
-import React, { createContext, useState } from 'react'
+import React, { createContext, useContext, useState } from 'react'
 import CreateProjectPoper from '../Components/Client/Landing/CreateProjectPoper'
 import App from '../App'
 import httpRequest from "../helper/https"
 import { toast } from 'react-toastify'
 import { useNavigate } from 'react-router-dom'
+import { showAddUpdateUser } from './CheckAddUpdateUserVisability'
+import ConfirmPoper from '../Components/System/ConfirmPoper'
 
 export const multiStepContext = React.createContext()
 const StepContext = ({ children }) => {
-    const [checkProjectType,setCheckProjectType] = useState("")
 
+    const [confirmSubmit, setConfirmSubmit] = useState(false)
+    const [checkProjectType, setCheckProjectType] = useState("")
+    const { showAddUserModel, setShowAddUserModel } = useContext(showAddUpdateUser)
     const [openDesignSteps, setOpenDesignSteps] = useState(false)
     const [openReviewSteps, setOpenReviewSteps] = useState(false)
     const [userData, setUserData] = useState([])
@@ -16,7 +20,7 @@ const StepContext = ({ children }) => {
     const [currentStep, setStep] = useState(1)
     const [finalData, setFinalData] = useState([])
     const [Submitted, setSubmitted] = useState(false)
-    const [openCongrats,setOpenCongrats] = useState(false)
+    const [openCongrats, setOpenCongrats] = useState(false)
     const submitDesign = async (e) => {
         console.log("data submitted")
 
@@ -29,8 +33,10 @@ const StepContext = ({ children }) => {
                 // data: userData,
             });
             setSubmitted(false)
-              
             setOpenDesignSteps(false)
+            setShowAddUserModel(false)
+            setConfirmSubmit(true)
+
             // Handle the response here
         } catch ({ response }) {
             toast.error(response?.data);
@@ -48,7 +54,6 @@ const StepContext = ({ children }) => {
 
     const submitReview = async () => {
         console.log("data submitted")
-
         setSubmitted(true)
         try {
             const { data } = await httpRequest({
@@ -59,6 +64,9 @@ const StepContext = ({ children }) => {
             });
             setSubmitted(false)
             setOpenReviewSteps(false)
+            setShowAddUserModel(false)
+            setConfirmSubmit(true)
+
 
 
             // Handle the response here
@@ -67,9 +75,9 @@ const StepContext = ({ children }) => {
             setSubmitted(false)
 
         } finally {
-            setOpenCongrats(true)      
+            setOpenCongrats(true)
             setUserData([])
-   
+
         }
 
     }
@@ -78,7 +86,8 @@ const StepContext = ({ children }) => {
 
     return (
         <div>
-            <multiStepContext.Provider value={{setOpenReviewSteps,checkProjectType,setCheckProjectType,openReviewSteps,setOpenDesignSteps,openDesignSteps,openCongrats,setOpenCongrats, userData, setUserData, finalData, setFinalData, currentStep, setStep, openDesign, setOpenDesign, submitDesign, submitReview, Submitted }}>
+             {confirmSubmit && <ConfirmPoper confirmPoper={confirmSubmit} setConfirmPoper={setConfirmSubmit} setEditRequest={setConfirmSubmit} text={"تم اضافة الطلب فى المشاريع بنجاح  "} />}
+            <multiStepContext.Provider value={{ setOpenReviewSteps, checkProjectType, setCheckProjectType, openReviewSteps, setOpenDesignSteps, openDesignSteps, openCongrats, setOpenCongrats, userData, setUserData, finalData, setFinalData, currentStep, setStep, openDesign, setOpenDesign, submitDesign, submitReview, Submitted }}>
 
                 {children}
 

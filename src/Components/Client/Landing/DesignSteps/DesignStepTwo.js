@@ -20,7 +20,7 @@ const isPhoneValid = (phone) => {
 const DesignStepTwo = (props) => {
   const { userData, setUserData } = useContext(multiStepContext)
 
-  const clientType = UseSelect(
+  const clientType = UseSelect( 
     userData?.clientType ? {
       value: userData?.clientType,
       label: userData?.clientType

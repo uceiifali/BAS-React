@@ -19,30 +19,30 @@ const DesignStepOne = (props) => {
     const ownerName = UseInput(`${userData?.ownerName ? userData.ownerName : ""}`, "text", true);
     const buildingLocation = UseInput(`${userData?.buildingLocation ? userData.buildingLocation : ""}`, "text", true);
     const city = UseSelect(
-        userData?.city?{
+        userData?.city ? {
             value: userData?.city,
             label: userData?.city
-        } :""
-        
-        
-        
+        } : ""
+
+
+
         , "", true);
     const Area = UseInput(`${userData?.Area ? userData.Area : ""}`, "text", true);
     const pieceNumber = UseInput(`${userData?.pieceNumber ? userData.pieceNumber : ""}`, "number", true);
     const ChartNumber = UseInput(`${userData?.ChartNumber ? userData.ChartNumber : ""}`, "ChartNumber", true);
     const [IsVaildState, setIsVaildState] = useState(false)
     const ProjectUse = UseSelect(
-        userData?.subCategoryId?{
+        userData?.subCategoryId ? {
             value: userData?.subCategoryId,
             label: userData?.subCategoryId
-        } :""
-        
+        } : ""
+
         , "Select", true);
     const serviceType = UseSelect(
-        userData?.subServiceId?{
+        userData?.subServiceId ? {
             value: userData?.subServiceId,
             label: userData?.subServiceId
-        } :""
+        } : ""
 
         , "Select", true);
 

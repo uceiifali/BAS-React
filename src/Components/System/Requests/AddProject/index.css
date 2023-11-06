@@ -6,21 +6,28 @@
 
     background: #1E1E2D;
 }
-.add-project-header{
+
+.add-project-header {
     font-size: 20px;
 }
+
 .AddProject div>div button:first-child {
     display: none;
 }
-.addProjectStep{
+
+.addProjectStep {
     border: 1px solid rgba(213, 153, 33, 0.20);
     height: 60%;
     width: 90%;
+    padding-top: 20px;
+    padding-bottom: 20px;
 }
-.AddProject .form-group{
+
+.AddProject .form-group {
     width: 100% !important;
 }
-.AddProject .form-label{
+
+.AddProject .form-label {
     color: #fff;
 }
 
@@ -33,19 +40,71 @@
     color: #1E1E2D !important;
     font-size: 15px !important;
     line-height: 25.31px;
-    margin-right:  auto;
-
-    font-weight: 500px !important;   
+    text-align: center;
+    float: left;
+    margin: 20px 40px;
+    font-weight: 500px !important;
 }
 
-.AddProject .go169520481{
-    display: none;
+/* .AddProject div div>div {
+    display: flex;
+    background-color: red;
+
+
+} */
+.AddProject .go2150698616:hover{
+    color: #EFAA20  !important;
+}
+.AddProject .licenseDate-container {
+    width: 100% !important;
+}
+/* 
+.AddProject .go169520481 {} */
+
+.go433304200:before {
+    background-color: #EFAA20 !important;
 }
 
-.css-13cymwt-control,.css-t3ipsp-control{
+.go3842760039:before {
+    content: "•";
+    color: white;
+    background-color: #EFAA20 !important;
+}
+
+.css-13cymwt-control,
+.css-t3ipsp-control {
     background-color: #2B2B40 !important;
 }
 
 
-.css-t3ipsp-control:hover{
-background-color:#2B2B40 !important }
+.css-t3ipsp-control:hover {
+    background-color: #2B2B40 !important
+}
+
+.AddProject .go2150698616.go433304200 {
+    background-color: none !important;
+}
+
+.AddProject .go2150698616 span:hover {
+    color: #EFAA20 !important;
+}
+.AddProject .go2150698616.go3842760039 span {
+    color:#EFAA20 !important;
+}
+.AddProject .react-international-phone-country-selector-button{
+    display: unset !important;
+}
+.AddProject .react-international-phone-input{
+    background: #2B2B40 !important;
+    border: unset !important;
+    color: rgba(255, 255, 255, 0.50) !important;
+    border-radius: 7px !important;
+}
+.AddProject .react-international-phone-country-selector-button{
+    background-color: #2B2B40 !important;
+    border: unset !important;
+}
+
+.AddProject button:disabled{
+    opacity: 0.6;
+}

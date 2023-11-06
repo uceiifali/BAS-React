@@ -1,16 +1,18 @@
-import React, { useState } from 'react'
+import React, { useEffect, useMemo, useState } from 'react'
 import Input from '../../../FormHandler/Input'
 import { useContext } from 'react';
 import { multiStepContext } from '../../../../Context/StepContext';
 import { UseInput, UseSelect } from '../../../../hooks';
 import Select from '../../../FormHandler/Select';
 import KSACites from '../../../KSACItes';
-import ReactSelect from 'react-select';
+
 import { Form } from 'react-bootstrap';
+import ReactSelectAsync from 'react-select/async';
 
-export const AddProjectStepOne = () => {
+export const AddProjectStepOne = (props) => {
+    // context inputs 
     const { userData, setUserData } = useContext(multiStepContext)
-
+    const { checkProjectType, setCheckProjectType } = useContext(multiStepContext)
     //define inupts
 
     const ownerName = UseInput(`${userData?.ownerName ? userData.ownerName : ""}`, "text", true);
@@ -24,7 +26,7 @@ export const AddProjectStepOne = () => {
     const Area = UseInput(`${userData?.Area ? userData.Area : ""}`, "text", true);
     const pieceNumber = UseInput(`${userData?.pieceNumber ? userData.pieceNumber : ""}`, "number", true);
     const ChartNumber = UseInput(`${userData?.ChartNumber ? userData.ChartNumber : ""}`, "ChartNumber", true);
-    const [projectType, setProjectType] = useState("")
+    const [projectType, setProjectType] = useState(userData.projectType?userData.projectType:"")
     const projectTypeOptions = [
         {
             value: "تصميم",
@@ -35,24 +37,20 @@ export const AddProjectStepOne = () => {
             label: "الاشراف علي التنفيذ"
         },
     ]
-    console.log(projectType)
-
-    //
-    const { checkProjectType, setCheckProjectType } = useContext(multiStepContext)
     const ProjectUse = UseSelect(
         userData?.subCategoryId ? {
             value: userData?.subCategoryId,
             label: userData?.subCategoryId
         } : ""
 
-        , "Select", true);
+       , "Select", true);
     const serviceType = UseSelect(
-        userData?.subServiceId ? {
-            value: userData?.subServiceId,
-            label: userData?.subServiceId
-        } : ""
+        // userData?.subServiceId ? {
+        //     value: userData?.subServiceId,
+        //     label: userData?.subServiceId
+        // } : ""
 
-        , "Select", true);
+      ""  , "Select", true);
 
     const serviceTypeRoles = [
 
@@ -82,10 +80,6 @@ export const AddProjectStepOne = () => {
             ]
         },
     ];
-
-
-
-
 
     const ProjectUseRoles = [
         {
@@ -118,6 +112,127 @@ export const AddProjectStepOne = () => {
         },
     ];
 
+console.log(userData)
+
+
+
+    //Check vaildation
+
+
+
+    const [IsVaildState, setIsVaildState] = useState(false)
+    const signalParent = (isValid) => {
+        setIsVaildState(isValid)
+        props.signalIfValid(isValid)
+    }
+
+    // checking Design Vaildation
+    useMemo(() => {
+        if (ownerName.value && ownerName.isValid && buildingLocation.value && buildingLocation.isValid && city.value?.label && city.isValid && Area.value && Area.isValid && pieceNumber.value && pieceNumber.isValid && pieceNumber.value && pieceNumber.isValid && ChartNumber.value && ChartNumber.isValid && projectType == "تصميم") {
+            console.log("validation")
+            const updatedUserData = {
+                ...userData,
+                ownerName: ownerName?.value,
+                buildingLocation: buildingLocation?.value,
+                city: city?.value?.label,
+                Area: Area.value,
+                pieceNumber: pieceNumber?.value,
+                ChartNumber: ChartNumber?.value,
+                projectType,
+                categoryId: "سكني",
+                subCategoryId: ProjectUse?.value.label,
+                serviceId: "تجاري",
+                subServiceId: serviceType?.value.label,
+
+
+
+            };
+            setUserData(updatedUserData)
+            signalParent(true)
+
+        } else {
+            const updatedUserData = {
+                ...userData,
+                ownerName: ownerName.value,
+                buildingLocation: buildingLocation.value,
+                city: city?.value.label,
+                Area: Area?.value,
+                pieceNumber: pieceNumber?.value,
+                ChartNumber: ChartNumber?.value,
+                projectType,
+                categoryId: "سكني",
+                subCategoryId: ProjectUse?.value.label,
+                serviceId: "تجاري",
+                subServiceId: serviceType?.value.label,
+
+
+
+            };
+            setUserData(updatedUserData)
+            signalParent(false)
+
+
+        }
+    }, [ownerName.value, ownerName.isValid, buildingLocation.value, buildingLocation.isValid, city.value?.label, city.isValid, Area.value, Area.isValid, pieceNumber.value, pieceNumber.isValid, pieceNumber.value, pieceNumber.isValid, ChartNumber.value, ChartNumber.isValid, ProjectUse?.value.label, serviceType?.value.label])
+
+
+
+    // checking review Vaildation
+    useMemo(() => {
+        if (ownerName.value && ownerName.isValid && buildingLocation.value && buildingLocation.isValid && city.value?.label && city.isValid && Area.value && Area.isValid && pieceNumber.value && pieceNumber.isValid && pieceNumber.value && pieceNumber.isValid && ChartNumber.value && ChartNumber.isValid && projectType === "الاشراف علي التنفيذ") {
+            console.log("validation")
+            const updatedUserData = {
+                ...userData,
+                ownerName: ownerName.value,
+                buildingLocation: buildingLocation.value,
+                city: city?.value,
+                Area: Area.value,
+                pieceNumber: pieceNumber.value,
+                ChartNumber: ChartNumber.value,
+                projectType,
+
+
+
+            };
+            setUserData(updatedUserData)
+            signalParent(true)
+
+        } else {
+            const updatedUserData = {
+                ...userData,
+                ownerName: ownerName.value,
+                buildingLocation: buildingLocation.value,
+                city: city.value.label,
+                Area: Area.value,
+                pieceNumber: pieceNumber.value,
+                ChartNumber: ChartNumber.value,
+                projectType,
+
+
+
+
+            };
+            setUserData(updatedUserData)
+            signalParent(false)
+
+
+        }
+    }, [ownerName.value, ownerName.isValid, buildingLocation.value, buildingLocation.isValid, city.value?.label, city.isValid, Area.value, Area.isValid, pieceNumber.value, pieceNumber.isValid, pieceNumber.value, pieceNumber.isValid, ChartNumber.value, ChartNumber.isValid])
+
+
+
+    useEffect(() => {
+        signalParent(IsVaildState)
+    }, [IsVaildState])
+
+
+
+
+    useEffect(() => {
+        signalParent(IsVaildState)
+    }, [IsVaildState])
+
+
 
 
 
@@ -129,41 +244,49 @@ export const AddProjectStepOne = () => {
             <legend className='text-center'>اضافة بيانات المشروع </legend>
             <div className='row      p-3'>
                 <div className=" col-md-8 mb-4">
-                    <Input className='w-100' label={"اسم المالك"} {...ownerName.bind} mandatory />
+                    <Input placeholder=" اخل اسم المالك" className='w-100' label={"اسم المالك"} {...ownerName.bind} mandatory />
                 </div>
                 <div className=" col-md-8 mb-4">
-                    <Input label={" موقع المشروع "} {...buildingLocation.bind} mandatory />
+                    <Input placeholder=" ادخل موقع المشروع  " label={" موقع المشروع "} {...buildingLocation.bind} mandatory />
 
                 </div>
                 <div className=" col-md-4 mb-4">
-                    <Select label={" المدينة"}   {...city.bind} options={KSACites} mandatory />
+                    <Select label={" المدينة"}
+                        placeholder="اخل اسم المدينة"
+                        OptionbackgroundColor="#414162"
+                        {...city.bind} options={KSACites} mandatory />
+
+
 
                 </div>
 
                 <div className=" col-md-4    mb-4">
-                    <Input label={" الحي"} {...Area.bind} mandatory />
+                    <Input placeholder="ادخل اسم الحى" label={" الحي"} {...Area.bind} mandatory />
 
                 </div>
 
                 <div className=" col-md-4 mb-4">
-                    <Input label={" رقم القطعة"} {...pieceNumber.bind} mandatory />
+                    <Input placeholder="اخل رقم القطعة" label={" رقم القطعة"} {...pieceNumber.bind} mandatory />
 
                 </div>
 
                 <div className=" col-md-4 mb-4">
-                    <Input label={" رقم المخطط"}   {...ChartNumber.bind} mandatory />
+                    <Input placeholder="اخل رقم المخطط" label={" رقم المخطط"}   {...ChartNumber.bind} mandatory />
                 </div>
                 <div className=" col-md-4 mb-4">
                     <Form.Group>
                         <Form.Label>
                             نوع المشروع
                         </Form.Label>
-                        <ReactSelect options={projectTypeOptions} onChange={(e) => {
-                            setProjectType(e.value)
-                            setCheckProjectType(e.value)
+                        <Select placeholder="اختار نوع المشروع ..."
+
+                            OptionbackgroundColor="#414162"
+                            options={projectTypeOptions} onChange={(e) => {
+                                setProjectType(e.value)
+                                setCheckProjectType(e.value)
 
 
-                        }} mandatory />
+                            }} mandatory />
 
                     </Form.Group>
 
@@ -172,10 +295,13 @@ export const AddProjectStepOne = () => {
 
 
                 </div>
-                {projectType === "تصميم" ? <>
+                {checkProjectType === "تصميم" ? <>
 
                     <div className=" col-md-4 mb-4">
-                        <Select label={"  استخدام المشروع"} options={ProjectUseRoles} {...ProjectUse.bind} mandatory />
+                        <Select label={"  استخدام المشروع"}
+
+                            OptionbackgroundColor="#414162"
+                            options={ProjectUseRoles} {...ProjectUse.bind} mandatory />
 
 
 
@@ -185,6 +311,7 @@ export const AddProjectStepOne = () => {
 
                     <div className=" col-md-4 mb-4">
                         <Select label={"  نوع الخدمة "}
+                            OptionbackgroundColor="#414162"
                             {...serviceType.bind}
                             options={serviceTypeRoles}
                             mandatory />

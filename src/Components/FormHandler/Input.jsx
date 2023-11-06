@@ -9,7 +9,7 @@ const Input = ({ label, validator, submitted, mandatory, className = '',
   append = '',
   prepend = '',
   background = '',
-  borderColor= '',
+  borderColor= '#dee2e6',
   ...props
 }) => {
   let hasWarning = submitted && validator && !validator.valid;

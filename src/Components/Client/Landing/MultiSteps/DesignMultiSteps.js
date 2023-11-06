@@ -39,7 +39,7 @@ const DesignMultiSteps = ({ openDesignSteps, setOpenDesignSteps }) => {
                     <AiOutlineCloseCircle className='pointer' onClick={() => { setOpenDesignSteps(false) }} size={30} color='#E1B67C' />
                 </Modal.Header>
                 <Modal.Body >
-                    <MultiStep activeStep={0} prevButton={{ title: 'السابق', style: { background: '#E1B67C', marginLeft: "40px", marginBottom: "40px", marginTop: "40px", textAlign: "center" } }} nextButton={{ title: 'التالي', style: { background: '#E1B67C' } }}>
+                    <MultiStep className="landing-multiSteps" activeStep={0} prevButton={{ title: 'السابق', style: { background: '#E1B67C', marginLeft: "40px", marginBottom: "40px", marginTop: "40px", textAlign: "center" } }} nextButton={{ title: 'التالي', style: { background: '#E1B67C' } }}>
                         <DesignStepOne title='  بيانات المشروع   ' />
                         <DesignStepTwo title=' بيانات المالك' />
                         <DesignStepThree title='بيانات الملكية ' />

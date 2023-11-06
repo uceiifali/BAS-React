@@ -686,8 +686,8 @@ ol.progtrckr li.progtrckr-done:hover:before {
   display: none !important;
 }
 
-.go2150698616.go433304200 {
-  background-color: #C9A56C !important;
+.modal-body  .go2150698616.go433304200 {
+  background-color: #C9A56C ;
   color: #fff !important;
 
 }

@@ -6,15 +6,14 @@ const Progress = ({ isSmall = false }) => {
     return <Spinner
       // className="ms-2"
       size="sm"
-      animation="grow"
+      animation="border"
+      
     />
   }
   return (
-    <h3 className='text-center py-4'>
-      <Spinner animation="border" role="status">
-        <span className="visually-hidden">Loading...</span>
-      </Spinner>
-    </h3>
+    <div className='text-center py-4'>
+      <Spinner animation="border"  />;
+    </div>
   );
 }
 

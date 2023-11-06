@@ -8,7 +8,7 @@ const AddProject = () => {
     return (
         <div className='AddProject'>
 
-            <p className='golden add-project-header pt-5     px-3'>إضافة طلب جديدة</p>
+            <p   className='golden add-project-header pt-5     px-3'>إضافة طلب جديدة</p>
 
             <MultiStep activeStep={0}
 

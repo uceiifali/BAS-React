@@ -42,7 +42,7 @@ const ReviewMultiSteps = ({ setOpenReviewSteps, openReviewSteps }) => {
                 </Modal.Header>
                 <Modal.Body >
 
-                    <MultiStep prevButton={{ title: 'السابق', style: { background: '#E1B67C', marginLeft: "40px", textAlign: "center" } }} nextButton={{ title: 'التالي', style: { background: '#E1B67C' } }}>
+                    <MultiStep className="landing-multiSteps" prevButton={{ title: 'السابق', style: { background: '#E1B67C', marginLeft: "40px", textAlign: "center" } }} nextButton={{ title: 'التالي', style: { background: '#E1B67C' } }}>
                         <ReviewStepOne title='بيانات المشروع ' />
                         <ReviewStepTwo title='بيانات المالك' />
                         <ReviewStepThree title='بيانات الرخصة' />
