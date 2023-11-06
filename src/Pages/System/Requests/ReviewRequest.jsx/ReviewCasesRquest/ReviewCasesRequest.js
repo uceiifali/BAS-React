@@ -19,7 +19,7 @@ const ReviewCasesRequest = () => {
     const [projectTypeAR, setProjectTypeAR] = useState("")
     const [chartColor, setChartColor] = useState("")
 
-
+    const { ReviewProjectType } = useParams()
     const ReviewCasesProjects = Array.from({ length: 10 }).map((_, index) => {
         return {
             id: 1,
@@ -33,7 +33,7 @@ const ReviewCasesRequest = () => {
             edit: <img src={process.env.PUBLIC_URL + "/edit.png"} onClick={() => { setEditRequest(true) }} className=' edit_project  rounded' alt=' edit project' />
         }
     });
-    const { ReviewProjectType } = useParams()
+
 
 
     const columns = [
@@ -90,13 +90,6 @@ const ReviewCasesRequest = () => {
 
 
                 break;
-            case "confirm":
-                setProjectType("confirm")
-                setProjectTypeAR("طلبات منتهية")
-
-                setChartColor("#03795D")
-
-                break;
             case "rejected":
                 setProjectType("rejected")
                 setProjectTypeAR("طلبات مرفوضة")
@@ -138,17 +131,17 @@ const ReviewCasesRequest = () => {
                 <fieldset className='TableContainer  w-100 py-3 px-2 mx-auto mt-3'>
                     <legend className='text-center '>
 
-                        {projectType === "inProgress" ? "طلبات قيد التنفيذ ( اشراف )" : projectType === "pending" ? "طلبات فى انتظار الموافقة ( اشراف )" : projectType === "confirm" ? "طلبات منتهية ( اشراف )" : projectType === "rejected" ? "طلبات مرفوضة ( اشراف )" : null}
+                        {projectType === "inProgress" ? "طلبات قيد التنفيذ ( اشراف )" : projectType === "pending" ? "طلبات فى انتظار الموافقة ( اشراف )" : projectType === "rejected" ? "طلبات مرفوضة ( اشراف )" : null}
 
                     </legend>
 
 
 
-                    <div className='py-3    '>
+                    <div className='py-3'>
                         <DataTableComponent className={"overflow-x-scroll datatableComponent"} columns={columns} data={ReviewCasesProjects} />
                     </div>
                 </fieldset>
-            </div> : <ShowReviewRequest setShowProject={setShowProject} />
+            </div> : <ShowReviewRequest ReviewProjectType={ReviewProjectType}  setShowProject={setShowProject} />
 
 
             }

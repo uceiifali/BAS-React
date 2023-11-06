@@ -57,7 +57,9 @@ body::-webkit-scrollbar-thumb {
  
   }
 
-
+  .css-1dimb5e-singleValue{
+    color: black !important;
+  }
 
   span.flag {
     width: 44px;

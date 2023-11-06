@@ -13,10 +13,10 @@ const CheckAddUpdateUserVisability = ({ children }) => {
 
 
 
-    
+
     return (
         <div>
-            <showAddUpdateUser.Provider value={{ showAddUserModel,setShowAddUserModel , showUpdateUserModel ,setShowUpdateUserModel }}>
+            <showAddUpdateUser.Provider value={{ showAddUserModel, setShowAddUserModel, showUpdateUserModel, setShowUpdateUserModel }}>
 
                 {children}
 

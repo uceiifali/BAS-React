@@ -1,0 +1,51 @@
+.AddProject {
+    width: 100%;
+    height: 100%;
+    border-radius: 27px;
+    border: 1px solid #EFAA20;
+
+    background: #1E1E2D;
+}
+.add-project-header{
+    font-size: 20px;
+}
+.AddProject div>div button:first-child {
+    display: none;
+}
+.addProjectStep{
+    border: 1px solid rgba(213, 153, 33, 0.20);
+    height: 60%;
+    width: 90%;
+}
+.AddProject .form-group{
+    width: 100% !important;
+}
+.AddProject .form-label{
+    color: #fff;
+}
+
+.AddProject div>div button:last-child {
+    width: 139px !important;
+    height: 35px !important;
+    border-radius: 6px !important;
+    background: #EFAA20 !important;
+    border: unset !important;
+    color: #1E1E2D !important;
+    font-size: 15px !important;
+    line-height: 25.31px;
+    margin-right:  auto;
+
+    font-weight: 500px !important;   
+}
+
+.AddProject .go169520481{
+    display: none;
+}
+
+.css-13cymwt-control,.css-t3ipsp-control{
+    background-color: #2B2B40 !important;
+}
+
+
+.css-t3ipsp-control:hover{
+background-color:#2B2B40 !important }

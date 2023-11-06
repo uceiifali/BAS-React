@@ -8,9 +8,12 @@ import { Link, Outlet } from 'react-router-dom'
 
 import { SearchComponent } from '../../../../Components/SearchComponent/SearchComponent'
 import { MdKeyboardArrowDown } from 'react-icons/md'
+import { useContext } from 'react'
+import { showAddUpdateUser } from '../../../../Context/CheckAddUpdateUserVisability'
+import AddProject from '../../../../Components/System/Requests/AddProject/AddProject'
 
 const AllRequests = () => {
-
+    const { showAddUserModel, setShowAddUserModel } = useContext(showAddUpdateUser)
 
     return (
         <div className='all-Requests h-100'>
@@ -50,7 +53,7 @@ const AllRequests = () => {
                                     <Accordion.Body>
                                         <div className='tabs d-flex justify-content-center align-items-center flex-column'>
                                             <div className='tab  text-end w-100'>
-                                                <Link to={"System/Requests/Design/inProgress    "} >          طلبات قيد التنفيذ</Link>
+                                                <Link to={"System/Requests/Design/inProgress"} >          طلبات قيد التنفيذ</Link>
 
                                             </div>
 
@@ -60,12 +63,7 @@ const AllRequests = () => {
                                                 > طلبات  في انتظار  الموافقة</Link>
 
                                             </div>
-                                            <div className='tab  text-end w-100'>
-                                                <Link
-                                                    to={"System/Requests/Design/confirm"}
-                                                >          طلبات  منتهية  </Link>
 
-                                            </div>
                                             <div className='tab  text-end w-100'>
                                                 <Link
                                                     to={"System/Requests/Design/rejected"}
@@ -115,12 +113,7 @@ const AllRequests = () => {
                                                 > طلبات  في انتظار  الموافقة</Link>
 
                                             </div>
-                                            <div className='tab  text-end w-100'>
-                                                <Link
-                                                    to={"System/Requests/Review/confirm"}
-                                                >          طلبات  منتهية  </Link>
 
-                                            </div>
                                             <div className='tab  text-end w-100'>
                                                 <Link
                                                     to={"System/Requests/Review/rejected"}
@@ -149,7 +142,14 @@ const AllRequests = () => {
 
                 </div>
                 <div className='col-md-9 '>
-                    <Outlet />
+
+                    {showAddUserModel ?
+
+                        <AddProject />
+                        :
+                        <Outlet />
+
+                    }
 
 
                 </div>
