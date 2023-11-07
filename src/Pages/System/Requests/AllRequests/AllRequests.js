@@ -15,7 +15,7 @@ import { multiStepContext } from '../../../../Context/StepContext'
 
 const AllRequests = () => {
     const { showAddUserModel, setShowAddUserModel } = useContext(showAddUpdateUser)
-    const {  setUserData} = useContext(multiStepContext)
+    const { setUserData } = useContext(multiStepContext)
 
     return (
         <div className='all-Requests h-100'>
@@ -24,7 +24,7 @@ const AllRequests = () => {
                 onClick={() => {
                     setShowAddUserModel(false)
                     setUserData([])
-                    
+
 
 
                 }}
@@ -72,24 +72,29 @@ const AllRequests = () => {
 
                                     <Accordion.Body>
                                         <div className='tabs d-flex justify-content-center align-items-center flex-column'>
-                                            <div className='tab  text-end w-100'>
-                                                <Link to={"System/Requests/Design/inProgress"} >          طلبات قيد التنفيذ</Link>
+                                            <Link to={"System/Requests/Design/inProgress"} >
+                                                <div className='tab  text-end w-100'>
+                                                    طلبات قيد التنفيذ
 
-                                            </div>
+                                                </div>
+                                            </Link>
+                                            <Link className='w-100'
+                                                to={"System/Requests/Design/pending"}>
+                                                <div className='tab  text-end w-100'>
 
-                                            <div className='tab  text-end w-100'>
-                                                <Link className='w-100'
-                                                    to={"System/Requests/Design/pending"}
-                                                > طلبات  في انتظار  الموافقة</Link>
 
-                                            </div>
+                                                    طلبات  في انتظار  الموافقة
 
-                                            <div className='tab  text-end w-100'>
-                                                <Link
-                                                    to={"System/Requests/Design/rejected"}
-                                                >          طلبات  مرفوضة  </Link>
+                                                </div>
+                                            </Link>
+                                            <Link
+                                                to={"System/Requests/Design/rejected"}
+                                            >
+                                                <div className='tab  text-end w-100'>
+                                                    طلبات  مرفوضة
 
-                                            </div>
+                                                </div>
+                                            </Link>
 
                                         </div>
 
@@ -122,24 +127,28 @@ const AllRequests = () => {
 
                                     <Accordion.Body>
                                         <div className='tabs d-flex justify-content-center align-items-center flex-column'>
-                                            <div className='tab  text-end w-100'>
-                                                <Link to={"System/Requests/Review/inProgress"} >          طلبات قيد التنفيذ</Link>
+                                            <Link to={"System/Requests/Review/inProgress"} >
+                                                <div className='tab  text-end w-100'>
+                                                    طلبات قيد التنفيذ
 
-                                            </div>
+                                                </div>
+                                            </Link>
+                                            <Link className='w-100'
+                                                to={"System/Requests/Review/pending"}
+                                            >
+                                                <div className='tab  text-end w-100'>
+                                                    طلبات  في انتظار  الموافقة
 
-                                            <div className='tab  text-end w-100'>
-                                                <Link className='w-100'
-                                                    to={"System/Requests/Review/pending"}
-                                                > طلبات  في انتظار  الموافقة</Link>
+                                                </div>
+                                            </Link>
+                                            <Link
+                                                to={"System/Requests/Review/rejected"}
+                                            >
+                                                <div className='tab  text-end w-100'>
+                                                    طلبات  مرفوضة
 
-                                            </div>
-
-                                            <div className='tab  text-end w-100'>
-                                                <Link
-                                                    to={"System/Requests/Review/rejected"}
-                                                >          طلبات  مرفوضة  </Link>
-
-                                            </div>
+                                                </div>
+                                            </Link>
 
                                         </div>
 
@@ -179,7 +188,7 @@ const AllRequests = () => {
 
 
 
-        </div>
+        </div >
 
 
 

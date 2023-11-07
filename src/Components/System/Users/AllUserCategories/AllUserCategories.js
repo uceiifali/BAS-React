@@ -53,14 +53,17 @@ const AllUserCategories = ({ countryName = "السعودية" }) => {
 
               <Accordion.Body>
                 <div className='tabs d-flex justify-content-center align-items-center flex-column'>
+                <Link to={"/System/users"}>   
                   <div className='tab  text-end w-100'>
-                    <Link to={"/System/users"}>         مدير مكتب</Link>
+                         مدير مكتب
 
                   </div>
+                  </Link>
 
                   <Accordion defaultActiveKey={null}>
                     <Accordion.Item eventKey="1">
                       <Accordion.Header>
+
                         <div >
                           مدير قسم
                         </div>
@@ -69,14 +72,18 @@ const AllUserCategories = ({ countryName = "السعودية" }) => {
                       </Accordion.Header>
                       <Accordion.Body>
                         <div className='tabs d-flex  flex-column'>
+                        <Link to={"/System/users"}> 
                           <div className='tab'>
                             مدني
 
                           </div>
+                          </Link>
+                          <Link to={"/System/users"}> 
                           <div className='tab'>
                             معماري
 
                           </div>
+                          </Link>
 
 
                         </div>
@@ -94,14 +101,18 @@ const AllUserCategories = ({ countryName = "السعودية" }) => {
                       </Accordion.Header>
                       <Accordion.Body>
                         <div className='tabs d-flex  flex-column'>
+                        <Link to={"/System/users"}> 
                           <div className='tab'>
                             مدني
 
                           </div>
+                          </Link>
+                          <Link to={"/System/users"}> 
                           <div className='tab'>
                             معماري
 
                           </div>
+                          </Link>
 
 
                         </div>
@@ -136,23 +147,28 @@ const AllUserCategories = ({ countryName = "السعودية" }) => {
                   <Accordion defaultActiveKey={null}>
                     <Accordion.Item eventKey="1">
                       <Accordion.Header>
+                      <Link to={"/System/users"}>
                         <div >
                           مدير قسم
                         </div>
+                        </Link>
                         <MdKeyboardArrowDown size={20} />
 
                       </Accordion.Header>
                       <Accordion.Body>
                         <div className='tabs d-flex  flex-column'>
+                        <Link to={"/System/users"}>
                           <div className='tab'>
                             مدني
 
                           </div>
+                          </Link>
+                          <Link to={"/System/users"}>
                           <div className='tab'>
                             معماري
 
                           </div>
-
+                          </Link>
 
                         </div>
                       </Accordion.Body>
@@ -169,14 +185,18 @@ const AllUserCategories = ({ countryName = "السعودية" }) => {
                       </Accordion.Header>
                       <Accordion.Body>
                         <div className='tabs d-flex  flex-column'>
+                        <Link to={"/System/users"}>
                           <div className='tab'>
                             مدني
 
                           </div>
+                          </Link>
+                          <Link to={"/System/users"}>
                           <div className='tab'>
                             معماري
 
                           </div>
+                          </Link>
 
 
                         </div>
