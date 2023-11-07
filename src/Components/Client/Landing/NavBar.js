@@ -35,7 +35,7 @@ const NavBar = () => {
     <Navbar style={{ backgroundColor: "#FFF" }} className={`position-fixed ${checkHidden ? "" : ""}    top-0 end-0 start-0  `} collapseOnSelect expand="lg" >
       <Container fluid  >
         <Navbar.Brand className=' me-3' href="#home">
-          <Image width={80} height={80} src="/logo.jpg" alt="logo" />
+          <Image width={120} height={80} src="/logo.jpg" alt="logo" />
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
