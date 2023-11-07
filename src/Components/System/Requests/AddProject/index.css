@@ -119,3 +119,80 @@
     width: 250px !important;
     height: 36px !important;
 }
+
+.AddProject .go3842760039:before {
+    content: "1";
+    background-color: unset !important;
+    width: 53px !important;
+    height: 53px !important;
+    border: 1px solid #EFAA20 !important;
+    background-color:#EFAA20 !important ;
+    font-family: "Cairo" !important;
+    font-size: 30px !important;
+}
+.AddProject .go3842760039 span{
+    display: none !important;
+}
+.AddProject .go2150698616  span{
+    display: none !important;
+}
+.AddProject .go2150698616:before{
+    bottom: -50% !important;
+}
+
+.AddProject .go3842760039:before {
+    content: "1";
+    background-color: unset !important;
+    width: 53px !important;
+    height: 53px !important;
+    border: 1px solid #EFAA20 !important;
+    background-color:#EFAA20 !important ;
+    font-family: "Cairo" !important;
+    font-size: 30px !important;
+}
+
+
+.AddProject ol li:nth-child(1)::before{
+
+    content: "1";
+    background-color: unset ;
+    width: 53px !important;
+    height: 53px !important;
+    border: 1px solid #EFAA20 !important;
+    color: #fff;
+    font-family: "Cairo" !important;
+    font-size: 30px !important;
+}
+
+.AddProject ol li:nth-child(2)::before{
+
+    content: "2";
+    background-color: unset ;
+    width: 53px !important;
+    height: 53px !important;
+    border: 1px solid #EFAA20 !important;
+    color: #fff;
+    font-family: "Cairo" !important;
+    font-size: 30px !important;
+}
+
+.AddProject ol li:nth-child(3)::before{
+
+    content: "3";
+    background-color: unset !important;
+    width: 53px !important;
+    height: 53px !important;
+    border: 1px solid #EFAA20 !important;
+    color: #fff;
+    font-family: "Cairo" !important;
+    font-size: 30px !important;
+}
+.go433304200:before {
+    content: "✓" !important;
+    color: white;
+    background-color: #EFAA20 !important;
+}
+
+.AddProject .go2150698616{
+    border: unset !important;
+}
