@@ -16,6 +16,7 @@ export const AddProjectStepOne = (props) => {
     //define inupts
 
     const ownerName = UseInput(`${userData?.ownerName ? userData.ownerName : ""}`, "text", true);
+    const projectName = UseInput(`${userData?.projectName ? userData.projectName : ""}`, "text", true);
     const buildingLocation = UseInput(`${userData?.buildingLocation ? userData.buildingLocation : ""}`, "text", true);
     const city = UseSelect(
         userData?.city ? {
@@ -26,7 +27,7 @@ export const AddProjectStepOne = (props) => {
     const Area = UseInput(`${userData?.Area ? userData.Area : ""}`, "text", true);
     const pieceNumber = UseInput(`${userData?.pieceNumber ? userData.pieceNumber : ""}`, "number", true);
     const ChartNumber = UseInput(`${userData?.ChartNumber ? userData.ChartNumber : ""}`, "ChartNumber", true);
-    const [projectType, setProjectType] = useState(userData.projectType?userData.projectType:"")
+    const [projectType, setProjectType] = useState(userData.projectType ? userData.projectType : "")
     const projectTypeOptions = [
         {
             value: "تصميم",
@@ -43,14 +44,14 @@ export const AddProjectStepOne = (props) => {
             label: userData?.subCategoryId
         } : ""
 
-       , "Select", true);
+        , "Select", true);
     const serviceType = UseSelect(
         // userData?.subServiceId ? {
         //     value: userData?.subServiceId,
         //     label: userData?.subServiceId
         // } : ""
 
-      ""  , "Select", true);
+        "", "Select", true);
 
     const serviceTypeRoles = [
 
@@ -112,7 +113,7 @@ export const AddProjectStepOne = (props) => {
         },
     ];
 
-console.log(userData)
+
 
 
 
@@ -128,7 +129,7 @@ console.log(userData)
 
     // checking Design Vaildation
     useMemo(() => {
-        if (ownerName.value && ownerName.isValid && buildingLocation.value && buildingLocation.isValid && city.value?.label && city.isValid && Area.value && Area.isValid && pieceNumber.value && pieceNumber.isValid && pieceNumber.value && pieceNumber.isValid && ChartNumber.value && ChartNumber.isValid && projectType == "تصميم") {
+        if (ownerName.value && ownerName.isValid && buildingLocation.value && buildingLocation.isValid && city.value?.label && city.isValid && Area.value && Area.isValid && pieceNumber.value && pieceNumber.isValid && pieceNumber.value && pieceNumber.isValid && ChartNumber.value && ChartNumber.isValid && ProjectUse.value.label && ProjectUse.isValid && serviceType.value.label && serviceType.isValid && projectName.value && projectName.isValid && projectType === "تصميم") {
             console.log("validation")
             const updatedUserData = {
                 ...userData,
@@ -142,7 +143,9 @@ console.log(userData)
                 categoryId: "سكني",
                 subCategoryId: ProjectUse?.value.label,
                 serviceId: "تجاري",
+                projectName: projectName.value,
                 subServiceId: serviceType?.value.label,
+                projectName: projectName.value,
 
 
 
@@ -164,6 +167,7 @@ console.log(userData)
                 subCategoryId: ProjectUse?.value.label,
                 serviceId: "تجاري",
                 subServiceId: serviceType?.value.label,
+                projectName: projectName.value,
 
 
 
@@ -173,13 +177,13 @@ console.log(userData)
 
 
         }
-    }, [ownerName.value, ownerName.isValid, buildingLocation.value, buildingLocation.isValid, city.value?.label, city.isValid, Area.value, Area.isValid, pieceNumber.value, pieceNumber.isValid, pieceNumber.value, pieceNumber.isValid, ChartNumber.value, ChartNumber.isValid, ProjectUse?.value.label, serviceType?.value.label])
+    }, [ownerName.value, ownerName.isValid, buildingLocation.value, buildingLocation.isValid, city.value?.label, city.isValid, Area.value, Area.isValid, pieceNumber.value, pieceNumber.isValid, pieceNumber.value, pieceNumber.isValid, ChartNumber.value, ChartNumber.isValid, ProjectUse?.value.label, serviceType?.value.label, projectName.value, projectType.value])
 
 
 
     // checking review Vaildation
     useMemo(() => {
-        if (ownerName.value && ownerName.isValid && buildingLocation.value && buildingLocation.isValid && city.value?.label && city.isValid && Area.value && Area.isValid && pieceNumber.value && pieceNumber.isValid && pieceNumber.value && pieceNumber.isValid && ChartNumber.value && ChartNumber.isValid && projectType === "الاشراف علي التنفيذ") {
+        if (ownerName.value && ownerName.isValid && buildingLocation.value && buildingLocation.isValid && city.value?.label && city.isValid && Area.value && Area.isValid && pieceNumber.value && pieceNumber.isValid && ChartNumber.value && ChartNumber.isValid && projectName.value && projectName.isValid && projectType === "الاشراف علي التنفيذ") {
             console.log("validation")
             const updatedUserData = {
                 ...userData,
@@ -190,6 +194,7 @@ console.log(userData)
                 pieceNumber: pieceNumber.value,
                 ChartNumber: ChartNumber.value,
                 projectType,
+                projectName: projectName.value
 
 
 
@@ -198,6 +203,7 @@ console.log(userData)
             signalParent(true)
 
         } else {
+            console.log("not vaild")
             const updatedUserData = {
                 ...userData,
                 ownerName: ownerName.value,
@@ -207,6 +213,7 @@ console.log(userData)
                 pieceNumber: pieceNumber.value,
                 ChartNumber: ChartNumber.value,
                 projectType,
+                projectName: projectName.value
 
 
 
@@ -217,13 +224,10 @@ console.log(userData)
 
 
         }
-    }, [ownerName.value, ownerName.isValid, buildingLocation.value, buildingLocation.isValid, city.value?.label, city.isValid, Area.value, Area.isValid, pieceNumber.value, pieceNumber.isValid, pieceNumber.value, pieceNumber.isValid, ChartNumber.value, ChartNumber.isValid])
+    }, [ownerName.value, ownerName.isValid, buildingLocation.value, buildingLocation.isValid, city.value?.label, city.isValid, Area.value, Area.isValid, pieceNumber.value, pieceNumber.isValid, pieceNumber.value, pieceNumber.isValid, ChartNumber.value, ChartNumber.isValid, projectType, projectName.value, projectName.isValid])
 
 
 
-    useEffect(() => {
-        signalParent(IsVaildState)
-    }, [IsVaildState])
 
 
 
@@ -243,8 +247,11 @@ console.log(userData)
         <fieldset className='addProjectStep mx-auto'>
             <legend className='text-center'>اضافة بيانات المشروع </legend>
             <div className='row      p-3'>
-                <div className=" col-md-8 mb-4">
+                <div className=" col-md-6 mb-4">
                     <Input placeholder=" اخل اسم المالك" className='w-100' label={"اسم المالك"} {...ownerName.bind} mandatory />
+                </div>
+                <div className=" col-md-6 mb-4">
+                    <Input placeholder=" اخل اسم المشروع" className='w-100' label={"اسم المشروع"} {...projectName.bind} mandatory />
                 </div>
                 <div className=" col-md-8 mb-4">
                     <Input placeholder=" ادخل موقع المشروع  " label={" موقع المشروع "} {...buildingLocation.bind} mandatory />
@@ -326,7 +333,7 @@ console.log(userData)
 
 
 
-                    : ""
+                    : checkProjectType == "الاشراف علي التنفيذ" && null
 
 
 

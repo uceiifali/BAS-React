@@ -20,14 +20,14 @@ const isPhoneValid = (phone) => {
 const DesignStepTwo = (props) => {
   const { userData, setUserData } = useContext(multiStepContext)
 
-  const clientType = UseSelect( 
+  const clientType = UseSelect(
     userData?.clientType ? {
       value: userData?.clientType,
       label: userData?.clientType
     } : ""
 
     , "Select");
-  const projectType = UseSelect(
+  const identityType = UseSelect(
     userData?.projectType ? {
       value: userData?.projectType,
       label: userData?.projectType
@@ -60,7 +60,7 @@ const DesignStepTwo = (props) => {
     },
 
   ]
-  const projectTypeRoles = [
+  const identityTypeRoles = [
     {
       label: "سجل تجاري",
       value: "سجل تجاري",
@@ -80,15 +80,15 @@ const DesignStepTwo = (props) => {
   }
 
   useMemo(() => {
-    if (clientType?.value.label && projectType?.value.label && instrumentImage?.name && email.value && email.isValid && phone && checkPhoneValidation ) {
+    if (clientType?.value.label && identityType?.value.label && instrumentImage?.name && email.value && email.isValid && phone && checkPhoneValidation) {
       const updatedUserData = {
         ...userData,
         instrumentImage: instrumentImage?.name,
         clientType: clientType.value.label,
-        projectType: projectType.value.label,
+        identityType: identityType.value.label,
         email: email.value,
         phone,
-        taxCertificateNumber:taxCertificateNumber.value
+        taxCertificateNumber: taxCertificateNumber.value
 
 
       };
@@ -104,9 +104,9 @@ const DesignStepTwo = (props) => {
         ...userData,
         instrumentImage: instrumentImage?.name,
         clientType: clientType.value.label,
-        projectType: projectType.value.label,
+        identityType: identityType.value.label,
         email: email.value,
-        taxCertificateNumber:taxCertificateNumber.value,
+        taxCertificateNumber: taxCertificateNumber.value,
         phone
 
 
@@ -116,7 +116,7 @@ const DesignStepTwo = (props) => {
       console.log(checkPhoneValidation)
     }
 
-  }, [clientType?.value.label && projectType?.value.label && instrumentImage?.name && email.value && email.isValid && phone && checkPhoneValidation])
+  }, [clientType?.value.label && identityType?.value.label && instrumentImage?.name && email.value && email.isValid && phone && checkPhoneValidation])
 
   useEffect(() => {
 
@@ -133,7 +133,7 @@ const DesignStepTwo = (props) => {
           <Select label={" نوع العميل"} {...clientType.bind} options={clientTypeRoles} mandatory />
         </div>
         <div className="col-md-6 mb-4">
-          <Select label={" نوع الهوية  "} {...projectType.bind} options={projectTypeRoles} mandatory />
+          <Select label={" نوع الهوية  "} {...identityType.bind} options={identityTypeRoles} mandatory />
 
         </div>
 
@@ -181,7 +181,7 @@ const DesignStepTwo = (props) => {
 
         </div>
         <div className="col-md-6 mb-4">
-          <Input label={"رقم الشهادة الضربية"} {...taxCertificateNumber.bind}  />
+          <Input label={"رقم الشهادة الضربية"} {...taxCertificateNumber.bind} />
 
 
 

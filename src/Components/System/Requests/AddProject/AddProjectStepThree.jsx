@@ -8,19 +8,66 @@ import Select from '../../../FormHandler/Select'
 import { multiStepContext } from '../../../../Context/StepContext';
 import Progress from '../../../Progress';
 import ConfirmPoper from '../../ConfirmPoper';
-const AddProjectStepThree = () => {
+const AddProjectStepThree = (props) => {
   // Design Data 
   // context variabules 
-  const { userData, setUserData, submitDesign, Submitted, submitReview } = useContext(multiStepContext)
-  //check project type 
-  const { checkProjectType, setCheckProjectType } = useContext(multiStepContext)
+  const { userData, setUserData, submitDesign, Submitted, submitReview, checkProjectType, setCheckProjectType } = useContext(multiStepContext)
 
+  const [userDataVaild, setUserDataVaild] = useState(false)
+  //check project type 
+
+  // Design Data 
   const agent = UseInput(`${userData.agent ? userData.agent : ""}`, "text", true);
   const agencyNumber = UseInput(`${userData.agencyNumber ? userData.agencyNumber : ""}`, "number", true);
   const [agencyAttachments, setAgencyAttachments] = useState(null)
   const instrumentNumber = UseInput(`${userData.instrumentNumber ? userData.instrumentNumber : ""}`, "number", true);
   const [InstrumentAttachments, setInstrumentAttachments] = useState(null);
-  const [imageUrl, setImageUrl] = useState(null);
+  const [imageUrl, setImageUrl] = useState(process.env.PUBLIC_URL + "/icons/show.png");
+  // check desing vaildation
+  const [IsVaildState, setIsVaildState] = useState(false)
+
+  const signalParent = (isValid) => {
+    setIsVaildState(isValid)
+    props.signalIfValid(isValid)
+  }
+  useMemo(() => {
+    if (agent?.value && agent?.isValid && agencyNumber?.value && agencyNumber?.isValid && agencyNumber?.value && agencyAttachments?.name && instrumentNumber.value && instrumentNumber.isValid && InstrumentAttachments?.name && checkProjectType == "تصميم") {
+      const updatedUserData = {
+        ...userData,
+        agent: agent.value,
+        agencyNumber: agencyNumber?.value,
+        agencyAttachments: agencyAttachments?.name,
+        instrumentNumber: instrumentNumber?.value,
+        InstrumentAttachments: InstrumentAttachments?.name,
+
+
+      };
+      setUserData(updatedUserData)
+      setUserDataVaild(true)
+
+      console.log(userData)
+
+    } else {
+
+      const updatedUserData = {
+        ...userData,
+        agent: agent.value,
+        agencyNumber: agencyNumber?.value,
+        agencyAttachments: agencyAttachments?.name,
+        instrumentNumber: instrumentNumber?.value,
+        InstrumentAttachments: InstrumentAttachments?.name,
+
+
+      };
+
+
+      setUserData(updatedUserData)
+      setUserDataVaild(false)
+      signalParent(false)
+    }
+    console.log(userDataVaild)
+  }, [agent?.value && agent?.isValid && agencyNumber?.value && agencyNumber?.isValid && agencyNumber?.value && agencyAttachments?.name && instrumentNumber.value && instrumentNumber.isValid && InstrumentAttachments?.name,])
+
 
 
 
@@ -44,18 +91,60 @@ const AddProjectStepThree = () => {
   const [confirmSubmit, setConfirmSubmit] = useState(false)
 
 
+  // check Review validation
+
+  useMemo(() => {
+    if (licenseNumber.isValid && licenseNumber.value && licenseDeed.isValid && licenseDeed.value && licenseDate && licenseAttachments?.name && checkProjectType == "الاشراف علي التنفيذ") {
+      signalParent(true)
+      const updatedUserData = {
+        ...userData,
+        licenseNumber: licenseNumber?.value,
+        licenseDeed: licenseDeed?.value,
+        licenseDate: licenseDate?.value,
+        licenseAttachments: licenseAttachments?.name,
+        notes: notes?.value,
 
 
+      };
+      setUserData(updatedUserData)
+      setUserDataVaild(true)
+
+    } else {
+      const updatedUserData = {
+        ...userData,
+        licenseNumber: licenseNumber?.value,
+        licenseDeed: licenseDeed?.value,
+        licenseDate: licenseDate?.value,
+        licenseAttachments: licenseAttachments?.name,
+        notes: notes?.value,
+
+
+      };
+      setUserData(updatedUserData)
+      signalParent(false)
+      setUserDataVaild(false)
+
+
+    }
+  }, [licenseNumber.isValid && licenseNumber.value && licenseDeed.isValid && licenseDeed.value && licenseDate && licenseAttachments?.name])
   useEffect(() => {
-    console.log(checkProjectType)
-
+    signalParent(IsVaildState)
   }, [])
 
 
+
+
+
+
+  useEffect(() => {
+    signalParent(IsVaildState)
+  }, [IsVaildState])
+
   return (
     <fieldset className='addProjectStep step-three mx-auto'>
-     
+
       {checkProjectType == "تصميم" ?
+
         <legend className='text-center'> اضافة بيانات الوكالة   </legend> :
         <legend className='text-center'>اضافة بيانات الرخصة </legend>
 
@@ -76,7 +165,7 @@ const AddProjectStepThree = () => {
               <Form.Label className="d-flex gap-2 align-items-center">
                 ارفاق الوكالة
 
-              
+
               </Form.Label>
               <Form.Control
                 type="file"
@@ -93,21 +182,21 @@ const AddProjectStepThree = () => {
             <Input label={"رقم الصك"} {...instrumentNumber.bind} mandatory />
 
           </div>
-          <div className='col-md-12 mb-4'>
+          <div className='col-md-6 mb-4'>
             <Form.Group controlId="formBasicImage">
-              <Form.Label className="d-flex gap-2 align-items-center">
+              <Form.Label className="d-flex flex-column gap-2 ">
 
 
                 صورة الصك
                 {(imageUrl || InstrumentAttachments) && (
                   <Image
-                    style={{ borderRadius: "50%" }}
-                    width={50}
-                    height={50}
+
+                    width={100}
+                    height={100}
                     src={
                       InstrumentAttachments
                         ? URL.createObjectURL(InstrumentAttachments)
-                        : imageUrl || ""
+                        : imageUrl
                     }
                     alt="image"
                   />
@@ -117,13 +206,14 @@ const AddProjectStepThree = () => {
                 type="file"
                 placeholder="صورة الصك"
                 name="imageFile"
+                className='w-100'
                 onChange={(e) => setInstrumentAttachments(e.currentTarget.files[0])}
               />
             </Form.Group>
           </div>
-          <div className='col-md-12 d-flex justify-content-end  mb-4'>
-            {/* disabled={!userDataVaild} */}
-            <button onClick={(e) => {
+          <div className='col-md-12 d-flex justify-content-end  align-items-end mb-4'>
+
+            <button disabled={!userDataVaild} onClick={(e) => {
               e.preventDefault()
               try {
                 submitDesign()
@@ -135,7 +225,7 @@ const AddProjectStepThree = () => {
 
 
 
-            }} className=' w-25 mt-4 sumbmitAddUpdateUser border-0 disabled '> {Submitted ? <Progress isSmall /> : " حفظ"} </button>
+            }} className='  mt-4 sumbmitAddUpdateUser border-0 disabled '> {Submitted ? <Progress isSmall /> : " حفظ"} </button>
           </div>
 
         </Form>
@@ -180,7 +270,7 @@ const AddProjectStepThree = () => {
           <div className='col-md-6 mb-4'>
             <Form.Group controlId="formBasicImage">
               <Form.Label className="d-flex gap-2 align-items-center">
-              
+
 
                 تحميل المستندات
 
@@ -209,20 +299,22 @@ const AddProjectStepThree = () => {
             />
           </div>
           <div className='col-md-12 d-flex justify-content-end  mb-4'>
-            {/* disabled={!userDataVaild} */}
-            <button onClick={(e) => {
-              e.preventDefault()
-              try {
-                submitReview()
 
-              } catch (error) {
-                console.log(error)
+            <button
+              disabled={!userDataVaild}
+              onClick={(e) => {
+                e.preventDefault()
+                try {
+                  submitReview()
 
-              }
+                } catch (error) {
+                  console.log(error)
+
+                }
 
 
 
-            }} className='  mt-4 sumbmitAddUpdateUser border-0 disabled '> {Submitted ? <Progress isSmall /> : " حفظ"} </button>
+              }} className='  mt-4 sumbmitAddUpdateUser border-0 disabled '> {Submitted ? <Progress isSmall /> : " حفظ"} </button>
           </div>
 
 

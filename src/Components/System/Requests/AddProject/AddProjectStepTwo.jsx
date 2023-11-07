@@ -6,7 +6,9 @@ import { Form, Image, InputGroup } from 'react-bootstrap';
 import { multiStepContext } from '../../../../Context/StepContext';
 import { PhoneInput } from 'react-international-phone';
 import { PhoneNumberUtil } from 'google-libphonenumber';
-const AddProjectStepTwo = () => {
+const AddProjectStepTwo = (props) => {
+
+
 
   const { userData, setUserData } = useContext(multiStepContext)
 
@@ -28,10 +30,10 @@ const AddProjectStepTwo = () => {
     } : ""
 
     , "Select");
-  const projectType = UseSelect(
-    userData?.projectType ? {
-      value: userData?.projectType,
-      label: userData?.projectType
+  const identityType = UseSelect(
+    userData?.identityType ? {
+      value: userData?.identityType,
+      label: userData?.identityType
     } : ""
 
     , "", "Select");
@@ -40,7 +42,7 @@ const AddProjectStepTwo = () => {
   const checkPhoneValidation = isPhoneValid(phone);
   const taxCertificateNumber = UseInput(`${userData?.taxCertificateNumber ? userData.taxCertificateNumber : ""} `, "number", true)
   const [instrumentImage, setInstrumentImage] = useState(null);
-  const [imageUrl, setImageUrl] = useState(null);
+  const [imageUrl, setImageUrl] = useState(process.env.PUBLIC_URL + "/icons/show.png");
 
   const clientTypeRoles = [
     {
@@ -60,7 +62,7 @@ const AddProjectStepTwo = () => {
     },
 
   ]
-  const projectTypeRoles = [
+  const identityTypeRoles = [
     {
       label: "سجل تجاري",
       value: "سجل تجاري",
@@ -70,6 +72,77 @@ const AddProjectStepTwo = () => {
       value: "هوية"
     }
   ]
+
+
+
+
+
+
+
+
+
+
+  //  vaildation
+
+  const [IsVaildState, setIsVaildState] = useState(false)
+  const signalParent = (isValid) => {
+    setIsVaildState(isValid)
+    props.signalIfValid(isValid)
+  }
+
+
+  useMemo(() => {
+    if (clientType?.value.label && identityType?.value.label && instrumentImage?.name && email.value && email.isValid && phone && checkPhoneValidation) {
+      const updatedUserData = {
+        ...userData,
+        instrumentImage: instrumentImage?.name,
+        clientType: clientType.value.label,
+        identityType: identityType.value.label,
+        email: email.value,
+        phone,
+        taxCertificateNumber: taxCertificateNumber.value
+
+
+      };
+      setUserData(updatedUserData)
+
+      console.log(checkPhoneValidation)
+
+
+      signalParent(true)
+    } else {
+      signalParent(false)
+      const updatedUserData = {
+        ...userData,
+        instrumentImage: instrumentImage?.name,
+        clientType: clientType.value.label,
+        identityType: identityType.value.label,
+        email: email.value,
+        taxCertificateNumber: taxCertificateNumber.value,
+        phone
+
+
+      };
+      setUserData(updatedUserData)
+
+      console.log(checkPhoneValidation)
+    }
+
+  }, [clientType?.value.label && identityType?.value.label && instrumentImage?.name && email.value && email.isValid && checkPhoneValidation])
+
+
+  useEffect(() => {
+    signalParent(IsVaildState)
+  }, [IsVaildState])
+
+
+
+
+
+
+
+
+
   return (
 
     <fieldset className='addProjectStep mx-auto'>
@@ -81,15 +154,15 @@ const AddProjectStepTwo = () => {
       <Form className='row w-100 m-auto '>
         <div className="col-md-6 mb-4">
           <Select label={" نوع العميل"}
-          
-          OptionbackgroundColor="#414162" 
-          {...clientType.bind} options={clientTypeRoles} mandatory />
+            placeholder="اختر..."
+            OptionbackgroundColor="#414162"
+            {...clientType.bind} options={clientTypeRoles} mandatory />
         </div>
         <div className="col-md-6 mb-4">
-          <Select label={" نوع الهوية  "} 
-          
-          OptionbackgroundColor="#414162"
-          {...projectType.bind} options={projectTypeRoles} mandatory />
+          <Select label={" نوع الهوية  "}
+            placeholder="اختر..."
+            OptionbackgroundColor="#414162"
+            {...identityType.bind} options={identityTypeRoles} mandatory />
 
         </div>
 
@@ -132,17 +205,18 @@ const AddProjectStepTwo = () => {
         </div>
         <div className='col-md-12 mb-4'>
           <Form.Group controlId="formBasicImage">
-            <Form.Label className="d-flex gap-2 align-items-center">
-              صورة الهويه
+            <Form.Label className="d-flex flex-column gap-2 ">
+              <span>        صورة الهويه</span>
               {(imageUrl || instrumentImage) && (
                 <Image
-                  style={{ borderRadius: "50%" }}
-                  width={50}
-                  height={50}
+
+                  width={100}
+                  height={60}
                   src={
                     instrumentImage
                       ? URL.createObjectURL(instrumentImage)
-                      : imageUrl || ""
+                      : imageUrl
+
                   }
                   alt="image"
                 />
@@ -151,7 +225,10 @@ const AddProjectStepTwo = () => {
 
             <Form.Control
               type="file"
-              className='w-50'
+
+              width={100}
+              height={100}
+              className='choose-file-input'
               placeholder="صورة الهويه"
               name="imageFile"
               onChange={(e) => setInstrumentImage(e.currentTarget.files[0])}

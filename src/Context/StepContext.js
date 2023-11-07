@@ -36,6 +36,7 @@ const StepContext = ({ children }) => {
             setOpenDesignSteps(false)
             setShowAddUserModel(false)
             setConfirmSubmit(true)
+        
 
             // Handle the response here
         } catch ({ response }) {
@@ -45,6 +46,7 @@ const StepContext = ({ children }) => {
         } finally {
             setOpenCongrats(true)
             setUserData([])
+            setCheckProjectType(null)
         }
 
 
@@ -77,6 +79,7 @@ const StepContext = ({ children }) => {
         } finally {
             setOpenCongrats(true)
             setUserData([])
+            setCheckProjectType(null)
 
         }
 
