@@ -197,7 +197,7 @@ const AddUpdateUser = ({ id = null, setOpenUpdateUser }) => {
 
 
             <Form onSubmit={handleAddUpdateUser}>
-                <fieldset className='golden-square  w-75 m-auto'>
+                <fieldset className='golden-square  py-4 w-75 m-auto'>
                     {!id ? <legend className='text-center text-white'> اضافة مستخدم جديد</legend > : <legend className='text-center  text-white'> تعديل المستخدم  </legend >}
                     <div className='row    '>
                         <div className='col-md-4 col-sm-6  d-flex justify-content-center  mb-2'>
