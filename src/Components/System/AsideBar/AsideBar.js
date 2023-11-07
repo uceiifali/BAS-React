@@ -27,7 +27,7 @@ const AsideBar = () => {
 
                     <MenuItem className='mt-4  center w-100'>
                         <div className='d-flex justify-content-center flex-column align-items-center'>
-                            <div>  <img src={process.env.PUBLIC_URL+"/people/Badr.png"} alt="icon" className='badr-icon ' /></div>
+                            <div>  <img src={process.env.PUBLIC_URL+"/Badr.png"} alt="icon" className='badr-icon ' /></div>
 
 
 
