@@ -11,7 +11,7 @@ import ConfirmPoper from '../../ConfirmPoper';
 const AddProjectStepThree = (props) => {
   // Design Data 
   // context variabules 
-  const { userData, setUserData, submitDesign, Submitted, submitReview, checkProjectType, setCheckProjectType } = useContext(multiStepContext)
+  const { userData, setUserData, submitDesign, Submitted, submitReview, checkProjectType, setCheckProjectType ,submitSystemReview, submitSystemDesign } = useContext(multiStepContext)
 
   const [userDataVaild, setUserDataVaild] = useState(false)
   //check project type 
@@ -216,7 +216,7 @@ const AddProjectStepThree = (props) => {
             <button disabled={!userDataVaild} onClick={(e) => {
               e.preventDefault()
               try {
-                submitDesign()
+                submitSystemDesign()
 
               } catch (error) {
                 console.log(error)
@@ -305,7 +305,7 @@ const AddProjectStepThree = (props) => {
               onClick={(e) => {
                 e.preventDefault()
                 try {
-                  submitReview()
+                  submitSystemReview()
 
                 } catch (error) {
                   console.log(error)

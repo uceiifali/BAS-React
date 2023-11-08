@@ -33,6 +33,7 @@ const ReviewMultiSteps = ({ setOpenReviewSteps, openReviewSteps }) => {
 
             {openReviewSteps && <Modal
                 size="lg"
+                className='stepper'
                 aria-labelledby="contained-modal-title-vcenter"
                 onHide={() => setOpenReviewSteps(false)}
                 show={openReviewSteps}

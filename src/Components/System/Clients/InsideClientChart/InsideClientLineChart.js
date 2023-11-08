@@ -2,7 +2,7 @@ import React from "react";
 import ReactApexChart from "react-apexcharts";
 
 
-class AllRequestLineChart extends React.Component {
+class InsideClientLineChart extends React.Component {
     constructor(props) {
         super(props);
 
@@ -140,4 +140,4 @@ class AllRequestLineChart extends React.Component {
         );
     }
 }
-export default AllRequestLineChart
+export default InsideClientLineChart

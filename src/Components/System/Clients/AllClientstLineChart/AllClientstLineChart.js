@@ -2,7 +2,7 @@ import React from "react";
 import ReactApexChart from "react-apexcharts";
 
 
-class AllRequestLineChart extends React.Component {
+class AllClientstLineChart extends React.Component {
     constructor(props) {
         super(props);
 
@@ -133,11 +133,11 @@ class AllRequestLineChart extends React.Component {
 
 
             <div id="chart" className="w-100">
-                <ReactApexChart options={this.state.options} series={this.state.series} type="line" className="w-100 " height={350} />
+                <ReactApexChart options={this.state.options} series={this.state.series} type="line" className="w-100 " height={280} />
             </div>
 
 
         );
     }
 }
-export default AllRequestLineChart
+export default AllClientstLineChart

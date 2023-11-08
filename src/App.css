@@ -985,7 +985,7 @@ ol.progtrckr li.progtrckr-done:hover:before {
     max-width: 100% !important;
   }
 
-  .modal-body ol li {
+  .stepper .modal-body ol li {
     background-color: #E1DFDF;
     text-align: center;
     border-radius: 20px;
@@ -1001,14 +1001,15 @@ ol.progtrckr li.progtrckr-done:hover:before {
     font-size: 7px !important;
     align-items: center;
 
+    
   }
 
-  .modal-body ol li span {
+ .stepper .modal-body ol li span {
     font-size: 10px !important;
     white-space: unset !important;
   }
 
-  .go2150698616 {
+  .stepper .go2150698616 {
 
     line-height: unset !important;
   }
@@ -1017,12 +1018,13 @@ ol.progtrckr li.progtrckr-done:hover:before {
     content: "1"
   } */
 
-  .go2150698616 {
+  .stepper  .go2150698616 {
     min-width: unset !important;
   }
 
 
 }
+
 
 #regForm {
   background-color: #ffffff;

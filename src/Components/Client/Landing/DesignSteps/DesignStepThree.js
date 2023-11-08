@@ -9,7 +9,7 @@ import Progress from '../../../Progress';
 
 const DesignStepThree = (props) => {
   const { userData, setUserData, submitDesign, Submitted } = useContext(multiStepContext)
-  
+
   const agent = UseInput(`${userData.agent ? userData.agent : ""}`, "text", true);
   const agencyNumber = UseInput(`${userData.agencyNumber ? userData.agencyNumber : ""}`, "number", true);
   const [agencyAttachments, setAgencyAttachments] = useState(null)
@@ -118,7 +118,7 @@ const DesignStepThree = (props) => {
             e.preventDefault()
             try {
               submitDesign()
-         
+
             } catch (error) {
               console.log(error)
 

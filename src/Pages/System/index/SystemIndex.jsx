@@ -15,7 +15,7 @@ const SystemIndex = () => {
         <section className= 'full-system  system-bg position-relative'>
              <div className='  d-flex  position-absolute  end-5'>
 
-                <img src='../../../assets/icons/systemlogo.png ' alt='BSA logo' className='system-logo text-white' />
+                <img src={process.env.PUBLIC_URL+"/icons/systemlogo.png"} alt='BSA logo' className='system-logo text-white' />
             </div> 
             <div className='system-container d-flex align-items-center     '>
                 <div  className='row w-100 mx-auto  py-5 my-3 ps-5 h-75  align-items-center'>

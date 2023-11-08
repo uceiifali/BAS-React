@@ -25,6 +25,11 @@ import DesignRequest from './Pages/System/Requests/DesignRequest/DesignRequest';
 import DesignCasesRequest from './Pages/System/Requests/DesignRequest/DesignCasesRequest/DesignCasesRequest';
 import ReviewRequest from './Pages/System/Requests/ReviewRequest.jsx/ReviewRequest';
 import ReviewCasesRequest from './Pages/System/Requests/ReviewRequest.jsx/ReviewCasesRquest/ReviewCasesRequest';
+import AllCLients from './Pages/System/Clients/AllClients/AllCLients';
+import AllClientsChart from './Pages/System/Clients/AllClientsChart/AllClientsChart';
+import InsideClients from './Pages/System/Clients/InsideClients/InsideClients';
+import OutSideClients from './Pages/System/Clients/OutSideClients/OutSideClients';
+import ClientDetails from './Pages/System/Clients/ClientDetails/ClientDetails';
 
 
 
@@ -81,7 +86,7 @@ function App() {
         // system charts
         {
           path: "", element: <AllUsersChart />, children: [
-            { path: "/System/AllUsers/AllCountries", element: <CountriesChart /> },
+            { path: "/System/Users/index", element: <CountriesChart /> },
             { path: "/System/AllUsers/Country/:CountryName", element: <CountryChart /> },
 
           ]
@@ -99,6 +104,21 @@ function App() {
             },
             { path: "System/Requests/Review/:ReviewProjectType", element: <ReviewCasesRequest /> },
 
+
+          ]
+        },
+        // System Clients 
+        {
+          path: "", element: <AllCLients />, children: [
+
+            { path: "/System/Clients/index", element: <AllClientsChart /> },
+            { path: "/System/Clients/Inside",element:<InsideClients/> },
+            { path: "/System/Clients/Inside/Design",element:<InsideClients/> },
+            { path: "/System/Clients/Inside/Review",element:<InsideClients/> },
+            { path: "/System/Clients/Outside",element:<OutSideClients/> },
+            { path: "/System/Clients/Outside/Design",element:<OutSideClients/> },
+            { path: "/System/Clients/Outside/Review",element:<OutSideClients/> },
+            {path:"/System/ClintDetails/:id", element:<ClientDetails/>}
 
           ]
         },

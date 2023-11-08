@@ -30,7 +30,8 @@ const DesignMultiSteps = ({ openDesignSteps, setOpenDesignSteps }) => {
     return (
         <div>
             {openDesignSteps && <Modal
-                size="lg"
+                size="lg" 
+                className='stepper'
                 aria-labelledby="contained-modal-title-vcenter"
                 onHide={() => setOpenDesignSteps(false)}
                 show={openDesignSteps}

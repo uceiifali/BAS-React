@@ -236,7 +236,7 @@ const ShowDesignRequest = ({ setShowProject, DesignProjectType }) => {
       </Modal >
 
       }
-      
+
       {deleteRequest && <Modal
         className='submitSystemPoper'
         size="lg"
@@ -327,7 +327,7 @@ const ShowDesignRequest = ({ setShowProject, DesignProjectType }) => {
           </div>
 
           <div className='col-md-4 mb-2'>
-          {DesignProjectType == "inProgress" ?
+            {DesignProjectType == "inProgress" ?
               <div className='d-flex align-items-center  gap-3'>
 
 
@@ -405,7 +405,7 @@ const ShowDesignRequest = ({ setShowProject, DesignProjectType }) => {
             }
 
           </div>
-       
+
 
         </div>
 

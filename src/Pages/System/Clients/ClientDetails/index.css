@@ -1,0 +1,9 @@
+.client-details-Component {
+    border-radius: 19px !important;
+    background: #1E1E2D !important;
+}
+.client-details-Component .clinte-details-square{
+    border: 1px solid rgba(213, 153, 33, 0.20);
+    height: 315px;  
+    width: 100%;
+}

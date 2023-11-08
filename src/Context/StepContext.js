@@ -34,9 +34,37 @@ const StepContext = ({ children }) => {
             });
             setSubmitted(false)
             setOpenDesignSteps(false)
+           
+
+            // Handle the response here
+        } catch ({ response }) {
+            toast.error(response?.data);
+            setSubmitted(false)
+
+        } finally {
+            setOpenCongrats(true)
+            setUserData([])
+
+        }
+
+
+    }
+
+    const submitSystemDesign = async (e) => {
+        console.log("data submitted")
+
+        setSubmitted(true)
+        try {
+            const { data } = await httpRequest({
+                url: `/posts`,
+                // method: "post",
+                method: "get",
+                // data: userData,
+            });
+          
             setShowAddUserModel(false)
             setConfirmSubmit(true)
-        
+
 
             // Handle the response here
         } catch ({ response }) {
@@ -52,7 +80,35 @@ const StepContext = ({ children }) => {
 
     }
 
+    const submitSystemReview = async (e) => {
+        console.log("data submitted")
 
+        setSubmitted(true)
+        try {
+            const { data } = await httpRequest({
+                url: `/posts`,
+                // method: "post",
+                method: "get",
+                // data: userData,
+            });
+          
+            setShowAddUserModel(false)
+            setConfirmSubmit(true)
+
+
+            // Handle the response here
+        } catch ({ response }) {
+            toast.error(response?.data);
+            setSubmitted(false)
+
+        } finally {
+            setOpenCongrats(true)
+            setUserData([])
+            setCheckProjectType(null)
+        }
+
+
+    }
 
     const submitReview = async () => {
         console.log("data submitted")
@@ -66,8 +122,8 @@ const StepContext = ({ children }) => {
             });
             setSubmitted(false)
             setOpenReviewSteps(false)
-            setShowAddUserModel(false)
-            setConfirmSubmit(true)
+       
+           
 
 
 
@@ -79,8 +135,7 @@ const StepContext = ({ children }) => {
         } finally {
             setOpenCongrats(true)
             setUserData([])
-            setCheckProjectType(null)
-
+          
         }
 
     }
@@ -89,8 +144,8 @@ const StepContext = ({ children }) => {
 
     return (
         <div>
-             {confirmSubmit && <ConfirmPoper confirmPoper={confirmSubmit} setConfirmPoper={setConfirmSubmit} setEditRequest={setConfirmSubmit} text={"تم اضافة الطلب فى المشاريع بنجاح  "} />}
-            <multiStepContext.Provider value={{ setOpenReviewSteps, checkProjectType, setCheckProjectType, openReviewSteps, setOpenDesignSteps, openDesignSteps, openCongrats, setOpenCongrats, userData, setUserData, finalData, setFinalData, currentStep, setStep, openDesign, setOpenDesign, submitDesign, submitReview, Submitted }}>
+            {confirmSubmit && <ConfirmPoper confirmPoper={confirmSubmit} setConfirmPoper={setConfirmSubmit} setEditRequest={setConfirmSubmit} text={"تم اضافة الطلب فى المشاريع بنجاح  "} />}
+            <multiStepContext.Provider value={{submitSystemDesign,submitSystemReview, setOpenReviewSteps, checkProjectType, setCheckProjectType, openReviewSteps, setOpenDesignSteps, openDesignSteps, openCongrats, setOpenCongrats, userData, setUserData, finalData, setFinalData, currentStep, setStep, openDesign, setOpenDesign, submitDesign, submitReview, Submitted }}>
 
                 {children}
 
