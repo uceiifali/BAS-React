@@ -20,7 +20,7 @@
     background-color: #1E1E2D !important;
     height:  846px !important;
     padding: 30px 0px ;
-    overflow-y: scroll !important;
+    overflow-y: auto !important;
 
 
 }

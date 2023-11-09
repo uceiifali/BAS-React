@@ -254,7 +254,6 @@ const SystemUsers = () => {
 
                             </div>
                             {employeeDetails == "معلومات عامة" ? <Genralnformation /> : employeeDetails == "معلومات مهنية" ? <ProfessinollInformation /> : <AccountaingInformation />}
-
                         </div>
 
 

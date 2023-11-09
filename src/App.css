@@ -201,7 +201,7 @@ a {
 
 }
 
-.modal-body div div button {
+.stepper div div button {
   padding: 10px 25px;
   border: unset;
   border-radius: 15px;
@@ -646,9 +646,13 @@ ol.progtrckr li.progtrckr-done:hover:before {
 }
 
 /* multi steps css */
-.modal-content {
-  border-radius: 25px !important;
+.stepper .modal-content {
+  
   height: 650px !important;
+}
+.modal-content {
+  
+  border-radius: 25px !important;
 }
 
 .modal-body ol {

@@ -3,6 +3,7 @@ import React from 'react'
 
 import { Carousel } from 'react-bootstrap';
 import Slider from 'react-slick'
+import ImageComponent from '../../../Image';
 const projectsCarousal = () => {
 
   const settings = {
@@ -45,22 +46,22 @@ const projectsCarousal = () => {
     <Container>
       <Slider className='my-3' {...settings}>
         <div className='   d-flex my-5 slider-Container m-auto  justify-content-center  '>
-          <img src={"slider/projects/slider1.jpg"} alt='design ' className='w-100 h-100 ' />
+          <ImageComponent src={"slider/projects/slider1.jpg"} alt='design ' className='w-100 h-100 ' />
         </div>
         <div className='   d-flex my-5 slider-Container  m-auto  justify-content-center  '>
-          <img src={"slider/projects/slider2.jpg"} alt='design ' className='w-100 h-100 ' />
+          <ImageComponent src={"slider/projects/slider2.jpg"} alt='design ' className='w-100 h-100 ' />
         </div>
         <div className='   d-flex my-5 slider-Container  m-auto  justify-content-center '>
-          <img src={"slider/projects/slider3.jpg"} alt='design ' className='w-100 h-100 ' />
+          <ImageComponent src={"slider/projects/slider3.jpg"} alt='design ' className='w-100 h-100 ' />
         </div>
         <div className='   d-flex my-5 slider-Container   m-auto  justify-content-center '>
-          <img src={"slider/projects/slider4.jpg"} alt='design ' className='w-100 h-100 ' />
+          <ImageComponent src={"slider/projects/slider4.jpg"} alt='design ' className='w-100 h-100 ' />
         </div>
         <div className='   d-flex my-5 slider-Container  m-auto  justify-content-center '>
-          <img src={"slider/projects/slider5.jpg"} alt='design ' className='w-100 h-100 ' />
+          <ImageComponent src={"slider/projects/slider5.jpg"} alt='design ' className='w-100 h-100 ' />
         </div>
         <div className='   d-flex my-5 slider-Container  m-auto  justify-content-center '>
-          <img src={"slider/projects/slider6.jpg"} alt='design ' className='w-100 h-100 ' />
+          <ImageComponent src={"slider/projects/slider6.jpg"} alt='design ' className='w-100 h-100 ' />
         </div>
 
       </Slider>

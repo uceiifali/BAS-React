@@ -81,6 +81,7 @@ const DesignRequest = () => {
         <div className='designChartContainer d-flex justify-content-center align-items-center'>
 
           <DesignRequestChart />
+          
 
         </div>
 

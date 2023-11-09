@@ -1,30 +1,30 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import Image from 'next/image';
+import Image from "react-bootstrap/Image"
 
-function Image({ imageUrl, alt, className, ...props }) {
+function ImageComponent({ src, alt, className, ...props }) {
   const [error, setError] = useState(false);
 
   return (
-    <>
+  
       <Image
         onError={() => setError(true)}
         className={className}
-        src={!error ? imageUrl : "/images/carnotfound.svg"}
+        src={!error ? src : "/public/spinning-loading.gif"}
         alt={alt}
         loading="lazy"
         placeholder="blur"
-        blurDataURL="/images/carnotfound.svg"
+        blurDataURL="/public/spinning-loading.gif"
         {...props}
       />
-    </>
+  
   );
 }
 
-Image.propTypes = {
+ImageComponent.propTypes = {
   className: PropTypes.string,
   imageUrl: PropTypes.string.isRequired,
   alt: PropTypes.string.isRequired,
 };
 
-export default Image;
+export default ImageComponent;

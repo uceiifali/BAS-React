@@ -1,0 +1,19 @@
+.ShowClientModal .modal-content {
+    width: 80% !important;
+}
+
+.ShowClientModal .modal-content {
+    overflow-y: auto !important;
+}
+
+.edit-clint-header-golden {
+    border-radius: 5px;
+    border: 1px solid #EFAA20 !important;
+    color: #EFAA20 !important;
+}
+
+.edit-clint-header-white{
+    border-radius: 5px;
+    border: 1px solid #fff !important;
+    color: #fff !important ;
+}
