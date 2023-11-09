@@ -30,12 +30,9 @@ import AllClientsChart from './Pages/System/Clients/AllClientsChart/AllClientsCh
 import InsideClients from './Pages/System/Clients/InsideClients/InsideClients';
 import OutSideClients from './Pages/System/Clients/OutSideClients/OutSideClients';
 import ClientDetails from './Pages/System/Clients/ClientDetails/ClientDetails';
+import Home from "./Pages/index"
 
 
-
-
-
-const Home = lazy(() => import("./Pages"))
 const SignUP = lazy(() => import("././Pages/DashBoard/SignUP/SignUP"))
 const SignIn = lazy(() => import("././Pages/DashBoard/SignIn/SignIn"))
 
@@ -51,7 +48,7 @@ function App() {
 
     {
       path: "/",
-      element: <Suspense fallback={<Loading />}> <Home /></Suspense>
+      element: <Home />
     },
 
     {
@@ -112,13 +109,13 @@ function App() {
           path: "", element: <AllCLients />, children: [
 
             { path: "/System/Clients/index", element: <AllClientsChart /> },
-            { path: "/System/Clients/Inside",element:<InsideClients/> },
-            { path: "/System/Clients/Inside/Design",element:<InsideClients/> },
-            { path: "/System/Clients/Inside/Review",element:<InsideClients/> },
-            { path: "/System/Clients/Outside",element:<OutSideClients/> },
-            { path: "/System/Clients/Outside/Design",element:<OutSideClients/> },
-            { path: "/System/Clients/Outside/Review",element:<OutSideClients/> },
-            {path:"/System/ClintDetails/:id", element:<ClientDetails/>}
+            { path: "/System/Clients/Inside", element: <InsideClients /> },
+            { path: "/System/Clients/Inside/Design", element: <InsideClients /> },
+            { path: "/System/Clients/Inside/Review", element: <InsideClients /> },
+            { path: "/System/Clients/Outside", element: <OutSideClients /> },
+            { path: "/System/Clients/Outside/Design", element: <OutSideClients /> },
+            { path: "/System/Clients/Outside/Review", element: <OutSideClients /> },
+            { path: "/System/ClintDetails/:id", element: <ClientDetails /> }
 
           ]
         },
