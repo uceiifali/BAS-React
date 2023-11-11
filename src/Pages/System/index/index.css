@@ -12,14 +12,14 @@
 }
 
 .system-logo {
-    width: 140PX;   
+    width: 140PX;
     height: 70PX;
 }
 
 .systemModal .modal-content {
     background-color: #1E1E2D !important;
-    height:  846px !important;
-    padding: 30px 0px ;
+    height: 846px !important;
+    padding: 30px 0px;
     overflow-y: auto !important;
 
 
@@ -27,20 +27,22 @@
 
 
 .systemModal .modal-content ::-webkit-scrollbar {
-    
-    border-radius: 10px; /* Rounded corners */
 
-  }
-  
-  /* Style the scrollbar thumb (the draggable part) */
-  .systemModal .modal-content::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    /* Rounded corners */
 
-    border-radius: 10px; /* Rounded corners */
-  }
-  
-  /* Style the scrollbar track (the background) */
-  
-  
+}
+
+/* Style the scrollbar thumb (the draggable part) */
+.systemModal .modal-content::-webkit-scrollbar-thumb {
+
+    border-radius: 10px;
+    /* Rounded corners */
+}
+
+/* Style the scrollbar track (the background) */
+
+
 
 .top-3 {
     top: 3%;
@@ -160,6 +162,8 @@
 
 
 
+
+
 .full-system .lciOTt {
     background-color: unset !important;
 }
@@ -246,20 +250,85 @@
 .leaveComment textarea {
     background-color: transparent !important;
     border-radius: 7px !important;
-    border: 1px solid rgba(239, 170, 32, 0.50) !important; 
+    border: 1px solid rgba(239, 170, 32, 0.50) !important;
     box-shadow: unset !important;
 }
 
 .leaveComment textarea:focus {
     border-radius: 7px !important;
-    border: 1px solid rgba(239, 170, 32, 0.50) !important; 
+    border: 1px solid rgba(239, 170, 32, 0.50) !important;
 }
+
 .kAfkVG div:first-child {
 
     overflow: unset !important;
 }
-.full-system .kgGExh{
+
+.full-system .kgGExh {
     padding-left: 0px !important;
     padding-right: 0px !important;
-    min-width: unset !important;    
+    min-width: unset !important;
+}
+
+/* system responsive */
+@media screen and (max-width: 1400px) {
+    .all-categories .tab {
+        width: 150px !important;
+        font-size: 14px !important;
+
+    }
+
+    .all-categories .tabs {
+        justify-content: start !important;
+        width: 150px !important;
+
+    }
+    .search {
+        width: 100px !important;
+    }
+
+    .accordion-body {}
+
+    .accordion-button {
+        width: 150px !important;
+        height: 38px !important;
+        background-color: #2B2B40 !important;
+        border: unset !important;
+        box-shadow: unset !important;
+        outline: unset !important;
+        padding: 0px;
+        color: rgba(255, 255, 255, 0.50) !important;
+        display: flex;
+        justify-content: space-between;
+        align-items: center !important;
+        font-size: 14px !important;
+
+
+    }
+
+    .search-users .user-img{
+        width: 30px;
+        height: 30px;
+    }
+    .search-users  p {
+        font-size: 14px !important;
+    }
+    .search-users .name-header{
+        font-size: 14px;
+        width: unset !important;
+        height: unset !important;
+    }
+
+    .accordion-item {
+        width: 150px !important;
+    }
+    .accordion-button a{
+        width: 100%;
+        text-align: start;
+    }
+    .ReviewCasesRequest legend {
+        font-size: 14px !important;
+    }
+
+
 }

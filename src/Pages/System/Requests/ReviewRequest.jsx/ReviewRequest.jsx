@@ -19,8 +19,7 @@ const ReviewRequest = () => {
             id: 1,
             ProjectName: 'BSA',
             ProjectNumber: '53543',
-            recivedDate: '12-10-2023',
-            deliverDate: "24-11-2023",
+            createdAt: '12-10-2023',
             ProjectType: 'اشراف',
             enStatus: "inProgress",
             status: "قيد الا نتظار",
@@ -52,13 +51,10 @@ const ReviewRequest = () => {
             selector: row => row.recivedDate,
         },
         {
-            name: '  تاريخ الاستلام',
-            selector: row => row.deliverDate,
+            name: '  تاريخ الانشاء',
+            selector: row => row.createdAt,
         },
-        {
-            name: '   نوع المشروع',
-            selector: row => row.ProjectType,
-        },
+
         {
             name: '    الحالة',
             selector: row => row.status,

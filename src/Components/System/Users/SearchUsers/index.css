@@ -159,7 +159,7 @@
     border-radius: 3px !important;
     background: rgba(217, 217, 217, 0.50) !important;
     border: none !important;
-    font-size: 10px;
+    font-size: 10px !important;
   }
   
   .user-Personal {

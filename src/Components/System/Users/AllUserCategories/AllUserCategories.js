@@ -31,7 +31,7 @@ const AllUserCategories = ({ countryName = "السعودية" }) => {
 
     <AllCategories child={
       <div className='d-flex  flex-column   align-items-center '>
-        <Link className='pointer' to={"/System/AllUsers/AllCountries"}>
+        <Link className='pointer' to={"/System/Users/index"}>
           <p className='text-center text-white py-2' >كل المستخدمين</p>
         </Link>
 

@@ -12,8 +12,29 @@
     color: #EFAA20 !important;
 }
 
-.edit-clint-header-white{
+.edit-clint-header-white {
     border-radius: 5px;
     border: 1px solid #fff !important;
-    color: #fff !important ;
+    color: #fff !important;
+}
+
+
+.systemModal .lciOTt {
+    background-color: unset !important;
+}
+
+.systemModal .cSRQNB {
+    background-color: #1E1E2D;
+    color: #fff;
+}
+
+.systemModal .idxdtx {
+    background: #34344D !important;
+    color: #EFAA20 !important;
+    border: 1px solid #EFAA20 !important;
+}
+.systemModal .jWOtlo {
+    border: 1px solid #EFAA20 !important;
+    background: #34344D !important;
+    color: white !important;
 }

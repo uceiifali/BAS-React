@@ -25,8 +25,7 @@ const ReviewCasesRequest = () => {
             id: 1,
             ProjectName: 'BSA',
             ProjectNumber: '53543',
-            recivedDate: '12-10-2023',
-            deliverDate: '___',
+            createdAt: '12-10-2023',
             ProjectType: 'تصميم',
             status: projectType,
             display: <img src={process.env.PUBLIC_URL + "/icons/view.png"} onClick={() => { setShowProject(true) }} className='display_project  rounded' alt=' display project' />,
@@ -50,12 +49,8 @@ const ReviewCasesRequest = () => {
             selector: row => row.ProjectNumber,
         },
         {
-            name: '  تاريخ الاستلام',
-            selector: row => row.recivedDate,
-        },
-        {
-            name: 'تاريخ الاستلام  ',
-            selector: row => row.deliverDate,
+            name: '  تاريخ الانشاء',
+            selector: row => row.createdAt,
         },
         {
             name: '   نوع المشروع',

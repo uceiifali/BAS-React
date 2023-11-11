@@ -17,8 +17,7 @@ const DesignRequest = () => {
       id: 1,
       ProjectName: 'BSA',
       ProjectNumber: '53543',
-      recivedDate: '12-10-2023',
-      deliverDate: "24-11-2023",
+      createdAt: '12-10-2023',
       ProjectType: 'تصميم',
       status: "قيد الا نتظار",
       enStatus: "inProgress",
@@ -48,13 +47,10 @@ const DesignRequest = () => {
       selector: row => row.ProjectNumber,
     },
     {
-      name: '  تاريخ الاستلام',
-      selector: row => row.recivedDate,
+      name: '  تاريخ الانشاء',
+      selector: row => row.createdAt,
     },
-    {
-      name: '  تاريخ الاستلام',
-      selector: row => row.deliverDate,
-    },
+  
     {
       name: '   نوع المشروع',
       selector: row => row.ProjectType,

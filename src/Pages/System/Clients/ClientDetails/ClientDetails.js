@@ -114,14 +114,14 @@ const ClientDetails = () => {
                 </div>
 
                 <div className='all-clints-search-driver'></div>
-                <Link to={"/System/Clients/ClintDetails/1"}>
+                <Link to={"/System/ClintDetails/1"}>
                     <div className='clintName'>
                         <p className='text-white mb-0'>سلطان عبد الله</p>
                         <p className='clint-type '>فردى</p>
 
                     </div>
                 </Link>
-                <Link to={"/System/Clients/ClintDetails/2"}>
+                <Link to={"/System/ClintDetails/2"}>
                     <div className='clintName'>
                         <p className='text-white mb-0'> فهد عبد الرحمن</p>
                         <p className='clint-type '>مستسمر</p>
@@ -129,7 +129,7 @@ const ClientDetails = () => {
                     </div>
 
                 </Link>
-                <Link to={"/System/Clients/ClintDetails/3"}><div className='clintName'>
+                <Link to={"/System/ClintDetails/3"}><div className='clintName'>
                     <p className='text-white mb-0'>  سعود بن حمد </p>
                     <p className='clint-type '>شركة </p>
 

@@ -8,7 +8,7 @@
 .TableContainer {
     border-radius: 22px;
     border: 1px solid rgba(239, 170, 32, 0.50);
-    
+
     width: 98%;
 
 
@@ -16,10 +16,10 @@
 }
 
 .datatableComponent {
-    overflow-x: scroll;
+    overflow-x: auto !important;
 
-    height: 400px;
-    
+    height: 400px !important;
+
 }
 
 
@@ -32,7 +32,6 @@
     cursor: pointer;
 }
 
-.DesignCasesRequest legend{
+.DesignCasesRequest legend {
     font-size: 16px !important;
- }
- 
+}

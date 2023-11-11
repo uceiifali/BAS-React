@@ -19,7 +19,7 @@ const AllCLients = () => {
                 <div className='col-md-3'>
                     <AllCategories child={<div className='d-flex  flex-column   align-items-center '>
 
-                        <SearchComponent background={"#161620 !important"} />
+          
 
                         <div className='mt-4 w-100'>
                             <Link to={"/System/Clients/index"} className='pointer' >

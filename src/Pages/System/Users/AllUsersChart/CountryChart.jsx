@@ -31,39 +31,39 @@ const CountryChart = () => {
 
     }, [CountryName])
     return (
-   <div className='row'>
-    <div className='col-md-3'>
+        <div className='row'>
+            <div className='col-md-3'>
 
-        <SearchCountryUsers/>   
-    </div>
-    <div className='col-md-9'>
-    <div className='country-Chart p-5'>
+                <SearchCountryUsers />
+            </div>
+            <div className='col-md-9'>
+                <div className='country-Chart p-5'>
 
-<div className='d-flex justify-content-center flex-column align-items-center'>
+                    <div className='d-flex justify-content-center flex-column align-items-center'>
 
-    <h2 className='country-header text-center   text-white mb-4'>
+                        <h2 className='country-header text-center   text-white mb-4'>
 
-        {countryBase == "Saudia" ? "السعودية" : "مصر"}
+                            {countryBase == "Saudia" ? "السعودية" : "مصر"}
 
-    </h2>
-    <CountryPieChart />
-</div>
-<fieldset className='All-users-columnChart-container  py-3 m-auto '>
-    <legend className='text-white text-center'>كل المستخدمين في      {countryBase == "Saudia" ? "السعودية" : "مصر"} </legend>
+                        </h2>
+                        <CountryPieChart />
+                    </div>
+                    <fieldset className='All-users-columnChart-container  py-3 m-auto '>
+                        <legend className='text-white text-center'>كل المستخدمين في      {countryBase == "Saudia" ? "السعودية" : "مصر"} </legend>
 
-    <div className='county-users-columnChart  d-flex   align-items-center flex-column'>
+                        <div className='county-users-columnChart  d-flex   align-items-center flex-column'>
 
-        <CountryColumnChart />
+                            <CountryColumnChart />
 
-        <CountryDeprtamentSlider />
+                            <CountryDeprtamentSlider />
 
-    </div>
-</fieldset>
+                        </div>
+                    </fieldset>
 
-</div>
+                </div>
 
-    </div>
-   </div>
+            </div>
+        </div>
     )
 }
 

@@ -285,22 +285,22 @@ const ShowDesignRequest = ({ setShowProject, DesignProjectType }) => {
 
       <div className='border-golden'>
         <div className='row px-2 py-3'>
-          <div className='col-md-8 mb-2'>
+          <div className='col-md-6 mb-2'>
             <p className='text-white'>اسم المشروع :   <span>BSA</span> </p>
 
           </div>
-          <div className='col-md-4   mb-2'>
-            <div>
+          <div className='col-md-6   mb-2'>
+            <div className=' d-flex gap-3 justify-content-start '>
               <Button className='export-bg  ms-2 '>تصدير CSV </Button>
               <Button className='export-bg ms-2'> تصدير Excel     </Button>
             </div>
 
           </div>
-          <div className='col-md-8 mb-2'>
+          <div className='col-md-6 mb-2'>
             <p className='text-white'>نوع المشروع :   <span>التصميم</span> </p>
 
           </div>
-          <div className='col-md-4 mb-2'>
+          <div className='col-md-6 mb-2'>
             <p className='text-white'>
               <p className='text-white'>  الحالة  :
 
@@ -321,12 +321,12 @@ const ShowDesignRequest = ({ setShowProject, DesignProjectType }) => {
             </p>
 
           </div>
-          <div className='col-md-8 mb-2'>
+          <div className='col-md-6 mb-2'>
             <p className='text-white'>  رقم الطلب  : <span> 0123</span> </p>
 
           </div>
 
-          <div className='col-md-4 mb-2'>
+          <div className='col-md-6  mb-2'>
             {DesignProjectType == "inProgress" ?
               <div className='d-flex align-items-center  gap-3'>
 

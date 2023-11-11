@@ -16,7 +16,7 @@
 }
 
 .datatableComponent {
-    overflow-x: auto;
+    overflow-x: hidden !important;
 
     height: 400px;
 }
