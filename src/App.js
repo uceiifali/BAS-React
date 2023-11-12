@@ -31,6 +31,7 @@ import InsideClients from './Pages/System/Clients/InsideClients/InsideClients';
 import OutSideClients from './Pages/System/Clients/OutSideClients/OutSideClients';
 import ClientDetails from './Pages/System/Clients/ClientDetails/ClientDetails';
 import Home from "./Pages/index"
+import AllMeetings from './Pages/System/Meetings/AllMeetings/AllMeetings';
 
 
 const SignUP = lazy(() => import("././Pages/DashBoard/SignUP/SignUP"))
@@ -119,6 +120,13 @@ function App() {
 
           ]
         },
+        // System Meetings 
+        { path: "/System/Meetings/index", element: <AllMeetings /> },
+     
+
+
+
+        ,
 
       ]
     },

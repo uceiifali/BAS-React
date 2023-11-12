@@ -5,6 +5,8 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;500&family=Poppins:ital,wght@0,500;1,500;1,600&display=swap ');
 
+
+
 .system-bg {
     background: #151521 !important;
     font-family: "Cairo" !important;
@@ -283,6 +285,7 @@
         width: 150px !important;
 
     }
+
     .search {
         width: 100px !important;
     }
@@ -306,14 +309,16 @@
 
     }
 
-    .search-users .user-img{
+    .search-users .user-img {
         width: 30px;
         height: 30px;
     }
-    .search-users  p {
+
+    .search-users p {
         font-size: 14px !important;
     }
-    .search-users .name-header{
+
+    .search-users .name-header {
         font-size: 14px;
         width: unset !important;
         height: unset !important;
@@ -322,13 +327,44 @@
     .accordion-item {
         width: 150px !important;
     }
-    .accordion-button a{
+
+    .accordion-button a {
         width: 100%;
         text-align: start;
     }
+
     .ReviewCasesRequest legend {
         font-size: 14px !important;
     }
 
 
+}
+
+
+.rbc-off-range-bg {
+    background-color: unset !important;
+}
+
+.rbc-day-bg.rbc-today {
+    border: 1px solid #EFAA20 !important;
+    background-color: unset !important;
+}
+
+.rbc-btn-group{
+    color: white !important;
+}
+.rbc-toolbar button{
+    border-radius: unset !important ;
+}
+.rbc-today {
+    background-color: #bac5cd;
+}   
+.rbc-day-bg{
+    border-left: 1px solid #ddd;
+}
+.rbc-event-content,.rbc-event{
+    background-color: #EFAA20 !important;
+}
+.rbc-btn-group button{
+    color: white !important;
 }

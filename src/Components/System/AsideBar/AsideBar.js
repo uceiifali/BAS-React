@@ -7,7 +7,7 @@ const AsideBar = () => {
     const [rtl, setRtl] = useState(true)
     const [collapsed, setCollapsed] = useState(true);
     return (
-        <div className=" asidePar align-items-center    mx-5" style={{ display: 'flex', direction: rtl ? 'rtl' : 'ltr', borderRadius: "19px" }}>
+        <div className=" asidePar align-items-center     mx-5" style={{ display: 'flex', direction: rtl ? 'rtl' : 'ltr', borderRadius: "19px" }}>
 
             <Sidebar
 
@@ -194,7 +194,7 @@ const AsideBar = () => {
                             <div className='col-md-4 col-sm-6'>
 
                                 <div className='system-item'>
-                                    <Link>
+                                    <Link to={"/System/Meetings/index"}>
                                         <div class="system-card">
                                             <div class="card__content d-flex justify-content-center align-items-center  flex-column gap-2 " >
                                                 <img
