@@ -1,6 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;700;800;900&family=Poppins:ital,wght@0,500;1,500;1,600&display=swap');
 
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;700;800;900&family=Poppins:ital,wght@0,500;1,500;1,600&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;500&family=Poppins:ital,wght@0,500;1,500;1,600&display=swap');
+
 
 body {
   direction: rtl !important;
@@ -27,6 +28,9 @@ body {
 button {
   box-shadow: unset !important;
 }
+.form-group{
+  width: 100%    !important    ;
+ }  
 
 .home-layer {
   background-color: rgba(0, 35, 82, 0.5);
@@ -647,11 +651,12 @@ ol.progtrckr li.progtrckr-done:hover:before {
 
 /* multi steps css */
 .stepper .modal-content {
-  
+
   height: 650px !important;
 }
+
 .modal-content {
-  
+
   border-radius: 25px !important;
 }
 
@@ -690,8 +695,8 @@ ol.progtrckr li.progtrckr-done:hover:before {
   display: none !important;
 }
 
-.modal-body  .go2150698616.go433304200 {
-  background-color: #C9A56C ;
+.modal-body .go2150698616.go433304200 {
+  background-color: #C9A56C;
   color: #fff !important;
 
 }
@@ -1005,10 +1010,10 @@ ol.progtrckr li.progtrckr-done:hover:before {
     font-size: 7px !important;
     align-items: center;
 
-    
+
   }
 
- .stepper .modal-body ol li span {
+  .stepper .modal-body ol li span {
     font-size: 10px !important;
     white-space: unset !important;
   }
@@ -1022,7 +1027,7 @@ ol.progtrckr li.progtrckr-done:hover:before {
     content: "1"
   } */
 
-  .stepper  .go2150698616 {
+  .stepper .go2150698616 {
     min-width: unset !important;
   }
 

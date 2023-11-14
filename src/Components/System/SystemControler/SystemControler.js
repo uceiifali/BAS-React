@@ -8,9 +8,8 @@ const SystemControler = ({ child }) => {
             </div>
             <div className='icons ms-3 d-flex gap-2' >
 
-                <img src={process.env.PUBLIC_URL + "/icons/notification.png"} alt='notification img' className='pointer system-notification mx-1' />
-                <img src={process.env.PUBLIC_URL + "/icons/messages.png"}
-                    alt='notification img' className='pointer system-notification mx-1' />
+                <img src={process.env.PUBLIC_URL+"/icons/notification.png"}  alt='notification img' className='pointer system-notification mx-1' />
+                <img src={process.env.PUBLIC_URL+"/icons/messages.png"}  alt='notification img' className='pointer system-notification mx-1' />
 
 
 

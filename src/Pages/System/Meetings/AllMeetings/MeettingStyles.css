@@ -1,0 +1,37 @@
+.mettingModal .css-1dimb5e-singleValue {
+    color: #fff !important;
+}   
+.mettingModal   .ChooseDeprtmant{
+    background-color:  #2B2B40 !important;
+    /* border-radius: 7px;
+background: #2B2B40; */
+}
+.rbc-day-slot .rbc-time-slot {
+border-top: unset !important    ;
+}
+.mettingModal  .ChooseDeprtmant:hover{
+    background-color:  #2B2B40 !important;
+}
+.ck.ck-reset_all{
+    background-color:  #2B2B40 !important;
+}
+.ck-content{
+    background-color:  #2B2B40 !important;  
+}
+.rbc-rtl .rbc-time-content > * + * > * {
+
+     /* border-right: unset !important;          */
+}
+
+.mettingModal .react-datepicker__triangle{
+    display: none !important;
+}
+.react-time-picker__inputGroup__amPm{
+    background-color: unset !important;
+}
+.react-time-picker__button{
+    color: #fff !important;
+}
+.react-time-picker__wrapper{
+    border: unset !important;
+}

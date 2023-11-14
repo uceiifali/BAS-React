@@ -357,7 +357,7 @@
     border-radius: unset !important ;
 }
 .rbc-today {
-    background-color: #bac5cd;
+    background-color: unset !important;
 }   
 .rbc-day-bg{
     border-left: 1px solid #ddd;
