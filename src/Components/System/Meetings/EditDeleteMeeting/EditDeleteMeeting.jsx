@@ -20,9 +20,15 @@ import TimePicker from 'react-time-picker'
 import { TieredMenu } from 'primereact/tieredmenu'
 import Progress from '../../../Progress'
 import ChooseDepartmentComponent from '../ChooseDepartmentComponent/ChooseDepartmentComponent'
+// import ChooseDepartmentComponent from '../ChooseDepartmentComponent/chooseDeprtamentComponent'
 
 
-export const AddMeeting = ({ showAddUserModel, setShowAddUserModel }) => {
+
+
+
+
+
+const EditDeleteMeeting = ({ id, showEditDeleteModal, setShowEditDeleteModal }) => {
     const [Submitted, setSubmitted] = useState(false)
     const selectCountry = UseSelect("", "Select")
     const selectMeetingType = UseSelect("", "Select")
@@ -35,9 +41,6 @@ export const AddMeeting = ({ showAddUserModel, setShowAddUserModel }) => {
     let meetingLink = UseInput("", "", false)
     // const currentDate = Date.now()
     // const Handeledmeeting = moment(meetingDate).format("DD-MM-YYYYThh:mma")
-
-
-
 
     const meetingCountries = [
         {
@@ -64,32 +67,44 @@ export const AddMeeting = ({ showAddUserModel, setShowAddUserModel }) => {
         },
 
     ]
-    const handleAddMeeting = () => {
-        setShowAddUserModel(false)
+    const handleEditDeleteMeeting = (action) => {
+        if (action === "edit") {
+
+
+        } else {
+
+
+
+
+        }
+
+
+
+
+        setShowEditDeleteModal(false)
     }
 
 
 
     return (
         <div>
-
-            <ChooseDepartmentComponent chooseDepartment={chooseDepartment} setChooseDeprtmant={setChooseDeprtmant} />
-            {showAddUserModel && <Modal
+             <ChooseDepartmentComponent chooseDepartment={chooseDepartment} setChooseDeprtmant={setChooseDeprtmant} />
+            {showEditDeleteModal && <Modal
                 size="lg"
-                show={showAddUserModel}
-                onHide={() => setShowAddUserModel(false)}
+                show={showEditDeleteModal}
+                onHide={() => setShowEditDeleteModal(false)}
                 aria-labelledby=" example-modal-sizes-title-lg"
                 className='systemModal mettingModal   '
             >
                 <Container>
                     <div className='d-flex justify-content-between'>
-                        <p className='text-xl text-white'>اضافة اجتماع جديد</p>
+                        <p className='text-xl text-white'>  تعديل بيانات الاجتماع</p>
                         <Image
                             src="/Rejected.png"
                             alt='close modal button'
                             className='pointer'
                             onClick={() => {
-                                setShowAddUserModel(false)
+                                setShowEditDeleteModal(false)
                             }}
 
                         />
@@ -115,11 +130,6 @@ export const AddMeeting = ({ showAddUserModel, setShowAddUserModel }) => {
 
 
                         }
-
-
-
-
-
 
 
                         <div className='col-md-12 mb-4'>
@@ -248,15 +258,23 @@ export const AddMeeting = ({ showAddUserModel, setShowAddUserModel }) => {
                         </div>
 
 
-                        <div className='d-flex justify-content-center'>
+                        <div className='d-flex my-2 justify-content-center gap-2'>
 
                             <button
 
                                 onClick={(e) => {
-                                    handleAddMeeting()
+                                    handleEditDeleteMeeting("edit")
 
 
                                 }} className='  mt-4 sumbmitAddUpdateUser border-0 disabled '> {Submitted ? <Progress isSmall /> : " حفظ"} </button>
+
+                            <button
+
+                                onClick={(e) => {
+                                    handleEditDeleteMeeting("delete")
+
+
+                                }} className='  mt-4  editUser border-0 disabled '> {Submitted ? <Progress isSmall /> : " حذف"} </button>
                         </div>
 
 
@@ -279,3 +297,9 @@ export const AddMeeting = ({ showAddUserModel, setShowAddUserModel }) => {
         </div>
     )
 }
+
+export default EditDeleteMeeting
+
+
+
+

@@ -11,25 +11,38 @@ import { showAddUpdateUser } from '../../../../Context/CheckAddUpdateUserVisabil
 import Select from '../../../../Components/FormHandler/Select'
 import { UseSelect } from '../../../../hooks'
 import { AddMeeting } from '../../../../Components/System/Meetings/AddMeeting/AddMeeting'
+import EditDeleteMeeting from '../../../../Components/System/Meetings/EditDeleteMeeting/EditDeleteMeeting'
 
 const AllMeetings = () => {
     const { showAddUserModel, setShowAddUserModel } = useContext(showAddUpdateUser)
-
+    const [showEditDeleteModal, setShowEditDeleteModal] = useState(false)
     const [AllEvents, setAllEvents] = useState(null)
+    const [selectedEventId, setSelectedEventId] = useState(null)
     const localizer = momentLocalizer(moment)
     const currentDate = Date.now()
     const currentDay = moment(currentDate).format("DD/MM/YYYY")
     const currrentTime = moment(currentDate).format("hh:mm a")
     const selectCountry = UseSelect("", "Select")
+
+
+
+
+    // get all events
     const getAllEvents = () => {
 
 
     }
 
+
+    // get the selected metting to handle (edit-delete)
     const handleEditMeeting = (event) => {
-      
+        setSelectedEventId(event.id)
+        setShowEditDeleteModal(true)
+
+
 
     }
+
 
     const events = [
         {
@@ -42,8 +55,8 @@ const AllMeetings = () => {
         },
         {
             title: 'Meeting 2',
-            start: new Date("2023-11-15T14:00:00"),
-            end: new Date("2023-11-15T15:30:00"),
+            start: new Date("2023-11-17T14:00:00"),
+            end: new Date("2023-11-17T15:00:00"),
             allDay: false,
             id: "4"
 
@@ -59,7 +72,7 @@ const AllMeetings = () => {
         <div >
 
 
-
+            <EditDeleteMeeting id={selectedEventId} showEditDeleteModal={showEditDeleteModal} setShowEditDeleteModal={setShowEditDeleteModal} />
             <SystemControler child={<AddUserButton />} />
             <div className={styles.cleanderbg}>
 
@@ -74,8 +87,8 @@ const AllMeetings = () => {
                     endAccessor={"end"}
                     rtl={true}
                     onEventDrop={true}
-                    selected={selectedEvent}
-                    onSelectEvent={handleSelected}
+
+                    onSelectEvent={handleEditMeeting}
                     events={events}
                     views={['month', 'week']}
                     onEvent

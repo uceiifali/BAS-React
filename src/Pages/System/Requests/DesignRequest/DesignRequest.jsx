@@ -50,7 +50,7 @@ const DesignRequest = () => {
       name: '  تاريخ الانشاء',
       selector: row => row.createdAt,
     },
-  
+
     {
       name: '   نوع المشروع',
       selector: row => row.ProjectType,
@@ -77,7 +77,7 @@ const DesignRequest = () => {
         <div className='designChartContainer d-flex justify-content-center align-items-center'>
 
           <DesignRequestChart />
-          
+
 
         </div>
 
@@ -89,7 +89,7 @@ const DesignRequest = () => {
 
 
           <div className='mt-3   '>
-            <DataTableComponent className={"overflow-x-hidden datatableComponent"} columns={columns} data={DesignProjects} />
+            <DataTableComponent className={"overflow-x-hidden overflow-y-auto datatableComponent"} columns={columns} data={DesignProjects} />
           </div>
         </fieldset>
       </div> : <ShowDesignRequest DesignProjectType={DesignProjectType} setShowProject={setShowProject} />

@@ -271,6 +271,22 @@
     padding-right: 0px !important;
     min-width: unset !important;
 }
+.full-system .cfvlby {
+
+    background: #34344D !important;
+    color: #EFAA20 !important;
+  }
+  
+  .full-system .dkGVyE {
+    color: #FFF;
+    background: #1E1E2D;
+  }
+  
+  .full-system .jiAnER {
+    color: #FFF;
+    background: #34344C;;
+  }
+  
 
 /* system responsive */
 @media screen and (max-width: 1400px) {
@@ -290,7 +306,7 @@
         width: 100px !important;
     }
 
-    .accordion-body {}
+
 
     .accordion-button {
         width: 150px !important;

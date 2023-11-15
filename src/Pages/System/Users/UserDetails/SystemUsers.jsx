@@ -149,7 +149,7 @@ const SystemUsers = () => {
                                         <div className='d-flex flex-column me-3 '>
                                             <h2 className=' name-header     my-0    '> اسلام</h2>
                                             <p className='main-text  my-0   '>islam@bsa.com</p>
-                                            <p className=' name-heade my-0    '>01023456789</p>
+                                            <p className=' name-header my-0    '>01023456789</p>
                                         </div>
 
                                     </div>

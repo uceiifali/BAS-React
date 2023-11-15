@@ -138,7 +138,7 @@ const DesignCasesRequest = () => {
 
 
           <div className='py-3    '>
-            <DataTableComponent className={"   datatableComponent"} columns={columns} data={DesignCasesProjects} />
+            <DataTableComponent className={" overflow-y-auto   datatableComponent"} columns={columns} data={DesignCasesProjects} />
           </div>
         </fieldset>
       </div> : <ShowDesignRequest DesignProjectType={DesignProjectType} setShowProject={setShowProject} />

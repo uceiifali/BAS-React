@@ -1,4 +1,3 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;700;800;900&family=Poppins:ital,wght@0,500;1,500;1,600&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;500&family=Poppins:ital,wght@0,500;1,500;1,600&display=swap');
 
@@ -28,9 +27,10 @@ body {
 button {
   box-shadow: unset !important;
 }
-.form-group{
-  width: 100%    !important    ;
- }  
+
+.form-group {
+  width: 100% !important;
+}
 
 .home-layer {
   background-color: rgba(0, 35, 82, 0.5);
@@ -1156,9 +1156,12 @@ legend {
   justify-content: center !important;
 }
 
+
 .gnBnkV {
   justify-content: center;
+
 }
+
 
 /* .slider-Container{
 width: 250px !important;
@@ -1181,3 +1184,5 @@ height: 250px !important;
 
 
 }
+
+.editUser {}
