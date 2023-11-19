@@ -12,7 +12,7 @@ const SearchCountryUsers = () => {
 
                 <div className='d-flex   justify-content-center'>     <Input background='#2B2B40' height='37.06px' width='166px' className='border-0  search' placeholder="Search..." /></div>
 
-                <div className='d-flex justify-content-between m-2'>
+                <div className='d-flex align-items-center justify-content-between m-2'>
                     <p className='text-center  text-white' >كل المستخدمين</p>
                     <NavDropdown title={<svg xmlns="http://www.w3.org/2000/svg" width="17" height="15" viewBox="0 0 17 15" fill="none">
                         <path d="M17 0H0L6.8 7.77417V13.1487L10.2 14.7923V7.77417L17 0Z" fill="#D59921" />

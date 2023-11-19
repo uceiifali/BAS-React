@@ -1,6 +1,6 @@
 import React from 'react'
 
-const SystemControler = ({ child }) => {
+const   SystemControler = ({ child }) => {
     return (
         <div className='user-control-model mb-4 d-flex align-items-center x-4 justify-content-between' >
             <div className='me-2  w-100'>

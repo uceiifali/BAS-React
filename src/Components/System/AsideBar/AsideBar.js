@@ -155,7 +155,7 @@ const AsideBar = () => {
                             </div>   <div className='col-md-4 col-sm-6'>
 
                                 <div className='system-item'>
-                                    <Link>
+                                    <Link to={"/System/Projects/index"}>
                                         <div class="system-card">
                                             <div class="card__content d-flex justify-content-center align-items-center  flex-column gap-2 " >
                                                 <img

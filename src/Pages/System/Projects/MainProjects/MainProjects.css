@@ -1,0 +1,8 @@
+.MainProjects .apexcharts-graphical {
+    width: 400px !important;
+}
+
+.NestedMainProjects .apexcharts-legend {
+    display: none !important;
+}
+

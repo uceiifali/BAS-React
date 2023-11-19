@@ -47,10 +47,6 @@ const ReviewRequest = () => {
             selector: row => row.ProjectNumber,
         },
         {
-            name: '  تاريخ الاستلام',
-            selector: row => row.recivedDate,
-        },
-        {
             name: '  تاريخ الانشاء',
             selector: row => row.createdAt,
         },

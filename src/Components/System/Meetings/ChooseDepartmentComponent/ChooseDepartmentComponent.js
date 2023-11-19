@@ -1,9 +1,10 @@
 import React from 'react'
 import { Accordion, Button, Container, Form, Image, Modal } from 'react-bootstrap'
 import { MdKeyboardArrowDown } from 'react-icons/md'
-import { Link } from 'react-router-dom'
+import { div } from 'react-router-dom'
 import { SearchComponent } from '../../../SearchComponent/SearchComponent'
 import { Checkbox } from '@mui/material'
+import "./ChooseDeprtmnt.css"
 const ChooseDepartmentComponent = ({ chooseDepartment, setChooseDeprtmant }) => {
     const users = Array.from({ length: 5 })
     return (
@@ -17,7 +18,7 @@ const ChooseDepartmentComponent = ({ chooseDepartment, setChooseDeprtmant }) => 
             >
 
 
-             
+
 
                 <div className='row  mx-2'>
                     <div className='col-md-6'>
@@ -32,7 +33,9 @@ const ChooseDepartmentComponent = ({ chooseDepartment, setChooseDeprtmant }) => 
                                     <Accordion.Item eventKey="0">
 
                                         <Accordion.Header  >
-                                            <Link to={"System/Clients/Inside"}>مدير مكتب</Link>
+                                            <p>مدير مكتب</p>
+                                            <Checkbox />
+
 
 
                                         </Accordion.Header>
@@ -45,7 +48,9 @@ const ChooseDepartmentComponent = ({ chooseDepartment, setChooseDeprtmant }) => 
                                     <Accordion.Item eventKey="0">
 
                                         <Accordion.Header  >
-                                            <Link >مدير قسم </Link>
+                                            <p>مدير قسم</p>
+
+
 
 
                                             <MdKeyboardArrowDown size={20} />
@@ -55,67 +60,77 @@ const ChooseDepartmentComponent = ({ chooseDepartment, setChooseDeprtmant }) => 
 
                                         <Accordion.Body>
                                             <div className='tabs d-flex justify-content-center align-items-center flex-column'>
-                                                <Link className='w-100' >
+                                                <div className='w-100' >
                                                     <div className='tab  text-end w-100'>
-                                                        الكل
-
+                                                        <span> الكل</span>
+                                                        <Checkbox />
                                                     </div>
-                                                </Link>
-                                                <Link className='w-100'
+
+                                                </div>
+                                                <div className='w-100'
 
                                                 >
                                                     <div className='tab  text-end w-100'>
 
 
-                                                        مدني
+                                                        <span>مدني</span>
+                                                        <Checkbox />
+
 
                                                     </div>
-                                                </Link>
-                                                <Link className='w-100'
+                                                </div>
+                                                <div className='w-100'
                                                 >
                                                     <div className='tab  text-end w-100'>
 
 
-                                                        معماري
+                                                        <span>معماري</span>
+                                                        <Checkbox />
+
 
                                                     </div>
-                                                </Link>
-                                                <Link className='w-100'
+                                                </div>
+                                                <div className='w-100'
                                                 >
                                                     <div className='tab  text-end w-100'>
 
 
-                                                        كهربا
+                                                        <span>كهربا</span>
+
+                                                        <Checkbox />
 
                                                     </div>
-                                                </Link>
-                                                <Link className='w-100'
+                                                </div>
+                                                <div className='w-100'
                                                 >
                                                     <div className='tab  text-end w-100'>
 
 
-                                                        ميكانيكا
+                                                        <span>ميكانيكا</span>
+                                                        <Checkbox />
 
                                                     </div>
-                                                </Link>
-                                                <Link className='w-100'
+                                                </div>
+                                                <div className='w-100'
                                                 >
                                                     <div className='tab  text-end w-100'>
 
 
-                                                        موارد بشرية
+                                                        <span>                 موارد بشرية</span>
+                                                        <Checkbox />
 
                                                     </div>
-                                                </Link>
-                                                <Link className='w-100'
+                                                </div>
+                                                <div className='w-100'
                                                 >
                                                     <div className='tab  text-end w-100'>
 
 
-                                                        محاسبة
+                                                        <span>محاسبة</span>
+                                                        <Checkbox />
 
                                                     </div>
-                                                </Link>
+                                                </div>
 
 
                                             </div>
@@ -138,7 +153,7 @@ const ChooseDepartmentComponent = ({ chooseDepartment, setChooseDeprtmant }) => 
                                     <Accordion.Item eventKey="0">
 
                                         <Accordion.Header  >
-                                            <Link > موظفين </Link>
+                                            <div > موظفين </div>
 
 
                                             <MdKeyboardArrowDown size={20} />
@@ -148,67 +163,77 @@ const ChooseDepartmentComponent = ({ chooseDepartment, setChooseDeprtmant }) => 
 
                                         <Accordion.Body>
                                             <div className='tabs d-flex justify-content-center align-items-center flex-column'>
-                                                <Link className='w-100' >
+                                                <div className='w-100' >
                                                     <div className='tab  text-end w-100'>
-                                                        الكل
+                                                        <span>الكل</span>
+                                                        <Checkbox />
 
                                                     </div>
-                                                </Link>
-                                                <Link className='w-100'
+                                                </div>
+                                                <div className='w-100'
 
                                                 >
                                                     <div className='tab  text-end w-100'>
 
 
-                                                        مدني
+                                                        <span>مدني</span>
+                                                        <Checkbox />
 
                                                     </div>
-                                                </Link>
-                                                <Link className='w-100'
+                                                </div>
+                                                <div className='w-100'
                                                 >
                                                     <div className='tab  text-end w-100'>
 
 
-                                                        معماري
+                                                        <span>معماري</span>
+                                                        <Checkbox />
 
                                                     </div>
-                                                </Link>
-                                                <Link className='w-100'
+                                                </div>
+                                                <div className='w-100'
                                                 >
                                                     <div className='tab  text-end w-100'>
 
 
-                                                        كهربا
+                                                        <span>   كهربا</span>
+                                                        <Checkbox />
 
                                                     </div>
-                                                </Link>
-                                                <Link className='w-100'
+                                                </div>
+                                                <div className='w-100'
                                                 >
                                                     <div className='tab  text-end w-100'>
 
 
-                                                        ميكانيكا
+                                                        <span>   ميكانيكا</span>
+                                                        <Checkbox />
+
 
                                                     </div>
-                                                </Link>
-                                                <Link className='w-100'
+                                                </div>
+                                                <div className='w-100'
                                                 >
                                                     <div className='tab  text-end w-100'>
 
 
-                                                        موارد بشرية
+                                                        <span>موارد بشرية</span>
+                                                        <Checkbox />
+
 
                                                     </div>
-                                                </Link>
-                                                <Link className='w-100'
+                                                </div>
+                                                <div className='w-100'
                                                 >
                                                     <div className='tab  text-end w-100'>
 
 
-                                                        محاسبة
+                                                        <span>محاسبة</span>
+                                                        <Checkbox />
+
 
                                                     </div>
-                                                </Link>
+                                                </div>
 
 
                                             </div>
@@ -247,13 +272,17 @@ const ChooseDepartmentComponent = ({ chooseDepartment, setChooseDeprtmant }) => 
                                     <SearchComponent className="m-auto" background={"#2B2B40"} width={"230px"} />
                                     {users.map((ele, index) => (
 
-                                        <div key={index} className='d-flex gap-3  show-meeting-Detials my-3 mx-1'>
-                                            <Image src={process.env.PUBLIC_URL + "/people/islam.jpg"} width={50} height={50} className=' rounded-circle' alt='person icon' />
-                                            <div className='d-flex flex-column'>
-                                                <p className='text-white mx-2'>اسلام إيهاب</p>
-                                                <p className='text-[#565674] text-sm'> Islam@bsa.com</p>
+                                        <div key={index} className='d-flex gap-3  show-meeting-Detials my-3 '>
+                                            <Image src={process.env.PUBLIC_URL + "/people/islam.jpg"}  className=' ChooseDeprtmantUser rounded-circle' alt='person icon' />
+                                            <div className='d-flex gap-2        '>
+                                                <div>
+                                                    <p className='text-white mx-2'>اسلام إيهاب</p>
+                                                    <p className='text-[#565674] text-sm'> Islam@bsa.com</p>
+                                                </div>
+                                                <Checkbox />
+
                                             </div>
-                                            <Checkbox />
+
                                         </div>
                                     ))}
 

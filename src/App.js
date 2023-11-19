@@ -36,6 +36,14 @@ import Home from "./Pages/index"
 import AllMeetings from './Pages/System/Meetings/AllMeetings/AllMeetings';
 
 
+import AllProjects from './Pages/System/Projects/AllProjects/AllProjects';
+import AllProjectsChart from './Pages/System/Projects/AllProjectsChart/AllProjectsChart';
+import MainProjects from './Pages/System/Projects/MainProjects/MainProjects';
+import NestedMainProjects from './Pages/System/Projects/MainProjects/NestedMainProjects';
+
+
+
+
 const SignUP = lazy(() => import("././Pages/DashBoard/SignUP/SignUP"))
 const SignIn = lazy(() => import("././Pages/DashBoard/SignIn/SignIn"))
 
@@ -124,6 +132,15 @@ function App() {
         },
         // System Meetings 
         { path: "/System/Meetings/index", element: <AllMeetings /> },
+        {
+          path: "", element: <AllProjects />, children: [
+            { path: "/System/Projects/index", element: <AllProjectsChart /> },
+            { path: "/System/Projects/Main/:ProjectTime", element: <MainProjects /> },
+            { path: "/System/Projects/Main/:ProjectTime/:ProjectType", element: <NestedMainProjects /> },
+
+
+          ]
+        },
 
 
 

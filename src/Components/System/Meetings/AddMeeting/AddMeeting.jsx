@@ -166,7 +166,7 @@ export const AddMeeting = ({ showAddUserModel, setShowAddUserModel }) => {
 
                         </div>
                         {meetingPlace === "online" &&
-                            <div className='col-md-6  d-flex align-items-center  justify-content-start mb-4'>
+                            <div className='col-md-6 meetingLink d-flex align-items-center  justify-content-start mb-4'>
 
 
                                 <Input label={" لينك الاجتماع "}   {...meetingLink.bind} />
@@ -176,7 +176,7 @@ export const AddMeeting = ({ showAddUserModel, setShowAddUserModel }) => {
                         }
                         <div className='col-md-12  mb-4'>
                             <div>
-                                <Form.Group className='licenseDate-container w-100' controlId="licenseDate">
+                                <Form.Group className='licenseDate-container ' controlId="licenseDate">
                                     <Form.Label className="d-flex gap-2 align-items-center">
                                         تاريخ الاجتماع
                                     </Form.Label>
