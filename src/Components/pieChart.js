@@ -4,9 +4,9 @@ import ReactApexChart from "react-apexcharts";
 class PieChart extends React.Component {
     constructor(props) {
         super(props);
-        
+
         this.state = {
-           
+
             series: this.props.series,
             options: {
                 chart: {
@@ -57,7 +57,7 @@ class PieChart extends React.Component {
             <div>
                 <div class="chart-wrap">
                     <div id="chart">
-                        <ReactApexChart options={this.state.options} series={this.state.series} type="donut" width={200}   />
+                        <ReactApexChart options={this.state.options} series={this.state.series} type="donut" width={this.props.width ? this.props.width : 200} />
                     </div>
                 </div>
 
