@@ -9,11 +9,17 @@ import ConfirmPoper from '../../../../Components/System/ConfirmPoper'
 import PieChart from '../../../../Components/pieChart'
 import { useParams } from 'react-router-dom'
 import { useEffect } from 'react'
+import ShowProjectComponent from '../../../../Components/System/Projects/ShowProjectComponent'
 const NestedMainProjects = () => {
     const [showProject, setShowProject] = useState(false)
     const [editRequest, setEditRequest] = useState(false)
     const [ConfirmUpdate, setConfirmUpdate] = useState(false)
-    const NestedMainProjectsdata = Array.from({ length: 10 }).map((_, index) => {
+
+
+
+
+    // handle table data components
+    const NestedMainProjectsdata = Array.from({ length: 3 }).map((_, index) => {
         return {
             id: 1,
             ProjectName: 'BSA',
@@ -22,6 +28,7 @@ const NestedMainProjects = () => {
             createdAt: '19-1-2020',
             ProjectType: " تصميم",
             display: <img src={process.env.PUBLIC_URL + "/icons/view.png"} onClick={() => {
+                setShowProject(true)
             }} className='display_project  rounded' alt=' display project' />,
             edit: <img src={process.env.PUBLIC_URL + "/edit.png"} className=' edit_project  rounded' alt=' edit project' />
         }
@@ -62,6 +69,7 @@ const NestedMainProjects = () => {
     const { ProjectTime } = useParams()
     const { ProjectType } = useParams()
     console.log(ProjectTime)
+
     const getNestedColumns = () => { }
 
 
@@ -83,7 +91,7 @@ const NestedMainProjects = () => {
 
     return (
         <div className='AllRequests p-3'>
-            <div className=' NestedMainProjects  '>
+            {!showProject ? <div className=' NestedMainProjects  '>
                 <div className={` ${styles.pieChartProjects} d-flex flex-column justify-content-center align-items-center`}>
 
                     <p className='text-white'> {ProjectType == "Design" ? "التصميم" : "الاشراف علي التنفيذ"}
@@ -108,7 +116,7 @@ const NestedMainProjects = () => {
                         <DataTableComponent className={"overflow-x-hidden overflow-y-auto datatableComponent"} columns={columns} data={NestedMainProjectsdata} />
                     </div>
                 </fieldset>
-            </div>
+            </div> : <ShowProjectComponent showProject={showProject} setShowProject={setShowProject} />}
 
 
 

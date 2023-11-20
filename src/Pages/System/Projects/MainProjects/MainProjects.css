@@ -6,3 +6,6 @@
     display: none !important;
 }
 
+    .showProject .nav-link::after{
+        display: none;
+    }

@@ -56,7 +56,7 @@ const AllProjects = () => {
                                             <Accordion.Item eventKey="0">
 
                                                 <Accordion.Header  >
-                                                    <Link to={"System/Projects/Main/Pending"}>
+                                                    <Link to={"System/Projects/Main/inProgress"}>
                                                         مشاريع قيد التنفيذ
                                                     </Link>
 
@@ -68,13 +68,13 @@ const AllProjects = () => {
 
                                                 <Accordion.Body>
                                                     <div className='tabs d-flex justify-content-center align-items-center flex-column'>
-                                                        <Link to={"System/Projects/Main/Pending/Design"} >
+                                                        <Link to={"System/Projects/Main/inProgress/Design"} >
                                                             <div className='tab  text-end w-100'>
                                                                 تصميم
 
                                                             </div>
                                                         </Link>
-                                                        <Link className='w-100' to={"System/Projects/Main/Pending/ٌReview"}>
+                                                        <Link className='w-100' to={"System/Projects/Main/inProgress/Review"}>
                                                             <div className='tab  text-end w-100'>
 
 
@@ -115,14 +115,14 @@ const AllProjects = () => {
 
                                                 <Accordion.Body>
                                                     <div className='tabs d-flex justify-content-center align-items-center flex-column'>
-                                                        <Link to={"System/Projects/Main/Design/Waiting"} >
+                                                        <Link to={"System/Projects/Main/Waiting/Design"} >
                                                             <div className='tab  text-end w-100'>
                                                                 تصميم
 
                                                             </div>
                                                         </Link>
                                                         <Link className='w-100'
-                                                            to={"System/Projects/Main/Review/Waiting"}
+                                                            to={"System/Projects/Main/Waiting/Review"}
                                                         >
                                                             <div className='tab  text-end w-100'>
                                                                 الاشراف علي التنفيذ
@@ -152,14 +152,14 @@ const AllProjects = () => {
 
                                                 <Accordion.Body>
                                                     <div className='tabs d-flex justify-content-center align-items-center flex-column'>
-                                                        <Link to={"System/Projects/Main/Design/Done"} >
+                                                        <Link to={"System/Projects/Main/Done/Design"} >
                                                             <div className='tab  text-end w-100'>
                                                                 تصميم
 
                                                             </div>
                                                         </Link>
                                                         <Link className='w-100'
-                                                            to={"System/Projects/Main/Review/Done"}
+                                                            to={"System/Projects/Main/Done/Review"}
                                                         >
                                                             <div className='tab  text-end w-100'>
                                                                 الاشراف علي التنفيذ
@@ -192,7 +192,11 @@ const AllProjects = () => {
                         <Outlet />
 
                     </div>
-                </div> : <div></div>
+                </div> : <div>
+
+
+
+                </div>
 
             }
         </div>

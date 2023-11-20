@@ -452,7 +452,7 @@ const ShowDesignRequest = ({ setShowProject, DesignProjectType }) => {
           <div className='col-md-6 mt-3'>
             <p className='text-white'> البريد الالكتروني  : <span> </span></p>
           </div>
-          <div className='col-md-6 mt-3'>
+          <div className='col-md-6 mt-3 mb-3'>
             <img className='pointer instrutmentimg ' onClick={() => { setShowImg(true) }} src={imgSrc} alt='owner img' />
 
             <p className='text-white'>  صورة الهوية   </p>
@@ -479,16 +479,16 @@ const ShowDesignRequest = ({ setShowProject, DesignProjectType }) => {
           <div className='col-md-6 mt-3'>
             <p className='text-white'> رقم الصك   : <span> </span></p>
           </div>
-          <div className='col-md-6 mt-3'>
+          <div className='col-md-6 mt-3 mb-3'>
             <img className='pointer instrutmentimg' onClick={() => { setShowImg(true) }} src={imgSrc} alt='owner img' />
 
             <p className='text-white'>  صورة الصك   </p>
           </div>
 
-          <div className='col-md-6 mt-3'>
+          <div className='col-md-6 mt-3 mb-3'>
             <img className='pointer instrutmentimg' onClick={() => { setShowImg(true) }} src={imgSrc} alt='owner img' />
 
-            <p className='text-white'>  صورة الصك   </p>
+            <p className='text-white'>  صورة الوكالة   </p>
           </div>
 
         </div>

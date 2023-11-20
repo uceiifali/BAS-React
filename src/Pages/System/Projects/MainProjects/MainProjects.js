@@ -9,6 +9,7 @@ import ConfirmPoper from '../../../../Components/System/ConfirmPoper'
 import PieChart from '../../../../Components/pieChart'
 import { useParams } from 'react-router-dom'
 import { useEffect } from 'react'
+import ShowProjectComponent from '../../../../Components/System/Projects/ShowProjectComponent'
 const MainProjects = () => {
     const [showProject, setShowProject] = useState(false)
     const [editRequest, setEditRequest] = useState(false)
@@ -22,10 +23,12 @@ const MainProjects = () => {
             createdAt: 'تاريخ الانشاء',
             ProjectType: " تصميم",
             display: <img src={process.env.PUBLIC_URL + "/icons/view.png"} onClick={() => {
+                setShowProject(true)
             }} className='display_project  rounded' alt=' display project' />,
             edit: <img src={process.env.PUBLIC_URL + "/edit.png"} className=' edit_project  rounded' alt=' edit project' />
         }
     });
+
     const columns = [
         {
             name: 'م',
@@ -83,15 +86,15 @@ const MainProjects = () => {
 
     return (
         <div className='AllRequests p-3'>
-             <div className=' NestedMainProjects  '>
+            {!showProject ? <div className=' NestedMainProjects  '>
                 <div className={` ${styles.pieChartProjects} d-flex flex-column justify-content-center align-items-center`}>
 
                     {/* <p className='text-white'> {ProjectType == "Design" ? "التصميم" : "الاشراف علي التنفيذ"}
 
                     </p> */}
-                    <PieChart height={350} colors={["#EFAA20","#E40038"]} series={[60,30]} labels={[
-                                 "التصميم","الاشراف علي التنفيذ"
-  
+                    <PieChart height={350} colors={["#EFAA20", "#E40038"]} series={[60, 30]} labels={[
+                        "التصميم", "الاشراف علي التنفيذ"
+
                     ]} />
 
 
@@ -109,7 +112,13 @@ const MainProjects = () => {
                         <DataTableComponent className={"overflow-x-hidden overflow-y-auto datatableComponent"} columns={columns} data={MainProjectsData} />
                     </div>
                 </fieldset>
-            </div>
+            </div> : <ShowProjectComponent showProject={showProject} setShowProject={setShowProject} />
+
+
+
+
+
+            }
 
 
 
