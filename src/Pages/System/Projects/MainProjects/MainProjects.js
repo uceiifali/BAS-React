@@ -14,6 +14,10 @@ const MainProjects = () => {
     const [showProject, setShowProject] = useState(false)
     const [editRequest, setEditRequest] = useState(false)
     const [ConfirmUpdate, setConfirmUpdate] = useState(false)
+
+
+   // Display all projects  data
+
     const MainProjectsData = Array.from({ length: 10 }).map((_, index) => {
         return {
             id: 1,
@@ -68,7 +72,6 @@ const MainProjects = () => {
 
     const { ProjectTime } = useParams()
 
-    console.log(ProjectTime)
 
 
 
@@ -112,13 +115,7 @@ const MainProjects = () => {
                         <DataTableComponent className={"overflow-x-hidden overflow-y-auto datatableComponent"} columns={columns} data={MainProjectsData} />
                     </div>
                 </fieldset>
-            </div> : <ShowProjectComponent showProject={showProject} setShowProject={setShowProject} />
-
-
-
-
-
-            }
+            </div> : <ShowProjectComponent showProject={showProject} setShowProject={setShowProject} />}
 
 
 

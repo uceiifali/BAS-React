@@ -1,0 +1,14 @@
+.addproject .form-label{
+    color: white !important;
+}
+.addproject .form-group{
+    position: relative !important;
+}
+.addproject .confirmPayment{
+    background-color: #EFAA20;
+    border: 1px solid #EFAA20 ;
+}
+.addproject .confirmPayment:hover{
+    background-color: unset !important;
+    border: 1px solid #EFAA20 !important;
+}

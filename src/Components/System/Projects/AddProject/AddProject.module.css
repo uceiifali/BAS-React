@@ -1,0 +1,50 @@
+.AddProjectComponent {
+    border-radius: 27px;
+    border: 1px solid #EFAA20;
+    height: 793px !important;
+    width: 100%;
+    overflow-x: hidden;
+    overflow-y:auto ;
+}
+
+.fieldBorder {
+    border: 1px solid rgba(213, 153, 33, 0.20);
+
+}
+
+.fieldBorder legend {
+    width: 15% !important;
+}
+
+.searchOrder {
+
+    border-radius: 7px;
+    background: #2B2B40;
+    color: white !important;
+}
+
+.searchOrder:hover {
+    box-shadow: unset;
+    outline: unset;
+    border-bottom: unset;
+}
+
+.addFileShape {
+    width: 94.289px !important;
+    height: 91px !important;
+    border-radius: 12.06px !important;
+    border: 1px dashed #EFAA20;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.chooseFile {
+    border-radius: 7.605px;
+    background: #1B1B29 !important;
+    
+
+}
+.fieldBorder  .form-label{
+    color: white !important;
+}

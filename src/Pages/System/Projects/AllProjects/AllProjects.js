@@ -8,6 +8,8 @@ import { showAddUpdateUser } from '../../../../Context/CheckAddUpdateUserVisabil
 import { Accordion } from 'react-bootstrap'
 import { Link, Outlet } from 'react-router-dom'
 import { MdKeyboardArrowDown } from 'react-icons/md'
+import AddProject from '../../../../Components/System/Projects/AddProject/AddProject'
+
 
 
 const AllProjects = () => {
@@ -192,11 +194,7 @@ const AllProjects = () => {
                         <Outlet />
 
                     </div>
-                </div> : <div>
-
-
-
-                </div>
+                </div> : <AddProject />
 
             }
         </div>

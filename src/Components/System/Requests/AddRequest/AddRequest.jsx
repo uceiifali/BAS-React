@@ -4,7 +4,7 @@ import MultiStep from 'react-multistep'
 import { AddProjectStepOne } from './AddProjectStepOne'
 import AddProjectStepTwo from './AddProjectStepTwo'
 import AddProjectStepThree from './AddProjectStepThree'
-const AddProject = () => {
+const AddRequest = () => {
     return (
         <div className='AddProject'>
 
@@ -29,4 +29,4 @@ const AddProject = () => {
     )
 }
 
-export default AddProject
+export default AddRequest

@@ -201,7 +201,7 @@ const ShowProjectComponent = ({ showProject, setShowProject }) => {
                             <div className='d-flex justify-content-center my-3'>
                                 <Button
                                     onClick={() => {
-                                        handleContinueProject()
+                                        handleHoldProject()
 
                                     }}
                                     className='sumbmitAddUpdateUser'>حفظ</Button>
@@ -216,6 +216,34 @@ const ShowProjectComponent = ({ showProject, setShowProject }) => {
 
 
             </Modal >
+            }
+            {FinishHoldProject && <Modal
+                className='submitSystemPoper'
+                size="lg"
+                aria-labelledby="contained-modal-title-vcenter"
+                onHide={() => setFinishHoldProject(false)}
+                show={FinishHoldProject}
+            >
+
+                <Modal.Body >
+                    <div className='d-flex justify-content-center w-100'>            <img src={process.env.PUBLIC_URL + "/correct.gif"} width={120} height={120} className='my-3' color='#E1B67C' /></div>
+
+
+                    <div className='d-flex w-75 flex-column mx-auto mt-3 justify-content-center align-items-center '>
+                        {<p className='text-white mb-4' style={{ fontSize: "30px" }}>  تم تعليق المشروع   بنجاح  </p>}
+                        <Button
+                            onClick={() => {
+                                setFinishHoldProject(false)
+
+                            }}
+                            className='sumbmitAddUpdateUser'>حفظ</Button>
+
+                    </div>
+                </Modal.Body>
+
+
+            </Modal >
+
             }
 
             {confirmContinueProject && <Modal
@@ -244,7 +272,6 @@ const ShowProjectComponent = ({ showProject, setShowProject }) => {
 
 
             </Modal >
-
             }
 
             {continueProject &&
@@ -309,8 +336,8 @@ const ShowProjectComponent = ({ showProject, setShowProject }) => {
                             <div className='inf-border d-flex align-items-center justify-content-center m-auto'>
                                 <p className=' golden'>معلومات</p>
                             </div>
-                            <div  className=' '>
-                                <img className='pointer me-auto'  src={process.env.PUBLIC_URL + "/Rejected.png"} alt='close'
+                            <div className=' '>
+                                <img className='pointer me-auto' src={process.env.PUBLIC_URL + "/Rejected.png"} alt='close'
                                 />
                             </div>
                         </div>
@@ -759,7 +786,7 @@ const ShowProjectComponent = ({ showProject, setShowProject }) => {
             </fieldset >
             <div className='showProjectBorder p-2 ' >
                 <p className='text-white'>   ملاحظات الدفع     </p>
-                <textarea placeholder='ادخل ملاحظات الدفع..' disabled className='form-control my-3' cols={30} rows={5} />
+                <textarea placeholder='...............' disabled className='form-control my-3' cols={30} rows={5} />
 
 
 
