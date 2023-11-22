@@ -20,10 +20,22 @@
     background-color: #EFAA20 !important;
     border-color: #EFAA20 !important;
 }
-.addproject .form-group{
+
+.addproject .form-group {
     width: 100% !important;
 }
 
-.SaveButtonContainer{
+.SaveButtonContainer {
     width: 139px;
+}
+
+.chooseFile {
+    border-radius: 7.605px !important;
+    background: #1B1B29 !important;
+    border: unset !important;
+
+}
+
+.fieldBorder .form-label {
+    color: white !important;
 }

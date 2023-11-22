@@ -10,9 +10,10 @@ import PieChart from '../../../../Components/pieChart'
 import { useParams } from 'react-router-dom'
 import { useEffect } from 'react'
 import ShowProjectComponent from '../../../../Components/System/Projects/ShowProjectComponent'
+import EditProject from '../../../../Components/System/Projects/EditProject/EditProject'
 const NestedMainProjects = () => {
     const [showProject, setShowProject] = useState(false)
-    const [editRequest, setEditRequest] = useState(false)
+    const [editProject, setEditProject] = useState(false)
     const [ConfirmUpdate, setConfirmUpdate] = useState(false)
 
 
@@ -30,7 +31,10 @@ const NestedMainProjects = () => {
             display: <img src={process.env.PUBLIC_URL + "/icons/view.png"} onClick={() => {
                 setShowProject(true)
             }} className='display_project  rounded' alt=' display project' />,
-            edit: <img src={process.env.PUBLIC_URL + "/edit.png"} className=' edit_project  rounded' alt=' edit project' />
+            edit: <img src={process.env.PUBLIC_URL + "/edit.png"}
+                onClick={() => { setEditProject(true) }}
+
+                className=' edit_project  rounded' alt=' edit project' />
         }
     });
     const columns = [
@@ -84,6 +88,8 @@ const NestedMainProjects = () => {
     }
     useEffect(() => {
         getAllNestedData()
+        setShowProject(false)
+
     }, [])
 
 
@@ -119,9 +125,8 @@ const NestedMainProjects = () => {
             </div> : <ShowProjectComponent showProject={showProject} setShowProject={setShowProject} />}
 
 
-
-            {/* {editRequest && <EditDesignRequest editRequest={editRequest} setEditRequest={setEditRequest} setConfirmPoper={setConfirmUpdate} />} */}
-            {ConfirmUpdate && <ConfirmPoper confirmPoper={ConfirmUpdate} setConfirmPoper={setConfirmUpdate} setEditRequest={setEditRequest} text={"تم تعديل الطلب فى المشاريع بنجاح  "} />}
+            {editProject && <EditProject editProject={editProject} setEditProject={setEditProject} setConfirmUpdate={setConfirmUpdate} />}
+            {ConfirmUpdate && <ConfirmPoper confirmPoper={ConfirmUpdate} setConfirmPoper={setConfirmUpdate} setEditRequest={setEditProject} text={"تم تعديل الطلب فى المشاريع بنجاح  "} />}
         </div>
     )
 }

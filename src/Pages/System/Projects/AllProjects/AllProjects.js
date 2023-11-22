@@ -9,11 +9,15 @@ import { Accordion } from 'react-bootstrap'
 import { Link, Outlet } from 'react-router-dom'
 import { MdKeyboardArrowDown } from 'react-icons/md'
 import AddProject from '../../../../Components/System/Projects/AddProject/AddProject'
+import { useState } from 'react'
+import EditProject from '../../../../Components/System/Projects/EditProject/EditProject'
 
 
 
 const AllProjects = () => {
     const { showAddUserModel, setShowAddUserModel } = useContext(showAddUpdateUser)
+    const [editProject, setEditProject] = useState(false)
+    const [ConfirmUpdate, setConfirmUpdate] = useState(false)
     return (
         <div>
 
@@ -34,6 +38,7 @@ const AllProjects = () => {
                 <AddUserButton />} />
             {!showAddUserModel ?
                 <div className='row'>
+
                     <div className='col-md-3'>
                         <AllCategories
 
@@ -42,7 +47,7 @@ const AllProjects = () => {
 
 
                                     <div className='mt-4 w-100'>
-                                        <Link to={"/System/Projects/index"} className='pointer' >
+                                        <Link  to={"/System/Projects/index"} className='pointer' >
                                             <p className=' text-white '>
                                                 كل المشاريع
                                             </p>
@@ -58,7 +63,10 @@ const AllProjects = () => {
                                             <Accordion.Item eventKey="0">
 
                                                 <Accordion.Header  >
-                                                    <Link to={"System/Projects/Main/inProgress"}>
+                                                    <Link
+                                                    
+                                                    
+                                                    to={"System/Projects/Main/inProgress"}>
                                                         مشاريع قيد التنفيذ
                                                     </Link>
 
@@ -197,6 +205,7 @@ const AllProjects = () => {
                 </div> : <AddProject />
 
             }
+
         </div>
     )
 }

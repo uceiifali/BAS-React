@@ -2,8 +2,6 @@ import React from 'react'
 import { Button, Form, Modal, NavDropdown } from 'react-bootstrap'
 import { useParams } from 'react-router-dom'
 import "./ShowProjectComponent.css"
-import { Document, Page } from 'react-pdf';
-import 'react-pdf/dist/Page/AnnotationLayer.css';
 import { useState } from 'react';
 import DataTableComponent from '../../DataTableComponent';
 
@@ -12,7 +10,7 @@ const ShowProjectComponent = ({ showProject, setShowProject }) => {
     const [showImg, setShowImg] = useState(false)
     const [imgSrc, setImgSrc] = useState(`${process.env.PUBLIC_URL}/icons/show.png`)
 
-    const { ProjectTime } = useParams()
+    const { ProjectTime, ProjectType } = useParams()
     const [pageNumber, setPageNumber] = useState(2);
     const [numPages, setNumPages] = useState();
     const [editRequest, setEditRequest] = useState(false)
@@ -23,7 +21,7 @@ const ShowProjectComponent = ({ showProject, setShowProject }) => {
     const [confirmContinueProject, setConfirmContinueProject] = useState(false)
     const [viewMore, setViewMore] = useState(false)
 
-
+    console.log(ProjectType)
 
 
     const [ConfirmUpdate, setConfirmUpdate] = useState(false)
@@ -337,7 +335,9 @@ const ShowProjectComponent = ({ showProject, setShowProject }) => {
                                 <p className=' golden'>معلومات</p>
                             </div>
                             <div className=' '>
-                                <img className='pointer me-auto' src={process.env.PUBLIC_URL + "/Rejected.png"} alt='close'
+                                <img className='pointer me-auto'
+                                    onClick={() => { setViewMore(false)}}
+                                    src={process.env.PUBLIC_URL + "/Rejected.png"} alt='close'
                                 />
                             </div>
                         </div>
@@ -398,35 +398,69 @@ const ShowProjectComponent = ({ showProject, setShowProject }) => {
 
                             </div>
                         </fieldset>
-                        <fieldset className='border-golden my-4'>
-                            <legend className='text-center'>بيانات الوكيل</legend>
-                            <div className='row px-2 py-2'>
-                                <div className='col-md-6 mt-3'>
-                                    <p className='text-white'> نوع العميل  : <span>BSA</span></p>
-                                </div>
-                                <div className='col-md-6 mt-3'>
-                                    <p className='text-white'>   رقم الوكالة     : <span>     ــــــــــ </span></p>
-                                </div>
-                                <div className='col-md-6 mt-3'>
-                                    <p className='text-white'>   اسم الصك     : <span></span></p>
-                                </div>
-                                <div className='col-md-6 mt-3'>
-                                    <p className='text-white'> رقم الصك   : <span> </span></p>
-                                </div>
-                                <div className='col-md-6 mt-3 mb-3'>
-                                    <img className='pointer instrutmentimg' onClick={() => { setShowImg(true) }} src={imgSrc} alt='owner img' />
 
-                                    <p className='text-white'>  صورة الصك   </p>
+                        {ProjectType === "Design" ?
+                            <fieldset className='border-golden my-4'>
+                                <legend className='text-center'>بيانات الوكيل</legend>
+                                <div className='row px-2 py-2'>
+                                    <div className='col-md-6 mt-3'>
+                                        <p className='text-white'> نوع العميل  : <span>BSA</span></p>
+                                    </div>
+                                    <div className='col-md-6 mt-3'>
+                                        <p className='text-white'>   رقم الوكالة     : <span>     ــــــــــ </span></p>
+                                    </div>
+                                    <div className='col-md-6 mt-3'>
+                                        <p className='text-white'>   اسم الصك     : <span></span></p>
+                                    </div>
+                                    <div className='col-md-6 mt-3'>
+                                        <p className='text-white'> رقم الصك   : <span> </span></p>
+                                    </div>
+                                    <div className='col-md-6 mt-3 mb-3'>
+                                        <img className='pointer instrutmentimg' onClick={() => { setShowImg(true) }} src={imgSrc} alt='owner img' />
+
+                                        <p className='text-white'>  صورة الصك   </p>
+                                    </div>
+
+                                    <div className='col-md-6 mt-3 mb-3'>
+                                        <img className='pointer instrutmentimg' onClick={() => { setShowImg(true) }} src={imgSrc} alt='owner img' />
+
+                                        <p className='text-white'>  صورة الوكالة   </p>
+                                    </div>
+
                                 </div>
+                            </fieldset> : <fieldset className='border-golden my-4'>
+                                <legend className='text-center'>بيانات الرخصة</legend>
+                                <div className='row px-2 py-2'>
+                                    <div className='col-md-6 mt-3'>
+                                        <p className='text-white'> رقم الرخصة : <span>343</span></p>
+                                    </div>
+                                    <div className='col-md-6 mt-3'>
+                                        <p className='text-white'>   تاريخ الرخصة    : <span>     ــــــــــ </span></p>
+                                    </div>
+                                    <div className='col-md-6 mt-3'>
+                                        <p className='text-white'>   سند الرخصة      : <span></span></p>
+                                    </div>
+                                    <div className='col-md-12 mt-3'>
+                                        <Form.Group>
+                                            <Form.Label className='text-white'> الوصف المرفق  : <span> </span></Form.Label>
+                                            <textarea placeholder='الوصف المرفق' className='bg-[#2B2B40] form-control' rows={5} />
+                                        </Form.Group>
 
-                                <div className='col-md-6 mt-3 mb-3'>
-                                    <img className='pointer instrutmentimg' onClick={() => { setShowImg(true) }} src={imgSrc} alt='owner img' />
+                                    </div>
+                                    <div className='col-md-6 mt-3 mb-3'>
+                                        <img className='pointer instrutmentimg' onClick={() => { setShowImg(true) }} src={imgSrc} alt='owner img' />
 
-                                    <p className='text-white'>  صورة الوكالة   </p>
+                                        <p className='text-white'>   مسند الرخصة   </p>
+                                    </div>
+
+
+
                                 </div>
+                            </fieldset>
 
-                            </div>
-                        </fieldset>
+
+                        }
+
 
                         <div className='my-3 mx-2 d-flex justify-content-end'>
                             <Button

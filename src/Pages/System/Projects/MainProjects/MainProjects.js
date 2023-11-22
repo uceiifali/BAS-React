@@ -10,13 +10,14 @@ import PieChart from '../../../../Components/pieChart'
 import { useParams } from 'react-router-dom'
 import { useEffect } from 'react'
 import ShowProjectComponent from '../../../../Components/System/Projects/ShowProjectComponent'
+import EditProject from '../../../../Components/System/Projects/EditProject/EditProject'
 const MainProjects = () => {
     const [showProject, setShowProject] = useState(false)
-    const [editRequest, setEditRequest] = useState(false)
+    const [editProject, setEditProject] = useState(false)
     const [ConfirmUpdate, setConfirmUpdate] = useState(false)
 
 
-   // Display all projects  data
+    // Display all projects  data
 
     const MainProjectsData = Array.from({ length: 10 }).map((_, index) => {
         return {
@@ -28,8 +29,14 @@ const MainProjects = () => {
             ProjectType: " تصميم",
             display: <img src={process.env.PUBLIC_URL + "/icons/view.png"} onClick={() => {
                 setShowProject(true)
+
             }} className='display_project  rounded' alt=' display project' />,
-            edit: <img src={process.env.PUBLIC_URL + "/edit.png"} className=' edit_project  rounded' alt=' edit project' />
+            edit: <img src={process.env.PUBLIC_URL + "/edit.png"}
+                onClick={() => {
+                    setEditProject(true)
+                    console.log(editProject)
+                }}
+                className=' edit_project  rounded' alt=' edit project' />
         }
     });
 
@@ -82,6 +89,7 @@ const MainProjects = () => {
     }
     useEffect(() => {
         getAllMainProjects()
+        setShowProject(false)
     }, [])
 
 
@@ -92,9 +100,6 @@ const MainProjects = () => {
             {!showProject ? <div className=' NestedMainProjects  '>
                 <div className={` ${styles.pieChartProjects} d-flex flex-column justify-content-center align-items-center`}>
 
-                    {/* <p className='text-white'> {ProjectType == "Design" ? "التصميم" : "الاشراف علي التنفيذ"}
-
-                    </p> */}
                     <PieChart height={350} colors={["#EFAA20", "#E40038"]} series={[60, 30]} labels={[
                         "التصميم", "الاشراف علي التنفيذ"
 
@@ -102,8 +107,6 @@ const MainProjects = () => {
 
 
                 </div>
-
-
 
 
                 <fieldset className='TableContainer  py-3 px-2 mx-auto mt-3'>
@@ -119,8 +122,8 @@ const MainProjects = () => {
 
 
 
-            {/* {editRequest && <EditDesignRequest editRequest={editRequest} setEditRequest={setEditRequest} setConfirmPoper={setConfirmUpdate} />} */}
-            {ConfirmUpdate && <ConfirmPoper confirmPoper={ConfirmUpdate} setConfirmPoper={setConfirmUpdate} setEditRequest={setEditRequest} text={"تم تعديل الطلب فى المشاريع بنجاح  "} />}
+            {editProject && <EditProject editProject={editProject} setEditProject={setEditProject} setConfirmUpdate={setConfirmUpdate} />}
+            {ConfirmUpdate && <ConfirmPoper confirmPoper={ConfirmUpdate} setConfirmPoper={setConfirmUpdate} setEditRequest={setEditProject} text={"تم تعديل الطلب فى المشاريع بنجاح  "} />}
         </div>
     )
 }
