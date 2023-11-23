@@ -4,14 +4,16 @@ import { useParams } from 'react-router-dom'
 import "./ShowProjectComponent.css"
 import { useState } from 'react';
 import DataTableComponent from '../../DataTableComponent';
+import { Document, Page } from 'react-pdf';
+// import { Document, Page } from 'react-pdf';
 
 const ShowProjectComponent = ({ showProject, setShowProject }) => {
     // show img
     const [showImg, setShowImg] = useState(false)
     const [imgSrc, setImgSrc] = useState(`${process.env.PUBLIC_URL}/icons/show.png`)
+    const [pageNumber, setPageNumber] = useState(1);
 
     const { ProjectTime, ProjectType } = useParams()
-    const [pageNumber, setPageNumber] = useState(2);
     const [numPages, setNumPages] = useState();
     const [editRequest, setEditRequest] = useState(false)
     const [holdProject, setHoldProject] = useState(false)
@@ -336,7 +338,7 @@ const ShowProjectComponent = ({ showProject, setShowProject }) => {
                             </div>
                             <div className=' '>
                                 <img className='pointer me-auto'
-                                    onClick={() => { setViewMore(false)}}
+                                    onClick={() => { setViewMore(false) }}
                                     src={process.env.PUBLIC_URL + "/Rejected.png"} alt='close'
                                 />
                             </div>
@@ -479,6 +481,12 @@ const ShowProjectComponent = ({ showProject, setShowProject }) => {
             }
             <div className='border-golden'>
                 <div className='row px-4 py-3'>
+
+                    <Document file="../../../../public/examplepdf.pdf" onLoadSuccess={onDocumentLoadSuccess}>
+                        <Page pageNumber={pageNumber} />
+                    </Document> 
+
+
                     <div className='col-md-8 mb-2'>
                         <p className='text-white'>اسم المشروع :   <span>BSA</span> </p>
 

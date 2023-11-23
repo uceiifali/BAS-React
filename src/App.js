@@ -40,6 +40,7 @@ import AllProjects from './Pages/System/Projects/AllProjects/AllProjects';
 import AllProjectsChart from './Pages/System/Projects/AllProjectsChart/AllProjectsChart';
 import MainProjects from './Pages/System/Projects/MainProjects/MainProjects';
 import NestedMainProjects from './Pages/System/Projects/MainProjects/NestedMainProjects';
+import { MainSystem } from './Pages/System/Main/MainSystem';
 
 
 
@@ -87,8 +88,11 @@ function App() {
     //system routes
     {
       path: "",
+
       element: < SystemIndex />,
       children: [
+        // system index (main)  
+        { path: "/System/index", element: <MainSystem /> },
         //system  users
         { path: "/System/users", element: <SystemUsers /> },
         // system charts
@@ -132,6 +136,7 @@ function App() {
         },
         // System Meetings 
         { path: "/System/Meetings/index", element: <AllMeetings /> },
+        // System Projects
         {
           path: "", element: <AllProjects />, children: [
             { path: "/System/Projects/index", element: <AllProjectsChart /> },

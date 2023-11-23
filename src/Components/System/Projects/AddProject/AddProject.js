@@ -173,7 +173,7 @@ const AddProject = () => {
             <h2 className='golden text-xl'>إضافة جديدة</h2>
             <fieldset className={`${styles.fieldBorder} p-3`}>
                 <legend className='text-center'>بحث عن الطلب</legend>
-                <Input {...projectName.bind} label="البحث" placeholder='ابحث عن ....' className={`${styles.searchOrder}  p-2`} />
+                <Input {...projectName.bind} label="البحث" placeholder='ابحث عن ....' className={`${styles.searchOrder}  w-25 p-2`} />
 
 
 

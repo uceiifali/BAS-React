@@ -39,7 +39,6 @@ const MainProjects = () => {
                 className=' edit_project  rounded' alt=' edit project' />
         }
     });
-
     const columns = [
         {
             name: 'م',

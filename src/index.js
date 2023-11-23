@@ -10,6 +10,8 @@ import StepContext from './Context/StepContext'
 import CheckAddUpdateUserVisability from './Context/CheckAddUpdateUserVisability';
 
 import { PrimeReactProvider, PrimeReactContext } from 'primereact/api';
+import 'react-pdf/dist/Page/TextLayer.css';
+import 'react-pdf/dist/Page/AnnotationLayer.css';
 
 import "primereact/resources/themes/lara-light-indigo/theme.css"; // theme
 
