@@ -1,7 +1,7 @@
 import React from "react";
 import ReactApexChart from "react-apexcharts";
-
-class CountryColumnChart extends React.Component {
+import "./MainSystem.css"
+class SystemLineChart extends React.Component {
     constructor(props) {
         super(props);
 
@@ -44,7 +44,7 @@ class CountryColumnChart extends React.Component {
                         colors: ["#fff"]
                     }
                 },
-                colors: ["#EFAA20"],
+                colors: ["#00C4C9"],
 
                 xaxis: {
                     categories: ["مدني", "معماري", "كهربا", "ميكانيكا", "الحسابات", "الموارد البشرية", "البرمجة"],
@@ -99,11 +99,11 @@ class CountryColumnChart extends React.Component {
         return (
 
 
-            <div id="chart" className="w-100">
-                <ReactApexChart options={this.state.options} series={this.state.series} type="bar" width={"100%"} height={220} />
+            <div id="chart" className="w-100  systemLineChart p-0 h-100">
+                <ReactApexChart className="p-0" options={this.state.options} series={this.state.series} type="bar" width={"100%"} height={"100%"} />
             </div>
         )
     }
 }
 
-export default CountryColumnChart
+export default SystemLineChart

@@ -1,0 +1,68 @@
+.systemLineChart .apexcharts-menu-icon svg {
+    fill: #00C4C9 !important;
+}
+
+.allDepetmentChart .apexcharts-menu-icon svg {
+    fill: #00C4C9 !important;
+}
+
+.systemLineChart .progress {
+    width: 60px !important;
+    height: 6px !important;
+  
+}
+
+.deprtament-slider-Container {
+    width: 160px !important;
+    height: 85.862px !important;
+    display: flex;
+    align-items: center;
+
+}
+
+.systemDeprtamentSlider .slick-arrow {
+    display: none !important;
+}
+
+.systemDeprtamentSlider .slick-track {
+    height: 100% !important;
+    width: 600px !important;
+    display: flex;
+
+}
+
+.systemDeprtamentSlider .slick-list {
+    width: 100%;
+    overflow-x: scroll;
+}
+
+
+.systemDeprtamentSlider img {
+    width: 20px;
+    height: 20px;
+}
+
+.deprtament {
+    color: #A0AEC0;
+    font-size: 14.31px;
+
+}
+
+.systemDeprtamentSlider .main-text {
+    color: rgba(255, 255, 255, 0.50);
+
+    font-family: Cairo;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 150%;
+}
+
+.systemDeprtamentSlider .deprtmant-icon {
+    border-radius: 6px;
+    width: 25px !important;
+    height: 25px !important;
+}
+.systemDeprtamentSlider .sliderProgressBar .progress-bar{
+    background-color: #00C4C9 !important   ;
+}
