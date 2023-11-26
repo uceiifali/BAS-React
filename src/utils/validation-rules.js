@@ -145,7 +145,7 @@ export const validationRules = {
   },
   number: {
     pattern: /^\d*\.?\d*$/,
-    required: true,
+    // required: true,
     message: {
       // empty: 'Filed is required',
       invalid: 'Value is invalid'

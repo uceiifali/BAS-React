@@ -41,6 +41,8 @@ import AllProjectsChart from './Pages/System/Projects/AllProjectsChart/AllProjec
 import MainProjects from './Pages/System/Projects/MainProjects/MainProjects';
 import NestedMainProjects from './Pages/System/Projects/MainProjects/NestedMainProjects';
 import { MainSystem } from './Pages/System/Main/MainSystem';
+import AccountaingIndex from './Pages/System/Accountaing/AccountaingIndex/AccountaingIndex';
+import Treasury from './Pages/System/Accountaing/Treasury/Treasury';
 
 
 
@@ -93,6 +95,7 @@ function App() {
       children: [
         // system index (main)  
         { path: "/System/index", element: <MainSystem /> },
+        { path: "/System/index/:deprtmentType", element: <MainSystem /> },
         //system  users
         { path: "/System/users", element: <SystemUsers /> },
         // system charts
@@ -146,6 +149,12 @@ function App() {
 
           ]
         },
+        // System Accounating
+        { path: "", element: <AccountaingIndex /> ,children:[
+          { path: "/System/Accounating/index", element: <Treasury /> },
+        ]},
+
+
 
 
 

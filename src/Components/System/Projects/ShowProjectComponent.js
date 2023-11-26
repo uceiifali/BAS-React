@@ -482,9 +482,9 @@ const ShowProjectComponent = ({ showProject, setShowProject }) => {
             <div className='border-golden'>
                 <div className='row px-4 py-3'>
 
-                    <Document file="../../../../public/examplepdf.pdf" onLoadSuccess={onDocumentLoadSuccess}>
+                    {/* <Document file="../../../../public/examplepdf.pdf" onLoadSuccess={onDocumentLoadSuccess}>
                         <Page pageNumber={pageNumber} />
-                    </Document> 
+                    </Document>  */}
 
 
                     <div className='col-md-8 mb-2'>

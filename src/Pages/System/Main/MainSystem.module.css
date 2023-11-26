@@ -4,25 +4,27 @@
     height: 801px;
     width: 100%;
     overflow: hidden !important;
-    position: relative;
+    position: relative !important;
+    
 
 }
 
 .mainBackground {
 
-
-    animation: rotation 2s infinite linear;
-    max-width: 100% !important;
-    overflow: hidden;
-    width: 100%;
-    height: 100%;
-    position: absolute;
+    background-image: url(../../../../public//mainBackground.png);
+    background-size: 100% 100%;
+    opacity: 0.6;
+    z-index: -1;
+    position: absolute ;
     top: 0;
     bottom: 0;
     right: 0;
     left: 0;
-    opacity: 0.6;
-  /* z-index: -1;    */
+    z-index: 0;
+    animation: rotation 2s infinite linear;
+    max-width: 100% !important;
+    overflow: hidden;
+
 }
 
 .cardsBackground {
@@ -41,7 +43,7 @@
     border-radius: 8.667px;
     background: linear-gradient(135deg, rgba(111, 255, 203, 0.60) 0%, rgba(56, 19, 194, 0.60) 100%);
     width: 100%;
-   
+
     height: 84.067px;
     z-index: 222222;
 
@@ -57,6 +59,31 @@
     margin: auto;
 
 
+}
+
+.chooseDeprtmentContainer {
+    border-radius: 11.969px;
+    background: #262639;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    height: 100%;
+
+    padding: 10px;
+}
+
+.chooseDeprtmentICons {
+    width: 115px !important;
+    height: 34px;
+
+    border-radius: 8.667px;
+    background: linear-gradient(135deg, rgba(111, 255, 203, 0.60) 0%, rgba(56, 19, 194, 0.60) 100%);
+    padding: 5px;
+}
+
+.cleanderContainer {
+    border-radius: 11.105px;
+    background: #262639;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    height: 243px;
 }
 
 @keyframes rotation {

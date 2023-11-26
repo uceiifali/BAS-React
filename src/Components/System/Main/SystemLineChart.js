@@ -32,6 +32,7 @@ class SystemLineChart extends React.Component {
 
                     },
 
+
                 },
                 dataLabels: {
                     enabled: true,
@@ -45,6 +46,18 @@ class SystemLineChart extends React.Component {
                     }
                 },
                 colors: ["#00C4C9"],
+                crosshairs: {
+                    fill: {
+                        type: 'gradient',
+                        gradient: {
+                            colorFrom: 'FFF',
+                            colorTo: '#FFF',
+                            stops: [0, 100],
+                            opacityFrom: 0.4,
+                            opacityTo: 0.5,
+                        }
+                    }
+                },
 
                 xaxis: {
                     categories: ["مدني", "معماري", "كهربا", "ميكانيكا", "الحسابات", "الموارد البشرية", "البرمجة"],
@@ -62,8 +75,8 @@ class SystemLineChart extends React.Component {
                                 colorFrom: '#fff',
                                 colorTo: '#fff',
                                 stops: [0, 100],
-                                opacityFrom: 0.4,
-                                opacityTo: 0.5,
+                                opacityFrom: 0.9,
+                                opacityTo: 1,
                             }
                         }
                     },

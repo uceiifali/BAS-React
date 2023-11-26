@@ -9,7 +9,7 @@
 .systemLineChart .progress {
     width: 60px !important;
     height: 6px !important;
-  
+
 }
 
 .deprtament-slider-Container {
@@ -63,6 +63,60 @@
     width: 25px !important;
     height: 25px !important;
 }
-.systemDeprtamentSlider .sliderProgressBar .progress-bar{
-    background-color: #00C4C9 !important   ;
+
+.systemDeprtamentSlider .sliderProgressBar .progress-bar {
+    background-color: #00C4C9 !important;
+}
+
+.systemDeprtamentSlider .sliderProgressBar {
+    height: 1.98px !important;
+}
+
+.systemDeprtamentSlider .sc-crrtmM .sc-dQpIV {
+    color: white !important;
+}
+
+.choosMainDeprtment .sc-crrtmM {
+    color: white !important;
+}
+
+.choosMainDeprtment .rdt_Table {
+    background: rgba(118, 118, 118, 0.30) !important;
+}
+
+.chooseDeprtment .dropdown-toggle::after {
+    display: none !important;
+}
+
+.apexcharts-xaxis-label tspan {
+    fill: #fff !important;
+}
+
+.Main-cleander .react-calendar {
+    background: #262639 !important;
+    border-radius: 11.105px;
+    background: #262639;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    border: unset !important;
+}
+
+.Main-cleander .react-calendar__month-view__weekdays,
+.react-calendar__navigation {
+    color: white !important;
+}
+
+.Main-cleander .react-calendar__tile {
+    color: white !important;
+}
+
+.Main-cleander .react-calendar__tile.react-calendar__tile--now.react-calendar__month-view__days__day.react-calendar__month-view__days__day--weekend {
+    border-radius: 16.657px !important;
+    background: var(--primary-color-1, #4355FA) !important;
+    width: 33.314px !important;
+    height: 33.314px !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
 }

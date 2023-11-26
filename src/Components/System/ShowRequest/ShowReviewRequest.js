@@ -48,7 +48,7 @@ const ShowReviewRequest = ({ setShowProject, ReviewProjectType }) => {
 
 
     //after making sure that the request is deleted 
-    
+
   }
 
 
@@ -424,7 +424,7 @@ const ShowReviewRequest = ({ setShowProject, ReviewProjectType }) => {
             }
 
           </div>
-     
+
 
         </div>
 
