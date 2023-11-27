@@ -32,7 +32,8 @@
 }
 
 
-.AllClientPieChartContainer,.AllLineChartContainer   {
+.AllClientPieChartContainer,
+.AllLineChartContainer {
 
     width: 80% !important;
     height: 40% !important;
@@ -45,4 +46,8 @@
 
 .insideChart .apexcharts-legend {
     display: none !important;
+}
+
+.rbc-event {
+    color: #000 !important;
 }

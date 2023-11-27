@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;700;800;900&family=Poppins:ital,wght@0,500;1,500;1,600&display=swap');
-
 @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;500&family=Poppins:ital,wght@0,500;1,500;1,600&display=swap');
+
 
 body {
   direction: rtl !important;
@@ -26,6 +26,10 @@ body {
 
 button {
   box-shadow: unset !important;
+}
+
+.stepper .modal-content{
+  overflow: auto  !important;
 }
 
 .home-layer {
@@ -124,7 +128,9 @@ a {
 .All p {
   color: rgb(144, 144, 144);
 }
-
+.form-control.is-invalid{
+  background-image: url("data:image/svg+xml,%3csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 12 12%27 width=%2712%27 height=%2712%27 fill=%27none%27 stroke=%27%23dc4c64%27%3e%3ccircle cx=%276%27 cy=%276%27 r=%274.5%27/%3e%3cpath stroke-linejoin=%27round%27 d=%27M5.8 3.6h.4L6 6.5z%27/%3e%3ccircle cx=%276%27 cy=%278.2%27 r=%27.6%27 fill=%27%23dc4c64%27 stroke=%27none%27/%3e%3c/svg%3e")!important
+}
 :root {
   --main-color: #E1B67C;
 }
@@ -647,11 +653,12 @@ ol.progtrckr li.progtrckr-done:hover:before {
 
 /* multi steps css */
 .stepper .modal-content {
-  
+
   height: 650px !important;
 }
+
 .modal-content {
-  
+
   border-radius: 25px !important;
 }
 
@@ -690,8 +697,8 @@ ol.progtrckr li.progtrckr-done:hover:before {
   display: none !important;
 }
 
-.modal-body  .go2150698616.go433304200 {
-  background-color: #C9A56C ;
+.modal-body .go2150698616.go433304200 {
+  background-color: #C9A56C;
   color: #fff !important;
 
 }
@@ -1005,10 +1012,10 @@ ol.progtrckr li.progtrckr-done:hover:before {
     font-size: 7px !important;
     align-items: center;
 
-    
+
   }
 
- .stepper .modal-body ol li span {
+  .stepper .modal-body ol li span {
     font-size: 10px !important;
     white-space: unset !important;
   }
@@ -1022,7 +1029,7 @@ ol.progtrckr li.progtrckr-done:hover:before {
     content: "1"
   } */
 
-  .stepper  .go2150698616 {
+  .stepper .go2150698616 {
     min-width: unset !important;
   }
 
@@ -1151,9 +1158,12 @@ legend {
   justify-content: center !important;
 }
 
+
 .gnBnkV {
   justify-content: center;
+
 }
+
 
 /* .slider-Container{
 width: 250px !important;
@@ -1176,3 +1186,5 @@ height: 250px !important;
 
 
 }
+
+.editUser {}

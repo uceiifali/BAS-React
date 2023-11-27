@@ -12,6 +12,8 @@ import { useContext, lazy, Suspense } from 'react';
 
 import Loading from './Components/Loading';
 import SystemSignIn from "././Pages/System/Auth/SignIn/SystemSignIn"
+import 'react-time-picker/dist/TimePicker.css';
+import 'react-clock/dist/Clock.css';
 
 import 'react-international-phone/style.css';
 import SystemIndex from './Pages/System/index/SystemIndex';
@@ -31,6 +33,18 @@ import InsideClients from './Pages/System/Clients/InsideClients/InsideClients';
 import OutSideClients from './Pages/System/Clients/OutSideClients/OutSideClients';
 import ClientDetails from './Pages/System/Clients/ClientDetails/ClientDetails';
 import Home from "./Pages/index"
+import AllMeetings from './Pages/System/Meetings/AllMeetings/AllMeetings';
+
+
+import AllProjects from './Pages/System/Projects/AllProjects/AllProjects';
+import AllProjectsChart from './Pages/System/Projects/AllProjectsChart/AllProjectsChart';
+import MainProjects from './Pages/System/Projects/MainProjects/MainProjects';
+import NestedMainProjects from './Pages/System/Projects/MainProjects/NestedMainProjects';
+import { MainSystem } from './Pages/System/Main/MainSystem';
+import AccountaingIndex from './Pages/System/Accountaing/AccountaingIndex/AccountaingIndex';
+import Treasury from './Pages/System/Accountaing/Treasury/Treasury';
+
+
 
 
 const SignUP = lazy(() => import("././Pages/DashBoard/SignUP/SignUP"))
@@ -76,8 +90,12 @@ function App() {
     //system routes
     {
       path: "",
+
       element: < SystemIndex />,
       children: [
+        // system index (main)  
+        { path: "/System/index", element: <MainSystem /> },
+        { path: "/System/index/:deprtmentType", element: <MainSystem /> },
         //system  users
         { path: "/System/users", element: <SystemUsers /> },
         // system charts
@@ -119,6 +137,29 @@ function App() {
 
           ]
         },
+        // System Meetings 
+        { path: "/System/Meetings/index", element: <AllMeetings /> },
+        // System Projects
+        {
+          path: "", element: <AllProjects />, children: [
+            { path: "/System/Projects/index", element: <AllProjectsChart /> },
+            { path: "/System/Projects/Main/:ProjectTime", element: <MainProjects /> },
+            { path: "/System/Projects/Main/:ProjectTime/:ProjectType", element: <NestedMainProjects /> },
+
+
+          ]
+        },
+        // System Accounating
+        { path: "", element: <AccountaingIndex /> ,children:[
+          { path: "/System/Accounating/index", element: <Treasury /> },
+        ]},
+
+
+
+
+
+
+        ,
 
       ]
     },

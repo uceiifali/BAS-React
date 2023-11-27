@@ -1,0 +1,41 @@
+.fieldBorder {
+    border: 1px solid rgba(213, 153, 33, 0.20);
+
+}
+
+.addFileShape {
+    border-radius: 12.06px;
+    border: 1px dashed #EFAA20;
+    background: #2B2B40;
+    width: 94.289px;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 91px;
+}
+
+.editProject .form-label {
+    color: white !important;
+}
+
+.editProject .form-group {
+    position: relative !important;
+}
+
+.editProject .confirmPayment {
+    background-color: #EFAA20;
+    border: 1px solid #EFAA20;
+}
+
+.editProject .css-1dimb5e-singleValue{
+    color: white !important;
+}
+
+.editProject .form-group {
+    width: 100% !important;
+}
+
+.SaveButtonContainer {
+    width: 139px;
+}

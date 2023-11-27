@@ -39,6 +39,7 @@
 .systemModal .css-m1smmt-control {
     background: #2B2B40 !important;
     background-color: #2B2B40 !important;
+    z-index: 11;
 
 
 }
@@ -50,7 +51,7 @@
 .systemModal .css-1nmdiq5-menu {
     background-color: #1E1E2D !important;
     color: white !important;
-    height: 200px;
+  
 
 }
 

@@ -3,7 +3,7 @@
     height: 801px;
     border-radius: 19px;
     overflow-y: auto !important;
-    overflow-x: auto !important;
+    overflow-x: hidden !important;
     background: #1E1E2D;
     
     

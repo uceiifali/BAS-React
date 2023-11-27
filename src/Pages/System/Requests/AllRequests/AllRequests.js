@@ -10,8 +10,9 @@ import { SearchComponent } from '../../../../Components/SearchComponent/SearchCo
 import { MdKeyboardArrowDown } from 'react-icons/md'
 import { useContext } from 'react'
 import { showAddUpdateUser } from '../../../../Context/CheckAddUpdateUserVisability'
-import AddProject from '../../../../Components/System/Requests/AddProject/AddProject'
+
 import { multiStepContext } from '../../../../Context/StepContext'
+import AddRequest from '../../../../Components/System/Requests/AddRequest/AddRequest'
 
 const AllRequests = () => {
     const { showAddUserModel, setShowAddUserModel } = useContext(showAddUpdateUser)
@@ -173,7 +174,7 @@ const AllRequests = () => {
 
                     {showAddUserModel ?
 
-                        <AddProject />
+                        <AddRequest />
                         :
                         <Outlet />
 

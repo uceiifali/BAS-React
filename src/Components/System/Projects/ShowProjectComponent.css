@@ -1,0 +1,62 @@
+.showProjectBorder {
+    border: 1px solid rgba(239, 170, 32, 0.50);
+    margin-top: 30px;
+    margin-bottom: 30px;
+
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.projectdetails {
+    margin-top: 20PX;
+    margin-bottom: 20PX;
+}
+
+.pdfbg {
+    width: 93px;
+    height: 61px;
+    flex-shrink: 0;
+    background: #151521;
+    border-radius: 7px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+}
+
+.pdfbg image {
+    width: 30px;
+    height: 30px;
+    flex-shrink: 0;
+}
+
+.pdfbg>div {
+
+    width: 93px !important;
+    height: 50px !important;
+    font-size: 11px;
+
+}
+
+.action-icon {
+    width: 64px;
+    height: 25px;
+}
+
+.viewMore .modal-content {
+    height: 846px !important;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.inf-border {
+    border-radius: 5px;
+    border: 1px solid #EFAA20;
+    width: 161px;
+    height: 43px;
+}
+.viewMore .form-control{
+    background: #2B2B40 !important;
+
+}

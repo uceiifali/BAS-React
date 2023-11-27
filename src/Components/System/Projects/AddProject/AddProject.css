@@ -1,0 +1,29 @@
+.addproject .form-label {
+    color: white !important;
+}
+
+.addproject .form-group {
+    position: relative !important;
+}
+
+.addproject .confirmPayment {
+    background-color: #EFAA20;
+    border: 1px solid #EFAA20;
+}
+
+.addproject .confirmPayment:hover {
+    background-color: unset !important;
+    border: 1px solid #EFAA20 !important;
+}
+
+.addproject .confirmPayment {
+    background-color: #EFAA20 !important;
+    border-color: #EFAA20 !important;
+}
+.addproject .form-group{
+    width: 100% !important;
+}
+
+.SaveButtonContainer{
+    width: 139px;
+}

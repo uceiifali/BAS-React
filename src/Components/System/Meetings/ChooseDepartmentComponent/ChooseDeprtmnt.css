@@ -1,0 +1,11 @@
+.chooseDepartment .tab{
+    display: flex !important;
+    justify-content: space-between !important;
+}
+.ChooseDeprtmantUser{
+    width: 40px ;
+    height: 40px;
+}
+.meetingLink .form-group{
+    width: 100% !important;
+}

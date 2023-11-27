@@ -62,7 +62,7 @@ export const validationRules = {
   },
   password_optional: {
     pattern: new RegExp(/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[~!@#$%^&*_\-+=`|\\(){}\[\]:;"'<>,.?\/]).{8,}$/),
-  
+
     // required: false,
     message: {
       invalid: 'Password must be at least 8 characters long and contain at least one number, letter and special character'
@@ -137,8 +137,9 @@ export const validationRules = {
     }
   },
   positiveNumber: {
-    pattern: /^\+?(?:0|[1-9][0-9]*)(?:\.[0-9]+)?$/,
+    pattern:/^1*[1-9][0-9]*$/,
     message: {
+
       invalid: 'Value is invalid'
     }
   },
@@ -146,7 +147,7 @@ export const validationRules = {
     pattern: /^\d*\.?\d*$/,
     // required: true,
     message: {
-      empty: 'Filed is required',
+      // empty: 'Filed is required',
       invalid: 'Value is invalid'
     }
   },

@@ -17,20 +17,21 @@ class CountryColumnChart extends React.Component {
                     type: 'bar',
                 },
                 legend: {
-          
+
                     labels: {
                         colors: '#FFF', // Use the color you want (e.g., blue)
-                    }}, 
+                    }
+                },
                 plotOptions: {
                     bar: {
-                        columnWidth: 10 ,   
+                        columnWidth: 10,
                         borderRadius: 5,
                         dataLabels: {
                             position: 'top', // top, center, bottom
                         },
-                
+
                     },
-            
+
                 },
                 dataLabels: {
                     enabled: true,
@@ -43,7 +44,7 @@ class CountryColumnChart extends React.Component {
                         colors: ["#fff"]
                     }
                 },
-                colors:["#EFAA20"],
+                colors: ["#EFAA20"],
 
                 xaxis: {
                     categories: ["مدني", "معماري", "كهربا", "ميكانيكا", "الحسابات", "الموارد البشرية", "البرمجة"],
@@ -98,8 +99,8 @@ class CountryColumnChart extends React.Component {
         return (
 
 
-            <div id="chart"className="w-100">
-                <ReactApexChart  options={this.state.options} series={this.state.series} type="bar" width={"100%"}  height={220} />
+            <div id="chart" className="w-100">
+                <ReactApexChart options={this.state.options} series={this.state.series} type="bar" width={"100%"} height={220} />
             </div>
         )
     }

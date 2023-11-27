@@ -30,11 +30,11 @@ const Select = React.forwardRef((props, ref) => {
         ...styles,
         borderColor: '#dee2e6',
         borderRadius: '0.25rem',
-        height: height,
+        height,
         minHeight: height,
         cursor: 'pointer'
       }),
-      option: (styles,{isFocused}) => ({ ...styles , cursor: 'pointer',backgroundColor:isFocused ? OptionbackgroundColor:""}),
+      option: (styles,{isFocused}) => ({ ...styles , cursor: 'pointer'  ,backgroundColor:isFocused ? OptionbackgroundColor:""}),
       placeholder: (styles) => ({ ...styles,   })
     }
     if (small) {
@@ -74,7 +74,7 @@ const Select = React.forwardRef((props, ref) => {
         placeholder="اختر"
         width
         height
-        // menuPlacement='اختر'
+
        
        
         

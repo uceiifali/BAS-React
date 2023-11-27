@@ -4,24 +4,17 @@ import MultiStep from 'react-multistep'
 import { AddProjectStepOne } from './AddProjectStepOne'
 import AddProjectStepTwo from './AddProjectStepTwo'
 import AddProjectStepThree from './AddProjectStepThree'
-const AddProject = () => {
+const AddRequest = () => {
     return (
         <div className='AddProject'>
 
             <p className='golden add-project-header pt-5     px-3'>إضافة طلب جديدة</p>
 
             <MultiStep activeStep={0}
-     
-                nextButton={{  title: 'حفظ' }}
+
+                nextButton={{ title: 'حفظ' }}
                 showNavigation={true}
-
-              className="d-flex     justify-content-end"
-
-
-
-
-
-
+                className="d-flex     justify-content-end"
 
             >
                 <AddProjectStepOne />
@@ -36,4 +29,4 @@ const AddProject = () => {
     )
 }
 
-export default AddProject
+export default AddRequest

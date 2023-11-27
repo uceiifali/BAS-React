@@ -47,10 +47,6 @@ const ReviewRequest = () => {
             selector: row => row.ProjectNumber,
         },
         {
-            name: '  تاريخ الاستلام',
-            selector: row => row.recivedDate,
-        },
-        {
             name: '  تاريخ الانشاء',
             selector: row => row.createdAt,
         },
@@ -89,7 +85,7 @@ const ReviewRequest = () => {
 
 
                     <div className='mt-3   '>
-                        <DataTableComponent className={"overflow-x-hidden datatableComponent"} columns={columns} data={DesignProjects} />
+                        <DataTableComponent className={"overflow-x-hidden overflow-y-auto datatableComponent"} columns={columns} data={DesignProjects} />
                     </div>
                 </fieldset>
             </div> : <ShowReviewRequest ReviewProjectType={ReviewProjectType} setShowProject={setShowProject} />

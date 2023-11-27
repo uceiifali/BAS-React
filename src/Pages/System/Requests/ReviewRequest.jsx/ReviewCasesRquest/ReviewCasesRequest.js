@@ -133,7 +133,7 @@ const ReviewCasesRequest = () => {
 
 
                     <div className='py-3'>
-                        <DataTableComponent className={"overflow-x-scroll datatableComponent"} columns={columns} data={ReviewCasesProjects} />
+                        <DataTableComponent className={"overflow-x-scroll overflow-y-auto datatableComponent"} columns={columns} data={ReviewCasesProjects} />
                     </div>
                 </fieldset>
             </div> : <ShowReviewRequest ReviewProjectType={ReviewProjectType}  setShowProject={setShowProject} />

@@ -7,10 +7,10 @@ const SystemControler = ({ child }) => {
                 {child}
             </div>
             <div className='icons ms-3 d-flex gap-2' >
-
+                <img src={process.env.PUBLIC_URL + "/icons/Calculator.png"} alt='Calculator img' className='pointer system-notification mx-1' />
+                <img src={process.env.PUBLIC_URL + "/icons/messages.png"} alt='messages img' className='pointer system-notification mx-1' />
                 <img src={process.env.PUBLIC_URL + "/icons/notification.png"} alt='notification img' className='pointer system-notification mx-1' />
-                <img src={process.env.PUBLIC_URL + "/icons/messages.png"}
-                    alt='notification img' className='pointer system-notification mx-1' />
+
 
 
 

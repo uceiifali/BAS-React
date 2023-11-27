@@ -1,0 +1,159 @@
+.mettingModal .css-1dimb5e-singleValue {
+    color: #fff !important;
+}
+
+.mettingModal .ChooseDeprtmant {
+    background-color: #2B2B40 !important;
+    /* border-radius: 7px;
+background: #2B2B40; */
+}
+
+.rbc-day-slot .rbc-time-slot {
+    border-top: unset !important;
+}
+
+.mettingModal .ChooseDeprtmant:hover {
+    background-color: #2B2B40 !important;
+}
+
+.ck.ck-reset_all {
+    background-color: #2B2B40 !important;
+}
+
+.ck-content {
+    background-color: #2B2B40 !important;
+}
+
+.rbc-rtl .rbc-time-content>*+*>* {
+
+    border-right: unset !important;
+}
+
+.mettingModal .react-datepicker__triangle {
+    display: none !important;
+}
+
+.react-time-picker__inputGroup__amPm {
+    background-color: unset !important;
+}
+
+.react-time-picker__button {
+    color: #fff !important;
+}
+
+.react-time-picker__wrapper {
+    border: unset !important;
+}
+
+/* .rbc-time-slot{
+
+} */
+.rbc-time-content {
+    border-top: 1px solid #6F6F79 !important;
+}
+
+
+.rbc-time-view {
+
+    border: 1px solid #6F6F79 !important;
+
+}
+
+.rbc-timeslot-group {
+    border-bottom: 1px solid #6F6F79 !important;
+}
+
+.rbc-rtl .rbc-day-bg+.rbc-day-bg {
+    border-right: 1px solid #6F6F79 !important;
+}
+
+.rbc-month-row+.rbc-month-row {
+    border-top: 1px solid #6F6F79 !important;
+}
+
+
+.rbc-header {
+    border-bottom: 1px solid #6F6F79;
+}
+
+.rbc-month-view {
+    border: 1px solid #6F6F79;
+
+
+}
+
+.chooseDepartment .modal-content {
+    background: #32324D;
+    height: 846px !important;
+    padding: 30px 0px;
+    overflow-y: auto !important;
+    width: 600px !important;
+}
+
+.ChooseDeprtmant-according {
+    height: 574px;
+    height: 574px;
+    border: 1px solid #EFAA20;
+    padding: 20px 0px;
+    margin: 5px;
+    margin: auto;
+    overflow-y: auto;
+    overflow-x: hidden;
+
+}
+
+.ChooseDeprtmant-according .accordion-header {
+    display: flex;
+    justify-content: center;
+}
+
+.ChooseDeprtmant-according .tab {
+
+    width: 230px !important;
+    padding: 2px;
+    height: 38px;
+    padding: 20px !important;
+    padding-right: 20px !important;
+    background-color: #2B2B40 !important;
+    border-radius: 7px;
+    display: flex;
+    justify-content: start;
+    padding: 3px;
+    margin-top: 10px;
+    align-items: center;
+    color: rgba(255, 255, 255, 0.50) !important;
+
+
+}
+
+.ChooseDeprtmant-according .tabs a {
+    display: flex;
+    justify-content: center;
+}
+
+.chooseDepartment .accordion-header .accordion-button {
+    width: 230px !important;
+    padding: 2px;
+    height: 38px;
+    display: flex !important;
+    justify-content: center !important;
+    padding: 20px !important;
+    padding-right: 20px !important;
+    background-color: #2B2B40 !important;
+    border-radius: 7px;
+    display: flex;
+    justify-content: start;
+    padding: 3px;
+    margin-top: 10px;
+    align-items: center;
+    color: rgba(255, 255, 255, 0.50) !important;
+
+}
+
+.ChooseDeprtmant-according .accordion {
+    display: flex;
+    justify-content: center;
+}
+.chooseDepartment .modal-content .css-12wnr2w-MuiButtonBase-root-MuiCheckbox-root {
+color: white !important;
+}
