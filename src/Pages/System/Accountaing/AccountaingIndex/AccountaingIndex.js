@@ -20,15 +20,17 @@ const AccountaingIndex = () => {
                             <Link to="/System/Accounating/index">         <h2 className='mx-2 text-white my-3' >الخزينة</h2></Link>
                             <Accordion defaultActiveKey={null}  >
                                 <Accordion.Item eventKey="0">
+                                    <Link className='w-100' to={"/System/Accounating/Revenues"} >
+                                        <Accordion.Header  >
 
-                                    <Accordion.Header  >
-                                        <p>      الايرادات</p>
-
-                                        <MdKeyboardArrowDown size={20} />
+                                            <p>  الايرادات</p>
+                                            <MdKeyboardArrowDown size={20} />
 
 
 
-                                    </Accordion.Header>
+                                        </Accordion.Header>
+
+                                    </Link>
 
                                     <Accordion.Body>
                                         <div className='tabs d-flex justify-content-center align-items-center flex-column'>

@@ -1,8 +1,10 @@
 import React from 'react'
 import "./Treasury.css"
 import { Container, Image } from 'react-bootstrap'
+import LineChart from '../../../../Components/LineChart'
 
 const Treasury = () => {
+    
     return (
         <div className='Treasury p-3'>
             <Container className='mx-auto'>
@@ -68,9 +70,43 @@ const Treasury = () => {
                     </div>
                 </div>
                 <fieldset className='staticsContainer p-4' >
-                    <legend className='text-center '>الاحصائية</legend>
-                    <div className='d-flex justify-content-between '>
-                        <p className='text-white'> احصائية الشهر الحالي :</p>
+                    <legend className='text-center  '>الاحصائية</legend>
+                    <div className='d-flex '>
+                        <div className='d-flex w-50 justify-content-between '>
+                            <p className='text-white'> احصائية الشهر الحالي :</p>
+
+                        </div>
+
+                        <div className='d-flex  w-50 flex-column'>
+                            <div className='d-flex justify-content-between'>
+                                <span className=" text-white">الايرادات</span>
+                                <div className='Treasury-container-numbers d-flex justify-content-center text-white'>
+                                    <p>5000</p>
+                                </div>
+                            </div>
+                            <div className='d-flex justify-content-between my-3 '>
+                                <span className=" text-white">المصروفات</span>
+                                <div className='Treasury-container-numbers d-flex justify-content-center text-white'>
+                                    <p>1000</p>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div className='treasury-monthy-chart-container d-flex align-items-center'>
+                        <LineChart
+
+                            colors={["#00F9FF", "#D59921"]}
+                            series1={{ name: "الايرادات", data: [45, 52, 38, 24, 33, 26, 21, 20, 6, 8, 15, 10] }}
+                            series2={{ name: "المصروفات", data: [50, 60, 40, 20, 36, 39, 40, 30, 10, 10, 20, 20] }
+
+
+                            }
+
+                        />
                     </div>
                 </fieldset >
             </Container>

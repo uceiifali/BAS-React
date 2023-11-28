@@ -11,10 +11,25 @@
 
 }
 
+.Treasury-container-numbers {
+    width: 126.057px;
+    height: 27.668px;
+    border: 1px solid #D59921;
+    border-radius: 7.5px;
+}
+
+.treasury-monthy-chart-container {
+    height: 436px;
+    width: 90%;
+    margin: 20px auto;
+    border-radius: 22px;
+    border: 1px solid rgba(239, 170, 32, 0.50);
+}
+
 .staticsContainer {
     border-radius: 13px;
     border: 0.854px solid rgba(213, 153, 33, 0.50);
-    height: 575px;
+    height: 100%
 }
 
 .staticsContainer legend {

@@ -21,7 +21,7 @@
     right: 0;
     left: 0;
     z-index: 0;
-    animation: rotation 2s infinite linear;
+    animation: rotation 5s infinite linear;
     max-width: 100% !important;
     overflow: hidden;
 
