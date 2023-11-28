@@ -176,12 +176,12 @@ const ClientDetails = () => {
                 {employeeDetails == "معلومات عامة" ? <div className='mx-2 '>
                     <div className='clinte-details-square p-3'>
 
-                        <p className='text-white'>الاسم العميل :   <span className='main-text'>سلطان عبد الله</span>     </p>
-                        <p className='text-white'> نوع العميل  :   <span className='main-text'>فردي</span>     </p>
-                        <p className='text-white'> البريد الأكترونى:   <span className='main-text'>Islam@bsa.com</span>     </p>
-                        <p className='text-white'>  رقم الجوال:   <span className='main-text'> 010123456789</span>     </p>
-                        <p className='text-white'>  نوع الهوية :   <span className='main-text'>  ــــــــــــــــــ</span>     </p>
-                        <p className='text-white'>   رقم الهوية :   <span className='main-text'>  ــــــــــــــــــ</span>     </p>
+                        <p className='text-white mb-3'>الاسم العميل :   <span className='main-text'>سلطان عبد الله</span>     </p>
+                        <p className='text-white mb-3'> نوع العميل  :   <span className='main-text'>فردي</span>     </p>
+                        <p className='text-white mb-3'> البريد الأكترونى:   <span className='main-text'>Islam@bsa.com</span>     </p>
+                        <p className='text-white mb-3'>  رقم الجوال:   <span className='main-text'> 010123456789</span>     </p>
+                        <p className='text-white mb-3'>  نوع الهوية :   <span className='main-text'>  ــــــــــــــــــ</span>     </p>
+                        <p className='text-white mb-3'>   رقم الهوية :   <span className='main-text'>  ــــــــــــــــــ</span>     </p>
 
                     </div>
 
@@ -235,8 +235,8 @@ const ClientDetails = () => {
 
                     </div>
 
-                    <div className='py-3     w-100  '>
-                        <DataTableComponent className={" border-golden  datatableComponent"} columns={columns} data={ClientDetailsTable} />
+                    <div className='py-3        w-100  '>
+                        <DataTableComponent className={" border-golden  w-100  datatableComponent"} columns={columns} data={ClientDetailsTable} />
                     </div>
 
                     {showProject && <ShowClientDetails showProject={showProject} setShowProject={setShowProject} />}

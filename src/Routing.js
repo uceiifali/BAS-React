@@ -37,6 +37,7 @@ import { MainSystem } from './Pages/System/Main/MainSystem';
 import AccountaingIndex from './Pages/System/Accountaing/AccountaingIndex/AccountaingIndex';
 import Treasury from './Pages/System/Accountaing/Treasury/Treasury';
 import Revenues from './Pages/System/Accountaing/Revenues/Revenues';
+import FinancialClaims from './Pages/System/Accountaing/FinancialClaims/FinancialClaims';
 
 
 
@@ -145,6 +146,7 @@ const router = createBrowserRouter([
                 path: "", element: <AccountaingIndex />, children: [
                     { path: "/System/Accounating/index", element: <Treasury /> },
                     { path: "/System/Accounating/Revenues", element: <Revenues /> },
+                    { path: "/System/Accounating/FinancialClaims", element: <FinancialClaims /> },
 
                 ]
             },

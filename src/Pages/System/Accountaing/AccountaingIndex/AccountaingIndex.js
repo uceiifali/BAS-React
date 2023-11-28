@@ -35,10 +35,12 @@ const AccountaingIndex = () => {
                                     <Accordion.Body>
                                         <div className='tabs d-flex justify-content-center align-items-center flex-column'>
                                             <div className='w-100' >
-                                                <div className='tab  text-end w-100'>
-                                                    <span> المطالبة مالية</span>
+                                                <Link to={"System/Accounating/FinancialClaims"}>
+                                                    <div className='tab  text-end w-100'>
+                                                        <span> المطالبة مالية</span>
 
-                                                </div>
+                                                    </div>
+                                                </Link>
 
                                             </div>
                                             <div className='w-100'

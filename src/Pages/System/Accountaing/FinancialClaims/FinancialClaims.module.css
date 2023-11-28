@@ -1,0 +1,34 @@
+.RevenuesPieChartContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 238px;
+    border-radius: 22px;
+    border: 1px solid rgba(239, 170, 32, 0.50);
+    width: 100%;
+    padding: 30px;
+}
+
+.RevenuesColumnChartContainer {
+    height: 438px;
+    width: 100%;
+    border-radius: 13px;
+    border: 0.854px solid rgba(213, 153, 33, 0.50);
+}
+
+.Revnueslider {
+
+    width: 129px;
+    height: 126px;
+}
+
+.revenuesbg {
+    border-radius: 17.573px;
+    background: #151521;
+    backdrop-filter: blur(52.71910095214844px);
+    height: 391px;
+    width: 90%;
+    margin: auto;
+    overflow: hidden;
+}

@@ -271,22 +271,49 @@
     padding-right: 0px !important;
     min-width: unset !important;
 }
+
+.modal-content .kgGExh {
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+    min-width: unset !important;
+}
+
+.modal-content  .dkGVyE {
+ 
+    color: #FFF;
+    background: #1E1E2D;
+}
+
+.modal-content   .jiAnER{
+    color: #FFF;
+    background: #34344C;
+}
+
+.modal-content  .cfvlby {
+ 
+    background: #34344D !important;
+    color: #EFAA20 !important;
+}
+
+
+
 .full-system .cfvlby {
 
     background: #34344D !important;
     color: #EFAA20 !important;
-  }
-  
-  .full-system .dkGVyE {
+}
+
+.full-system .dkGVyE {
     color: #FFF;
     background: #1E1E2D;
-  }
-  
-  .full-system .jiAnER {
+}
+
+.full-system .jiAnER {
     color: #FFF;
-    background: #34344C;;
-  }
-  
+    background: #34344C;
+    ;
+}
+
 
 /* system responsive */
 @media screen and (max-width: 1400px) {
@@ -366,21 +393,27 @@
     background-color: unset !important;
 }
 
-.rbc-btn-group{
+.rbc-btn-group {
     color: white !important;
 }
-.rbc-toolbar button{
-    border-radius: unset !important ;
+
+.rbc-toolbar button {
+    border-radius: unset !important;
 }
+
 .rbc-today {
     background-color: unset !important;
-}   
-.rbc-day-bg{
+}
+
+.rbc-day-bg {
     border-left: 1px solid #ddd;
 }
-.rbc-event-content,.rbc-event{
+
+.rbc-event-content,
+.rbc-event {
     background-color: #EFAA20 !important;
 }
-.rbc-btn-group button{
+
+.rbc-btn-group button {
     color: white !important;
 }
