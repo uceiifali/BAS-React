@@ -46,14 +46,16 @@ const AccountaingIndex = () => {
                                             <div className='w-100'
 
                                             >
-                                                <div className='tab  text-end w-100'>
+                                                <Link to={"System/Accounating/Invoice"}>
+                                                    <div className='tab  text-end w-100'>
 
 
-                                                    <span>الفواتير</span>
+                                                        <span>الفواتير</span>
 
 
 
-                                                </div>
+                                                    </div>
+                                                </Link>
                                             </div>
 
 
@@ -77,15 +79,21 @@ const AccountaingIndex = () => {
                             </Accordion>
                             <Accordion defaultActiveKey={null}  >
                                 <Accordion.Item eventKey="0">
-
-                                    <Accordion.Header  >
-                                        <p>المصروفات </p>
-
+                                    <Link to={"System/Accounating/Expenses"}>
+                                        <Accordion.Header  >
 
 
+                                            <p>المصروفات </p>
 
-                                        <MdKeyboardArrowDown size={20} />
-                                    </Accordion.Header>
+
+
+
+                                            <MdKeyboardArrowDown size={20} />
+
+                                        </Accordion.Header>
+                                    </Link>
+
+
 
 
 
@@ -144,7 +152,7 @@ const AccountaingIndex = () => {
             </div>
 
 
-        </div>
+        </div >
     )
 }
 

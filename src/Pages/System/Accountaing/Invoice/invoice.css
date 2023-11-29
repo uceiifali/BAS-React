@@ -1,0 +1,8 @@
+.InvoiceDate {
+    display: flex !important;
+    justify-content: center !important; 
+    align-items: center  !important;
+}
+.InvoiceDate .modal-content{
+    background-color: unset !important;
+}

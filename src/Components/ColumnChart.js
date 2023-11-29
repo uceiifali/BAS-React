@@ -11,18 +11,18 @@ class ColumnChart extends React.Component {
                 data: this.props.data
             }],
 
-     
 
-       
+
+
             options: {
                 chart: {
                     height: 350,
                     type: 'bar',
                 },
-                colors: ['#FFF'],   
+                colors: ['#FFF'],
                 plotOptions: {
                     bar: {
-                        borderRadius: 10,
+                        borderRadius: "6px",
                         dataLabels: {
                             position: 'top', // top, center, bottom
                         },
@@ -41,7 +41,7 @@ class ColumnChart extends React.Component {
                 },
                 plotOptions: {
                     bar: {
-                        columnWidth: '6px', // Change the column width as needed, e.g., '50%', 50, etc.
+                        columnWidth: this.props.ColumnChart ? this.props.ColumnChart : '6px', // Change the column width as needed, e.g., '50%', 50, etc.
                         borderRadius: "10px",
                         dataLabels: {
                             position: 'top',
@@ -51,13 +51,13 @@ class ColumnChart extends React.Component {
                 // Rest of your options...
 
                 xaxis: {
-
+                    categoris: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"] ,
                     position: 'top',
                     axisBorder: {
-                        show: false
+                        show: true
                     },
                     axisTicks: {
-                        show: false
+                        show: true
                     },
                     crosshairs: {
                         fill: {
@@ -69,6 +69,7 @@ class ColumnChart extends React.Component {
                                 opacityFrom: 0.4,
                                 opacityTo: 0.5,
                             }
+
                         }
                     },
                     tooltip: {
@@ -83,7 +84,7 @@ class ColumnChart extends React.Component {
                         show: false,
                     },
                     labels: {
-                        show: false,
+                        show: true,
                         formatter: function (val) {
                             return val + "%";
                         }

@@ -5,6 +5,10 @@ import ColumnChart from '../../../../Components/ColumnChart'
 import { Image } from 'react-bootstrap'
 import { ProgressBar } from "react-bootstrap"
 const Revenues = () => {
+
+
+
+    
     return (
         <div className='d-flex flex-column justify-content-between gap-5'>
 
@@ -17,8 +21,8 @@ const Revenues = () => {
 
             <fieldset className={`${styles.RevenuesColumnChartContainer}   `}>
                 <legend className='text-white text-center'>كل المطالبات</legend>
-                <div className={`${styles.revenuesbg}`}>
-                    <ColumnChart data={[2, 5, 8, 4]} colors={["#fff"]} />
+                <div className={`${styles.revenuesbg}`}>    
+                    <ColumnChart data={[2, 5, 8]} colors={["#fff"]} />
                     <div className='p-3 w-100  d-flex justify-content-between gap-4'>
                         <div className={`${styles.Revnueslider} `}>
                             <Image src={process.env.PUBLIC_URL + "/icons/deprtmants.png"} alt='deprtment img' />

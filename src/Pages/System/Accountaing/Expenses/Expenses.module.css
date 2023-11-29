@@ -1,0 +1,17 @@
+.itemsNumbers {
+    border-radius: 22px;
+    border: 1px solid rgba(239, 170, 32, 0.50);
+    height: 238px;
+    width: 100%;
+}
+
+.ExpensesContainer {
+    border-radius: 13px;
+    border: 0.854px solid rgba(213, 153, 33, 0.50);
+    height: 474px;
+}
+
+.allexpensesConatiner {
+    border-radius: 15.732px;
+    height: 340px;
+}

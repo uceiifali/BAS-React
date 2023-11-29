@@ -38,6 +38,8 @@ import AccountaingIndex from './Pages/System/Accountaing/AccountaingIndex/Accoun
 import Treasury from './Pages/System/Accountaing/Treasury/Treasury';
 import Revenues from './Pages/System/Accountaing/Revenues/Revenues';
 import FinancialClaims from './Pages/System/Accountaing/FinancialClaims/FinancialClaims';
+import Invoice from './Pages/System/Accountaing/Invoice/Invoice';
+import Expenses from './Pages/System/Accountaing/Expenses/Expenses';
 
 
 
@@ -142,11 +144,14 @@ const router = createBrowserRouter([
                 ]
             },
             // System Accounating
+
             {
                 path: "", element: <AccountaingIndex />, children: [
                     { path: "/System/Accounating/index", element: <Treasury /> },
                     { path: "/System/Accounating/Revenues", element: <Revenues /> },
                     { path: "/System/Accounating/FinancialClaims", element: <FinancialClaims /> },
+                    { path: "/System/Accounating/Invoice", element: <Invoice /> },
+                    { path: "/System/Accounating/Expenses", element: <Expenses /> },
 
                 ]
             },

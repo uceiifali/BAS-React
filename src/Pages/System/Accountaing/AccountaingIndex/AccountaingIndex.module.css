@@ -1,5 +1,7 @@
 .AccountaingIndexbg {
     border-radius: 19px;
     background: #1E1E2D;
-    height: 801px
+    height: 801px;
+    overflow-y: auto !important;
+    overflow-x: hidden;
 }
