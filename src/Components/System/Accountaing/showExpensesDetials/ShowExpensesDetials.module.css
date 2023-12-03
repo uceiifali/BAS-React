@@ -1,0 +1,20 @@
+.reportName {
+    border-radius: 22px;
+    border: 1px solid rgba(239, 170, 32, 0.50);
+    height: 119px;
+}
+
+.actionIcon {
+    width: 51px;
+    height: 25px;
+}
+.discription{
+    height: 293px;  
+    border: 1px solid rgba(239, 170, 32, 0.50);
+    margin-top: 30px;
+}
+
+.attatchment{
+    border: 1px solid rgba(239, 170, 32, 0.50);
+    height: 131px;
+}

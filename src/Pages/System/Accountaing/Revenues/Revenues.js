@@ -6,7 +6,7 @@ import { Image } from 'react-bootstrap'
 import { ProgressBar } from "react-bootstrap"
 import "./Revenues.css"
 const Revenues = () => {
-
+  
 
 
     

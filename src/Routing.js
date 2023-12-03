@@ -40,6 +40,7 @@ import Revenues from './Pages/System/Accountaing/Revenues/Revenues';
 import FinancialClaims from './Pages/System/Accountaing/FinancialClaims/FinancialClaims';
 import Invoice from './Pages/System/Accountaing/Invoice/Invoice';
 import Expenses from './Pages/System/Accountaing/Expenses/Expenses';
+import ExpensesDetails from './Pages/System/Accountaing/Expenses/ExpensesDetails/ExpensesDetails';
 
 
 
@@ -152,6 +153,7 @@ const router = createBrowserRouter([
                     { path: "/System/Accounating/FinancialClaims", element: <FinancialClaims /> },
                     { path: "/System/Accounating/Invoice", element: <Invoice /> },
                     { path: "/System/Accounating/Expenses", element: <Expenses /> },
+                    { path: "/System/Accounating/Expenses/:ExpensesType", element: <ExpensesDetails  /> },
 
                 ]
             },

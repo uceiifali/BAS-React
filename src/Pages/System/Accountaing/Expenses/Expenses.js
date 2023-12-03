@@ -105,10 +105,10 @@ const Expenses = () => {
                     </svg>
                     <p className='text-white text-center'>اجمالى المصروفات  </p>
 
-                    <ColumnChart 
-                        data={[1,2,3,4,5,6,7,8,9,10,11,12]}
+                    <ColumnChart
+                        data={[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 7]}
                         Categoris={["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]}
-                        ColumnChart={"30.732px"} colors={["#D59921"]} />
+                        ColumnChart={"30.732px"} colors={["#FFF"]} />
 
                 </div>
 
