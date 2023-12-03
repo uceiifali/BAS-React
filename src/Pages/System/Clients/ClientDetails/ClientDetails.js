@@ -12,6 +12,7 @@ import DataTableComponent from '../../../../Components/DataTableComponent'
 import ShowClientDetails from '../../../../Components/System/Clients/ShowClient/ShowClientDetails'
 
 
+
 const ClientDetails = () => {
     const [showProject, setShowProject] = useState(false)
     const [showClient, setShowClinet] = useState(false)
