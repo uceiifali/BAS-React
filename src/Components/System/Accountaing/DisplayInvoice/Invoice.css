@@ -1,0 +1,12 @@
+.showProjectBorder .form-group {
+    width: 100%;
+}
+
+
+.showProjectBorder .form-label {
+    color: #fff;
+}
+
+.border-golden .dropdown-toggle::after {
+    display: none !important;
+}

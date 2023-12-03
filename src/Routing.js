@@ -149,8 +149,8 @@ const router = createBrowserRouter([
                 path: "", element: <AccountaingIndex />, children: [
                     { path: "/System/Accounating/index", element: <Treasury /> },
                     { path: "/System/Accounating/Revenues", element: <Revenues /> },
-                    { path: "/System/Accounating/FinancialClaims", element: <FinancialClaims /> },
-                    { path: "/System/Accounating/Invoice", element: <Invoice /> },
+                    { path: "/System/Accounating/:RevenueType", element: <FinancialClaims /> },
+                    // { path: "/System/Accounating/:Invoice", element: <Invoice /> },
                     { path: "/System/Accounating/Expenses", element: <Expenses /> },
 
                 ]

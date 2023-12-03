@@ -2,30 +2,21 @@ import React from 'react'
 import { Button, Form, Modal, NavDropdown } from 'react-bootstrap'
 import { useParams } from 'react-router-dom'
 import { useState } from 'react';
-import DataTableComponent from '../../DataTableComponent';
+import DataTableComponent from '../../../DataTableComponent';
 import { Document, Page } from 'react-pdf';
-import Input from '../../FormHandler/Input';
+import Input from '../../../FormHandler/Input';
 import "./DisplayFinancialClaims.css"
+import EditRevenues from '../EditRevenues/EditRevenues';
 
 
 const DisplayFinancialClaims = ({ setViewFinancialClaims, viewFinancialClaims }) => {
     // show img
     const [showImg, setShowImg] = useState(false)
     const [imgSrc, setImgSrc] = useState(`${process.env.PUBLIC_URL}/icons/show.png`)
-    const [pageNumber, setPageNumber] = useState(1);
     const [numPages, setNumPages] = useState();
-    const [editRequest, setEditRequest] = useState(false)
-    const [holdProject, setHoldProject] = useState(false)
-    const [confirmholdProject, setConfirmHoldProject] = useState(false)
-    const [FinishHoldProject, setFinishHoldProject] = useState(false)
-    const [continueProject, setContinueProject] = useState(false)
-    const [confirmContinueProject, setConfirmContinueProject] = useState(false)
-    const [viewMore, setViewMore] = useState(false)
-
-
-
-
-    const [ConfirmUpdate, setConfirmUpdate] = useState(false)
+    const [openDelete, setOpenDelete] = useState(false);
+    const [ConfirmDelete, setConfirmDelete] = useState(false);
+    const [editRevenues, setEditRevenues] = useState(false);
 
 
     // Data table data 
@@ -93,16 +84,16 @@ const DisplayFinancialClaims = ({ setViewFinancialClaims, viewFinancialClaims })
     })
     // functions to handle actions on the view 
 
-    const handleHoldProject = () => {
-        // calling holding project function sucssefully 
-        setConfirmHoldProject(false)
-        setFinishHoldProject(true)
+    const handleDelete = () => {
+        // after ensuring  the Delete is done
+        setOpenDelete(false)
+        setConfirmDelete(true)
+
+
     }
-    const handleContinueProject = () => {
-        // calling continue project function sucssefully 
-        setConfirmContinueProject(true)
-        setContinueProject(false)
-    }
+
+
+
 
 
     function onDocumentLoadSuccess({ numPages }) {
@@ -115,10 +106,77 @@ const DisplayFinancialClaims = ({ setViewFinancialClaims, viewFinancialClaims })
 
     return (
         <div className='DisplayFinancialClaims   '>
+            {openDelete &&
+                <Modal
+                    className='submitSystemPoper'
+                    size="lg"
+                    aria-labelledby="contained-modal-title-vcenter"
+                    onHide={() => setOpenDelete(false)}
+                    show={openDelete}
+                >
+
+                    <Modal.Body className='d-flex align-items-center'>
 
 
+                        <div className='d-flex w-75 flex-column mx-auto mt-3 justify-content-center align-items-center '>
+                            {<p className='text-white' style={{ fontSize: "30px" }}>  هل انت متاكد من حذف هذه  المطالبة </p>}
+                            <div className='d-flex justify-content-center mt-3 gap-3'>
+
+                                <Button
+
+                                    onClick={() => {
+                                        handleDelete()
 
 
+                                    }}
+                                    className='Delete-button'>نعم</Button>
+
+                                <Button
+
+                                    onClick={() => {
+                                        setOpenDelete(false)
+
+                                    }}
+                                    className='No-Delete'>لا</Button>
+
+                            </div>
+
+                        </div>
+                    </Modal.Body>
+
+
+                </Modal >
+            }
+
+            {ConfirmDelete && <Modal
+                className='submitSystemPoper leaveComment'
+                size="lg"
+                aria-labelledby="contained-modal-title-vcenter"
+                onHide={() => setConfirmDelete(false)}
+                show={ConfirmDelete}
+            >
+                <Modal.Body >
+                    <div className='d-flex justify-content-center w-100'>            <img src={process.env.PUBLIC_URL + "/correct.gif"} width={120} height={120} className='my-3' color='#E1B67C' /></div>
+
+
+                    <div className='d-flex w-75 flex-column mx-auto mt-3 justify-content-center align-items-center '>
+                        {<p className='text-white mb-4' style={{ fontSize: "30px" }}>  تم حذف المطالبة بنجاح  </p>}
+                        <Button
+                            onClick={() => {
+                                setConfirmDelete(false)
+
+                            }}
+                            className='sumbmitAddUpdateUser'>حفظ</Button>
+
+                    </div>
+                </Modal.Body>F
+
+
+            </Modal >
+            }
+
+
+            {editRevenues && <EditRevenues editRevenues={editRevenues} setEditRevenues={setEditRevenues} />}
 
             <div className='border-golden'>
                 <div className='row px-4 py-3'>
@@ -134,11 +192,11 @@ const DisplayFinancialClaims = ({ setViewFinancialClaims, viewFinancialClaims })
                         </div>
 
                     </div>
-                    <div className='col-md-8 mb-3'>
+                    <div className='col-md-9 mb-3'>
                         <p className='text-white'>نوع المشروع :   <span>التصميم</span> </p>
 
                     </div>
-                    <div className='col-md-4 mb-3'>
+                    <div className='col-md-3 mb-3'>
                         <p className='text-white'>
                             <p className='text-white'>  الحالة  :
 
@@ -155,25 +213,25 @@ const DisplayFinancialClaims = ({ setViewFinancialClaims, viewFinancialClaims })
                         </p>
 
                     </div>
-                    <div className='col-md-8 mb-2'>
+                    <div className='col-md-9 mb-2'>
                         <p className='text-white'>  رقم الطلب  : <span> 0123</span> </p>
 
                     </div>
 
-                    <div className='col-md-4  mb-2'>
+                    <div className='col-md-3  mb-2'>
 
                         <div className='d-flex align-items-center  gap-3'>
 
                             <img className='pointer editIcon' onClick={() => {
 
-
+                                setOpenDelete(true)
 
                             }} src={process.env.PUBLIC_URL + "/icons/delete.png"} />
 
 
                             <img className='pointer editIcon' onClick={() => {
 
-
+                                setEditRevenues(true)
 
                             }} src={process.env.PUBLIC_URL + "/icons/edit.png"} />
 
@@ -375,44 +433,44 @@ const DisplayFinancialClaims = ({ setViewFinancialClaims, viewFinancialClaims })
                         <div className='col-md-12'>
                             <div className='w-100 form-container' >
 
-                                <Input placeholder="اكتب الوصف" className='w-100' label={"1-الوصف"} />
+                                <Input disabled={true} placeholder="اكتب الوصف" className='w-100' label={"1-الوصف"} />
                             </div>
                         </div>
                         <div className='col-md-4'>
                             <div className='w-100 form-container mb-3' >
 
-                                <Input placeholder=" الكميه" className='w-100' label={"الكمية"} />
+                                <Input disabled={true} placeholder=" الكميه" className='w-100' label={"الكمية"} />
                             </div>
                         </div>
                         <div className='col-md-4'>
                             <div className='w-100 form-container mb-3' >
 
-                                <Input placeholder=" القيمة" className='w-100' label={"القيمة"} />
+                                <Input disabled={true} placeholder=" القيمة" className='w-100' label={"القيمة"} />
                             </div>
                         </div>
                         <div className='col-md-4'>
                             <div className='w-100 form-container mb-3' >
 
-                                <Input placeholder=" ض .ق.م" className='w-100' label={"ادخل ال ض.ق.م"} />
+                                <Input disabled={true} placeholder=" ض .ق.م" className='w-100' label={" ال ض.ق.م"} />
                             </div>
 
                         </div>
                         <div className='col-md-4'>
                             <div className='w-100 form-container mb-3' >
 
-                                <Input placeholder=" الخصم" className='w-100' label={"ادخل قيمة الخصم"} />
+                                <Input disabled={true} placeholder=" الخصم" className='w-100' label={" قيمة الخصم"} />
                             </div>
                         </div>
                         <div className='col-md-4'>
                             <div className='w-100 form-container mb-3' >
 
-                                <Input placeholder=" اجمالي المبلغ" className='w-100' label={" اجمالي المبلغ "} />
+                                <Input disabled={true} placeholder=" اجمالي المبلغ" className='w-100' label={" اجمالي المبلغ "} />
                             </div>
                         </div>
                         <div className='col-md-4'>
                             <div className='w-100 form-container mb-3' >
 
-                                <Input placeholder=" اجمالي المبلغ كتابة" className='w-100' label={" اجمالي المبلغ كتابة"} />
+                                <Input disabled={true} placeholder=" اجمالي المبلغ كتابة" className='w-100' label={" اجمالي المبلغ كتابة"} />
                             </div>
                         </div>
                     </div>

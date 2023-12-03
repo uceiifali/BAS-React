@@ -3,6 +3,7 @@ import React from 'react';
 const Input = ({ label, validator, submitted, mandatory, className = '',
   classNameWrap = '',
   formGroup = true,
+  disabled = false,
   type = 'text',
   width = '',
   height = "",
@@ -23,7 +24,7 @@ const Input = ({ label, validator, submitted, mandatory, className = '',
       <input
         type={type}
         style={{  height, width ,backgroundColor:background ,borderColor}}
-        
+        disabled={disabled}
         className={`form-control ${className} ${(submitted && validator && !validator.valid) ? 'is-invalid' : ''}`}
         {...props}
       />
