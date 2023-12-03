@@ -162,7 +162,7 @@ const DisplayFinancialClaims = ({ setViewFinancialClaims, viewFinancialClaims })
 
                     <div className='col-md-4  mb-2'>
 
-                        <div className='d-flex align-items-center  gap-3'>ff
+                        <div className='d-flex align-items-center  gap-3'>
 
                             <img className='pointer editIcon' onClick={() => {
 
@@ -174,7 +174,7 @@ const DisplayFinancialClaims = ({ setViewFinancialClaims, viewFinancialClaims })
                             <img className='pointer editIcon' onClick={() => {
 
 
-
+ 
                             }} src={process.env.PUBLIC_URL + "/icons/edit.png"} />
 
 
