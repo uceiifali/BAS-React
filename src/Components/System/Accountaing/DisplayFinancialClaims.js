@@ -162,7 +162,7 @@ const DisplayFinancialClaims = ({ setViewFinancialClaims, viewFinancialClaims })
 
                     <div className='col-md-4  mb-2'>
 
-                        <div className='d-flex align-items-center  gap-3'>
+                        <div className='d-flex align-items-center  gap-3'>ff
 
                             <img className='pointer editIcon' onClick={() => {
 
