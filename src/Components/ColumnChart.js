@@ -1,19 +1,15 @@
-import ReactApexChart from "react-apexcharts";
-import React from "react";
+import React from 'react';
+import ReactApexChart from 'react-apexcharts';
+
 class ColumnChart extends React.Component {
     constructor(props) {
         super(props);
 
         this.state = {
-
             series: [{
                 name: 'Inflation',
                 data: this.props.data
             }],
-
-
-
-
             options: {
                 chart: {
                     height: 350,
@@ -22,42 +18,32 @@ class ColumnChart extends React.Component {
                 colors: ['#FFF'],
                 plotOptions: {
                     bar: {
-                        borderRadius: "6px",
+                        borderRadius: 6,
+                        columnWidth: this.props.ColumnChart ? this.props.ColumnChart : '6px',
                         dataLabels: {
-                            position: 'top', // top, center, bottom
+                            position:   'top',
                         },
-                    }
+                    },
                 },
                 dataLabels: {
                     enabled: true,
                     formatter: function (val) {
-                        return val + "%";
+                        return val + '%';
                     },
                     offsetY: -20,
                     style: {
                         fontSize: '12px',
-                        colors: this.props.colors
-                    }
+                        colors: this.props.colors,
+                    },
                 },
-                plotOptions: {
-                    bar: {
-                        columnWidth: this.props.ColumnChart ? this.props.ColumnChart : '6px', // Change the column width as needed, e.g., '50%', 50, etc.
-                        borderRadius: "10px",
-                        dataLabels: {
-                            position: 'top',
-                        },
-                    }
-                },
-                // Rest of your options...
-
                 xaxis: {
-                    categoris: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"] ,
+                    categories: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
                     position: 'top',
                     axisBorder: {
-                        show: true
+                        show: true,
                     },
                     axisTicks: {
-                        show: true
+                        show: true,
                     },
                     crosshairs: {
                         fill: {
@@ -68,17 +54,16 @@ class ColumnChart extends React.Component {
                                 stops: [0, 100],
                                 opacityFrom: 0.4,
                                 opacityTo: 0.5,
-                            }
-
-                        }
+                            },
+                        },
                     },
                     tooltip: {
                         enabled: true,
-                    }
+                    },
                 },
                 yaxis: {
                     axisBorder: {
-                        show: false
+                        show: false,
                     },
                     axisTicks: {
                         show: false,
@@ -86,35 +71,21 @@ class ColumnChart extends React.Component {
                     labels: {
                         show: true,
                         formatter: function (val) {
-                            return val + "%";
-                        }
-                    }
-
+                            return val + '%';
+                        },
+                    },
                 },
-
             },
-
-
-
         };
     }
+
     render() {
         return (
-
-
             <div id="chart">
                 <ReactApexChart options={this.state.options} series={this.state.series} type="bar" height={200} />
             </div>
-
-
         );
     }
-
 }
 
-
-
-
-
-
-export default ColumnChart
+export default ColumnChart;

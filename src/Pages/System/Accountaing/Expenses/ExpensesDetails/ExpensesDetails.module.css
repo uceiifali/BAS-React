@@ -1,0 +1,18 @@
+.ExpensesNumbersContainer {
+
+    height: 94px;
+    border-radius: 22px;
+    border: 1px solid rgba(239, 170, 32, 0.50);
+    display: flex;
+    justify-content: space-between;
+    padding: 30px;
+    align-items: center;
+}
+
+.ExpensesDataTableContainer {
+    height: 631px;
+    border-radius: 13px;
+    border: 0.854px solid rgba(213, 153, 33, 0.50); 
+    overflow-x: hidden;
+    overflow-y: auto;
+}

@@ -4,8 +4,9 @@ import PieChart from '../../../../Components/pieChart'
 import ColumnChart from '../../../../Components/ColumnChart'
 import { Image } from 'react-bootstrap'
 import { ProgressBar } from "react-bootstrap"
+import "./Revenues.css"
 const Revenues = () => {
-
+  
 
 
     
@@ -21,7 +22,7 @@ const Revenues = () => {
 
             <fieldset className={`${styles.RevenuesColumnChartContainer}   `}>
                 <legend className='text-white text-center'>كل المطالبات</legend>
-                <div className={`${styles.revenuesbg}`}>    
+                <div className={`${styles.revenuesbg} revenuesColumnChartContainer pt-3 mx-auto`}>    
                     <ColumnChart data={[2, 5, 8]} colors={["#fff"]} />
                     <div className='p-3 w-100  d-flex justify-content-between gap-4'>
                         <div className={`${styles.Revnueslider} `}>

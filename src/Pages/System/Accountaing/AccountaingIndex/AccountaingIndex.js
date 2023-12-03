@@ -6,6 +6,7 @@ import { Checkbox } from '@mui/material'
 import { MdKeyboardArrowDown } from 'react-icons/md'
 import { Link, Outlet } from 'react-router-dom'
 import style from "./AccountaingIndex.module.css"
+import "./accountaingStyle.css"
 
 const AccountaingIndex = () => {
     return (
@@ -99,25 +100,37 @@ const AccountaingIndex = () => {
 
                                     <Accordion.Body>
                                         <div className='tabs d-flex justify-content-center align-items-center flex-column'>
-                                            <div className='w-100' >
-                                                <div className='tab  text-end w-100'>
-                                                    <span> تقارير المصروفات</span>
 
+
+                                            <Link to={"System/Accounating/Expenses/ExpensesReports"}>
+                                                <div className='w-100' >
+                                                    <div className='tab  text-end w-100'>
+                                                        <span> تقارير المصروفات</span>
+
+                                                    </div>
                                                 </div>
-
-                                            </div>
-                                            <div className='w-100'
-
-                                            >
-                                                <div className='tab  text-end w-100'>
-
-
-                                                    <span>الاصناف</span>
+                                            </Link>
 
 
 
+                                            <Link to={"System/Accounating/Expenses/Items"}>
+
+                                                <div className='w-100'
+
+
+                                                >
+
+                                                    <div className='tab  text-end w-100'>
+
+
+                                                        <span>الاصناف</span>
+
+
+
+                                                    </div>
                                                 </div>
-                                            </div>
+                                            </Link>
+
 
                                         </div>
 

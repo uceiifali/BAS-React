@@ -294,7 +294,9 @@
     background: #34344D !important;
     color: #EFAA20 !important;
 }
-
+.allowRowEvents{
+    width: 100%;
+}
 
 
 .full-system .cfvlby {
