@@ -7,7 +7,8 @@ import 'mdb-react-ui-kit/dist/css/mdb.min.css';
 import 'react-toastify/dist/ReactToastify.css';
 import './index.css';
 import StepContext from './Context/StepContext'
-import CheckAddUpdateUserVisability from './Context/CheckAddUpdateUserVisability';
+import CheckAddUpdateUserVisability from './Context/CheckAddUpdateUserVisability'
+
 
 import { PrimeReactProvider, PrimeReactContext } from 'primereact/api';
 import 'react-pdf/dist/Page/TextLayer.css';
@@ -15,19 +16,24 @@ import 'react-pdf/dist/Page/AnnotationLayer.css';
 
 import "primereact/resources/themes/lara-light-indigo/theme.css"; // theme
 
-import 'primereact/resources/primereact.css';     
+import 'primereact/resources/primereact.css';
+import CheckAccountType from './Context/AddAccountaing';
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
 
 
   <React.StrictMode>
     <PrimeReactProvider>
-      <CheckAddUpdateUserVisability>
-        <StepContext>
-          <App />
-          <ToastContainer />
-        </StepContext>
-      </CheckAddUpdateUserVisability >
+      <CheckAccountType>
+        <CheckAddUpdateUserVisability>
+          <StepContext>
+            <App />
+            <ToastContainer />
+          </StepContext>
+
+        </CheckAddUpdateUserVisability >
+      </CheckAccountType>
     </PrimeReactProvider>
   </React.StrictMode>
 );

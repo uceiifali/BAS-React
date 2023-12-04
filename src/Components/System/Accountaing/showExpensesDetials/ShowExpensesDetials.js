@@ -4,13 +4,14 @@ import { useParams } from 'react-router-dom';
 import { Button, Form, Modal } from 'react-bootstrap';
 import SaveButton from '../../../SaveButton';
 import { useState } from 'react';
+import EditExpenses from '../EditExpenses/EditExpenses';
 
 
 const ShowExpensesDetials = ({ setOpenDisplayDetials }) => {
     const { ExpensesType } = useParams();
     const [deletePoper, setDeletPoper] = useState(false)
     const [confirmDeletePoper, setConfirmDeletPoper] = useState(false)
-
+    const [editExpenses, setEditExpenses] = useState(false)
     const handleDeleteRequest = () => {
         // after deleting revenues succefully
         setConfirmDeletPoper(true)
@@ -100,7 +101,11 @@ const ShowExpensesDetials = ({ setOpenDisplayDetials }) => {
 
 
 
+            {editExpenses && <EditExpenses editExpenses={editExpenses} setEditExpenses={setEditExpenses} />
 
+
+
+            }
 
 
 
@@ -127,6 +132,13 @@ const ShowExpensesDetials = ({ setOpenDisplayDetials }) => {
 
 
                         </div>
+
+                    </div>
+                    <div className='col-md-9'>
+
+                            
+                    </div>
+                    <div className='col-md-3'>
                         <div className='d-flex gap-2  mt-3 justify-content-start   '>
                             <img className={`pointer ${style.actionIcon}`} onClick={() => {
                                 setDeletPoper(true)
@@ -136,7 +148,7 @@ const ShowExpensesDetials = ({ setOpenDisplayDetials }) => {
 
                             <img className={`pointer ${style.actionIcon}`} onClick={() => {
 
-
+                                setEditExpenses(true)
 
                             }} src={process.env.PUBLIC_URL + "/icons/edit.png"} />
                         </div>

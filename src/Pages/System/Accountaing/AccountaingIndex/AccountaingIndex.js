@@ -1,17 +1,33 @@
 import React from 'react'
 import { AllCategories } from '../../../../Components/System/AllCategories/AllCategories'
 import SystemControler from '../../../../Components/System/SystemControler/SystemControler'
-import { Accordion } from 'react-bootstrap'
+import { Accordion, Button } from 'react-bootstrap'
 import { Checkbox } from '@mui/material'
 import { MdKeyboardArrowDown } from 'react-icons/md'
 import { Link, Outlet } from 'react-router-dom'
 import style from "./AccountaingIndex.module.css"
 import "./accountaingStyle.css"
+import { useContext } from 'react'
+import { addAccountType } from '../../../../Context/AddAccountaing'
+
 
 const AccountaingIndex = () => {
+
+    const { openAddAccountant, setOpenAddAccountant } = useContext(addAccountType)
     return (
         <div className='AccountaingIndex'>
-            <SystemControler />
+            <SystemControler
+                child={
+                    <Button
+                        className='add-user-button'
+                        onClick={() => { setOpenAddAccountant(true) }}
+
+
+                    >إضافة جديدة</Button>
+
+
+                }
+            />
             <div className='row'>
                 <div className='col-md-3'>
                     <AllCategories child={
@@ -36,7 +52,7 @@ const AccountaingIndex = () => {
                                     <Accordion.Body>
                                         <div className='tabs d-flex justify-content-center align-items-center flex-column'>
                                             <div className='w-100' >
-                                                <Link to={"System/Accounating/FinancialClaims"}>
+                                                <Link to={"System/Accounating/Revenues/FinancialClaims"}>
                                                     <div className='tab  text-end w-100'>
                                                         <span> المطالبة مالية</span>
 
@@ -47,7 +63,7 @@ const AccountaingIndex = () => {
                                             <div className='w-100'
 
                                             >
-                                                <Link to={"System/Accounating/Invoice"}>
+                                                <Link to={"System/Accounating/Revenues/Invoice"}>
                                                     <div className='tab  text-end w-100'>
 
 

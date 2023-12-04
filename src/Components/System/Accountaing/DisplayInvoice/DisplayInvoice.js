@@ -107,74 +107,7 @@ const DisplayInvoice = ({ setViewInvoices, viewInvoice }) => {
 
     return (
         <div className='DisplayFinancialClaims   '>
-            {openDelete &&
-                <Modal
-                    className='submitSystemPoper'
-                    size="lg"
-                    aria-labelledby="contained-modal-title-vcenter"
-                    onHide={() => setOpenDelete(false)}
-                    show={openDelete}
-                >
-
-                    <Modal.Body className='d-flex align-items-center'>
-
-
-                        <div className='d-flex w-75 flex-column mx-auto mt-3 justify-content-center align-items-center '>
-                            {<p className='text-white' style={{ fontSize: "30px" }}>  هل انت متاكد من حذف هذه  الفاتورة </p>}
-                            <div className='d-flex justify-content-center mt-3 gap-3'>
-
-                                <Button
-
-                                    onClick={() => {
-                                        handleDelete()
-
-
-                                    }}
-                                    className='Delete-button'>نعم</Button>
-
-                                <Button
-
-                                    onClick={() => {
-                                        setOpenDelete(false)
-
-                                    }}
-                                    className='No-Delete'>لا</Button>
-
-                            </div>
-
-                        </div>
-                    </Modal.Body>
-
-
-                </Modal >
-            }
-
-            {ConfirmDelete && <Modal
-                className='submitSystemPoper leaveComment'
-                size="lg"
-                aria-labelledby="contained-modal-title-vcenter"
-                onHide={() => setConfirmDelete(false)}
-                show={ConfirmDelete}
-            >
-                <Modal.Body >
-                    <div className='d-flex justify-content-center w-100'>            <img src={process.env.PUBLIC_URL + "/correct.gif"} width={120} height={120} className='my-3' color='#E1B67C' /></div>
-
-
-                    <div className='d-flex w-75 flex-column mx-auto mt-3 justify-content-center align-items-center '>
-                        {<p className='text-white mb-4' style={{ fontSize: "30px" }}>  تم حذف الفاتورة بنجاح  </p>}
-                        <Button
-                            onClick={() => {
-                                setConfirmDelete(false)
-
-                            }}
-                            className='sumbmitAddUpdateUser'>حفظ</Button>
-
-                    </div>
-                </Modal.Body>F
-
-
-            </Modal >
-            }
+     
 
             {editInvoice && <EditRevenues editRevenues={editRevenues} setEditRevenues={setEditRevenues} />}
 

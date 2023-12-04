@@ -23,7 +23,7 @@ const Revenues = () => {
             <fieldset className={`${styles.RevenuesColumnChartContainer}   `}>
                 <legend className='text-white text-center'>كل المطالبات</legend>
                 <div className={`${styles.revenuesbg} revenuesColumnChartContainer pt-3 mx-auto`}>    
-                    <ColumnChart data={[2, 5, 8]} colors={["#fff"]} />
+                    <ColumnChart data={[2, 5, 8, 5, 8, 5, 8, 5, 8, 5, 8,3]} colors={["#fff"]} />
                     <div className='p-3 w-100  d-flex justify-content-between gap-4'>
                         <div className={`${styles.Revnueslider} `}>
                             <Image src={process.env.PUBLIC_URL + "/icons/deprtmants.png"} alt='deprtment img' />

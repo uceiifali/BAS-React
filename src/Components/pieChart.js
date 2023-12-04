@@ -14,55 +14,71 @@ class PieChart extends React.Component {
                     type: 'donut',
                 },
                 labels: this.props.labels,
-
-
-                colors: this.props.colors,
-                stroke: {
-                    show: false // Set this to false to remove the border of the donut segments
+                toolbar: {
+                    show: true,
+                    offsetX: -40, // Adjust this value to move the toolbar horizontally
+                    offsetY: -50, // Adjust this value to move the toolbar vertically
+                    tools: {
+                        download: true,
+                        selection: false,
+                        zoom: false,
+                        zoomin: false,
+                        zoomout: false,
+                        pan: false,
+                        reset: false,
+                    },
+                    autoSelected: 'download',
                 },
-                dataLabels: {
-                    enabled: false
-                },
 
 
-                responsive: [{
-                    breakpoint: 480,
-                    options: {
-                        chart: {
-                            width: 200
-                        },
-                        legend: {
-                            show: false
-                        }
-                    }
-                }],
-                legend: {
-                    position: 'left',
-                    offsetY: 0,
-                    height: 230,
-                }
+            colors: this.props.colors,
+            stroke: {
+                show: false // Set this to false to remove the border of the donut segments
+            },
+            dataLabels: {
+                enabled: false
             },
 
 
+
+            responsive: [{
+                breakpoint: 480,
+                options: {
+                    chart: {
+                        width: 200
+                    },
+                    legend: {
+                        show: false
+                    }
+                }
+            }],
+            legend: {
+                position: 'left',
+                offsetY: 0,
+                height: 230,
+            }
+        },
+
+
         };
-    }
+}
 
 
 
 
-    render() {
-        return (
+render() {
+    return (
 
 
-            <div>
-                <div class="chart-wrap">
-                    <div id="chart">
-                        <ReactApexChart options={this.state.options} series={this.state.series} type="donut" width={this.props.width ? this.props.width : 200} />
-                    </div>
+        <div>
+            <div class="chart-wrap">
+                <div id="chart">
+                    <ReactApexChart options={this.state.options} series={this.state.series} type="donut" width={this.props.width ? this.props.width : 200} />
                 </div>
+            </div>
 
 
-            </div>)
-    }
+        </div>)
+}
 }
 export default PieChart

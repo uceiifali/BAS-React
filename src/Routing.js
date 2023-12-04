@@ -37,10 +37,11 @@ import { MainSystem } from './Pages/System/Main/MainSystem';
 import AccountaingIndex from './Pages/System/Accountaing/AccountaingIndex/AccountaingIndex';
 import Treasury from './Pages/System/Accountaing/Treasury/Treasury';
 import Revenues from './Pages/System/Accountaing/Revenues/Revenues';
-import FinancialClaims from './Pages/System/Accountaing/FinancialClaims/FinancialClaims';
+
 import Invoice from './Pages/System/Accountaing/Invoice/Invoice';
 import Expenses from './Pages/System/Accountaing/Expenses/Expenses';
 import ExpensesDetails from './Pages/System/Accountaing/Expenses/ExpensesDetails/ExpensesDetails';
+import RevenusDetails from './Pages/System/Accountaing/Revenues/RevenusDetails/RevenusDetails';
 
 
 
@@ -150,7 +151,7 @@ const router = createBrowserRouter([
                 path: "", element: <AccountaingIndex />, children: [
                     { path: "/System/Accounating/index", element: <Treasury /> },
                     { path: "/System/Accounating/Revenues", element: <Revenues /> },
-                    { path: "/System/Accounating/:RevenueType", element: <FinancialClaims /> },
+                    { path: "/System/Accounating/Revenues/:RevenueType", element: <RevenusDetails /> },
                     // { path: "/System/Accounating/:Invoice", element: <Invoice /> },
                     { path: "/System/Accounating/Expenses", element: <Expenses /> },
                     { path: "/System/Accounating/Expenses/:ExpensesType", element: <ExpensesDetails  /> },

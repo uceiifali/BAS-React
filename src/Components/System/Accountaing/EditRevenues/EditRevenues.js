@@ -16,8 +16,10 @@ const EditRevenues = ({ editRevenues, setEditRevenues }) => {
 
     const [confirmPoper, setConfirmPoper] = useState(false)
     const { RevenueType } = useParams()
+    const [openDelete, setOpenDelete] = useState(false);
+    const [ConfirmDelete, setConfirmDelete] = useState(false);
 
-
+    console.log(RevenueType)
     // define edit inputs
 
     const [invoiceDate, setInvoiceDate] = useState('')
@@ -64,6 +66,7 @@ const EditRevenues = ({ editRevenues, setEditRevenues }) => {
 
         GetRequestDataWithID()
 
+
     }, [])
 
 
@@ -83,9 +86,9 @@ const EditRevenues = ({ editRevenues, setEditRevenues }) => {
 
                 <div className='p-1 mx-auto my-3 edit-header
          w-50'>
-                    {editRevenues === "FinancialClaims" ?
+                    {RevenueType === "FinancialClaims" ?
                         <p className='golden   text-center'>تعديل فى المطالبة المالية </p> :
-                        editRevenues === "Invoice" ?
+                        RevenueType === "Invoice" ?
                             <p className='golden   text-center'>تعديل فى الفاتورة  </p>
 
 
@@ -155,7 +158,7 @@ const EditRevenues = ({ editRevenues, setEditRevenues }) => {
                                     <Form.Group className='d-flex flex-column'>
 
                                         <Form.Label>تاريخ الفاتورة  </Form.Label>
-                                        <DatePicker date
+                                        <DatePicker 
 
                                             selected={invoiceDate}
                                             placeholderText=" اختر تاريخ الفاتورة   "
@@ -254,10 +257,14 @@ const EditRevenues = ({ editRevenues, setEditRevenues }) => {
                                 <div className='pdfbg'>
 
                                     <img src={process.env.PUBLIC_URL + "/icons/Pdf.png"} alt="pdf" className='pdfImage' />
-                                    <div style={{ borderRadius: "7px" }} className='bg-[#252538] d-flex justify-content-center '>
-                                        <p className='text-white mx-auto   mt-2   '> المطالبة</p>
-                                    </div>
+                                    {RevenueType === "FinancialClaims" ?
+                                        <div style={{ borderRadius: "7px" }} className='bg-[#252538] d-flex justify-content-center '>
+                                            <p className='text-white mx-auto   mt-2   '> المطالبة</p>
+                                        </div> : <div style={{ borderRadius: "7px" }} className='bg-[#252538] d-flex justify-content-center '>
+                                            <p className='text-white mx-auto   mt-2   '> الفاتورة</p>
+                                        </div>
 
+                                    }
 
 
 

@@ -2,31 +2,21 @@ import React from 'react'
 import { Button, Form, Modal, NavDropdown } from 'react-bootstrap'
 import { useParams } from 'react-router-dom'
 import { useState } from 'react';
-import DataTableComponent from '../../DataTableComponent';
+
 import { Document, Page } from 'react-pdf';
-import Input from '../../FormHandler/Input';
+
 import "./DisplayFinancialClaims.css"
+import Input from '../../../FormHandler/Input';
+import EditRevenues from '../EditRevenues/EditRevenues';
 
 
-const DisplayFinancialClaims = ({ setViewFinancialClaims, viewFinancialClaims }) => {
+const DisplayFinancialClaims = ({ displayRevenue, RevenueType, setDisplayRevenue }) => {
     // show img
     const [showImg, setShowImg] = useState(false)
     const [imgSrc, setImgSrc] = useState(`${process.env.PUBLIC_URL}/icons/show.png`)
-    const [pageNumber, setPageNumber] = useState(1);
-    const [numPages, setNumPages] = useState();
-    const [editRequest, setEditRequest] = useState(false)
-    const [holdProject, setHoldProject] = useState(false)
-    const [confirmholdProject, setConfirmHoldProject] = useState(false)
-    const [FinishHoldProject, setFinishHoldProject] = useState(false)
-    const [continueProject, setContinueProject] = useState(false)
-    const [confirmContinueProject, setConfirmContinueProject] = useState(false)
-    const [viewMore, setViewMore] = useState(false)
-
-
-
-
-    const [ConfirmUpdate, setConfirmUpdate] = useState(false)
-
+    const [openDelete, setOpenDelete] = useState(false);
+    const [ConfirmDelete, setConfirmDelete] = useState(false);
+    const [editRevenues, setEditRevenues] = useState(false);
 
     // Data table data 
     const columns = [
@@ -91,24 +81,30 @@ const DisplayFinancialClaims = ({ setViewFinancialClaims, viewFinancialClaims })
 
         }
     })
-    // functions to handle actions on the view 
+    // // functions to handle actions on the view 
 
-    const handleHoldProject = () => {
-        // calling holding project function sucssefully 
-        setConfirmHoldProject(false)
-        setFinishHoldProject(true)
+    // const handleHoldProject = () => {
+    //     // calling holding project function sucssefully 
+    //     setConfirmHoldProject(false)
+    //     setFinishHoldProject(true)
+    // }
+    // const handleContinueProject = () => {
+    //     // calling continue project function sucssefully 
+    //     setConfirmContinueProject(true)
+    //     setContinueProject(false)
+    // }
+
+
+    // function onDocumentLoadSuccess({ numPages }) {
+    //     setNumPages(numPages);
+    // }
+    const handleDelete = () => {
+        // after ensuring  the Delete is done
+        setOpenDelete(false)
+        setConfirmDelete(true)
+
+
     }
-    const handleContinueProject = () => {
-        // calling continue project function sucssefully 
-        setConfirmContinueProject(true)
-        setContinueProject(false)
-    }
-
-
-    function onDocumentLoadSuccess({ numPages }) {
-        setNumPages(numPages);
-    }
-
 
 
 
@@ -116,9 +112,76 @@ const DisplayFinancialClaims = ({ setViewFinancialClaims, viewFinancialClaims })
     return (
         <div className='DisplayFinancialClaims   '>
 
+            {openDelete &&
+                <Modal
+                    className='submitSystemPoper'
+                    size="lg"
+                    aria-labelledby="contained-modal-title-vcenter"
+                    onHide={() => setOpenDelete(false)}
+                    show={openDelete}
+                >
+
+                    <Modal.Body className='d-flex align-items-center'>
 
 
+                        <div className='d-flex w-75 flex-column mx-auto mt-3 justify-content-center align-items-center '>
+                            {<p className='text-white' style={{ fontSize: "30px" }}>  هل انت متاكد من الحذف    </p>}
+                            <div className='d-flex justify-content-center mt-3 gap-3'>
 
+                                <Button
+
+                                    onClick={() => {
+                                        handleDelete()
+
+
+                                    }}
+                                    className='Delete-button'>نعم</Button>
+
+                                <Button
+
+                                    onClick={() => {
+                                        setOpenDelete(false)
+
+                                    }}
+                                    className='No-Delete'>لا</Button>
+
+                            </div>
+
+                        </div>
+                    </Modal.Body>
+
+
+                </Modal >
+            }
+
+            {ConfirmDelete && <Modal
+                className='submitSystemPoper leaveComment'
+                size="lg"
+                aria-labelledby="contained-modal-title-vcenter"
+                onHide={() => setConfirmDelete(false)}
+                show={ConfirmDelete}
+            >
+                <Modal.Body >
+                    <div className='d-flex justify-content-center w-100'>            <img src={process.env.PUBLIC_URL + "/correct.gif"} width={120} height={120} className='my-3' color='#E1B67C' /></div>
+
+
+                    <div className='d-flex w-75 flex-column mx-auto mt-3 justify-content-center align-items-center '>
+                        {<p className='text-white mb-4' style={{ fontSize: "30px" }}>  تم الحذف بنجاح  </p>}
+                        <Button
+                            onClick={() => {
+                                setConfirmDelete(false)
+
+                            }}
+                            className='sumbmitAddUpdateUser'>حفظ</Button>
+
+                    </div>
+                </Modal.Body>
+
+
+            </Modal >
+            }
+
+            {editRevenues && <EditRevenues RevenueType={RevenueType} editRevenues={editRevenues} setEditRevenues={setEditRevenues} />}
 
             <div className='border-golden'>
                 <div className='row px-4 py-3'>
@@ -134,46 +197,40 @@ const DisplayFinancialClaims = ({ setViewFinancialClaims, viewFinancialClaims })
                         </div>
 
                     </div>
-                    <div className='col-md-8 mb-3'>
+                    <div className='col-md-9 mb-3'>
                         <p className='text-white'>نوع المشروع :   <span>التصميم</span> </p>
 
                     </div>
-                    <div className='col-md-4 mb-3'>
+                    <div className='col-md-3 mb-3'>
                         <p className='text-white'>
                             <p className='text-white'>  الحالة  :
 
-
                                 قيد التنفيذ
-
-
-
-
-
 
                             </p>
 
                         </p>
 
                     </div>
-                    <div className='col-md-8 mb-2'>
+                    <div className='col-md-9 mb-2'>
                         <p className='text-white'>  رقم الطلب  : <span> 0123</span> </p>
 
                     </div>
 
-                    <div className='col-md-4  mb-2'>
+                    <div className='col-md-3  mb-2'>
 
                         <div className='d-flex align-items-center  gap-3'>
 
                             <img className='pointer editIcon' onClick={() => {
 
-
+                                    setOpenDelete(true)     
 
                             }} src={process.env.PUBLIC_URL + "/icons/delete.png"} />
 
 
                             <img className='pointer editIcon' onClick={() => {
 
-
+                                setEditRevenues(true)
 
                             }} src={process.env.PUBLIC_URL + "/icons/edit.png"} />
 
@@ -464,7 +521,7 @@ const DisplayFinancialClaims = ({ setViewFinancialClaims, viewFinancialClaims })
             <div className='d-flex my-5 w-90  justify-content-end'>
                 <Button
                     onClick={() => {
-                        setViewFinancialClaims(false)
+                        setDisplayRevenue(false)
                     }}
 
                     className='sumbmitAddUpdateUser'>حفظ</Button>

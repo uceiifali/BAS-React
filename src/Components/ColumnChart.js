@@ -15,13 +15,28 @@ class ColumnChart extends React.Component {
                     height: 350,
                     type: 'bar',
                 },
+                toolbar: {
+                    show: true,
+                    offsetX: -40, // Adjust this value to move the toolbar horizontally
+                    offsetY: -4554, // Adjust this value to move the toolbar vertically
+                    tools: {
+                        download: true,
+                        selection: false,
+                        zoom: false,
+                        zoomin: false,
+                        zoomout: false,
+                        pan: false,
+                        reset: false,
+                    },
+                    autoSelected: 'download',
+                },
                 colors: ['#FFF'],
                 plotOptions: {
                     bar: {
                         borderRadius: 6,
                         columnWidth: this.props.ColumnChart ? this.props.ColumnChart : '6px',
                         dataLabels: {
-                            position:   'top',
+                            position: 'top',
                         },
                     },
                 },

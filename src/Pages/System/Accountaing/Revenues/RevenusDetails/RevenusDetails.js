@@ -1,18 +1,22 @@
 import React, { useState } from 'react'
 
-import styles from "./FinancialClaims.module.css"
-import PieChart from '../../../../Components/pieChart'
-import ColumnChart from '../../../../Components/ColumnChart'
+import styles from "./RevenusDetails.module.css"
+import PieChart from '../../../../../Components/pieChart'
+import ColumnChart from '../../../../../Components/ColumnChart'
 import { Image, Modal } from 'react-bootstrap'
 import { ProgressBar } from "react-bootstrap"
-import DataTableComponent from '../../../../Components/DataTableComponent'
-import DisplayFinancialClaims from '../../../../Components/System/Accountaing/DisplayFinancialClaims'
-import Box from '@mui/material/Box';
+import DataTableComponent from '../../../../../Components/DataTableComponent'
+import { useParams } from 'react-router-dom'
+import DisplayFinancialClaims from '../../../../../Components/System/Accountaing/DisplayFinancialClaims/DisplayFinancialClaims'
+import { useEffect } from 'react'
+import Calendar from 'react-calendar'
 
-const FinancialClaims = () => {
-    const [viewFinancialClaims, setViewFinancialClaims] = useState(false)
+const RevenusDetails = () => {
+    const [DisplayRevenue, setDisplayRevenue] = useState(false)
     const [openCliam, setOpenClaim] = useState(false)
-
+    const { RevenueType } = useParams()
+    const [chooseDate, setChooseDate] = useState(false)
+    const [cleanderValue, setCleanderValue] = useState(new Date())
     const columns = [
 
         {
@@ -65,7 +69,7 @@ const FinancialClaims = () => {
             DeliverDate: "12-10-2023",
             code: "546789",
             display: <img src={process.env.PUBLIC_URL + "/icons/view.png"}
-                onClick={() => { setViewFinancialClaims(true) }}
+                onClick={() => { setDisplayRevenue(true) }}
 
                 className='pointer' />,
             Claim: <div className='pointer'
@@ -95,6 +99,14 @@ const FinancialClaims = () => {
     const searchByDate = () => {
 
     }
+
+    useEffect(() => {
+
+        setDisplayRevenue(false)
+
+
+    }, [])
+
 
 
     return (
@@ -131,7 +143,24 @@ const FinancialClaims = () => {
             }
 
 
+            {chooseDate &&
+                <Modal
+                    className=' InvoiceDate'
+                    size="lg"
+                    aria-labelledby="contained-modal-title-vcenter"
+                    onHide={() => setChooseDate(false)}
+                    show={chooseDate}
+                >
 
+                    <Modal.Body className='d-flex align-items-center'>
+
+                        <Calendar onChange={handleCleanderValue} className={"bg-[#1E1E2D]"} value={cleanderValue} />
+
+                    </Modal.Body>
+
+
+                </Modal >
+            }
 
 
 
@@ -143,15 +172,15 @@ const FinancialClaims = () => {
 
 
             {
-                viewFinancialClaims ?
-                    <DisplayFinancialClaims viewFinancialClaims={viewFinancialClaims} setViewFinancialClaims={setViewFinancialClaims} />
+                DisplayRevenue ?
+                    <DisplayFinancialClaims RevenueType DisplayRevenue={DisplayRevenue} setDisplayRevenue={setDisplayRevenue} />
                     : <div className='d-flex flex-column justify-content-between gap-5'>
 
 
                         {RevenueType === "FinancialClaims" ?
                             <div className={`${styles.RevenuesPieChartContainer}   `}>
                                 <p className='text-white text-start'>كل المطالبات</p>
-                                <PieChart colors={["#03795D", "#E40038"]} width={400} labels={[" تم الدفع 60 ", "لم يتم الدفع 20 ",]} series={[6, 3]} />
+                                <PieChart  toolbaroffestX=""  toolbaroffestY=""    colors={["#03795D", "#E40038"]} width={400} labels={[" تم الدفع 60 ", "لم يتم الدفع 20 ",]} series={[6, 3]} />
 
 
                             </div> :
@@ -191,4 +220,4 @@ const FinancialClaims = () => {
     )
 }
 
-export default FinancialClaims
+export default RevenusDetails

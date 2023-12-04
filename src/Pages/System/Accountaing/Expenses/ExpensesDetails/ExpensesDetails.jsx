@@ -8,6 +8,7 @@ import { useParams } from 'react-router-dom'
 import DataTableComponent from '../../../../../Components/DataTableComponent'
 import { useEffect } from 'react'
 import ShowExpensesDetials from '../../../../../Components/System/Accountaing/showExpensesDetials/ShowExpensesDetials'
+import { useContext } from 'react'
 
 const ExpensesDetails = () => {
     // handle search by Date
@@ -20,7 +21,7 @@ const ExpensesDetails = () => {
     }
     const [openbill, setOpenbill] = useState(false)
 
-
+                           useContext()
 
     // handleIncomingData
     const { ExpensesType } = useParams()
@@ -98,14 +99,7 @@ const ExpensesDetails = () => {
                 >
 
                     <Modal.Body className='d-flex align-items-center'>
-
-
                         <Image src={`${process.env.PUBLIC_URL + "/expenses.png"}`} alt='FinancalRequest png' width={650} height={700} />
-
-
-
-
-
                     </Modal.Body>
 
 
@@ -126,7 +120,7 @@ const ExpensesDetails = () => {
                                 size="lg"
                                 aria-labelledby="contained-modal-title-vcenter"
                                 onHide={() => setChooseDate(false)}
-                                show={chooseDate}
+                                show={chooseDate}   
                             >
 
                                 <Modal.Body className='d-flex align-items-center'>
