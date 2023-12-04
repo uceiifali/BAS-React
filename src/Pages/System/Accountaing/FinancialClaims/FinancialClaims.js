@@ -6,17 +6,6 @@ import ColumnChart from '../../../../Components/ColumnChart'
 import { Image, Modal } from 'react-bootstrap'
 import { ProgressBar } from "react-bootstrap"
 import DataTableComponent from '../../../../Components/DataTableComponent'
-<<<<<<< HEAD
-import DisplayFinancialClaims from '../../../../Components/System/Accountaing/DisplayFinancialClaims/DisplayFinancialClaims'
-import { useParams } from 'react-router-dom'
-
-
-const FinancialClaims = () => {
-    const [viewFinancialClaims, setViewFinancialClaims] = useState(false)
-    const { RevenueType } = useParams()
-    const [chooseDate, setChooseDate] = useState(false)
-    const [cleanderValue, setCleanderValue] = useState(new Date())
-=======
 import DisplayFinancialClaims from '../../../../Components/System/Accountaing/DisplayFinancialClaims'
 import Box from '@mui/material/Box';
 
@@ -24,7 +13,6 @@ const FinancialClaims = () => {
     const [viewFinancialClaims, setViewFinancialClaims] = useState(false)
     const [openCliam, setOpenClaim] = useState(false)
 
->>>>>>> 58f95d60da0733ba2fbed2c70ddb0cd07c29b060
     const columns = [
 
         {

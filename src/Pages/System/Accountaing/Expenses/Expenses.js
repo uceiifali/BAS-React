@@ -105,11 +105,8 @@ const Expenses = () => {
                     <p className='text-white text-center'>اجمالى المصروفات  </p>
 
                     <ColumnChart
-<<<<<<< HEAD
-                        data={[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]}
-=======
+                      
                         data={[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 7]}
->>>>>>> 58f95d60da0733ba2fbed2c70ddb0cd07c29b060
                         Categoris={["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]}
                         ColumnChart={"30.732px"} colors={["#FFF"]} />
 
