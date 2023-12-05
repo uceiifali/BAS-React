@@ -272,29 +272,34 @@
     min-width: unset !important;
 }
 
+.full-system .form-label {
+    color: white;
+}
+
 .modal-content .kgGExh {
     padding-left: 0px !important;
     padding-right: 0px !important;
     min-width: unset !important;
 }
 
-.modal-content  .dkGVyE {
- 
+.modal-content .dkGVyE {
+
     color: #FFF;
     background: #1E1E2D;
 }
 
-.modal-content   .jiAnER{
+.modal-content .jiAnER {
     color: #FFF;
     background: #34344C;
 }
 
-.modal-content  .cfvlby {
- 
+.modal-content .cfvlby {
+
     background: #34344D !important;
     color: #EFAA20 !important;
 }
-.allowRowEvents{
+
+.allowRowEvents {
     width: 100%;
 }
 
@@ -313,9 +318,10 @@
 .full-system .jiAnER {
     color: #FFF;
     background: #34344C;
-    
+
 }
-.modal-content .css-1dimb5e-singleValue{
+
+.modal-content .css-1dimb5e-singleValue {
     color: white !important;
 }
 

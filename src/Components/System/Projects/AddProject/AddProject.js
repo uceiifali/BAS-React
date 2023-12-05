@@ -19,11 +19,12 @@ const AddProject = () => {
     const [openAddAttachemnt, setOpenAddAttachemnt] = useState(false)
     const [projectsNotes, setProjectsNotes] = useState(false)
     const { showAddUserModel, setShowAddUserModel } = useContext(showAddUpdateUser)
+    
 
 
 
 
-    // initalNumber
+    // initialNumber
 
     // payment details
 

@@ -182,7 +182,7 @@ const DisplayFinancialClaims = ({ displayRevenue, RevenueType, setDisplayRevenue
             }
 
             {editRevenues && <EditRevenues RevenueType={RevenueType} editRevenues={editRevenues} setEditRevenues={setEditRevenues} />}
-
+      
             <div className='border-golden'>
                 <div className='row px-4 py-3'>
 
@@ -223,7 +223,7 @@ const DisplayFinancialClaims = ({ displayRevenue, RevenueType, setDisplayRevenue
 
                             <img className='pointer editIcon' onClick={() => {
 
-                                    setOpenDelete(true)     
+                                setOpenDelete(true)
 
                             }} src={process.env.PUBLIC_URL + "/icons/delete.png"} />
 

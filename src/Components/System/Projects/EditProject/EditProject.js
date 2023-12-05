@@ -11,6 +11,7 @@ import { UseInput, UseSelect } from '../../../../hooks'
 import DatePicker from 'react-datepicker';
 import { useContext } from 'react'
 import { showAddUpdateUser } from '../../../../Context/CheckAddUpdateUserVisability'
+import { addAccountType } from '../../../../Context/AddAccountaing'
 
 const EditProject = ({ editProject, setEditProject, setConfirmUpdate }) => {
     const [attachment, setAttachment] = useState(null)
@@ -93,39 +94,7 @@ const EditProject = ({ editProject, setEditProject, setConfirmUpdate }) => {
             >
 
 
-                {openAddAttachemnt &&
-                    <Modal
-                        className='submitSystemPoper'
-                        size="sm"
-                        aria-labelledby="contained-modal-title-vcenter"
-                        onHide={() => setOpenAddAttachemnt(false)}
-                        show={openAddAttachemnt}
-                    >
-
-                        <Modal.Body className='d-flex align-items-center'>
-
-                            <img src={`${process.env.PUBLIC_URL}/chooseFile.png`} className='my-3' alt='choose file' />
-                            <Form.Group className={``} controlId="formBasicImage">
-
-                                <Form.Control
-                                    type="file"
-                                    placeholder="ادخل اسم الملف  "
-                                    name="imageFile"
-
-                                    className={`${style.chooseFile} text-white`}
-                                    onChange={(e) => setAttachment(e.currentTarget.files[0].name)}
-                                />
-                            </Form.Group>
-                            <div className='my-3' onClick={() => { setOpenAddAttachemnt(false) }}>
-                                <SaveButton />
-                            </div>
-
-
-                        </Modal.Body>
-
-
-                    </Modal >
-                }
+              
 
                 <div className='p-1 mx-auto my-3 edit-header
          w-50'>

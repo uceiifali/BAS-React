@@ -13,7 +13,7 @@ import { addAccountType } from '../../../../Context/AddAccountaing'
 
 const AccountaingIndex = () => {
 
-    const { openAddAccountant, setOpenAddAccountant } = useContext(addAccountType)
+    const { accountaingType, setAccountaingType, openAddAccountant, setOpenAddAccountant } = useContext(addAccountType)
     return (
         <div className='AccountaingIndex'>
             <SystemControler

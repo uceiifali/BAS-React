@@ -9,6 +9,8 @@ import DataTableComponent from '../../../../../Components/DataTableComponent'
 import { useEffect } from 'react'
 import ShowExpensesDetials from '../../../../../Components/System/Accountaing/showExpensesDetials/ShowExpensesDetials'
 import { useContext } from 'react'
+import { addAccountType } from '../../../../../Context/AddAccountaing'
+import AddExpensesReports from '../../../../../Components/System/Accountaing/AddExpensesReports/AddExpensesReports'
 
 const ExpensesDetails = () => {
     // handle search by Date
@@ -20,9 +22,6 @@ const ExpensesDetails = () => {
         setChooseDate(false)
     }
     const [openbill, setOpenbill] = useState(false)
-
-                           useContext()
-
     // handleIncomingData
     const { ExpensesType } = useParams()
     const data = Array.from({ length: 2 }).map((_, index) => {
@@ -79,91 +78,133 @@ const ExpensesDetails = () => {
 
     ];
 
+
+
+
+
+    // handle Context
+
+
+    const { accountaingType, setAccountaingType, openAddAccountant, setOpenAddAccountant } = useContext(addAccountType)
+
+
+
+
+
+
+
+
+
+
+
+
     // fetch Data based on params
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     useEffect(() => {
         setOpenDisplayDetials(false)
+        setOpenAddAccountant(false)
+        setAccountaingType(ExpensesType)
     }, [ExpensesType])
 
 
     return (
         <div className='ExpensesDetails'>
 
-            {openbill &&
-                <Modal
-                    className='d-flex claimModal align-items-center jusify-content-center'
-                    size="lg"
-                    aria-labelledby="contained-modal-title-vcenter"
-                    onHide={() => setOpenbill(false)}
-                    show={openbill}
-                >
-
-                    <Modal.Body className='d-flex align-items-center'>
-                        <Image src={`${process.env.PUBLIC_URL + "/expenses.png"}`} alt='FinancalRequest png' width={650} height={700} />
-                    </Modal.Body>
-
-
-                </Modal >
-            }
-
-
-
-
-
             {
-                openDisplayDetials ? <ShowExpensesDetials setOpenDisplayDetials={setOpenDisplayDetials} /> :
-
-                    <>
-                        {chooseDate &&
-                            <Modal
-                                className=' InvoiceDate'
-                                size="lg"
-                                aria-labelledby="contained-modal-title-vcenter"
-                                onHide={() => setChooseDate(false)}
-                                show={chooseDate}   
-                            >
-
-                                <Modal.Body className='d-flex align-items-center'>
-
-                                    <Calendar onChange={handleCleanderValue} className={"bg-[#1E1E2D]"} value={cleanderValue} />
-
-                                </Modal.Body>
+                openAddAccountant && accountaingType === "ExpensesReports" ? <AddExpensesReports /> : openAddAccountant && accountaingType === "Items" ? "" : <>
 
 
-                            </Modal >
-                        }
+
+                    {openbill &&
+                        <Modal
+                            className='d-flex claimModal align-items-center jusify-content-center'
+                            size="lg"
+                            aria-labelledby="contained-modal-title-vcenter"
+                            onHide={() => setOpenbill(false)}
+                            show={openbill}
+                        >
+
+                            <Modal.Body className='d-flex align-items-center'>
+                                <Image src={`${process.env.PUBLIC_URL + "/expenses.png"}`} alt='FinancalRequest png' width={650} height={700} />
+                            </Modal.Body>
 
 
-                        <div className={`w-100 ${style.ExpensesNumbersContainer} mb-4 P-4`}>
+                        </Modal >
+                    }
 
-                            <div className=' d-flex  gap-3'>
-                                <svg onClick={() => { setChooseDate(true) }} className='pointer' xmlns="http://www.w3.org/2000/svg" width="18" height="16" viewBox="0 0 18 16" fill="none">
-                                    <path d="M17.4375 0.438965H0.4375L7.2375 8.21314V13.5877L10.6375 15.2313V8.21314L17.4375 0.438965Z" fill="#D59921" />
-                                </svg>
-                                {
-                                    ExpensesType === "ExpensesReports" ?
+                    {
+                        openDisplayDetials ? <ShowExpensesDetials setOpenDisplayDetials={setOpenDisplayDetials} /> :
 
-                                        <p className='text-white '> اجمالى عدد المصروفات     :  </p> :
+                            <>
+                                {chooseDate &&
+                                    <Modal
+                                        className=' InvoiceDate'
+                                        size="lg"
+                                        aria-labelledby="contained-modal-title-vcenter"
+                                        onHide={() => setChooseDate(false)}
+                                        show={chooseDate}
+                                    >
 
-                                        <p className='text-white '>  اجمالي اصناف الشهر الحالي      :  </p>
+                                        <Modal.Body className='d-flex align-items-center'>
+
+                                            <Calendar onChange={handleCleanderValue} className={"bg-[#1E1E2D]"} value={cleanderValue} />
+
+                                        </Modal.Body>
+
+
+                                    </Modal >
                                 }
-                            </div>
-                            <div className='Treasury-container-numbers d-flex justify-content-center text-white'>
-                                <p>12600</p>
-                            </div>
-                        </div>
-                        <fieldset className={`${style.ExpensesDataTableContainer}`}>
-                            {ExpensesType === "ExpensesReports" ?
-                                <legend className='text-center'>تقارير المصروفات</legend> :
-                                <legend className='text-center'> الاصناف</legend>
-                            }
 
 
-                            <DataTableComponent data={data} columns={columns} />
+                                <div className={`w-100 ${style.ExpensesNumbersContainer} mb-4 P-4`}>
 
-                        </fieldset>
-                    </>
+                                    <div className=' d-flex  gap-3'>
+                                        <svg onClick={() => { setChooseDate(true) }} className='pointer' xmlns="http://www.w3.org/2000/svg" width="18" height="16" viewBox="0 0 18 16" fill="none">
+                                            <path d="M17.4375 0.438965H0.4375L7.2375 8.21314V13.5877L10.6375 15.2313V8.21314L17.4375 0.438965Z" fill="#D59921" />
+                                        </svg>
+                                        {
+                                            ExpensesType === "ExpensesReports" ?
+
+                                                <p className='text-white '> اجمالى عدد المصروفات     :  </p> :
+
+                                                <p className='text-white '>  اجمالي اصناف الشهر الحالي      :  </p>
+                                        }
+                                    </div>
+                                    <div className='Treasury-container-numbers d-flex justify-content-center text-white'>
+                                        <p>12600</p>
+                                    </div>
+                                </div>
+                                <fieldset className={`${style.ExpensesDataTableContainer}`}>
+                                    {ExpensesType === "ExpensesReports" ?
+                                        <legend className='text-center'>تقارير المصروفات</legend> :
+                                        <legend className='text-center'> الاصناف</legend>
+                                    }
+
+
+                                    <DataTableComponent data={data} columns={columns} />
+
+                                </fieldset>
+                            </>
+                    }
+
+
+
+                </>
             }
+
 
 
         </div>

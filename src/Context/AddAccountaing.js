@@ -4,7 +4,7 @@ import App from '../App'
 
 export const addAccountType = React.createContext()
 const CheckAccountType = ({ children }) => {
-    const [accountaingType, setAccountaingType] = useState('')
+    const [accountaingType, setAccountaingType] = useState(null)
     const [openAddAccountant, setOpenAddAccountant] = useState(false)
 
 
@@ -13,7 +13,7 @@ const CheckAccountType = ({ children }) => {
 
     return (
         <div>
-            <addAccountType.Provider value={{ accountaingType, setAccountaingType ,setOpenAddAccountant,setOpenAddAccountant }}>
+            <addAccountType.Provider value={{ accountaingType, setAccountaingType, openAddAccountant, setOpenAddAccountant }}>
 
                 {children}
 
@@ -23,4 +23,4 @@ const CheckAccountType = ({ children }) => {
     )
 }
 
-export default CheckAccountType
+export default CheckAccountType 

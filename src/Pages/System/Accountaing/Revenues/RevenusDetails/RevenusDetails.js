@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 
 import styles from "./RevenusDetails.module.css"
 import PieChart from '../../../../../Components/pieChart'
@@ -10,8 +10,12 @@ import { useParams } from 'react-router-dom'
 import DisplayFinancialClaims from '../../../../../Components/System/Accountaing/DisplayFinancialClaims/DisplayFinancialClaims'
 import { useEffect } from 'react'
 import Calendar from 'react-calendar'
+import { addAccountType } from '../../../../../Context/AddAccountaing'
+import AddFinancialClaims from '../../../../../Components/System/Accountaing/AddFinancialClaims/AddFinancialClaims'
+import AddInvoice from '../../../../../Components/System/Accountaing/AddInvoice/AddInvoice'
 
 const RevenusDetails = () => {
+    // handle Date
     const [DisplayRevenue, setDisplayRevenue] = useState(false)
     const [openCliam, setOpenClaim] = useState(false)
     const { RevenueType } = useParams()
@@ -90,8 +94,6 @@ const RevenusDetails = () => {
 
         }
     })
-
-
     const handleCleanderValue = (e) => {
         setCleanderValue(e)
         setChooseDate(false)
@@ -100,12 +102,26 @@ const RevenusDetails = () => {
 
     }
 
+
+    //   checkAccountaing 
+    const { accountaingType, setAccountaingType, openAddAccountant, setOpenAddAccountant } = useContext(addAccountType)
+
+
+
+
+
+
     useEffect(() => {
-
+        setAccountaingType(RevenueType)
         setDisplayRevenue(false)
+        setOpenAddAccountant(false)
 
 
-    }, [])
+    }, [RevenueType])
+
+
+
+
 
 
 
@@ -114,56 +130,51 @@ const RevenusDetails = () => {
 
 
 
+            {openAddAccountant && accountaingType === "FinancialClaims" ? <AddFinancialClaims /> : openAddAccountant && accountaingType === "Invoice" ? <AddInvoice /> :
+                <>
+                    {openCliam &&
+                        <Modal
+                            className='d-flex claimModal align-items-center jusify-content-center'
+                            size="lg"
+                            aria-labelledby="contained-modal-title-vcenter"
+                            onHide={() => setOpenClaim(false)}
+                            show={openCliam}
+                        >
+
+                            <Modal.Body className='d-flex align-items-center'>
 
 
-
-
-            {openCliam &&
-                <Modal
-                    className='d-flex claimModal align-items-center jusify-content-center'
-                    size="lg"
-                    aria-labelledby="contained-modal-title-vcenter"
-                    onHide={() => setOpenClaim(false)}
-                    show={openCliam}
-                >
-
-                    <Modal.Body className='d-flex align-items-center'>
-
-
-                        <Image src={`${process.env.PUBLIC_URL + "/FinancalRequest.png"}`} alt='FinancalRequest png' width={650} height={700} />
+                                <Image src={`${process.env.PUBLIC_URL + "/FinancalRequest.png"}`} alt='FinancalRequest png' width={650} height={700} />
 
 
 
 
 
-                    </Modal.Body>
+                            </Modal.Body>
 
 
-                </Modal >
-            }
+                        </Modal >
+                    }
 
 
-            {chooseDate &&
-                <Modal
-                    className=' InvoiceDate'
-                    size="lg"
-                    aria-labelledby="contained-modal-title-vcenter"
-                    onHide={() => setChooseDate(false)}
-                    show={chooseDate}
-                >
+                    {chooseDate &&
+                        <Modal
+                            className=' InvoiceDate'
+                            size="lg"
+                            aria-labelledby="contained-modal-title-vcenter"
+                            onHide={() => setChooseDate(false)}
+                            show={chooseDate}
+                        >
 
-                    <Modal.Body className='d-flex align-items-center'>
+                            <Modal.Body className='d-flex align-items-center'>
 
-                        <Calendar onChange={handleCleanderValue} className={"bg-[#1E1E2D]"} value={cleanderValue} />
+                                <Calendar onChange={handleCleanderValue} className={"bg-[#1E1E2D]"} value={cleanderValue} />
 
-                    </Modal.Body>
-
-
-                </Modal >
-            }
+                            </Modal.Body>
 
 
-
+                        </Modal >
+                    }
 
 
 
@@ -171,49 +182,65 @@ const RevenusDetails = () => {
 
 
 
-            {
-                DisplayRevenue ?
-                    <DisplayFinancialClaims RevenueType DisplayRevenue={DisplayRevenue} setDisplayRevenue={setDisplayRevenue} />
-                    : <div className='d-flex flex-column justify-content-between gap-5'>
+                    { }
 
 
-                        {RevenueType === "FinancialClaims" ?
-                            <div className={`${styles.RevenuesPieChartContainer}   `}>
-                                <p className='text-white text-start'>كل المطالبات</p>
-                                <PieChart  toolbaroffestX=""  toolbaroffestY=""    colors={["#03795D", "#E40038"]} width={400} labels={[" تم الدفع 60 ", "لم يتم الدفع 20 ",]} series={[6, 3]} />
+                    {
+                        DisplayRevenue ?
+                            <DisplayFinancialClaims RevenueType DisplayRevenue={DisplayRevenue} setDisplayRevenue={setDisplayRevenue} />
+                            :
+                            <div className='d-flex flex-column justify-content-between gap-5'>
 
 
-                            </div> :
-                            <div className={`${styles.RevenuesPieChartContainer} invoicesContainer `}>
-                                <p className='text-white  text-xl'> عدد الفواتير</p>
+                                {RevenueType === "FinancialClaims" ?
+                                    <div className={`${styles.RevenuesPieChartContainer}   `}>
+                                        <p className='text-white text-start'>كل المطالبات</p>
+                                        <PieChart toolbaroffestX="" toolbaroffestY="" colors={["#03795D", "#E40038"]} width={400} labels={[" تم الدفع 60 ", "لم يتم الدفع 20 ",]} series={[6, 3]} />
 
-                                <div className='w-75 d-flex justify-content-between '>
-                                    <div className='d-flex gap-3'>
-                                        <svg onClick={() => { setChooseDate(true) }} className='pointer' xmlns="http://www.w3.org/2000/svg" width="18" height="16" viewBox="0 0 18 16" fill="none">
-                                            <path d="M17.4375 0.438965H0.4375L7.2375 8.21314V13.5877L10.6375 15.2313V8.21314L17.4375 0.438965Z" fill="#D59921" />
-                                        </svg>
-                                        <p className='text-white '>اجمالى عدد الاصناف :</p>
+
+                                    </div> :
+                                    <div className={`${styles.RevenuesPieChartContainer} invoicesContainer `}>
+                                        <p className='text-white  text-xl'> عدد الفواتير</p>
+
+                                        <div className='w-75 d-flex justify-content-between '>
+                                            <div className='d-flex gap-3'>
+                                                <svg onClick={() => { setChooseDate(true) }} className='pointer' xmlns="http://www.w3.org/2000/svg" width="18" height="16" viewBox="0 0 18 16" fill="none">
+                                                    <path d="M17.4375 0.438965H0.4375L7.2375 8.21314V13.5877L10.6375 15.2313V8.21314L17.4375 0.438965Z" fill="#D59921" />
+                                                </svg>
+                                                <p className='text-white '>اجمالى عدد الاصناف :</p>
+                                            </div>
+                                            <div className='Treasury-container-numbers d-flex justify-content-center text-white'>
+                                                <p>1000</p>
+                                            </div>
+                                        </div>
+
                                     </div>
-                                    <div className='Treasury-container-numbers d-flex justify-content-center text-white'>
-                                        <p>1000</p>
-                                    </div>
-                                </div>
+
+
+                                }
+
+
+
+                                <fieldset className={`${styles.RevenuesColumnChartContainer}   `}>
+                                    <legend className='text-white text-center'>كل المطالبات</legend>
+                                    <DataTableComponent columns={columns} data={data} className={"overflow-x-hidden overflow-y-auto "} />
+
+                                </fieldset>
 
                             </div>
+                    }
 
 
-                        }
+                </>
 
 
 
-                        <fieldset className={`${styles.RevenuesColumnChartContainer}   `}>
-                            <legend className='text-white text-center'>كل المطالبات</legend>
-                            <DataTableComponent columns={columns} data={data} className={"overflow-x-hidden overflow-y-auto "} />
-
-                        </fieldset>
-
-                    </div>
             }
+
+
+
+
+
 
 
         </>
