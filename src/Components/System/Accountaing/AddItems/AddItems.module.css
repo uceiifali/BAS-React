@@ -1,0 +1,23 @@
+.description {
+    border: 1px solid rgba(239, 170, 32, 0.50);
+    height: 532.268px;
+    width: 90%;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.Attachment {
+    height: 150px;
+    border: 1px solid rgba(239, 170, 32, 0.50);
+    width: 90%;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.itemdescription {
+    border: 1px solid rgba(239, 170, 32, 0.50);
+    height: 330px;
+    width: 90%;
+    margin-right: auto;
+    margin-left: auto;
+}

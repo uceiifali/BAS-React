@@ -11,6 +11,7 @@ import ShowExpensesDetials from '../../../../../Components/System/Accountaing/sh
 import { useContext } from 'react'
 import { addAccountType } from '../../../../../Context/AddAccountaing'
 import AddExpensesReports from '../../../../../Components/System/Accountaing/AddExpensesReports/AddExpensesReports'
+import AddItems from '../../../../../Components/System/Accountaing/AddItems/AddItems'
 
 const ExpensesDetails = () => {
     // handle search by Date
@@ -124,7 +125,7 @@ const ExpensesDetails = () => {
         <div className='ExpensesDetails'>
 
             {
-                openAddAccountant && accountaingType === "ExpensesReports" ? <AddExpensesReports /> : openAddAccountant && accountaingType === "Items" ? "" : <>
+                openAddAccountant && accountaingType === "ExpensesReports" ? <AddExpensesReports /> : openAddAccountant && accountaingType === "Items" ?  <AddItems/> : <>
 
 
 
