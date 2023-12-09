@@ -1,0 +1,19 @@
+.pdfbackground {
+
+    width: 53.361px;
+    height: 35px;
+    flex-shrink: 0;
+    border-radius: 5px;
+    background: #151521;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.holidayTypesContainer {
+    border-radius: 19px;
+    background: #1E1E2D;
+    height: 801px;
+    padding:  20px 10px;
+}

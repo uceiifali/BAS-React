@@ -5,7 +5,7 @@ import AllUserCategories from '../../../../Components/System/Users/AllUserCatego
 import AllUsersPieChart from '../../../../Components/System/Users/AllUsersChart/AllUsersPieChart'
 
 import CountryPieChart from '../../../../Components/System/Users/CountryChart/CountryPieChart'
-import { useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import CountryColumnChart from '../../../../Components/System/Users/CountryChart/CountryColumnChart'
 import CountryDeprtamentSlider from '../../../../Components/System/Users/CountryChart/CountryDeprtamentSlider'
 import "./index.css"
@@ -40,12 +40,24 @@ const CountryChart = () => {
                 <div className='country-Chart p-5'>
 
                     <div className='d-flex justify-content-center flex-column align-items-center'>
+                        <div className='d-flex  mx-auto gap-4 align-items-center  justify-center'>
+                            <h2 className='country-header text-center   text-white mb-4'>
 
-                        <h2 className='country-header text-center   text-white mb-4'>
+                                {countryBase == "Saudia" ? "السعودية" : "مصر"}
+                            </h2>
+                            <Link to={countryBase == "Saudia" ? "/System/Hr/Employees/egypet" : "/System/Hr/Employees/Saudia"}>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="13" height="20" viewBox="0 0 13 20" fill="none">
+                                    <path d="M11 18L1.85714 10L11 2" stroke="#D59921" stroke-width="2.28571" stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                            </Link>
 
-                            {countryBase == "Saudia" ? "السعودية" : "مصر"}
+                        </div>
 
-                        </h2>
+
+
+
+
+
                         <CountryPieChart />
                     </div>
                     <fieldset className='All-users-columnChart-container  py-3 m-auto '>
@@ -63,7 +75,7 @@ const CountryChart = () => {
                 </div>
 
             </div>
-        </div>
+        </div >
     )
 }
 

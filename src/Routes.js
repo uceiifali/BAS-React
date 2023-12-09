@@ -4,7 +4,7 @@ import { useContext, lazy, Suspense } from 'react';
 
 import NavBar from './Components/Client/Landing/NavBar';
 import Loading from './Components/Loading';
-import SystemSignIn from "././Pages/System/Auth/SignIn/SystemSignIn"
+import SystemSignIn from "./Pages/System/Auth/SignIn/SystemSignIn"
 import 'react-time-picker/dist/TimePicker.css';
 import 'react-clock/dist/Clock.css';
 
@@ -42,16 +42,20 @@ import Invoice from './Pages/System/Accountaing/Invoice/Invoice';
 import Expenses from './Pages/System/Accountaing/Expenses/Expenses';
 import ExpensesDetails from './Pages/System/Accountaing/Expenses/ExpensesDetails/ExpensesDetails';
 import RevenusDetails from './Pages/System/Accountaing/Revenues/RevenusDetails/RevenusDetails';
+import HrIndex from './Pages/System/Hr/HrIndex/HrIndex';
+import EmployeesManagment from './Pages/System/Hr/EmployeesManagment/EmployeesManagment';
+import AllEmployees from './Pages/System/Hr/AllEmployees/AllEmployees';
+import HolidayMangment from './Pages/System/Hr/HolidayMangment/HolidayMangment';
 
 
 
 
 
-const SignUP = lazy(() => import("././Pages/DashBoard/SignUP/SignUP"))
-const SignIn = lazy(() => import("././Pages/DashBoard/SignIn/SignIn"))
+const SignUP = lazy(() => import("./Pages/DashBoard/SignUP/SignUP"))
+const SignIn = lazy(() => import("./Pages/DashBoard/SignIn/SignIn"))
 
-const ConfirmWithCode = lazy(() => import("././Pages/DashBoard/ConfirmWithCode/ConfirmWithCode"))
-const ForgetPassword = lazy(() => import("././Pages/DashBoard/ForgetPassword/ForgetPassword"))
+const ConfirmWithCode = lazy(() => import("./Pages/DashBoard/ConfirmWithCode/ConfirmWithCode"))
+const ForgetPassword = lazy(() => import("./Pages/DashBoard/ForgetPassword/ForgetPassword"))
 
 const router = createBrowserRouter([
 
@@ -94,7 +98,6 @@ const router = createBrowserRouter([
             { path: "/System/index/:deprtmentType", element: <MainSystem /> },
             //system  users
             { path: "/System/users", element: <SystemUsers /> },
-            // system charts
             {
                 path: "", element: <AllUsersChart />, children: [
                     { path: "/System/Users/index", element: <CountriesChart /> },
@@ -146,15 +149,24 @@ const router = createBrowserRouter([
                 ]
             },
             // System Accounating
-
             {
                 path: "", element: <AccountaingIndex />, children: [
                     { path: "/System/Accounating/index", element: <Treasury /> },
                     { path: "/System/Accounating/Revenues", element: <Revenues /> },
                     { path: "/System/Accounating/Revenues/:RevenueType", element: <RevenusDetails /> },
-                    // { path: "/System/Accounating/:Invoice", element: <Invoice /> },
                     { path: "/System/Accounating/Expenses", element: <Expenses /> },
-                    { path: "/System/Accounating/Expenses/:ExpensesType", element: <ExpensesDetails  /> },
+                    { path: "/System/Accounating/Expenses/:ExpensesType", element: <ExpensesDetails /> },
+
+                ]
+            },
+            // System Hr 
+            {
+                path: "", element: <HrIndex />, children: [
+                    { path: "/System/Hr/index", element: <EmployeesManagment /> },
+                    { path: "/System/Hr/EmployeesManagment", element: <CountriesChart /> },
+                    { path: "/System/Hr/Employees/:CountryName", element: <AllEmployees /> },
+                    { path: "/System/Hr/HolidayMangment", element: <HolidayMangment /> },
+
 
                 ]
             },

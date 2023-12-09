@@ -4,7 +4,7 @@ import 'react-international-phone/style.css';
 import 'bootstrap/dist/css/bootstrap.css';
 
 
-import router from './Routing';
+import router from './Routes';
 import './App.css';
 import { RouterProvider } from 'react-router-dom';
 

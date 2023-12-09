@@ -1,13 +1,15 @@
 .description {
     border: 1px solid rgba(239, 170, 32, 0.50);
-    height: 532.268px;
+    height: auto;
     width: 90%;
+    padding: 10px;
     margin-right: auto;
     margin-left: auto;
 }
 
 .Attachment {
-    height: 150px;
+    height: auto;
+    padding: 30px;
     border: 1px solid rgba(239, 170, 32, 0.50);
     width: 90%;
     margin-right: auto;

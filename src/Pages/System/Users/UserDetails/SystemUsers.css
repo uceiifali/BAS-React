@@ -145,7 +145,7 @@
   border-radius: 19px !important;
   background: #1E1E2D !important;
   height: 801px !important;
-  overflow-y: scroll;
+  overflow-y: auto;
 }
 
 
@@ -221,7 +221,7 @@
 .show-employee::-webkit-scrollbar-track {
   -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
   background-color: #F5F5F5;
-}
+} 
 
 .show-employee::-webkit-scrollbar {
   width: 10px;
