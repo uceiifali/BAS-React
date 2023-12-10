@@ -130,7 +130,7 @@ const Home = () => {
                     <div className='home-layer d-flex align-items-center  justify-content-center position-absolute w-100 h-100'>
                         <div className='d-flex h-100 w-100 text-center  align-items-center align-items-end-sm justify-content-between'>
                             <div className='socail-icons-container '>
-                                <div className='mx-5 socail-icons  bg-light d-flex flex-column my-5'>
+                                <div className='ms-3 socail-icons  bg-light d-flex flex-column my-5'>
                                     <Link to={"/"}> <FaFacebookF className="mb-3" size={30} color='#E1B67C' /> </Link>
                                     <Link to={"/"}> <AiFillYoutube className="mb-3" size={30} color='#E1B67C' /> </Link>
                                     <Link to={"/"}>   <AiFillInstagram className="mb-3" size={30} color='#E1B67C' /></Link>
@@ -199,15 +199,15 @@ const Home = () => {
                 </Container>
 
             </section>
-            <section id="Services" className='Services py-5 my-10'>
+            <section id="Services" className='Services Home-services py-5 my-10'>
                 <Container>
                     <h2 className='f-grey fs-1  sm-header  mb-5 ' >خدمتنا</h2>
                     <Row >
                         {Services.map((ele, index) => (
-                            <Col key={index} md={6} lg={4} className='d-flex justify-content-center' >
+                            <Col key={index} md={6} lg={4} className='d-flex mt-3 justify-content-center' >
                                 <div className='card-flibing'>
 
-                                    <div className="card " style={{ width: '18rem', height: '18rem', border: "none", justifyContent: "center" }}>
+                                    <div className="card w-[324px] h-[326px] border-none d-flex justfiy-cotent-center" >
                                         <div className="card-inner">
                                             <div className="card-front d-flex flex-column">
                                                 <img width={70} height={70} src={ele.img} alt="card img " />

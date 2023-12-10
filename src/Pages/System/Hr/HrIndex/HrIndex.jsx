@@ -1,14 +1,29 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import SystemControler from '../../../../Components/System/SystemControler/SystemControler'
 import { AllCategories } from '../../../../Components/System/AllCategories/AllCategories'
-import { Accordion } from 'react-bootstrap'
+import { Accordion, Button } from 'react-bootstrap'
 import { MdKeyboardArrowDown } from 'react-icons/md'
 import { Link, Outlet } from 'react-router-dom'
+import { AddHrType } from '../../../../Context/AddHr'
 
 const HrIndex = () => {
+
+  const {openHr,setOpenHr} = useContext(AddHrType)
     return (
         <div>
-            <SystemControler />
+            <SystemControler
+                child={
+                    <Button
+                        className='add-user-button'
+                        onClick={() => { setOpenHr(true) }}
+
+
+                    >إضافة جديدة</Button>
+
+
+                }
+
+            />
             <div className='row'>
                 <div className='col-md-3'>
                     <AllCategories child={
@@ -96,13 +111,15 @@ const HrIndex = () => {
                                 </div>
                                 <div className='w-100'
                                 >
-                                    <div className='tab  text-end w-100'>
+                                    <Link to={"/System/Hr/EmployeesServices"}>
+                                        <div className='tab  text-end w-100'>
 
-                                        <span>خدمات الموظفين</span>
+                                            <span>خدمات الموظفين</span>
 
 
 
-                                    </div>
+                                        </div>
+                                    </Link>
                                 </div>
 
 

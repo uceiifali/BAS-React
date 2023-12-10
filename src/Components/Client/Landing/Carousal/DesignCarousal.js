@@ -46,23 +46,30 @@ const DesignCarousal = () => {
     <Container>
       <Slider className='my-3' {...settings}>
         <div className='   d-flex my-5 slider-Container m-auto  justify-content-center  '>
-          <ImageComponent src={"slider/design/design1.jpg"} alt="design carousal" className='w-100 h-100 ' />
-
+          <ImageComponent src={process.env.PUBLIC_URL + "slider/design/design1.jpg"} alt="design carousal" className='w-100 h-100 ' />
         </div>
         <div className='   d-flex my-5 slider-Container  m-auto  justify-content-center  '>
-          <img src={"slider/design/design2.jpg"} alt='design ' className='w-100 h-100 ' />
+          <ImageComponent
+            src={process.env.PUBLIC_URL + "slider/design/design2.jpg"}
+            alt='design ' className='w-100 h-100 ' />
         </div>
         <div className='   d-flex my-5 slider-Container  m-auto  justify-content-center '>
-          <img src={"slider/design/design3.jpg"} alt='design ' className='w-100 h-100 ' />
+          <ImageComponent
+            src={process.env.PUBLIC_URL + "slider/design/design3.jpg"} alt='design ' className='w-100 h-100 ' />
         </div>
         <div className='   d-flex my-5 slider-Container   m-auto  justify-content-center '>
-          <img src={"slider/design/design4.jpg"} alt='design ' className='w-100 h-100 ' />
+          <ImageComponent
+            src={process.env.PUBLIC_URL + "slider/design/design4.jpg"} alt='design ' className='w-100 h-100 ' />
         </div>
         <div className='   d-flex my-5 slider-Container  m-auto  justify-content-center '>
-          <img src={"slider/design/design5.jpg"} alt='design ' className='w-100 h-100 ' />
+          <ImageComponent
+            src={process.env.PUBLIC_URL + "slider/design/design5.jpg"}
+            alt='design ' className='w-100 h-100 ' />
         </div>
         <div className='   d-flex my-5 slider-Container  m-auto  justify-content-center '>
-          <img src={"slider/design/design6.jpg"} alt='design ' className='w-100 h-100 ' />
+          <ImageComponent
+            src={process.env.PUBLIC_URL + "slider/design/design6.jpg"}
+            alt='design ' className='w-100 h-100 ' />
         </div>
 
       </Slider>

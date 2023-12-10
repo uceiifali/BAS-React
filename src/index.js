@@ -18,6 +18,7 @@ import "primereact/resources/themes/lara-light-indigo/theme.css"; // theme
 
 import 'primereact/resources/primereact.css';
 import CheckAccountType from './Context/AddAccountaing';
+import { AddHr } from './Context/AddHr';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -26,13 +27,14 @@ root.render(
   <React.StrictMode>
     <PrimeReactProvider>
       <CheckAccountType>
-        <CheckAddUpdateUserVisability>
-          <StepContext>
-            <App />
-            <ToastContainer />
-          </StepContext>
-
-        </CheckAddUpdateUserVisability >
+        <AddHr>
+          <CheckAddUpdateUserVisability>
+            <StepContext>
+              <App />
+              <ToastContainer />
+            </StepContext>
+          </CheckAddUpdateUserVisability >
+        </AddHr>
       </CheckAccountType>
     </PrimeReactProvider>
   </React.StrictMode>

@@ -265,7 +265,9 @@
 
     overflow: unset !important;
 }
-
+.displayFieldSet{
+    border: 1px solid rgba(239, 170, 32, 0.50);
+}
 .full-system .kgGExh {
     padding-left: 0px !important;
     padding-right: 0px !important;
@@ -274,6 +276,9 @@
 
 .full-system .form-label {
     color: white;
+}
+.systemModal .modal-body{
+    justify-content: unset  !important;
 }
 
 .modal-content .kgGExh {

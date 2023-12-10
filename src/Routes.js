@@ -46,6 +46,7 @@ import HrIndex from './Pages/System/Hr/HrIndex/HrIndex';
 import EmployeesManagment from './Pages/System/Hr/EmployeesManagment/EmployeesManagment';
 import AllEmployees from './Pages/System/Hr/AllEmployees/AllEmployees';
 import HolidayMangment from './Pages/System/Hr/HolidayMangment/HolidayMangment';
+import EmployeesServices from './Pages/System/Hr/EmployeesServices/EmployeesServices';
 
 
 
@@ -166,6 +167,7 @@ const router = createBrowserRouter([
                     { path: "/System/Hr/EmployeesManagment", element: <CountriesChart /> },
                     { path: "/System/Hr/Employees/:CountryName", element: <AllEmployees /> },
                     { path: "/System/Hr/HolidayMangment", element: <HolidayMangment /> },
+                    { path: "/System/Hr/EmployeesServices", element: <EmployeesServices /> },
 
 
                 ]
