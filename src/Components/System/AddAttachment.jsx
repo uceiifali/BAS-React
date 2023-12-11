@@ -5,7 +5,7 @@ import SaveButton from '../SaveButton'
 const AddAttachment = ({ attachment, setAttachment }) => {
     const [openAddAttachemnt, setOpenAddAttachemnt] = useState(false)
     return (
-        <div>
+        <div className='w-100 '>
             {openAddAttachemnt &&
                 <Modal
                     className='submitSystemPoper'
@@ -24,6 +24,7 @@ const AddAttachment = ({ attachment, setAttachment }) => {
                                 type="file"
                                
                                 name="imageFile"
+                                 multiple={true}
                                 for="formFile"
                                 
                                 className={`chooseFile text-white`}

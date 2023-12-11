@@ -43,10 +43,12 @@ import Expenses from './Pages/System/Accountaing/Expenses/Expenses';
 import ExpensesDetails from './Pages/System/Accountaing/Expenses/ExpensesDetails/ExpensesDetails';
 import RevenusDetails from './Pages/System/Accountaing/Revenues/RevenusDetails/RevenusDetails';
 import HrIndex from './Pages/System/Hr/HrIndex/HrIndex';
-import EmployeesManagment from './Pages/System/Hr/EmployeesManagment/EmployeesManagment';
 import AllEmployees from './Pages/System/Hr/AllEmployees/AllEmployees';
 import HolidayMangment from './Pages/System/Hr/HolidayMangment/HolidayMangment';
 import EmployeesServices from './Pages/System/Hr/EmployeesServices/EmployeesServices';
+import MainEmployees from './Pages/System/Hr/MainEmployees/MainEmployees';
+import EmployeesManagment from './Pages/System/Hr/EmployeesManagment/EmployeesManagment';
+
 
 
 
@@ -163,8 +165,9 @@ const router = createBrowserRouter([
             // System Hr 
             {
                 path: "", element: <HrIndex />, children: [
-                    { path: "/System/Hr/index", element: <EmployeesManagment /> },
-                    { path: "/System/Hr/EmployeesManagment", element: <CountriesChart /> },
+                    { path: "/System/Hr/index", element: <MainEmployees /> },
+                    
+                    { path: "/System/Hr/EmployeesManagment", element: <EmployeesManagment /> },
                     { path: "/System/Hr/Employees/:CountryName", element: <AllEmployees /> },
                     { path: "/System/Hr/HolidayMangment", element: <HolidayMangment /> },
                     { path: "/System/Hr/EmployeesServices", element: <EmployeesServices /> },

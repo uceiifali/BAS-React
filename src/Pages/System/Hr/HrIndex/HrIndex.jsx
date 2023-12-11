@@ -8,14 +8,19 @@ import { AddHrType } from '../../../../Context/AddHr'
 
 const HrIndex = () => {
 
-  const {openHr,setOpenHr} = useContext(AddHrType)
+    const { openHr, setOpenHr } = useContext(AddHrType)
+
     return (
         <div>
             <SystemControler
                 child={
                     <Button
                         className='add-user-button'
-                        onClick={() => { setOpenHr(true) }}
+                        onClick={() => {
+                            setOpenHr(true)
+
+                           
+                        }}
 
 
                     >إضافة جديدة</Button>

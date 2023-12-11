@@ -269,7 +269,7 @@ const ChooseDepartmentComponent = ({ chooseDepartment, setChooseDeprtmant }) => 
                                 </p>
                                 <div className='ChooseDeprtmant-according d-flex justify-content-start  align-items-center flex-column  '>
 
-                                    <SearchComponent className="m-auto" background={"#2B2B40"} width={"230px"} />
+                                    <SearchComponent className="m-auto " background={"#2B2B40"} width={"230px"} />
                                     {users.map((ele, index) => (
 
                                         <div key={index} className='d-flex gap-3  show-meeting-Detials my-3 '>

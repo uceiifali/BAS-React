@@ -1,14 +1,20 @@
-import React, { useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import style from "./HolidayMangment.module.css"
 import { SearchComponent } from '../../../../Components/SearchComponent/SearchComponent'
 import { AllCategories } from '../../../../Components/System/AllCategories/AllCategories'
 import Input from '../../../../Components/FormHandler/Input'
 import "./HolidayMangment.css"
 import DataTableComponent from '../../../../Components/DataTableComponent'
-import ShowHolidayComponent from '../../../../Components/System/Hr/AddNewUser/ShowHolidayComponent/ShowHolidayComponent.jsx'
+
+import { AddHrType } from '../../../../Context/AddHr.js'
+
+import ShowHolidayComponent from '../../../../Components/System/Hr/ShowHolidayComponent/ShowHolidayComponent.jsx'
+import AddHoliday from '../../../../Components/System/Hr/AddHoliday/AddHoliday.jsx'
 
 const HolidayMangment = () => {
     const [ShowHoliday, setShowHoliday] = useState(false)
+    const { openHr, setOpenHr, HrType, setHrType } = useContext(AddHrType)
+
 
     const data = Array.from({ length: 2 }).map((_, index) => {
         return {
@@ -66,7 +72,10 @@ const HolidayMangment = () => {
 
 
 
-
+    useEffect(() => {
+        setOpenHr(false)
+        setHrType("holiday")
+    }, [])
 
 
 
@@ -82,7 +91,7 @@ const HolidayMangment = () => {
 
 
             <ShowHolidayComponent ShowHoliday={ShowHoliday} setShowHoliday={setShowHoliday} />
-
+            {openHr === true && HrType == "holiday" ? <AddHoliday /> : ""}
 
             <div className='row'>
                 <div className='col-md-3'>
@@ -91,8 +100,8 @@ const HolidayMangment = () => {
                         <SearchComponent />
                         <p className='text-white mt-2'>كل الاجازات</p>
                         <div className='d-flex my-3 gap-3'>
-                    
-                   
+
+
 
                         </div>
 
