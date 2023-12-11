@@ -1,8 +1,8 @@
 import React from 'react'
-import { Carousel, Container } from 'react-bootstrap';
+import { Carousel, Container, Image } from 'react-bootstrap';
 import Slider from 'react-slick'
-import Image from '../../../Image';
-import ImageComponent from '../../../Image';
+
+
 
 const DesignCarousal = () => {
   const settings = {
@@ -46,31 +46,41 @@ const DesignCarousal = () => {
     <Container>
       <Slider className='my-3' {...settings}>
         <div className='   d-flex my-5 slider-Container m-auto  justify-content-center  '>
-          <ImageComponent src={process.env.PUBLIC_URL + "slider/design/design1.jpg"} alt="design carousal" className='w-100 h-100 ' />
+          <Image
+            src={`${process.env.PUBLIC_URL + "slider/design/design2.jpeg"}`}
+            alt="design carousal" className='w-100 h-100 ' />
         </div>
         <div className='   d-flex my-5 slider-Container  m-auto  justify-content-center  '>
-          <ImageComponent
-            src={process.env.PUBLIC_URL + "slider/design/design2.jpg"}
+          <Image
+            src={`${process.env.PUBLIC_URL + "slider/design/design2.jpeg"}`}
             alt='design ' className='w-100 h-100 ' />
         </div>
         <div className='   d-flex my-5 slider-Container  m-auto  justify-content-center '>
-          <ImageComponent
-            src={process.env.PUBLIC_URL + "slider/design/design3.jpg"} alt='design ' className='w-100 h-100 ' />
+          <Image
+            src={`${process.env.PUBLIC_URL + "slider/design/design3.jpeg"}`}
+
+            alt='design ' className='w-100 h-100 ' />
         </div>
         <div className='   d-flex my-5 slider-Container   m-auto  justify-content-center '>
-          <ImageComponent
-            src={process.env.PUBLIC_URL + "slider/design/design4.jpg"} alt='design ' className='w-100 h-100 ' />
-        </div>
-        <div className='   d-flex my-5 slider-Container  m-auto  justify-content-center '>
-          <ImageComponent
-            src={process.env.PUBLIC_URL + "slider/design/design5.jpg"}
+          <Image
+            src={`${process.env.PUBLIC_URL + "slider/design/design4.jpeg"}`}
+
             alt='design ' className='w-100 h-100 ' />
         </div>
         <div className='   d-flex my-5 slider-Container  m-auto  justify-content-center '>
-          <ImageComponent
-            src={process.env.PUBLIC_URL + "slider/design/design6.jpg"}
+          <Image
+            src={`${process.env.PUBLIC_URL + "slider/design/design5.jpeg"}`}
+
+
             alt='design ' className='w-100 h-100 ' />
         </div>
+        <div className='   d-flex my-5 slider-Container   m-auto  justify-content-center '>
+          <Image
+            src={`${process.env.PUBLIC_URL + "slider/design/design2.jpeg"}`}
+
+            alt='design ' className='w-100 h-100 ' />
+        </div>
+
 
       </Slider>
 

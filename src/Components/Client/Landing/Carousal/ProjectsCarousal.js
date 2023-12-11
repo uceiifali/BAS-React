@@ -46,32 +46,35 @@ const projectsCarousal = () => {
     <Container>
       <Slider className='my-3' {...settings}>
         <div className='   d-flex my-5 slider-Container m-auto  justify-content-center  '>
-          <ImageComponent src={`${process.env.PUBLIC_URL + "slider/projects/slider1.jpg"}`} alt='design ' className='w-100 h-100 ' />
+          <ImageComponent src={`${process.env.PUBLIC_URL + "slider/projects/project1.jpeg"}`} alt='design ' className='w-100 h-100 ' />
         </div>
         <div className='   d-flex my-5 slider-Container  m-auto  justify-content-center  '>
-          <ImageComponent src={`${process.env.PUBLIC_URL + "slider/projects/slider2.jpg"}`} alt='design ' className='w-100 h-100 ' />
+          <ImageComponent src={`${process.env.PUBLIC_URL + "slider/projects/project2.jpeg"}`} alt='design ' className='w-100 h-100 ' />
         </div>
         <div className='   d-flex my-5 slider-Container  m-auto  justify-content-center '>
           <ImageComponent
-            src={`${process.env.PUBLIC_URL + "slider/projects/slider3.jpg"}`}
+            src={`${process.env.PUBLIC_URL + "slider/projects/project3.jpeg"}`}
             alt='design ' className='w-100 h-100 ' />
         </div>
         <div className='   d-flex my-5 slider-Container   m-auto  justify-content-center '>
-          <ImageComponent
-            src={`${process.env.PUBLIC_URL + "slider/projects/slider4.jpg"}`}
+        <ImageComponent
+            src={`${process.env.PUBLIC_URL + "slider/projects/project4.jpeg"}`}
             alt='design ' className='w-100 h-100 ' />
         </div>
+        
         <div className='   d-flex my-5 slider-Container  m-auto  justify-content-center '>
           <ImageComponent
-            src={`${process.env.PUBLIC_URL + "slider/projects/slider5.jpg"}`}
+            src={`${process.env.PUBLIC_URL + "slider/projects/project5.jpeg"}`}
 
             alt='design ' className='w-100 h-100 ' />
         </div>
         <div className='   d-flex my-5 slider-Container  m-auto  justify-content-center '>
           <ImageComponent
-            src={`${process.env.PUBLIC_URL + "slider/projects/slider6.jpg"}`}
+            src={`${process.env.PUBLIC_URL + "slider/projects/project6.jpeg"}`}
+
             alt='design ' className='w-100 h-100 ' />
         </div>
+       
 
       </Slider>
 

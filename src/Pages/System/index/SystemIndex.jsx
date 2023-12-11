@@ -22,7 +22,6 @@ const SystemIndex = () => {
                     <div className=' col-md-4 col-xxl-3 ' >
                         <AsideBar   />
                     </div>
-
                     <div className='col-md-8  '>
                         <Outlet />
                         
