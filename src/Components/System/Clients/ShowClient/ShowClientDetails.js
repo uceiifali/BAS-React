@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Image, Modal } from 'react-bootstrap'
 import "./index.css"
-import DataTableComponent from '../../../DataTableComponent'
+import DataTableComponent from '../../../DataTableComponent.jsx'
 const ShowClientDetails = ({ showProject, setShowProject }) => {
   const [showImg, setShowImg] = useState(false)
   const [ModalImgSrc, setModalImgSrc] = useState(false)

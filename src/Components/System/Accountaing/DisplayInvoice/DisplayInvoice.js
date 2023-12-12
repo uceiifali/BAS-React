@@ -2,7 +2,7 @@ import React from 'react'
 import { Button, Form, Modal, NavDropdown } from 'react-bootstrap'
 import { useParams } from 'react-router-dom'
 import { useState } from 'react';
-import DataTableComponent from '../../../DataTableComponent';
+import DataTableComponent from '../../../DataTableComponent.jsx';
 import { Document, Page } from 'react-pdf';
 import Input from '../../../FormHandler/Input';
 import "./Invoice.css"

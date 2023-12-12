@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import styles from "./MainProjects.module.css"
 import "./MainProjects.css"
 import DesignRequestChart from '../../../../Components/System/Requests/DesignRequestChart/DesignRequestChart'
-import DataTableComponent from '../../../../Components/DataTableComponent'
+import DataTableComponent from '../../../../Components/DataTableComponent.jsx'
 
 import { Button } from 'react-bootstrap'
 import ConfirmPoper from '../../../../Components/System/ConfirmPoper'

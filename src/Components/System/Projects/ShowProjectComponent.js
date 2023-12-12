@@ -3,7 +3,7 @@ import { Button, Form, Modal, NavDropdown } from 'react-bootstrap'
 import { useParams } from 'react-router-dom'
 import "./ShowProjectComponent.css"
 import { useState } from 'react';
-import DataTableComponent from '../../DataTableComponent';
+import DataTableComponent from '../../DataTableComponent.jsx';
 import { Document, Page } from 'react-pdf';
 // import { Document, Page } from 'react-pdf';
 

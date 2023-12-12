@@ -3,7 +3,7 @@ import ConfirmPoper from '../../../../../Components/System/ConfirmPoper'
 import EditDesignRequest from '../../../../../Components/System/Requests/EditRequest/EditDesignRequest'
 import { useParams } from 'react-router-dom'
 import DesignRequestChart from '../../../../../Components/System/Requests/DesignRequestChart/DesignRequestChart'
-import DataTableComponent from '../../../../../Components/DataTableComponent'
+import DataTableComponent from '../../../../../Components/DataTableComponent.jsx'
 import ShowDesignRequest from '../../../../../Components/System/ShowRequest/ShowDesignRequest'
 import "./index.css"
 import DesignCasesChart from '../../../../../Components/System/Requests/DesignRequestChart/DesignCasesChart/DesignCasesChart'

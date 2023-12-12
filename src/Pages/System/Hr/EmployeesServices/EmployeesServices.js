@@ -1,9 +1,11 @@
-import React from 'react'
+import React, { useContext, useEffect } from 'react'
 import style from "./EmployeesServices.module.css"
 import { SearchComponent } from '../../../../Components/SearchComponent/SearchComponent'
 import Input from '../../../../Components/FormHandler/Input'
 import "./EmployeesServices.css"
-import DataTableComponent from '../../../../Components/DataTableComponent'
+import DataTableComponent from '../../../../Components/DataTableComponent.jsx'
+import { AddHrType } from '../../../../Context/AddHr.js'
+import AddServices from '../../../../Components/System/Hr/AddServices/AddServices.js'
 const EmployeesServices = () => {
     const data = Array.from({ length: 2 }).map((_, index) => {
         return {
@@ -57,17 +59,27 @@ const EmployeesServices = () => {
 
 
     ];
+    const { openHr, setOpenHr, HrType, setHrType } = useContext(AddHrType)
+
+
+    useEffect(() => {
+
+        setHrType("EmployeesServices")
+
+    }, [openHr, HrType])
 
     return (
         <div className='EmployeesServices'>
-            <div className='row'>
+            {openHr && HrType == "EmployeesServices" ?
+                <AddServices /> :
+                <div className='row'>
 
 
 
                     <div className='col-md-3'>
 
                         <div className={`${style.servicesTypesContainer} `}>
-                            <SearchComponent   />
+                            <SearchComponent />
                             <p className='text-white mt-2'>كل الخدمات</p>
                             <div className='d-flex my-3 gap-3'>
                                 <div className={`${style.pdfbackground} `}>
@@ -135,7 +147,13 @@ const EmployeesServices = () => {
 
                     </div>
 
-            </div>
+                </div>
+
+
+
+
+
+            }
         </div>
     )
 }

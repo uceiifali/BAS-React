@@ -7,7 +7,7 @@ import { BsPerson, BsTelephone } from 'react-icons/bs'
 import 'react-calendar/dist/Calendar.css';
 import Calendar from 'react-calendar';
 import moment from 'moment/moment'
-import DataTableComponent from '../../../../Components/DataTableComponent'
+import DataTableComponent from '../../../../Components/DataTableComponent.jsx'
 
 import ShowClientDetails from '../../../../Components/System/Clients/ShowClient/ShowClientDetails'
 

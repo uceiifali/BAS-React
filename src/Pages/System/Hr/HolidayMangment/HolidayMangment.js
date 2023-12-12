@@ -4,7 +4,7 @@ import { SearchComponent } from '../../../../Components/SearchComponent/SearchCo
 import { AllCategories } from '../../../../Components/System/AllCategories/AllCategories'
 import Input from '../../../../Components/FormHandler/Input'
 import "./HolidayMangment.css"
-import DataTableComponent from '../../../../Components/DataTableComponent'
+import DataTableComponent from '../../../../Components/DataTableComponent.jsx'
 
 import { AddHrType } from '../../../../Context/AddHr.js'
 

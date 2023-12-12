@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import "./index.css"
-import DataTableComponent from '../../../../Components/DataTableComponent'
+import DataTableComponent from '../../../../Components/DataTableComponent.jsx'
 
 import { Button } from 'react-bootstrap'
 

@@ -8,6 +8,7 @@ import DatePicker from "react-datepicker"
 import { AiOutlineCloseCircle } from 'react-icons/ai'
 import { useContext } from 'react'
 import { showAddUpdateUser } from '../../../../Context/CheckAddUpdateUserVisability'
+import FormDatePicker from '../../../FormDatePicker'
 
 const AddUpdateUser = ({ id = null, setOpenUpdateUser }) => {
     console.log(id)
@@ -161,7 +162,7 @@ const AddUpdateUser = ({ id = null, setOpenUpdateUser }) => {
                 >
 
                     <Modal.Body >
-                        <div className='d-flex justify-content-center w-100'>            <img src={process.env.PUBLIC_URL+"/correct.gif"} width={120} height={120} className='my-3' color='#E1B67C' /></div>
+                        <div className='d-flex justify-content-center w-100'>            <img src={process.env.PUBLIC_URL + "/correct.gif"} width={120} height={120} className='my-3' color='#E1B67C' /></div>
 
 
                         <div className='d-flex w-75 flex-column mx-auto mt-3 justify-content-center align-items-center '>
@@ -284,13 +285,12 @@ const AddUpdateUser = ({ id = null, setOpenUpdateUser }) => {
                                     تاريخ الهويه
                                 </Form.Label>
 
-                                <DatePicker
+                                <FormDatePicker
 
-                                    selected={instrumentDate}
-                                    placeholderText=" ادخل تاريخ الهوية  "
-                                    onChange={date => setInstrumentDate(date)}
-                                    dateFormat="dd-MM-yyyy"
-                                    className='w-100 form-control'
+                                    date={instrumentDate}
+                                    setDate={setInstrumentDate}
+                                    placeholderText={" ادخل تاريخ الهوية"}
+
                                 />
 
 
@@ -300,24 +300,24 @@ const AddUpdateUser = ({ id = null, setOpenUpdateUser }) => {
                             </Form.Group>
                         </div>
                     </div>
-                    </fieldset>
-                    <fieldset className='small-golden-square  w-75 pt-2 pb-2 px-4   mt-3 mx-auto' >
-                        <legend className='text-center'>كلمة المرور</legend>
-                        <div className='row '>
-                            <div className='col-md-6 '>
-                                <Input label={"كلمه المرور" } background='#2B2B40' type='password' {...userPassword.bind} placeholder='ادخل كلمة المرور' />
+                </fieldset>
+                <fieldset className='small-golden-square  w-75 pt-2 pb-2 px-4   mt-3 mx-auto' >
+                    <legend className='text-center'>كلمة المرور</legend>
+                    <div className='row '>
+                        <div className='col-md-6 '>
+                            <Input label={"كلمه المرور"} background='#2B2B40' type='password' {...userPassword.bind} placeholder='ادخل كلمة المرور' />
 
-                            </div>
-                            <div className='col-md-6 '>
-                                <Input label={" تاكيد كلمة المرور"} type='password'   {...rePassword.bind} placeholder="اعد ادخال كلمة المرور" />
-
-                            </div>
                         </div>
-                    </fieldset>
-                    <div className='d-flex w-75 mx-auto mt-3 justify-content-end'>
-                        <Button type='submit' className='sumbmitAddUpdateUser'>حفظ</Button>
+                        <div className='col-md-6 '>
+                            <Input label={" تاكيد كلمة المرور"} type='password'   {...rePassword.bind} placeholder="اعد ادخال كلمة المرور" />
+
+                        </div>
                     </div>
-         
+                </fieldset>
+                <div className='d-flex w-75 mx-auto mt-3 justify-content-end'>
+                    <Button type='submit' className='sumbmitAddUpdateUser'>حفظ</Button>
+                </div>
+
             </Form>
 
         </div>

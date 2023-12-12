@@ -5,7 +5,7 @@ import PieChart from '../../../../../Components/pieChart'
 import ColumnChart from '../../../../../Components/ColumnChart'
 import { Image, Modal } from 'react-bootstrap'
 import { ProgressBar } from "react-bootstrap"
-import DataTableComponent from '../../../../../Components/DataTableComponent'
+import DataTableComponent from '../../../../../Components/DataTableComponent.jsx'
 import { useParams } from 'react-router-dom'
 import DisplayFinancialClaims from '../../../../../Components/System/Accountaing/DisplayFinancialClaims/DisplayFinancialClaims'
 import { useEffect } from 'react'

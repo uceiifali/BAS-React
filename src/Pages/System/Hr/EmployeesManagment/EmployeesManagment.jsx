@@ -9,10 +9,9 @@ const EmployeesManagment = () => {
 
     useEffect(() => {
 
-        setOpenHr(false)
         setHrType("Employees")
-        console.log(HrType)
-    }, [])
+        
+    }, [openHr,HrType])
     return (
         <div>
 
