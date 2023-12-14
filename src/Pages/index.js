@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react'
 import 'react-international-phone/style.css';
-import { Button, Card, Col, Container, Image, Row } from 'react-bootstrap'
+import { Button, Card, Col, Container, Row } from 'react-bootstrap'
 import { FaFacebookF } from 'react-icons/fa';
 import { AiFillYoutube } from "react-icons/ai"
 import { AiFillInstagram } from "react-icons/ai"
@@ -29,6 +29,7 @@ import { TypeAnimation } from 'react-type-animation';
 import Congratus from '../Components/Client/Landing/Congratus/Congratus';
 import DesignMultiSteps from '../Components/Client/Landing/MultiSteps/DesignMultiSteps';
 import ReviewMultiSteps from '../Components/Client/Landing/MultiSteps/ReviewMultiSteps';
+import Image from '../Components/Image';
 
 
 
@@ -176,7 +177,7 @@ const Home = () => {
             <section id="WhoWeAre" className='whoWeAre  position-relative   my-5'>
                 <div className='position-absolute  WhoWeAreshape  ' >
 
-                    <img
+                    <Image
                         width={500}
                         height={500}
                         src={"/bg-right.png"}
@@ -210,7 +211,7 @@ const Home = () => {
                                     <div className="card w-[324px] h-[326px] border-none d-flex justfiy-cotent-center" >
                                         <div className="card-inner">
                                             <div className="card-front d-flex flex-column">
-                                                <img width={70} height={70} src={ele.img} alt="card img " />
+                                                <Image width={70} height={70} src={ele.img} alt="card Image " />
                                                 <h5 className='mt-3' >{ele.Name}</h5 >
 
                                             </div>

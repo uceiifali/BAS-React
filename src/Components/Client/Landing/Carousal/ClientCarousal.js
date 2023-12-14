@@ -1,6 +1,7 @@
 import React from 'react'
 import { Container } from 'react-bootstrap';
 import Slider from 'react-slick';
+import Image from '../../../Image';
 
 const ClientCarousal = () => {
 
@@ -45,22 +46,22 @@ const ClientCarousal = () => {
     <Container>
       <Slider  {...settings}>
         <div className='d-flex mb-3 slider-Container m-auto  justify-content-center  '>
-          <img src={"slider/Clients/brand1.jpeg"} alt='Brand img' className='w-100 h-100 ' />
+          <Image src={"slider/Clients/brand1.jpeg"} alt='Brand Image'  className='w-100 h-100 ' />
         </div>
         <div className='d-flex mb-3 slider-Container  m-auto  justify-content-center  '>
-          <img src={"slider/Clients/brand2.jpg"} alt='Brand img' className='w-100 h-100 ' />
+          <Image src={"slider/Clients/brand2.jpg"} alt='Brand Image' className='w-100 h-100 ' />
         </div>
         <div className='   d-flex mb-3 slider-Container  m-auto  justify-content-center '>
-          <img src={"slider/Clients/brand3.png"} alt='Brand img' className='w-100 h-100 ' />
+          <Image src={"slider/Clients/brand3.png"} alt='Brand Image' className='w-100 h-100 ' />
         </div>
         <div className='   d-flex mb-3 slider-Container   m-auto  justify-content-center '>
-          <img src={"slider/Clients/brand4.jpg"} alt='Brand img' className='w-100 h-100 ' />
+          <Image src={"slider/Clients/brand4.jpg"} alt='Brand Image' className='w-100 h-100 ' />
         </div>
         <div className='   d-flex mb-3 slider-Container   m-auto  justify-content-center '>
-          <img src={"slider/Clients/brand5.jpg"} alt='Brand img' className='w-100 h-100 ' />
+          <Image src={"slider/Clients/brand5.jpg"} alt='Brand Image' className='w-100 h-100 ' />
         </div>
         <div className='   d-flex mb-3 slider-Container   m-auto  justify-content-center '>
-          <img src={"slider/Clients/brand6.jpg"} alt='Brand img' className='w-100 h-100 ' />
+          <Image src={"slider/Clients/brand6.jpg"} alt='Brand img' className='w-100 h-100 ' />
         </div>
 
 

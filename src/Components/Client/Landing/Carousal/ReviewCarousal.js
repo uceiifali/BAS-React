@@ -1,7 +1,8 @@
 import React from 'react'
 import { Container } from 'react-bootstrap';
 import Slider from 'react-slick'
-import ImageComponent from '../../../Image';
+import Image from '../../../Image';
+
 
 const ReviewCarousal = () => {
     const settings = {
@@ -45,16 +46,16 @@ const ReviewCarousal = () => {
         <Container>
          <Slider className='my-3' {...settings}>
             <div className='   d-flex my-5 slider-Container m-auto  justify-content-center  '>
-                    <ImageComponent src={process.env.PUBLIC_URL+"slider/reviews/review1.jpg"} alt='design ' className='w-100 h-100 ' />
+                    <Image src={process.env.PUBLIC_URL+"slider/reviews/review1.jpg"} alt='design ' className='w-100 h-100 ' />
                 </div>
                 <div className='   d-flex my-5 slider-Container  m-auto  justify-content-center  '>
-                    <ImageComponent src={process.env.PUBLIC_URL+"slider/reviews/review2.jpg"} alt='design ' className='w-100 h-100 ' />
+                    <Image src={process.env.PUBLIC_URL+"slider/reviews/review2.jpg"} alt='design ' className='w-100 h-100 ' />
                 </div>
                 <div className='   d-flex my-5 slider-Container  m-auto  justify-content-center '>
-                    <ImageComponent src={process.env.PUBLIC_URL+"slider/reviews/review3.jpg"} alt='design ' className='w-100 h-100 ' />
+                    <Image src={process.env.PUBLIC_URL+"slider/reviews/review3.jpg"} alt='design ' className='w-100 h-100 ' />
                 </div>
                 <div className='   d-flex my-5 slider-Container   m-auto  justify-content-center '>
-                    <ImageComponent src={process.env.PUBLIC_URL+"slider/reviews/review4.jpg"} alt='design ' className='w-100 h-100 ' />
+                    <Image src={process.env.PUBLIC_URL+"slider/reviews/review4.jpg"} alt='design ' className='w-100 h-100 ' />
                 </div>
        
              

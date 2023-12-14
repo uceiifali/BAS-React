@@ -46,6 +46,7 @@
 
 .viewMore .modal-content {
     height: 846px !important;
+    background: #1E1E2D;
     overflow-y: auto;
     overflow-x: hidden;
 }
@@ -56,7 +57,8 @@
     width: 161px;
     height: 43px;
 }
-.viewMore .form-control{
+
+.viewMore .form-control {
     background: #2B2B40 !important;
 
 }

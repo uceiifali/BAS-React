@@ -1,6 +1,7 @@
 import React from 'react'
-import { Carousel, Container, Image } from 'react-bootstrap';
+import { Carousel, Container } from 'react-bootstrap';
 import Slider from 'react-slick'
+import Image from '../../../Image';
 
 
 

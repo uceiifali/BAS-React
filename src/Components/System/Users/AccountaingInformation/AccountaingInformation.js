@@ -12,16 +12,7 @@ export const AccountaingInformation = () => {
                         <path d="M17 0H0L6.8 7.77417V13.1487L10.2 14.7923V7.77417L17 0Z" fill="#D59921" />
                     </svg>
                     <p className='mx-4 my-2'>الشهر الحالي</p>
-                    <DatePicker
-
-
-                        placeholderText=" ادخل  الشهر    "
-                        selected={Montlyhwork}
-                        dateFormat="dd-MM-yyyy"
-                        className='w-100  text-black form-control'
-
-                        onChange={(Montlyhwork) => { setMontlyhwork(Montlyhwork) }}
-                    />
+                   
                 </div>
                 <p >المرتب الثابت : <span>0000</span></p>
                 <div className='d-flex  mt-4  justify-content-between'>

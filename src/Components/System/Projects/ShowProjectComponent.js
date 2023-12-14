@@ -321,7 +321,7 @@ const ShowProjectComponent = ({ showProject, setShowProject }) => {
 
             {viewMore &&
                 <Modal
-                    className='submitSystemPoper viewMore'
+                    className=' viewMore'
                     size="lg"
                     aria-labelledby="contained-modal-title-vcenter"
                     onHide={() => setViewMore(false)}

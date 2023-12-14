@@ -1,6 +1,6 @@
 
 import React, { useEffect, useState } from 'react';
-import { Image } from 'react-bootstrap';
+
 import { AiOutlineGlobal } from 'react-icons/ai';
 import { BsFillPersonFill } from 'react-icons/bs';
 import Navbar from 'react-bootstrap/Navbar';
@@ -8,6 +8,7 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import { Link } from 'react-router-dom';
+import Image from '../../Image';
 const NavBar = () => {
 
   const [collapsed, setCollapsed] = useState(false);
@@ -73,11 +74,11 @@ const NavBar = () => {
 
               <NavDropdown.Item className='text-end  d-flex justify-content-between ' href="#action/3.2">
                 <span>   العربيه</span>
-                <img src="saudi.png" alt="saudi flag" width={30} height={20} />
+                <Image src="saudi.png" alt="saudi flag" width={30} height={20} />
               </NavDropdown.Item>
               <NavDropdown.Item className='text-end  d-flex justify-content-between' href="#action/3.3">
                 <span>الانجليزيه</span>
-                <img src="usa.png" alt="USA flag" width={30} height={20} />
+                <Image src="usa.png" alt="USA flag" width={30} height={20} />
               </NavDropdown.Item>
 
 

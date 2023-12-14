@@ -2,6 +2,8 @@ import React from 'react'
 import Input from '../../../FormHandler/Input'
 import { NavDropdown } from 'react-bootstrap'
 import "./index.css"
+import { Link } from 'react-router-dom'
+import Image from '../../../Image'
 
 const SearchCountryUsers = () => {
 
@@ -33,16 +35,19 @@ const SearchCountryUsers = () => {
 
 
                 </div>
-                {users.map((user, index) => <div key={index} className='tab   mt-2 d-flex   '>
+                {users.map((user, index) =>
+                    <Link  to="/system/users/1" key={index}>
 
-                    <img src={process.env.PUBLIC_URL +"/People/islam.jpg"} alt='user img ' className='user-img  ' />
-                    <div className='d-flex flex-column me-3 '>
-                        <h2 className=' name-header text-white         '>اسلام إيهاب</h2>
-                        <p className='main-text text-sm'>Islam@bsa.com</p>
-                    </div>
+                        <div  className='tab   mt-2 d-flex   '>
 
-                </div>
+                            <Image src={process.env.PUBLIC_URL + "/People/islam.jpg"} alt='user img ' className='user-img  ' />
+                            <div className='d-flex flex-column me-3 '>
+                                <h2 className=' name-header text-white         '>اسلام إيهاب</h2>
+                                <p className='main-text text-sm'>Islam@bsa.com</p>
+                            </div>
 
+                        </div>
+                    </Link>
 
                 )
                 }

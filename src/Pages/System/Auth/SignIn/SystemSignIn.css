@@ -1,11 +1,17 @@
-.systemLogin {
-  background-image: url("../../../../../public/systemLogin.png");
+.systemLoginmorning {
+  background-image: url("../../../../../public/SystemBackGrounds/systemLoginmorning.png");
   background-size: 100% 100%;
 }
 
+.systemLoginNight {
+  background-image: url("../../../../../public/SystemBackGrounds/systemLoginnight.png");
+  background-size: 100% 100%;
+}
+
+
 .systemLogin .signInCard {
   box-sizing: border-box;
-  width: 580.858px  !important;
+  width: 580.858px !important;
   height: 600px !important;
   background: rgba(255, 255, 255, 0.80);
 
@@ -36,19 +42,22 @@
 .systemLogin .form-label {
   float: right !important;
 }
+
 @media screen and (max-width:760px) {
-  .signInCard{
-    width: 300px  !important;
+  .signInCard {
+    width: 300px !important;
     height: 500px !important;
 
   }
-  .signInCard img{
+
+  .signInCard img {
     width: 200px !important;
     height: 150px !important;
-}
-.signInCard button{
-  width: 150px !important;
-  height: 50px !important;
-}
-  
+  }
+
+  .signInCard button {
+    width: 150px !important;
+    height: 50px !important;
+  }
+
 }

@@ -23,7 +23,7 @@ import SearchUsers from '../../../../Components/System/Users/SearchUsers/SearchU
 
 const SystemUsers = () => {
 
-    const [employeeDetails, setEmployeeDetails] = useState("معلومات عامة")
+    const [employeeDetails, setEmployeeDetails] = useState("عن الموظف")
     const [addUpdateUser, setAddUpdateUser] = useState(false)
     const { showAddUserModel, showUpdateUserModel, setShowAddUserModel, setShowUpdateUserModel } = useContext(showAddUpdateUser)
     const [OpenUpdateUser, setOpenUpdateUser] = useState({
@@ -145,7 +145,7 @@ const SystemUsers = () => {
                                 <div className='d-flex justify-content-between w-100'>
                                     <div className='tab d-flex   '>
 
-                                        <img src='../People/islam.jpg' alt='user img ' className='user-Personal  ' />
+                                        <img src={`${process.env.PUBLIC_URL + "/People/islam.jpg"}`} alt='user img ' className='user-Personal  ' />
                                         <div className='d-flex flex-column me-3 '>
                                             <h2 className=' name-header     my-0    '> اسلام</h2>
                                             <p className='main-text  my-0   '>islam@bsa.com</p>
@@ -200,7 +200,10 @@ const SystemUsers = () => {
                                         >
 
                                             <Modal.Body >
-                                                <div className='d-flex justify-content-center w-100'>            <img src={"../correct.gif"} width={120} height={120} className='my-3' color='#E1B67C' /></div>
+                                                <div className='d-flex justify-content-center w-100'>            <img 
+                                            src={`${process.env.PUBLIC_URL + "/correct.gif"}`}
+                                                
+                                              width={120} height={120} className='my-3' color='#E1B67C' /></div>
 
 
                                                 <div className='d-flex w-75 flex-column mx-auto mt-3 justify-content-center align-items-center '>
@@ -221,25 +224,26 @@ const SystemUsers = () => {
 
 
                                     <div className='d-flex align-items-center '>
-                                        <img src='../../icons/delete.png' onClick={() => {
-                                            setDeleteUserPoper(true)
+                                        <img
+                                            src={`${process.env.PUBLIC_URL + "/icons/delete.png"}`}
 
-                                        }} alt='user img ' className='action-buttons  ' />
+                                            onClick={() => {
+                                                setDeleteUserPoper(true)
+
+                                            }} alt='delete icon ' className='action-buttons  ' />
 
 
 
 
 
-                                        <img src='../icons/edit.png' onClick={() => {
-                                            setShowUpdateUserModel(true)
-                                            setOpenUpdateUser({
-                                                id: "4325435",
-                                                isOpen: true
-                                            })
+                                        <img
+                                            src={`${process.env.PUBLIC_URL + "/icons/edit.png"}`}
+                                            onClick={() => {
 
-                                        }} alt='user img ' className='action-buttons  ' />
-                                        <img src='../icons/more.png' alt='user img ' className='action-buttons  ' />
-
+                                            }} alt='edit icon' className='action-buttons  ' />
+                                        <img
+                                            src={`${process.env.PUBLIC_URL + "/icons/more.png"}`} alt='user img ' className='action-buttons  ' />
+    
                                     </div>
 
 
@@ -247,13 +251,13 @@ const SystemUsers = () => {
                             </div>
 
                             <div className='main-text choose-inf position-relative d-flex justify-content-between mx-5 my-3'>
-                                <p className={`genral-inf ${employeeDetails == "معلومات عامة" && "inf-type"}`} onClick={() => { setEmployeeDetails("معلومات عامة") }} >معلومات عامة</p>
-                                <p className={`genral-inf ${employeeDetails == "معلومات مهنية" && "inf-type"}`} onClick={() => { setEmployeeDetails("معلومات مهنية") }}>معلومات  مهنية</p>
-                                <p className={`genral-inf ${employeeDetails == "معلومات محاسبية" && "inf-type"}`} onClick={() => { setEmployeeDetails("معلومات محاسبية") }}>معلومات  محاسبية</p>
+                                <p className={`genral-inf ${employeeDetails === "عن الموظف" && "inf-type"}`} onClick={() => { setEmployeeDetails("عن الموظف") }} > عن الموظف</p>
+                                <p className={`genral-inf ${employeeDetails === "مرفقات" && "inf-type"}`} onClick={() => { setEmployeeDetails("مرفقات") }}>مرفقات</p>
+                                <p className={`genral-inf ${employeeDetails === "معلومات الراتب" && "inf-type"}`} onClick={() => { setEmployeeDetails("معلومات الراتب") }}>معلومات الراتب </p>
 
 
                             </div>
-                            {employeeDetails == "معلومات عامة" ? <Genralnformation /> : employeeDetails == "معلومات مهنية" ? <ProfessinollInformation /> : <AccountaingInformation />}
+                            {employeeDetails === "عن الموظف" ? <Genralnformation /> : employeeDetails === "مرفقات" ? <ProfessinollInformation /> : <AccountaingInformation />}
                         </div>
 
 

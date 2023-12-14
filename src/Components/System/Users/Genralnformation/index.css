@@ -1,4 +1,7 @@
 .inf-square{
     border: 1px solid rgba(213, 153, 33, 0.20);
-    height: 290px !important;
+    height: auto !important;
+}
+.genralnformation{
+    overflow-y: auto !important;
 }

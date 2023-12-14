@@ -27,22 +27,39 @@
 
 }
 
-
-.systemModal .modal-content ::-webkit-scrollbar {
-
-    border-radius: 10px;
-    /* Rounded corners */
+.systemModal .modal-content::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    background-color: #F5F5F5;
+    border-top-left-radius: 27px;
+    border-bottom-left-radius: 27px;
 
 }
 
-/* Style the scrollbar thumb (the draggable part) */
+.systemModal .modal-content::-webkit-scrollbar {
+    width: 15px;
+    border-top-left-radius: 27px;
+    border-bottom-left-radius: 27px;
+
+    background-color: #F5F5F5;
+
+}
+
 .systemModal .modal-content::-webkit-scrollbar-thumb {
+    background-color: #F90;
+   
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
 
-    border-radius: 10px;
-    /* Rounded corners */
+    background-image: -webkit-linear-gradient(45deg,
+            rgba(255, 255, 255, .2) 25%,
+            transparent 25%,
+            transparent 50%,
+            rgba(255, 255, 255, .2) 50%,
+            rgba(255, 255, 255, .2) 75%,
+            transparent 75%,
+            transparent)
 }
 
-/* Style the scrollbar track (the background) */
 
 
 
@@ -265,9 +282,11 @@
 
     overflow: unset !important;
 }
-.displayFieldSet{
+
+.displayFieldSet {
     border: 1px solid rgba(239, 170, 32, 0.50);
 }
+
 .full-system .kgGExh {
     padding-left: 0px !important;
     padding-right: 0px !important;
@@ -277,8 +296,9 @@
 .full-system .form-label {
     color: white;
 }
-.systemModal .modal-body{
-    justify-content: unset  !important;
+
+.systemModal .modal-body {
+    justify-content: unset !important;
 }
 
 .modal-content .kgGExh {

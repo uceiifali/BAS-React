@@ -3,7 +3,8 @@ import React from 'react'
 
 import { Carousel } from 'react-bootstrap';
 import Slider from 'react-slick'
-import ImageComponent from '../../../Image';
+import Image from '../../../Image';
+
 const projectsCarousal = () => {
 
   const settings = {
@@ -46,35 +47,35 @@ const projectsCarousal = () => {
     <Container>
       <Slider className='my-3' {...settings}>
         <div className='   d-flex my-5 slider-Container m-auto  justify-content-center  '>
-          <ImageComponent src={`${process.env.PUBLIC_URL + "slider/projects/project1.jpeg"}`} alt='design ' className='w-100 h-100 ' />
+          <Image src={`${process.env.PUBLIC_URL + "slider/projects/project1.jpeg"}`} alt='design ' className='w-100 h-100 ' />
         </div>
         <div className='   d-flex my-5 slider-Container  m-auto  justify-content-center  '>
-          <ImageComponent src={`${process.env.PUBLIC_URL + "slider/projects/project2.jpeg"}`} alt='design ' className='w-100 h-100 ' />
+          <Image src={`${process.env.PUBLIC_URL + "slider/projects/project2.jpeg"}`} alt='design ' className='w-100 h-100 ' />
         </div>
         <div className='   d-flex my-5 slider-Container  m-auto  justify-content-center '>
-          <ImageComponent
+          <Image
             src={`${process.env.PUBLIC_URL + "slider/projects/project3.jpeg"}`}
             alt='design ' className='w-100 h-100 ' />
         </div>
         <div className='   d-flex my-5 slider-Container   m-auto  justify-content-center '>
-        <ImageComponent
+          <Image
             src={`${process.env.PUBLIC_URL + "slider/projects/project4.jpeg"}`}
             alt='design ' className='w-100 h-100 ' />
         </div>
-        
+
         <div className='   d-flex my-5 slider-Container  m-auto  justify-content-center '>
-          <ImageComponent
+          <Image
             src={`${process.env.PUBLIC_URL + "slider/projects/project5.jpeg"}`}
 
             alt='design ' className='w-100 h-100 ' />
         </div>
-        <div className='   d-flex my-5 slider-Container  m-auto  justify-content-center '>
-          <ImageComponent
+        {/* <div className='   d-flex my-5 slider-Container w-100  m-auto  justify-content-center '>
+          <Image
             src={`${process.env.PUBLIC_URL + "slider/projects/project6.jpeg"}`}
 
             alt='design ' className='w-100 h-100 ' />
-        </div>
-       
+        </div> */}
+
 
       </Slider>
 

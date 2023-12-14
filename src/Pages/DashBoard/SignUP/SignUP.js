@@ -12,6 +12,7 @@ import { Link } from 'react-router-dom'
 import "./SignUP.css"
 import SubmitButton from '../../../Components/Client/Dashboard/SubmitButton/SubmitButton'
 import Input from '../../../Components/FormHandler/Input'
+import Image from '../../../Components/Image'
  const SignUP = () => {
 
 
@@ -39,25 +40,25 @@ import Input from '../../../Components/FormHandler/Input'
             <Dropdown className='position-absolute  end-10 top-0 pointer'>
                     <Dropdown.Toggle style={{ backgroundColor:   "unset !important", borderColor: "unset" }} className='d-flex  check-lang align-items-center' id="dropdown-basic">
                         <div className=' saudiFlagicon-container px-2 align-items-sm-center   '>
-                            <img src='../saudiFlagicon.png' alt='saudiFlagicon logo' width={40} height={40} />
+                            <Image src='../saudiFlagicon.png' alt='saudiFlagicon logo' width={40} height={40} />
 
                         </div>
                     </Dropdown.Toggle>
 
                     <Dropdown.Menu>
-                        <Dropdown.Item className='d-flex '>
-                            <img src="../saudi.png" className='ms-3 rounded' alt="saudi flag" width={30} height={20} />
+                        <Dropdown.Item className='d-flex justify-between mx-3 '>
+                            <Image src="../saudi.png" className='ms-3 rounded' alt="saudi flag" width={30} height={20} />
                             <span >العربية (KSA)  </span>
                         </Dropdown.Item>
-                        <Dropdown.Item className='d-flex '>
-                            <img src="../usa.png" className='ms-3 rounded' alt="USA flag" width={30} height={20} />
+                        <Dropdown.Item className='d-flex justify-between mx-3 '>
+                            <Image src="../usa.png" className='ms-3 rounded' alt="USA flag" width={30} height={20} />
                             <span>English (USA)</span>
                         </Dropdown.Item>
 
                     </Dropdown.Menu>
                 </Dropdown>
                 <div className='mt-5 d-flex logo-container  justify-content-center'>
-                    <Link  to="/"> <img src='../logo.jpg' alt=' logo' width={350} height={180} />
+                    <Link  to="/"> <Image src='../logo.jpg' alt=' logo' width={350} height={180} />
                     </Link>
                 </div>
                 <div className='d-flex flex-column align-items-center justify-content-center'>
@@ -148,7 +149,7 @@ import Input from '../../../Components/FormHandler/Input'
             <div className='item bg-initial-video position-relative h-100 p-0 m-0 w-100'>
 
                 <div className='layer position-absolute top-0 bottom-0 end-0 start-0 d-flex justify-content-center align-items-center '>
-                    <img src='../movmentlogo.gif' alt='movment logo' width={400} height={250} />
+                    <Image src='../movmentlogo.gif' alt='movment logo' width={400} height={250} />
                 </div>
             </div>
         </div>

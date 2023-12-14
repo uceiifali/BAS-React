@@ -40,11 +40,11 @@ const CountryChart = () => {
                 <div className='country-Chart p-5'>
 
                     <div className='d-flex justify-content-center flex-column align-items-center'>
-                        <div className='d-flex  mx-auto gap-4 align-items-center  justify-center'>
-                            <h2 className='country-header text-center   text-white mb-4'>
+                        <div className='d-flex  mx-auto gap-4   justify-center'>
+                            <p className=' text-center text-xl   text-white mb-4'>
 
                                 {countryBase == "Saudia" ? "السعودية" : "مصر"}
-                            </h2>
+                            </p>
                             <Link to={countryBase == "Saudia" ? "/System/Hr/Employees/egypet" : "/System/Hr/Employees/Saudia"}>
                                 <svg xmlns="http://www.w3.org/2000/svg" width="13" height="20" viewBox="0 0 13 20" fill="none">
                                     <path d="M11 18L1.85714 10L11 2" stroke="#D59921" stroke-width="2.28571" stroke-linecap="round" stroke-linejoin="round" />

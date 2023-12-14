@@ -7,197 +7,41 @@ import DatePicker from 'react-datepicker'
 import { useState } from 'react'
 
 import DataTableComponent from '../../../DataTableComponent.jsx'
+import Pdf from '../../../Pdf.jsx'
 const ProfessinollInformation = () => {
-  const [Montlyhwork, setMontlyhwork] = useState(null)
-  const [projectType, setProjectType] = useState("مشاريع منتهية")
-  console.log(projectType)
-  const columns = [
-    {
-      name: 'م',
-      selector: row => row.id,
-    },
-    {
-      name: 'اسم المشروع',
-      selector: row => row.ProjectName,
-    },
-    {
-      name: ' نوع الامشروع',
-      selector: row => row.ProjectType,
-    },
-    {
-      name: '  تاريخ الاستلام',
-      selector: row => row.recivedDate,
-    },
-    {
-      name: '  تاريخ التسليم',
-      selector: row => row.deliveryDate,
-    },
-  ];
-  const FinisedProjectData = [
-    {
-      id: 1,
-      ProjectName: 'BSA',
-      ProjectType: 'تصميم',
-      recivedDate: '12-10-2023',
-      deliveryDate: '12-5-2024',
-    },
+  const [Montlyhwork, setMontlyhwork] = useState(null);
+  const [projectType, setProjectType] = useState("مشاريع منتهية");
 
-    {
-      id: 2,
-      ProjectName: 'BSA',
-      ProjectType: 'تصميم',
-      recivedDate: '12-10-2023',
-      deliveryDate: '12-5-2024',
-    },
-    {
-      id: 3,
-      ProjectName: 'BSA',
-      ProjectType: 'تصميم',
-      recivedDate: '12-10-2023',
-      deliveryDate: '12-5-2024',
-    },
-    {
-      id: 4,
-      ProjectName: 'BSA',
-      ProjectType: 'تصميم',
-      recivedDate: '12-10-2023',
-      deliveryDate: '12-5-2024',
-    },
+  const [openPdf, setOpenPdf] = useState(false)
 
 
-
-  ]
-  const OnProgressProjectsData = [
-    {
-      id: 1,
-      ProjectName: 'BSA',
-      ProjectType: 'اشراف',
-      recivedDate: '12-10-2023',
-      deliveryDate: '12-5-2024',
-    },
-
-    {
-      id: 2,
-      ProjectName: 'BSA',
-      ProjectType: 'اشراف',
-      recivedDate: '12-10-2023',
-      deliveryDate: '12-5-2024',
-    },
-    {
-      id: 3,
-      ProjectName: 'BSA',
-      ProjectType: 'اشراف',
-      recivedDate: '12-10-2023',
-      deliveryDate: '12-5-2024',
-    },
-    {
-      id: 4,
-      ProjectName: 'BSA',
-      ProjectType: 'ااشراف',
-      recivedDate: '12-10-2023',
-      deliveryDate: '12-5-2024',
-    },
-
-
-  ]
-  const LateProjectData = [
-    {
-      id: 1,
-      ProjectName: 'BSA',
-      ProjectType: 'اخراج',
-      recivedDate: '12-10-2023',
-      deliveryDate: '12-5-2024',
-    },
-
-    {
-      id: 2,
-      ProjectName: 'BSA',
-      ProjectType: 'اخراج',
-      recivedDate: '12-10-2023',
-      deliveryDate: '12-5-2024',
-    },
-    {
-      id: 3,
-      ProjectName: 'BSA',
-      ProjectType: 'اخراج',
-      recivedDate: '12-10-2023',
-      deliveryDate: '12-5-2024',
-    }, {
-      id: 4,
-      ProjectName: 'BSA',
-      ProjectType: 'دراسات',
-      recivedDate: '12-10-2023',
-      deliveryDate: '12-5-2024',
-    },
-
-
-  ]
   return (
     <div className='ProfessinollInformation'>
-      <div className='MonthlyApexChart ' style={{ background: "#0A0D10" }}>
-        <MonthlyApexChart />
-      </div>
+      <Pdf PdfFile={process.env.PUBLIC_URL + "/example.pdf"} width={800} height={800} openPdf={openPdf} setOpenPdf={setOpenPdf} />
+
+
       <div className='golden-square p-3 mt-2'>
-        <div className='d-flex align-items-center'>
-          <svg xmlns="http://www.w3.org/2000/svg" width="17" height="15" viewBox="0 0 17 15" fill="none">
-            <path d="M17 0H0L6.8 7.77417V13.1487L10.2 14.7923V7.77417L17 0Z" fill="#D59921" />
-          </svg>
-          <p className='mx-4 my-2'>الشهر الحالي</p>
-          <DatePicker
+        <div className='d-flex flex-column w-[93px] '>
+          <div onClick={() => { setOpenPdf(true) }} className=' pointer d-flex align-items-center justify-center rounded w-[93px] h-[61px] bg-[#151521]'>
+            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30" fill="none">
+              <g clip-path="url(#clip0_2335_25376)">
+                <path d="M21.7422 26.4258H4.75C4.42639 26.4258 4.16406 26.1634 4.16406 25.8398V0.644531C4.16406 0.320918 4.42639 0.0585938 4.75 0.0585938H17.6406C17.796 0.0585938 17.945 0.120352 18.0549 0.230215L22.1565 4.33178C22.2664 4.44164 22.3281 4.5907 22.3281 4.74609V11.7773C22.3281 12.101 22.0657 12.3633 21.7422 12.3633C21.4186 12.3633 21.1562 12.101 21.1562 11.7773V4.98879L17.3979 1.23047H5.33594V25.2539H21.1562V22.3242C21.1562 22.0007 21.4186 21.7383 21.7422 21.7383C22.0657 21.7383 22.3281 22.0007 22.3281 22.3242V25.8398C22.3281 26.1634 22.0657 26.4258 21.7422 26.4258Z" fill="white" />
+                <path d="M17.6406 29.9414H1.23438C0.910762 29.9414 0.648438 29.679 0.648438 29.3555V5.33203C0.648438 5.00842 0.910762 4.74609 1.23438 4.74609H4.75C5.07361 4.74609 5.33594 5.00842 5.33594 5.33203C5.33594 5.65564 5.07361 5.91797 4.75 5.91797H1.82031V28.7695H17.0547V25.8398C17.0547 25.5163 17.3171 25.2539 17.6406 25.2539C17.9642 25.2539 18.2266 25.5163 18.2266 25.8398V29.3555C18.2266 29.679 17.9642 29.9414 17.6406 29.9414ZM21.7422 5.33203H17.6406C17.3171 5.33203 17.0547 5.06971 17.0547 4.74609V0.644531C17.0547 0.320918 17.3171 0.0585938 17.6406 0.0585938C17.9642 0.0585938 18.2266 0.320918 18.2266 0.644531V4.16016H21.7422C22.0657 4.16016 22.3281 4.42248 22.3281 4.74609C22.3281 5.06971 22.0657 5.33203 21.7422 5.33203Z" fill="white" />
+                <path d="M28.7734 22.9102H10.6094C10.2858 22.9102 10.0234 22.6478 10.0234 22.3242V11.7773C10.0234 11.4537 10.2858 11.1914 10.6094 11.1914H28.7734C29.097 11.1914 29.3594 11.4537 29.3594 11.7773V22.3242C29.3594 22.6478 29.097 22.9102 28.7734 22.9102ZM11.1953 21.7383H28.1875V12.3633H11.1953V21.7383Z" fill="white" />
+                <path d="M12.9531 20.5664C12.6295 20.5664 12.3672 20.304 12.3672 19.9805V14.1211C12.3672 13.7975 12.6295 13.5352 12.9531 13.5352H14.418C15.5488 13.5352 16.4688 14.4551 16.4688 15.5859C16.4688 16.7167 15.5488 17.6367 14.418 17.6367H13.5391V19.9805C13.5391 20.304 13.2767 20.5664 12.9531 20.5664ZM13.5391 16.4648H14.418C14.9026 16.4648 15.2969 16.0706 15.2969 15.5859C15.2969 15.1013 14.9026 14.707 14.418 14.707H13.5391V16.4648ZM19.2227 20.5664H18.2266C17.903 20.5664 17.6406 20.304 17.6406 19.9805V14.1211C17.6406 13.7975 17.903 13.5352 18.2266 13.5352H19.2227C20.9351 13.5352 22.3281 14.9283 22.3281 16.6406V17.4609C22.3281 19.1733 20.9351 20.5664 19.2227 20.5664ZM18.8125 19.3945H19.2227C20.2888 19.3945 21.1563 18.5271 21.1563 17.4609V16.6406C21.1563 15.5745 20.2888 14.707 19.2227 14.707H18.8125V19.3945ZM24.0859 20.5664C23.7624 20.5664 23.5 20.304 23.5 19.9805V14.1211C23.5 13.7975 23.7624 13.5352 24.0859 13.5352H26.4297C26.7532 13.5352 27.0156 13.7975 27.0156 14.1211C27.0156 14.4447 26.7532 14.707 26.4297 14.707H24.6719V19.9805C24.6719 20.304 24.4095 20.5664 24.0859 20.5664Z" fill="white" />
+                <path d="M25.8438 17.6367H24.0859C23.7624 17.6367 23.5 17.3743 23.5 17.0508C23.5 16.7272 23.7624 16.4648 24.0859 16.4648H25.8438C26.1673 16.4648 26.4297 16.7272 26.4297 17.0508C26.4297 17.3743 26.1673 17.6367 25.8438 17.6367ZM19.3984 10.0195H7.09375C6.77014 10.0195 6.50781 9.75721 6.50781 9.43359C6.50781 9.10998 6.77014 8.84766 7.09375 8.84766H19.3984C19.722 8.84766 19.9844 9.10998 19.9844 9.43359C19.9844 9.75721 19.722 10.0195 19.3984 10.0195ZM19.3984 7.67578H7.09375C6.77014 7.67578 6.50781 7.41346 6.50781 7.08984C6.50781 6.76623 6.77014 6.50391 7.09375 6.50391H19.3984C19.722 6.50391 19.9844 6.76623 19.9844 7.08984C19.9844 7.41346 19.722 7.67578 19.3984 7.67578ZM12.9531 5.33203H7.09375C6.77014 5.33203 6.50781 5.06971 6.50781 4.74609C6.50781 4.42248 6.77014 4.16016 7.09375 4.16016H12.9531C13.2767 4.16016 13.5391 4.42248 13.5391 4.74609C13.5391 5.06971 13.2767 5.33203 12.9531 5.33203Z" fill="white" />
+              </g>
+              <defs>
+                <clipPath id="clip0_2335_25376">
+                  <rect width="30" height="30" fill="white" />
+                </clipPath>
+              </defs>
+            </svg>
 
-
-            placeholderText=" ادخل  الشهر    "
-            selected={Montlyhwork}
-            dateFormat="dd-MM-yyyy"
-            className='w-100  text-black form-control'
-
-            onChange={(Montlyhwork) => { setMontlyhwork(Montlyhwork) }}
-          />
-        </div>
-        <div className=' goals    '><p>الاهداف</p>
-          <ProgressBar className='w-100   ' variant='warning' now={37} />
-          <p style={{ fontSize: "12px" }} className='my-2'>وصلت إلى 37% من هدفك</p>
-
-
-        </div>
-        <div>
-          <p className='golden'>  المشاريع</p>
-          <svg className='mb-4' xmlns="http://www.w3.org/2000/svg" width="59" height="2" viewBox="0 0 59 2" fill="none">
-            <path d="M1 1L58 1" stroke="#D59921" stroke-width="2" stroke-linecap="round" />
-          </svg>
-          <div className={`d-flex   gap-4 justify-content-center`}>
-            <div className={`project-card ${projectType=="مشاريع منتهية"&&   "golden-border"} `}onClick={() => {
-              setProjectType("مشاريع منتهية")
-                 
-            }}>
-              <p className={`  mb-0`}>مشاريع منتهية </p>
-              <h3>  1</h3>
-            </div>
-            <div className={`project-card ${projectType=="مشاريع قيد التنفيذ"&& "golden-border"}`}
-              onClick={() => {
-                setProjectType("مشاريع قيد التنفيذ")
-
-              }}
-            >
-              <p className=' mb-0'>مشاريع قيد التنفيذ</p>
-              <h3 className=''>  2</h3>
-            </div>
-            <div className={`project-card  ${projectType=="مشاريع المتأخرة"&& "golden-border"}`}
-              onClick={() => {
-                setProjectType("مشاريع المتأخرة")
-
-              }}
-            >
-              <p className=' mb-0'>  مشاريع المتأخرة</p>
-              <h3  >  3</h3>
-            </div>
           </div>
-
-
-        </div>
-        <div className='my-3 w-100 golden-square'>
-          <DataTableComponent data={projectType == "مشاريع منتهية" ? FinisedProjectData : projectType == "مشاريع قيد التنفيذ" ? OnProgressProjectsData : projectType == "مشاريع المتأخرة" ? LateProjectData : ""} columns={columns} />
-
+          <span className='text-white text-center'>
+            CV
+          </span>
         </div>
 
       </div>

@@ -12,7 +12,7 @@ import { AddHrType } from '../../../../Context/AddHr'
 import FormDatePicker from '../../../FormDatePicker'
 import AddAttachment from '../../AddAttachment'
 
-const AddUpdateUser = ({ id = null }) => {
+const AddUpdateUser = ({ id = 233 }) => {
 
     const { openHr, setOpenHr, HrType,setHrType } = useContext(AddHrType)
     const firstName = UseInput("", "text", true)
@@ -452,7 +452,7 @@ const AddUpdateUser = ({ id = null }) => {
 
 
                         </div>
-                        <div className=' d-flex justify-between mx-3 adduserattchment  align-items-center   '>
+                        <div className=' d-flex justify-between mx-auto adduserattchment  align-items-center   '>
 
 
                             <div className='d-flex gap-3'>

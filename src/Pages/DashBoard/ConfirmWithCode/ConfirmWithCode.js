@@ -5,12 +5,13 @@ import Input from '../../../Components/FormHandler/Input'
 import SubmitButton from '../../../Components/Client/Dashboard/SubmitButton/SubmitButton'
 import "./ConfirmWithCode.css"
 import { Link } from 'react-router-dom'
+import Image from '../../../Components/Image'
 const ConfirmWithCode = () => {
     return (
         <div className=' ConfirmMail  d-flex justify-content-center  flex-column align-items-center p-5'>
 
-            <div className='mb-4 logo-container'>       <img src='../logo.jpg' alt=' logo' width={392} height={152} /></div>
-            <div>       <img src='../ConfirmMail.png' alt=' logo' width={250} height={180} /></div>
+            <div className='mb-4 logo-container'>       <Image src='../logo.jpg' alt=' logo' width={392} height={152} /></div>
+            <div>       <Image src='../ConfirmMail.png' alt=' logo' width={250} height={180} /></div>
             <h2 className='title fs-2 my-2'>ادخل الرمز التحقيقي </h2>
             <p className='main-text mx-0 '> تم ارسال “الرمز التحقيقي” <br></br>  habeebnasr4@gmail.com </p>
             <Form className='w-25 w-100-sm  me-2'>

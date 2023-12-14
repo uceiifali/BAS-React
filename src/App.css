@@ -19,9 +19,11 @@ body {
 .navbar-toggler-icon {
   background-image: url("data:image/svg+xml,%3csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 30 30%27%3e%3cpath stroke=%27rgba%280, 0, 0, 0.55%29%27 stroke-linecap=%27round%27 stroke-miterlimit=%2710%27 stroke-width=%272%27 d=%27M4 7h22M4 15h22M4 23h22%27/%3e%3c/svg%3e") !important;
 }
-.react-datepicker-wrapper{
+
+.react-datepicker-wrapper {
   width: 100% !important;
 }
+
 .navbar {
   z-index: 100 !important;
 }
@@ -321,6 +323,10 @@ a {
   margin-right: 20px;
   margin-left: 20px;
 
+}
+.slider-Container span{
+  width: 100%;
+  height: 100%;
 }
 
 .slider-Container img {
@@ -1138,11 +1144,19 @@ ol.progtrckr li.progtrckr-done:hover:before {
 }
 
 .submitSystemPoper .modal-content {
-  width: 771px !important;
+  width: 647px;
   border-radius: 20.266px !important;
   border: 1px solid #EFAA20 !important;
+  display: flex;
+  flex-direction: column;
   height: 306px !important;
   background: #1E1E2D !important;
+}
+
+.submitSystemPoper .modal-content div div {
+  width: 90% !important;
+  text-align: center;
+
 }
 
 .submitSystemPoper .css-1dimb5e-singleValue {

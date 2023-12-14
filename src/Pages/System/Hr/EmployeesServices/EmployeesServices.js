@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import style from "./EmployeesServices.module.css"
 import { SearchComponent } from '../../../../Components/SearchComponent/SearchComponent'
 import Input from '../../../../Components/FormHandler/Input'
@@ -6,17 +6,22 @@ import "./EmployeesServices.css"
 import DataTableComponent from '../../../../Components/DataTableComponent.jsx'
 import { AddHrType } from '../../../../Context/AddHr.js'
 import AddServices from '../../../../Components/System/Hr/AddServices/AddServices.js'
+import Pdf from '../../../../Components/Pdf.jsx'
+import ShowServicesComponent from '../../../../Components/System/Hr/ShowServicesComponent/ShowServicesComponent.jsx'
 const EmployeesServices = () => {
+    const [showServices, setShowServices] = useState(false)
+
+
     const data = Array.from({ length: 2 }).map((_, index) => {
         return {
             id: 1,
-            employeeName: ' حبيب ',
+            employeeName: ' مروه ',
             employeeCode: '1234',
-            holidayType: 'حج ان شاء الله',
-            holidayDate: '15-10-2024',
+            ServicesType: '  طلب زياده ',
+            servicesDate: '15-10-2024',
             display: <div className=''
                 onClick={() => {
-
+                    setShowServices(true)
                 }}
             >
                 <img src={process.env.PUBLIC_URL + "/icons/view.png"} className='pointer' />
@@ -40,12 +45,12 @@ const EmployeesServices = () => {
             selector: row => row.employeeCode,
         },
         {
-            name: 'نوع الاجازة',
-            selector: row => row.holidayType,
+            name: 'نوع الخدمة',
+            selector: row => row.ServicesType,
         },
         {
-            name: 'تاريخ الاجازة',
-            selector: row => row.holidayDate,
+            name: 'تاريخ الخدمة',
+            selector: row => row.servicesDate,
         },
 
         {
@@ -60,6 +65,8 @@ const EmployeesServices = () => {
 
     ];
     const { openHr, setOpenHr, HrType, setHrType } = useContext(AddHrType)
+    // handle open services pdf files
+    const [openPdf, setOpenPdf] = useState(false)
 
 
     useEffect(() => {
@@ -70,10 +77,14 @@ const EmployeesServices = () => {
 
     return (
         <div className='EmployeesServices'>
+            {/* <Pdf PdfFile={process.env.PUBLIC_URL + "/example.pdf"} width={800} height={800} openPdf={openPdf} setOpenPdf={setOpenPdf} /> */}
+
+
+            <ShowServicesComponent showServices={showServices} setShowServices={setShowServices} />
+
             {openHr && HrType == "EmployeesServices" ?
                 <AddServices /> :
                 <div className='row'>
-
 
 
                     <div className='col-md-3'>

@@ -48,6 +48,7 @@ import HolidayMangment from './Pages/System/Hr/HolidayMangment/HolidayMangment';
 import EmployeesServices from './Pages/System/Hr/EmployeesServices/EmployeesServices';
 import MainEmployees from './Pages/System/Hr/MainEmployees/MainEmployees';
 import EmployeesManagment from './Pages/System/Hr/EmployeesManagment/EmployeesManagment';
+import Test from './Components/Test';
 
 
 
@@ -61,20 +62,27 @@ const ConfirmWithCode = lazy(() => import("./Pages/DashBoard/ConfirmWithCode/Con
 const ForgetPassword = lazy(() => import("./Pages/DashBoard/ForgetPassword/ForgetPassword"))
 
 const router = createBrowserRouter([
+    // for testing prouprs
+    {
 
 
+        path: "/System/SignIn",
+        element: <SystemSignIn />
+
+    },
+    // Home
     {
         path: "/",
         element: <Home />
-    },
 
+    },
+    // DashBoard
     {
         path: "/Dashboard/SignUP",
         element: <Suspense fallback={<Loading />}> <SignUP /></Suspense>
     }, {
         path: "/Dashboard/ConfirmWithCode",
         element: <Suspense fallback={<Loading />}> <ConfirmWithCode /></Suspense>
-
     },
     {
         path: "/Dashboard/ForgetPassword",
@@ -85,12 +93,16 @@ const router = createBrowserRouter([
         path: "/Dashboard/SignIn",
         element: <Suspense fallback={<Loading />}> <SignIn /></Suspense>
     },
+
+
+    //system routes
     {
+
+
         path: "/System/SignIn",
         element: <SystemSignIn />
 
     },
-    //system routes
     {
         path: "",
 
@@ -100,7 +112,7 @@ const router = createBrowserRouter([
             { path: "/System/index", element: <MainSystem /> },
             { path: "/System/index/:deprtmentType", element: <MainSystem /> },
             //system  users
-            { path: "/System/users", element: <SystemUsers /> },
+            { path: "/System/users/:id", element: <SystemUsers /> },
             {
                 path: "", element: <AllUsersChart />, children: [
                     { path: "/System/Users/index", element: <CountriesChart /> },
@@ -166,7 +178,7 @@ const router = createBrowserRouter([
             {
                 path: "", element: <HrIndex />, children: [
                     { path: "/System/Hr/index", element: <MainEmployees /> },
-                    
+
                     { path: "/System/Hr/EmployeesManagment", element: <EmployeesManagment /> },
                     { path: "/System/Hr/Employees/:CountryName", element: <AllEmployees /> },
                     { path: "/System/Hr/HolidayMangment", element: <HolidayMangment /> },
