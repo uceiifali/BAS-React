@@ -4,7 +4,7 @@ import "./MeettingStyles.css"
 import SystemControler from '../../../../Components/System/SystemControler/SystemControler'
 import AddUserButton from '../../../../Components/System/AddUserButton/AddUserButton'
 import "react-big-calendar/lib/css/react-big-calendar.css"
-import { Calendar, momentLocalizer } from 'react-big-calendar'
+import { Calendar, dateFnsLocalizer, momentLocalizer } from 'react-big-calendar'
 import moment from 'moment'
 import { Container, Form, Image, Modal } from 'react-bootstrap'
 import { showAddUpdateUser } from '../../../../Context/CheckAddUpdateUserVisability'
@@ -12,20 +12,22 @@ import Select from '../../../../Components/FormHandler/Select'
 import { UseSelect } from '../../../../hooks'
 import { AddMeeting } from '../../../../Components/System/Meetings/AddMeeting/AddMeeting'
 import EditDeleteMeeting from '../../../../Components/System/Meetings/EditDeleteMeeting/EditDeleteMeeting'
+import startOfWeek from 'date-fns/startOfWeek'
+import getDay from 'date-fns/getDay'
+import "react-big-calendar/lib/addons/dragAndDrop/styles.css";
+import withDragAndDrop from "react-big-calendar/lib/addons/dragAndDrop";
 
 const AllMeetings = () => {
     const { showAddUserModel, setShowAddUserModel } = useContext(showAddUpdateUser)
     const [showEditDeleteModal, setShowEditDeleteModal] = useState(false)
     const [AllEvents, setAllEvents] = useState(null)
+    const [start, setStart] = useState(false)
+    const [end, setEnd] = useState(false)
     const [selectedEventId, setSelectedEventId] = useState(null)
     const localizer = momentLocalizer(moment)
-    const currentDate = Date.now()
-    const currentDay = moment(currentDate).format("DD/MM/YYYY")
-    const currrentTime = moment(currentDate).format("hh:mm a")
-    const selectCountry = UseSelect("", "Select")
+    const DnDCalendar = withDragAndDrop(Calendar);
 
-
-
+   
 
     // get all events
     const getAllEvents = () => {
@@ -63,7 +65,16 @@ const AllMeetings = () => {
         },
 
     ]
+    // const handleEventResize = (data) => {
+    //     const { start, end } = data;
+    //     setStart(start.events[0].start)
+    //     setEnd(end.events[0].end)
+    //     return { events: [...start.events] };
 
+    // }
+    function onEventDrop({ event, start, end, allDay }) { }
+    function onEventResize({ event, start, end, allDay }) { }
+    function onDragStart({ event }) { }
 
 
 
@@ -79,19 +90,25 @@ const AllMeetings = () => {
                 <AddMeeting showAddUserModel={showAddUserModel} setShowAddUserModel={setShowAddUserModel} />
 
 
-
-                <Calendar
-                    localizer={localizer}
-                    className="h-100 text-white"
-                    startAccessor="start"
-                    endAccessor={"end"}
-                    rtl={true}
-                    onEventDrop={true}
-
-                    onSelectEvent={handleEditMeeting}
+                <DnDCalendar
+                    defaultDate={moment().toDate()}
+                    defaultView="month"
                     events={events}
-                    views={['month', 'week']}
-                    onEvent
+                    localizer={localizer}
+                    onEventDrop={onEventDrop}
+                    onEventResize={onEventResize}
+                    onDragStart={onDragStart}
+                    draggableAccessor={(event) => true}
+                    resizable
+                    style={{ height: "100%" }}
+                    messages={{
+                        next: "التالي",
+                        previous: "السابق",
+                        today: "اليوم",
+                        month: "الشهر",
+                        week: "الاسبوع",
+                        day: "اليوم"
+                    }}
 
                 />
 

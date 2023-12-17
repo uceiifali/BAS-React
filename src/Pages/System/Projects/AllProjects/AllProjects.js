@@ -47,7 +47,7 @@ const AllProjects = () => {
 
 
                                     <div className='mt-4 w-100'>
-                                        <Link  to={"/System/Projects/index"} className='pointer' >
+                                        <Link to={"/System/Projects/index"} className='pointer' >
                                             <p className=' text-white '>
                                                 كل المشاريع
                                             </p>
@@ -64,9 +64,9 @@ const AllProjects = () => {
 
                                                 <Accordion.Header  >
                                                     <Link
-                                                    
-                                                    
-                                                    to={"System/Projects/Main/inProgress"}>
+
+
+                                                        to={"System/Projects/Main/inProgress"}>
                                                         مشاريع قيد التنفيذ
                                                     </Link>
 
@@ -170,6 +170,42 @@ const AllProjects = () => {
                                                         </Link>
                                                         <Link className='w-100'
                                                             to={"System/Projects/Main/Done/Review"}
+                                                        >
+                                                            <div className='tab  text-end w-100'>
+                                                                الاشراف علي التنفيذ
+
+                                                            </div>
+                                                        </Link>
+
+
+                                                    </div>
+
+                                                </Accordion.Body>
+                                            </Accordion.Item>
+
+                                        </Accordion>
+                                        <Accordion defaultActiveKey={null}  >
+                                            <Accordion.Item eventKey="0">
+
+                                                <Accordion.Header>
+
+                                                    <Link
+                                                        to={"/System/Projects/Main/ReportManagement"}
+                                                    >      ادارة التقارير      </Link>
+
+                                                    <MdKeyboardArrowDown size={20} />
+                                                </Accordion.Header>
+
+
+                                                <Accordion.Body>
+                                                    <div className='tabs d-flex justify-content-center align-items-center flex-column'>
+                                                        <Link to={"/System/Projects/ReportManagement/Design"} >
+                                                            <div className='tab  text-end w-100'>
+                                                                تصميم
+
+                                                            </div>
+                                                        </Link>
+                                                        <Link className='w-100' to={"/System/Projects/ReportManagement/Review"}
                                                         >
                                                             <div className='tab  text-end w-100'>
                                                                 الاشراف علي التنفيذ

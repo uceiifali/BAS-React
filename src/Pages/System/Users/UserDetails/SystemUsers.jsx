@@ -207,7 +207,7 @@ const SystemUsers = () => {
 
 
                                                 <div className='d-flex w-75 flex-column mx-auto mt-3 justify-content-center align-items-center '>
-                                                    {<p className='text-white' style={{ fontSize: "30px" }}> تم حذف المستخدم بنجاح    </p>}
+                                                    {<p className='text-white mb-3' style={{ fontSize: "30px" }}> تم حذف المستخدم بنجاح    </p>}
                                                     <Button
                                                         onClick={() => {
                                                             setConfirmDeleteUserPoper(false)

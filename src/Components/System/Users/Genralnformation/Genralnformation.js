@@ -2,8 +2,9 @@
 import "./index.css"
 import DataTableComponent from '../../../DataTableComponent';
 import { useState } from "react";
+import ShowHolidayComponent from "../../Hr/ShowHolidayComponent/ShowHolidayComponent";
 const Genralnformation = () => {
-   const[ShowHoliday,setShowHoliday] = useState(false)
+  const [ShowHoliday, setShowHoliday] = useState(false)
   const data = Array.from({ length: 2 }).map((_, index) => {
     return {
       id: 1,
@@ -56,6 +57,7 @@ const Genralnformation = () => {
   ];
   return (
     <div className='genralnformation overflow-y-auto p-5'>
+      <ShowHolidayComponent setShowHoliday={setShowHoliday} ShowHoliday={ShowHoliday} />
 
       <div className=''>
         <div className='row py-1 jutify-content-between inf-square golden-square '>
@@ -84,7 +86,7 @@ const Genralnformation = () => {
         <div className='row py-3 jutify-content-between golden-square mt-3 '>
           <p className='text-xl my-3'>
             جميع اجازات الشهر الحالي
-   
+
 
           </p>
           <DataTableComponent className={"overflow-x-hidden w-100"} data={data} columns={columns} />

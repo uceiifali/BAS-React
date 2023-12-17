@@ -49,6 +49,8 @@ import EmployeesServices from './Pages/System/Hr/EmployeesServices/EmployeesServ
 import MainEmployees from './Pages/System/Hr/MainEmployees/MainEmployees';
 import EmployeesManagment from './Pages/System/Hr/EmployeesManagment/EmployeesManagment';
 import Test from './Components/Test';
+import ReportManagement from './Pages/System/Projects/ReportManagement/ReportManagement';
+import NestedReportMangment from './Pages/System/Projects/ReportManagement/NestedReportMangment/NestedReportMangment';
 
 
 
@@ -158,6 +160,8 @@ const router = createBrowserRouter([
                 path: "", element: <AllProjects />, children: [
                     { path: "/System/Projects/index", element: <AllProjectsChart /> },
                     { path: "/System/Projects/Main/:ProjectTime", element: <MainProjects /> },
+                    { path: "/System/Projects/Main/ReportManagement", element: <ReportManagement /> },
+                    { path: "/System/Projects/ReportManagement/:projectType", element: <NestedReportMangment /> },
                     { path: "/System/Projects/Main/:ProjectTime/:ProjectType", element: <NestedMainProjects /> },
 
 
