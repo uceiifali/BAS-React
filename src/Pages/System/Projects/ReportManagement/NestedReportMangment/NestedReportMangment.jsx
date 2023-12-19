@@ -1,13 +1,14 @@
 
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import PieChart from '../../../../../Components/pieChart';
 import DataTableComponent from '../../../../../Components/DataTableComponent';
 import { useParams } from 'react-router-dom';
 import "./NestedReportMangment.css"
-import FullCalendar from '@fullcalendar/react'
-import dayGridPlugin from '@fullcalendar/daygrid' 
+import { AddReportType } from '../../../../../Context/AddReport';
 
 const NestedReportMangment = () => {
+    const { openReport, setOpenReport, reportType, setReportType } = useContext(AddReportType)
+
     const [showReport, setShowReport] = useState(false)
     const reportsData = Array.from({ length: 3 }).map((_, index) => {
         return {
@@ -62,9 +63,8 @@ const NestedReportMangment = () => {
     const { projectType } = useParams()
 
 
-    console.log(projectType)
     useEffect(() => {
-
+        setReportType(projectType)
 
     }, [projectType])
     return (

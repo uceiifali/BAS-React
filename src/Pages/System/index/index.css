@@ -68,7 +68,7 @@
 
 
 
-.AllRequests,.datatableComponent::-webkit-scrollbar-track {
+.AddProjectComponent::-webkit-scrollbar-track  ,.AllRequests::-webkit-scrollbar-track ,.datatableComponent::-webkit-scrollbar-track {
     -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
     background-color: #F5F5F5;
     border-top-left-radius: 27px;
@@ -77,16 +77,16 @@
 }
 
 
-.AllRequests,.datatableComponent::-webkit-scrollbar {
+.AddProjectComponent::-webkit-scrollbar  ,.AllRequests::-webkit-scrollbar ,.datatableComponent::-webkit-scrollbar {
     width: 15px;
     border-top-left-radius: 27px;
     border-bottom-left-radius: 27px;
 
-    background-color: #F5F5F5;
+    background-color: #F5F5F5;  
 
 }
 
-.AllRequests,.datatableComponent::-webkit-scrollbar-thumb {
+.AddProjectComponent::-webkit-scrollbar-thumb ,.AllRequests::-webkit-scrollbar-thumb ,.datatableComponent::-webkit-scrollbar-thumb {
     background-color: #F90;
 
     border-top-left-radius: 20px;

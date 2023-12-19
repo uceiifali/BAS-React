@@ -1,11 +1,3 @@
-.AddProjectComponent {
-    border-radius: 27px;
-    border: 1px solid #EFAA20;
-    height: 793px !important;
-    width: 100%;
-    overflow-x: hidden;
-    overflow-y:auto ;
-}
 
 .fieldBorder {
     border: 1px solid rgba(213, 153, 33, 0.20);

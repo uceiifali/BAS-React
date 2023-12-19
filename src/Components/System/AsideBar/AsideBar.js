@@ -4,33 +4,42 @@ import { Sidebar, Menu, MenuItem, SubMenu } from 'react-pro-sidebar';
 import "./AsideBar.css"
 import { Link } from 'react-router-dom';
 import Image from '../../Image';
+import { FaBars } from "react-icons/fa6";
+
 
 const AsideBar = () => {
     const [rtl, setRtl] = useState(true)
-    const [collapsed, setCollapsed] = useState(true);
-    
+    const [collapsed, setCollapsed] = useState(false);
+
     return (
-        <div className=" asidePar align-items-center     mx-5" style={{ display: 'flex', direction: rtl ? 'rtl' : 'ltr', borderRadius: "19px" }}>
+        <div className=" asidePar align-items-center    " style={{ display: 'flex', width: '400px', direction: rtl ? 'rtl' : 'ltr' }}>
 
             <Sidebar
-
+                collapsedWidth="83px !important"
                 rootStyles={{
                     color: "#FFF",
-                    borderRadius: "19px",
-                    height: '897px  ',
-
+                    height: '100%',
                     border: "2px solid #EFAA20 !important"
 
 
                 }}
 
-                collapsed={collapsed} rtl={rtl} backgroundColor='#1E1E2D' className=' w-100' color='#FFF'>
+
+
+
+
+                collapsed={collapsed} rtl={rtl} backgroundColor='#1E1E2D' className='  w-100' color='#FFF'>
                 <Menu className='w-100'>
 
+                    <div className='d-flex mt-4 justify-end'>
+                    {/*  */}
 
+                    <FaBars color='#FFF' className="sb-button  pointer p-3" onClick={() => setCollapsed(!collapsed)} 
+                    />
+                    </div>
                     <MenuItem className='mt-4  center w-100'>
                         <div className='d-flex justify-content-center flex-column align-items-center'>
-                            <div>  <Image  src={process.env.PUBLIC_URL +"/Badr.png"} alt="icon" className='badr-icon ' /></div>
+                            <div>  <Image src={process.env.PUBLIC_URL + "/Badr.png"} alt="icon" className='badr-icon ' /></div>
 
 
 
@@ -47,6 +56,12 @@ const AsideBar = () => {
 
 
                     <MenuItem className='my-2   d-flex flex-column '>
+
+
+
+
+
+
                         <div className=' goals    '><p>الاهداف</p>
                             <ProgressBar className='w-100   ' variant='warning' now={37} />
                             <p style={{ fontSize: "14px" }} className='my-2'>وصلت إلى 37% من هدفك</p>

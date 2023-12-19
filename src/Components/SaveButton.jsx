@@ -7,7 +7,7 @@ const SaveButton = () => {
 
             <Button
                 
-
+               type='submit'
                 className='sumbmitAddUpdateUser'>
                 حفظ
             </Button>

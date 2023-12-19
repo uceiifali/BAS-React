@@ -1,19 +1,24 @@
 import React from 'react';
+import { useForm } from 'react-hook-form';
 
 const Input = ({ label, validator, submitted, mandatory, className = '',
   classNameWrap = '',
   formGroup = true,
   disabled = false,
   type = 'text',
+  required = false,
   width = '',
   height = "",
   append = '',
   prepend = '',
   background = '',
-  borderColor= '#dee2e6',
+  name,
+  borderColor = '#dee2e6',
   ...props
 }) => {
   let hasWarning = submitted && validator && !validator.valid;
+
+ 
 
   return (
     <div className={`${formGroup ? 'form-group' : ''} ${hasWarning ? 'has-warning' : ''} ${classNameWrap} ${(append || prepend) ? 'input-group' : ''}`}>
@@ -23,8 +28,9 @@ const Input = ({ label, validator, submitted, mandatory, className = '',
       </div>}
       <input
         type={type}
-        style={{  height, width ,backgroundColor:background ,borderColor}}
+        style={{ height, width, backgroundColor: background, borderColor }}
         disabled={disabled}
+    
         className={`form-control ${className} ${(submitted && validator && !validator.valid) ? 'is-invalid' : ''}`}
         {...props}
       />

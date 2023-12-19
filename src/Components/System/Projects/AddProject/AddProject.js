@@ -6,20 +6,21 @@ import { Button, Form, Modal } from 'react-bootstrap'
 import { useState } from 'react'
 import SaveButton from '../../../SaveButton'
 import Input from '../../../FormHandler/Input'
-import "./AddProject.css"
+import "../AddProject.css"
 import Select from '../../../FormHandler/Select'
 import { useMemo } from 'react'
 import UseSelect from '../../../../hooks/UseSelect'
 import DatePicker from 'react-datepicker';
 import { useContext } from 'react'
 import { showAddUpdateUser } from '../../../../Context/CheckAddUpdateUserVisability'
+import AddAttachment from '../../AddAttachment'
 const AddProject = () => {
     const projectName = UseInput("", "", true)
     const [attachment, setAttachment] = useState(null)
     const [openAddAttachemnt, setOpenAddAttachemnt] = useState(false)
     const [projectsNotes, setProjectsNotes] = useState(false)
     const { showAddUserModel, setShowAddUserModel } = useContext(showAddUpdateUser)
-    
+
 
 
 
@@ -134,7 +135,7 @@ const AddProject = () => {
 
 
 
-        <div className={`bg-[#1E1E2D] addproject ${styles.AddProjectComponent}  p-5`}>
+        <div className={` addproject AddProjectComponent p-5`}>
             {openAddAttachemnt &&
                 <Modal
                     className='submitSystemPoper'
@@ -210,15 +211,10 @@ const AddProject = () => {
                 <fieldset className={`${styles.fieldBorder} p-4 mt-4 `}>
                     <legend className='text-center'>  المرفقات </legend>
                     <div className='row'>
-                        <div className={`${styles.addFileShape} pointer bg-[#2B2B40] p-0  d-flex flex-column align-items-center justfiy-content-center`}>
-
-                            <div onClick={() => { setOpenAddAttachemnt(true) }}>
-                                <svg className='m-auto' xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
-                                    <path d="M1 8H8M8 8H15M8 8V15M8 8V1" stroke="#EFAA20" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                                </svg>
-                                <p className="text-sm mx-auto text-white">اضافة جديدة</p>
-                            </div>
-                        </div>
+                        <AddAttachment
+                            attachment={attachment}
+                            setAttachment={setAttachment}
+                        />
                     </div>
 
                 </fieldset>

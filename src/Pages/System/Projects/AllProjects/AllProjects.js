@@ -11,6 +11,10 @@ import { MdKeyboardArrowDown } from 'react-icons/md'
 import AddProject from '../../../../Components/System/Projects/AddProject/AddProject'
 import { useState } from 'react'
 import EditProject from '../../../../Components/System/Projects/EditProject/EditProject'
+import { AddReportType } from '../../../../Context/AddReport'
+import AddDesignReport from '../../../../Components/System/Projects/AddDesignReport/AddDesignReport'
+import AddReviewReport from '../../../../Components/System/Projects/AddReviewReport/AddReviewReport'
+
 
 
 
@@ -18,6 +22,8 @@ const AllProjects = () => {
     const { showAddUserModel, setShowAddUserModel } = useContext(showAddUpdateUser)
     const [editProject, setEditProject] = useState(false)
     const [ConfirmUpdate, setConfirmUpdate] = useState(false)
+    const { reportType, setReportType } = useContext(AddReportType)
+
     return (
         <div>
 
@@ -36,209 +42,214 @@ const AllProjects = () => {
 
 
                 <AddUserButton />} />
-            {!showAddUserModel ?
-                <div className='row'>
+            {showAddUserModel && reportType === "DesignReports" ?
+                <AddDesignReport /> :
+                showAddUserModel && reportType === "ReviewReports" ?
+                    <AddReviewReport />
+                    : showAddUserModel && reportType === '' ?
+                        <AddProject /> :
+                        <div className='row'>
 
-                    <div className='col-md-3'>
-                        <AllCategories
+                            <div className='col-md-3'>
+                                <AllCategories
 
-                            child={
-                                <div className='d-flex  flex-column   align-items-center '>
-
-
-                                    <div className='mt-4 w-100'>
-                                        <Link to={"/System/Projects/index"} className='pointer' >
-                                            <p className=' text-white '>
-                                                كل المشاريع
-                                            </p>
-                                        </Link>
-                                    </div>
+                                    child={
+                                        <div className='d-flex  flex-column   align-items-center '>
 
 
-                                    <div className='pointer mt-0'  > <div className='   d-flex  justify-content-center flex-column'>
+                                            <div className='mt-4 w-100'>
+                                                <Link to={"/System/Projects/index"} className='pointer' >
+                                                    <p className=' text-white '>
+                                                        كل المشاريع
+                                                    </p>
+                                                </Link>
+                                            </div>
 
 
-
-                                        <Accordion defaultActiveKey={null}  >
-                                            <Accordion.Item eventKey="0">
-
-                                                <Accordion.Header  >
-                                                    <Link
-
-
-                                                        to={"System/Projects/Main/inProgress"}>
-                                                        مشاريع قيد التنفيذ
-                                                    </Link>
-
-
-                                                    <MdKeyboardArrowDown size={20} />
-                                                </Accordion.Header>
+                                            <div className='pointer mt-0'  > <div className='   d-flex  justify-content-center flex-column'>
 
 
 
-                                                <Accordion.Body>
-                                                    <div className='tabs d-flex justify-content-center align-items-center flex-column'>
-                                                        <Link to={"System/Projects/Main/inProgress/Design"} >
-                                                            <div className='tab  text-end w-100'>
-                                                                تصميم
+                                                <Accordion defaultActiveKey={null}  >
+                                                    <Accordion.Item eventKey="0">
+
+                                                        <Accordion.Header  >
+                                                            <Link
+
+
+                                                                to={"System/Projects/Main/inProgress"}>
+                                                                مشاريع قيد التنفيذ
+                                                            </Link>
+
+
+                                                            <MdKeyboardArrowDown size={20} />
+                                                        </Accordion.Header>
+
+
+
+                                                        <Accordion.Body>
+                                                            <div className='tabs d-flex justify-content-center align-items-center flex-column'>
+                                                                <Link to={"System/Projects/Main/inProgress/Design"} >
+                                                                    <div className='tab  text-end w-100'>
+                                                                        تصميم
+
+                                                                    </div>
+                                                                </Link>
+                                                                <Link className='w-100' to={"System/Projects/Main/inProgress/Review"}>
+                                                                    <div className='tab  text-end w-100'>
+
+
+                                                                        الاشراف علي التنفيذ
+
+                                                                    </div>
+                                                                </Link>
+
 
                                                             </div>
-                                                        </Link>
-                                                        <Link className='w-100' to={"System/Projects/Main/inProgress/Review"}>
-                                                            <div className='tab  text-end w-100'>
 
 
-                                                                الاشراف علي التنفيذ
+
+
+
+
+
+
+
+
+
+                                                        </Accordion.Body>
+                                                    </Accordion.Item>
+
+                                                </Accordion>
+                                                <Accordion defaultActiveKey={null}  >
+                                                    <Accordion.Item eventKey="0">
+
+                                                        <Accordion.Header>
+
+                                                            <Link
+                                                                to={"System/Projects/Main/Waiting"}
+                                                            >      مشاريع معلقة </Link>
+
+                                                            <MdKeyboardArrowDown size={20} />
+                                                        </Accordion.Header>
+
+
+                                                        <Accordion.Body>
+                                                            <div className='tabs d-flex justify-content-center align-items-center flex-column'>
+                                                                <Link to={"System/Projects/Main/Waiting/Design"} >
+                                                                    <div className='tab  text-end w-100'>
+                                                                        تصميم
+
+                                                                    </div>
+                                                                </Link>
+                                                                <Link className='w-100'
+                                                                    to={"System/Projects/Main/Waiting/Review"}
+                                                                >
+                                                                    <div className='tab  text-end w-100'>
+                                                                        الاشراف علي التنفيذ
+
+                                                                    </div>
+                                                                </Link>
+
 
                                                             </div>
-                                                        </Link>
+
+                                                        </Accordion.Body>
+                                                    </Accordion.Item>
+
+                                                </Accordion>
+                                                <Accordion defaultActiveKey={null}  >
+                                                    <Accordion.Item eventKey="0">
+
+                                                        <Accordion.Header>
+
+                                                            <Link
+                                                                to={"System/Projects/Main/Done"}
+                                                            >      مشاريع منتهية     </Link>
+
+                                                            <MdKeyboardArrowDown size={20} />
+                                                        </Accordion.Header>
 
 
-                                                    </div>
+                                                        <Accordion.Body>
+                                                            <div className='tabs d-flex justify-content-center align-items-center flex-column'>
+                                                                <Link to={"System/Projects/Main/Done/Design"} >
+                                                                    <div className='tab  text-end w-100'>
+                                                                        تصميم
 
+                                                                    </div>
+                                                                </Link>
+                                                                <Link className='w-100'
+                                                                    to={"System/Projects/Main/Done/Review"}
+                                                                >
+                                                                    <div className='tab  text-end w-100'>
+                                                                        الاشراف علي التنفيذ
 
+                                                                    </div>
+                                                                </Link>
 
-
-
-
-
-
-
-
-
-                                                </Accordion.Body>
-                                            </Accordion.Item>
-
-                                        </Accordion>
-                                        <Accordion defaultActiveKey={null}  >
-                                            <Accordion.Item eventKey="0">
-
-                                                <Accordion.Header>
-
-                                                    <Link
-                                                        to={"System/Projects/Main/Waiting"}
-                                                    >      مشاريع معلقة </Link>
-
-                                                    <MdKeyboardArrowDown size={20} />
-                                                </Accordion.Header>
-
-
-                                                <Accordion.Body>
-                                                    <div className='tabs d-flex justify-content-center align-items-center flex-column'>
-                                                        <Link to={"System/Projects/Main/Waiting/Design"} >
-                                                            <div className='tab  text-end w-100'>
-                                                                تصميم
 
                                                             </div>
-                                                        </Link>
-                                                        <Link className='w-100'
-                                                            to={"System/Projects/Main/Waiting/Review"}
-                                                        >
-                                                            <div className='tab  text-end w-100'>
-                                                                الاشراف علي التنفيذ
+
+                                                        </Accordion.Body>
+                                                    </Accordion.Item>
+
+                                                </Accordion>
+                                                <Accordion defaultActiveKey={null}  >
+                                                    <Accordion.Item eventKey="0">
+
+                                                        <Accordion.Header>
+
+                                                            <Link
+                                                                to={"/System/Projects/Main/ReportManagement"}
+                                                            >      ادارة التقارير      </Link>
+
+                                                            <MdKeyboardArrowDown size={20} />
+                                                        </Accordion.Header>
+
+
+                                                        <Accordion.Body>
+                                                            <div className='tabs d-flex justify-content-center align-items-center flex-column'>
+                                                                <Link to={"/System/Projects/ReportManagement/DesignReports"} >
+                                                                    <div className='tab  text-end w-100'>
+                                                                        تصميم
+
+                                                                    </div>
+                                                                </Link>
+                                                                <Link className='w-100' to={"/System/Projects/ReportManagement/ReviewReports"}
+                                                                >
+                                                                    <div className='tab  text-end w-100'>
+                                                                        الاشراف علي التنفيذ
+
+                                                                    </div>
+                                                                </Link>
+
 
                                                             </div>
-                                                        </Link>
+
+                                                        </Accordion.Body>
+                                                    </Accordion.Item>
+
+                                                </Accordion>
 
 
-                                                    </div>
-
-                                                </Accordion.Body>
-                                            </Accordion.Item>
-
-                                        </Accordion>
-                                        <Accordion defaultActiveKey={null}  >
-                                            <Accordion.Item eventKey="0">
-
-                                                <Accordion.Header>
-
-                                                    <Link
-                                                        to={"System/Projects/Main/Done"}
-                                                    >      مشاريع منتهية     </Link>
-
-                                                    <MdKeyboardArrowDown size={20} />
-                                                </Accordion.Header>
+                                            </div>
 
 
-                                                <Accordion.Body>
-                                                    <div className='tabs d-flex justify-content-center align-items-center flex-column'>
-                                                        <Link to={"System/Projects/Main/Done/Design"} >
-                                                            <div className='tab  text-end w-100'>
-                                                                تصميم
+                                            </div>
 
-                                                            </div>
-                                                        </Link>
-                                                        <Link className='w-100'
-                                                            to={"System/Projects/Main/Done/Review"}
-                                                        >
-                                                            <div className='tab  text-end w-100'>
-                                                                الاشراف علي التنفيذ
-
-                                                            </div>
-                                                        </Link>
+                                        </div>}
 
 
-                                                    </div>
-
-                                                </Accordion.Body>
-                                            </Accordion.Item>
-
-                                        </Accordion>
-                                        <Accordion defaultActiveKey={null}  >
-                                            <Accordion.Item eventKey="0">
-
-                                                <Accordion.Header>
-
-                                                    <Link
-                                                        to={"/System/Projects/Main/ReportManagement"}
-                                                    >      ادارة التقارير      </Link>
-
-                                                    <MdKeyboardArrowDown size={20} />
-                                                </Accordion.Header>
+                                />
+                            </div>
+                            <div className='col-md-9'>
 
 
-                                                <Accordion.Body>
-                                                    <div className='tabs d-flex justify-content-center align-items-center flex-column'>
-                                                        <Link to={"/System/Projects/ReportManagement/Design"} >
-                                                            <div className='tab  text-end w-100'>
-                                                                تصميم
+                                <Outlet />
 
-                                                            </div>
-                                                        </Link>
-                                                        <Link className='w-100' to={"/System/Projects/ReportManagement/Review"}
-                                                        >
-                                                            <div className='tab  text-end w-100'>
-                                                                الاشراف علي التنفيذ
-
-                                                            </div>
-                                                        </Link>
-
-
-                                                    </div>
-
-                                                </Accordion.Body>
-                                            </Accordion.Item>
-
-                                        </Accordion>
-
-
-                                    </div>
-
-
-                                    </div>
-
-                                </div>}
-
-
-                        />
-                    </div>
-                    <div className='col-md-9'>
-
-
-                        <Outlet />
-
-                    </div>
-                </div> : <AddProject />
+                            </div>
+                        </div>
 
             }
 

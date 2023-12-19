@@ -1,3 +1,13 @@
+.AddProjectComponent {
+    border-radius: 27px;
+    border: 1px solid #EFAA20;
+    background-color: #1E1E2D;
+    height: 793px !important;
+    width: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
 .addproject .form-label {
     color: white !important;
 }
@@ -20,10 +30,11 @@
     background-color: #EFAA20 !important;
     border-color: #EFAA20 !important;
 }
-.addproject .form-group{
+
+.addproject .form-group {
     width: 100% !important;
 }
 
-.SaveButtonContainer{
+.SaveButtonContainer {
     width: 139px;
 }
