@@ -1,51 +1,66 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import ProgressBar from 'react-bootstrap/ProgressBar';
 import { Sidebar, Menu, MenuItem, SubMenu } from 'react-pro-sidebar';
 import "./AsideBar.css"
 import { Link } from 'react-router-dom';
 import Image from '../../Image';
-import { FaBars } from "react-icons/fa6";
 
+import { FaBars } from "react-icons/fa6";
+import { SideBarProvider } from '../../../Context/SideBarProvider';
 
 const AsideBar = () => {
     const [rtl, setRtl] = useState(true)
-    const [collapsed, setCollapsed] = useState(false);
+    const {collapsed, setCollapsed} = useContext(SideBarProvider);
 
     return (
-        <div className=" asidePar align-items-center    " style={{ display: 'flex', width: '400px', direction: rtl ? 'rtl' : 'ltr' }}>
+        <div className={` asidePar d-flex align-items-center  w-100   `} style={{ direction: rtl ? 'rtl' : 'ltr' }}>
 
             <Sidebar
-                collapsedWidth="83px !important"
+                breakPoint="lg"
+                transitionDuration={800}
+                collapsedWidth="100px !important"
                 rootStyles={{
                     color: "#FFF",
-                    height: '100%',
+                    height: '897px',
                     border: "2px solid #EFAA20 !important"
 
 
                 }}
 
-
-
-
-
                 collapsed={collapsed} rtl={rtl} backgroundColor='#1E1E2D' className='  w-100' color='#FFF'>
-                <Menu className='w-100'>
 
-                    <div className='d-flex mt-4 justify-end'>
-                    {/*  */}
+                <div className='d-flex collapsed-handler mx-2 mt-2 justify-end'>
 
-                    <FaBars color='#FFF' className="sb-button  pointer p-3" onClick={() => setCollapsed(!collapsed)} 
+
+                    <FaBars
+                        color='#FFF'
+                        size={20}
+                        className="pointer"
+                        onClick={() => setCollapsed(!collapsed)}
+
                     />
-                    </div>
+
+                </div>
+                <Menu 
+                transitionDuration={200}
+                className='w-100'>
+
+
+
+
+
                     <MenuItem className='mt-4  center w-100'>
+
                         <div className='d-flex justify-content-center flex-column align-items-center'>
-                            <div>  <Image src={process.env.PUBLIC_URL + "/Badr.png"} alt="icon" className='badr-icon ' /></div>
+                            <div>  <Image src={process.env.PUBLIC_URL + "/Badr.png"} alt="icon" className='user-icon' /></div>
 
 
+                            <div className='hidden-collapsed '>
+                                <p style={{ fontSize: "19px" }} className=' p-0 mx-0  my-2'>بدر بن سليمان</p>
+                                <p className='golden-text ' >رئيس مجلس الأدارة</p>
+                                <p style={{ fontSize: "14px", color: "#565674" }}>badr@bsa.com</p>
+                            </div>
 
-                            <p style={{ fontSize: "19px" }} className=' p-0 mx-0  my-2'>بدر بن سليمان</p>
-                            <p className='golden-text ' >رئيس مجلس الأدارة</p>
-                            <p style={{ fontSize: "14px", color: "#565674" }}>badr@bsa.com</p>
 
                         </div>
 
@@ -55,7 +70,7 @@ const AsideBar = () => {
                     </MenuItem>
 
 
-                    <MenuItem className='my-2   d-flex flex-column '>
+                    <MenuItem className='my-2 hidden-collapsed  d-flex flex-column '>
 
 
 
@@ -65,6 +80,7 @@ const AsideBar = () => {
                         <div className=' goals    '><p>الاهداف</p>
                             <ProgressBar className='w-100   ' variant='warning' now={37} />
                             <p style={{ fontSize: "14px" }} className='my-2'>وصلت إلى 37% من هدفك</p>
+
 
                             <div className='d-flex justify-content-center gap-3'>
                                 <svg xmlns="http://www.w3.org/2000/svg" width="134" height="66" viewBox="0 0 134 66" fill="none">
@@ -93,13 +109,13 @@ const AsideBar = () => {
 
                     </MenuItem>
                     <MenuItem className='my-2  w-100'>
-                        <div className='row '>
-                            <div className='col-md-4 col-sm-6'>
+                        <div className='row  system-card-container'>
+                            <div className='col-md-4 '>
 
                                 <div className='system-item'>
                                     <Link to="/System/index">
                                         <div class="system-card">
-                                            <div class="card__content d-flex justify-content-center align-items-center  flex-column gap-2 " >
+                                            <div class="card__content d-flex justify-content-center align-items-center  flex-column  " >
                                                 <Image src={process.env.PUBLIC_URL + "/icons/asideIcons/Main.png"} alt="icon" className='aside-icon mt-3'
                                                 />
 
@@ -112,12 +128,12 @@ const AsideBar = () => {
                                 </div>
 
                             </div>
-                            <div className='col-md-4 col-sm-6'>
+                            <div className='col-md-4 '>
 
                                 <div className='system-item'>
                                     <Link to={"/System/Clients/index"}>
                                         <div class="system-card">
-                                            <div class="card__content d-flex justify-content-center align-items-center  flex-column gap-2 " >
+                                            <div class="card__content d-flex justify-content-center align-items-center  flex-column  " >
                                                 <Image
                                                     src={process.env.PUBLIC_URL + "/icons/asideIcons/Customers.png"}
                                                     alt="icon" className='aside-icon mt-3'
@@ -131,12 +147,12 @@ const AsideBar = () => {
                                 </div>
 
                             </div>
-                            <div className='col-md-4 col-sm-6'>
+                            <div className='col-md-4 '>
 
                                 <div className='system-item'>
                                     <Link to="/System/Users/index">
                                         <div class="system-card">
-                                            <div class="card__content d-flex justify-content-center align-items-center  flex-column gap-2 " >
+                                            <div class="card__content d-flex justify-content-center align-items-center  flex-column  " >
                                                 <Image
                                                     src={process.env.PUBLIC_URL + "/icons/asideIcons/users.png"}
 
@@ -151,12 +167,12 @@ const AsideBar = () => {
                                 </div>
 
                             </div>
-                            <div className='col-md-4 col-sm-6'>
+                            <div className='col-md-4 '>
 
                                 <div className='system-item'>
                                     <Link to="/System/Requests/index">
                                         <div class="system-card">
-                                            <div class="card__content d-flex justify-content-center align-items-center  flex-column gap-2 " >
+                                            <div class="card__content d-flex justify-content-center align-items-center  flex-column  " >
                                                 <Image
                                                     src={process.env.PUBLIC_URL + "/icons/asideIcons/orders.png"}
 
@@ -170,12 +186,12 @@ const AsideBar = () => {
 
                                 </div>
 
-                            </div>   <div className='col-md-4 col-sm-6'>
+                            </div>   <div className='col-md-4 '>
 
                                 <div className='system-item'>
                                     <Link to={"/System/Projects/index"}>
                                         <div class="system-card">
-                                            <div class="card__content d-flex justify-content-center align-items-center  flex-column gap-2 " >
+                                            <div class="card__content d-flex justify-content-center align-items-center  flex-column  " >
                                                 <Image
                                                     src={process.env.PUBLIC_URL + "/icons/asideIcons/projects.png"}
 
@@ -189,12 +205,12 @@ const AsideBar = () => {
 
                                 </div>
 
-                            </div>   <div className='col-md-4 col-sm-6'>
+                            </div>   <div className='col-md-4 '>
 
                                 <div className='system-item'>
                                     <Link>
                                         <div class="system-card">
-                                            <div class="card__content d-flex justify-content-center align-items-center  flex-column gap-2 " >
+                                            <div class="card__content d-flex justify-content-center align-items-center  flex-column  " >
                                                 <Image
                                                     src={process.env.PUBLIC_URL + "/icons/asideIcons/tasks.png"}
 
@@ -209,12 +225,12 @@ const AsideBar = () => {
                                 </div>
 
                             </div>
-                            <div className='col-md-4 col-sm-6'>
+                            <div className='col-md-4 '>
 
                                 <div className='system-item'>
                                     <Link to={"/System/Meetings/index"}>
                                         <div class="system-card">
-                                            <div class="card__content d-flex justify-content-center align-items-center  flex-column gap-2 " >
+                                            <div class="card__content d-flex justify-content-center align-items-center  flex-column  " >
                                                 <Image
                                                     src={process.env.PUBLIC_URL + "/icons/asideIcons/meetings.png"}
                                                     alt="icon" className='aside-icon mt-3'
@@ -229,12 +245,12 @@ const AsideBar = () => {
 
                             </div>
 
-                            <div className='col-md-4 col-sm-6'>
+                            <div className='col-md-4 '>
 
                                 <div className='system-item'>
                                     <Link to={"/System/Hr/index"}>
                                         <div class="system-card">
-                                            <div class="card__content d-flex justify-content-center align-items-center  flex-column gap-2 " >
+                                            <div class="card__content d-flex justify-content-center align-items-center  flex-column  " >
                                                 <Image
                                                     src={process.env.PUBLIC_URL + "/icons/asideIcons/hr.png"}
 
@@ -250,12 +266,12 @@ const AsideBar = () => {
 
                             </div>
 
-                            <div className='col-md-4 col-sm-6'>
+                            <div className='col-md-4 '>
 
                                 <div className='system-item'>
                                     <Link to={"/System/Accounating/index"}>
                                         <div class="system-card">
-                                            <div class="card__content d-flex justify-content-center align-items-center  flex-column gap-2 " >
+                                            <div class="card__content d-flex justify-content-center align-items-center  flex-column  " >
                                                 <Image
                                                     src={process.env.PUBLIC_URL + "/icons/asideIcons/Acouuntaing.png"}
 
@@ -270,12 +286,12 @@ const AsideBar = () => {
                                 </div>
 
                             </div>
-                            <div className='col-md-4 col-sm-6'>
+                            <div className='col-md-4 '>
 
                                 <div className='system-item'>
                                     <Link>
                                         <div class="system-card">
-                                            <div class="card__content d-flex justify-content-center align-items-center  flex-column gap-2 " >
+                                            <div class="card__content d-flex justify-content-center align-items-center  flex-column  " >
                                                 <Image
                                                     src={process.env.PUBLIC_URL + "/icons/asideIcons/Conversation.png"}
 
@@ -291,12 +307,12 @@ const AsideBar = () => {
 
                             </div>
 
-                            <div className='col-md-4 col-sm-6'>
+                            <div className='col-md-4 '>
 
                                 <div className='system-item'>
                                     <Link>
                                         <div class="system-card">
-                                            <div class="card__content d-flex justify-content-center align-items-center  flex-column gap-2 " >
+                                            <div class="card__content d-flex justify-content-center align-items-center  flex-column  " >
                                                 <Image
                                                     src={process.env.PUBLIC_URL + "/icons/asideIcons/settings.png"}
                                                     alt="icon" className='aside-icon mt-3'
@@ -311,12 +327,12 @@ const AsideBar = () => {
 
                             </div>
 
-                            <div className='col-md-4 col-sm-6'>
+                            <div className='col-md-4 '>
 
                                 <div className='system-item'>
                                     <Link>
                                         <div class="system-card">
-                                            <div class="card__content d-flex justify-content-center align-items-center  flex-column gap-2 " >
+                                            <div class="card__content d-flex justify-content-center align-items-center  flex-column  " >
                                                 <Image
 
                                                     src={process.env.PUBLIC_URL + "/icons/asideIcons/exit.png"}

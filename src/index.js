@@ -20,6 +20,8 @@ import 'primereact/resources/primereact.css';
 import CheckAccountType from './Context/AddAccountaing';
 import { AddHr } from './Context/AddHr';
 import { AddReport } from './Context/AddReport';
+import SidebarContext from './Context/SideBarProvider';
+
 
 
 
@@ -34,7 +36,9 @@ root.render(
           <AddHr>
             <CheckAddUpdateUserVisability>
               <StepContext>
-                <App />
+                <SidebarContext>
+                  <App />
+                </SidebarContext>
                 <ToastContainer />
               </StepContext>
             </CheckAddUpdateUserVisability >

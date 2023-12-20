@@ -130,7 +130,7 @@ const AddReviewReport = () => {
                         <fieldset className=' fieldBorder mb-4 p-3'>
                             <legend className='text-center'> تفاصيل التقرير  </legend>
                             <div className='row'>
-                                <div className='col-md-6 mb-3'>
+                                <div className='col-md-4 mb-3'>
                                     <Form.Group>
                                         <Form.Label>
                                             اسم المستفيد
@@ -140,7 +140,7 @@ const AddReviewReport = () => {
 
                                     </Form.Group>
                                 </div>
-                                <div className='col-md-6 mb-3'>
+                                <div className='col-md-4 mb-3'>
                                     <Form.Group>
                                         <Form.Label>
                                             اسم التقرير
@@ -152,7 +152,7 @@ const AddReviewReport = () => {
 
 
                                 </div>
-                                <div className='col-md-6 mb-3'>
+                                <div className='col-md-4 mb-3'>
                                     <Form.Group>
                                         <Form.Label>
                                             رقم الرخصة
@@ -164,7 +164,7 @@ const AddReviewReport = () => {
 
 
                                 </div>
-                                <div className='col-md-6 mb-3'>
+                                <div className='col-md-4 mb-3'>
                                     <Form.Group>
                                         <Form.Label>
                                             تاريخ التقرير
@@ -184,7 +184,7 @@ const AddReviewReport = () => {
 
 
                                 </div>
-                                <div className='col-md-6 mb-3'>
+                                <div className='col-md-4 mb-3'>
                                     <Form.Group>
                                         <Form.Label>
                                             الوصف
@@ -194,7 +194,7 @@ const AddReviewReport = () => {
 
                                     </Form.Group>
                                 </div>
-                                <div className='col-md-6 mb-3'>
+                                <div className='col-md-4 mb-3'>
                                     <Form.Group>
                                         <Form.Label>
                                             نوع البناء
@@ -204,7 +204,7 @@ const AddReviewReport = () => {
 
                                     </Form.Group>
                                 </div>
-                                <div className='col-md-6 mb-3'>
+                                <div className='col-md-4 mb-3'>
                                     <Form.Group>
                                         <Form.Label>
                                             الاستشاري المشرف
@@ -214,7 +214,7 @@ const AddReviewReport = () => {
 
                                     </Form.Group>
                                 </div>
-                                <div className='col-md-6 mb-3'>
+                                <div className='col-md-4 mb-3'>
                                     <Form.Group>
                                         <Form.Label>
                                             عدد الادوار
@@ -224,7 +224,7 @@ const AddReviewReport = () => {
 
                                     </Form.Group>
                                 </div>
-                                <div className='col-md-6 mb-3'>
+                                <div className='col-md-4 mb-3'>
                                     <Form.Group>
                                         <Form.Label>
                                             مقاول البناء
@@ -235,7 +235,7 @@ const AddReviewReport = () => {
                                     </Form.Group>
                                 </div>
 
-                                <div className='col-md-6 mb-3'>
+                                <div className='col-md-4 mb-3'>
                                     <Form.Group>
                                         <Form.Label>
                                             مكتب المصمم
