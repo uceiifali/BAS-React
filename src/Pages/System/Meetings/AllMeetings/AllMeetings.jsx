@@ -15,9 +15,11 @@ import EditDeleteMeeting from '../../../../Components/System/Meetings/EditDelete
 import startOfWeek from 'date-fns/startOfWeek'
 import getDay from 'date-fns/getDay'
 import "react-big-calendar/lib/addons/dragAndDrop/styles.css";
+
 import withDragAndDrop from "react-big-calendar/lib/addons/dragAndDrop";
 
 const AllMeetings = () => {
+    require('globalize/lib/cultures/globalize.culture.ar-AE')
     const { showAddUserModel, setShowAddUserModel } = useContext(showAddUpdateUser)
     const [showEditDeleteModal, setShowEditDeleteModal] = useState(false)
     const [AllEvents, setAllEvents] = useState(null)
@@ -26,8 +28,23 @@ const AllMeetings = () => {
     const [selectedEventId, setSelectedEventId] = useState(null)
     const localizer = momentLocalizer(moment)
     const DnDCalendar = withDragAndDrop(Calendar);
+    const lang = {
+        'ar-AE': {
+            week: 'أسبوع',
+            work_week: 'أسبوع العمل',
+            day: 'يوم',
+            month: 'شهر',
+            previous: 'سابق',
+            next: 'التالي',
+            today: 'اليوم',
+            agenda: 'جدول أعمال',
+            showMore: (total) => `+${total} إضافي`,
+        },
 
-   
+
+
+
+    }
 
     // get all events
     const getAllEvents = () => {
@@ -102,12 +119,15 @@ const AllMeetings = () => {
                     resizable
                     style={{ height: "100%" }}
                     messages={{
-                        next: "التالي",
-                        previous: "السابق",
-                        today: "اليوم",
-                        month: "الشهر",
-                        week: "الاسبوع",
-                        day: "اليوم"
+                        week: 'أسبوع',
+                        work_week: 'أسبوع العمل',
+                        day: 'يوم',
+                        month: 'شهر',
+                        previous: 'سابق',
+                        next: 'التالي',
+                        today: 'اليوم',
+                        agenda: 'جدول أعمال',
+
                     }}
 
                 />

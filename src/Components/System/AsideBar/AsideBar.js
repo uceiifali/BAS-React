@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import ProgressBar from 'react-bootstrap/ProgressBar';
 import { Sidebar, Menu, MenuItem, SubMenu } from 'react-pro-sidebar';
 import "./AsideBar.css"
@@ -10,21 +10,44 @@ import { SideBarProvider } from '../../../Context/SideBarProvider';
 
 const AsideBar = () => {
     const [rtl, setRtl] = useState(true)
-    const {collapsed, setCollapsed} = useContext(SideBarProvider);
+    // setting the width of the screen
+    const [width, setWidth] = useState(window.innerWidth)
+    const { collapsed, setCollapsed } = useContext(SideBarProvider);
+
+    function getSize() {
+        setWidth(window.innerWidth)
+    }
+
+    useEffect(() => {
+        // if user start to resize the screen call getsize function
+        window.addEventListener('resize', getSize)
+        // if you use screens from tablet collapse the sidebar
+        if (width < 1024 ) {
+            setCollapsed(true)
+            console.log("closed due to small width")
+        } else {
+            setCollapsed(false)
+            console.log("opend due to small width")
+
+        }
+        console.log(window.innerWidth)
+        // clear the use Effect
+        return () => {
+            window.removeEventListener('resize', getSize)
+        }
+    }, [window.innerWidth])
 
     return (
         <div className={` asidePar d-flex align-items-center  w-100   `} style={{ direction: rtl ? 'rtl' : 'ltr' }}>
 
             <Sidebar
-                breakPoint="lg"
+
                 transitionDuration={800}
                 collapsedWidth="100px !important"
                 rootStyles={{
                     color: "#FFF",
                     height: '897px',
                     border: "2px solid #EFAA20 !important"
-
-
                 }}
 
                 collapsed={collapsed} rtl={rtl} backgroundColor='#1E1E2D' className='  w-100' color='#FFF'>
@@ -41,13 +64,9 @@ const AsideBar = () => {
                     />
 
                 </div>
-                <Menu 
-                transitionDuration={200}
-                className='w-100'>
-
-
-
-
+                <Menu
+                    transitionDuration={200}
+                    className='w-100'>
 
                     <MenuItem className='mt-4  center w-100'>
 

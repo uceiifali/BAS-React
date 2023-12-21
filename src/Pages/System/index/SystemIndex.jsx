@@ -14,18 +14,24 @@ const SystemIndex = () => {
 
     return (
 
-        <section className='full-system over-flow-hidden  system-bg position-relative'>
-            <div className='   w-90 mx-auto d-flex  justify-end mt-1 '>
+        <section className='full-system over-flow-hidden  system-bg '>
+            <div className='   w-90 mx-auto d-flex gap-2  tablet:relative justify-end mt-1 '>
 
                 <Image src={process.env.PUBLIC_URL + "/icons/systemlogo.png"} alt='BSA logo' className='system-logo text-white' />
             </div>
-            <div className='d-flex w-90 mx-auto'>
-                <div className={` desktop:w[8%] ${collapsed && 'desktop:w[3%]'} align-items-center mobile:z-10`}>
+            <div className={`d-flex gap-2 mx-auto  w-90  ${collapsed&& " justify-between"}`}>
+                <div className={`   ${collapsed ? 'desktop:w-[100px] laptop:w-[100px]  tablet:w-[95px] tablet:absolute tablet:z-50 start-0 desktop:top-[9%]  laptop:top-[9%] tablet:[top-9%]  ' :
+                    ' desktop:static  laptop:static desktop:w-[380px]  laptop:w-[380px]  tablet:w-[350px]   mobile:w-[350px]   tablet:absolute tablet:z-50 start-0   tablet:[top-9%]         '}
+                align-items-center `}>
                     <AsideBar />
                 </div>
-                <div className={`  mobile:w-full desktop:w[90%] tablet:[w-full] ${collapsed && 'desktop:w[96%]'}   d-flex gap-2  mx-auto  h-100  align-items-center `}>
+                <div className={`   ${collapsed ? 'desktop:w-[80%]       '
+                    :
+                    'desktop:w-[89.5%] laptop:w-[89.5%]   tablet:w-[w-93%]        '} 
+                
+                d-flex gap-2  mx-auto  h-100  align-items-center `}>
 
-                    <div className={`w-full   system-container   `}>
+                    <div className={`w-full    system-container   `}>
                         <Outlet />
                     </div>
 
@@ -36,7 +42,7 @@ const SystemIndex = () => {
                 </div>
             </div>
 
-        </section>
+        </section >
 
 
     )

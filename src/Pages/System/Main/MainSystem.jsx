@@ -72,7 +72,7 @@ export const MainSystem = () => {
 
 
     return (
-        <section>
+        <section className="w-100">
 
 
 
@@ -82,7 +82,7 @@ export const MainSystem = () => {
 
             </div>} />
 
-            <div className={`${style.MainSystem}    `}>
+            <div className={`${style.MainSystem}  d-flex justify-center w-100  `}>
 
                 <div className={`${style.mainBackground} `}></div>
                 <Container className='position-absolute z-3'>
@@ -228,7 +228,7 @@ export const MainSystem = () => {
 
                                 </NavDropdown>
                                 <div className='my-2 choosMainDeprtment'>
-                                    <DataTableComponent columns={columns} data={tableData} className={"overflow-y-auto"} />
+                                    <DataTableComponent columns={columns} data={tableData} className={"overflow-y-auto overflow-x-hidden"} />
                                 </div>
 
                             </div>
