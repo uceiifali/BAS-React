@@ -92,6 +92,9 @@
     fill: #fff !important;
 }
 
+.Main-cleander{
+    height: 200px !important;
+}
 .Main-cleander .react-calendar {
     background: #262639 !important;
     border-radius: 11.105px;

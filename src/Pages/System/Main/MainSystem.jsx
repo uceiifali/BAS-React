@@ -92,11 +92,11 @@ export const MainSystem = () => {
                                 <div className='row'>
                                     <div className='col-md-6 mb-3'>
                                         <div className={`   ${style.systemCard}`}>
-                                            <div className='d-flex justify-content-between w-90 h-100 align-items-center mx-2'>
-                                                <div>                <p className='text-white text-bold text-xl'>الطلبات</p></div>
+                                            <div className='d-flex justify-content-between    laptop:flex-row  tablet:flex-col mobile:flex-col w-90 h-100 align-items-center mx-2'>
+                                                <div>                <p className='text-white text-bold laptop:text-xl  tablet:text-center tablet:text-sm mobile:text-sm'>الطلبات</p></div>
                                                 <div className='d-flex flex-column'>
                                                     <Image src={`${process.env.PUBLIC_URL + "/Main/orders.png"}`} alt='orders' />
-                                                    <p className='text-white text-xl'>100</p>
+                                                    <p className='text-white laptop:text-xl  tablet:text-center text-xl tablet:text-sm mobile:text-sm'>100</p>
                                                 </div>
                                             </div>
 
@@ -107,13 +107,13 @@ export const MainSystem = () => {
                                     <div className='col-md-6 mb-3'>
 
                                         <div className={` ${style.systemCard}`}>
-                                            <div className='d-flex justify-content-between w-90 h-100 align-items-center mx-2'>
-                                                <div>                <p className='text-white text-bold text-xl'>العملاء</p></div>
+                                            <div className='d-flex justify-content-between  laptop:flex-row  tablet:flex-col mobile:flex-col w-90 h-100 align-items-center mx-2'>
+                                                <div>                <p className='text-white text-bold laptop:text-xl  tablet:text-center text-xl tablet:text-sm mobile:text-sm'>العملاء</p></div>
                                                 <div className='d-flex flex-column'>
                                                     <Image src={`${process.env.PUBLIC_URL + "/Main/clients.png"}`} alt='clients' />
 
 
-                                                    <p className='text-white text-xl'>100</p>
+                                                    <p className='text-white laptop:text-xl  tablet:text-center text-xl tablet:text-sm mobile:text-sm'>100</p>
                                                 </div>
                                             </div>
 
@@ -124,12 +124,12 @@ export const MainSystem = () => {
                                     <div className='col-md-6 mb-3'>
 
                                         <div className={` ${style.systemCard}`}>
-                                            <div className='d-flex justify-content-between w-90 h-100 align-items-center mx-2'>
-                                                <div>                <p className='text-white text-bold text-xl'>المشاريع</p></div>
+                                            <div className='d-flex justify-content-between  laptop:flex-row  tablet:flex-col mobile:flex-col w-90 h-100 align-items-center mx-2'>
+                                                <div>                <p className='text-white text-bold laptop:text-xl  tablet:text-center text-xl tablet:text-sm mobile:text-sm'>المشاريع</p></div>
                                                 <div className='d-flex flex-column'>
                                                     <Image src={`${process.env.PUBLIC_URL + "/Main/projects.png"}`} alt='projects' />
 
-                                                    <p className='text-white text-xl'>100</p>
+                                                    <p className='text-white laptop:text-xl  tablet:text-center text-xl tablet:text-sm mobile:text-sm'>100</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -140,13 +140,13 @@ export const MainSystem = () => {
                                     <div className='col-md-6 mb-3'>
 
                                         <div className={` ${style.systemCard}`}>
-                                            <div className='d-flex justify-content-between w-90 h-100 align-items-center mx-2'>
-                                                <div>                <p className='text-white text-bold text-xl'>المهام </p></div>
-                                                <div className='d-flex flex-column'>
+                                            <div className='d-flex justify-content-between  laptop:flex-row  tablet:flex-col mobile:flex-col w-90 h-100 align-items-center mx-2'>
+                                                <div>                <p className='text-white text-bold laptop:text-xl  tablet:text-center text-xl tablet:text-sm mobile:text-sm'>المهام </p></div>
+                                                <div className='d-flex justify-center align-items-center flex-column'>
                                                     <Image src={`${process.env.PUBLIC_URL + "/Main/tasks.png"}`} alt='tasks' />
 
 
-                                                    <p className='text-white text-xl'>100</p>
+                                                    <p className='text-white laptop:text-xl  tablet:text-center text-xl tablet:text-sm mobile:text-sm'>100</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -190,7 +190,7 @@ export const MainSystem = () => {
 
                     </div>
                     <div className='row mx-auto'>
-                        <div className='col-md-8 col-sm-12 '>
+                        <div className='col-lg-8 col-md-12 mb-2 mx-auto'>
                             <div className={`${style.chooseDeprtmentContainer} text-white  chooseDeprtment`} >
 
 
@@ -233,7 +233,7 @@ export const MainSystem = () => {
 
                             </div>
                         </div>
-                        <div className='col-md-4 col-sm-12 '>
+                        <div className='col-lg-4 col-md-12  mb-3 mx-auto   '>
 
                             <div className={`    Main-cleander `}>
                                 <Calendar value={cleanderValue} />

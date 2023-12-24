@@ -21,13 +21,13 @@ const SystemIndex = () => {
             </div>
             <div className={`d-flex gap-2 mx-auto  w-90  ${collapsed&& " justify-between"}`}>
                 <div className={`   ${collapsed ? 'desktop:w-[100px] laptop:w-[100px]  tablet:w-[95px] tablet:absolute tablet:z-50 start-0 desktop:top-[9%]  laptop:top-[9%] tablet:[top-9%]  ' :
-                    ' desktop:static  laptop:static desktop:w-[380px]  laptop:w-[380px]  tablet:w-[350px]   mobile:w-[350px]   tablet:absolute tablet:z-50 start-0   tablet:[top-9%]         '}
+                    'desktop:static  laptop:static desktop:w-[380px]  laptop:w-[380px]  tablet:w-[350px]   mobile:w-[350px]   tablet:absolute tablet:z-50 start-0   tablet:[top-9%]         '}
                 align-items-center `}>
                     <AsideBar />
                 </div>
-                <div className={`   ${collapsed ? 'desktop:w-[80%]       '
+                <div className={`   ${collapsed ? 'desktop:w-[80%]  tablet:w-[80%]   mobile:w-[80%]     '
                     :
-                    'desktop:w-[89.5%] laptop:w-[89.5%]   tablet:w-[w-93%]        '} 
+                    'desktop:w-[89.5%] laptop:w-[89.5%]   tablet:w-[80%]        '} 
                 
                 d-flex gap-2  mx-auto  h-100  align-items-center `}>
 

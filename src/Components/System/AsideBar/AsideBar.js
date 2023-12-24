@@ -22,7 +22,7 @@ const AsideBar = () => {
         // if user start to resize the screen call getsize function
         window.addEventListener('resize', getSize)
         // if you use screens from tablet collapse the sidebar
-        if (width < 1024 ) {
+        if (width < 1025 ) {
             setCollapsed(true)
             console.log("closed due to small width")
         } else {
