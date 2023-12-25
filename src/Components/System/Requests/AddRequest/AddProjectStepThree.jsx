@@ -188,19 +188,7 @@ const AddProjectStepThree = (props) => {
 
 
                 صورة الصك
-                {(imageUrl || InstrumentAttachments) && (
-                  <Image
-
-                    width={100}
-                    height={100}
-                    src={
-                      InstrumentAttachments
-                        ? URL.createObjectURL(InstrumentAttachments)
-                        : imageUrl
-                    }
-                    alt="image"
-                  />
-                )}
+             
               </Form.Label>
               <Form.Control
                 type="file"
@@ -277,6 +265,8 @@ const AddProjectStepThree = (props) => {
               </Form.Label>
               <Form.Control
                 type="file"
+
+                multiple="multiple"
                 placeholder=" تحمبل المستندات"
                 name="imageFile"
                 height="100px"
@@ -291,6 +281,7 @@ const AddProjectStepThree = (props) => {
             </Form.Label>
             <Form.Control
               as="textarea"
+              multiple="multiple"
               placeholder="ادخل ملاحظاتك ..."
               style={{ height: '150px' }}
               onChange={(e) => setNotes(e.target.value)}

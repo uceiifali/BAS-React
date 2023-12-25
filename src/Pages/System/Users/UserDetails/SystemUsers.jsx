@@ -6,7 +6,6 @@ import Select from '../../../../Components/FormHandler/Select'
 import Input from "../../../../Components/FormHandler/Input"
 import { Button, Modal, NavDropdown } from 'react-bootstrap'
 import Genralnformation from '../../../../Components/System/Users/Genralnformation/Genralnformation'
-import ProfessinollInformation from '../../../../Components/System/Users/ProfessinollInformation/ProfessinollInformation'
 import { AccountaingInformation } from '../../../../Components/System/Users/AccountaingInformation/AccountaingInformation'
 
 import { showAddUpdateUser } from '../../../../Context/CheckAddUpdateUserVisability'
@@ -16,13 +15,16 @@ import { Link } from 'react-router-dom'
 import SystemControler from '../../../../Components/System/SystemControler/SystemControler'
 import AllUserCategories from '../../../../Components/System/Users/AllUserCategories/AllUserCategories'
 import SearchUsers from '../../../../Components/System/Users/SearchUsers/SearchUsers'
+import ProfessinollInformation from '../../../../Components/System/Users/ProfessinollInformation/ProfessinollInformation'
+import { AddHrType } from '../../../../Context/AddHr'
+
 
 
 
 
 
 const SystemUsers = () => {
-
+ 
     const [employeeDetails, setEmployeeDetails] = useState("عن الموظف")
     const [addUpdateUser, setAddUpdateUser] = useState(false)
     const { showAddUserModel, showUpdateUserModel, setShowAddUserModel, setShowUpdateUserModel } = useContext(showAddUpdateUser)
@@ -200,10 +202,10 @@ const SystemUsers = () => {
                                         >
 
                                             <Modal.Body >
-                                                <div className='d-flex justify-content-center w-100'>            <img 
-                                            src={`${process.env.PUBLIC_URL + "/correct.gif"}`}
-                                                
-                                              width={120} height={120} className='my-3' color='#E1B67C' /></div>
+                                                <div className='d-flex justify-content-center w-100'>            <img
+                                                    src={`${process.env.PUBLIC_URL + "/correct.gif"}`}
+
+                                                    width={120} height={120} className='my-3' color='#E1B67C' /></div>
 
 
                                                 <div className='d-flex w-75 flex-column mx-auto mt-3 justify-content-center align-items-center '>
@@ -243,7 +245,7 @@ const SystemUsers = () => {
                                             }} alt='edit icon' className='action-buttons  ' />
                                         <img
                                             src={`${process.env.PUBLIC_URL + "/icons/more.png"}`} alt='user img ' className='action-buttons  ' />
-    
+
                                     </div>
 
 
@@ -252,12 +254,12 @@ const SystemUsers = () => {
 
                             <div className='main-text choose-inf position-relative d-flex justify-content-between mx-5 my-3'>
                                 <p className={`genral-inf ${employeeDetails === "عن الموظف" && "inf-type"}`} onClick={() => { setEmployeeDetails("عن الموظف") }} > عن الموظف</p>
-                                <p className={`genral-inf ${employeeDetails === "مرفقات" && "inf-type"}`} onClick={() => { setEmployeeDetails("مرفقات") }}>مرفقات</p>
+                                <p className={`genral-inf ${employeeDetails === "معلومات مهنية" && "inf-type"}`} onClick={() => { setEmployeeDetails("معلومات مهنية") }}>معلومات مهنية</p>
                                 <p className={`genral-inf ${employeeDetails === "معلومات الراتب" && "inf-type"}`} onClick={() => { setEmployeeDetails("معلومات الراتب") }}>معلومات الراتب </p>
 
 
                             </div>
-                            {employeeDetails === "عن الموظف" ? <Genralnformation /> : employeeDetails === "مرفقات" ? <ProfessinollInformation /> : <AccountaingInformation />}
+                            {employeeDetails === "عن الموظف" ? <Genralnformation /> : employeeDetails === "معلومات مهنية" ? <ProfessinollInformation /> : <AccountaingInformation />}
                         </div>
 
 

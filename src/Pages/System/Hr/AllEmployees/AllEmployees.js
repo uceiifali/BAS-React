@@ -11,7 +11,7 @@ const AllEmployees = () => {
 
 
     useEffect(() => {
-
+        setOpenHr(false)
         setHrType("Employees")
 
     }, [openHr, HrType])
@@ -28,7 +28,7 @@ const AllEmployees = () => {
                 <CountryChart />
             }
 
-           
+
         </div>
     )
 }

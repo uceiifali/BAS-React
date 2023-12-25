@@ -1,0 +1,26 @@
+.apexcharts-legend-marker {
+    border-radius: 3.154px !important;
+    width: 17.349px !important;
+    height: 17.349px !important;
+}
+
+.apexcharts-legend-text {
+    color: #FFF !important;
+    margin-right: 20px !important;
+    font-family: Cairo !important;
+    font-size: 18.926px !important;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+
+.apexcharts-menu.apexcharts-menu-open {
+    color: white;
+    background: black;
+    border: unset !important;
+}
+ .apexcharts-menu-icon svg {
+    fill: #EFAA20 !important;
+  }
+  

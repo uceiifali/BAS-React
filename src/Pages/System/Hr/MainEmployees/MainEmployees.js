@@ -15,7 +15,7 @@ const MainEmployees = () => {
         setOpenHr(false)
         setHrType("Employees")
         console.log(HrType)
-    },[])
+    }, [])
 
 
     return (

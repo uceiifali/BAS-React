@@ -14,8 +14,8 @@ export const validationRules = {
       invalid: 'Invalid first name.'
     },
   },
-  text: {
-    pattern: new RegExp(/[a-zA-Z\u0621-\u064Aء-ئ][^#&<>\"~;$^%{}?]{3,20}$/), //Alphanumeric string 
+  text: {   
+    pattern: new RegExp(/^([A-Za-z ]+|[\u0600-\u06FF ]+){5,200}$/), //Alphanumeric string 
     required: false,
     message: {
       empty: 'This filed is required .',
@@ -53,11 +53,12 @@ export const validationRules = {
     }
 
   },
-  ChartNumber: {
-    pattern: new RegExp(/[\u0600-\u06FF\s]+/g),
+  chartNumber: {
+    pattern: new RegExp(/^\d{4,}$/),
     required: false,
     message: {
-      invalid: 'رقم المخحطط يحتوي علي ارقام وحروف'
+      empty: 'الحد الادني لرقم المخطط 4 ارقام',
+      invalid: '  برجاء ادخال رقم مخطط صحيح'
     }
   },
   password_optional: {
@@ -76,7 +77,7 @@ export const validationRules = {
     }
   },
   email: {
-    pattern: new RegExp(/^[-!#-'*+/-9=?^-~]+(?:\.[-!#-'*+/-9=?^-~]+)*@[-!#-'*+/-9=?^-~]+(?:\.[-!#-'*+/-9=?^-~]{2,20})+$/i),
+    pattern: new RegExp(/^\w+([-+.']\w+)*@[A-Za-z\d]+\.com$/i),
     // required: true,
     message: {
       empty: 'Email field required',
@@ -91,7 +92,15 @@ export const validationRules = {
       invalid: 'Invalid phone number'
     }
   },
-
+  // /^[\u0600-\u06FF0-9]+$/ 
+  pieceNumber: {
+    pattern: /^[\u0600-\u06FF0-9]+$/,
+    required: false,
+    message: {
+      empty: 'piece Number is required',
+      invalid: 'Invalid piece number'
+    }
+  },
   phone: {
     pattern: /^\d{4,14}$/,
     required: false,
@@ -137,7 +146,7 @@ export const validationRules = {
     }
   },
   positiveNumber: {
-    pattern:/^1*[1-9][0-9]*$/,
+    pattern: /^1*[1-9][0-9]*$/,
     message: {
 
       invalid: 'Value is invalid'

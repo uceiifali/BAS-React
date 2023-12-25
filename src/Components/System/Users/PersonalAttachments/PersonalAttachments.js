@@ -1,16 +1,13 @@
 import React from 'react'
-import "./index.css"
-import MonthlyApexChart from './MonthlyApexChart'
+import MonthlyApexChart from '../ProfessinollInformation/MonthlyApexChart.js'
 import { ProgressBar } from 'react-bootstrap'
 import DatePicker from 'react-datepicker'
-
 import { useState } from 'react'
-
 import DataTableComponent from '../../../DataTableComponent.jsx'
-
 import Pdf from '../../../Pdf.jsx'
 
-const ProfessinollInformation = () => {
+
+const PersonalAttachments = () => {
   const [Montlyhwork, setMontlyhwork] = useState(null);
   const [projectType, setProjectType] = useState("مشاريع منتهية");
 
@@ -18,7 +15,7 @@ const ProfessinollInformation = () => {
 
 
   return (
-    <div className='ProfessinollInformation'>
+    <div className='ProfessinollInformation '>
       <Pdf PdfFile={process.env.PUBLIC_URL + "/example.pdf"} width={800} height={800} openPdf={openPdf} setOpenPdf={setOpenPdf} />
 
 
@@ -51,4 +48,4 @@ const ProfessinollInformation = () => {
   )
 }
 
-export default ProfessinollInformation
+export default PersonalAttachments

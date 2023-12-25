@@ -6,6 +6,8 @@ import { useParams } from 'react-router-dom';
 import "./NestedReportMangment.css"
 import { AddReportType } from '../../../../../Context/AddReport';
 
+import ShowReviewReport from '../../../../../Components/System/Projects/ShowReviewReport/ShowReviewReport';
+
 const NestedReportMangment = () => {
     const { openReport, setOpenReport, reportType, setReportType } = useContext(AddReportType)
 
@@ -61,42 +63,49 @@ const NestedReportMangment = () => {
         },
     ];
     const { projectType } = useParams()
-
+    console.log(showReport)
 
     useEffect(() => {
         setReportType(projectType)
 
     }, [projectType])
     return (
-        <div className='ReportManagement NestedReportMangment'>
-            <div className='AllRequestsPieChartContainer d-flex justify-center align-items-center w-100 '>
-                <PieChart
-                    colors={["#EFAA20", "#E40038"]}
-                    width={500}
-                    labels={[" التصميم 50 ", "الاشراف على التنفيذ 50 ",]} series={[7, 3]}
-                />
+        <>
+            {
+                showReport && projectType==="ReviewReports" ? <ShowReviewReport /> :
+                    <div className='ReportManagement NestedReportMangment'>
+                        <div className='AllRequestsPieChartContainer d-flex justify-center align-items-center w-100 '>
+                            <PieChart
+                                colors={["#EFAA20", "#E40038"]}
+                                width={500}
+                                labels={[" التصميم 50 ", "الاشراف على التنفيذ 50 ",]} series={[7, 3]}
+                            />
 
-            </div>
-            <fieldset className='TableContainer   px-2 mx-auto mt-3'>
-                {
-                    projectType === 'Design' ?
-                        <legend className='text-center ' > كل التقارير
-                            (تصميم)
-                        </legend> :
-                        <legend className='text-center '>كل التقارير (اشراف علي التنفيذ)</legend>
-                }
-
-
-
-
-
-                <div className='mt-3   '>
-                    <DataTableComponent className={"overflow-x-hidden overflow-y-auto datatableComponent"} columns={columns} data={reportsData} />
-                </div>
-            </fieldset>
+                        </div>
+                        <fieldset className='TableContainer   px-2 mx-auto mt-3'>
+                            {
+                                projectType === 'Design' ?
+                                    <legend className='text-center ' > كل التقارير
+                                        (تصميم)
+                                    </legend> :
+                                    <legend className='text-center '>كل التقارير (اشراف علي التنفيذ)</legend>
+                            }
 
 
-        </div>
+
+
+
+                            <div className='mt-3   '>
+                                <DataTableComponent className={"overflow-x-hidden overflow-y-auto datatableComponent"} columns={columns} data={reportsData} />
+                            </div>
+                        </fieldset>
+
+
+                    </div>
+            }
+
+
+        </>
     )
 }
 

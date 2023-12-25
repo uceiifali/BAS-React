@@ -77,7 +77,7 @@ const EmployeesServices = () => {
 
     return (
         <div className='EmployeesServices'>
-            {/* <Pdf PdfFile={process.env.PUBLIC_URL + "/example.pdf"} width={800} height={800} openPdf={openPdf} setOpenPdf={setOpenPdf} /> */}
+            <Pdf PdfFile={process.env.PUBLIC_URL + "/example.pdf"} width={800} height={800} openPdf={openPdf} setOpenPdf={setOpenPdf} />
 
 
             <ShowServicesComponent showServices={showServices} setShowServices={setShowServices} />

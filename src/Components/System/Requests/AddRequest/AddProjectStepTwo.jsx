@@ -4,7 +4,7 @@ import Select from '../../../FormHandler/Select'
 import { UseCheckBox, UseInput, UseMultiSelect, UseSelect } from '../../../../hooks';
 import { Form, Image, InputGroup } from 'react-bootstrap';
 import { multiStepContext } from '../../../../Context/StepContext';
-import { PhoneInput } from 'react-international-phone';
+import { PhoneInput, parseCountry ,defaultCountries} from 'react-international-phone';
 import { PhoneNumberUtil } from 'google-libphonenumber';
 const AddProjectStepTwo = (props) => {
 
@@ -64,8 +64,8 @@ const AddProjectStepTwo = (props) => {
   ]
   const identityTypeRoles = [
     {
-      label: "سجل تجاري",
-      value: "سجل تجاري",
+      label: "تجاري",
+      value: "تجاري",
 
     }, {
       label: "هوية",
@@ -73,7 +73,10 @@ const AddProjectStepTwo = (props) => {
     }
   ]
 
-
+  const countries = defaultCountries.filter((country) => {
+    const { iso2 } = parseCountry(country);
+    return ['sa', 'eg'].includes(iso2);
+  });
 
 
 
@@ -184,6 +187,8 @@ const AddProjectStepTwo = (props) => {
               value={phone}
               className='w-100 h-100'
               onChange={(phone) => setPhone(phone)}
+              countries={countries}
+         
             />
 
           </Form.Group>
@@ -207,25 +212,12 @@ const AddProjectStepTwo = (props) => {
           <Form.Group controlId="formBasicImage">
             <Form.Label className="d-flex flex-column gap-2 ">
               <span>        صورة الهويه</span>
-              {(imageUrl || instrumentImage) && (
-                <Image
-
-                  width={100}
-                  height={60}
-                  src={
-                    instrumentImage
-                      ? URL.createObjectURL(instrumentImage)
-                      : imageUrl
-
-                  }
-                  alt="image"
-                />
-              )}
+             
             </Form.Label>
 
             <Form.Control
               type="file"
-
+              multiple="multiple"
               width={100}
               height={100}
               className='choose-file-input'

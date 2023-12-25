@@ -25,8 +25,8 @@ export const AddProjectStepOne = (props) => {
         } : ""
         , "", true);
     const Area = UseInput(`${userData?.Area ? userData.Area : ""}`, "text", true);
-    const pieceNumber = UseInput(`${userData?.pieceNumber ? userData.pieceNumber : ""}`, "number", true);
-    const ChartNumber = UseInput(`${userData?.ChartNumber ? userData.ChartNumber : ""}`, "ChartNumber", true);
+    const pieceNumber = UseInput(`${userData?.pieceNumber ? userData.pieceNumber : ""}`, "pieceNumber", true);
+    const ChartNumber = UseInput(`${userData?.ChartNumber ? userData.ChartNumber : ""}`, "chartNumber", true);
     const [projectType, setProjectType] = useState(userData.projectType ? userData.projectType : "")
     const projectTypeOptions = [
         {

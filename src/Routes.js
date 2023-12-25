@@ -182,7 +182,6 @@ const router = createBrowserRouter([
             {
                 path: "", element: <HrIndex />, children: [
                     { path: "/System/Hr/index", element: <MainEmployees /> },
-
                     { path: "/System/Hr/EmployeesManagment", element: <EmployeesManagment /> },
                     { path: "/System/Hr/Employees/:CountryName", element: <AllEmployees /> },
                     { path: "/System/Hr/HolidayMangment", element: <HolidayMangment /> },

@@ -1,9 +1,12 @@
 
 import "./index.css"
 import DataTableComponent from '../../../DataTableComponent';
-import { useState } from "react";
+import { useContext, useState } from "react";
 import ShowHolidayComponent from "../../Hr/ShowHolidayComponent/ShowHolidayComponent";
+import { AddHrType } from "../../../../Context/AddHr";
+import PersonalAttachments from "../PersonalAttachments/PersonalAttachments";
 const Genralnformation = () => {
+  const { openHr, HrType } = useContext(AddHrType)
   const [ShowHoliday, setShowHoliday] = useState(false)
   const data = Array.from({ length: 2 }).map((_, index) => {
     return {
@@ -24,6 +27,7 @@ const Genralnformation = () => {
 
     }
   });
+  console.log(openHr)
 
   const columns = [
     {
@@ -55,6 +59,8 @@ const Genralnformation = () => {
 
 
   ];
+
+
   return (
     <div className='genralnformation overflow-y-auto p-5'>
       <ShowHolidayComponent setShowHoliday={setShowHoliday} ShowHoliday={ShowHoliday} />
@@ -91,8 +97,13 @@ const Genralnformation = () => {
           </p>
           <DataTableComponent className={"overflow-x-hidden w-100"} data={data} columns={columns} />
 
+
         </div>
 
+
+          <PersonalAttachments />
+        
+        
       </div>
     </div>
 
