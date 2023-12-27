@@ -25,7 +25,7 @@ const MainProjects = () => {
             ProjectName: 'BSA',
             ProjectNumber: '53543',
             ClientType: 'فردي',
-            createdAt: 'تاريخ الانشاء',
+            createdAt: '1-1-2024',
             ProjectType: " تصميم",
             display: <img src={process.env.PUBLIC_URL + "/icons/view.png"} onClick={() => {
                 setShowProject(true)
@@ -58,7 +58,7 @@ const MainProjects = () => {
         },
 
         {
-            name: '   نوع المشروع',
+            name: '    تاريخ الانشاء',
             selector: row => row.createdAt,
         },
 

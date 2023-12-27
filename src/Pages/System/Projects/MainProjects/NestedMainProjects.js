@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import styles from "./MainProjects.module.css"
 import "./MainProjects.css"
 import DesignRequestChart from '../../../../Components/System/Requests/DesignRequestChart/DesignRequestChart'
@@ -11,12 +11,13 @@ import { useParams } from 'react-router-dom'
 import { useEffect } from 'react'
 import ShowProjectComponent from '../../../../Components/System/Projects/ShowProjectComponent'
 import EditProject from '../../../../Components/System/Projects/EditProject/EditProject'
+import { AddReportType } from '../../../../Context/AddReport.js'
 const NestedMainProjects = () => {
     const [showProject, setShowProject] = useState(false)
     const [editProject, setEditProject] = useState(false)
     const [ConfirmUpdate, setConfirmUpdate] = useState(false)
 
-
+    const { reportType, setReportType } = useContext(AddReportType)
 
 
     // handle table data components
@@ -90,7 +91,11 @@ const NestedMainProjects = () => {
         getAllNestedData()
         setShowProject(false)
 
-    }, [])
+
+        setReportType('')
+
+
+    }, [reportType])
 
 
 

@@ -1,0 +1,50 @@
+.action-buttons {
+    width: 51px !important;
+    height: 25px !important;
+    border-radius: 3px !important;
+    cursor: pointer;
+}
+
+.showProjectComponent {
+    border-radius: 25px;
+    background: #1E1E2D;
+    border: 1px solid #EFAA20;
+    height: 793px;
+    overflow-y: auto;
+}
+
+
+
+
+
+.showProjectComponent::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    background-color: #F5F5F5;
+    border-top-left-radius: 22px;
+    border-bottom-left-radius: 22px;
+
+}
+
+
+.showProjectComponent::-webkit-scrollbar {
+    width: 12px;
+    border-top-left-radius: 22px;
+    border-bottom-left-radius: 22px;
+
+    background-color: #F5F5F5;
+
+}
+
+.showProjectComponent::-webkit-scrollbar-thumb {
+    background-color: #F90;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    background-image: -webkit-linear-gradient(45deg,
+            rgba(255, 255, 255, .2) 25%,
+            transparent 25%,
+            transparent 50%,
+            rgba(255, 255, 255, .2) 50%,
+            rgba(255, 255, 255, .2) 75%,
+            transparent 75%,
+            transparent)
+}

@@ -12,8 +12,9 @@ import AddProject from '../../../../Components/System/Projects/AddProject/AddPro
 import { useState } from 'react'
 import EditProject from '../../../../Components/System/Projects/EditProject/EditProject'
 import { AddReportType } from '../../../../Context/AddReport'
-import AddDesignReport from '../../../../Components/System/Projects/AddDesignReport/AddDesignReport'
 import AddReviewReport from '../../../../Components/System/Projects/AddReviewReport/AddReviewReport'
+import AddDesignReport from '../../../../Components/System/Projects/AddDesignReport/AddDesignReport'
+import { useEffect } from 'react'
 
 
 
@@ -23,6 +24,10 @@ const AllProjects = () => {
     const [editProject, setEditProject] = useState(false)
     const [ConfirmUpdate, setConfirmUpdate] = useState(false)
     const { reportType, setReportType } = useContext(AddReportType)
+
+    // useEffect(() => {
+    //     setReportType('')
+    // }, [reportType])
 
     return (
         <div>
@@ -200,9 +205,9 @@ const AllProjects = () => {
 
                                                         <Accordion.Header>
 
-                                                            <Link
-                                                                to={"/System/Projects/Main/ReportManagement"}
-                                                            >      ادارة التقارير      </Link>
+                                                            <div
+
+                                                            >      ادارة التقارير      </div>
 
                                                             <MdKeyboardArrowDown size={20} />
                                                         </Accordion.Header>

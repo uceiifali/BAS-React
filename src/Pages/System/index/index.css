@@ -68,7 +68,9 @@
 
 
 
-.AddProjectComponent::-webkit-scrollbar-track  ,.AllRequests::-webkit-scrollbar-track ,.datatableComponent::-webkit-scrollbar-track {
+.AddProjectComponent::-webkit-scrollbar-track,
+.AllRequests::-webkit-scrollbar-track,
+.datatableComponent::-webkit-scrollbar-track {
     -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
     background-color: #F5F5F5;
     border-top-left-radius: 27px;
@@ -77,16 +79,20 @@
 }
 
 
-.AddProjectComponent::-webkit-scrollbar  ,.AllRequests::-webkit-scrollbar ,.datatableComponent::-webkit-scrollbar {
+.AddProjectComponent::-webkit-scrollbar,
+.AllRequests::-webkit-scrollbar,
+.datatableComponent::-webkit-scrollbar {
     width: 15px;
     border-top-left-radius: 27px;
     border-bottom-left-radius: 27px;
 
-    background-color: #F5F5F5;  
+    background-color: #F5F5F5;
 
 }
 
-.AddProjectComponent::-webkit-scrollbar-thumb ,.AllRequests::-webkit-scrollbar-thumb ,.datatableComponent::-webkit-scrollbar-thumb {
+.AddProjectComponent::-webkit-scrollbar-thumb,
+.AllRequests::-webkit-scrollbar-thumb,
+.datatableComponent::-webkit-scrollbar-thumb {
     background-color: #F90;
 
     border-top-left-radius: 20px;
@@ -103,7 +109,8 @@
 }
 
 
-.search-users,.show-employee{
+.search-users,
+.show-employee {
     overflow-x: hidden;
 }
 
@@ -156,7 +163,7 @@
 }
 
 .accordion-button {
-    width:  100% !important;
+    width: 250px !important;
     height: 38px !important;
     background-color: #2B2B40 !important;
     border: unset !important;
@@ -173,16 +180,16 @@
 
 .accordion-collapse.collapse.show,
 .accordion-collapse.collapsing {
-    width: 100%  !important;
+    width: 250px !important;
 
 
-    
+
 
 }
 
 
 .collapsing {
-    width: 100%  !important;
+    width: 250px !important;
 }
 
 .accordion-item {
@@ -200,7 +207,7 @@
 }
 
 .all-categories .tab {
-    width: 100% !important;
+    width: 250px !important;
     padding: 2px;
     height: 38px;
     padding: 20px !important;
@@ -214,9 +221,10 @@
     align-items: center;
     color: rgba(255, 255, 255, 0.50) !important;
 }
+
 .all-categories .tabs a {
-    width: 100% !important;
-  
+    width: 250px !important;
+
 }
 
 
@@ -406,73 +414,7 @@
 }
 
 
-/* system responsive */
-@media screen and (max-width: 1400px) {
-    .all-categories .tab {
-        width: 150px !important;
-        font-size: 14px !important;
 
-    }
-
-    .all-categories .tabs {
-        justify-content: start !important;
-        width: 150px !important;
-
-    }
-
-    .search {
-        width: 100px !important;
-    }
-
-
-
-    .accordion-button {
-        width: 150px !important;
-        height: 38px !important;
-        background-color: #2B2B40 !important;
-        border: unset !important;
-        box-shadow: unset !important;
-        outline: unset !important;
-        padding: 0px;
-        color: rgba(255, 255, 255, 0.50) !important;
-        display: flex;
-        justify-content: space-between;
-        align-items: center !important;
-        font-size: 14px !important;
-
-
-    }
-
-    .search-users .user-img {
-        width: 30px;
-        height: 30px;
-    }
-
-    .search-users p {
-        font-size: 14px !important;
-    }
-
-    .search-users .name-header {
-        font-size: 14px;
-        width: unset !important;
-        height: unset !important;
-    }
-
-    .accordion-item {
-        width: 150px !important;
-    }
-
-    .accordion-button a {
-        width: 100%;
-        text-align: start;
-    }
-
-    .ReviewCasesRequest legend {
-        font-size: 14px !important;
-    }
-
-
-}
 
 
 .rbc-off-range-bg {
@@ -585,6 +527,76 @@
 .downloadpdfBtn:hover .svgIcon {
     fill: rgb(255, 255, 255);
     animation: slide-in-top 0.6s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+
+/* system responsive */
+@media screen and (max-width: 1280px) {
+    .all-categories .tab {
+        width: 130px !important;
+        font-size: 14px !important;
+        margin-right: auto;
+        margin-left: auto;
+
+    }
+
+    .all-categories .tabs {
+        justify-content: start !important;
+        width: 130px !important;
+
+    }
+
+    .search {
+        width: 100px !important;
+    }
+
+
+
+    .accordion-button {
+        width: 130px !important;
+        height: 38px !important;
+        background-color: #2B2B40 !important;
+        border: unset !important;
+        box-shadow: unset !important;
+        outline: unset !important;
+        padding: 0px;
+        color: rgba(255, 255, 255, 0.50) !important;
+        display: flex;
+        justify-content: space-between;
+        align-items: center !important;
+        font-size: 14px !important;
+
+
+    }
+
+    .search-users .user-img {
+        width: 30px;
+        height: 30px;
+    }
+
+    .search-users p {
+        font-size: 14px !important;
+    }
+
+    .search-users .name-header {
+        font-size: 14px;
+        width: unset !important;
+        height: unset !important;
+    }
+
+    .accordion-item {
+        width: 150px !important;
+    }
+
+    .accordion-button a {
+        width: 100%;
+        text-align: start;
+    }
+
+    .ReviewCasesRequest legend {
+        font-size: 14px !important;
+    }
+
+
 }
 
 @keyframes slide-in-top {

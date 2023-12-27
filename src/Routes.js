@@ -160,7 +160,7 @@ const router = createBrowserRouter([
                 path: "", element: <AllProjects />, children: [
                     { path: "/System/Projects/index", element: <AllProjectsChart /> },
                     { path: "/System/Projects/Main/:ProjectTime", element: <MainProjects /> },
-                    { path: "/System/Projects/Main/ReportManagement", element: <ReportManagement /> },
+                    // { path: "/System/Projects/Main/ReportManagement", element: <ReportManagement /> },
                     { path: "/System/Projects/ReportManagement/:projectType", element: <NestedReportMangment /> },
                     { path: "/System/Projects/Main/:ProjectTime/:ProjectType", element: <NestedMainProjects /> },
 
