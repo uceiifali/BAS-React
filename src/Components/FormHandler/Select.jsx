@@ -17,14 +17,14 @@ const Select = React.forwardRef((props, ref) => {
     async = false,
     autoHeight = false,
     className = '',
-    OptionbackgroundColor=null,
-    
+    OptionbackgroundColor = null,
+
     cacheOptions = true } = props;
 
   let hasWarning = submitted && validator && !validator.valid;
   const selectStyles = (small, autoHeight) => {
     const height = autoHeight ? 'auto' : small ? '30px' : '41.90px';
-  
+
     let options = {
       control: (styles) => ({
         ...styles,
@@ -34,8 +34,10 @@ const Select = React.forwardRef((props, ref) => {
         minHeight: height,
         cursor: 'pointer'
       }),
-      option: (styles,{isFocused}) => ({ ...styles , cursor: 'pointer'  ,backgroundColor:isFocused ? OptionbackgroundColor:""}),
-      placeholder: (styles) => ({ ...styles,   })
+      option: (styles, { isFocused }) => ({
+        ...styles, cursor: 'pointer', Zindex: 2222, backgroundColor: isFocused ? OptionbackgroundColor : ""
+      }),
+      placeholder: (styles) => ({ ...styles, })
     }
     if (small) {
       options = {
@@ -61,11 +63,11 @@ const Select = React.forwardRef((props, ref) => {
         }
       }
     }
-  
+
     return options;
   };
   return (
-    <div  className={`${formGroup ? 'form-group' : ''} ${hasWarning ? 'has-warning' : ''}`}>
+    <div className={`${formGroup ? 'form-group' : ''} ${hasWarning ? 'has-warning' : ''}`}>
       {label && <label className="form-label">{label} {mandatory && <span className="text-danger">*</span>}</label>}
       {!async && <ReactSelect
         ref={ref}
@@ -75,9 +77,9 @@ const Select = React.forwardRef((props, ref) => {
         width
         height
 
-       
-       
-        
+
+
+
         className={`react-select ${className} ${(submitted && validator && !validator.valid) ? 'is-invalid' : ''}`}
         {...props}
       />}
@@ -91,7 +93,7 @@ const Select = React.forwardRef((props, ref) => {
         height
         className={`react-select ${className} ${(submitted && validator && !validator.valid) ? 'is-invalid' : ''}`}
         {...props}
-     
+
         cacheOptions={cacheOptions}
         defaultOptions={[]}
       />}
@@ -106,4 +108,3 @@ const Select = React.forwardRef((props, ref) => {
 
 
 export default Select
- 

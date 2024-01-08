@@ -13,8 +13,9 @@ import { useState } from 'react'
 import EditProject from '../../../../Components/System/Projects/EditProject/EditProject'
 import { AddReportType } from '../../../../Context/AddReport'
 import AddReviewReport from '../../../../Components/System/Projects/AddReviewReport/AddReviewReport'
-import AddDesignReport from '../../../../Components/System/Projects/AddDesignReport/AddDesignReport'
+
 import { useEffect } from 'react'
+import AddUpdateDesignReport from '../../../../Components/System/Projects/AddDesignReport/AddUpdateDesignReport'
 
 
 
@@ -48,7 +49,7 @@ const AllProjects = () => {
 
                 <AddUserButton />} />
             {showAddUserModel && reportType === "DesignReports" ?
-                <AddDesignReport /> :
+                <AddUpdateDesignReport /> :
                 showAddUserModel && reportType === "ReviewReports" ?
                     <AddReviewReport />
                     : showAddUserModel && reportType === '' ?

@@ -14,19 +14,14 @@ const AddAttachment = ({ attachment, setAttachment }) => {
                     onHide={() => setOpenAddAttachemnt(false)}
                     show={openAddAttachemnt}
                 >
-
                     <Modal.Body className='d-flex align-items-center'>
-
                         <img src={`${process.env.PUBLIC_URL}/chooseFile.png`} className='my-3' alt='choose file' />
                         <Form.Group className={``} controlId="formBasicImage">
-
                             <Form.Control
                                 type="file"
-                               
                                 name="imageFile"
-                                 multiple={true}
-                                for="formFile"
-                                
+                                multiple={true}
+                                htmlFor="formFile"
                                 className={`chooseFile text-white`}
                                 onChange={(e) => setAttachment(e.currentTarget.files[0].name)}
                             />

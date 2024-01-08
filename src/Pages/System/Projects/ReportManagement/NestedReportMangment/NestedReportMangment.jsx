@@ -1,5 +1,5 @@
 
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useEffect, useMemo, useState } from 'react'
 import PieChart from '../../../../../Components/pieChart';
 import DataTableComponent from '../../../../../Components/DataTableComponent';
 import { useParams } from 'react-router-dom';
@@ -8,13 +8,16 @@ import { AddReportType } from '../../../../../Context/AddReport';
 
 import ShowReviewReport from '../../../../../Components/System/Projects/ShowReviewReport/ShowReviewReport';
 import EditReviewReport from '../../../../../Components/System/Projects/EditReviewReport/EditReviewReport';
+import AddUpdateDesignReport from '../../../../../Components/System/Projects/AddDesignReport/AddUpdateDesignReport';
+import ShowDesignReport from '../../../../../Components/System/Projects/ShowDesignReport/ShowDesignReport';
 
 const NestedReportMangment = () => {
     const { openReport, setOpenReport, reportType, setReportType } = useContext(AddReportType)
-
+    const [ShowAddUpdateDesignReport, setShowAddUpdateDesignReport] = useState(false)
     const [showReport, setShowReport] = useState(false)
     const [editReport, setEditReport] = useState(false)
-    console.log(editReport)
+    const [id, setId] = useState(null)
+
     const reportsData = Array.from({ length: 3 }).map((_, index) => {
         return {
             id: 1,
@@ -27,7 +30,10 @@ const NestedReportMangment = () => {
                 setShowReport(true)
             }} className='display_project  rounded' alt=' display project' />,
             edit: <img src={process.env.PUBLIC_URL + "/edit.png"}
-                onClick={() => { setEditReport(true) }}
+                onClick={() => {
+                    setEditReport(true)
+                    setId(reportsData[index].id)
+                }}
 
                 className=' edit_project  rounded' alt=' edit project' />
         }
@@ -66,6 +72,15 @@ const NestedReportMangment = () => {
         },
     ];
     const { projectType } = useParams()
+    useMemo(() => {
+        if (editReport && reportType === "DesignReports") {
+            setShowAddUpdateDesignReport(true)
+        }
+        else {
+            setShowAddUpdateDesignReport(false)
+
+        }
+    }, [editReport, reportType])
     useEffect(() => {
         setReportType(projectType)
 
@@ -79,40 +94,45 @@ const NestedReportMangment = () => {
             {editReport && reportType == "ReviewReports" && < EditReviewReport editReport={editReport} setEditReport={setEditReport} />}
             {
                 showReport && projectType === "ReviewReports" ? <ShowReviewReport setShowReport={setShowReport} /> :
-                    <>
+                    showReport && projectType === "DesignReports" ? <ShowDesignReport setShowReport={setShowReport} /> :
 
-                        <div className='ReportManagement NestedReportMangment'>
-                            <div className='AllRequestsPieChartContainer d-flex justify-center align-items-center w-100 '>
-                                <PieChart
-                                    colors={["#EFAA20", "#E40038"]}
-                                    width={500}
-                                    labels={[" التصميم 50 ", "الاشراف على التنفيذ 50 ",]} series={[7, 3]}
-                                />
+                        <>
+                            {
+                                editReport && reportType == "DesignReports" ? <AddUpdateDesignReport setEditReport={setEditReport} setId={setId} id={id} /> :
+                                    <div className='ReportManagement NestedReportMangment'>
+                                        <div className='AllRequestsPieChartContainer d-flex justify-center align-items-center w-100 '>
+                                            <PieChart
+                                                colors={["#EFAA20", "#E40038"]}
+                                                width={500}
+                                                labels={[" التصميم 50 ", "الاشراف على التنفيذ 50 ",]} series={[7, 3]}
+                                            />
 
-                            </div>
-                            <fieldset className='TableContainer   px-2 mx-auto mt-3'>
-                                {
-                                    projectType === 'DesignReports' ?
-                                        <legend className='text-center ' > كل التقارير
-                                            (تصميم)
-                                        </legend> :
-                                        <legend className='text-center '>كل التقارير (اشراف علي التنفيذ)</legend>
-                                }
-
-
-
-
-
-                                <div className='mt-3   '>
-                                    <DataTableComponent className={"overflow-x-hidden overflow-y-auto datatableComponent"} columns={columns} data={reportsData} />
-                                </div>
-                            </fieldset>
+                                        </div>
+                                        <fieldset className='TableContainer   px-2 mx-auto mt-3'>
+                                            {
+                                                projectType === 'DesignReports' ?
+                                                    <legend className='text-center ' > كل التقارير
+                                                        (تصميم)
+                                                    </legend> :
+                                                    <legend className='text-center '>كل التقارير (اشراف علي التنفيذ)</legend>
+                                            }
 
 
-                        </div>
 
 
-                    </>
+
+                                            <div className='mt-3   '>
+                                                <DataTableComponent className={"overflow-x-hidden overflow-y-auto datatableComponent"} columns={columns} data={reportsData} />
+                                            </div>
+                                        </fieldset>
+
+
+                                    </div>
+                            }
+
+
+
+                        </>
 
             }
 

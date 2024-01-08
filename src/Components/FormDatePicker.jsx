@@ -3,7 +3,7 @@ import DatePicker from "react-datepicker"
 import { CiCalendar } from "react-icons/ci";
 function CustomInput({ value, onClick }) {
     return (
-        <div className="input-group">
+        <div className="input-group form-date-picker-group">
             <input
                 type="text"
                 className="form-control"
@@ -13,7 +13,7 @@ function CustomInput({ value, onClick }) {
             />
             <div className="input-group-append">
                 <span onClick={onClick} className="input-group-text  pointer">
-                    <CiCalendar className='border-none' />
+                    <CiCalendar color='#FFF' className='border-none' />
                 </span>
             </div>
         </div>

@@ -3,8 +3,8 @@
     border: 1px solid #EFAA20;
     background: #1E1E2D;
     height: 793px;
-    overflow-y:auto ;
-    overflow-x:hidden ;
+    overflow-y: auto;
+    overflow-x: hidden;
 
 }
 
@@ -40,4 +40,12 @@
             rgba(255, 255, 255, .2) 75%,
             transparent 75%,
             transparent)
+}
+
+.AddDesignReport .input-container {
+    width: 100%;
+}
+
+.AddDesignReport .form-group {
+    width: 100%;
 }

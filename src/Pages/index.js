@@ -277,7 +277,7 @@ const Home = () => {
                                 <Card style={{ width: "360px   ", height: "360px ", }} >
 
                                     <div className='map-contanier w-100 h-100 overflow-hidden'>
-                                        <GoogleMap className="w-100 h-100" center={center} zoom={zoom} />
+                                        {/* <GoogleMap className="w-100 h-100" center={center} zoom={zoom} /> */}
                                     </div>
 
                                 </Card>
