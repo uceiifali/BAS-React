@@ -460,7 +460,9 @@ const ShowDesignReport = ({ setShowReport }) => {
                         <div className='col-md-12 mb-3'>
 
                             <p className="text-white">
-                                : الاختلافات
+
+                                الاختلافات
+                                :
                                 <span className="main-text ms-3">
                                     حسب الرخصة
                                 </span>
