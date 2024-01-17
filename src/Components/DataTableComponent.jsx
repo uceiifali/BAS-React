@@ -5,19 +5,18 @@ const customStyles = {
     style: {
       backgroundColor: "#1E1E2D",
       color: "#FFF",
-
-      selectedHighlightStyle: {
-        // use nth-of-type(n) to override other nth selectors
-        "&:nth-of-type(n)": {
-          color: "#EFAA20",
-          backgroundColor: "#EFAA20",
-          borderBottomColor: "#EFAA20",
-        },
+    },
+    selectedHighlightStyle: {
+      // use nth-of-type(n) to override other nth selectors
+      "&:nth-of-type(n)": {
+        color: "#EFAA20",
+        backgroundColor: "#EFAA20",
+        borderBottomColor: "#EFAA20",
       },
-      stripedStyle: {
-        color: "#FFF",
-        backgroundColor: "#1E1E2D",
-      },
+    },
+    stripedStyle: {
+      color: "#FFF",
+      backgroundColor: "#34344D",
     },
   },
 
@@ -44,6 +43,7 @@ const DataTableComponent = ({ className, columns, data, title }) => {
         title={title}
         columns={columns}
         data={data}
+        striped={true}
         pagination
         className={className}
         customStyles={customStyles}
