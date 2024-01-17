@@ -40,6 +40,7 @@ const DataTableComponent = ({ className, columns, data, title }) => {
   return (
     <>
       <DataTable
+        sortIcon
         title={title}
         columns={columns}
         data={data}
