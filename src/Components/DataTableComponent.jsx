@@ -1,6 +1,19 @@
 import React from "react";
-
 import DataTable from "react-data-table-component";
+const customStyles = {
+  rowsCells: {
+    style: {
+      backGroundColor: "#1E1E2D",
+    },
+  },
+  headCells: {
+    style: {
+      backGroundColor: "#34344D",
+    },
+  },
+
+  cells: {},
+};
 const DataTableComponent = ({ className, columns, data, title }) => {
   return (
     <>
@@ -10,6 +23,7 @@ const DataTableComponent = ({ className, columns, data, title }) => {
         data={data}
         className={className}
         striped={true}
+        customStyles={customStyles}
       />
     </>
   );
