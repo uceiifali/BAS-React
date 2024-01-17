@@ -1,20 +1,40 @@
 import React from "react";
 import DataTable from "react-data-table-component";
 const customStyles = {
-  rowsCells: {
+  rows: {
     style: {
-      backGroundColor: "#1E1E2D",
+      backgroundColor: "#1E1E2D",
+      color: "#FFF",
+
+      selectedHighlightStyle: {
+        // use nth-of-type(n) to override other nth selectors
+        "&:nth-of-type(n)": {
+          color: "#EFAA20",
+          backgroundColor: "#EFAA20",
+          borderBottomColor: "#EFAA20",
+        },
+      },
+      stripedStyle: {
+        color: "#FFF",
+        backgroundColor: "#1E1E2D",
+      },
     },
   },
+
   headCells: {
     style: {
-      backGroundColor: "#34344D",
+      backgroundColor: "#34344D",
+      color: "#FFF",
     },
   },
 
-  cells: {},
+  pagination: {
+    style: {
+      backgroundColor: "#34344D",
+      color: "#FFF",
+    },
+  },
 };
-
 
 const DataTableComponent = ({ className, columns, data, title }) => {
   return (
@@ -23,9 +43,8 @@ const DataTableComponent = ({ className, columns, data, title }) => {
         title={title}
         columns={columns}
         data={data}
+        pagination
         className={className}
-        
-        striped={true}
         customStyles={customStyles}
       />
     </>
