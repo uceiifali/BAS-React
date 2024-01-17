@@ -8,7 +8,7 @@ const Input = ({
   mandatory,
   className = "",
   classNameWrap = "",
-  formGroup = true, 
+  formGroup = true,
   disabled = false,
   type = "text",
   required = false,
