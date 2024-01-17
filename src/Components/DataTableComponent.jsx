@@ -14,6 +14,8 @@ const customStyles = {
 
   cells: {},
 };
+
+
 const DataTableComponent = ({ className, columns, data, title }) => {
   return (
     <>
@@ -22,7 +24,7 @@ const DataTableComponent = ({ className, columns, data, title }) => {
         columns={columns}
         data={data}
         className={className}
-        pagination
+        
         striped={true}
         customStyles={customStyles}
       />
