@@ -30,6 +30,9 @@ import Congratus from "../Components/Client/Landing/Congratus/Congratus";
 import DesignMultiSteps from "../Components/Client/Landing/MultiSteps/DesignMultiSteps";
 import ReviewMultiSteps from "../Components/Client/Landing/MultiSteps/ReviewMultiSteps";
 import Image from "../Components/Image";
+import Footer from "../Components/HomePage/Footer";
+import { Services } from "../utils/consts";
+import ClientsSection from "../Components/HomePage/ClientSection/ClientsSection";
 
 const Home = () => {
   const {
@@ -46,37 +49,7 @@ const Home = () => {
   const [openPoper, setOpenPoper] = useState(false);
 
   console.log(carousel);
-  const Services = [
-    {
-      Name: "تصاميم",
-      img: "/design.png",
-      backCard:
-        "تزويد عملائنا بأحدث التصاميم العصرية والافكار المبتكرة ذو الجودة العالية  ",
-    },
-    {
-      Name: "دراسات",
-      img: "/studies.png",
-      backCard:
-        "لتقديم لعملائنا جميع الدراسات اللازمة لاستكمال المشروع من خلال فريق مختص بالتنسيق مع جميع التخصصات",
-    },
-    {
-      Name: "الخدمات المساحية",
-      img: "/services.png",
-      backCard: "توفير جميع اعمال المساحة بأحدث التقنيات والاجهزة العالمية  ",
-    },
-    {
-      Name: "استشارات",
-      img: "/consultant.png",
-      backCard:
-        "تقديم استشارات هندسية لتلبية كافة احتياجات عملائنا لتحقيق اقصى استفاده ممكنه  ",
-    },
-    {
-      Name: "أشراف على التنفيذ",
-      img: "/review.png",
-      backCard:
-        "الاشراف على التنفيذ وإدارة المشاريع من خلال فريق متكامل ومختص لتنفيذ التصاميم حسب الجداول الزمنية طبقا للمواصفات والمقاييس",
-    },
-  ];
+  
 
   const center = { lat: 21.3891, lng: 39.8579 };
   const zoom = 10;
@@ -230,12 +203,8 @@ const Home = () => {
           </div>
         </Container>
       </section>
-      <section id={"clients"} className="clients p-2">
-        <Container>
-          <h2 className="f-grey fs-1  sm-header  mb-5 ">عملائنا</h2>
-          <ClientCarousal />
-        </Container>
-      </section>
+      
+      <ClientsSection/>
       <section id="Services" className="Services Home-services py-5 my-10">
         <Container>
           <h2 className="f-grey fs-1  sm-header  mb-5 ">خدمتنا</h2>
@@ -321,69 +290,10 @@ const Home = () => {
           )}
         </Container>
       </section>
-      <section id={"contact-us"} className="contact-us  my-5 ">
-        <Container>
-          <h2 className="f-grey fs-1  sm-header  mb-5 ">تواصل معنا </h2>
-        </Container>
-      </section>
-      <section className="Map-section mt-3 ">
-        <Container>
-          <Row>
-            <Col
-              md={6}
-              className="d-flex p-0 justify-content-end sm-justify-center"
-            >
-              <div className="card-container my-3 ">
-                <Card
-                  style={{
-                    width: "360px",
-                    height: "360px ",
-                    border: "none",
-                    padding: "20px",
-                    justifyContent: "center",
-                  }}
-                >
-                  <Card.Body className=" d-flex align-items-start  justify-content-center flex-column  p-5">
-                    <p className="d-flex justify-start main_color  mb-5">
-                      {" "}
-                      <FaLocationDot className="ms-2" /> المملكة العربية
-                      السعودية -الرياض-حي النخيل
-                    </p>
-                    <p className="d-flex justify-start main_color fs-6 mb-5">
-                      {" "}
-                      <IoMailSharp className="ms-2" /> Info@bsa.com.sa
-                    </p>
-                    <p className="d-flex justify-start main_color fs-6 mb-5">
-                      {" "}
-                      <BsFillTelephoneFill className="ms-2" /> 966112255999+
-                    </p>
-                  </Card.Body>
-                </Card>
-              </div>
-            </Col>
-            <Col
-              md={6}
-              className="d-flex p-0   justify-content-start sm-justify-center"
-            >
-              <div className="my-3 map-container d-flex align-items-center justify-content-center">
-                <Card style={{ width: "360px   ", height: "360px " }}>
-                  <div className="map-contanier w-100 h-100 overflow-hidden">
-                    {/* <GoogleMap className="w-100 h-100" center={center} zoom={zoom} /> */}
-                  </div>
-                </Card>
-              </div>
-            </Col>
-          </Row>
-        </Container>
-      </section>
-      <footer>
-        <div className="copy-right     d-flex justify-content-center  bg-main-color">
-          <p className="text-light sm-fs  copy-right-text position-relative    p-4 d-flex text-center">
-            {" "}
-            Copyright © 2023 BSA Engineering Consultancy{" "}
-          </p>
-        </div>
-      </footer>
+      
+
+      <Footer/>
+      
     </>
   );
 };
