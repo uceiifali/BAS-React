@@ -454,7 +454,7 @@ export const SettingsMenu = ({openSettingsMenu,handleCloseMenu}) => {
                       />
             <p>الاعدادات</p>
         </div>
-        <div className="row p-2 system-card-container">
+        <div className="row p-2 system-card-container ">
           
           
           <div className="col-md-4 ">
