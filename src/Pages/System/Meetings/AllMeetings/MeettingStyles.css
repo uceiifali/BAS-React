@@ -132,7 +132,7 @@ background: #2B2B40; */
 }
 
 .chooseDepartment .accordion-header .accordion-button {
-    width: 230px !important;
+
     padding: 2px;
     height: 38px;
     display: flex !important;

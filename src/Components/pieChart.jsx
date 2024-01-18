@@ -37,6 +37,26 @@ class PieChart extends React.Component {
           enabled: false,
         },
 
+        plotOptions: {
+          pie: {
+            donut: {
+              labels: {
+                show: true,
+                total: {
+                  show: true,
+                  color: "#FFF",
+                  label: "",
+                  formatter: (val) => {
+                    // console.log(" val is " + val);
+                    return  "message";
+
+                  },
+                },
+              },
+            },
+          },
+        },
+
         responsive: [
           {
             breakpoint: 480,
@@ -50,6 +70,7 @@ class PieChart extends React.Component {
             },
           },
         ],
+
         legend: {
           position: "left",
           offsetY: 0,
