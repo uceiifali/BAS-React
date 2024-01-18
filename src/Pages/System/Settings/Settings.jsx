@@ -7,7 +7,7 @@ const Settings = () => {
     <div className="w-full">
       <SystemControler
         child={
-          <button className="add-user-button text-white">اضافه جديدة</button>
+          <button className="add-user-button rounded-md text-white">إضافة جديدة</button>
         }
       />
 

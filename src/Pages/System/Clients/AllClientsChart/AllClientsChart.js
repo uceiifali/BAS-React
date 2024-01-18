@@ -7,6 +7,7 @@ const AllClientsChart = () => {
     return (
         <div className=' p-4 d-flex gap-5 AllClientsChart  align-items-center flex-column'>
       <div className='AllRequestsPieChartContainer w-100  d-flex align-items-center justify-content-center' >
+        
         <AllClientsPieChart />
 
       </div>
