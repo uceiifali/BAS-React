@@ -1,4 +1,10 @@
-import React, { forwardRef, useContext, useEffect, useRef, useState } from "react";
+import React, {
+  forwardRef,
+  useContext,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 import ProgressBar from "react-bootstrap/ProgressBar";
 import { Sidebar, Menu, MenuItem, SubMenu } from "react-pro-sidebar";
 import "./AsideBar.css";
@@ -9,13 +15,11 @@ import { FaBars } from "react-icons/fa6";
 import { SideBarProvider } from "../../../Context/SideBarProvider";
 
 const AsideBar = () => {
-  
   const [rtl, setRtl] = useState(true);
   // setting the width of the screen
   const [width, setWidth] = useState(window.innerWidth);
   const { collapsed, setCollapsed } = useContext(SideBarProvider);
   const [isMenuOpen, setMenuOpen] = useState(false);
-
 
   const handleOpenMenu = () => {
     setMenuOpen(true);
@@ -24,8 +28,6 @@ const AsideBar = () => {
   const handleCloseMenu = (event) => {
     setMenuOpen(false);
   };
-
-
 
   function getSize() {
     setWidth(window.innerWidth);
@@ -62,7 +64,7 @@ const AsideBar = () => {
           height: "897px",
           border: "2px solid #EFAA20 !important",
           borderRadius: "19px",
-          overflow:"hidden"
+          overflow: "hidden",
         }}
         collapsed={collapsed}
         rtl={rtl}
@@ -390,10 +392,7 @@ const AsideBar = () => {
               <div className="col-md-4 ">
                 <div className="system-item">
                   {/* <Link> */}
-                  <div
-                    class="system-card"
-                    onClick={handleOpenMenu}
-                  >
+                  <div class="system-card" onClick={handleOpenMenu}>
                     <div class="card__content d-flex justify-content-center align-items-center  flex-column  ">
                       <Image
                         src={
@@ -430,7 +429,10 @@ const AsideBar = () => {
               </div>
             </div>
 
-            <SettingsMenu handleCloseMenu={handleCloseMenu}  openSettingsMenu={isMenuOpen} />
+            <SettingsMenu
+              handleCloseMenu={handleCloseMenu}
+              openSettingsMenu={isMenuOpen}
+            />
           </MenuItem>
         </Menu>
       </Sidebar>
@@ -438,102 +440,101 @@ const AsideBar = () => {
   );
 };
 
-export const SettingsMenu = ({openSettingsMenu,handleCloseMenu}) => {
-
-    return (
-      <div  className={`absolute transition-transform duration-500 overflow-hidden bg-[#ffffff3d] backdrop-blur-[15.899999618530273px] bottom-0 left-0 ${openSettingsMenu? "translate-y-0" : "translate-y-full"}  w-full h-full rounded-[19px]`}>
-        
-        <div onClick={handleCloseMenu} className="bg-[#2b2b40de] p-2 text-center">
+export const SettingsMenu = ({ openSettingsMenu, handleCloseMenu }) => {
+  return (
+    <div
+      className={`absolute transition-transform duration-500 overflow-hidden bg-[#ffffff3d] backdrop-blur-[15.899999618530273px] bottom-0 left-0 ${
+        openSettingsMenu ? "translate-y-0" : "translate-y-full"
+      }  w-full h-full rounded-[19px]`}
+    >
+      <div onClick={handleCloseMenu} className="bg-[#2b2b40de] p-2 text-center">
         <Image
-                        src={
-                          process.env.PUBLIC_URL +
-                          "/icons/asideIcons/settings.png"
-                        }
-                        alt="icon"
-                        className="aside-icon mt-3"
-                      />
-            <p>الاعدادات</p>
+          src={process.env.PUBLIC_URL + "/icons/asideIcons/settings.png"}
+          alt="icon"
+          className="aside-icon mt-3"
+        />
+        <p>الاعدادات</p>
+      </div>
+      <div className="row p-2 system-card-container ">
+        <div className="col-md-4 ">
+          <div className="system-item">
+            <Link to="/System/Users/index">
+              <div class="system-card">
+                <div class="card__content d-flex justify-content-center align-items-center  flex-column  ">
+                  <Image
+                    src={
+                      process.env.PUBLIC_URL + "/icons/asideIcons/Reception.png"
+                    }
+                    alt="icon"
+                    className="aside-icon "
+                  />
+                  <p>الاستقبال</p>
+                </div>
+              </div>
+            </Link>
+          </div>
         </div>
-        <div className="row p-2 system-card-container ">
-          
-          
-          <div className="col-md-4 ">
-            <div className="system-item">
-              <Link to="/System/Users/index">
-                <div class="system-card">
-                  <div class="card__content d-flex justify-content-center align-items-center  flex-column  ">
-                    <Image
-                      src={process.env.PUBLIC_URL + "/icons/asideIcons/Reception.png"}
-                      alt="icon"
-                      className="aside-icon "
-                    />
-                    <p>الاستقبال</p>
-                  </div>
+        <div className="col-md-4 ">
+          <div className="system-item">
+            <Link to="/System/Requests/index">
+              <div class="system-card">
+                <div class="card__content d-flex justify-content-center align-items-center  flex-column  ">
+                  <Image
+                    src={
+                      process.env.PUBLIC_URL + "/icons/asideIcons/orders.png"
+                    }
+                    alt="icon"
+                    className="aside-icon "
+                  />
+                  <p>الطلبات</p>
                 </div>
-              </Link>
-            </div>
+              </div>
+            </Link>
           </div>
-          <div className="col-md-4 ">
-            <div className="system-item">
-              <Link to="/System/Requests/index">
-                <div class="system-card">
-                  <div class="card__content d-flex justify-content-center align-items-center  flex-column  ">
-                    <Image
-                      src={
-                        process.env.PUBLIC_URL + "/icons/asideIcons/orders.png"
-                      }
-                      alt="icon"
-                      className="aside-icon "
-                    />
-                    <p>الطلبات</p>
-                  </div>
+        </div>
+
+        <div className="col-md-4 ">
+          <div className="system-item">
+            <Link to={"/System/Accounating/index"}>
+              <div class="system-card">
+                <div class="card__content d-flex justify-content-center align-items-center  flex-column  ">
+                  <Image
+                    src={
+                      process.env.PUBLIC_URL +
+                      "/icons/asideIcons/Acouuntaing.png"
+                    }
+                    alt="icon"
+                    className="aside-icon "
+                  />
+                  <p>الحسابات </p>
                 </div>
-              </Link>
-            </div>
+              </div>
+            </Link>
           </div>
-  
-          <div className="col-md-4 ">
-            <div className="system-item">
-              <Link to={"/System/Accounating/index"}>
-                <div class="system-card">
-                  <div class="card__content d-flex justify-content-center align-items-center  flex-column  ">
-                    <Image
-                      src={
-                        process.env.PUBLIC_URL +
-                        "/icons/asideIcons/Acouuntaing.png"
-                      }
-                      alt="icon"
-                      className="aside-icon "
-                    />
-                    <p>الحسابات </p>
-                  </div>
+        </div>
+        <div className="col-md-4 ">
+          <div className="system-item">
+            <Link>
+              <div class="system-card">
+                <div class="card__content d-flex justify-content-center align-items-center  flex-column  ">
+                  <Image
+                    src={
+                      process.env.PUBLIC_URL +
+                      "/icons/asideIcons/CustomerServices.png"
+                    }
+                    alt="icon"
+                    className="aside-icon "
+                  />
+                  <p>خدمات الموظفين</p>
                 </div>
-              </Link>
-            </div>
+              </div>
+            </Link>
           </div>
-          <div className="col-md-4 ">
-            <div className="system-item">
-              <Link>
-                <div class="system-card">
-                  <div class="card__content d-flex justify-content-center align-items-center  flex-column  ">
-                    <Image
-                      src={
-                        process.env.PUBLIC_URL +
-                        "/icons/asideIcons/CustomerServices.png"
-                      }
-                      alt="icon"
-                      className="aside-icon "
-                    />
-                    <p>خدمات الموظفين</p>
-                  </div>
-                </div>
-              </Link>
-            </div>
-          </div>
-  
-          <div className="col-md-4 ">
-            <div className="system-item">
-              <Link>
+        </div>
+
+        <div className="col-md-4 ">
+          <div className="system-item">
+            <Link>
               <div
                 class="system-card"
                 onClick={() => {
@@ -551,12 +552,12 @@ export const SettingsMenu = ({openSettingsMenu,handleCloseMenu}) => {
                   <p style={{ fontSize: "10px" }}>اليات الخطه الزمنيه </p>
                 </div>
               </div>
-              </Link>
-            </div>
+            </Link>
           </div>
         </div>
       </div>
-    );
-  };
+    </div>
+  );
+};
 
 export default AsideBar;
