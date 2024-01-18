@@ -3,7 +3,7 @@ import DataTable from "react-data-table-component";
 const customStyles = {
   rows: {
     style: {
-      backgroundColor: "#1E1E2D",
+      backgroundColor: "#34344D",
       color: "#FFF",
     },
     selectedHighlightStyle: {
@@ -16,7 +16,7 @@ const customStyles = {
     },
     stripedStyle: {
       color: "#FFF",
-      backgroundColor: "#34344D",
+      backgroundColor: "#1E1E2D",
     },
   },
 
@@ -44,7 +44,6 @@ const DataTableComponent = ({ className, columns, data, title }) => {
         columns={columns}
         data={data}
         striped={true}
-        pagination
         className={className}
         customStyles={customStyles}
       />

@@ -24,7 +24,22 @@ class AllClientsPieChart extends React.Component {
                     enabled: false
                 },
 
-
+                plotOptions: {
+                    pie: {
+                      donut: {
+                        labels: {
+                          show: true,
+                          total: {
+                            show: true,
+                            color:"#FFF",
+                            label: '',
+                            formatter: () => 'كل العملاء'
+                          }
+                        }
+                      }
+                    }
+                  },
+                
                 responsive: [{
                     breakpoint: 480,
                     options: {

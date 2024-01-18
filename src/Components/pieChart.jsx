@@ -36,6 +36,24 @@ class PieChart extends React.Component {
         dataLabels: {
           enabled: false,
         },
+        donut: {
+          size: "65%",
+          background: "transparent",
+          labels: {
+            show: false,
+            name: {
+              show: true,
+              fontSize: "22px",
+              fontFamily: "Helvetica, Arial, sans-serif",
+              fontWeight: 600,
+              color: "#FFF",
+              offsetY: -10,
+              formatter: function () {
+                return " hello";
+              },
+            },
+          },
+        },
 
         responsive: [
           {
@@ -50,6 +68,7 @@ class PieChart extends React.Component {
             },
           },
         ],
+
         legend: {
           position: "left",
           offsetY: 0,
