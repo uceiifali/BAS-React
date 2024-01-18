@@ -51,6 +51,7 @@ import ReportManagement from "./Pages/System/Projects/ReportManagement/ReportMan
 import NestedReportMangment from "./Pages/System/Projects/ReportManagement/NestedReportMangment/NestedReportMangment";
 import Settings from "./Pages/System/Settings/Settings";
 import Reception from "./Pages/System/Settings/Reception/Reception";
+import Orders from "./Pages/System/Settings/Orders/Orders";
 
 const SignUP = lazy(() => import("./Pages/DashBoard/SignUP/SignUP"));
 const SignIn = lazy(() => import("./Pages/DashBoard/SignIn/SignIn"));
@@ -258,6 +259,7 @@ const router = createBrowserRouter([
         element: <Settings />,
         children: [
           { path: "/System/Settings/Reception", element: <Reception /> },
+          { path: "/System/Settings/Orders", element: <Orders /> },
         ],
       },
     ],

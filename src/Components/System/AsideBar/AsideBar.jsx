@@ -441,7 +441,7 @@ const AsideBar = () => {
 export const SettingsMenu = ({openSettingsMenu,handleCloseMenu}) => {
 
     return (
-      <div  className={`absolute transition-transform duration-500 overflow-hidden bg-[#ffffff3d] backdrop-blur-[15.899999618530273px] bottom-0 left-0 ${openSettingsMenu? "translate-y-0" : "translate-y-full"}  w-full h-full rounded-[19px]`}>
+      <div  className={`absolute transition-transform ease-in-out duration-500 overflow-hidden bg-[#ffffff3d] backdrop-blur-[15.899999618530273px] bottom-0 left-0 ${openSettingsMenu? "translate-y-0" : "translate-y-full"}  w-full h-full rounded-[19px]`}>
         
         <div onClick={handleCloseMenu} className="bg-[#2b2b40de] p-2 text-center">
         <Image
@@ -459,7 +459,7 @@ export const SettingsMenu = ({openSettingsMenu,handleCloseMenu}) => {
           
           <div className="col-md-4 ">
             <div className="system-item">
-              <Link to="/System/Users/index">
+              <Link to="/System/Settings/Reception">
                 <div class="system-card">
                   <div class="card__content d-flex justify-content-center align-items-center  flex-column  ">
                     <Image
@@ -475,7 +475,7 @@ export const SettingsMenu = ({openSettingsMenu,handleCloseMenu}) => {
           </div>
           <div className="col-md-4 ">
             <div className="system-item">
-              <Link to="/System/Requests/index">
+              <Link to="/System/Settings/Orders">
                 <div class="system-card">
                   <div class="card__content d-flex justify-content-center align-items-center  flex-column  ">
                     <Image
