@@ -36,20 +36,22 @@ class PieChart extends React.Component {
         dataLabels: {
           enabled: false,
         },
-        donut: {
-          size: "65%",
-          background: "transparent",
-          labels: {
-            show: false,
-            name: {
-              show: true,
-              fontSize: "22px",
-              fontFamily: "Helvetica, Arial, sans-serif",
-              fontWeight: 600,
-              color: "#FFF",
-              offsetY: -10,
-              formatter: function () {
-                return " hello";
+
+        plotOptions: {
+          pie: {
+            donut: {
+              labels: {
+                show: true,
+                total: {
+                  show: true,
+                  color: "#FFF",
+                  label: "",
+                  formatter: (val) => {
+                    // console.log(" val is " + val);
+                    return  "message";
+
+                  },
+                },
               },
             },
           },
