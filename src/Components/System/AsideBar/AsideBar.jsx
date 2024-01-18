@@ -61,6 +61,8 @@ const AsideBar = () => {
           color: "#FFF",
           height: "897px",
           border: "2px solid #EFAA20 !important",
+          borderRadius: "19px",
+          overflow:"hidden"
         }}
         collapsed={collapsed}
         rtl={rtl}
