@@ -49,6 +49,8 @@ import EmployeesManagment from "./Pages/System/Hr/EmployeesManagment/EmployeesMa
 import Test from "./Components/Test";
 import ReportManagement from "./Pages/System/Projects/ReportManagement/ReportManagement";
 import NestedReportMangment from "./Pages/System/Projects/ReportManagement/NestedReportMangment/NestedReportMangment";
+import Settings from "./Pages/System/Settings/Settings";
+import Reception from "./Pages/System/Settings/Reception/Reception";
 
 const SignUP = lazy(() => import("./Pages/DashBoard/SignUP/SignUP"));
 const SignIn = lazy(() => import("./Pages/DashBoard/SignIn/SignIn"));
@@ -250,8 +252,14 @@ const router = createBrowserRouter([
           },
         ],
       },
-
-      ,
+      //System settings
+      {
+        path: "/System/Settings",
+        element: <Settings />,
+        children: [
+          { path: "/System/Settings/Reception", element: <Reception /> },
+        ],
+      },
     ],
   },
 ]);
