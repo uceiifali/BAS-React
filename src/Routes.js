@@ -50,7 +50,6 @@ import Test from "./Components/Test";
 import ReportManagement from "./Pages/System/Projects/ReportManagement/ReportManagement";
 import NestedReportMangment from "./Pages/System/Projects/ReportManagement/NestedReportMangment/NestedReportMangment";
 
-
 const SignUP = lazy(() => import("./Pages/DashBoard/SignUP/SignUP"));
 const SignIn = lazy(() => import("./Pages/DashBoard/SignIn/SignIn"));
 

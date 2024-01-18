@@ -29,3 +29,33 @@ export const Services = [
         "الاشراف على التنفيذ وإدارة المشاريع من خلال فريق متكامل ومختص لتنفيذ التصاميم حسب الجداول الزمنية طبقا للمواصفات والمقاييس",
     },
   ];
+
+  export const columns = [
+    {
+        name: 'م',
+        selector: row => row.id,
+    },
+    {
+        name: ' اسم العميل',
+        selector: row => row.clientName,
+    },
+    {
+        name: ' رقم الجوال  ',
+        selector: row => row.PhoneNumber,
+    },
+    {
+        name: '   نوع العميل ',
+        selector: row => row.ClientType,
+    },
+    {
+        name: ' البريد اللاكترونى  ',
+        selector: row => row.email,
+    },
+
+    {
+        name: 'الحالة',
+        selector: row => row.status,
+    },
+
+
+];
