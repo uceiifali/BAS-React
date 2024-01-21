@@ -18,7 +18,7 @@ const Reception = () => {
           </div>
         </div>
         <div className="bg-[#1E1E2D] h-[801px]  rounded-[19px]">02</div>
-        <div className="col-span-2 bg-[#1E1E2D] h-[801px]  rounded-[19px]">
+        <div className="bg-[#1E1E2D] h-[801px]  rounded-[19px] col-span-2 ">
           03
         </div>
       </div>
