@@ -1,25 +1,31 @@
-import React from "react";
+import React, { useMemo } from "react";
+import Pdf from "./Pdf";
+import Image from "./Image";
 
-const PdfImage = ({ openPdf, setOpenPdf, text = "" }) => {
+const PdfImage = ({ openPdf, setOpenPdf, text = "", pdfSrc }) => {
   return (
     <div>
+      {openPdf && pdfSrc && (
+        <Pdf PdfFile={pdfSrc} openPdf={openPdf} setOpenPdf={setOpenPdf} />
+      )}
       <div
+        className="
+      bg-[#151521]
+      w-[53.361px]
+      h-[35px]
+      flex justify-center
+      rounded-md
+      "
         onClick={() => {
           setOpenPdf(true);
         }}
-        className="pdfbg"
       >
-        <img
+        <Image
           src={process.env.PUBLIC_URL + "/icons/Pdf.png"}
           alt="pdf"
-          className="pdfImage"
+
+          className="pdfImage m-auto"
         />
-        <div
-          style={{ borderRadius: "7px" }}
-          className="bg-[#252538] d-flex justify-content-center "
-        >
-          <p className="text-white mx-auto  mt-2 "> {text}</p>
-        </div>
       </div>
     </div>
   );

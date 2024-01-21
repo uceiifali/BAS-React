@@ -10,6 +10,7 @@ import { AddHrType } from "../../../../Context/AddHr.js";
 
 import ShowHolidayComponent from "../../../../Components/System/Hr/ShowHolidayComponent/ShowHolidayComponent.jsx";
 import AddHoliday from "../../../../Components/System/Hr/AddHoliday/AddHoliday.jsx";
+import Image from "../../../../Components/Image.jsx";
 
 const HolidayMangment = () => {
   const [ShowHoliday, setShowHoliday] = useState(false);
@@ -29,7 +30,7 @@ const HolidayMangment = () => {
             setShowHoliday(true);
           }}
         >
-          <img
+          <Image
             src={process.env.PUBLIC_URL + "/icons/view.png"}
             className="pointer"
           />
@@ -190,7 +191,11 @@ const HolidayMangment = () => {
             </div>
             <fieldset className={`${style.allhoildaysTables} mt-5`}>
               <legend className="text-center ">كل الاجازات</legend>
-              <DataTableComponent className={"datatableComponent"} data={data} columns={columns} />
+              <DataTableComponent
+                className={"datatableComponent"}
+                data={data}
+                columns={columns}
+              />
             </fieldset>
           </div>
         </div>
