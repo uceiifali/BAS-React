@@ -1,0 +1,6 @@
+.scrolled::-webkit-scrollbar-thumb {
+    border-radius: 12px !important;
+  }
+  .scrolled::-webkit-scrollbar {
+    width: 4px !important;
+  }
