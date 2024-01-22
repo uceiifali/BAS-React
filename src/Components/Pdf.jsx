@@ -3,7 +3,6 @@ import { Modal } from "react-bootstrap";
 import { Document, Page } from "react-pdf";
 import Button from "@mui/material/Button";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
-import { PDFDownloadLink } from "@react-pdf/renderer";
 
 const Pdf = ({ openPdf, setOpenPdf, PdfFile, height, width }) => {
   const [numPages, setNumPages] = useState(null);
@@ -25,7 +24,6 @@ const Pdf = ({ openPdf, setOpenPdf, PdfFile, height, width }) => {
   const changepageNext = () => {
     changepage(1);
   };
-
 
   //     if (pdfRef.current) {
   //         ((blob) => {

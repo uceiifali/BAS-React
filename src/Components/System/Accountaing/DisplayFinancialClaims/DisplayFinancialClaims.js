@@ -8,6 +8,7 @@ import { Document, Page } from 'react-pdf';
 import "./DisplayFinancialClaims.css"
 import Input from '../../../FormHandler/Input';
 import EditRevenues from '../EditRevenues/EditRevenues';
+import Image from '../../../Image';
 
 
 const DisplayFinancialClaims = ({ displayRevenue, RevenueType, setDisplayRevenue }) => {
@@ -221,14 +222,14 @@ const DisplayFinancialClaims = ({ displayRevenue, RevenueType, setDisplayRevenue
 
                         <div className='d-flex align-items-center  gap-3'>
 
-                            <img className='pointer editIcon' onClick={() => {
+                            <Image className='pointer editIcon' onClick={() => {
 
                                 setOpenDelete(true)
 
                             }} src={process.env.PUBLIC_URL + "/icons/delete.png"} />
 
 
-                            <img className='pointer editIcon' onClick={() => {
+                            <Image className='pointer editIcon' onClick={() => {
 
                                 setEditRevenues(true)
 

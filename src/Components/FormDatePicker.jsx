@@ -1,7 +1,7 @@
 import React from "react";
 import DatePicker from "react-datepicker";
 import { CiCalendar } from "react-icons/ci";
-function CustomInput({ value, onClick }) {
+function CustomInput({ value, onClick,  }) {
   return (
     <div className="input-group form-date-picker-group">
       <input
@@ -19,12 +19,12 @@ function CustomInput({ value, onClick }) {
     </div>
   );
 }
-const FormDatePicker = ({ date, setDate, placeholderText }) => {
+const FormDatePicker = ({ date, setDate, placeholderText ,onChange}) => {
   return (
     <DatePicker
       selected={date}
       placeholderText={placeholderText}
-      onChange={(date) => setDate(date)}
+      onChange={!onChange ? (date) => setDate(date) : onChange}
       dateFormat="dd-MM-yyyy"
       className="w-100 form-control"
       todayButton={"TODAY"}
