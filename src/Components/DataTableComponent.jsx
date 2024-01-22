@@ -5,6 +5,7 @@ const customStyles = {
     style: {
       backgroundColor: "#34344D",
       color: "#FFF",
+      padding: "0px",
     },
     selectedHighlightStyle: {
       // use nth-of-type(n) to override other nth selectors
@@ -23,6 +24,13 @@ const customStyles = {
   headCells: {
     style: {
       backgroundColor: "#34344D",
+      padding: "10px",
+      color: "#FFF",
+    },
+  },
+  bodyCells: {
+    style: {
+      padding: "5px",
       color: "#FFF",
     },
   },
