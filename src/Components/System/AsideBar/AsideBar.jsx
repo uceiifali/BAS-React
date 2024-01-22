@@ -441,7 +441,7 @@ const AsideBar = () => {
 export const SettingsMenu = ({openSettingsMenu,handleCloseMenu}) => {
 
     return (
-      <div  className={`absolute transition-transform ease-in-out duration-500 overflow-hidden bg-[#ffffff3d] backdrop-blur-[15.899999618530273px] bottom-0 left-0 ${openSettingsMenu? "translate-y-0" : "translate-y-full"}  w-full h-full rounded-[19px]`}>
+      <div  className={`absolute ${openSettingsMenu? "top-0" : "top-full"} left-0 w-full h-full rounded-[19px] transition-all ease-in-out duration-500 overflow-hidden bg-[#ffffff3d] backdrop-blur-[15.899999618530273px]    `}>
         
         <div onClick={handleCloseMenu} className="bg-[#2b2b40de] p-2 text-center">
         <Image
