@@ -443,7 +443,7 @@ function CitizenServices() {
           <div className="p-2 ">
             <p clasesName="w-full text-white text-right my-2">كل الخدمات </p>
             <div className="flex flex-col gap-2">
-              <OrdrBtn
+              <OrderBtn
                 title={"الاجازات"}
                 index={1}
                 active={active}

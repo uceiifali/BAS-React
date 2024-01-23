@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
+import SaveButton from "../../../Components/SaveButton";
 // import CloseBtn from "/assets/icons/Rejected.svg"
 function ViewModel({ title, show, handleClose, arr, id }) {
   const [inputVal, setInputVal] = useState("");
