@@ -314,26 +314,44 @@ const OptionsButtonServices = ({ setHolidays, id }) => {
           aria-haspopup="true"
           aria-expanded={open ? "true" : undefined}
           onClick={handleClick}
+          sx={{
+            width: "25px",
+            height: "25px",
+            backgroundColor: "#EFAA20"
+            
+          }}
+        >
+          <ViewIcon className="text-white" />
+        </IconButton>
+        <IconButton
+          id="basic-button"
+          aria-controls={open ? "basic-menu" : undefined}
+          aria-haspopup="true"
+          aria-expanded={open ? "true" : undefined}
+          onClick={handleClick}
+          sx={{
+            width: "25px",
+            height: "25px",
+            backgroundColor: "#136D01"
+            
+          }}
+        >
+          <EditIcon className="text-white" />
+        </IconButton>
+        <IconButton
+          id="basic-button"
+          aria-controls={open ? "basic-menu" : undefined}
+          aria-haspopup="true"
+          aria-expanded={open ? "true" : undefined}
+          onClick={handleClick}
+          sx={{
+            width: "25px",
+            height: "25px",
+            backgroundColor: "#9E0C1E"
+            
+          }}
         >
           <DeleteIcon className="text-white" />
-        </IconButton>
-        <IconButton
-          id="basic-button"
-          aria-controls={open ? "basic-menu" : undefined}
-          aria-haspopup="true"
-          aria-expanded={open ? "true" : undefined}
-          onClick={handleClick}
-        >
-          <IoMdMore className="text-white" />
-        </IconButton>
-        <IconButton
-          id="basic-button"
-          aria-controls={open ? "basic-menu" : undefined}
-          aria-haspopup="true"
-          aria-expanded={open ? "true" : undefined}
-          onClick={handleClick}
-        >
-          <IoMdMore className="text-white" />
         </IconButton>
       </div>
 
