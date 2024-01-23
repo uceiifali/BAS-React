@@ -47,7 +47,6 @@ function UpdateModalTimeLine({ title, show, handleClose, arr }) {
           />
         </Modal.Body>
         <Modal.Footer className="border-none">
-          
           <SaveButton onClick={handleSave} />
         </Modal.Footer>
       </Modal>
