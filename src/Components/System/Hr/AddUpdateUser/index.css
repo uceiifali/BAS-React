@@ -115,23 +115,7 @@
     width: 75% !important;
 }
 
-.sumbmitAddUpdateUser {
-    width: 139px;
-    height: 35px;
-    border-radius: 6px;
-    background: #EFAA20;
-    border: unset;
-    color: #1E1E2D;
-    font-size: 15px;
-    line-height: 25.31px;
-    font-weight: 500px;
-}
 
-.sumbmitAddUpdateUser:hover {
-    background-color: unset !important;
-    border: 1px solid #EFAA20 !important;
-    color: white !important;
-}
 
 
 

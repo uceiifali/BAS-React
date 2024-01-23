@@ -21,16 +21,29 @@
   padding: 30px 0px;
   overflow-y: auto !important;
 }
+.sumbmitAddUpdateUser {
+  width: 139px;
+  height: 28px;
+  border-radius: 6px;
+  background: #efaa20;
+  border: unset;
+  color: #1e1e2d;
+}
 
-.systemModal .modal-content::-webkit-scrollbar-track,
-.rdt_Table::-webkit-scrollbar-track {
+.sumbmitAddUpdateUser:hover {
+  background-color: unset !important;
+  border: 1px solid #efaa20 !important;
+  color: white !important;
+}
+
+.systemModal .modal-content::-webkit-scrollbar-track {
   -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
   background-color: #f5f5f5;
   border-top-left-radius: 27px;
   border-bottom-left-radius: 27px;
 }
 
-.systemModal .modal-content::-webkit-scrollbar .rdt_Table::-webkit-scrollbar {
+.systemModal .modal-content::-webkit-scrollbar {
   width: 15px;
   border-top-left-radius: 27px;
   border-bottom-left-radius: 27px;
@@ -38,8 +51,7 @@
   background-color: #f5f5f5;
 }
 
-.systemModal .modal-content::-webkit-scrollbar-thumb,
-.rdt_Table::-webkit-scrollbar-thumb {
+.systemModal .modal-content::-webkit-scrollbar-thumb {
   background-color: #f90;
 
   border-top-left-radius: 20px;
