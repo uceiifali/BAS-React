@@ -4,7 +4,7 @@ import Modal from "react-bootstrap/Modal";
 import { IoClose } from "react-icons/io5";
 import IconButton from "@mui/material/IconButton";
 // import CloseBtn from "/assets/icons/Rejected.svg"
-function UpdateModal({ title, show, handleClose, arr, id }) {
+function UpdateCitizenModal({ title, show, handleClose, arr, id }) {
   const [inputVal, setInputVal] = useState("");
   const handleSave = () => {
     arr((prev) => {
@@ -41,18 +41,10 @@ function UpdateModal({ title, show, handleClose, arr, id }) {
         <Modal.Body className="justify-start">
           <div className="w-full text-start">
             <p className="text-end py-3 px-2 font-semibold rounded-[7px] outline-none">
-              اسم البند
+            اسم الخدمة
             </p>
             <input type="text" placeholder="ادخل الاسم" className="w-full bg-[#161622] rounded-md px-2 py-3 mb-3" />
-            <p className="text-end py-3 px-2 font-semibold rounded-[7px] outline-none">
-              الوصف
-            </p>
-            <div className="min-h-[200px] border !border-[#EFAA20] rounded-md">
-              <textarea
-                className="bg-transparent w-full px-2 py-3"
-                placeholder="ادخل وصف البند"
-              ></textarea>
-            </div>
+            
             <p className="text-end py-3 px-2 font-semibold rounded-[7px] outline-none">
             ارفاق صورة
             </p>
@@ -118,4 +110,4 @@ function UpdateModal({ title, show, handleClose, arr, id }) {
   );
 }
 
-export default UpdateModal;
+export default UpdateCitizenModal;

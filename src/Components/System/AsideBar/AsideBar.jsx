@@ -533,7 +533,7 @@ export const SettingsMenu = ({openSettingsMenu,handleCloseMenu}) => {
   
           <div className="col-md-4 ">
             <div className="system-item">
-              <Link>
+              <Link to={"/System/Settings/TimeLine"}>
               <div
                 class="system-card"
                 onClick={() => {

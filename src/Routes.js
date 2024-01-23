@@ -54,6 +54,7 @@ import Reception from "./Pages/System/Settings/Reception/Reception";
 import Orders from "./Pages/System/Settings/Orders/Orders";
 import Accounating from "./Pages/System/Settings/Accounating/Accounating";
 import CitizenServices from "./Pages/System/Settings/CitizenServices/CitizenServices";
+import TimeLine from "./Pages/System/Settings/TimeLine/TimeLine";
 
 const SignUP = lazy(() => import("./Pages/DashBoard/SignUP/SignUP"));
 const SignIn = lazy(() => import("./Pages/DashBoard/SignIn/SignIn"));
@@ -264,6 +265,7 @@ const router = createBrowserRouter([
           { path: "/System/Settings/Orders", element: <Orders /> },
           { path: "/System/Settings/Accounating", element: <Accounating /> },
           { path: "/System/Settings/CitizenServices", element: <CitizenServices /> },
+          { path: "/System/Settings/TimeLine", element: <TimeLine /> },
         ],
       },
     ],

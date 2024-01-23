@@ -8,6 +8,7 @@ import { PiImageThin } from "react-icons/pi";
 import RemoveModal from "../RemoveModal";
 import ViewModel from "../ViewModel";
 import UpdateModal from "../UpdateModal";
+import SearchButton from "../SearchButton";
 const DownloadIcon = ({ color }) => {
   return (
     <svg
@@ -263,7 +264,9 @@ function Accounating() {
           </div>
         </div>
         <div className="bg-[#1E1E2D] h-[801px] flex flex-col rounded-[19px] col-span-3 ">
-          <SearchComponent background={"#161620"} />
+        <div className="p-3">
+            <SearchButton />
+          </div>
           <div className="p-3 mt-3 flex-1">
             <div
               className={`relative h-full py-4  px-2 border !border-[#d5992133]

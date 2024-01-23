@@ -6,6 +6,7 @@ import AddModal from "../AddModal";
 import IconButton from "@mui/material/IconButton";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
+import SearchButton from "../SearchButton";
 const EditIcon = () => {
   return (
     <svg
@@ -320,7 +321,9 @@ const Orders = () => {
         {category && (
           <div className="bg-[#1E1E2D] h-[801px]  rounded-[19px]">
             <div className=" flex flex-col gap-2">
-              <SearchComponent background={"#161620"} />
+            <div className="p-3">
+            <SearchButton />
+          </div>
               <p className="w-full px-2 text-white text-right mt-2">
                 {category?.name}
               </p>

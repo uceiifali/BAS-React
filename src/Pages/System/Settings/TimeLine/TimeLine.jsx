@@ -7,8 +7,8 @@ import { IoMdMore } from "react-icons/io";
 import { PiImageThin } from "react-icons/pi";
 import RemoveModal from "../RemoveModal";
 import ViewModel from "../ViewModel";
-import UpdateModalTimeLine from "../TimeLine/UpdateModalTimeLine";
-import UpdateCitizenModal from "./UpdateCitizenModal";
+import UpdateModal from "../UpdateModal";
+import UpdateModalTimeLine from "./UpdateModalTimeLine";
 import SearchButton from "../SearchButton";
 const DownloadIcon = ({ color }) => {
   return (
@@ -106,11 +106,11 @@ const holidaysData = [
   { id: 4, name: "اجازة حج" },
 ];
 const servicesData = [
-  { id: 1, name: "طلب اجازة" },
-  { id: 2, name: "طلب توظيف" },
-  { id: 3, name: "عرض عمل" },
-  { id: 4, name: "اشعار مباشرة عمل" },
-  { id: 5, name: "اشعار مباشرة عمل" },
+  { id: 1, name: "أليات العمل" },
+  { id: 2, name: "مخططات المعمارية" },
+  { id: 3, name: "مخططات الامن و السلامه" },
+  { id: 4, name: "المخططات الانشائية" },
+  { id: 5, name: "مخططات الميكانيكيه" },
 ];
 const OptionsButton = ({ setHolidays, id }) => {
   const [showDelete, setShowDelete] = useState(false);
@@ -168,6 +168,22 @@ const OptionsButton = ({ setHolidays, id }) => {
         <MenuItem
           className="border min-w-[133px] text-right"
           sx={{ gap: 1 }}
+          onClick={handleShowView}
+        >
+          {" "}
+          <ViewIcon /> <span>عرض</span>{" "}
+        </MenuItem>
+        <MenuItem
+          className="border min-w-[133px] text-right"
+          sx={{ gap: 1 }}
+          onClick={handleClose}
+        >
+          {" "}
+          <DownloadIcon /> <span>تحميل</span>{" "}
+        </MenuItem>
+        <MenuItem
+          className="border min-w-[133px] text-right"
+          sx={{ gap: 1 }}
           onClick={handleShowUpdate}
         >
           {" "}
@@ -196,8 +212,8 @@ const OptionsButton = ({ setHolidays, id }) => {
         arr={setHolidays}
         id={id}
       />
-      <UpdateModalTimeLine
-        title={"تعديل"}
+      <UpdateModal
+        title={"تعديل البند"}
         show={showUpdate}
         handleClose={handleCloseUpdate}
         arr={setHolidays}
@@ -294,6 +310,7 @@ const OptionsButtonServices = ({ setHolidays, id }) => {
       </Menu> */}
 
       <div className="flex gap-3">
+        
         <IconButton
           id="basic-button"
           aria-controls={open ? "basic-menu" : undefined}
@@ -305,9 +322,9 @@ const OptionsButtonServices = ({ setHolidays, id }) => {
             height: "25px",
             backgroundColor: "#136D01",
             borderRadius: "2.487px",
-            "&:hover": {
+            "&:hover":{
               backgroundColor: "#136D01",
-            },
+            }
           }}
         >
           <svg
@@ -346,9 +363,9 @@ const OptionsButtonServices = ({ setHolidays, id }) => {
             height: "25px",
             backgroundColor: "#9E0C1E",
             borderRadius: "2.487px",
-            "&:hover": {
+            "&:hover":{
               backgroundColor: "#9E0C1E",
-            },
+            }
           }}
         >
           <svg
@@ -380,8 +397,8 @@ const OptionsButtonServices = ({ setHolidays, id }) => {
         arr={setHolidays}
         id={id}
       />
-      <UpdateCitizenModal
-        title={"تعديل خدمة "}
+      <UpdateModalTimeLine
+        title={"تعديل اسم المرحله "}
         show={showUpdate}
         handleClose={handleCloseUpdate}
         arr={setHolidays}
@@ -432,7 +449,7 @@ const ServicesBtn = ({ title, active, setActive, index, setHolidays }) => {
     </div>
   );
 };
-function CitizenServices() {
+function TimeLine() {
   const [holidays, setHolidays] = useState([...holidaysData]);
   const [services, setServices] = useState([...servicesData]);
   const [active, setActive] = useState(1);
@@ -441,25 +458,20 @@ function CitizenServices() {
       <div className="grid grid-cols-4 gap-4">
         <div className="bg-[#1E1E2D] h-[801px]  rounded-[19px]">
           <div className="p-2 ">
-            <p className="w-full text-white text-right my-2">كل الخدمات </p>
+            <p className="w-full text-white text-right my-2">مراحل الخطه الزمنيه </p>
             <div className="flex flex-col gap-2">
               <OrderBtn
-                title={"الاجازات"}
+                title={"كل المراحل"}
                 index={1}
                 active={active}
                 setActive={setActive}
               />
-              <OrderBtn
-                title={"الخدمات"}
-                index={2}
-                active={active}
-                setActive={setActive}
-              />
+              
             </div>
           </div>
         </div>
         <div className="bg-[#1E1E2D] h-[801px] flex flex-col rounded-[19px] col-span-3 ">
-          <div className="p-3">
+        <div className="p-3">
             <SearchButton />
           </div>
           <div className="p-3 mt-3 flex-1">
@@ -469,12 +481,11 @@ function CitizenServices() {
                  `}
             >
               <p className="absolute p-2 left-1/2 top-0 -translate-x-1/2 -mt-1 -translate-y-1/2 bg-[#1E1E2D] text-white text-[15px] font-semibold">
-                {"كل بنود التقارير"}
+                {"مراحل الخطه الزمنيه"}
               </p>
               <div className="h-full overflow-y-scroll scrollbar-thin scrollbar-thumb-[#C8D0D0] scrollbar-track-transparent">
-                {active == 1
-                  ? holidays?.map(({ id, name }) => (
-                      <SubCategoryBtn
+                { services?.map(({ id, name }) => (
+                      <ServicesBtn
                         title={name}
                         index={id}
                         active={active}
@@ -483,19 +494,8 @@ function CitizenServices() {
                         setHolidays={setHolidays}
                       />
                     ))
-                  : null}
-                {active == 2
-                  ? services?.map(({ id, name }) => (
-                      <ServicesBtn
-                        title={name}
-                        index={id}
-                        active={active}
-                        setActive={setActive}
-                        key={id}
-                        setHolidays={setServices}
-                      />
-                    ))
-                  : null}
+                  }
+                
               </div>
             </div>
           </div>
@@ -505,4 +505,4 @@ function CitizenServices() {
   );
 }
 
-export default CitizenServices;
+export default TimeLine;
