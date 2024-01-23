@@ -494,7 +494,7 @@ export const SettingsMenu = ({openSettingsMenu,handleCloseMenu}) => {
   
           <div className="col-md-4 ">
             <div className="system-item">
-              <Link to={"/System/Accounating/index"}>
+              <Link to={"/System/Settings/Accounating"}>
                 <div class="system-card">
                   <div class="card__content d-flex justify-content-center align-items-center  flex-column  ">
                     <Image
@@ -513,7 +513,7 @@ export const SettingsMenu = ({openSettingsMenu,handleCloseMenu}) => {
           </div>
           <div className="col-md-4 ">
             <div className="system-item">
-              <Link>
+              <Link to={"/System/Settings/CitizenServices"}>
                 <div class="system-card">
                   <div class="card__content d-flex justify-content-center align-items-center  flex-column  ">
                     <Image

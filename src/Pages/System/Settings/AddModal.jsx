@@ -22,6 +22,7 @@ function AddModal({title,show,handleClose,arr}) {
         contentClassName="bg-[#1E1E2D] border !max-w-[700px] !border-[#EFAA20] !rounded-[20px] text-white"
         show={show}
         onHide={handleClose}
+        size="lg"
       >
         <Modal.Header className="!justify-between border-none">
           <Modal.Title className="text-xl">

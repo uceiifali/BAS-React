@@ -79,9 +79,10 @@ const OptionsButton = () => {
         MenuListProps={{
           "aria-labelledby": "basic-button",
         }}
+        classes="bg-red-200"
       >
-        <MenuItem onClick={handleClose}> <EditIcon/>{" "} <span>تعديل</span>  </MenuItem>
-        <MenuItem onClick={handleClose}> <DeleteIcon/>{" "} <span>حذف</span> </MenuItem>
+        <MenuItem className="border min-w-[133px] text-right" sx={{gap:1}} onClick={handleClose}> <EditIcon/>{" "} <span>تعديل</span>  </MenuItem>
+        <MenuItem className="border min-w-[133px] text-right" sx={{gap:1}} onClick={handleClose}> <DeleteIcon/>{" "} <span>حذف</span> </MenuItem>
       </Menu>
     </div>
   );
@@ -295,7 +296,7 @@ const Orders = () => {
   }, [activeCategory, category]);
   // console.log("category: ",category?.category?.data);
   // console.log("subCategory: ",subCategory?.subCategories?.push({id:3,name:"new Val"}));
-  console.log("subCategory: ", subCategory);
+  // console.log("subCategory: ", subCategory);
   return (
     <section className="">
       <div className="grid grid-cols-4 gap-4">
