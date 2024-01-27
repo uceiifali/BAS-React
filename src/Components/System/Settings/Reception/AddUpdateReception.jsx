@@ -9,6 +9,7 @@ import AddAttachment from "../../AddAttachment";
 import SaveButton from "../../../SaveButton";
 import styles from "./AddUpdateReception.module.css";
 import DeleteButton from "../../../DeleteButton";
+import Progress from "../../../Progress";
 
 const AddUpdateReciption = ({
   editVisit,
@@ -700,6 +701,7 @@ const AddUpdateReciption = ({
           </Form>
         </Modal>
       )}
+      {/* {!id && !show && editVisit && <Progress />} */}
     </div>
   );
 };
