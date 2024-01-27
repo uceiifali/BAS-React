@@ -56,8 +56,133 @@ const DeleteIcon = () => {
     </svg>
   );
 };
+const OrderBtn = ({ title, active, setActive, index }) => {
+  return (
+    <button
+      onClick={() => setActive(index)}
+      className={`px-2 add-user-button text-right !w-full border hover:!border-[#EFAA20] rounded-md ${
+        active === index
+          ? "text-[#EFAA20] text-base  !border-[#EFAA20]"
+          : "text-[#ffffff80] !text-xs !border-transparent"
+      } `}
+    >
+      {title}
+    </button>
+  );
+};
+
+const OptionsButton = ({ setTerms, id }) => {
+  const [showDelete, setShowDelete] = useState(false);
+  const [showView, setShowView] = useState(false);
+  const [showUpdate, setShowUpdate] = useState(false);
+  const [anchorEl, setAnchorEl] = useState(null);
+
+  const open = Boolean(anchorEl);
+
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+  const handleCloseUpdate = () => setShowUpdate(false);
+  const handleShowUpdate = () => {
+    setShowUpdate(true);
+    // handleCloseDelete();
+    console.log("Delete");
+  };
+  const handleCloseDelete = () => setShowDelete(false);
+  const handleShowDelete = () => {
+    setShowDelete(true);
+    // handleCloseDelete();
+    console.log("Delete");
+  };
+  const handleCloseView = () => setShowView(false);
+  const handleShowView = () => {
+    setShowView(true);
+    // handleCloseDelete();
+    console.log("Delete");
+  };
+  return (
+    <div>
+      <IconButton
+        id="basic-button"
+        aria-controls={open ? "basic-menu" : undefined}
+        aria-haspopup="true"
+        aria-expanded={open ? "true" : undefined}
+        onClick={handleClick}
+      >
+        <IoMdMore className="text-white" />
+      </IconButton>
+      <Menu
+        id="basic-menu"
+        anchorEl={anchorEl}
+        open={open}
+        onClose={handleClose}
+        MenuListProps={{
+          "aria-labelledby": "basic-button",
+        }}
+        classes="bg-red-200"
+      >
+        <MenuItem
+          className="border min-w-[133px] text-right"
+          sx={{ gap: 1 }}
+          onClick={handleShowUpdate}
+        >
+          {" "}
+          <EditIcon /> <span>تعديل</span>{" "}
+        </MenuItem>
+        <MenuItem
+          className="border min-w-[133px] text-right"
+          sx={{ gap: 1 }}
+          onClick={handleShowDelete}
+        >
+          {" "}
+          <DeleteIcon /> <span>حذف</span>{" "}
+        </MenuItem>
+      </Menu>
+      {/* <RemoveModal
+                  title={"التأكيد"}
+                  show={showDelete}
+                  handleClose={handleCloseDelete}
+                  arr={setTerms}
+                  id={id}
+                /> */}
+      {/* <ViewModel
+                  title={"عرض البند"}
+                  show={showView}
+                  handleClose={handleCloseView}
+                  arr={setTerms}
+                  id={id}
+                /> */}
+      {/* <UpdateModal
+                  title={"تعديل البند"}
+                  show={showUpdate}
+                  handleClose={handleCloseUpdate}
+                  arr={setTerms}
+                  id={id}
+                /> */}
+    </div>
+  );
+};
+
+const SubCategoryBtn = ({ title, active, setActive, index, setTerms }) => {
+  return (
+    <div
+      className={`flex w-full justify-between items-center px-2 text-[#ffffff80] border hover:!border-[#EFAA20] text-base ${
+        active === index ? "  !border-transparent" : " !border-transparent"
+      }`}
+    >
+      <button onClick={() => setActive(index)} className="w-full">
+        <p className="w-full text-white text-right my-3">{title}</p>
+      </button>
+      <OptionsButton setTerms={setTerms} id={index} />
+    </div>
+  );
+};
 
 const Reception = () => {
+  const [visitsData,setVisitsData] = useState([])
   const [openPdf, setOpenPdf] = useState(false);
   const [active, setActive] = useState(0);
   const [status, setStatus] = useState("Exports");
@@ -92,6 +217,11 @@ const Reception = () => {
     },
   ];
 
+  // const visits = [
+  //   {id: 1 , name: "مروة محمود", dep: "برمجة" , date: "15-10-2024"},
+  //   {id: 2 , name: "حبيب", dep: "برمجة" , date: "15-10-2024"},
+  //   {id: 3 , name: "مروة محمود", dep: "برمجة" , date: "15-10-2024"},
+  // ];
   const visits = Array.from({ length: 3 }).map((_, index) => {
     return {
       id: index + 1,
@@ -130,6 +260,7 @@ const Reception = () => {
       ),
     };
   });
+  
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -152,29 +283,34 @@ const Reception = () => {
         setEditVisit={setEditVisit}
       />
 
-      <div className="grid grid-cols-4 gap-4">
+      <div className="grid grid-cols-4 gap-3">
         <div className="bg-[#1E1E2D] h-[801px]  rounded-[19px]">
           <div className="p-3 ">
-            <p className="text-white my-3">الاستقبال</p>
-            <div
-              className="p-1
-                  h-[31.22px] border-1  rounded border-[#EFAA20]
-                pointer
-                "
-            >
-              <div className="text-sm text-[#ffffff80] ">إدارة الاستقبال</div>
+            <div className="my-3">
+            <p className="text-white text-[15px] ">الاستقبال</p>
+
+            </div>
+            <div>
+              <OrderBtn
+                title={"البنود"}
+                index={1}
+                active={1}
+                setActive={setActive}
+              />
             </div>
           </div>
         </div>
-        <div className="bg-[#1E1E2D] h-[801px] p-3  rounded-[19px]">
-          <p className="text-white  my-3">كل الزيارات</p>
+        <div className="bg-[#1E1E2D] h-[801px]   rounded-[19px]">
+          <div className="pt-4 px-3">
+          <p className="text-white text-[15px]">كل الزيارات</p>
+          </div>
           <div
             onClick={() => {
               setActive(0);
               setStatus("Exports");
             }}
-            className={`p-2 my-3 w-full  border-1  rounded-md  pointer   flex justify-between  ${
-              active === 0 ? " border-[#EFAA20]" : " border-[#ffffff80]"
+            className={`p-2 my-3 w-full  border hover:!border-[#EFAA20] pointer   flex justify-between  ${
+              active === 0 ? " !border-[#EFAA20]" : "!border-transparent"
             }  `}
           >
             <div className="flex gap-2 text-sm text-[#ffffff80] ">
@@ -194,6 +330,7 @@ const Reception = () => {
                   aria-haspopup="true"
                   aria-expanded={open ? "true" : undefined}
                   onClick={handleClick}
+                  sx={{p:0}}
                 >
                   <IoMdMore className="text-white" />
                 </IconButton>
@@ -208,7 +345,7 @@ const Reception = () => {
                 >
                   <MenuItem className="flex gap-2" onClick={handleClose}>
                     {" "}
-                    <FaDownload /> <span>تحمبل</span>{" "}
+                    <FaDownload /> <span>تحميل</span>{" "}
                   </MenuItem>
                   <MenuItem className="flex gap-2" onClick={handleClose}>
                     {" "}
@@ -223,11 +360,11 @@ const Reception = () => {
               setActive(1);
               setStatus("Imports");
             }}
-            className={`p-2 my-3 w-full  flex justify-between border-1 rounded-md ${
-              active === 1 ? " border-[#EFAA20]" : " border-[#ffffff80]"
+            className={`p-2 my-3 w-full  flex justify-between items-center border hover:!border-[#EFAA20] ${
+              active === 1 ? " !border-[#EFAA20]" : "!border-transparent"
             }      pointer`}
           >
-            <div className="flex gap-2 text-sm text-[#ffffff80] ">
+            <div className="flex items-center gap-2 text-sm text-[#ffffff80] ">
               <PdfImage
                 openPdf={openPdf}
                 setOpenPdf={setOpenPdf}
@@ -243,6 +380,7 @@ const Reception = () => {
                 aria-haspopup="true"
                 aria-expanded={open ? "true" : undefined}
                 onClick={handleClick}
+                sx={{p:0}}
               >
                 <IoMdMore className="text-white" />
               </IconButton>
@@ -267,16 +405,22 @@ const Reception = () => {
             </div>
           </div>
         </div>
-        <div className="bg-[#1E1E2D] h-[801px] p-3 rounded-[19px] col-span-2 ">
-          {status === "Exports" ? (
+        <div className="bg-[#1E1E2D] h-[801px]  rounded-[19px] col-span-2 ">
+         <div className="p-3">
+         {status === "Exports" ? (
             <p className="text-xl text-white">كل الزيارات الصادرة</p>
           ) : (
             <p className="text-xl text-white">كل الزيارات الواردة</p>
           )}
+         </div>
 
-          <div className="flex mt-3 justify-start gap-3">
+          <div className="flex px-3 mt-3 justify-start items-center gap-3">
             <p className="text-white ">بحث</p>
-            <Input placeholder="اكتب هنا" {...search.bind} />
+            <input 
+            type="text" 
+            className="bg-[#2B2B40] text-white rounded-[5px] p-2 w-full"
+            placeholder={status === "Exports" ? "اسم الموظف" : "اسم الشخص"}
+            />
           </div>
 
           <fieldset className=" fieldBorder mt-3">
@@ -284,10 +428,22 @@ const Reception = () => {
 
             <DataTableComponent
               className={
-                "overflow-y-auto overflow-x-auto scrollbar-thin scrollbar-thumb-[#C8D0D0] scrollbar-track-transparent p-3"
+                "overflow-y-auto overflow-x-auto scrollbar-thin scrollbar-thumb-[#C8D0D0] scrollbar-track-transparent "
               }
-              columns={columns}
+              handleOpenViewVisit={() => {
+            setViewVisit(true);
+          }}
+          handleOpenEditVisit={() => {
+            setEditVisit(true);
+          }}
+          columns={columns}
               data={visits}
+            // <DataTableComponent
+            //   className={
+            //     "overflow-y-auto overflow-x-auto scrollbar-thin scrollbar-thumb-[#C8D0D0] scrollbar-track-transparent "
+            //   }
+            //   columns={columns}
+            //   data={visits}
             />
           </fieldset>
         </div>

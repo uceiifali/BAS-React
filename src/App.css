@@ -1,7 +1,9 @@
 /* Adding fonts */
 @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;700;800;900&family=Poppins:ital,wght@0,500;1,500;1,600&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;500&family=Poppins:ital,wght@0,500;1,500;1,600&display=swap');
-
+*{
+  box-sizing: border-box;
+}
 
 body {
   direction: rtl !important;
@@ -1268,3 +1270,67 @@ height: 250px !important;
 }
 
 /* .editUser {} */
+
+
+
+.rbc-row-content{
+  color: #FFF;
+}
+.rbc-row-content h2{
+  text-align: right;
+
+}
+.rbc-day-bg{
+  box-sizing: border-box;
+  border: 1px solid #FFFFFF33;
+  
+}
+.rbc-day-bg:hover{
+  border-color: #EFAA20 !important;
+
+}
+.rbc-btn-group{
+  
+}
+.rbc-btn-group button{
+  
+}
+.rbc-btn-group button:hover , .rbc-active{
+  background-color: #1E1E2D !important; 
+  border-color: #EFAA20 !important;
+}
+.ck-editor{
+  overflow: hidden;
+ border-radius: 7px;
+
+}
+.ck.ck-toolbar{
+  border: none;
+}
+.ck-toolbar{
+  background-color: #2B2B40 !important; 
+  color: #FFF;
+}
+.ck.ck-editor__main>.ck-editor__editable:not(.ck-focused){
+  border: none;
+  border-top: 1px solid #ffffff8a;
+}
+.ck.ck-toolbar__separator{
+  background-color: transparent !important; 
+}
+.ck-reset_all :not(.ck-reset_all-excluded *), .ck.ck-reset_all {
+  color: #FFF;
+}
+.ck.ck-button:not(.ck-disabled):hover, a.ck.ck-button:not(.ck-disabled):hover {
+  background: transparent;
+}
+
+.MuiPickersPopper-paper {
+  direction: ltr;
+}
+.date-input input,
+.date-input label,
+.date-input button
+{
+color: white;
+}

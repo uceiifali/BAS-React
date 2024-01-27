@@ -18,7 +18,7 @@ const SystemIndex = () => {
         />
       </div>
       <div
-        className={`d-flex gap-2 mx-auto  w-90  ${
+        className={`d-flex gap-4 mx-auto  w-90  ${
           collapsed && " justify-between"
         }`}
       >

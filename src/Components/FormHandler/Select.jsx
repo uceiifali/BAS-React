@@ -19,6 +19,7 @@ const Select = React.forwardRef((props, ref) => {
     className = "",
     OptionbackgroundColor = null,
     cacheOptions = true,
+    labelClasses
   } = props;
 
   let hasWarning = submitted && validator && !validator.valid;
@@ -76,7 +77,7 @@ const Select = React.forwardRef((props, ref) => {
       }`}
     >
       {label && (
-        <label className="form-label">
+        <label className={`form-label ${labelClasses}`}>
           {label} {mandatory && <span className="text-danger">*</span>}
         </label>
       )}
@@ -88,7 +89,7 @@ const Select = React.forwardRef((props, ref) => {
           placeholder="اختر"
           width
           height
-          className={`react-select ${className} ${
+          className={`react-select !text-white ${className} ${
             submitted && validator && !validator.valid ? "is-invalid" : ""
           }`}
           {...props}
@@ -103,7 +104,7 @@ const Select = React.forwardRef((props, ref) => {
           isMulti={isMulti}
           width
           height
-          className={`react-select ${className} ${
+          className={`react-select !text-white ${className} ${
             submitted && validator && !validator.valid ? "is-invalid" : ""
           }`}
           {...props}

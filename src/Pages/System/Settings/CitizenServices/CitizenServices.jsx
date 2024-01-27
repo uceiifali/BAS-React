@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { SearchComponent } from "../../../../Components/SearchComponent/SearchComponent";
 import IconButton from "@mui/material/IconButton";
 import Menu from "@mui/material/Menu";
@@ -10,6 +10,7 @@ import ViewModel from "../ViewModel";
 import UpdateModalTimeLine from "../TimeLine/UpdateModalTimeLine";
 import UpdateCitizenModal from "./UpdateCitizenModal";
 import SearchButton from "../SearchButton";
+import { SettingContext } from "../../../../Context/AddSettings";
 const DownloadIcon = ({ color }) => {
   return (
     <svg
@@ -390,10 +391,16 @@ const OptionsButtonServices = ({ setHolidays, id }) => {
     </div>
   );
 };
-const OrderBtn = ({ title, active, setActive, index }) => {
+const OrderBtn = ({ title, active, setActive, index , settingtype}) => {
+  const { settingType,setSettingType } = useContext(SettingContext);
   return (
     <button
-      onClick={() => setActive(index)}
+      type="button"
+      onClick={() => {
+        setActive(index);
+        setSettingType(`settings/Citizen/${settingtype}`)
+      
+      }}
       className={`px-2 add-user-button px-2 text-right !w-full border hover:!border-[#EFAA20] rounded-md ${
         active === index
           ? "text-[#EFAA20] text-base  !border-[#EFAA20]"
@@ -411,7 +418,7 @@ const SubCategoryBtn = ({ title, active, setActive, index, setHolidays }) => {
         active === index ? "  !border-transparent" : " !border-transparent"
       }`}
     >
-      <button onClick={() => setActive(index)} className="w-full">
+      <button type="button" onClick={() => setActive(index)} className="w-full">
         <p className="w-full text-white text-right my-3">{title}</p>
       </button>
       <OptionsButton setHolidays={setHolidays} id={index} />
@@ -425,7 +432,7 @@ const ServicesBtn = ({ title, active, setActive, index, setHolidays }) => {
         active === index ? "  !border-transparent" : " !border-transparent"
       }`}
     >
-      <button onClick={() => setActive(index)} className="w-full">
+      <button type="button" onClick={() => setActive(index)} className="w-full">
         <p className="w-full text-white text-right my-3">{title}</p>
       </button>
       <OptionsButtonServices setHolidays={setHolidays} id={index} />
@@ -448,12 +455,14 @@ function CitizenServices() {
                 index={1}
                 active={active}
                 setActive={setActive}
+                settingtype={"vacations"}
               />
               <OrderBtn
                 title={"الخدمات"}
                 index={2}
                 active={active}
                 setActive={setActive}
+                settingtype={"services"}
               />
             </div>
           </div>
