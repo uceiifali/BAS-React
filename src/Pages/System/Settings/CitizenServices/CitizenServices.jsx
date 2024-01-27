@@ -10,7 +10,8 @@ import ViewModel from "../ViewModel";
 import UpdateModalTimeLine from "../TimeLine/UpdateModalTimeLine";
 import UpdateCitizenModal from "./UpdateCitizenModal";
 import SearchButton from "../SearchButton";
-import { SettingContext } from "../../../../Context/AddSettings";
+import SettingContext from "../../../../Context/SettingContext";
+
 const DownloadIcon = ({ color }) => {
   return (
     <svg

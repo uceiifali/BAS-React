@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useMemo, useState } from "react";
 
 import { BiDotsVerticalRounded } from "react-icons/bi";
 import PdfImage from "../../../../Components/PdfImage";
@@ -12,6 +12,8 @@ import { IconButton, Menu, MenuItem } from "@mui/material";
 import { IoMdMore } from "react-icons/io";
 import { FaDownload } from "react-icons/fa";
 import ViewReception from "../../../../Components/System/Settings/Reception/ViewReception";
+import SettingContext from "../../../../Context/SettingContext";
+
 const EditIcon = () => {
   return (
     <svg
@@ -141,27 +143,6 @@ const OptionsButton = ({ setTerms, id }) => {
           <DeleteIcon /> <span>حذف</span>{" "}
         </MenuItem>
       </Menu>
-      {/* <RemoveModal
-                  title={"التأكيد"}
-                  show={showDelete}
-                  handleClose={handleCloseDelete}
-                  arr={setTerms}
-                  id={id}
-                /> */}
-      {/* <ViewModel
-                  title={"عرض البند"}
-                  show={showView}
-                  handleClose={handleCloseView}
-                  arr={setTerms}
-                  id={id}
-                /> */}
-      {/* <UpdateModal
-                  title={"تعديل البند"}
-                  show={showUpdate}
-                  handleClose={handleCloseUpdate}
-                  arr={setTerms}
-                  id={id}
-                /> */}
     </div>
   );
 };
@@ -182,7 +163,9 @@ const SubCategoryBtn = ({ title, active, setActive, index, setTerms }) => {
 };
 
 const Reception = () => {
-  const [visitsData,setVisitsData] = useState([])
+  const { ReciptionType, setReceptionType } = useContext(SettingContext);
+  const { id, setId } = useState(null);
+  const [visitsData, setVisitsData] = useState([]);
   const [openPdf, setOpenPdf] = useState(false);
   const [active, setActive] = useState(0);
   const [status, setStatus] = useState("Exports");
@@ -216,12 +199,6 @@ const Reception = () => {
       selector: (row) => row.edit,
     },
   ];
-
-  // const visits = [
-  //   {id: 1 , name: "مروة محمود", dep: "برمجة" , date: "15-10-2024"},
-  //   {id: 2 , name: "حبيب", dep: "برمجة" , date: "15-10-2024"},
-  //   {id: 3 , name: "مروة محمود", dep: "برمجة" , date: "15-10-2024"},
-  // ];
   const visits = Array.from({ length: 3 }).map((_, index) => {
     return {
       id: index + 1,
@@ -260,7 +237,19 @@ const Reception = () => {
       ),
     };
   });
-  
+  // handleContext
+  useMemo(() => {
+    if (status) {
+      setReceptionType(status);
+    }
+  }, [status, setStatus]);
+  // handleFakeID
+  useMemo(() => {
+    if (editVisit) {
+      setId("12");
+    }
+  }, [editVisit]);
+
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -277,7 +266,7 @@ const Reception = () => {
         setViewVisit={setViewVisit}
       />
       <AddUpdateReciption
-        id={"44343"}
+        id={id}
         status={status}
         editVisit={editVisit}
         setEditVisit={setEditVisit}
@@ -287,8 +276,7 @@ const Reception = () => {
         <div className="bg-[#1E1E2D] h-[801px]  rounded-[19px]">
           <div className="p-3 ">
             <div className="my-3">
-            <p className="text-white text-[15px] ">الاستقبال</p>
-
+              <p className="text-white text-[15px] ">الاستقبال</p>
             </div>
             <div>
               <OrderBtn
@@ -302,7 +290,7 @@ const Reception = () => {
         </div>
         <div className="bg-[#1E1E2D] h-[801px]   rounded-[19px]">
           <div className="pt-4 px-3">
-          <p className="text-white text-[15px]">كل الزيارات</p>
+            <p className="text-white text-[15px]">كل الزيارات</p>
           </div>
           <div
             onClick={() => {
@@ -330,7 +318,7 @@ const Reception = () => {
                   aria-haspopup="true"
                   aria-expanded={open ? "true" : undefined}
                   onClick={handleClick}
-                  sx={{p:0}}
+                  sx={{ p: 0 }}
                 >
                   <IoMdMore className="text-white" />
                 </IconButton>
@@ -380,7 +368,7 @@ const Reception = () => {
                 aria-haspopup="true"
                 aria-expanded={open ? "true" : undefined}
                 onClick={handleClick}
-                sx={{p:0}}
+                sx={{ p: 0 }}
               >
                 <IoMdMore className="text-white" />
               </IconButton>
@@ -406,20 +394,20 @@ const Reception = () => {
           </div>
         </div>
         <div className="bg-[#1E1E2D] h-[801px]  rounded-[19px] col-span-2 ">
-         <div className="p-3">
-         {status === "Exports" ? (
-            <p className="text-xl text-white">كل الزيارات الصادرة</p>
-          ) : (
-            <p className="text-xl text-white">كل الزيارات الواردة</p>
-          )}
-         </div>
+          <div className="p-3">
+            {status === "Exports" ? (
+              <p className="text-xl text-white">كل الزيارات الصادرة</p>
+            ) : (
+              <p className="text-xl text-white">كل الزيارات الواردة</p>
+            )}
+          </div>
 
           <div className="flex px-3 mt-3 justify-start items-center gap-3">
             <p className="text-white ">بحث</p>
-            <input 
-            type="text" 
-            className="bg-[#2B2B40] text-white rounded-[5px] p-2 w-full"
-            placeholder={status === "Exports" ? "اسم الموظف" : "اسم الشخص"}
+            <input
+              type="text"
+              className="bg-[#2B2B40] text-white rounded-[5px] p-2 w-full"
+              placeholder={status === "Exports" ? "اسم الموظف" : "اسم الشخص"}
             />
           </div>
 
@@ -431,19 +419,19 @@ const Reception = () => {
                 "overflow-y-auto overflow-x-auto scrollbar-thin scrollbar-thumb-[#C8D0D0] scrollbar-track-transparent "
               }
               handleOpenViewVisit={() => {
-            setViewVisit(true);
-          }}
-          handleOpenEditVisit={() => {
-            setEditVisit(true);
-          }}
-          columns={columns}
+                setViewVisit(true);
+              }}
+              handleOpenEditVisit={() => {
+                setEditVisit(true);
+              }}
+              columns={columns}
               data={visits}
-            // <DataTableComponent
-            //   className={
-            //     "overflow-y-auto overflow-x-auto scrollbar-thin scrollbar-thumb-[#C8D0D0] scrollbar-track-transparent "
-            //   }
-            //   columns={columns}
-            //   data={visits}
+              // <DataTableComponent
+              //   className={
+              //     "overflow-y-auto overflow-x-auto scrollbar-thin scrollbar-thumb-[#C8D0D0] scrollbar-track-transparent "
+              //   }
+              //   columns={columns}
+              //   data={visits}
             />
           </fieldset>
         </div>

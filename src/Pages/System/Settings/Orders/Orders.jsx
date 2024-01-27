@@ -7,7 +7,9 @@ import IconButton from "@mui/material/IconButton";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import SearchButton from "../SearchButton";
-import { SettingContext } from "../../../../Context/AddSettings";
+import SettingContext from "../../../../Context/SettingContext";
+
+
 const EditIcon = () => {
   return (
     <svg
@@ -83,20 +85,34 @@ const OptionsButton = () => {
         }}
         classes="bg-red-200"
       >
-        <MenuItem className="border min-w-[133px] text-right" sx={{gap:1}} onClick={handleClose}> <EditIcon/>{" "} <span>تعديل</span>  </MenuItem>
-        <MenuItem className="border min-w-[133px] text-right" sx={{gap:1}} onClick={handleClose}> <DeleteIcon/>{" "} <span>حذف</span> </MenuItem>
+        <MenuItem
+          className="border min-w-[133px] text-right"
+          sx={{ gap: 1 }}
+          onClick={handleClose}
+        >
+          {" "}
+          <EditIcon /> <span>تعديل</span>{" "}
+        </MenuItem>
+        <MenuItem
+          className="border min-w-[133px] text-right"
+          sx={{ gap: 1 }}
+          onClick={handleClose}
+        >
+          {" "}
+          <DeleteIcon /> <span>حذف</span>{" "}
+        </MenuItem>
       </Menu>
     </div>
   );
 };
 
-const OrderBtn = ({ title, active, setActive, index ,settingtype}) => {
+const OrderBtn = ({ title, active, setActive, index, settingtype }) => {
   const { setSettingType } = useContext(SettingContext);
   return (
     <button
       onClick={() => {
-        setActive(index)
-        setSettingType(`settings/orders/${settingtype}`)
+        setActive(index);
+        setSettingType(`settings/orders/${settingtype}`);
       }}
       className={`px-2 add-user-button px-2 text-right !w-full border hover:!border-[#EFAA20] rounded-md ${
         active === index
@@ -280,7 +296,7 @@ const OrdersData = [
     },
   },
 ];
-const settingtypes=["uses","service","type"]
+const settingtypes = ["uses", "service", "type"];
 const Orders = () => {
   const [show, setShow] = useState(false);
 
@@ -327,9 +343,9 @@ const Orders = () => {
         {category && (
           <div className="bg-[#1E1E2D] h-[801px]  rounded-[19px]">
             <div className=" flex flex-col gap-2">
-            <div className="p-3">
-            <SearchButton />
-          </div>
+              <div className="p-3">
+                <SearchButton />
+              </div>
               <p className="w-full px-2 text-white text-right mt-2">
                 {category?.name}
               </p>

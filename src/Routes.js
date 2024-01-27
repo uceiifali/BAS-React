@@ -55,7 +55,7 @@ import Orders from "./Pages/System/Settings/Orders/Orders";
 import Accounating from "./Pages/System/Settings/Accounating/Accounating";
 import CitizenServices from "./Pages/System/Settings/CitizenServices/CitizenServices";
 import TimeLine from "./Pages/System/Settings/TimeLine/TimeLine";
-import SettingProvider from "./Context/AddSettings";
+import { SettingContextProvider } from "./Context/SettingContext";
 
 const SignUP = lazy(() => import("./Pages/DashBoard/SignUP/SignUP"));
 const SignIn = lazy(() => import("./Pages/DashBoard/SignIn/SignIn"));
@@ -262,7 +262,7 @@ const router = createBrowserRouter([
       //System settings
       {
         path: "/System/Settings",
-        element: <SettingProvider> <Settings /></SettingProvider>,
+        element: <SettingContextProvider> <Settings /></SettingContextProvider>,
         children: [
           { path: "/System/Settings/Reception", element: <Reception /> },
           { path: "/System/Settings/Orders", element: <Orders /> },
