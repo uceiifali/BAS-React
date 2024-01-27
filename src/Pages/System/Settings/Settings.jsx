@@ -5,8 +5,13 @@ import AddNewTimeLine from "../../../Components/AddNewBtn/Settings/AddNewTimeLin
 import AddNewCitizenServices from "../../../Components/AddNewBtn/Settings/AddNewCitizenServices";
 import AddNewOrders from "../../../Components/AddNewBtn/Settings/AddNewOrders";
 import { SettingContext } from "../../../Context/AddSettings";
+import AddNewReception from "../../../Components/AddNewBtn/Settings/AddNewReception";
+
+import AddUpdateReciption from "../../../Components/System/Settings/Reception/AddUpdateReception";
+import SettingContext from "../../../Context/SettingContext";
 const Settings = () => {
-  const { settingType,setSettingType } = useContext(SettingContext);
+  const { settingType, setSettingType, ReciptionType, setReciptionType } =
+    useContext(SettingContext);
   const [show, setShow] = useState(false);
   let { pathname } = useLocation();
   let pagePath = pathname.split("/System/Settings/")[1];
@@ -31,7 +36,7 @@ const Settings = () => {
     }
     // handleOpen()
   };
-  console.log("settingType: ",settingType);
+  console.log("settingType: ", settingType);
   return (
     <div className="w-full">
       <SystemControler
@@ -45,24 +50,28 @@ const Settings = () => {
         }
       />
       {pagePath === "Reception" ? (
-        <AddNewTimeLine
+        <AddNewReception
+        <AddUpdateReciption
           handleClose={handleClose}
-          title={"This is Reception Page"}
+          title={"اضافة زيارة "}
+          ReciptionType={ReciptionType}
+          id={null}
           show={show}
+          setShow={setShow}
         />
-      ) : pagePath === "Orders" && (settingType === "settings/orders/uses") ?  (
+      ) : pagePath === "Orders" && settingType === "settings/orders/uses" ? (
         <AddNewOrders
           handleClose={handleClose}
           title={"اضافة استخدام جديد للمشروع "}
           show={show}
         />
-      )  : pagePath === "Orders" && (settingType === "settings/orders/service") ?  (
+      ) : pagePath === "Orders" && settingType === "settings/orders/service" ? (
         <AddNewOrders
           handleClose={handleClose}
           title={"اضافة خدمة جديدة للمشروع "}
           show={show}
         />
-      )  : pagePath === "Orders" && (settingType === "settings/orders/type") ?  (
+      ) : pagePath === "Orders" && settingType === "settings/orders/type" ? (
         <AddNewOrders
           handleClose={handleClose}
           title={"اضافة نوع مشروع جديد للمشروع "}
@@ -74,14 +83,16 @@ const Settings = () => {
           title={"This is Accounating Page"}
           show={show}
         />
-      ) : (pagePath === "CitizenServices") && (settingType === "settings/Citizen/vacations")  ? (
+      ) : pagePath === "CitizenServices" &&
+        settingType === "settings/Citizen/vacations" ? (
         <AddNewCitizenServices
           handleClose={handleClose}
           title={"اضافة نوع اجازة جديد"}
           show={show}
           type={"vacations"}
         />
-      ) : (pagePath === "CitizenServices") && (settingType === "settings/Citizen/services")  ? (
+      ) : pagePath === "CitizenServices" &&
+        settingType === "settings/Citizen/services" ? (
         <AddNewCitizenServices
           handleClose={handleClose}
           title={"اضافة خدمة جديدة"}

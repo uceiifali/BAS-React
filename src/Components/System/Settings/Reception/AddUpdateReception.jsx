@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Button, Form, Modal } from "react-bootstrap";
 import { Controller, useForm } from "react-hook-form";
 import Select from "../../../FormHandler/Select";
@@ -9,8 +9,17 @@ import AddAttachment from "../../AddAttachment";
 import SaveButton from "../../../SaveButton";
 import styles from "./AddUpdateReception.module.css";
 import DeleteButton from "../../../DeleteButton";
+import Progress from "../../../Progress";
 
-const AddUpdateReciption = ({ editVisit, setEditVisit, status, id = null }) => {
+const AddUpdateReciption = ({
+  editVisit,
+  setEditVisit,
+  ReciptionType,
+  show,
+  setShow,
+  status,
+  id = null,
+}) => {
   const [attachment, setAttachment] = useState(false);
   const [addVisit, setAddVisit] = useState(true);
   const {
@@ -26,8 +35,12 @@ const AddUpdateReciption = ({ editVisit, setEditVisit, status, id = null }) => {
   };
   const handleAddvisit = (data) => {
     console.log(data);
-    setEditVisit(false);
+    setShow(false);
   };
+  useEffect(() => {
+    console.log(ReciptionType);
+    console.log("addUpdateRec is open");
+  }, []);
   return (
     <div>
       {id && editVisit && status === "Exports" && (
@@ -83,7 +96,6 @@ const AddUpdateReciption = ({ editVisit, setEditVisit, status, id = null }) => {
                   <select
                     class="form-select border-none bg-[#2B2B40]"
                     aria-label="Default select example"
-                    
                   >
                     {/* <option selected>Open this select menu</option> */}
                     <option value="1">واردة</option>
@@ -368,11 +380,11 @@ const AddUpdateReciption = ({ editVisit, setEditVisit, status, id = null }) => {
           </Form>
         </Modal>
       )}
-      {!id && addVisit && status === "Exports" && (
+      {!id && show && ReciptionType === "Exports" && (
         <Modal
           size="lg"
-          show={editVisit}
-          onHide={() => setEditVisit(false)}
+          show={show}
+          onHide={() => setShow(false)}
           aria-labelledby=" example-modal-sizes-title-lg"
           className={`systemModal ${styles.ReciptionModal}   overflow-y-scroll `}
         >
@@ -542,11 +554,11 @@ const AddUpdateReciption = ({ editVisit, setEditVisit, status, id = null }) => {
           </Form>
         </Modal>
       )}
-      {!id && addVisit && status === "Imports" && (
+      {!id && show && ReciptionType === "Imports" && (
         <Modal
           size="lg"
-          show={editVisit}
-          onHide={() => setEditVisit(false)}
+          show={show}
+          onHide={() => setShow(false)}
           aria-labelledby=" example-modal-sizes-title-lg"
           className={`systemModal ${styles.ReciptionModal}   overflow-y-scroll `}
         >
@@ -689,6 +701,7 @@ const AddUpdateReciption = ({ editVisit, setEditVisit, status, id = null }) => {
           </Form>
         </Modal>
       )}
+      {/* {!id && !show && editVisit && <Progress />} */}
     </div>
   );
 };
