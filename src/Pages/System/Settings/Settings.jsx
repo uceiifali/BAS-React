@@ -5,6 +5,7 @@ import AddNewTimeLine from "../../../Components/AddNewBtn/Settings/AddNewTimeLin
 import AddNewCitizenServices from "../../../Components/AddNewBtn/Settings/AddNewCitizenServices";
 import AddNewOrders from "../../../Components/AddNewBtn/Settings/AddNewOrders";
 import { SettingContext } from "../../../Context/AddSettings";
+import AddNewReception from "../../../Components/AddNewBtn/Settings/AddNewReception";
 const Settings = () => {
   const { settingType,setSettingType } = useContext(SettingContext);
   const [show, setShow] = useState(false);
@@ -45,9 +46,9 @@ const Settings = () => {
         }
       />
       {pagePath === "Reception" ? (
-        <AddNewTimeLine
+        <AddNewReception
           handleClose={handleClose}
-          title={"This is Reception Page"}
+          title={"اضافة زيارة "}
           show={show}
         />
       ) : pagePath === "Orders" && (settingType === "settings/orders/uses") ?  (
