@@ -10,8 +10,6 @@ import SettingContext from "../../../Context/SettingContext";
 const Settings = () => {
   const { settingType, setSettingType, ReciptionType, setReciptionType } =
     useContext(SettingContext);
-  const { settingType, setSettingType, ReciptionType, setReciptionType } =
-    useContext(SettingContext);
 
   const [show, setShow] = useState(false);
   let { pathname } = useLocation();
