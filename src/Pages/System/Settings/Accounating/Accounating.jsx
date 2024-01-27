@@ -284,7 +284,7 @@ function Accounating() {
                     active={active}
                     setActive={setActive}
                     key={id}
-                    setTerms={setTerms}
+                    setTerms={setTerms} 
                   />
                 ))}
               </div>

@@ -3,6 +3,7 @@ import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import { IoClose } from "react-icons/io5";
 import IconButton from "@mui/material/IconButton";
+import SaveButton from "../../../../Components/SaveButton";
 // import CloseBtn from "/assets/icons/Rejected.svg"
 function UpdateCitizenModal({ title, show, handleClose, arr, id }) {
   const [inputVal, setInputVal] = useState("");
@@ -100,12 +101,11 @@ function UpdateCitizenModal({ title, show, handleClose, arr, id }) {
           </div>
         </Modal.Body>
         <Modal.Footer className="border-none justify-center gap-2">
-          <Button
-            className="mx-0 py-1 px-14 font-medium text-[15px] text-[#1E1E2D] border !border-[#EFAA20] bg-[#EFAA20] hover:bg-[#2B2B40]"
+          <SaveButton
             onClick={handleSave}
           >
             حفظ
-          </Button>
+          </SaveButton>
         </Modal.Footer>
       </Modal>
     </>
