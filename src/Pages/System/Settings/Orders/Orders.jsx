@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useState } from "react";
+import React, { Fragment, useContext, useEffect, useState } from "react";
 import { SearchComponent } from "../../../../Components/SearchComponent/SearchComponent";
 import { IoMdMore } from "react-icons/io";
 import Style from "./Orders.module.css";
@@ -7,6 +7,7 @@ import IconButton from "@mui/material/IconButton";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import SearchButton from "../SearchButton";
+import { SettingContext } from "../../../../Context/AddSettings";
 const EditIcon = () => {
   return (
     <svg
@@ -89,10 +90,14 @@ const OptionsButton = () => {
   );
 };
 
-const OrderBtn = ({ title, active, setActive, index }) => {
+const OrderBtn = ({ title, active, setActive, index ,settingtype}) => {
+  const { setSettingType } = useContext(SettingContext);
   return (
     <button
-      onClick={() => setActive(index)}
+      onClick={() => {
+        setActive(index)
+        setSettingType(`settings/orders/${settingtype}`)
+      }}
       className={`px-2 add-user-button px-2 text-right !w-full border hover:!border-[#EFAA20] rounded-md ${
         active === index
           ? "text-[#EFAA20] text-base  !border-[#EFAA20]"
@@ -275,7 +280,7 @@ const OrdersData = [
     },
   },
 ];
-
+const settingtypes=["uses","service","type"]
 const Orders = () => {
   const [show, setShow] = useState(false);
 
@@ -312,6 +317,7 @@ const Orders = () => {
                   active={activeOrder}
                   setActive={setActiveOrder}
                   key={id}
+                  settingtype={settingtypes[index]}
                 />
               ))}
             </div>

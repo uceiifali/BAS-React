@@ -38,14 +38,19 @@ const AddUpdateReciption = ({ editVisit, setEditVisit, status, id = null }) => {
           aria-labelledby=" example-modal-sizes-title-lg"
           className={`systemModal ${styles.ReciptionModal}   overflow-y-scroll `}
         >
-          <div className="mx-auto w-[139px] h-[43px] flex justify-center items-center rounded-md border-1 border-[#EFAA20]">
-            <p className="text-white"> تعديل الزيارة الصادرة</p>
+          <div className="mx-auto py-2 px-4 flex justify-center items-center rounded-md border-1 border-[#EFAA20]">
+            <p className="text-[#EFAA20] text-xl font-semibold">
+              {" "}
+              تعديل الزيارة{" "}
+            </p>
           </div>
           <Form onSubmit={handleSubmit(handleEditvisit)}>
             <fieldset className="fieldBorder container   mx-auto  p-3 my-3">
-              <legend className="text-center">معلومات الزيارة</legend>
+              <legend className="text-center !text-base">
+                معلومات الزيارة
+              </legend>
               <div class="grid grid-cols-2 gap-4 mb-3">
-                <Controller
+                {/* <Controller
                   name="visitType"
                   className="w-100"
                   control={control}
@@ -55,7 +60,8 @@ const AddUpdateReciption = ({ editVisit, setEditVisit, status, id = null }) => {
                       inputRef={ref}
                       placeholder="اختر.."
                       className="w-100"
-                      classNames={"border-0"}
+                      classNames={"border-0 "}
+                      
                       options={[
                         {
                           value: "واردة",
@@ -71,8 +77,19 @@ const AddUpdateReciption = ({ editVisit, setEditVisit, status, id = null }) => {
                       name={name}
                     />
                   )}
-                />
-
+                /> */}
+                <div className="">
+                  <p className="mb-2">نوع الزياره</p>
+                  <select
+                    class="form-select border-none bg-[#2B2B40]"
+                    aria-label="Default select example"
+                    
+                  >
+                    {/* <option selected>Open this select menu</option> */}
+                    <option value="1">واردة</option>
+                    <option value="2">صادرة</option>
+                  </select>
+                </div>
                 <Form.Group>
                   <Form.Label> اسم الشخص</Form.Label>
                   <input
@@ -168,7 +185,7 @@ const AddUpdateReciption = ({ editVisit, setEditVisit, status, id = null }) => {
               </div>
             </fieldset>
             <fieldset className="fieldBorder container mx-auto  p-3 my-3 ">
-              <legend className="text-center">تفاصيل الزيارة</legend>
+              <legend className="text-center !text-base">تفاصيل الزيارة</legend>
               <Form.Group className="my-3">
                 <Form.Label>سبب الزيارة</Form.Label>
                 <textarea
@@ -191,7 +208,7 @@ const AddUpdateReciption = ({ editVisit, setEditVisit, status, id = null }) => {
               </Form.Group>
             </fieldset>
             <fieldset className="fieldBorder container mx-auto  p-3 my-3 ">
-              <legend className="text-center">تفاصيل الزيارة</legend>
+              <legend className="text-center !text-base">تفاصيل الزيارة</legend>
               <AddAttachment
                 attachment={attachment}
                 setAttachment={setAttachment}

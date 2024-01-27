@@ -74,7 +74,9 @@ function UpdateCitizenModal({ title, show, handleClose, arr, id }) {
               </div>
               <p className="text-xs p-2">المرفق</p>
               </div>
-              <div className="w-24 flex flex-col justify-center border !border-dashed !border-[#EFAA20] items-center bg-[#252538] rounded-md text-center">
+              <label htmlFor="uploadimage" className="w-24 cursor-pointer flex flex-col justify-center border !border-dashed !border-[#EFAA20] items-center bg-[#252538] rounded-md text-center">
+              
+                <input type="file" name="" id="uploadimage" className="hidden" />
               
               <span>
                   <svg
@@ -94,7 +96,7 @@ function UpdateCitizenModal({ title, show, handleClose, arr, id }) {
                   </svg>
                 </span>
               <p className="text-xs p-2">أضافة جديدة</p>
-              </div>
+              </label>
             </div>
           </div>
         </Modal.Body>

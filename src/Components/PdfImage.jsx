@@ -11,11 +11,13 @@ const PdfImage = ({ openPdf, setOpenPdf, text = "", pdfSrc }) => {
       <div
         className="
       bg-[#151521]
-      w-[53.361px]
-      h-[35px]
+      py-1
+      px-3
       flex justify-center
+      items-center
       rounded-md
       pointer
+      overflow-hidden
       "
         onClick={() => {
           setOpenPdf(true);
@@ -24,7 +26,7 @@ const PdfImage = ({ openPdf, setOpenPdf, text = "", pdfSrc }) => {
         <Image
           src={process.env.PUBLIC_URL + "/icons/Pdf.png"}
           alt="pdf"
-          className="pdfImage m-auto"
+          className="w-5 m-auto"
         />
       </div>
     </div>
