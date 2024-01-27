@@ -1,8 +1,7 @@
 import { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
-// import CloseBtn from "/assets/icons/Rejected.svg"
-function UpdateModalTimeLine({title,show,handleClose,arr,id}) {
+export default function AddNewOrders({title,show,handleClose,arr,id}) {
   const [inputVal,setInputVal] = useState("")
   const handleSave = () => {
     arr(prev=> {
@@ -12,13 +11,8 @@ function UpdateModalTimeLine({title,show,handleClose,arr,id}) {
     })
     handleClose()
   }
-
   return (
-    <>
-      
-      
-
-      <Modal
+    <Modal
         centered
         contentClassName="bg-[#1E1E2D] border !max-w-[700px] !border-[#EFAA20] !rounded-[20px] text-white"
         show={show}
@@ -57,8 +51,5 @@ function UpdateModalTimeLine({title,show,handleClose,arr,id}) {
           </Button>
         </Modal.Footer>
       </Modal>
-    </>
-  );
+  )
 }
-
-export default UpdateModalTimeLine;

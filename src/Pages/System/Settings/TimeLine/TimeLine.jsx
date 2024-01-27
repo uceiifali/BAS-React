@@ -491,7 +491,7 @@ function TimeLine() {
                         active={active}
                         setActive={setActive}
                         key={id}
-                        setHolidays={setHolidays}
+                        setHolidays={setServices}
                       />
                     ))
                   }
