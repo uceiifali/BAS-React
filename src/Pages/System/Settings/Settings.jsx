@@ -4,14 +4,15 @@ import { Outlet, useLocation } from "react-router-dom";
 import AddNewTimeLine from "../../../Components/AddNewBtn/Settings/AddNewTimeLine";
 import AddNewCitizenServices from "../../../Components/AddNewBtn/Settings/AddNewCitizenServices";
 import AddNewOrders from "../../../Components/AddNewBtn/Settings/AddNewOrders";
-import { SettingContext } from "../../../Context/AddSettings";
-import AddNewReception from "../../../Components/AddNewBtn/Settings/AddNewReception";
 
 import AddUpdateReciption from "../../../Components/System/Settings/Reception/AddUpdateReception";
 import SettingContext from "../../../Context/SettingContext";
 const Settings = () => {
   const { settingType, setSettingType, ReciptionType, setReciptionType } =
     useContext(SettingContext);
+  const { settingType, setSettingType, ReciptionType, setReciptionType } =
+    useContext(SettingContext);
+
   const [show, setShow] = useState(false);
   let { pathname } = useLocation();
   let pagePath = pathname.split("/System/Settings/")[1];
@@ -50,10 +51,8 @@ const Settings = () => {
         }
       />
       {pagePath === "Reception" ? (
-        <AddNewReception
         <AddUpdateReciption
           handleClose={handleClose}
-          title={"اضافة زيارة "}
           ReciptionType={ReciptionType}
           id={null}
           show={show}
