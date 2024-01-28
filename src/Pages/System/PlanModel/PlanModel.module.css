@@ -1,0 +1,6 @@
+.accordion-item button,
+.accordion-item .accordion-collapse.collapse.show,
+.accordion-item .accordion-collapse.collapsing{
+    max-width: 100% !important; 
+    
+}
