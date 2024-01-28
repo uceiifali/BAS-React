@@ -8,13 +8,11 @@
   background-size: 100% 100%;
 }
 
-
 .systemLogin .signInCard {
   box-sizing: border-box;
   width: 580.858px !important;
   height: 600px !important;
-  background: rgba(255, 255, 255, 0.80);
-
+  background: rgba(255, 255, 255, 0.8);
   border: 1px solid white;
   box-shadow: 12px 17px 51px rgba(0, 0, 0, 0.22);
   backdrop-filter: blur(6px);
@@ -30,24 +28,14 @@
   color: black;
 }
 
-.signInCard:hover {
-  border: 1px solid black;
-  transform: scale(1.05);
-}
-
-.signInCard:active {
-  transform: scale(0.95) rotateZ(1.7deg);
-}
-
 .systemLogin .form-label {
   float: right !important;
 }
 
-@media screen and (max-width:760px) {
+@media screen and (max-width: 760px) {
   .signInCard {
     width: 300px !important;
     height: 500px !important;
-
   }
 
   .signInCard img {
@@ -59,5 +47,4 @@
     width: 150px !important;
     height: 50px !important;
   }
-
 }
