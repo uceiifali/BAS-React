@@ -9,6 +9,14 @@ axios.defaults.baseURL = config.apiGateway?.URL;
 axios.interceptors.request.use(
   async (config) => {
     // Add an Authorization header to the request
+    // exp on auth
+    // if (localStorage.getItem("SOME_TOKEN")) {
+    //   config.headers.append(
+    //     "Authorization",
+    //     "Bearer " + localStorage.getItem("SOME_TOKEN")
+    //   );
+    // }
+    // config.headers["Content-Type"] = "application/json";
 
     return config;
   },
