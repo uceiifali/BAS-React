@@ -34,27 +34,42 @@ export const Services = [
     {
         name: 'م',
         selector: row => row.id,
+        wrap: false,
     },
     {
         name: ' اسم العميل',
         selector: row => row.clientName,
+        
+       
+
     },
     {
         name: ' رقم الجوال  ',
         selector: row => row.PhoneNumber,
+        
+       
+
     },
     {
         name: '   نوع العميل ',
         selector: row => row.ClientType,
+        
+       
+
     },
     {
         name: ' البريد اللاكترونى  ',
         selector: row => row.email,
+        
+       
+
     },
 
     {
         name: 'الحالة',
         selector: row => row.status,
+      
+
     },
 
 

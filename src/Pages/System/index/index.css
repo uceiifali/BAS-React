@@ -206,7 +206,6 @@
   color: rgba(255, 255, 255, 0.5) !important;
 }
 
-
 .accordion-button::after {
   display: none;
 }
@@ -636,4 +635,34 @@
 
 .react-calendar__tile,
 .react-calendar__month-view__days__day {
+}
+
+/* system according  */
+.all-categories > div {
+  width: 100%;
+}
+.all-categories  {
+  width: 100%;
+}
+.all-categories .accordion  {
+  width: 100%;
+}
+.full-system .accordion,
+.full-system .accordion .tab,
+.full-system .accordion .tabs a {
+  width: 100% !important;
+}
+.full-system .accordion {
+  width: 100% !important;
+}
+.full-system .accordion-item {
+  width: 100% !important;
+}
+.full-system .accordion-item button {
+  max-width: 100% !important;
+}
+.full-system .accordion-item button,
+.accordion-item .accordion-collapse,
+.accordion-item .accordion-collapse.show {
+  width: 100% !important;
 }

@@ -41,8 +41,8 @@ const AllDeprtmentSlider = () => {
 
     return (
 
-        <Slider className='systemDeprtamentSlider allDepetmentChart d-flex  w-199 '  {...settings}>
-            <div className=' d-flex flex-column mb-2 deprtament-slider-Container  m-auto   '>
+        <Slider className='systemDeprtamentSlider allDepetmentChart d-flex    mx-auto '  {...settings}>
+            <div className=' d-flex flex-column mb-2 deprtament-slider-Container  mx-auto   '>
                 
                 <h2 style={{ color: "#fff", fontSize: "12px" }}>مدنى</h2>
                 <p className='main-text'>10</p>

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { AllCategories } from "../../../../Components/System/AllCategories/AllCategories";
 import SystemControler from "../../../../Components/System/SystemControler/SystemControler";
 import { SearchComponent } from "../../../../Components/SearchComponent/SearchComponent";
@@ -7,6 +7,16 @@ import { Link, Outlet } from "react-router-dom";
 import { MdKeyboardArrowDown } from "react-icons/md";
 
 const AllCLients = () => {
+  const [active, setActive] = useState();
+  const insideCategories = {
+    design: false,
+    review: false,
+  };
+  const OutsideCategories = {
+    design: false,
+    review: false,
+  };
+  console.log(active);
   return (
     <section className="h-100">
       <SystemControler />
@@ -21,12 +31,21 @@ const AllCLients = () => {
                   </Link>
                 </div>
 
-                <div className="pointer mt-0">
+                <div className="pointer w-full mt-0">
                   {" "}
                   <div className="   d-flex  justify-content-center flex-column">
                     <Accordion defaultActiveKey={null}>
                       <Accordion.Item eventKey="0">
-                        <Accordion.Header>
+                        <Accordion.Header
+                          onClick={() => {
+                            setActive(0);
+                          }}
+                          className={`${
+                            active === 0
+                              ? " border border-1 rounded-md hover:!border-[transparent]  !border-[#EFAA20] "
+                              : "border-transparent"
+                          }`}
+                        >
                           <Link to={"System/Clients/Inside"}>الداخلي</Link>
 
                           <MdKeyboardArrowDown size={20} />
@@ -51,7 +70,16 @@ const AllCLients = () => {
                     </Accordion>
                     <Accordion defaultActiveKey={null}>
                       <Accordion.Item eventKey="0">
-                        <Accordion.Header>
+                        <Accordion.Header
+                          onClick={() => {
+                            setActive(1);
+                          }}
+                          className={`${
+                            active === 1
+                              ? " border border-1 rounded-md  hover:!border-[transparent]   !border-[#EFAA20] "
+                              : "border-transparent"
+                          }`}
+                        >
                           <Link to={"System/Clients/Outside"}>الخارجي</Link>
 
                           <MdKeyboardArrowDown size={20} />
