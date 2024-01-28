@@ -56,6 +56,11 @@ import Accounating from "./Pages/System/Settings/Accounating/Accounating";
 import CitizenServices from "./Pages/System/Settings/CitizenServices/CitizenServices";
 import TimeLine from "./Pages/System/Settings/TimeLine/TimeLine";
 import { SettingContextProvider } from "./Context/SettingContext";
+import PlanModel from "./Pages/System/PlanModel";
+import PlansAnalytics from "./Pages/System/PlanModel/PlansAnalytics";
+import Projects from "./Pages/System/PlanModel/Projects";
+import Tasks from "./Pages/System/PlanModel/Tasks";
+import ProjectContextProvier from "./Pages/System/PlanModel/Projects/ProjectContext";
 
 const SignUP = lazy(() => import("./Pages/DashBoard/SignUP/SignUP"));
 const SignIn = lazy(() => import("./Pages/DashBoard/SignIn/SignIn"));
@@ -271,6 +276,17 @@ const router = createBrowserRouter([
           { path: "/System/Settings/TimeLine", element: <TimeLine /> },
         ],
       },
+      //System Plans
+      {
+        path: "/System/plans",
+        element: <ProjectContextProvier><PlanModel/></ProjectContextProvier>,
+        children: [
+          { index: true , element: <PlansAnalytics/>},
+          {path: "projects" , element: <Projects/>},
+          {path: "tasks" , element: <Tasks/>}
+        ]
+
+      }
     ],
   },
 ]);

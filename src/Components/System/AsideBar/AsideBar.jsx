@@ -295,7 +295,7 @@ const AsideBar = () => {
               </div>{" "}
               <div className="col-md-4 ">
                 <div className="system-item">
-                  <Link>
+                  <Link to={"/System/plans"}>
                     <div class="system-card">
                       <div class="card__content d-flex justify-content-center align-items-center  flex-column  ">
                         <Image
