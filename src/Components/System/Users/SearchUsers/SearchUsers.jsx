@@ -1,8 +1,9 @@
 import React from 'react'
-import Input from '../../../FormHandler/Input'
+
 import { NavDropdown } from 'react-bootstrap'
 import "./index.css"
 import { SearchComponent } from '../../../SearchComponent/SearchComponent'
+import Image from '../../../Image'
 const SearchUsers = () => {
 
     const users = Array.from({ length: 15 })
@@ -35,7 +36,7 @@ const SearchUsers = () => {
                 </div>
                 {users.map((user, index) => <div key={index} className='tab d-flex  py-1 '>
 
-                    <img src={process.env.PUBLIC_URL+"/People/islam.jpg"} alt='user img ' className='user-img  ' />
+                    <Image src={process.env.PUBLIC_URL+"/People/islam.jpg"} alt='user img ' className='user-img  ' />
                     <div className='d-flex flex-column me-3 '>
                         <h2 className=' name-header text-white  my-0'>اسلام إيهاب</h2>
                         <p className='main-text'>Islam@bsa.com</p>

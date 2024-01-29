@@ -23,6 +23,7 @@
 
 .clintName {
     cursor: pointer;
+    margin-bottom: 10px !important;
 }
 
 .category-client-Component {

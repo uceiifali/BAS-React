@@ -27,7 +27,10 @@ const AllCLients = () => {
             child={
               <div className="d-flex  flex-column   align-items-center ">
                 <div className="mt-4 w-100">
-                  <Link to={"/System/Clients/index"} className="pointer">
+                  <Link
+                    className="!w-full pointer "
+                    to={"/System/Clients/index"}
+                  >
                     <p className=" text-white ">كل العملاء</p>
                   </Link>
                 </div>
@@ -41,13 +44,17 @@ const AllCLients = () => {
                           onClick={() => {
                             setActive(0);
                           }}
-                          className={`${
-                            active === 0
-                              ? " border border-1 rounded-md hover:!border-[transparent]  !border-[#EFAA20] "
-                              : "border-transparent"
+                          className={`  ${
+                            active === 0 &&
+                            " border border-1 rounded-md hover:!border-[transparent]  !border-[#EFAA20] "
                           }`}
                         >
-                          <Link to={"System/Clients/Inside"}>الداخلي</Link>
+                          <Link
+                            className="!w-full  !text-start"
+                            to={"System/Clients/Inside"}
+                          >
+                            الداخلي
+                          </Link>
 
                           <MdKeyboardArrowDown size={20} />
                         </Accordion.Header>
@@ -61,13 +68,14 @@ const AllCLients = () => {
                                   review: false,
                                 });
                               }}
+                              className="!w-full "
                               to={"System/Clients/Inside/Design"}
                             >
                               <div
-                                className={`tab ${
-                                  active === 0 && insideCategories.design
-                                    ? " border border-1 rounded-md hover:!border-[transparent !border-[#EFAA20]"
-                                    : "border-transparent"
+                                className={`tab  ${
+                                  active === 0 &&
+                                  insideCategories.design &&
+                                  " border border-1 rounded-md hover:!border-[transparent !border-[#EFAA20]"
                                 } text-end w-100`}
                               >
                                 تصميم
@@ -80,14 +88,14 @@ const AllCLients = () => {
                                   review: true,
                                 });
                               }}
-                              className="w-100"
+                              className="!w-full text-start "
                               to={"System/Clients/Inside/Review"}
                             >
                               <div
-                                className={`tab ${
+                                className={`tab  ${
                                   active === 0 && insideCategories.review
                                     ? " border border-1 rounded-md hover:!border-[transparent !border-[#EFAA20]"
-                                    : "border-transparent"
+                                    : "!border-transparent"
                                 } text-end w-100`}
                               >
                                 الاشراف علي التنفيذ
@@ -103,13 +111,18 @@ const AllCLients = () => {
                           onClick={() => {
                             setActive(1);
                           }}
-                          className={`${
+                          className={`  w-full  ${
                             active === 1
                               ? " border border-1 rounded-md  hover:!border-[transparent]   !border-[#EFAA20] "
-                              : "border-transparent"
+                              : "!border-transparent"
                           }`}
                         >
-                          <Link to={"System/Clients/Outside"}>الخارجي</Link>
+                          <Link
+                            className="!w-full !text-start "
+                            to={"System/Clients/Outside"}
+                          >
+                            الخارجي
+                          </Link>
 
                           <MdKeyboardArrowDown size={20} />
                         </Accordion.Header>
@@ -123,13 +136,14 @@ const AllCLients = () => {
                                   review: false,
                                 });
                               }}
+                              className="!w-full text-start "
                               to={"System/Clients/Outside/Design"}
                             >
                               <div
-                                className={`tab ${
+                                className={`tab  ${
                                   active === 1 && OutsideCategories.design
                                     ? " border border-1 rounded-md hover:!border-[transparent !border-[#EFAA20]"
-                                    : "border-transparent"
+                                    : "!border-transparent"
                                 } text-end w-100`}
                               >
                                 تصميم
@@ -142,14 +156,14 @@ const AllCLients = () => {
                                   review: true,
                                 });
                               }}
-                              className="w-100"
+                              className="!w-full text-start "
                               to={"System/Clients/Outside/Review"}
                             >
                               <div
-                                className={`tab ${
+                                className={`tab  ${
                                   active === 1 && OutsideCategories.review
                                     ? " border border-1 rounded-md hover:!border-[transparent !border-[#EFAA20]"
-                                    : "border-transparent"
+                                    : "!border-transparent"
                                 } text-end w-100`}
                               >
                                 الاشراف علي التنفيذ

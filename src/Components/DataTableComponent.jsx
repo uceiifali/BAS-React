@@ -65,7 +65,7 @@ const DataTableComponent = ({ className, columns, data, title }) => {
         data={data}
         progressComponent={<Progress />}
         striped={true}
-        className={`  ${className} overflow-auto  scrollbar-thin scrollbar-thumb-[#D9D9D9]`}
+        className={`  ${className} !overflow-auto  !scrollbar-thin !scrollbar-thumb-[#D9D9D9]`}
         customStyles={customStyles}
       />
     </>

@@ -586,10 +586,10 @@
 }
 
 /* design charts  */
-.apexcharts-menu-item:hover {
+.full-system .apexcharts-menu-item:hover {
   background: #151521 !important;
 }
-.apexcharts-menu-item:hover {
+.full-system .apexcharts-menu-item:hover {
   color: #d59921 !important;
 }
 
@@ -619,10 +619,10 @@
   background-color: #4355fa !important;
 }
 
-.react-calendar__tile--active {
-  background: #151521 !important;
-  color: white;
-}
+  /* .react-calendar__tile--active {
+    background: #151521 !important;
+    color: white;
+  } */
 
 .react-calendar__tile--active:enabled:hover,
 .react-calendar__year-view__months__month:hover {
@@ -633,18 +633,18 @@
   background: #4355fa !important;
 }
 
-.react-calendar__tile,
-.react-calendar__month-view__days__day {
-}
+.react-calendar__tile--now{
+  background: #4355fa !important;
 
+}
 /* system according  */
-.all-categories > div {
+.full-system .all-categories > div {
   width: 100%;
 }
-.all-categories  {
+.full-system .all-categories  {
   width: 100%;
 }
-.all-categories .accordion  {
+.full-system .all-categories .accordion  {
   width: 100%;
 }
 .full-system .accordion,

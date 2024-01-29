@@ -145,7 +145,7 @@ export const AddProjectStepOne = (props) => {
                 serviceId: "تجاري",
                 projectName: projectName.value,
                 subServiceId: serviceType?.value.label,
-                projectName: projectName.value,
+               
 
 
 
