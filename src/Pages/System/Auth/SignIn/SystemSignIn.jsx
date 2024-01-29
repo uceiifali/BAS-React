@@ -3,7 +3,7 @@ import "./SystemSignIn.css";
 import { Button, Container, Form } from "react-bootstrap";
 import Input from "../../../../Components/FormHandler/Input";
 import { Link } from "react-router-dom";
-import { FormControlLabel, Switch } from "@mui/material";
+import { FormControlLabel, FormGroup, Switch } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import Image from "../../../../Components/Image";
 
@@ -38,7 +38,7 @@ const SystemSignIn = () => {
       backgroundColor: theme.palette.mode === "dark" ? "#003892" : "#001e3c",
       width: 32,
       height: 32,
-      "&:before": {
+      "&::before": {
         content: "''",
         position: "absolute",
         width: "100%",
@@ -60,6 +60,7 @@ const SystemSignIn = () => {
   }));
   const handleNightMode = (e) => {
     setChecked(e.target.checked);
+    console.log("checked is" + e.target.checked);
     if (morningNightMode === "morning") {
       setMorningNightMode("night");
     } else {
@@ -69,20 +70,24 @@ const SystemSignIn = () => {
 
   return (
     <div
-      className={` ${
+      className={` overflow-hidden ${
         morningNightMode === "morning"
           ? "systemLoginmorning"
           : "systemLoginNight"
-      } systemLogin  relative w-100 h-screen overflow-hidden'`}
+      } systemLogin  relative w-100 h-screen   '   `}
     >
-      <span>
-        <MaterialUISwitch
-          sx={{ m: 1 }}
-          checked={checked}
-          onChange={handleNightMode}
+      <FormGroup className="absolute z-50">
+        <FormControlLabel
+          control={
+            <MaterialUISwitch
+              sx={{ m: 1 }}
+              onChange={handleNightMode}
+              checked={checked}
+              label={"dgffd"}
+            />
+          }
         />
-      </span>
-
+      </FormGroup>
       <div className="layer  absolute  d-flex justify-content-center align-items-center top-0 bottom-0 right-0 end-0">
         <div
           class="signInCard 
@@ -112,9 +117,9 @@ const SystemSignIn = () => {
               placeholder="ادخل كلمه مرور المستخدم "
               className="mb-4"
             />
-            <Link to="/System/index">
+            <Link className="" to="/System/index">
               <Button
-                className="text-black mt-3"
+                className="text-black mt-3 shadow-lg shadow-neutral-600"
                 style={{
                   width: "379.646px",
 
