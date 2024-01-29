@@ -229,7 +229,7 @@ export default function Projects() {
         sortIcon
         columns={columns}
         data={projects}
-        className={" border-golden  datatableComponent scrollbar-thin scrollbar-track-transparent scrollbar-thumb-[#EFAA20] overflow-scroll "}
+        className={" border-golden scrollbar-thin scrollbar-track-transparent scrollbar-thumb-[#EFAA20] overflow-scroll "}
       />
     </div>
   );
