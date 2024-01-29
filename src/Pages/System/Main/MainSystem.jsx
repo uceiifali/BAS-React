@@ -21,9 +21,9 @@ export const MainSystem = () => {
     //after getting right deprtment  Data we will make sure to push it in  the variabule
   };
 
-  const tableData = Array.from({ length: 2 }).map((_, index) => {
+  const tableData = Array.from({ length: 12 }).map((_, index) => {
     return {
-      id: 1,
+      id: index + 1,
       clientName: "نايف عبد العزيز",
       PhoneNumber: "01112131415",
       ClientType: "فردي  ",
@@ -157,7 +157,7 @@ export const MainSystem = () => {
                 >
                   <SystemLineChart />
                 </div>
-                <div className="w-90  mx-auto mx-2 mt-1    overflow-x-auto">
+                <div className="w-90  mx-2 mt-1    overflow-x-auto">
                   {" "}
                   <AllDeprtmentSlider />
                 </div>
@@ -239,9 +239,9 @@ export const MainSystem = () => {
                 </NavDropdown>
                 <div className="my-2 choosMainDeprtment">
                   <DataTableComponent
+                    className={" max-h-[243px]"}
                     columns={columns}
                     data={tableData}
-                    className={"overflow-y-auto overflow-x-hidden"}
                   />
                 </div>
               </div>

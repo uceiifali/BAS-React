@@ -1,6 +1,7 @@
 import React from "react";
 // import Table from "react-bootstrap/Table";
 import DataTable from "react-data-table-component";
+import Progress from "./Progress";
 const customStyles = {
   rows: {
     style: {
@@ -21,18 +22,28 @@ const customStyles = {
       backgroundColor: "#1E1E2D",
     },
   },
-
-  headCells: {
+  cells: {
     style: {
-      backgroundColor: "#34344D",
-      padding: "10px",
+      paddingLeft: "5px", // override the cell padding for data cells
+      paddingRight: "5px",
       color: "#FFF",
+      overFlow: "auto",
     },
   },
+  headCells: {
+    style: {
+      padding: "10px",
+      color: "#FFF",
+      overFlow: "auto",
+      backgroundColor: "#34344D",
+    },
+  },
+
   bodyCells: {
     style: {
-      padding: "5px",
+      padding: "10px",
       color: "#FFF",
+      overFlow: "auto",
     },
   },
 
@@ -52,15 +63,14 @@ const DataTableComponent = ({ className, columns, data, title }) => {
         title={title}
         columns={columns}
         data={data}
+        progressComponent={<Progress />}
         striped={true}
-        className={className}
+        className={`  ${className} overflow-auto  scrollbar-thin scrollbar-thumb-[#D9D9D9]`}
         customStyles={customStyles}
       />
     </>
   );
 };
-
-
 
 export default DataTableComponent;
 // export default DataTableComponent;
