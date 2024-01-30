@@ -9,6 +9,7 @@ import ShowReviewReport from "../../../../../Components/System/Projects/ShowRevi
 import EditReviewReport from "../../../../../Components/System/Projects/EditReviewReport/EditReviewReport";
 import AddUpdateDesignReport from "../../../../../Components/System/Projects/AddDesignReport/AddUpdateDesignReport";
 import ShowDesignReport from "../../../../../Components/System/Projects/ShowDesignReport/ShowDesignReport";
+import Image from "../../../../../Components/Image";
 
 const NestedReportMangment = () => {
   const { openReport, setOpenReport, reportType, setReportType } =
@@ -28,7 +29,7 @@ const NestedReportMangment = () => {
       createdAt: "19-1-2020",
       ProjectType: " تصميم",
       display: (
-        <img
+        <Image
           src={process.env.PUBLIC_URL + "/icons/view.png"}
           onClick={() => {
             setShowReport(true);
@@ -38,7 +39,7 @@ const NestedReportMangment = () => {
         />
       ),
       edit: (
-        <img
+        <Image
           src={process.env.PUBLIC_URL + "/edit.png"}
           onClick={() => {
             setEditReport(true);
@@ -139,9 +140,7 @@ const NestedReportMangment = () => {
                 <div className="mt-3    ">
                   <div className=" max-h-full">
                     <DataTableComponent
-                      className={
-                        "overflow-x-hidden   overflow-y-auto datatableComponent"
-                      }
+                      className={"  !h-[400px]"}
                       columns={columns}
                       data={reportsData}
                     />

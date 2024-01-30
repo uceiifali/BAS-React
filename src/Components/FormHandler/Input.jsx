@@ -43,7 +43,7 @@ const Input = ({
         type={type}
         style={{ height, width, backgroundColor: background, borderColor }}
         disabled={disabled}
-        className={`form-control ${className} ${
+        className={`form-control h-[37px] ${className} ${
           submitted && validator && !validator.valid ? "is-invalid" : ""
         }`}
         {...props}

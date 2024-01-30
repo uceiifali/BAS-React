@@ -89,21 +89,6 @@ const ReviewRequest = () => {
             ReviewProjectType={ReviewProjectType}
             setShowProject={setShowProject}
           />
-          {editRequest && (
-            <EditReviewRequest
-              editRequest={editRequest}
-              setEditRequest={setEditRequest}
-              setConfirmPoper={setConfirmUpdate}
-            />
-          )}
-          {ConfirmUpdate && (
-            <ConfirmPoper
-              confirmPoper={ConfirmUpdate}
-              setConfirmPoper={setConfirmUpdate}
-              setEditRequest={setEditRequest}
-              text={"تم تعديل الطلب فى المشاريع بنجاح "}
-            />
-          )}
         </div>
       ) : (
         <div className="AllRequests">
@@ -125,6 +110,22 @@ const ReviewRequest = () => {
             </fieldset>
           </div>
         </div>
+      )}
+
+      {editRequest && (
+        <EditReviewRequest
+          editRequest={editRequest}
+          setEditRequest={setEditRequest}
+          setConfirmPoper={setConfirmUpdate}
+        />
+      )}
+      {ConfirmUpdate && (
+        <ConfirmPoper
+          confirmPoper={ConfirmUpdate}
+          setConfirmPoper={setConfirmUpdate}
+          setEditRequest={setEditRequest}
+          text={"تم تعديل الطلب فى المشاريع بنجاح "}
+        />
       )}
     </>
   );

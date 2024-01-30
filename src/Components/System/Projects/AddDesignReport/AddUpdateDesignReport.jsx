@@ -11,7 +11,12 @@ import { Form } from "react-bootstrap";
 import { showAddUpdateUser } from "../../../../Context/CheckAddUpdateUserVisability";
 import Select from "../../../FormHandler/Select";
 
-const AddUpdateDesignReport = ({ id = null, setId, setEditReport }) => {
+const AddUpdateDesignReport = ({
+  id = null,
+  setId,
+  setEditReport,
+  handleClose,
+}) => {
   // defineing rest classes
   const searchProject = UseInput("", "");
   const [reportDate, setReportDate] = useState(null);
@@ -69,6 +74,7 @@ const AddUpdateDesignReport = ({ id = null, setId, setEditReport }) => {
 
   const onSubmit = (data) => {
     console.log(data);
+    handleClose()
     // after ensuring the data is submitted
     if (id) {
       // update case

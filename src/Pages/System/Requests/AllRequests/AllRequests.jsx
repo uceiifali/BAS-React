@@ -4,7 +4,7 @@ import SystemControler from "../../../../Components/System/SystemControler/Syste
 import AddUserButton from "../../../../Components/System/AddUserButton/AddUserButton";
 import { AllCategories } from "../../../../Components/System/AllCategories/AllCategories";
 import { Accordion } from "react-bootstrap";
-import { Link, Outlet } from "react-router-dom";
+import { Link, Outlet, useLocation } from "react-router-dom";
 
 import { SearchComponent } from "../../../../Components/SearchComponent/SearchComponent";
 import { MdKeyboardArrowDown } from "react-icons/md";
@@ -17,7 +17,8 @@ import AddRequest from "../../../../Components/System/Requests/AddRequest/AddReq
 const AllRequests = () => {
   const { showAddUserModel, setShowAddUserModel } =
     useContext(showAddUpdateUser);
-  const { setUserData } = useContext(multiStepContext);
+  const { setUserData, showAddRequest, setShowAdddRequest } =
+    useContext(multiStepContext);
   const [active, setActive] = useState();
   const [designCategories, setDesignCategories] = useState({
     inProgress: false,
@@ -29,14 +30,25 @@ const AllRequests = () => {
     waiting: false,
     rejected: false,
   });
+  const [view, setView] = useState(false);
+  const { pathname } = useLocation();
+  const pagePath = pathname.split("/System/Requests/")[1];
+  console.log(pagePath);
+
+  const handleOpen = () => {
+    setView(true);
+  };
+  const handleClose = () => {
+    setView(false);
+  };
   return (
     <div className="all-Requests h-100">
       <SystemControler
         child={
-          showAddUserModel ? (
+          view && (pagePath === "Design" || pagePath === "Review") ? (
             <p
               onClick={() => {
-                setShowAddUserModel(false);
+                handleClose();
                 setUserData([]);
               }}
               className="pointer text-white"
@@ -57,7 +69,10 @@ const AllRequests = () => {
               الطلبات / <span className="main-text">إضافة جديدة</span>
             </p>
           ) : (
-            <AddUserButton />
+            <button onClick={handleOpen} className="add-user-button">
+              {" "}
+              إضافة جديدة
+            </button>
           )
         }
       />
@@ -67,7 +82,13 @@ const AllRequests = () => {
             child={
               <div className="d-flex  flex-column   align-items-center ">
                 <div className="mt-4 w-100">
-                  <Link to={"/System/Requests/index"} className="pointer">
+                  <Link
+                    className="w-full"
+                    onClick={() => {
+                      setActive(null);
+                    }}
+                    to={"/System/Requests/index"}
+                  >
                     <p className=" text-white ">كل الطلبات</p>
                   </Link>
                 </div>
@@ -83,17 +104,25 @@ const AllRequests = () => {
                           }}
                           className={`  ${
                             active === 0 &&
-                            " border border-1 rounded-md hover:!border-[transparent]  !border-[#EFAA20] "
+                            " border border-1 rounded-md hover:!border-[transparent]  !border-[#EFAA20]  flex justify-between"
                           }`}
                         >
-                          <Link to={"System/Requests/Design"}>تصميم</Link>
+                          <Link
+                            className="!w-full !text-right"
+                            to={"System/Requests/Design"}
+                          >
+                            تصميم
+                          </Link>
 
                           <MdKeyboardArrowDown size={20} />
                         </Accordion.Header>
 
                         <Accordion.Body>
                           <div className="tabs d-flex justify-content-center align-items-center flex-column">
-                            <Link to={"System/Requests/Design/inProgress"}>
+                            <Link
+                              className="w-full"
+                              to={"System/Requests/Design/inProgress"}
+                            >
                               <div
                                 onClick={() => {
                                   setDesignCategories({
@@ -112,7 +141,7 @@ const AllRequests = () => {
                               </div>
                             </Link>
                             <Link
-                              className="w-100"
+                              className="w-full"
                               to={"System/Requests/Design/pending"}
                             >
                               <div
@@ -132,7 +161,10 @@ const AllRequests = () => {
                                 طلبات في انتظار الموافقة
                               </div>
                             </Link>
-                            <Link to={"System/Requests/Design/rejected"}>
+                            <Link
+                              className="w-full"
+                              to={"System/Requests/Design/rejected"}
+                            >
                               <div
                                 onClick={() => {
                                   setDesignCategories({
@@ -165,7 +197,10 @@ const AllRequests = () => {
                             setActive(1);
                           }}
                         >
-                          <Link to={"System/Requests/Review"}>
+                          <Link
+                            className="!w-full !text-right"
+                            to={"System/Requests/Review"}
+                          >
                             {" "}
                             اشراف علي التنفيذ
                           </Link>
@@ -175,7 +210,10 @@ const AllRequests = () => {
 
                         <Accordion.Body>
                           <div className="tabs d-flex justify-content-center align-items-center flex-column">
-                            <Link to={"System/Requests/Review/inProgress"}>
+                            <Link
+                              className="w-full"
+                              to={"System/Requests/Review/inProgress"}
+                            >
                               <div
                                 onClick={() => {
                                   setReviewCategories({
@@ -194,7 +232,7 @@ const AllRequests = () => {
                               </div>
                             </Link>
                             <Link
-                              className="w-100"
+                              className="w-full"
                               to={"System/Requests/Review/pending"}
                             >
                               <div
@@ -214,7 +252,10 @@ const AllRequests = () => {
                                 طلبات في انتظار الموافقة
                               </div>
                             </Link>
-                            <Link to={"System/Requests/Review/rejected"}>
+                            <Link
+                              className="w-full"
+                              to={"System/Requests/Review/rejected"}
+                            >
                               <div
                                 onClick={() => {
                                   setReviewCategories({
@@ -243,7 +284,13 @@ const AllRequests = () => {
           />
         </div>
         <div className="col-md-9 ">
-          {showAddUserModel ? <AddRequest /> : <Outlet />}
+          {view && pagePath === "Design" ? (
+            <AddRequest pagePath={"Design"} />
+          ) : view && pagePath === "Review" ? (
+            <AddRequest pagePath={"Review"} />
+          ) : (
+            <Outlet />
+          )}
         </div>
       </div>
     </div>

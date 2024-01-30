@@ -89,6 +89,8 @@ const DesignRequest = () => {
     <>
       {showProject ? (
         <div className="AllRequests-scroll">
+          {console.log("project should be disyplayed")}
+
           <ShowDesignRequest
             DesignProjectType={DesignProjectType}
             setShowProject={setShowProject}

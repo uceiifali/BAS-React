@@ -71,6 +71,10 @@ class ReviewCasesChart extends React.Component {
     }
     componentDidMount() {
         this.updateChart(this.props.color);
+        const text = document.querySelectorAll(
+            "text.apexcharts-text.apexcharts-datalabel-value"
+          );
+          text[0].setAttribute("fill", "#FFFFFF");
     }
 
 
