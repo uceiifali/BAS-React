@@ -61,6 +61,8 @@ import PlansAnalytics from "./Pages/System/PlanModel/PlansAnalytics";
 import Projects from "./Pages/System/PlanModel/Projects";
 import Tasks from "./Pages/System/PlanModel/Tasks";
 import ProjectContextProvier from "./Pages/System/PlanModel/Projects/ProjectContext";
+import NewProject from "./Pages/System/PlanModel/Projects/NewProject";
+import EditProject from "./Pages/System/PlanModel/Projects/EditProject";
 
 const SignUP = lazy(() => import("./Pages/DashBoard/SignUP/SignUP"));
 const SignIn = lazy(() => import("./Pages/DashBoard/SignIn/SignIn"));
@@ -282,7 +284,15 @@ const router = createBrowserRouter([
         element: <ProjectContextProvier><PlanModel/></ProjectContextProvier>,
         children: [
           { index: true , element: <PlansAnalytics/>},
-          {path: "projects" , element: <Projects/>},
+          {path: "projects" ,
+           element: <Projects/>,
+           children: [
+            {path: "new-project" , element: <NewProject/>},
+            {path: "edit-project" , element: <EditProject/>},
+           ]
+          
+          
+          },
           {path: "tasks" , element: <Tasks/>}
         ]
 
