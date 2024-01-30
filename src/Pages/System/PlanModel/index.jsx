@@ -1,6 +1,14 @@
 import React, { useContext, useEffect, useState } from "react";
 import { IoMdArrowDropright } from "react-icons/io";
-import { Box, Button, IconButton, TextField, MenuItem } from "@mui/material";
+
+import {
+  Box,
+  Button,
+  IconButton,
+  TextField,
+  MenuItem,
+  Select,
+} from "@mui/material";
 import { Accordion } from "react-bootstrap";
 import { Link, Outlet, useNavigate, useLocation } from "react-router-dom";
 import { MdKeyboardArrowDown } from "react-icons/md";
@@ -13,7 +21,7 @@ import ProjectContextProvier, {
 } from "./Projects/ProjectContext";
 import { DataTable } from "./Projects";
 
-const NavItem = ({ title, search }) => {
+export const NavItem = ({ title, search }) => {
   const { setProjects } = useContext(ProjectContext);
 
   return (
@@ -22,7 +30,7 @@ const NavItem = ({ title, search }) => {
         onClick={() =>
           setProjects(DataTable?.filter((item) => item.status === search))
         }
-        className="w-full"
+        className="w-full text-right"
       >
         {title}
       </button>
@@ -30,7 +38,7 @@ const NavItem = ({ title, search }) => {
   );
 };
 
-const CustomNav = ({ title, path, items }) => {
+export const CustomNav = ({ title, path, items }) => {
   return (
     <Accordion defaultActiveKey={null}>
       <Accordion.Item eventKey="0" className={`custom-accordion-item`}>
@@ -52,11 +60,11 @@ const CustomNav = ({ title, path, items }) => {
     </Accordion>
   );
 };
-const ModalTitle = ({ title }) => {
+export const ModalTitle = ({ title }) => {
   return <p className="text-[#EFAA20] text-xl font-medium">إضافة مشروع جديد</p>;
 };
 
-const FormModal = ({ children, title }) => {
+export const FormModal = ({ children, title }) => {
   return (
     <fieldset className="p-3 border !border-[#d5992133]">
       {title ? <FormTitle title={title} /> : null}
@@ -66,7 +74,7 @@ const FormModal = ({ children, title }) => {
   );
 };
 
-const FormTitle = ({ title }) => {
+export const FormTitle = ({ title }) => {
   return (
     <legend className="text-white text-base font-medium mx-auto text-center">
       {title}
@@ -74,7 +82,7 @@ const FormTitle = ({ title }) => {
   );
 };
 
-const InputLabel = ({ label, id }) => {
+export const InputLabel = ({ label, id }) => {
   return (
     <label htmlFor={id} className="text-white text-xs font-medium mb-2">
       {label}
@@ -84,20 +92,26 @@ const InputLabel = ({ label, id }) => {
 
 const AddModal = () => {
   const [show, setShow] = useState(false);
+  const [formType, setFormType] = useState(0);
+  const [newProjectName, setNewProjectName] = useState("");
+  const [searchProjectName, setSearchProjectName] = useState("");
+  const navigate = useNavigate();
+  useEffect(() => {}, []);
   return (
     <div className="p-3 border !border-[#EFAA20] rounded-[27px]">
       <ModalTitle title={"إضافة مشروع جديد"} />
       <div className="flex flex-col gap-4 ">
         <FormModal title={"بحث عن المشروع"}>
           <div className="grid grid-cols-12 justify-between">
-            <div className="col-span-5">
-              <InputLabel id="new-project-name" label={"اسم المشروع"} />
-              <TextField
+            {formType != 2 ? (
+              <div className="col-span-5">
+                <InputLabel id="new-project-name" label={"اسم المشروع"} />
+                {/* <TextField
                 id="new-project-name"
                 type="text"
                 size="small"
                 select
-                className="w-full bg-[#2B2B40] rounded-[7px]"
+                className="w-full text-white bg-[#2B2B40] rounded-[7px]"
                 placeholder="ابحث عن ...."
                 sx={{
                   "& fieldset": {
@@ -116,31 +130,77 @@ const AddModal = () => {
                   <MenuItem value={20}>مطاعم عشبة الليمون</MenuItem>
                   <MenuItem value={30}>مطاعم عشبة الليمون</MenuItem>
                 </div>
-              </TextField>
-            </div>
-            <div className="col-span-2"></div>
-            <div className="col-span-5">
-              <InputLabel id="find-project" label={"اسم مشروع جديد"} />
-              <input
-                id="find-project"
-                type="text"
-                className="w-full p-2 bg-[#2B2B40] rounded-[7px]"
-                placeholder="ادخل اسم المشروع الجديد"
-              />
-            </div>
+              </TextField> */}
+                <Select
+                  fullWidth
+                  size="small"
+                  labelId="demo-simple-select-label"
+                  id="demo-simple-select"
+                  value={searchProjectName}
+                  label="Select Project"
+                  className="w-full text-white bg-[#2B2B40] rounded-[7px]"
+                  onChange={(e) => {setSearchProjectName(e.target.value)}}
+                  inputProps={{ 'placeholder': "ابحث عن ...." }}
+                  sx={{
+                    "& input::placeholder": {
+                      color: "white"
+                    },
+                    "& fieldset": {
+                      border: "none"
+                    },
+                    "& svg": {
+                      display: "none"
+                    },
+                  }}
+                >
+                  {/* <MenuItem selected>ابحث</MenuItem> */}
+                  <MenuItem value={10}>مطاعم عشبة الليمون</MenuItem>
+                  <MenuItem value={20}>مطاعم عشبة الليمون</MenuItem>
+                  <MenuItem value={30}>مطاعم عشبة الليمون</MenuItem>
+                </Select>
+              </div>
+            ) : null}
+            {formType != 2 ? <div className="col-span-2"></div> : null}
+            {formType != 1 ? (
+              <div className="col-span-5">
+                <InputLabel id="find-project" label={"اسم مشروع جديد"} />
+                <input
+                  id="find-project"
+                  type="text"
+                  className="w-full text-white p-2 bg-[#2B2B40] rounded-[7px]"
+                  placeholder="ادخل اسم المشروع الجديد"
+                  value={newProjectName}
+                  onChange={(e) => {
+                    setNewProjectName(e.target.value);
+                    
+                  }}
+                />
+              </div>
+            ) : null}
           </div>
         </FormModal>
 
-        <div className="flex justify-end py-3">
+        <div className={`flex justify-end py-3 ${show ? "hidden" : ""}`}>
           <button
-            onClick={() => setShow(true)}
-            className="w-[140px] h-[30px] rounded-md  bg-[#EFAA20] text-[#1E1E2D] text-[15px] font-medium"
+            onClick={() => {
+              if(newProjectName){
+                setFormType(1)
+              }else{
+                setFormType(1)
+
+              }
+              setShow(true);
+              
+            }}
+            className={`
+            
+            w-[140px] h-[30px] rounded-md  bg-[#EFAA20] text-[#1E1E2D] text-[15px] font-medium`}
           >
             التالى
           </button>
         </div>
         {show ? (
-          <>
+          <div className="h-[500px] overflow-scroll custom-scrollbar">
             <FormModal title={"تفاصيل المهمة"}>
               <div className="grid grid-cols-12 mb-5">
                 <div className="col-span-5">
@@ -148,7 +208,7 @@ const AddModal = () => {
                   <input
                     id="new-project-name"
                     type="text"
-                    className="w-full p-2 bg-[#2B2B40] rounded-[7px]"
+                    className="w-full text-white p-2 bg-[#2B2B40] rounded-[7px]"
                     placeholder="اختار اسم المشرف"
                   />
                 </div>
@@ -159,7 +219,7 @@ const AddModal = () => {
                   <input
                     id="new-project-name"
                     type="text"
-                    className="w-full p-2 bg-[#2B2B40] rounded-[7px]"
+                    className="w-full text-white p-2 bg-[#2B2B40] rounded-[7px]"
                     placeholder="اضف تاريخ التسليم"
                   />
                 </div>
@@ -169,7 +229,7 @@ const AddModal = () => {
                   <input
                     id="find-project"
                     type="text"
-                    className="w-full p-2 bg-[#2B2B40] rounded-[7px]"
+                    className="w-full text-white p-2 bg-[#2B2B40] rounded-[7px]"
                     placeholder="اضف تاريخ الاستلام"
                   />
                 </div>
@@ -183,7 +243,12 @@ const AddModal = () => {
                     console.log({ event, editor, data });
                   }}
                   editor={ClassicEditor}
-                  data="<h2>تفاصيل الاجتماع</h2>"
+                  config={{
+                    placeholder:
+                      "اكتب ملاحظات ..................................",
+                    style: { color: "#FFF" },
+                    minRows: 6,
+                  }}
                   onBlur={(event, editor) => {
                     const data = editor.getData();
                     console.log({ event, editor, data });
@@ -200,7 +265,10 @@ const AddModal = () => {
                     console.log({ event, editor, data });
                   }}
                   editor={ClassicEditor}
-                  data="<h2>تفاصيل الاجتماع</h2>"
+                  config={{
+                    placeholder:
+                      "اكتب ملاحظات ..................................",
+                  }}
                   onBlur={(event, editor) => {
                     const data = editor.getData();
                     console.log({ event, editor, data });
@@ -210,9 +278,10 @@ const AddModal = () => {
             </FormModal>
             <FormModal title={"ملفات المشروع"}>
               <div className="flex gap-2">
-                <div
+                <label
                   className={`border !border-[#D59921] !border-dashed max-w-fit rounded-[12.06px] pointer bg-[#2B2B40] py-4 px-2 flex flex-col items-center justfiy-center`}
                 >
+                  <input type="file" className="hidden" />
                   <div>
                     <svg
                       className="m-auto"
@@ -232,14 +301,15 @@ const AddModal = () => {
                     </svg>
                     <p className="text-sm mx-auto text-white">اضافة جديدة</p>
                   </div>
-                </div>
+                </label>
               </div>
             </FormModal>
             <FormModal title={"المرفقات"}>
               <div className="flex gap-2">
-                <div
+                <label
                   className={`border !border-[#D59921] !border-dashed max-w-fit rounded-[12.06px] pointer bg-[#2B2B40] py-4 px-2 flex flex-col items-center justfiy-center`}
                 >
+                  <input type="file" className="hidden" />
                   <div>
                     <svg
                       className="m-auto"
@@ -259,10 +329,10 @@ const AddModal = () => {
                     </svg>
                     <p className="text-sm mx-auto text-white">اضافة جديدة</p>
                   </div>
-                </div>
+                </label>
               </div>
             </FormModal>
-          </>
+          </div>
         ) : null}
       </div>
     </div>
@@ -303,10 +373,10 @@ export default function PlanModel() {
   }, [pathname]);
   const navigate = useNavigate();
   return (
-    <Box>
+    <Box sx={{ display: "flex", flexDirection: "column", height: "500px" }}>
       <SystemControler
         child={
-          <>
+          <div className="h-[88px] flex items-center">
             <IconButton
               onClick={() => {
                 navigate("/System/plans");
@@ -316,11 +386,11 @@ export default function PlanModel() {
               <IoMdArrowDropright color="white" fontSize={25} />
             </IconButton>
             {content}
-          </>
+          </div>
         }
       />
 
-      <div className="grid grid-cols-4 gap-4 max-h-[80%]">
+      <div className="flex-1 grid grid-cols-4 gap-4">
         <div className="py-4 px-2  bg-[#1E1E2D] rounded-[19px]">
           <p className="text-white">كل المهام</p>
           <div className="flex  justify-center flex-col">
