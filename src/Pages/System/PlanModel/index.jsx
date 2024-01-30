@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { IoMdArrowDropright } from "react-icons/io";
-
+import DatePicker from "react-datepicker";
 import {
   Box,
   Button,
@@ -20,6 +20,7 @@ import ProjectContextProvier, {
   ProjectContext,
 } from "./Projects/ProjectContext";
 import { DataTable } from "./Projects";
+import { TableContext } from "./TableContext";
 
 export const NavItem = ({ title, search }) => {
   const { setProjects } = useContext(ProjectContext);
@@ -91,6 +92,8 @@ export const InputLabel = ({ label, id }) => {
 };
 
 const AddModal = () => {
+  let [recievedDate, setRecievedDate] = useState(null);
+  let [recievingDate, setRecievingDate] = useState(null);
   const [show, setShow] = useState(false);
   const [formType, setFormType] = useState(0);
   const [newProjectName, setNewProjectName] = useState("");
@@ -215,23 +218,30 @@ const AddModal = () => {
               </div>
               <div className="grid grid-cols-12 mb-5">
                 <div className="col-span-5">
-                  <InputLabel id="new-project-name" label={"تاريخ التسليم"} />
-                  <input
-                    id="new-project-name"
-                    type="text"
-                    className="w-full text-white p-2 bg-[#2B2B40] rounded-[7px]"
-                    placeholder="اضف تاريخ التسليم"
-                  />
+                  <InputLabel id="recieving-date" label={"تاريخ التسليم"} />
+                  <DatePicker
+                    id="recieving-date"
+                    
+                      selected={recievingDate}
+                      placeholder="اضف تاريخ التسليم"
+                      onChange={(date) => setRecievingDate(date)}
+                      dateFormat="dd-MM-yyyy"
+                      className="w-full text-white p-2 bg-[#2B2B40] rounded-[7px]"
+                    />
+                  
                 </div>
                 <div className="col-span-2"></div>
                 <div className="col-span-5">
-                  <InputLabel id="find-project" label={"تاريخ الاستلام"} />
-                  <input
-                    id="find-project"
-                    type="text"
-                    className="w-full text-white p-2 bg-[#2B2B40] rounded-[7px]"
-                    placeholder="اضف تاريخ الاستلام"
-                  />
+                  <InputLabel id="recieved-date" label={"تاريخ الاستلام"} />
+                  <DatePicker
+                    id="recieved-date"
+                      selected={recievedDate}
+                      placeholder="اضف تاريخ الاستلام"
+                      onChange={(date) => setRecievedDate(date)}
+                      dateFormat="dd-MM-yyyy"
+                      className="w-full text-white p-2 bg-[#2B2B40] rounded-[7px]"
+                    />
+                  
                 </div>
               </div>
 
@@ -340,7 +350,8 @@ const AddModal = () => {
 };
 
 export default function PlanModel() {
-  const [openModal, setOpenModal] = useState(false);
+  const {fullWidthTable,setFullWidthTable} = useContext(TableContext)
+  const [openModal, setOpenModal] = useState(true);
   const [content, setContent] = useState(
     <IconButton onClick={() => navigate("/System/plans")}>
       <IoMdArrowDropright color="white" fontSize={25} />
@@ -390,8 +401,8 @@ export default function PlanModel() {
         }
       />
 
-      <div className="flex-1 grid grid-cols-4 gap-4">
-        <div className="py-4 px-2  bg-[#1E1E2D] rounded-[19px]">
+      <div className={`flex-1 grid grid-cols-4 gap-4`}>
+      {!fullWidthTable ?  <div className="py-4 px-2  bg-[#1E1E2D] rounded-[19px]">
           <p className="text-white">كل المهام</p>
           <div className="flex  justify-center flex-col">
             <CustomNav
@@ -413,8 +424,8 @@ export default function PlanModel() {
               ]}
             />
           </div>
-        </div>
-        <div className="p-2 col-span-3 bg-[#1E1E2D] rounded-[19px]">
+        </div>:null}
+        <div className={`p-2 ${fullWidthTable ? "col-span-4":"col-span-3"}  bg-[#1E1E2D] rounded-[19px]`}>
           {openModal ? <AddModal /> : <Outlet />}
         </div>
       </div>
