@@ -3,6 +3,7 @@ import { IconButton } from "@mui/material";
 import { IoMdMore } from "react-icons/io";
 import DataTableComponent from "../../../../Components/DataTableComponent";
 import { ProjectContext, useProjectContext } from "./ProjectContext";
+import CustomTable from "../CustomTable";
 const columns = [
   {
     name: "م",
@@ -225,8 +226,8 @@ export default function Projects() {
     },[])
   return (
     <div>
-      <DataTableComponent
-        sortIcon
+      <CustomTable
+        
         columns={columns}
         data={projects}
         className={" border-golden scrollbar-thin scrollbar-track-transparent scrollbar-thumb-[#EFAA20] overflow-scroll "}

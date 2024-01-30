@@ -30,11 +30,8 @@ class AllPlansPieChart extends React.Component {
                 total: {
                   show: true,
                   color: "#FFF",
-                  label: "",
-                  formatter: () => `
-                    كل المشاريع
-                    100%
-                  `,
+                  label: "كل المشاريع",
+                  formatter: () => `100%`,
                 },
               },
             },
@@ -63,10 +60,8 @@ class AllPlansPieChart extends React.Component {
     };
   }
   componentDidMount() {
-    const text = document.querySelectorAll(
-      "text.apexcharts-text.apexcharts-datalabel-value"
-    );
-    text[0].setAttribute("fill", "#FFFFFF");
+    const text = document.querySelectorAll("text.apexcharts-text.apexcharts-datalabel-value")
+    text[0].setAttribute("fill","#FFFFFF")
   }
   render() {
     return (
