@@ -1,71 +1,135 @@
-import React, { useState, useEffect } from "react";
 import DatePicker from "react-datepicker";
-import { IoMdMore } from "react-icons/io";
 import {
   Box,
   Button,
   IconButton,
   TextField,
-  Menu,
   MenuItem,
   Select,
 } from "@mui/material";
-import { FormModal } from "../components/FormModal";
-import UploadFile from "../components/UploadFile";
-import CustomModal from "../components/Modals/CustomModal";
-import { ModalTitle } from "../components/ModalTitle";
+import { Accordion } from "react-bootstrap";
+import { Link, Outlet, useNavigate, useLocation } from "react-router-dom";
+import { MdKeyboardArrowDown } from "react-icons/md";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
-import { InputLabel } from "../components/InputLabel";
-export default function EditProject() {
-  const [anchorEl, setAnchorEl] = useState(null);
-  const [searchProjectName, setSearchProjectName] = useState("");
-  let [recievedDate, setRecievedDate] = useState(null);
-  let [recievingDate, setRecievingDate] = useState(null);
-  return (
-    <div className="bg-[#1E1E2D] mb-2 p-5 border rounded-[19px] text-white !border-[#EFAA20] h-full">
-      <div className="my-3">
-        <ModalTitle title={" تعديل مشروع "} />
-      </div>
-
-      <div className="h-[690px] overflow-scroll scrollbar-none flex flex-col gap-4 ">
-        <FormModal title={"بحث عن المشروع"}>
-          <div className="grid grid-cols-12 justify-between">
-            <div className="col-span-5">
-              <InputLabel id="new-project-name" label={"اسم المشروع"} />
-              <Select
-                fullWidth
-                size="small"
-                labelId="demo-simple-select-label"
-                id="demo-simple-select"
-                value={searchProjectName}
-                label="Select Project"
-                className="w-full text-white bg-[#2B2B40] rounded-[7px]"
-                onChange={(e) => {
-                  setSearchProjectName(e.target.value);
-                }}
-                inputProps={{ placeholder: "ابحث عن ...." }}
-                sx={{
-                  "& input::placeholder": {
-                    color: "white",
-                  },
-                  "& fieldset": {
-                    border: "none",
-                  },
-                  "& svg": {
-                    display: "none",
-                  },
-                }}
-              >
-                {/* <MenuItem selected>ابحث</MenuItem> */}
-                <MenuItem value={10}>مطاعم عشبة الليمون</MenuItem>
-                <MenuItem value={20}>مطاعم عشبة الليمون</MenuItem>
-                <MenuItem value={30}>مطاعم عشبة الليمون</MenuItem>
-              </Select>
+import { useEffect, useState } from "react";
+import { InputLabel } from "./InputLabel";
+import { FormModal } from "./FormModal";
+import { ModalTitle } from "./ModalTitle";
+export const AddModal = () => {
+    let [recievedDate, setRecievedDate] = useState(null);
+    let [recievingDate, setRecievingDate] = useState(null);
+    const [show, setShow] = useState(false);
+    const [formType, setFormType] = useState(0);
+    const [newProjectName, setNewProjectName] = useState("");
+    const [searchProjectName, setSearchProjectName] = useState("");
+    const navigate = useNavigate();
+    useEffect(() => {}, []);
+    return (
+      <div className="p-3 border !border-[#EFAA20] rounded-[27px]">
+        <ModalTitle title={"إضافة مشروع جديد"} />
+        <div className="flex flex-col gap-4 ">
+          <FormModal title={"بحث عن المشروع"}>
+            <div className="grid grid-cols-12 justify-between">
+              {formType != 2 ? (
+                <div className="col-span-5">
+                  <InputLabel id="new-project-name" label={"اسم المشروع"} />
+                  {/* <TextField
+                  id="new-project-name"
+                  type="text"
+                  size="small"
+                  select
+                  className="w-full text-white bg-[#2B2B40] rounded-[7px]"
+                  placeholder="ابحث عن ...."
+                  sx={{
+                    "& fieldset": {
+                      border: "none",
+                    },
+                    "& input::placeholder": {
+                      color: "#9DADE8",
+                    },
+                  }}
+                >
+                  <div className="bg-[#414162] text-white">
+                    <MenuItem value={10}>مطاعم عشبة الليمون</MenuItem>
+                    <MenuItem value={20}>مطاعم عشبة الليمون</MenuItem>
+                    <MenuItem value={30}>مطاعم عشبة الليمون</MenuItem>
+                    <MenuItem value={10}>مطاعم عشبة الليمون</MenuItem>
+                    <MenuItem value={20}>مطاعم عشبة الليمون</MenuItem>
+                    <MenuItem value={30}>مطاعم عشبة الليمون</MenuItem>
+                  </div>
+                </TextField> */}
+                  <Select
+                    fullWidth
+                    size="small"
+                    labelId="demo-simple-select-label"
+                    id="demo-simple-select"
+                    value={searchProjectName}
+                    label="Select Project"
+                    className="w-full text-white bg-[#2B2B40] rounded-[7px]"
+                    onChange={(e) => {setSearchProjectName(e.target.value)}}
+                    inputProps={{ 'placeholder': "ابحث عن ...." }}
+                    sx={{
+                      "& input::placeholder": {
+                        color: "white"
+                      },
+                      "& fieldset": {
+                        border: "none"
+                      },
+                      "& svg": {
+                        display: "none"
+                      },
+                    }}
+                  >
+                    {/* <MenuItem selected>ابحث</MenuItem> */}
+                    <MenuItem value={10}>مطاعم عشبة الليمون</MenuItem>
+                    <MenuItem value={20}>مطاعم عشبة الليمون</MenuItem>
+                    <MenuItem value={30}>مطاعم عشبة الليمون</MenuItem>
+                  </Select>
+                </div>
+              ) : null}
+              {formType != 2 ? <div className="col-span-2"></div> : null}
+              {formType != 1 ? (
+                <div className="col-span-5">
+                  <InputLabel id="find-project" label={"اسم مشروع جديد"} />
+                  <input
+                    id="find-project"
+                    type="text"
+                    className="w-full text-white p-2 bg-[#2B2B40] rounded-[7px]"
+                    placeholder="ادخل اسم المشروع الجديد"
+                    value={newProjectName}
+                    onChange={(e) => {
+                      setNewProjectName(e.target.value);
+                      
+                    }}
+                  />
+                </div>
+              ) : null}
             </div>
+          </FormModal>
+  
+          <div className={`flex justify-end py-3 ${show ? "hidden" : ""}`}>
+            <button
+              onClick={() => {
+                if(newProjectName){
+                  setFormType(1)
+                }else{
+                  setFormType(1)
+  
+                }
+                setShow(true);
+                
+              }}
+              className={`
+              
+              w-[140px] h-[30px] rounded-md  bg-[#EFAA20] text-[#1E1E2D] text-[15px] font-medium`}
+            >
+              التالى
+            </button>
           </div>
-        </FormModal>
-        <FormModal title={"تفاصيل المهمة"}>
+          {show ? (
+            <div className="h-[500px] overflow-scroll scrollbar-none custom-scrollbar">
+              <FormModal title={"تفاصيل المهمة"}>
                 <div className="grid grid-cols-12 mb-5">
                   <div className="col-span-5">
                     <InputLabel id="new-project-name" label={"اسم المسؤل"} />
@@ -107,18 +171,17 @@ export default function EditProject() {
                 </div>
   
                 <div className="">
-                  <InputLabel id="new-project-name" label={"وصف المهمة"} />
+                  <InputLabel id="new-project-name" label={"تاريخ التسليم"} />
                   <CKEditor
                     onChange={(event, editor) => {
                       const data = editor.getData();
                       console.log({ event, editor, data });
                     }}
-                    
                     editor={ClassicEditor}
                     config={{
                       placeholder:
                         "اكتب ملاحظات ..................................",
-                      style: { color: "#FFF"},
+                      style: { color: "#FFF" },
                       minRows: 6,
                     }}
                     onBlur={(event, editor) => {
@@ -128,22 +191,18 @@ export default function EditProject() {
                   />
                 </div>
               </FormModal>
-        <FormModal title={"ملاحظات العميل"}>
-  
+              <FormModal title={"ملاحظات العميل"}>
                 <div className="">
-                  <InputLabel id="new-project-name" label={"وصف المهمة"} />
+                  <InputLabel id="new-project-name" label={"تاريخ التسليم"} />
                   <CKEditor
                     onChange={(event, editor) => {
                       const data = editor.getData();
                       console.log({ event, editor, data });
                     }}
-                    
                     editor={ClassicEditor}
                     config={{
                       placeholder:
                         "اكتب ملاحظات ..................................",
-                      style: { color: "#FFF"},
-                      minRows: 6,
                     }}
                     onBlur={(event, editor) => {
                       const data = editor.getData();
@@ -207,14 +266,15 @@ export default function EditProject() {
                     </div>
                   </label>
                 </div>
-              </FormModal>     
-      </div>
-
-      <div className="flex justify-end mt-4">
+              </FormModal>
+              <div className="flex justify-end mt-4">
         <button className="w-[140px] h-[30px]  bg-[#EFAA20] rounded-[6px] text-[#1E1E2D] text-[15px] font-medium">
         حفظ
         </button>
       </div>
-    </div>
-  );
-}
+            </div>
+          ) : null}
+        </div>
+      </div>
+    );
+  };
