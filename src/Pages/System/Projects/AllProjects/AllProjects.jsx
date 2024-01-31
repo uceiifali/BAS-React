@@ -23,10 +23,10 @@ const AllProjects = () => {
   const [ConfirmUpdate, setConfirmUpdate] = useState(false);
   const { reportType, setReportType } = useContext(AddReportType);
   const [active, setActive] = useState();
+  // handling Add project
   const [view, setView] = useState(false);
   const { pathname } = useLocation();
   const pagePath = pathname.split("/System/Projects/Main")[1];
-  console.log(pagePath);
 
   const handleOpen = () => {
     setView(true);
@@ -35,9 +35,6 @@ const AllProjects = () => {
   const handleClose = () => {
     setView(false);
   };
-  // useEffect(() => {
-  //     setReportType('')
-  // }, [reportType])
 
   return (
     <div>

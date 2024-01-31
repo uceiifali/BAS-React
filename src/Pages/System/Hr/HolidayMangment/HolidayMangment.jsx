@@ -1,8 +1,8 @@
 import React, { useContext, useEffect, useState } from "react";
 import style from "./HolidayMangment.module.css";
-import { SearchComponent } from "../../../../Components/SearchComponent/SearchComponent";
-import { AllCategories } from "../../../../Components/System/AllCategories/AllCategories";
-import Input from "../../../../Components/FormHandler/Input";
+import { SearchComponent } from "../../../../Components/SearchComponent/SearchComponent.jsx";
+import { AllCategories } from "../../../../Components/System/AllCategories/AllCategories.js";
+import Input from "../../../../Components/FormHandler/Input.jsx";
 import "./HolidayMangment.css";
 import DataTableComponent from "../../../../Components/DataTableComponent.jsx";
 
@@ -192,7 +192,7 @@ const HolidayMangment = () => {
             <fieldset className={`${style.allhoildaysTables} mt-5`}>
               <legend className="text-center ">كل الاجازات</legend>
               <DataTableComponent
-                className={"datatableComponent"}
+    
                 data={data}
                 columns={columns}
               />

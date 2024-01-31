@@ -12,17 +12,18 @@ export default function TimePickerButton({ ...props }) {
         <DemoContainer components={["TimePicker"]}>
           <TimePicker
             orientation="landscape"
-            //   label="With Time Clock"
             className="!border-8"
             viewRenderers={{
               hours: renderTimeViewClock,
               minutes: renderTimeViewClock,
               seconds: renderTimeViewClock,
             }}
-            slotProps={{ textField: {size: 'small', variant: 'filled'},InputLabelProps:{
-              color:"white"
-
-            } }}
+            slotProps={{
+              textField: { size: "small", variant: "filled" },
+              InputLabelProps: {
+                color: "white",
+              },
+            }}
             {...props}
           />
         </DemoContainer>

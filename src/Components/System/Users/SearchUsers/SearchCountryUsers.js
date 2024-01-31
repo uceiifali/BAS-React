@@ -12,7 +12,7 @@ const SearchCountryUsers = () => {
     <div>
       <div className="search-users  overflow-x-hidden">
         <div className="d-flex   justify-content-center">
-          <SearchComponent />
+          <SearchComponent /> 
         </div>
 
         <div className="d-flex w-100 align-items-center justify-content-between m-2">
@@ -53,17 +53,17 @@ const SearchCountryUsers = () => {
         </div>
         {users.map((user, index) => (
           <Link to="/system/users/1" key={index}>
-            <div className="tab   mt-2 d-flex   ">
+            <div className="tab   !mb-3 d-flex   ">
               <Image
-                src={process.env.PUBLIC_URL + "/People/islam.jpg"}
-                alt="user img "
-                className="user-img  "
+                src={process.env.PUBLIC_URL + "/People/habeeb.jpg"}
+                alt="user img"
+                className="user-img"
               />
               <div className="d-flex flex-column me-3 ">
                 <h2 className=" name-header text-white         ">
-                  اسلام إيهاب
+              حبيب نصر
                 </h2>
-                <p className="main-text text-sm">Islam@bsa.com</p>
+                <p className="main-text text-sm">habeeb@bsa.com</p>
               </div>
             </div>
           </Link>

@@ -56,6 +56,7 @@ export const AddProjectStepOne = (props) => {
   const [projectType, setProjectType] = useState(
     userData.projectType ? userData.projectType : ""
   );
+  console.log(projectType);
   const projectTypeOptions = [
     {
       value: "تصميم",
@@ -393,7 +394,7 @@ export const AddProjectStepOne = (props) => {
             />
           </Form.Group>
         </div>
-        {pagePath === "Design" ? (
+        {projectType === "تصميم" ? (
           <>
             <div className=" col-md-4 mb-4">
               <Select
@@ -416,7 +417,7 @@ export const AddProjectStepOne = (props) => {
             </div>
           </>
         ) : (
-          pagePath === "Review" && null
+          projectType === "الاشراف علي التنفيذ" && null
         )}
       </div>
     </fieldset>

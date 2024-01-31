@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useMemo, useState } from "react";
 import "./index.css";
 import SystemControler from "../../../../Components/System/SystemControler/SystemControler";
 import AddUserButton from "../../../../Components/System/AddUserButton/AddUserButton";
@@ -41,6 +41,14 @@ const AllRequests = () => {
   const handleClose = () => {
     setView(false);
   };
+  const { openDesignSteps, setOpenDesignSteps } = useContext(multiStepContext);
+  const { openReviewSteps, setOpenReviewSteps } = useContext(multiStepContext);
+  useMemo(() => {
+    if (!openDesignSteps || !openReviewSteps) {
+      console.log("component should be closed ");
+      setView(false);
+    }
+  }, [openDesignSteps, openReviewSteps]);
   return (
     <div className="all-Requests h-100">
       <SystemControler

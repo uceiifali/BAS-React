@@ -71,7 +71,7 @@ const AddProjectStepThree = (props) => {
       instrumentNumber.value &&
       instrumentNumber.isValid &&
       InstrumentAttachments?.name &&
-      pagePath === "Design"
+      checkProjectType === "تصميم"
     ) {
       const updatedUserData = {
         ...userData,
@@ -130,7 +130,7 @@ const AddProjectStepThree = (props) => {
   const [confirmSubmit, setConfirmSubmit] = useState(false);
 
   // check Review validation
-
+  console.log(checkProjectType)
   useMemo(() => {
     if (
       licenseNumber.isValid &&
@@ -139,7 +139,7 @@ const AddProjectStepThree = (props) => {
       licenseDeed.value &&
       licenseDate &&
       licenseAttachments?.name &&
-      pagePath === "Review"
+      checkProjectType === "الاشراف علي التنفيذ"
     ) {
       signalParent(true);
       const updatedUserData = {
@@ -183,13 +183,13 @@ const AddProjectStepThree = (props) => {
 
   return (
     <fieldset className="addProjectStep step-three mx-auto">
-      {pagePath === "Design" ? (
+      {checkProjectType === "تصميم" ? (
         <legend className="text-center"> اضافة بيانات الوكالة </legend>
       ) : (
         <legend className="text-center">اضافة بيانات الرخصة </legend>
       )}
 
-      {pagePath === "Design" ? (
+      {checkProjectType === "تصميم" ? (
         <Form className=" row w-100 m-auto ">
           <div className="col-md-6 mb-4">
             <Input

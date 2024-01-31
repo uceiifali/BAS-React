@@ -14,16 +14,14 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import FormControl from "@mui/material/FormControl";
 import FormLabel from "@mui/material/FormLabel";
 import Input from "../../../FormHandler/Input";
-import DatePicker from "react-datepicker";
 import moment from "moment";
-import TimePicker from "react-time-picker";
-import { TieredMenu } from "primereact/tieredmenu";
 import Progress from "../../../Progress";
 import ChooseDepartmentComponent from "../ChooseDepartmentComponent/ChooseDepartmentComponent";
-import TimePickerButton from "../../../../Pages/TimePickerPage";
+import TimePickerButton from "../../../TimePickerPage";
 import { FaCheck } from "react-icons/fa6";
-export const AddMeeting = ({ showAddUserModel, setShowAddUserModel }) => {
-  const [selectedPlace,setSelectedPlace] = useState(0)
+import FormDatePicker from "../../../FormDatePicker";
+export const AddMeeting = ({ view, setView }) => {
+  const [selectedPlace, setSelectedPlace] = useState(0);
   const [Submitted, setSubmitted] = useState(false);
   const selectCountry = UseSelect("", "Select");
   const selectMeetingType = UseSelect("", "Select");
@@ -62,7 +60,7 @@ export const AddMeeting = ({ showAddUserModel, setShowAddUserModel }) => {
     },
   ];
   const handleAddMeeting = () => {
-    setShowAddUserModel(false);
+    setView(false);
   };
 
   return (
@@ -71,11 +69,11 @@ export const AddMeeting = ({ showAddUserModel, setShowAddUserModel }) => {
         chooseDepartment={chooseDepartment}
         setChooseDeprtmant={setChooseDeprtmant}
       />
-      {showAddUserModel && (
+      {view && (
         <Modal
           size="lg"
-          show={showAddUserModel}
-          onHide={() => setShowAddUserModel(false)}
+          show={view}
+          onHide={() => setView(false)}
           aria-labelledby=" example-modal-sizes-title-lg"
           className="systemModal mettingModal   "
         >
@@ -87,7 +85,7 @@ export const AddMeeting = ({ showAddUserModel, setShowAddUserModel }) => {
                 alt="close modal button"
                 className="pointer"
                 onClick={() => {
-                  setShowAddUserModel(false);
+                  setView(false);
                 }}
               />
             </div>
@@ -159,27 +157,51 @@ export const AddMeeting = ({ showAddUserModel, setShowAddUserModel }) => {
                     <FormControlLabel
                       onChange={(e) => {
                         setMeetingPlace(e.target.value);
-                        setSelectedPlace(1)
+                        setSelectedPlace(1);
                       }}
                       className="text-white mt-2 flex gap-3 "
                       value="online"
                       control={
-                        <label onClick={() => {setMeetingPlace("online");setSelectedPlace(1)}} htmlFor="online" className={`w-5 h-5 rounded-[5px] bg-[#2B2B40] border ${meetingPlace === "online" ? "!border-[#EFAA20]":""}`}>
-                        {selectedPlace == 1 ? <FaCheck />: null}    <Radio sx={{display: "none"}}  />
+                        <label
+                          onClick={() => {
+                            setMeetingPlace("online");
+                            setSelectedPlace(1);
+                          }}
+                          htmlFor="online"
+                          className={`w-5 h-5 rounded-[5px] bg-[#2B2B40] border ${
+                            meetingPlace === "online" ? "!border-[#EFAA20]" : ""
+                          }`}
+                        >
+                          {selectedPlace == 1 ? <FaCheck /> : null}{" "}
+                          <Radio sx={{ display: "none" }} />
                         </label>
-                    }
+                      }
                       label="online"
                     />
                     <FormControlLabel
                       className="text-white flex gap-3 my-2"
                       onChange={(e) => {
                         setMeetingPlace(e.target.value);
-                        setSelectedPlace(2)
+                        setSelectedPlace(2);
                       }}
                       value="offline"
-                      control={<label onClick={() => {setMeetingPlace("offline");setSelectedPlace(2)}} htmlFor="offline" className={`w-5 h-5 rounded-[5px] bg-[#2B2B40] border ${meetingPlace === "offline" ? "!border-[#EFAA20]":""}`}>
-                     {selectedPlace == 2 ? <FaCheck />: null} <Radio id="offline" sx={{display: "none"}} />
-                  </label>}
+                      control={
+                        <label
+                          onClick={() => {
+                            setMeetingPlace("offline");
+                            setSelectedPlace(2);
+                          }}
+                          htmlFor="offline"
+                          className={`w-5 h-5 rounded-[5px] bg-[#2B2B40] border ${
+                            meetingPlace === "offline"
+                              ? "!border-[#EFAA20]"
+                              : ""
+                          }`}
+                        >
+                          {selectedPlace == 2 ? <FaCheck /> : null}{" "}
+                          <Radio id="offline" sx={{ display: "none" }} />
+                        </label>
+                      }
                       label="offline"
                     />
                   </RadioGroup>
@@ -191,7 +213,7 @@ export const AddMeeting = ({ showAddUserModel, setShowAddUserModel }) => {
                 </div>
               )}
               <div className="col-md-12  mb-4">
-                <div>
+                <div className="!w-1/2">
                   <Form.Group
                     className="licenseDate-container "
                     controlId="licenseDate"
@@ -200,11 +222,10 @@ export const AddMeeting = ({ showAddUserModel, setShowAddUserModel }) => {
                       تاريخ الاجتماع
                     </Form.Label>
 
-                    <DatePicker
-                      selected={meetingDate}
+                    <FormDatePicker
+                      date={meetingDate}
                       placeholderText=" ادخل تاريخ الاجتماع "
                       onChange={(date) => setMeetingDate(date)}
-                      dateFormat="dd-MM-yyyy"
                       className="w-50 form-control"
                     />
                   </Form.Group>
@@ -219,23 +240,16 @@ export const AddMeeting = ({ showAddUserModel, setShowAddUserModel }) => {
                     <Form.Label className="d-flex gap-2 align-items-center">
                       توقيت بدا الاجتماع
                     </Form.Label>
-
-                    {/* <TimePicker
-                      value={startMeeting}
-                      placeholderText="   وقت بدا الاجتماع "
-                      onChange={(time) => setStartMeeting(time)}
-                      className="w-100 form-control"
-                    /> */}
                     <TimePickerButton
-                    value={startMeeting}
-                    label="   وقت بدا الاجتماع "
-                    onChange={(time) => setStartMeeting(time)}
-                    className="w-100 form-control !text-white" 
+                      value={startMeeting}
+                      label="   وقت بدا الاجتماع "
+                      onChange={(time) => setStartMeeting(time)}
+                      className="w-100 form-control "
                     />
                   </Form.Group>
                 </div>
               </div>
-              <div dir="ltr" className="col-md-6  mb-2">
+              <div dir="rtl" className="col-md-6  mb-2">
                 <div>
                   <Form.Group
                     className="licenseDate-container w-100"
@@ -250,12 +264,7 @@ export const AddMeeting = ({ showAddUserModel, setShowAddUserModel }) => {
                       onChange={(time) => setEndMeeting(time)}
                       className="w-100 form-control !text-white"
                     />
-                    {/* <TimePicker
-                      value={endMeeting}
-                      placeholderText="   وقت نهاية الاجتماع "
-                      onChange={(time) => setEndMeeting(time)}
-                      className="w-100 form-control"
-                    /> */}
+                    
                   </Form.Group>
                 </div>
               </div>

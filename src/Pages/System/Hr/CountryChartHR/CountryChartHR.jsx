@@ -1,16 +1,12 @@
-import React, { useEffect, useMemo, useState } from "react";
-import AllUserCategories from "../../../../Components/System/Users/AllUserCategories/AllUserCategories";
-
 import AllUsersPieChart from "../../../../Components/System/Users/AllUsersChart/AllUsersPieChart";
-
 import CountryPieChart from "../../../../Components/System/Users/CountryChart/CountryPieChart";
 import { Link, useParams } from "react-router-dom";
 import CountryColumnChart from "../../../../Components/System/Users/CountryChart/CountryColumnChart";
 import CountryDeprtamentSlider from "../../../../Components/System/Users/CountryChart/CountryDeprtamentSlider";
-import "./index.css";
 import SearchCountryUsers from "../../../../Components/System/Users/SearchUsers/SearchCountryUsers";
+import { useEffect, useMemo, useState } from "react";
 
-const CountryChart = () => {
+const CountryChartHR = () => {
   const { CountryName } = useParams();
   const [countryBase, setCountryBase] = useState("Saudia");
   const [countryBaseAr, setCountryBaseAr] = useState("السعودية");
@@ -19,11 +15,10 @@ const CountryChart = () => {
   useMemo(() => {
     if (CountryName === "Saudia") {
       setCountryBase("Saudia");
-      setCountryBaseAr("السعودية")
+      setCountryBaseAr("السعودية");
     } else if (CountryName === "egypet") {
       setCountryBase("egypet");
-      setCountryBaseAr("مصر")
-
+      setCountryBaseAr("مصر");
     }
   }, [CountryName]);
   useEffect(() => {}, [CountryName]);
@@ -36,14 +31,14 @@ const CountryChart = () => {
         <div className="country-Chart p-5">
           <div className="d-flex justify-content-center flex-column align-items-center">
             <div className="d-flex  mx-auto gap-4   justify-center">
-              <p className=" text-center text-xl   text-white mb-4">
+              <p className=" text-center text-xl   text-white mb-4">    
                 {countryBase === "Saudia" ? "السعودية" : "مصر"}
               </p>
               <Link
                 to={
                   countryBase === "Saudia"
-                    ? "/System/AllUsers/Country/egypet"
-                    : "/System/AllUsers/Country/Saudia"
+                    ? "/System/Hr/Employees/egypet"
+                    : "/System/Hr/Employees/Saudia"
                 }
               >
                 <svg
@@ -83,4 +78,4 @@ const CountryChart = () => {
   );
 };
 
-export default CountryChart;
+export default CountryChartHR;

@@ -1,14 +1,14 @@
 import React from "react";
+import Calendar from "react-calendar";
 import SystemControler from "../../../Components/System/SystemControler/SystemControler";
-import style from "./MainSystem.module.css";
 import { Container, Image, NavDropdown } from "react-bootstrap";
 import SystemLineChart from "../../../Components/System/Main/SystemLineChart";
 import AllDeprtmentSlider from "../../../Components/System/Main/ِAllDeprtmentSLider";
 import DataTableComponent from "../../../Components/DataTableComponent.jsx";
 import { useParams } from "react-router-dom";
 import { useState } from "react";
-import Calendar from "react-calendar";
 import { columns } from "../../../utils/consts.jsx";
+import style from "./MainSystem.module.css";
 export const MainSystem = () => {
   // define cleander value
   const [cleanderValue, setCleanderValue] = useState(false);

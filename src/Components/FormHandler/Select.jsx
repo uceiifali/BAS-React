@@ -17,10 +17,10 @@ const Select = React.forwardRef((props, ref) => {
     async = false,
     autoHeight = false,
     className = "",
-    OptionbackgroundColor = null,
+    OptionbackgroundColor = "#2B2B40",
     cacheOptions = true,
-    labelClasses
-  } = props;
+    labelClasses,
+  } = props;    
 
   let hasWarning = submitted && validator && !validator.valid;
   const selectStyles = (small, autoHeight) => {

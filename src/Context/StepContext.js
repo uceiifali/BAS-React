@@ -14,8 +14,8 @@ const StepContext = ({ children }) => {
   const { showAddUserModel, setShowAddUserModel } =
     useContext(showAddUpdateUser);
   const { showAddRequest, setShowAdddRequest } = useState(false);
-  const [openDesignSteps, setOpenDesignSteps] = useState(false);
-  const [openReviewSteps, setOpenReviewSteps] = useState(false);
+  const [openDesignSteps, setOpenDesignSteps] = useState(true);
+  const [openReviewSteps, setOpenReviewSteps] = useState(true);
   const [userData, setUserData] = useState([]);
   const [openDesign, setOpenDesign] = useState(false);
   const [currentStep, setStep] = useState(1);
@@ -45,60 +45,6 @@ const StepContext = ({ children }) => {
       setUserData([]);
     }
   };
-
-  const submitSystemDesign = async (e) => {
-    console.log("data submitted");
-
-    setSubmitted(true);
-    try {
-      const { data } = await httpRequest({
-        url: `/posts`,
-        // method: "post",
-        method: "get",
-        // data: userData,
-      });
-
-      setShowAddUserModel(false);
-      setShowAdddRequest(false);
-      setConfirmSubmit(true);
-
-      // Handle the response here
-    } catch ({ response }) {
-      toast.error(response?.data);
-      setSubmitted(false);
-    } finally {
-      setOpenCongrats(true);
-      setUserData([]);
-      setCheckProjectType(null);
-    }
-  };
-
-  const submitSystemReview = async (e) => {
-    console.log("data submitted");
-
-    setSubmitted(true);
-    try {
-      const { data } = await httpRequest({
-        url: `/posts`,
-        // method: "post",
-        method: "get",
-        // data: userData,
-      });
-
-      setShowAddUserModel(false);
-      setConfirmSubmit(true);
-
-      // Handle the response here
-    } catch ({ response }) {
-      toast.error(response?.data);
-      setSubmitted(false);
-    } finally {
-      setOpenCongrats(true);
-      setUserData([]);
-      setCheckProjectType(null);
-    }
-  };
-
   const submitReview = async () => {
     console.log("data submitted");
     setSubmitted(true);
@@ -119,6 +65,57 @@ const StepContext = ({ children }) => {
     } finally {
       setOpenCongrats(true);
       setUserData([]);
+    }
+  };
+
+  // submit system
+  const submitSystemDesign = async (e) => {
+    console.log("data submitted");
+
+    setSubmitted(true);
+    try {
+      const { data } = await httpRequest({
+        url: `/posts`,
+        // method: "post",
+        method: "get",
+        // data: userData,
+      });
+
+      setConfirmSubmit(true);
+
+      // Handle the response here
+    } catch ({ response }) {
+      toast.error(response?.data);
+      setSubmitted(false);
+    } finally {
+      setOpenCongrats(true);
+      setUserData([]);
+      setOpenDesignSteps(false);
+    }
+  };
+
+  const submitSystemReview = async (e) => {
+    console.log("data submitted");
+
+    setSubmitted(true);
+    try {
+      const { data } = await httpRequest({
+        url: `/posts`,
+        // method: "post",
+        method: "get",
+        // data: userData,
+      });
+
+      setConfirmSubmit(true);
+
+      // Handle the response here
+    } catch ({ response }) {
+      toast.error(response?.data);
+      setSubmitted(false);
+    } finally {
+      setOpenCongrats(true);
+      setUserData([]);
+      setOpenReviewSteps(false);
     }
   };
 

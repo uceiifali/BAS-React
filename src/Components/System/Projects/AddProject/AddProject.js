@@ -14,7 +14,7 @@ import DatePicker from "react-datepicker";
 import { useContext } from "react";
 import { showAddUpdateUser } from "../../../../Context/CheckAddUpdateUserVisability";
 import AddAttachment from "../../AddAttachment";
-const AddProject = ({handleClose}) => {
+const AddProject = ({ handleClose }) => {
   const projectName = UseInput("", "", true);
   const [attachment, setAttachment] = useState(null);
   const [openAddAttachemnt, setOpenAddAttachemnt] = useState(false);
@@ -106,7 +106,7 @@ const AddProject = ({handleClose}) => {
   const handleAddProject = () => {
     /// after adddingProject
     setShowAddUserModel(false);
-    handleClose()
+    handleClose();
   };
 
   return (

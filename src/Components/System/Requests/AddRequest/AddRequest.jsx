@@ -15,9 +15,9 @@ const AddRequest = ({ handleClose, pagePath }) => {
         showNavigation={true}
         className="flex justify-end"
       >
-        <AddProjectStepOne pagePath={pagePath} />
+        <AddProjectStepOne pagePath={pagePath}  />
         <AddProjectStepTwo pagePath={pagePath} />
-        <AddProjectStepThree pagePath={pagePath} />
+        <AddProjectStepThree pagePath={pagePath}  />
       </MultiStep>
     </div>
   );

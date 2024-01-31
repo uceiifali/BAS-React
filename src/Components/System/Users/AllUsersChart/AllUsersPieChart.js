@@ -2,7 +2,7 @@ import React from "react";
 import ReactApexChart from "react-apexcharts";
 import "./index.css";
 
-class AllUsersPieChart extends React.Component {
+class   AllUsersPieChart extends React.Component {
   constructor(props) {
     super(props);
 
@@ -87,7 +87,7 @@ class AllUsersPieChart extends React.Component {
             series={this.state.series}
             type="donut"
             width={"450px"}
-          ></ReactApexChart>
+          ></ReactApexChart>  
         </div>
       </div>
     );
