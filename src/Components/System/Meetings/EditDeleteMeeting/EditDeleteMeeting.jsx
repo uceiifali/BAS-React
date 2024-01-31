@@ -22,6 +22,9 @@ import Progress from "../../../Progress";
 import ChooseDepartmentComponent from "../ChooseDepartmentComponent/ChooseDepartmentComponent";
 import TimePickerButton from "../../../TimePickerPage";
 import { FaCheck } from "react-icons/fa6";
+import FormDatePicker from "../../../FormDatePicker";
+import DeleteButton from "../../../DeleteButton";
+import SaveButton from "../../../SaveButton";
 // import ChooseDepartmentComponent from '../ChooseDepartmentComponent/chooseDeprtamentComponent'
 
 const EditDeleteMeeting = ({
@@ -101,7 +104,10 @@ const EditDeleteMeeting = ({
                 }}
               />
             </div>
-            <Form className="row my-4  border-golden w-100 mx-auto p-3  ">
+            <Form
+              onSubmit={handleEditDeleteMeeting}
+              className="row my-4 date-input border-golden w-100 mx-auto p-3  "
+            >
               <div className="col-md-12 mb-4">
                 <Select
                   className="w-50"
@@ -225,20 +231,19 @@ const EditDeleteMeeting = ({
                 </div>
               )}
               <div className="col-md-12  mb-4">
-                <div>
+                <div className="!w-1/2">
                   <Form.Group
-                    className="licenseDate-container w-100"
+                    className="licenseDate-container "
                     controlId="licenseDate"
                   >
                     <Form.Label className="d-flex gap-2 align-items-center">
                       تاريخ الاجتماع
                     </Form.Label>
 
-                    <DatePicker
-                      selected={meetingDate}
+                    <FormDatePicker
+                      date={meetingDate}
                       placeholderText=" ادخل تاريخ الاجتماع "
                       onChange={(date) => setMeetingDate(date)}
-                      dateFormat="dd-MM-yyyy"
                       className="w-50 form-control"
                     />
                   </Form.Group>
@@ -250,14 +255,14 @@ const EditDeleteMeeting = ({
                     className="licenseDate-container w-100"
                     controlId="licenseDate"
                   >
-                    <Form.Label className="d-flex gap-2 justify-start align-items-center">
+                    <Form.Label className="d-flex gap-2 align-items-center">
                       توقيت بدا الاجتماع
                     </Form.Label>
                     <TimePickerButton
                       value={startMeeting}
-                      label="وقت بدا الاجتماع "
+                      label="   وقت بدا الاجتماع "
                       onChange={(time) => setStartMeeting(time)}
-                      className="w-100 form-control !text-white"
+                      className="w-100 form-control "
                     />
                   </Form.Group>
                 </div>
@@ -281,26 +286,15 @@ const EditDeleteMeeting = ({
                 </div>
               </div>
 
-              <div className="d-flex my-2 justify-content-center gap-2">
-                <button
-                  onClick={(e) => {
-                    handleEditDeleteMeeting("edit");
-                  }}
+              <div className="flex gap-3 justify-center items-center">
+                <SaveButton
+                  type="submit"
                   className="  mt-4 sumbmitAddUpdateUser border-0 disabled "
                 >
                   {" "}
                   {Submitted ? <Progress isSmall /> : " حفظ"}{" "}
-                </button>
-
-                <button
-                  onClick={(e) => {
-                    handleEditDeleteMeeting("delete");
-                  }}
-                  className="  mt-4  editUser border-0 disabled "
-                >
-                  {" "}
-                  {Submitted ? <Progress isSmall /> : " حذف"}{" "}
-                </button>
+                </SaveButton>
+                <DeleteButton onClick={handleEditDeleteMeeting} />
               </div>
             </Form>
           </Container>

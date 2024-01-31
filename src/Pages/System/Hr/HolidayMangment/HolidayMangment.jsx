@@ -90,7 +90,7 @@ const HolidayMangment = () => {
           <div className={`${style.holidayTypesContainer}`}>
             <SearchComponent />
             <p className="text-white mt-2">كل الاجازات</p>
-            <div className="d-flex my-3 gap-3">
+            <div className="flex my-3 p-2  gap-3 w-full  border !border-transparent hover:!border-[#EFAA20] pointer">
               <div className={`${style.pdfbackground} `}>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -135,7 +135,7 @@ const HolidayMangment = () => {
               </div>
               <p className="text-white">اجازة مرضي</p>
             </div>
-            <div className="d-flex my-3 gap-3">
+            <div className="flex p-2  gap-3 my-3 w-full  border !border-transparent hover:!border-[#EFAA20] pointer ">
               <div className={`${style.pdfbackground} `}>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"

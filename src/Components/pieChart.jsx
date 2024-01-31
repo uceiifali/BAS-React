@@ -38,7 +38,7 @@ class PieChart extends React.Component {
                   label: this.props.label,
                   color: "#fff",
                   formatter: (val) => {
-                    return "100";
+                    return "100%";
                   },
                 },
               },

@@ -21,7 +21,7 @@ export default function TimePickerButton({ ...props }) {
             slotProps={{
               textField: { size: "small", variant: "filled" },
               InputLabelProps: {
-                color: "white",
+                color: "#f",
               },
             }}
             {...props}
