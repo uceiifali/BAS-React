@@ -1,131 +1,219 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import DatePicker from "react-datepicker";
 import { IoMdMore } from "react-icons/io";
-import Menu from "@mui/material/Menu";
-import MenuItem from "@mui/material/MenuItem";
+import {
+  Box,
+  Button,
+  IconButton,
+  TextField,
+  Menu,
+  MenuItem,
+  Select,
+} from "@mui/material";
 import { FormModal } from "../components/FormModal";
 import UploadFile from "../components/UploadFile";
 import CustomModal from "../components/Modals/CustomModal";
+import { ModalTitle } from "../components/ModalTitle";
+import { CKEditor } from "@ckeditor/ckeditor5-react";
+import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
+import { InputLabel } from "../components/InputLabel";
 export default function EditProject() {
   const [anchorEl, setAnchorEl] = useState(null);
-  const [showDelete, setShowDelete] = useState(false);
-  const [showStop, setShowStop] = useState(false);
-  const [showRefuse, setShowRefuse] = useState(false);
-  const open = Boolean(anchorEl);
-  const handleClick = (event) => {
-    console.log("event: ", event.currentTarget);
-    setAnchorEl(event.currentTarget);
-  };
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
-  const handleCloseDelete = () => setShowDelete(false);
-  const handleShowDelete = () => {
-    setShowDelete(true);
-}
-  const handleCloseStop = () => setShowStop(false);
-  const handleShowStop = () => {
-    setShowStop(true);
-}
-  const handleCloseRefuse = () => setShowRefuse(false);
-  const handleShowRefuse = () => {
-    setShowRefuse(true);
-}
+  const [searchProjectName, setSearchProjectName] = useState("");
+  let [recievedDate, setRecievedDate] = useState(null);
+  let [recievingDate, setRecievingDate] = useState(null);
   return (
-    <div className="bg-[#1E1E2D] border rounded-[19px] text-white !border-[#EFAA20] h-full">
-      
-      
-      
-      
-      <div className="p-4 ">
-      <p className="font-semibold text-xl text-[#EFAA20]">
-      تعديل مشروع 
-          </p>
-        
+    <div className="bg-[#1E1E2D] mb-2 p-5 border rounded-[19px] text-white !border-[#EFAA20] h-full">
+      <div className="my-3">
+        <ModalTitle title={" تعديل مشروع "} />
       </div>
 
-      <div className="flex flex-col gap-4 p-4 h-[700px] overflow-scroll scrollbar-none">
-        <FormModal title={"بيانات المشروع"}>
-          <div className="grid grid-cols-2 gap-4">
-            <p className="font-normal text-lg">
-              اسم المشروع : <span className="me-1 text-white/20">BSA</span>
-            </p>
-            <p className="font-normal text-lg">
-              المدينة : <span className="me-1 text-white/20">حي النخيل</span>
-            </p>
-            <p className="font-normal text-lg">
-              موقع المشروع :{" "}
-              <span className="me-1 text-white/20">حي النخيل</span>
-            </p>
-          </div>
-        </FormModal>
-        <FormModal title={" المسؤلين"}>
-          <p className="font-semibold text-base mb-3">المشرف العام :</p>
-
-          <div className="grid grid-cols-2 gap-5">
-            <div className="bg-[#414162] p-2 rounded-[7px] flex gap-2">
-              <div className=" rounded-full w-8 h-8">
-                <img
-                  src="/icons/avatar.png"
-                  alt=""
-                  className="w-full object-fill"
-                />
-              </div>
-              <div className="flex flex-col gap-1">
-                <p className="font-medium text-xs">م.ايهاب</p>
-                <p className="font-medium text-xs text-[#D59921]">
-                  مدير مكتب - السعودية
-                </p>
-              </div>
-            </div>
-            <div className="bg-[#414162] p-2 rounded-[7px] flex gap-2">
-              <div className=" rounded-full w-8 h-8">
-                <img
-                  src="/icons/avatar.png"
-                  alt=""
-                  className="w-full object-fill"
-                />
-              </div>
-              <div className="flex flex-col gap-1">
-                <p className="font-medium text-xs">م.اشرف</p>
-                <p className="font-medium text-xs text-[#D59921]">
-                  مدير مكتب - مصر
-                </p>
-              </div>
+      <div className="h-[690px] overflow-scroll scrollbar-none flex flex-col gap-4 ">
+        <FormModal title={"بحث عن المشروع"}>
+          <div className="grid grid-cols-12 justify-between">
+            <div className="col-span-5">
+              <InputLabel id="new-project-name" label={"اسم المشروع"} />
+              <Select
+                fullWidth
+                size="small"
+                labelId="demo-simple-select-label"
+                id="demo-simple-select"
+                value={searchProjectName}
+                label="Select Project"
+                className="w-full text-white bg-[#2B2B40] rounded-[7px]"
+                onChange={(e) => {
+                  setSearchProjectName(e.target.value);
+                }}
+                inputProps={{ placeholder: "ابحث عن ...." }}
+                sx={{
+                  "& input::placeholder": {
+                    color: "white",
+                  },
+                  "& fieldset": {
+                    border: "none",
+                  },
+                  "& svg": {
+                    display: "none",
+                  },
+                }}
+              >
+                {/* <MenuItem selected>ابحث</MenuItem> */}
+                <MenuItem value={10}>مطاعم عشبة الليمون</MenuItem>
+                <MenuItem value={20}>مطاعم عشبة الليمون</MenuItem>
+                <MenuItem value={30}>مطاعم عشبة الليمون</MenuItem>
+              </Select>
             </div>
           </div>
         </FormModal>
-        <FormModal title={"تفاصيل المهمه"}>
-          <div className="grid grid-cols-2 gap-4 mb-4">
-            <p className="font-normal text-lg">
-              تاريخ الاستلام :{" "}
-              <span className="me-1 text-white/20"> 15 -10 -2024</span>
-            </p>
-            <p className="font-normal text-lg">
-              تاريخ التسليم :
-              <span className="me-1 text-white/20"> 15 -10 -2024</span>
-            </p>
-          </div>
-          <div className="">
-            <p className="text-base font-normal mb-2">وصف المهمه</p>
-            <p className="border !border-[#D59921] h-44"></p>
-          </div>
-        </FormModal>
+        <FormModal title={"تفاصيل المهمة"}>
+                <div className="grid grid-cols-12 mb-5">
+                  <div className="col-span-5">
+                    <InputLabel id="new-project-name" label={"اسم المسؤل"} />
+                    <input
+                      id="new-project-name"
+                      type="text"
+                      className="w-full text-white p-2 bg-[#2B2B40] rounded-[7px]"
+                      placeholder="اختار اسم المشرف"
+                    />
+                  </div>
+                </div>
+                <div className="grid grid-cols-12 mb-5">
+                  <div className="col-span-5">
+                    <InputLabel id="recieving-date" label={"تاريخ التسليم"} />
+                    <DatePicker
+                      id="recieving-date"
+                      
+                        selected={recievingDate}
+                        placeholder="اضف تاريخ التسليم"
+                        onChange={(date) => setRecievingDate(date)}
+                        dateFormat="dd-MM-yyyy"
+                        className="w-full text-white p-2 bg-[#2B2B40] rounded-[7px]"
+                      />
+                    
+                  </div>
+                  <div className="col-span-2"></div>
+                  <div className="col-span-5">
+                    <InputLabel id="recieved-date" label={"تاريخ الاستلام"} />
+                    <DatePicker
+                      id="recieved-date"
+                        selected={recievedDate}
+                        placeholder="اضف تاريخ الاستلام"
+                        onChange={(date) => setRecievedDate(date)}
+                        dateFormat="dd-MM-yyyy"
+                        className="w-full text-white p-2 bg-[#2B2B40] rounded-[7px]"
+                      />
+                    
+                  </div>
+                </div>
+  
+                <div className="">
+                  <InputLabel id="new-project-name" label={"وصف المهمة"} />
+                  <CKEditor
+                    onChange={(event, editor) => {
+                      const data = editor.getData();
+                      console.log({ event, editor, data });
+                    }}
+                    
+                    editor={ClassicEditor}
+                    config={{
+                      placeholder:
+                        "اكتب ملاحظات ..................................",
+                      style: { color: "#FFF"},
+                      minRows: 6,
+                    }}
+                    onBlur={(event, editor) => {
+                      const data = editor.getData();
+                      console.log({ event, editor, data });
+                    }}
+                  />
+                </div>
+              </FormModal>
         <FormModal title={"ملاحظات العميل"}>
-          <div className="">
-            <p className="text-base font-normal mb-2">ملاحظات العميل</p>
-            <p className="border !border-[#D59921] h-44"></p>
-          </div>
-        </FormModal>
-        <FormModal title={"ملفات المشروع"}>
-          <div className="flex gap-3">
-            <UploadFile />
-          </div>
-        </FormModal>
-        <FormModal title={"المرفقات"}>
-          <div className="flex gap-3">
-            <UploadFile />
-          </div>
-        </FormModal>
+  
+                <div className="">
+                  <InputLabel id="new-project-name" label={"وصف المهمة"} />
+                  <CKEditor
+                    onChange={(event, editor) => {
+                      const data = editor.getData();
+                      console.log({ event, editor, data });
+                    }}
+                    
+                    editor={ClassicEditor}
+                    config={{
+                      placeholder:
+                        "اكتب ملاحظات ..................................",
+                      style: { color: "#FFF"},
+                      minRows: 6,
+                    }}
+                    onBlur={(event, editor) => {
+                      const data = editor.getData();
+                      console.log({ event, editor, data });
+                    }}
+                  />
+                </div>
+              </FormModal>
+              <FormModal title={"ملفات المشروع"}>
+                <div className="flex gap-2">
+                  <label
+                    className={`border !border-[#D59921] !border-dashed max-w-fit rounded-[12.06px] pointer bg-[#2B2B40] py-4 px-2 flex flex-col items-center justfiy-center`}
+                  >
+                    <input type="file" className="hidden" />
+                    <div>
+                      <svg
+                        className="m-auto"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="16"
+                        height="16"
+                        viewBox="0 0 16 16"
+                        fill="none"
+                      >
+                        <path
+                          d="M1 8H8M8 8H15M8 8V15M8 8V1"
+                          stroke="#EFAA20"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        />
+                      </svg>
+                      <p className="text-sm mx-auto text-white">اضافة جديدة</p>
+                    </div>
+                  </label>
+                </div>
+              </FormModal>
+              <FormModal title={"المرفقات"}>
+                <div className="flex gap-2">
+                  <label
+                    className={`border !border-[#D59921] !border-dashed max-w-fit rounded-[12.06px] pointer bg-[#2B2B40] py-4 px-2 flex flex-col items-center justfiy-center`}
+                  >
+                    <input type="file" className="hidden" />
+                    <div>
+                      <svg
+                        className="m-auto"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="16"
+                        height="16"
+                        viewBox="0 0 16 16"
+                        fill="none"
+                      >
+                        <path
+                          d="M1 8H8M8 8H15M8 8V15M8 8V1"
+                          stroke="#EFAA20"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        />
+                      </svg>
+                      <p className="text-sm mx-auto text-white">اضافة جديدة</p>
+                    </div>
+                  </label>
+                </div>
+              </FormModal>     
+      </div>
+
+      <div className="flex justify-end mt-4">
+        <button className="w-[140px] h-[30px]  bg-[#EFAA20] rounded-[6px] text-[#1E1E2D] text-[15px] font-medium">
+        حفظ
+        </button>
       </div>
     </div>
   );
