@@ -128,7 +128,7 @@ export const AddModal = () => {
             </button>
           </div>
           {show ? (
-            <div className="h-[500px] overflow-scroll custom-scrollbar">
+            <div className="h-[500px] overflow-scroll scrollbar-none custom-scrollbar">
               <FormModal title={"تفاصيل المهمة"}>
                 <div className="grid grid-cols-12 mb-5">
                   <div className="col-span-5">
@@ -267,6 +267,11 @@ export const AddModal = () => {
                   </label>
                 </div>
               </FormModal>
+              <div className="flex justify-end mt-4">
+        <button className="w-[140px] h-[30px]  bg-[#EFAA20] rounded-[6px] text-[#1E1E2D] text-[15px] font-medium">
+        حفظ
+        </button>
+      </div>
             </div>
           ) : null}
         </div>
