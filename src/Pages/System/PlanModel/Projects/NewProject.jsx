@@ -1,7 +1,9 @@
 import React from "react";
-import { FormModal, InputLabel } from "..";
+
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
+import { FormModal } from "../components/FormModal";
+import { InputLabel } from "../components/InputLabel";
 export default function NewProject() {
   return (
     <div>
