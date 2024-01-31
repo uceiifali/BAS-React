@@ -60,10 +60,11 @@ import PlanModel from "./Pages/System/PlanModel";
 import PlansAnalytics from "./Pages/System/PlanModel/PlansAnalytics";
 import Projects from "./Pages/System/PlanModel/Projects";
 import Tasks from "./Pages/System/PlanModel/Tasks";
-import ProjectContextProvier from "./Pages/System/PlanModel/Projects/ProjectContext";
 import NewProject from "./Pages/System/PlanModel/Projects/NewProject";
 import EditProject from "./Pages/System/PlanModel/Projects/EditProject";
-import TableContextProvder from "./Pages/System/PlanModel/TableContext";
+import ProjectContextProvier from "./Pages/System/PlanModel/context/ProjectContext";
+import TableContextProvder from "./Pages/System/PlanModel/context/TableContext";
+import ShowProject from "./Pages/System/PlanModel/Projects/ShowProject";
 
 const SignUP = lazy(() => import("./Pages/DashBoard/SignUP/SignUP"));
 const SignIn = lazy(() => import("./Pages/DashBoard/SignIn/SignIn"));
@@ -296,6 +297,7 @@ const router = createBrowserRouter([
            children: [
             {path: "new-project" , element: <NewProject/>},
             {path: "edit-project" , element: <EditProject/>},
+            {path: "show-project" , element: <ShowProject/>},
            ]
           
           
@@ -303,6 +305,14 @@ const router = createBrowserRouter([
           {path: "tasks" , element: <Tasks/>}
         ]
 
+      },
+      {
+        path: "/System/plans/show-project/:projectId",
+        element : <ShowProject/>
+      },
+      {
+        path: "/System/plans/edit-project/:projectId",
+        element : <EditProject/>
       }
     ],
   },
