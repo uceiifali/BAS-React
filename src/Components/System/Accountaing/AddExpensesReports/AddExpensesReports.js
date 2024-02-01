@@ -70,7 +70,7 @@ const AddExpensesReports = () => {
                         </Form.Group>
 
                     </div>
-                    <div className='col-md-8   mb-4'>
+                    <div className='col-md-6   mb-4'>
 
                         <Form.Group className='d-flex flex-column'>
                             <Form.Label>

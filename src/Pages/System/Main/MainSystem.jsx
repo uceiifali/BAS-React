@@ -239,7 +239,7 @@ export const MainSystem = () => {
                 </NavDropdown>
                 <div className="my-2 choosMainDeprtment">
                   <DataTableComponent
-                    className={" max-h-[243px]"}
+                    className={" !max-h-[243px]"}
                     columns={columns}
                     data={tableData}
                   />

@@ -27,7 +27,7 @@ const AccountaingIndex = () => {
     Items: false,
   });
   return (
-    <div className="AccountaingIndex">
+    <div className="AccountaingIndex   ">
       <SystemControler
         child={
           <Button
@@ -189,7 +189,7 @@ const AccountaingIndex = () => {
           />
         </div>
         <div className="col-md-9">
-          <div className={`${style.AccountaingIndexbg}`}>
+          <div className={`${style.AccountaingIndexbg} yellow-scroll`}>
             <Outlet />
           </div>
         </div>
