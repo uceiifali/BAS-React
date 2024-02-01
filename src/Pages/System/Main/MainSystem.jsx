@@ -49,7 +49,7 @@ export const MainSystem = () => {
         <div className={`${style.mainBackground} `}></div>
         <Container className="position-absolute z-3">
           <div className="row mx-auto ">
-            <div className="col-md-6">
+            <div className="col-md-5">
               <div className={`item   p-3  ${style.cardsBackground}`}>
                 <div className="row">
                   <div className="col-md-6 mb-3">
@@ -150,14 +150,14 @@ export const MainSystem = () => {
                 </div>
               </div>
             </div>
-            <div className="col-md-6">
+            <div className="col-md-7">
               <div className={`item  p-0  ${style.cardsBackground}`}>
                 <div
-                  className={` systemLineChart d-flex  h-75 w-100 p-0 m-0  ${style.systemLineChart} align-items-center flex-column`}
+                  className={` systemLineChart d-flex  h-4/5  w-100 p-0 m-0  ${style.systemLineChart} align-items-center flex-column`}
                 >
                   <SystemLineChart />
                 </div>
-                <div className="w-90  mx-2 mt-1    overflow-x-auto">
+                <div className="w-full  mx-auto mt-1    overflow-x-auto">
                   {" "}
                   <AllDeprtmentSlider />
                 </div>
