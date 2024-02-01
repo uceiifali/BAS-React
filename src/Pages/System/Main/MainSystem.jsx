@@ -153,11 +153,11 @@ export const MainSystem = () => {
             <div className="col-md-7">
               <div className={`item  p-0  ${style.cardsBackground}`}>
                 <div
-                  className={` systemLineChart d-flex  h-4/5  w-100 p-0 m-0  ${style.systemLineChart} align-items-center flex-column`}
+                  className={` systemLineChart flex justify-center  h-4/5  w-100 p-0 m-0  ${style.systemLineChart} align-items-center flex-column`}
                 >
                   <SystemLineChart />
                 </div>
-                <div className="w-full  mx-auto mt-1    overflow-x-auto">
+                <div className="w-90  mx-auto mt-1    overflow-x-auto">
                   {" "}
                   <AllDeprtmentSlider />
                 </div>
