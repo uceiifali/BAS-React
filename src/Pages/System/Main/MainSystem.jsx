@@ -48,8 +48,8 @@ export const MainSystem = () => {
       <div className={`${style.MainSystem}  d-flex justify-center w-100  `}>
         <div className={`${style.mainBackground} `}></div>
         <Container className="position-absolute z-3">
-          <div className="row mx-auto ">
-            <div className="col-md-5">
+          <div className=" grid descktop:grid-cols-2 laptop:grid-cols-5  gap-2 mx-auto">
+            <div className=" laptop:col-span-2  ">
               <div className={`item   p-3  ${style.cardsBackground}`}>
                 <div className="row">
                   <div className="col-md-6 mb-3">
@@ -150,7 +150,7 @@ export const MainSystem = () => {
                 </div>
               </div>
             </div>
-            <div className="col-md-7">
+            <div className=" laptop:col-span-3 ">
               <div className={`item  p-0  ${style.cardsBackground}`}>
                 <div
                   className={` systemLineChart flex justify-center  h-4/5  w-100 p-0 m-0  ${style.systemLineChart} align-items-center flex-column`}
