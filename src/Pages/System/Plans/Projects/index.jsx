@@ -11,47 +11,38 @@ import { ProjectContext } from "../../PlanModel/context/ProjectContext";
 import { DataTable } from "../../PlanModel/Projects";
 
 const columns = [
-    {
-      name: "م",
-      selector: (row) => row.id,
-    },
-    {
-      name: "اسم المشروع",
-      selector: (row) => row.projectName,
-    },
-    {
-      name: "نوع المشروع ",
-      selector: (row) => row.projectType,
-    },
-    {
-      name: "موقع المشروع",
-      selector: (row) => row.projectPlace,
-    },
-    {
-      name: "نوع العميل",
-      selector: (row) => row.clientType,
-    },
-    {
-      name: "تاريخ التسليم",
-      selector: (row) => row.DeliverDate,
-    },
-  
-    {
-      name: "الحالة",
-      selector: (row) => row.status,
-    },
-    {
-      name: "المسؤل",
-      selector: (row) => row.owner,
-    },
-    {
-      name: "عرض",
-      selector: (row) => row.view,
-    },
-  ];
+  {
+    name: "م",
+  },
+  {
+    name: "اسم المشروع",
+  },
+  {
+    name: "نوع المشروع ",
+  },
+  {
+    name: "موقع المشروع",
+  },
+  {
+    name: "نوع العميل",
+  },
+  {
+    name: "تاريخ التسليم",
+  },
+
+  {
+    name: "الحالة",
+  },
+  {
+    name: "المسؤل",
+  },
+  {
+    name: "عرض",
+  },
+];
 
 export default function PlansProjects() {
-    const [fullWidthTable,setFullWidthTable] = useState(false)
+  const [fullWidthTable, setFullWidthTable] = useState(false);
   const navigate = useNavigate();
   const { projects, setProjects } = useContext(ProjectContext);
   const [serach, setSearch] = useState("");
@@ -71,7 +62,7 @@ export default function PlansProjects() {
               <IoMdArrowDropright color="white" fontSize={25} />
             </IconButton>
             <Link
-            to={"/System/plans/projects/add-project"}
+              to={"/System/plans/projects/add-project"}
               className="bg-[#2B2B40] flex justify-center items-center text-white rounded-md h-[38px] w-[200px] text-base "
               //   onClick={() => setOpenModal(true)}
             >
@@ -81,11 +72,14 @@ export default function PlansProjects() {
         }
       />
       <div className={`flex-1 flex gap-3`}>
-        <div className={`${fullWidthTable?"hidden" :"block"} py-4 px-2 w-[261px] bg-[#1E1E2D] rounded-[19px]`}>
+        <div
+          className={`${
+            fullWidthTable ? "hidden" : "block"
+          } py-4 px-2 w-[261px] bg-[#1E1E2D] rounded-[19px]`}
+        >
           <p className="text-white">كل المهام</p>
           <div className="flex  justify-center flex-col">
             <CustomNav
-              
               title={"المشاريع"}
               path={"/System/plans/projects"}
               data={DataTable}
@@ -131,7 +125,7 @@ export default function PlansProjects() {
                 type="text"
                 value={serach}
                 onChange={(e) => {
-                    setSearch(e.target.value);
+                  setSearch(e.target.value);
                 }}
                 placeholder="Search...."
                 className="w-full text-white bg-transparent text-start"
