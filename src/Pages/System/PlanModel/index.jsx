@@ -88,7 +88,8 @@ export default function PlanModel() {
       />
 
       <div className={`flex-1 grid grid-cols-4 gap-4`}>
-      {!fullWidthTable ?  <div className="py-4 px-2  bg-[#1E1E2D] rounded-[19px]">
+      {!fullWidthTable ?  
+      <div className="py-4 px-2  bg-[#1E1E2D] rounded-[19px]">
           <p className="text-white">كل المهام</p>
           <div className="flex  justify-center flex-col">
             <CustomNav
