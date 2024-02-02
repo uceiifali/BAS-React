@@ -9,8 +9,7 @@ import {
   MenuItem,
   Select,
 } from "@mui/material";
-import { CKEditor } from "@ckeditor/ckeditor5-react";
-import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
+
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
@@ -22,6 +21,7 @@ import { InputLabel } from "../../PlanModel/components/InputLabel";
 import CustomSelect from "../../PlanModel/components/CustomSelect";
 import { CiSearch } from "react-icons/ci";
 import { ProjectNames } from "../../PlanModel/consts";
+import TextEditor from "../components/TextEditor";
 
 export default function AddProject() {
   const [newProjectName, setNewProjectName] = useState("");
@@ -435,50 +435,17 @@ export default function AddProject() {
 
                 <div className="">
                   <InputLabel id="new-project-name" label={"تاريخ التسليم"} />
-                  <CKEditor
-                    onChange={(event, editor) => {
-                      const data = editor.getData();
-                      console.log({ event, editor, data });
-                    }}
-                    editor={ClassicEditor}
-                    config={{
-                      placeholder:
-                        "اكتب ملاحظات ..................................",
-                        autoGrow: true,
-                      style: { color: "#FFFFFF" },
-                      height: "200px",
-                      language:"ar"
-                      
-                    }}
-                    onBlur={(event, editor) => {
-                      const data = editor.getData();
-                      console.log({ event, editor, data });
-                    }}
+                  <TextEditor 
+                  placeholder={"اكتب ملاحظات .................................."}
                   />
+                  
                 </div>
               </FormModal>
               <FormModal title={"ملاحظات العميل"}>
                 <div className="">
                   <InputLabel id="new-project-name" label={"تاريخ التسليم"} />
-                  <CKEditor
-                    onChange={(event, editor) => {
-                      const data = editor.getData();
-                      console.log({ event, editor, data });
-                    }}
-                    editor={ClassicEditor}
-                    config={{
-                        placeholder:
-                          "اكتب ملاحظات ..................................",
-                          autoGrow: true,
-                        style: { color: "#FFFFFF" },
-                        height: "200px",
-                        language:"ar"
-                        
-                      }}
-                    onBlur={(event, editor) => {
-                      const data = editor.getData();
-                      console.log({ event, editor, data });
-                    }}
+                  <TextEditor 
+                  placeholder={"اكتب ملاحظات .................................."}
                   />
                 </div>
               </FormModal>

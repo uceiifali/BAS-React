@@ -319,10 +319,7 @@ const router = createBrowserRouter([
       //   path: "/System/plans/show-project/:projectId",
       //   element: <ShowProject />,
       // },
-      // {
-      //   path: "/System/plans/edit-project/:projectId",
-      //   element: <EditProject />,
-      // },
+
       //System Plans
       {
         path: "/System/plans",
@@ -352,6 +349,10 @@ const router = createBrowserRouter([
       {
         path: "/System/plans/show-project/:projectId",
         element: <ShowProject />,
+      },
+      {
+        path: "/System/plans/edit-project/:projectId",
+        element: <EditProject />,
       },
       {
         path: "/System/plans/tasks",

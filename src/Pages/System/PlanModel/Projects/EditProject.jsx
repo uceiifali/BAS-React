@@ -17,6 +17,7 @@ import { ModalTitle } from "../components/ModalTitle";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import { InputLabel } from "../components/InputLabel";
+import TextEditor from "../../Plans/components/TextEditor";
 export default function EditProject() {
   const [anchorEl, setAnchorEl] = useState(null);
   const [searchProjectName, setSearchProjectName] = useState("");
@@ -108,23 +109,8 @@ export default function EditProject() {
   
                 <div className="">
                   <InputLabel id="new-project-name" label={"وصف المهمة"} />
-                  <CKEditor
-                    onChange={(event, editor) => {
-                      const data = editor.getData();
-                      console.log({ event, editor, data });
-                    }}
-                    
-                    editor={ClassicEditor}
-                    config={{
-                      placeholder:
-                        "اكتب ملاحظات ..................................",
-                      style: { color: "#FFF"},
-                      minRows: 6,
-                    }}
-                    onBlur={(event, editor) => {
-                      const data = editor.getData();
-                      console.log({ event, editor, data });
-                    }}
+                  <TextEditor 
+                  placeholder={"اكتب ملاحظات .................................."}
                   />
                 </div>
               </FormModal>
@@ -132,23 +118,8 @@ export default function EditProject() {
   
                 <div className="">
                   <InputLabel id="new-project-name" label={"وصف المهمة"} />
-                  <CKEditor
-                    onChange={(event, editor) => {
-                      const data = editor.getData();
-                      console.log({ event, editor, data });
-                    }}
-                    
-                    editor={ClassicEditor}
-                    config={{
-                      placeholder:
-                        "اكتب ملاحظات ..................................",
-                      style: { color: "#FFF"},
-                      minRows: 6,
-                    }}
-                    onBlur={(event, editor) => {
-                      const data = editor.getData();
-                      console.log({ event, editor, data });
-                    }}
+                  <TextEditor 
+                  placeholder={"اكتب ملاحظات .................................."}
                   />
                 </div>
               </FormModal>
