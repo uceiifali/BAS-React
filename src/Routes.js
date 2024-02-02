@@ -65,6 +65,9 @@ import EditProject from "./Pages/System/PlanModel/Projects/EditProject";
 import ProjectContextProvier from "./Pages/System/PlanModel/context/ProjectContext";
 import TableContextProvder from "./Pages/System/PlanModel/context/TableContext";
 import ShowProject from "./Pages/System/PlanModel/Projects/ShowProject";
+import Plans from "./Pages/System/Plans";
+import PlansProjects from "./Pages/System/Plans/Projects";
+import AddProject from "./Pages/System/Plans/Projects/AddProject";
 
 const SignUP = lazy(() => import("./Pages/DashBoard/SignUP/SignUP"));
 const SignIn = lazy(() => import("./Pages/DashBoard/SignIn/SignIn"));
@@ -271,49 +274,95 @@ const router = createBrowserRouter([
       //System settings
       {
         path: "/System/Settings",
-        element: <SettingContextProvider> <Settings /></SettingContextProvider>,
+        element: (
+          <SettingContextProvider>
+            {" "}
+            <Settings />
+          </SettingContextProvider>
+        ),
         children: [
           { path: "/System/Settings/Reception", element: <Reception /> },
           { path: "/System/Settings/Orders", element: <Orders /> },
           { path: "/System/Settings/Accounating", element: <Accounating /> },
-          { path: "/System/Settings/CitizenServices", element: <CitizenServices /> },
+          {
+            path: "/System/Settings/CitizenServices",
+            element: <CitizenServices />,
+          },
           { path: "/System/Settings/TimeLine", element: <TimeLine /> },
         ],
       },
       //System Plans
+      // {
+      //   path: "/System/plans",
+        // element: (
+        //   <ProjectContextProvier>
+        //     <TableContextProvder>
+        //       <PlanModel />
+        //     </TableContextProvder>
+        //   </ProjectContextProvier>
+        // ),
+      //   children: [
+      //     { index: true, element: <PlansAnalytics /> },
+      //     {
+      //       path: "projects",
+      //       element: <Projects />,
+      //       children: [
+      //         { path: "new-project", element: <NewProject /> },
+      //         { path: "edit-project", element: <EditProject /> },
+      //         { path: "show-project", element: <ShowProject /> },
+      //       ],
+      //     },
+      //     { path: "tasks", element: <Tasks /> },
+      //   ],
+      // },
+      // {
+      //   path: "/System/plans/show-project/:projectId",
+      //   element: <ShowProject />,
+      // },
+      // {
+      //   path: "/System/plans/edit-project/:projectId",
+      //   element: <EditProject />,
+      // },
+      //System Plans
       {
         path: "/System/plans",
-        element: <ProjectContextProvier>
-          <TableContextProvder>
-
-          <PlanModel/>
-          
-          </TableContextProvder>
-          </ProjectContextProvier>,
-        children: [
-          { index: true , element: <PlansAnalytics/>},
-          {path: "projects" ,
-           element: <Projects/>,
-           children: [
-            {path: "new-project" , element: <NewProject/>},
-            {path: "edit-project" , element: <EditProject/>},
-            {path: "show-project" , element: <ShowProject/>},
-           ]
-          
-          
-          },
-          {path: "tasks" , element: <Tasks/>}
-        ]
-
+        element: (
+          <ProjectContextProvier>
+            <TableContextProvder>
+              <Plans />
+            </TableContextProvder>
+          </ProjectContextProvier>
+        ),
+      },
+      //System Plans Projects
+      {
+        path: "/System/plans/projects",
+        element: (
+          <ProjectContextProvier>
+            <TableContextProvder>
+              <PlansProjects />
+            </TableContextProvder>
+          </ProjectContextProvier>
+        ),
+      },
+      {
+        path: "/System/plans/projects/add-project",
+        element: (<AddProject/>),
       },
       {
         path: "/System/plans/show-project/:projectId",
-        element : <ShowProject/>
+        element: <ShowProject />,
       },
       {
-        path: "/System/plans/edit-project/:projectId",
-        element : <EditProject/>
-      }
+        path: "/System/plans/tasks",
+        element: (
+          <ProjectContextProvier>
+            <TableContextProvder>
+              <PlansProjects />
+            </TableContextProvder>
+          </ProjectContextProvier>
+        ),
+      },
     ],
   },
 ]);

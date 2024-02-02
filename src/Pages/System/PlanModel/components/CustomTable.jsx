@@ -9,7 +9,7 @@ export default function CustomTable({columns,data}) {
         <tr>
             {
                 columns?.map(({name},index)=> (
-                    <th className="text-center text-[11px] border-none !font-semibold p-2 !text-[#EFAA20]">{name}</th>
+                    <th className="text-end text-[11px] border-none !font-semibold p-2 !text-[#EFAA20]">{name}</th>
                 ))
             }
         </tr>

@@ -1,0 +1,21 @@
+.container {
+    display: flex;
+  }
+  
+  .column {
+    flex: 1;
+    transition: width 0.5s ease;
+  }
+  
+  .normal-width {
+    width: 50%; /* Normal width for the column */
+  }
+  
+  .full-width {
+    width: 100%; /* Full width for the column */
+  }
+  
+  .fade-out {
+    opacity: 0.5; /* Example of fading out the column */
+  }
+  

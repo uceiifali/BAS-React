@@ -7,7 +7,7 @@ import { CiSearch } from "react-icons/ci";
 import { TableContext } from "../context/TableContext";
 import { ProjectContext } from "../context/ProjectContext";
 import ViewIconButton from "../components/ViewIconButton";
-
+import { Link } from "react-router-dom";
 
 const columns = [
   {
@@ -49,15 +49,30 @@ const columns = [
   },
 ];
 
-export const DataTable = [
-  {
-    id: 1,
+const ShowButton = ({id}) => {
+  return (
+    <Link to={`/System/plans/show-project/${id}`} id={id} aria-label="delete">
+      <img src="/icons/view.png" alt="" className="w-full" />
+    </Link>
+  );
+};
+const OptionsButton = ({id}) => {
+  return (
+    <IconButton aria-label="options" sx={{p:0}}>
+          <IoMdMore color="#EFAA20" />
+        </IconButton>
+  );
+};
+
+export const DataTable = Array.from({ length: 10 }).map((_, index) => {
+  return {
+    id: index+1,
     projectName: "شركة محمد ابراهيم السبيعي وأولاده ",
     projectType: "اشراف على التنفيذ",
     projectPlace: "مدينه الرياض",
     clientType: "فردي",
     DeliverDate: "13-10-2023",
-    status: "معلقه",
+    status: index % 3 === 0 ? "قيد التنفيذ": index % 2 === 0 ? "معلقه": "منتهيه",
     owner: (
       <div>
         <p>م.ايهاب</p>
@@ -65,162 +80,177 @@ export const DataTable = [
       </div>
     ),
     view: (
-      <div className="mt-2 flex justify-between items-center gap-1 my-1">
-        <IconButton href="/System/plans/show-project/1" id={1} aria-label="delete">
-          <img src="/icons/view.png" alt="" className="w-full" />
-        </IconButton>
-        <IconButton aria-label="options">
-          <IoMdMore color="#EFAA20" />
-        </IconButton>
+      <div className="mt-2 flex justify-between items-start gap-1 my-1">
+        <ShowButton id={index+1}/>
+        <OptionsButton id={index+1}/>
       </div>
     ),
-  },
-  {
-    id: 2,
-    projectName: "شركة محمد ابراهيم السبيعي وأولاده ",
-    projectType: "اشراف على التنفيذ",
-    projectPlace: "مدينه الرياض",
-    clientType: "فردي",
-    DeliverDate: "13-10-2023",
-    status: "معلقه",
-    owner: (
-      <div>
-        <p>م.ايهاب</p>
-      </div>
-    ),
-    view: (
-      <div className="mt-2 flex justify-between items-center gap-1 my-1">
-        <IconButton href="/System/plans/show-project/2" id={2} aria-label="delete">
-          <img src="/icons/view.png" alt="" className="w-full" />
-        </IconButton>
-        <IconButton aria-label="options">
-          <IoMdMore color="#EFAA20" />
-        </IconButton>
-      </div>
-    ),
-  },
-  {
-    id: 3,
-    projectName: "شركة محمد ابراهيم السبيعي وأولاده ",
-    projectType: "تصميم",
-    projectPlace: "مدينه الرياض",
-    clientType: "شركه",
-    DeliverDate: "13-10-2023",
-    status: "قيد التنفيذ",
-    owner: (
-      <div>
-        <p>م.ايهاب</p>
-        <p>م. اشرف</p>
-      </div>
-    ),
-    view: (
-      <div className="mt-2 flex justify-between items-center gap-1 my-1">
-        <IconButton href="/System/plans/show-project/3" id={3} aria-label="delete">
-          <img src="/icons/view.png" alt="" className="w-full" />
-        </IconButton>
-        <IconButton aria-label="options">
-          <IoMdMore color="#EFAA20" />
-        </IconButton>
-      </div>
-    ),
-  },
-  {
-    id: 4,
-    projectName: "شركة محمد ابراهيم السبيعي وأولاده ",
-    projectType: "اشراف على التنفيذ",
-    projectPlace: "مدينه الرياض",
-    clientType: "فردي",
-    DeliverDate: "13-10-2023",
-    status: "معلقه",
-    owner: (
-      <div>
-        <p>م.ايهاب</p>
-        <p>م. اشرف</p>
-      </div>
-    ),
-    view: (
-      <div className="mt-2 flex justify-between items-center gap-1 my-1">
-        <IconButton href="/System/plans/show-project/4" id={4} aria-label="delete">
-          <img src="/icons/view.png" alt="" className="w-full" />
-        </IconButton>
-        <IconButton aria-label="options">
-          <IoMdMore color="#EFAA20" />
-        </IconButton>
-      </div>
-    ),
-  },
-  {
-    id: 5,
-    projectName: "شركة محمد ابراهيم السبيعي وأولاده ",
-    projectType: "تصميم",
-    projectPlace: "مدينه الرياض",
-    clientType: "شركه",
-    DeliverDate: "12-10-2023",
-    status: "منتهيه",
-    owner: (
-      <div>
-        <p>م.ايهاب</p>
-        <p>م. اشرف</p>
-      </div>
-    ),
-    view: (
-      <div className="mt-2 flex justify-between items-center gap-1 my-1">
-        <ViewIconButton />
-        <IconButton href="/System/plans/show-project/5" id={5} aria-label="options">
-          <IoMdMore color="#EFAA20" />
-        </IconButton>
-      </div>
-    ),
-  },
-  {
-    id: 6,
-    projectName: "شركة محمد ابراهيم السبيعي وأولاده ",
-    projectType: "تصميم",
-    projectPlace: "مدينه الرياض",
-    clientType: "فردي",
-    DeliverDate: "13-10-2023",
-    status: "معلقه",
-    owner: (
-      <div>
-        <p>م.ايهاب</p>
-      </div>
-    ),
-    view: (
-      <div className="mt-2 flex justify-between items-center gap-1 my-1">
-        <IconButton href="/System/plans/show-project/6" id={6} aria-label="delete">
-          <img src="/icons/view.png" alt="" className="w-full" />
-        </IconButton>
-        <IconButton aria-label="options">
-          <IoMdMore color="#EFAA20" />
-        </IconButton>
-      </div>
-    ),
-  },
-  {
-    id: 7,
-    projectName: "شركة محمد ابراهيم السبيعي وأولاده ",
-    projectType: "تصميم",
-    projectPlace: "مدينه الرياض",
-    clientType: "فردي",
-    DeliverDate: "13-10-2023",
-    status: "منتهيه",
-    owner: (
-      <div>
-        <p>م. اشرف</p>
-      </div>
-    ),
-    view: (
-      <div className="mt-2 flex justify-between items-center gap-1 my-1">
-        <IconButton href="/System/plans/show-project/7" id={7} aria-label="delete">
-          <img src="/icons/view.png" alt="" className="w-full" />
-        </IconButton>
-        <IconButton aria-label="options">
-          <IoMdMore color="#EFAA20" />
-        </IconButton>
-      </div>
-    ),
-  },
-];
+  }
+})
+
+// export const DataTable = [
+//   {
+//     id: 1,
+//     projectName: "شركة محمد ابراهيم السبيعي وأولاده ",
+//     projectType: "اشراف على التنفيذ",
+//     projectPlace: "مدينه الرياض",
+//     clientType: "فردي",
+//     DeliverDate: "13-10-2023",
+//     status: "معلقه",
+//     owner: (
+//       <div>
+//         <p>م.ايهاب</p>
+//         <p>م. اشرف</p>
+//       </div>
+//     ),
+//     view: (
+//       <div className="mt-2 flex justify-between items-start gap-1 my-1">
+//         <ShowButton  id={1}/>
+//         <IconButton aria-label="options">
+//           <IoMdMore color="#EFAA20" />
+//         </IconButton>
+//       </div>
+//     ),
+//   },
+//   {
+//     id: 2,
+//     projectName: "شركة محمد ابراهيم السبيعي وأولاده ",
+//     projectType: "اشراف على التنفيذ",
+//     projectPlace: "مدينه الرياض",
+//     clientType: "فردي",
+//     DeliverDate: "13-10-2023",
+//     status: "معلقه",
+//     owner: (
+//       <div>
+//         <p>م.ايهاب</p>
+//       </div>
+//     ),
+//     view: (
+//       <div className="mt-2 flex justify-between items-start gap-1 my-1">
+//         <ShowButton  id={2}/>
+//         <IconButton aria-label="options">
+//           <IoMdMore color="#EFAA20" />
+//         </IconButton>
+//       </div>
+//     ),
+//   },
+//   {
+//     id: 3,
+//     projectName: "شركة محمد ابراهيم السبيعي وأولاده ",
+//     projectType: "تصميم",
+//     projectPlace: "مدينه الرياض",
+//     clientType: "شركه",
+//     DeliverDate: "13-10-2023",
+//     status: "قيد التنفيذ",
+//     owner: (
+//       <div>
+//         <p>م.ايهاب</p>
+//         <p>م. اشرف</p>
+//       </div>
+//     ),
+//     view: (
+//       <div className="mt-2 flex justify-between items-start gap-1 my-1">
+//         <ShowButton  id={3}/>
+//         <IconButton aria-label="options">
+//           <IoMdMore color="#EFAA20" />
+//         </IconButton>
+//       </div>
+//     ),
+//   },
+//   {
+//     id: 4,
+//     projectName: "شركة محمد ابراهيم السبيعي وأولاده ",
+//     projectType: "اشراف على التنفيذ",
+//     projectPlace: "مدينه الرياض",
+//     clientType: "فردي",
+//     DeliverDate: "13-10-2023",
+//     status: "معلقه",
+//     owner: (
+//       <div>
+//         <p>م.ايهاب</p>
+//         <p>م. اشرف</p>
+//       </div>
+//     ),
+//     view: (
+//       <div className="mt-2 flex justify-between items-start gap-1 my-1">
+//         <ShowButton  id={1}/>
+//         <IconButton aria-label="options">
+//           <IoMdMore color="#EFAA20" />
+//         </IconButton>
+//       </div>
+//     ),
+//   },
+//   {
+//     id: 5,
+//     projectName: "شركة محمد ابراهيم السبيعي وأولاده ",
+//     projectType: "تصميم",
+//     projectPlace: "مدينه الرياض",
+//     clientType: "شركه",
+//     DeliverDate: "12-10-2023",
+//     status: "منتهيه",
+//     owner: (
+//       <div>
+//         <p>م.ايهاب</p>
+//         <p>م. اشرف</p>
+//       </div>
+//     ),
+//     view: (
+//       <div className="mt-2 flex justify-between items-start gap-1 my-1">
+//         <ShowButton  id={5}/>
+//         <IconButton
+          
+//           aria-label="options"
+//         >
+//           <IoMdMore color="#EFAA20" />
+//         </IconButton>
+//       </div>
+//     ),
+//   },
+//   {
+//     id: 6,
+//     projectName: "شركة محمد ابراهيم السبيعي وأولاده ",
+//     projectType: "تصميم",
+//     projectPlace: "مدينه الرياض",
+//     clientType: "فردي",
+//     DeliverDate: "13-10-2023",
+//     status: "معلقه",
+//     owner: (
+//       <div>
+//         <p>م.ايهاب</p>
+//       </div>
+//     ),
+//     view: (
+//       <div className="mt-2 flex justify-between items-start gap-1 my-1">
+//         <ShowButton  id={6}/>
+//         <IconButton aria-label="options">
+//           <IoMdMore color="#EFAA20" />
+//         </IconButton>
+//       </div>
+//     ),
+//   },
+//   {
+//     id: 7,
+//     projectName: "شركة محمد ابراهيم السبيعي وأولاده ",
+//     projectType: "تصميم",
+//     projectPlace: "مدينه الرياض",
+//     clientType: "فردي",
+//     DeliverDate: "13-10-2023",
+//     status: "منتهيه",
+//     owner: (
+//       <div>
+//         <p>م. اشرف</p>
+//       </div>
+//     ),
+//     view: (
+//       <div className="mt-2 flex justify-between items-start gap-1 my-1">
+//         <ShowButton  id={7}/>
+//         <IconButton aria-label="options">
+//           <IoMdMore color="#EFAA20" />
+//         </IconButton>
+//       </div>
+//     ),
+//   },
+// ];
 
 export default function Projects() {
   // proudacts[i].titel.toLowerCase().includes(term.toLowerCase())

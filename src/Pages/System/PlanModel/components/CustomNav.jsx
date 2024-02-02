@@ -10,7 +10,7 @@ import {
 import { Link, Outlet, useNavigate, useLocation } from "react-router-dom";
 import { MdKeyboardArrowDown } from "react-icons/md";import { NavItem } from "./NavItem";
 ;
-export const CustomNav = ({ title, path, items }) => {
+export const CustomNav = ({ title, path, items, data,setData }) => {
     return (
       <Accordion defaultActiveKey={null}>
         <Accordion.Item eventKey="0" className={`custom-accordion-item`}>
@@ -24,7 +24,12 @@ export const CustomNav = ({ title, path, items }) => {
           <Accordion.Body className="my-2">
             <div className="tabs  d-flex justify-content-center align-items-center flex-column">
               {items.map(({ title, search }, index) => (
-                <NavItem title={title} search={search} key={index} />
+                <NavItem 
+                data={data}
+                setData={setData}
+                title={title} 
+                search={search} 
+                key={index} />
               ))}
             </div>
           </Accordion.Body>
