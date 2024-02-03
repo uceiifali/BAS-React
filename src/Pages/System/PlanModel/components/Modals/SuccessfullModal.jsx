@@ -11,6 +11,11 @@ function SuccessfullModal({ message, show, handleClose }) {
         show={show}
         size="lg"
       >
+        <Modal.Header className=" py-2 !rounded-[0px] !justify-center border-none">
+          <div className="w-32 ">
+          <img src="/correct.gif" alt="successfully" className="w-full " />
+          </div>
+        </Modal.Header>
         <Modal.Body>
           <p className="w-full text-center text-[30px] font-semibold py-3 px-2 rounded-[7px] outline-none">
             {message}
