@@ -1,4 +1,6 @@
-import DatePicker from "react-datepicker";
+import { DatePicker } from "@mui/x-date-pickers/DatePicker";
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import {
   Box,
   Button,
@@ -7,6 +9,8 @@ import {
   MenuItem,
   Select,
 } from "@mui/material";
+
+import { CiSearch } from "react-icons/ci";
 import { Accordion } from "react-bootstrap";
 import { Link, Outlet, useNavigate, useLocation } from "react-router-dom";
 import { MdKeyboardArrowDown } from "react-icons/md";
@@ -16,16 +20,19 @@ import { useEffect, useState } from "react";
 import { InputLabel } from "./InputLabel";
 import { FormModal } from "./FormModal";
 import { ModalTitle } from "./ModalTitle";
+import CustomSelect from "./CustomSelect";
+import { ProjectNames } from "../consts";
 export const AddModal = () => {
-    let [recievedDate, setRecievedDate] = useState(null);
-    let [recievingDate, setRecievingDate] = useState(null);
-    const [show, setShow] = useState(false);
-    const [formType, setFormType] = useState(0);
-    const [newProjectName, setNewProjectName] = useState("");
-    const [searchProjectName, setSearchProjectName] = useState("");
-    const navigate = useNavigate();
-    useEffect(() => {}, []);
-    return (
+  let [recievedDate, setRecievedDate] = useState(null);
+  let [recievingDate, setRecievingDate] = useState(null);
+  const [show, setShow] = useState(false);
+  const [formType, setFormType] = useState(0);
+  const [newProjectName, setNewProjectName] = useState("");
+  const [searchProjectName, setSearchProjectName] = useState("");
+  const navigate = useNavigate();
+  useEffect(() => {}, []);
+  return (
+    <LocalizationProvider dateAdapter={AdapterDayjs}>
       <div className="p-3 border !border-[#EFAA20] rounded-[27px]">
         <ModalTitle title={"إضافة مشروع جديد"} />
         <div className="flex flex-col gap-4 ">
@@ -34,58 +41,24 @@ export const AddModal = () => {
               {formType != 2 ? (
                 <div className="col-span-5">
                   <InputLabel id="new-project-name" label={"اسم المشروع"} />
-                  {/* <TextField
-                  id="new-project-name"
-                  type="text"
-                  size="small"
-                  select
-                  className="w-full text-white bg-[#2B2B40] rounded-[7px]"
-                  placeholder="ابحث عن ...."
-                  sx={{
-                    "& fieldset": {
-                      border: "none",
-                    },
-                    "& input::placeholder": {
-                      color: "#9DADE8",
-                    },
-                  }}
-                >
-                  <div className="bg-[#414162] text-white">
-                    <MenuItem value={10}>مطاعم عشبة الليمون</MenuItem>
-                    <MenuItem value={20}>مطاعم عشبة الليمون</MenuItem>
-                    <MenuItem value={30}>مطاعم عشبة الليمون</MenuItem>
-                    <MenuItem value={10}>مطاعم عشبة الليمون</MenuItem>
-                    <MenuItem value={20}>مطاعم عشبة الليمون</MenuItem>
-                    <MenuItem value={30}>مطاعم عشبة الليمون</MenuItem>
-                  </div>
-                </TextField> */}
-                  <Select
-                    fullWidth
-                    size="small"
-                    labelId="demo-simple-select-label"
-                    id="demo-simple-select"
-                    value={searchProjectName}
-                    label="Select Project"
-                    className="w-full text-white bg-[#2B2B40] rounded-[7px]"
-                    onChange={(e) => {setSearchProjectName(e.target.value)}}
-                    inputProps={{ 'placeholder': "ابحث عن ...." }}
-                    sx={{
-                      "& input::placeholder": {
-                        color: "white"
-                      },
-                      "& fieldset": {
-                        border: "none"
-                      },
-                      "& svg": {
-                        display: "none"
-                      },
-                    }}
-                  >
-                    {/* <MenuItem selected>ابحث</MenuItem> */}
-                    <MenuItem value={10}>مطاعم عشبة الليمون</MenuItem>
-                    <MenuItem value={20}>مطاعم عشبة الليمون</MenuItem>
-                    <MenuItem value={30}>مطاعم عشبة الليمون</MenuItem>
-                  </Select>
+                  
+                  <CustomSelect>
+                    <MenuItem disabled value="">
+                      <div className="w-full flex justify-between">
+                        <span>بحث ...</span>
+                        <CiSearch />
+                      </div>
+                    </MenuItem>
+                    {ProjectNames.map((name) => (
+                      <MenuItem
+                        key={name}
+                        value={name}
+                        // style={getStyles(name, selectedItem, theme)}
+                      >
+                        {name}
+                      </MenuItem>
+                    ))}
+                  </CustomSelect>
                 </div>
               ) : null}
               {formType != 2 ? <div className="col-span-2"></div> : null}
@@ -100,25 +73,22 @@ export const AddModal = () => {
                     value={newProjectName}
                     onChange={(e) => {
                       setNewProjectName(e.target.value);
-                      
                     }}
                   />
                 </div>
               ) : null}
             </div>
           </FormModal>
-  
+
           <div className={`flex justify-end py-3 ${show ? "hidden" : ""}`}>
             <button
               onClick={() => {
-                if(newProjectName){
-                  setFormType(1)
-                }else{
-                  setFormType(1)
-  
+                if (newProjectName) {
+                  setFormType(1);
+                } else {
+                  setFormType(1);
                 }
                 setShow(true);
-                
               }}
               className={`
               
@@ -146,30 +116,27 @@ export const AddModal = () => {
                     <InputLabel id="recieving-date" label={"تاريخ التسليم"} />
                     <DatePicker
                       id="recieving-date"
-                      
-                        selected={recievingDate}
-                        placeholder="اضف تاريخ التسليم"
-                        onChange={(date) => setRecievingDate(date)}
-                        dateFormat="dd-MM-yyyy"
-                        className="w-full text-white p-2 bg-[#2B2B40] rounded-[7px]"
-                      />
-                    
+                      selected={recievingDate}
+                      placeholder="اضف تاريخ التسليم"
+                      onChange={(date) => setRecievingDate(date)}
+                      dateFormat="dd-MM-yyyy"
+                      className="w-full text-white p-2 bg-[#2B2B40] rounded-[7px]"
+                    />
                   </div>
                   <div className="col-span-2"></div>
                   <div className="col-span-5">
                     <InputLabel id="recieved-date" label={"تاريخ الاستلام"} />
                     <DatePicker
                       id="recieved-date"
-                        selected={recievedDate}
-                        placeholder="اضف تاريخ الاستلام"
-                        onChange={(date) => setRecievedDate(date)}
-                        dateFormat="dd-MM-yyyy"
-                        className="w-full text-white p-2 bg-[#2B2B40] rounded-[7px]"
-                      />
-                    
+                      selected={recievedDate}
+                      placeholder="اضف تاريخ الاستلام"
+                      onChange={(date) => setRecievedDate(date)}
+                      dateFormat="dd-MM-yyyy"
+                      className="w-full text-white p-2 bg-[#2B2B40] rounded-[7px]"
+                    />
                   </div>
                 </div>
-  
+
                 <div className="">
                   <InputLabel id="new-project-name" label={"تاريخ التسليم"} />
                   <CKEditor
@@ -268,13 +235,14 @@ export const AddModal = () => {
                 </div>
               </FormModal>
               <div className="flex justify-end mt-4">
-        <button className="w-[140px] h-[30px]  bg-[#EFAA20] rounded-[6px] text-[#1E1E2D] text-[15px] font-medium">
-        حفظ
-        </button>
-      </div>
+                <button className="w-[140px] h-[30px]  bg-[#EFAA20] rounded-[6px] text-[#1E1E2D] text-[15px] font-medium">
+                  حفظ
+                </button>
+              </div>
             </div>
           ) : null}
         </div>
       </div>
-    );
-  };
+    </LocalizationProvider>
+  );
+};
