@@ -20,17 +20,19 @@ import { FormModal } from "../../PlanModel/components/FormModal";
 import { InputLabel } from "../../PlanModel/components/InputLabel";
 import CustomSelect from "../../PlanModel/components/CustomSelect";
 import { CiSearch } from "react-icons/ci";
-import { ProjectNames } from "../../PlanModel/consts";
+import { ProjectNames, Supervisors } from "../../PlanModel/consts";
 import TextEditor from "../components/TextEditor";
+import MultipleSelect from "../components/MultipleSelect";
 
 export default function AddProject() {
+  const [selected, setSelected] = useState([]);
   const [newProjectName, setNewProjectName] = useState("");
   const [selectedProjectName, setSelectedProjectName] = useState("");
   const [show, setShow] = useState(false);
   let [recievedDate, setRecievedDate] = useState(null);
   let [recievingDate, setRecievingDate] = useState(null);
   const navigate = useNavigate();
-
+console.log("selected: ",selected);
   return (
     <>
       <SystemControler
@@ -47,71 +49,70 @@ export default function AddProject() {
 
       <div className=" bg-[#1E1E2D] p-3 border !border-[#EFAA20] rounded-[27px] min-h-screen">
         <div className="py-3">
-        <ModalTitle title={"إضافة مشروع جديد"} />
+          <ModalTitle title={"إضافة مشروع جديد"} />
         </div>
-        {!show &&<div className="flex flex-col gap-4 ">
-          <FormModal title={"بحث عن المشروع"}>
-            <div className="flex justify-between gap-5">
-              <FormControl fullWidth>
-                <InputLabel id="new-project-name" label={"اسم المشروع"} />
+        {!show && (
+          <div className="flex flex-col gap-4 ">
+            <FormModal title={"بحث عن المشروع"}>
+              <div className="flex justify-between gap-5">
+                <FormControl fullWidth>
+                  <InputLabel id="new-project-name" label={"اسم المشروع"} />
 
-                <CustomSelect >
-                  <MenuItem disabled value="">
-                    <div className="w-full flex justify-between">
-                      <span>بحث ...</span>
-                      <CiSearch />
-                    </div>
-                  </MenuItem>
-                  {ProjectNames.map((name,index) => (
-                    <MenuItem
-                      key={index}
-                      value={name}
-                      onClick={(e)=> setSelectedProjectName(name)}
-                      // style={getStyles(name, selectedItem, theme)}
-                    >
-                      {name}
+                  <CustomSelect>
+                    <MenuItem disabled value="">
+                      <div className="w-full flex justify-between">
+                        <span>بحث ...</span>
+                        <CiSearch />
+                      </div>
                     </MenuItem>
-                  ))}
-                </CustomSelect>
-              </FormControl>
-              <FormControl fullWidth>
-              <InputLabel id="new-project" label={"اسم مشروع جديد"} />
-              <TextField 
-              size="small"
-              id="new-project" 
-              value={newProjectName}
-              placeholder="ادخل اسم المشروع الجديد" 
-              variant="outlined" 
-              onChange={(e) => {
-                setNewProjectName(e.target.value);
-              }}
-              sx={{
-                
-                "& fieldset": {
-                    border: "none",
-                    
-                  },
-              }}
-              inputProps={{
-                sx: {
-                    color: "white",
-                    py:"10px"
-                    // borderRadius:'7px',
-                }
-              }}
-              className=" text-white bg-[#2B2B40] rounded-[7px]"
-              />
-              {/* <input
+                    {ProjectNames.map((name, index) => (
+                      <MenuItem
+                        key={index}
+                        value={name}
+                        onClick={(e) => setSelectedProjectName(name)}
+                        // style={getStyles(name, selectedItem, theme)}
+                      >
+                        {name}
+                      </MenuItem>
+                    ))}
+                  </CustomSelect>
+                </FormControl>
+                <FormControl fullWidth>
+                  <InputLabel id="new-project" label={"اسم مشروع جديد"} />
+                  <TextField
+                    size="small"
+                    id="new-project"
+                    value={newProjectName}
+                    placeholder="ادخل اسم المشروع الجديد"
+                    variant="outlined"
+                    onChange={(e) => {
+                      setNewProjectName(e.target.value);
+                    }}
+                    sx={{
+                      "& fieldset": {
+                        border: "none",
+                      },
+                    }}
+                    inputProps={{
+                      sx: {
+                        color: "white",
+                        py: "10px",
+                        // borderRadius:'7px',
+                      },
+                    }}
+                    className=" text-white bg-[#2B2B40] rounded-[7px]"
+                  />
+                  {/* <input
                     
                     
                     
                     
                     
                   /> */}
-              </FormControl>
+                </FormControl>
 
-              {/* {formType != 2 ? <div className="col-span-2"></div> : null} */}
-              {/* {formType != 1 ? (
+                {/* {formType != 2 ? <div className="col-span-2"></div> : null} */}
+                {/* {formType != 1 ? (
                 <div className="col-span-5">
                   <InputLabel id="find-project" label={"اسم مشروع جديد"} />
                   <input
@@ -126,10 +127,10 @@ export default function AddProject() {
                   />
                 </div>
               ) : null} */}
-            </div>
-          </FormModal>
+              </div>
+            </FormModal>
 
-          {/* <div className={`flex justify-end py-3 ${show ? "hidden" : ""}`}>
+            {/* <div className={`flex justify-end py-3 ${show ? "hidden" : ""}`}>
             <button
               onClick={() => {
                 if (newProjectName) {
@@ -146,7 +147,7 @@ export default function AddProject() {
               التالى
             </button>
           </div> */}
-          {/* {show ? (
+            {/* {show ? (
             <div className="h-[500px] overflow-scroll scrollbar-none custom-scrollbar">
               <FormModal title={"تفاصيل المهمة"}>
                 <div className="grid grid-cols-12 mb-5">
@@ -290,12 +291,12 @@ export default function AddProject() {
               </div>
             </div>
           ) : null} */}
-        </div>}
-        {!show &&
-
-        <div className={`flex justify-end py-3 `}>
+          </div>
+        )}
+        {!show && (
+          <div className={`flex justify-end py-3 `}>
             <button
-              onClick={()=> setShow(true)}
+              onClick={() => setShow(true)}
               className={`
               
               w-[140px] h-[30px] rounded-md  bg-[#EFAA20] text-[#1E1E2D] text-[15px] font-medium`}
@@ -303,81 +304,101 @@ export default function AddProject() {
               التالى
             </button>
           </div>
-        }
+        )}
 
-
-
-
-          {show ? (
-            <LocalizationProvider dateAdapter={AdapterDayjs}>
+        {show ? (
+          <LocalizationProvider dateAdapter={AdapterDayjs}>
             <div className="h-[500px] py-5 flex flex-col gap-5 overflow-scroll scrollbar-none custom-scrollbar">
-            <FormModal title={"بحث عن المشروع"}>
-            <div className="grid grid-cols-2 gap-5">
-              {!newProjectName &&<FormControl>
-                <InputLabel id="new-project-name" label={"اسم المشروع"} />
+              <FormModal title={"بحث عن المشروع"}>
+                <div className="grid grid-cols-2 gap-5">
+                  {!newProjectName && (
+                    <FormControl>
+                      <InputLabel id="new-project-name" label={"اسم المشروع"} />
 
-                <CustomSelect defaultValue={"selectedProjectName"}>
-                  <MenuItem disabled value="">
-                    <div className="w-full flex justify-between">
-                      <span>بحث ...</span>
-                      <CiSearch />
-                    </div>
-                  </MenuItem>
-                  {ProjectNames.map((name) => (
-                    <MenuItem
-                      key={name}
-                      value={name}
-                      
-                      // style={getStyles(name, selectedItem, theme)}
-                    >
-                      {name}
-                    </MenuItem>
-                  ))}
-                </CustomSelect>
-              </FormControl>}
-              {newProjectName && <FormControl>
-              <InputLabel id="new-project" label={"اسم مشروع جديد"} />
-              <TextField 
-              size="small"
-              id="new-project" 
-              value={newProjectName}
-              placeholder="ادخل اسم المشروع الجديد" 
-              variant="outlined" 
-              onChange={(e) => {
-                setNewProjectName(e.target.value);
-              }}
-              sx={{
-                
-                "& fieldset": {
-                    border: "none",
-                    
-                  },
-              }}
-              inputProps={{
-                sx: {
-                    color: "white",
-                    py:"10px"
-                    // borderRadius:'7px',
-                }
-              }}
-              className=" text-white bg-[#2B2B40] rounded-[7px]"
-              />
-              
-              </FormControl>}
+                      <CustomSelect defaultValue={"selectedProjectName"}>
+                        <MenuItem disabled value="">
+                          <div className="w-full flex justify-between">
+                            <span>بحث ...</span>
+                            <CiSearch />
+                          </div>
+                        </MenuItem>
+                        {ProjectNames.map((name) => (
+                          <MenuItem
+                            key={name}
+                            value={name}
 
-            
-            </div>
-          </FormModal>
+                            // style={getStyles(name, selectedItem, theme)}
+                          >
+                            {name}
+                          </MenuItem>
+                        ))}
+                      </CustomSelect>
+                    </FormControl>
+                  )}
+                  {newProjectName && (
+                    <FormControl>
+                      <InputLabel id="new-project" label={"اسم مشروع جديد"} />
+                      <TextField
+                        size="small"
+                        id="new-project"
+                        value={newProjectName}
+                        placeholder="ادخل اسم المشروع الجديد"
+                        variant="outlined"
+                        onChange={(e) => {
+                          setNewProjectName(e.target.value);
+                        }}
+                        sx={{
+                          "& fieldset": {
+                            border: "none",
+                          },
+                        }}
+                        inputProps={{
+                          sx: {
+                            color: "white",
+                            py: "10px",
+                            // borderRadius:'7px',
+                          },
+                        }}
+                        className=" text-white bg-[#2B2B40] rounded-[7px]"
+                      />
+                    </FormControl>
+                  )}
+                </div>
+              </FormModal>
               <FormModal title={"تفاصيل المهمة"}>
                 <div className="grid grid-cols-12 mb-5">
                   <div className="col-span-5">
                     <InputLabel id="new-project-name" label={"اسم المسؤل"} />
-                    <input
-                      id="new-project-name"
-                      type="text"
-                      className="w-full text-white p-2 bg-[#2B2B40] rounded-[7px]"
-                      placeholder="اختار اسم المشرف"
-                    />
+                    <MultipleSelect
+                      placeholder={"اختار اسم المشرف"}
+                      data={Supervisors}
+                      selected={selected}
+                      setSelected={setSelected}
+                    >
+                      {Supervisors?.map(({id,name,position,location,img},index) => (
+                        <MenuItem
+                        onClick={()=> {
+                          
+                          setSelected(prev => [...prev,{id,name}])
+                        }}
+                        key={id}
+                        disabled={selected?.map(selected=> selected.id).includes(id)}
+                        >
+                          <div className="flex items-center gap-2">
+                            <div className="w-8 h-8 rounded-full overflow-hidden">
+                              <img src={img} alt={""} title={name} className="w-full" />
+                            </div>
+                            <div className="">
+                              <div className="">
+                                <p className="text-white">{name}</p>
+                                <p className="text-[#D59921]">{position} / {location}  </p>
+                              </div>
+                            </div>
+                          </div>
+                          
+                        </MenuItem>
+                      ))}
+                    </MultipleSelect>
                   </div>
                 </div>
                 <div className="grid grid-cols-12 mb-5">
@@ -392,15 +413,13 @@ export default function AddProject() {
                       className="w-full bg-[#2B2B40] rounded-[7px]"
                       sx={{
                         "& fieldset": {
-                            border: "none",
+                          border: "none",
                         },
                         "& input": {
-                            
-                            color: "white"
+                          color: "white",
                         },
                         "& svg": {
-                            
-                            color: "white"
+                          color: "white",
                         },
                       }}
                     />
@@ -417,35 +436,35 @@ export default function AddProject() {
                       className="w-full bg-[#2B2B40] rounded-[7px]"
                       sx={{
                         "& fieldset": {
-                            border: "none",
+                          border: "none",
                         },
                         "& input": {
-                            
-                            color: "white"
+                          color: "white",
                         },
                         "& svg": {
-                            
-                            color: "white"
+                          color: "white",
                         },
                       }}
-                      
                     />
                   </div>
                 </div>
 
                 <div className="">
                   <InputLabel id="new-project-name" label={"تاريخ التسليم"} />
-                  <TextEditor 
-                  placeholder={"اكتب ملاحظات .................................."}
+                  <TextEditor
+                    placeholder={
+                      "اكتب ملاحظات .................................."
+                    }
                   />
-                  
                 </div>
               </FormModal>
               <FormModal title={"ملاحظات العميل"}>
                 <div className="">
                   <InputLabel id="new-project-name" label={"تاريخ التسليم"} />
-                  <TextEditor 
-                  placeholder={"اكتب ملاحظات .................................."}
+                  <TextEditor
+                    placeholder={
+                      "اكتب ملاحظات .................................."
+                    }
                   />
                 </div>
               </FormModal>
@@ -507,24 +526,14 @@ export default function AddProject() {
               </FormModal>
               <div className="flex justify-end mt-4">
                 <Link to={"/System/plans/projects"}>
-                <button className="w-[140px] h-[30px]  bg-[#EFAA20] rounded-[6px] text-[#1E1E2D] text-[15px] font-medium">
-                  حفظ
-                </button>
+                  <button className="w-[140px] h-[30px]  bg-[#EFAA20] rounded-[6px] text-[#1E1E2D] text-[15px] font-medium">
+                    حفظ
+                  </button>
                 </Link>
               </div>
             </div>
-            </LocalizationProvider>
-          ) : null}
-
-
-
-
-
-
-
-
-
-
+          </LocalizationProvider>
+        ) : null}
       </div>
     </>
   );
