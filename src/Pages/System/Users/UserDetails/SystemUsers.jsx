@@ -107,7 +107,7 @@ const SystemUsers = () => {
                     employeeDetails === "عن الموظف" && "inf-type"
                   }`}
                   onClick={() => {
-                    setEmployeeDetails("عن الموظف");
+                    setEmployeeDetails("aboutEmpolyee");
                   }}
                 >
                   {" "}
@@ -115,28 +115,28 @@ const SystemUsers = () => {
                 </p>
                 <p
                   className={`genral-inf ${
-                    employeeDetails === "معلومات مهنية" && "inf-type"
+                    employeeDetails === "ProfessinollInformation" && "inf-type"
                   }`}
                   onClick={() => {
-                    setEmployeeDetails("معلومات مهنية");
+                    setEmployeeDetails("ProfessinollInformation");
                   }}
                 >
                   معلومات مهنية
                 </p>
                 <p
                   className={`genral-inf ${
-                    employeeDetails === "معلومات الراتب" && "inf-type"
+                    employeeDetails === "AccountaingInformation" && "inf-type"
                   }`}
                   onClick={() => {
-                    setEmployeeDetails("معلومات الراتب");
+                    setEmployeeDetails("AccountaingInformation");
                   }}
                 >
                   معلومات الراتب{" "}
                 </p>
               </div>
-              {employeeDetails === "عن الموظف" ? (
+              {employeeDetails === "aboutEmpolyee" ? (
                 <Genralnformation />
-              ) : employeeDetails === "معلومات مهنية" ? (
+              ) : employeeDetails === "ProfessinollInformation" ? (
                 <ProfessinollInformation />
               ) : (
                 <AccountaingInformation />

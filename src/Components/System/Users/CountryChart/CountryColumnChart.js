@@ -24,6 +24,15 @@ class CountryColumnChart extends React.Component {
         },
 
         plotOptions: {
+          bar: {
+            borderRadius: 6,
+            columnWidth: this.props.ColumnChart
+              ? this.props.ColumnChart
+              : "6px",
+            dataLabels: {
+              position: "top",
+            },
+          },
           pie: {
             donut: {
               labels: {
