@@ -13,7 +13,7 @@ import {
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { IoMdArrowDropright } from "react-icons/io";
 import { ModalTitle } from "../../PlanModel/components/ModalTitle";
 import { FormModal } from "../../PlanModel/components/FormModal";
@@ -506,9 +506,11 @@ export default function AddProject() {
                 </div>
               </FormModal>
               <div className="flex justify-end mt-4">
+                <Link to={"/System/plans/projects"}>
                 <button className="w-[140px] h-[30px]  bg-[#EFAA20] rounded-[6px] text-[#1E1E2D] text-[15px] font-medium">
                   حفظ
                 </button>
+                </Link>
               </div>
             </div>
             </LocalizationProvider>

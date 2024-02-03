@@ -18,6 +18,7 @@ import { CKEditor } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import { InputLabel } from "../components/InputLabel";
 import TextEditor from "../../Plans/components/TextEditor";
+import { Link } from "react-router-dom";
 export default function EditProject() {
   const [anchorEl, setAnchorEl] = useState(null);
   const [searchProjectName, setSearchProjectName] = useState("");
@@ -182,9 +183,11 @@ export default function EditProject() {
       </div>
 
       <div className="flex justify-end mt-4">
+      <Link to={"/System/plans/projects"}>
         <button className="w-[140px] h-[30px]  bg-[#EFAA20] rounded-[6px] text-[#1E1E2D] text-[15px] font-medium">
         حفظ
         </button>
+        </Link>
       </div>
     </div>
   );
