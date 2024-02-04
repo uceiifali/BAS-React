@@ -2,7 +2,7 @@ import { useState } from "react";
 import Button from "react-bootstrap/Button";
 import {FormControl,TextField } from '@mui/material';
 import Modal from "react-bootstrap/Modal";
-import { InputLabel } from "../InputLabel";
+import { InputLabel } from "../../Pages/System/PlanModel/components/InputLabel";
 // import CloseBtn from "/assets/icons/Rejected.svg"
 function CommentModel({ message, show, handleClose,handleSave }) {
   return (

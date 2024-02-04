@@ -11,20 +11,36 @@ import {
   Select,
 } from "@mui/material";
 import { FormModal } from "../components/FormModal";
+import { IoMdArrowDropright } from "react-icons/io";
+
 import UploadFile from "../components/UploadFile";
-import CustomModal from "../components/Modals/CustomModal";
+import CustomModal from "../../../../Components/Modals/CustomModal";
 import { ModalTitle } from "../components/ModalTitle";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import { InputLabel } from "../components/InputLabel";
 import TextEditor from "../../Plans/components/TextEditor";
-import { Link } from "react-router-dom";
+import { Link,useNavigate } from "react-router-dom";
+import SystemControler from "../../../../Components/System/SystemControler/SystemControler";
 export default function EditProject() {
+  const navigate = useNavigate();
   const [anchorEl, setAnchorEl] = useState(null);
   const [searchProjectName, setSearchProjectName] = useState("");
   let [recievedDate, setRecievedDate] = useState(null);
   let [recievingDate, setRecievingDate] = useState(null);
   return (
+    <>
+    <SystemControler
+        child={
+          <IconButton
+            onClick={() => {
+              navigate(-1);
+            }}
+          >
+            <IoMdArrowDropright color="white" fontSize={25} />
+          </IconButton>
+        }
+      />
     <div className="bg-[#1E1E2D] mb-2 p-5 border rounded-[19px] text-white !border-[#EFAA20] h-full">
       <div className="my-3">
         <ModalTitle title={" تعديل مشروع "} />
@@ -190,5 +206,6 @@ export default function EditProject() {
         </Link>
       </div>
     </div>
+    </>
   );
 }
