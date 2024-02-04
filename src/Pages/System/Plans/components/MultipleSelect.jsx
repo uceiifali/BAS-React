@@ -9,7 +9,6 @@ export default function MultipleSelect({
   selected,
   setSelected,
 }) {
-
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
@@ -21,23 +20,27 @@ export default function MultipleSelect({
   return (
     <div className="">
       <div className="w-full  flex justify-between items-center text-white p-2 bg-[#2B2B40] rounded-[7px]">
-        
-          <div className="flex w-full items-center gap-1">
-            <button
-              onClick={handleClick}
-              className={`${selected.length > 0 ? 
-                "bg-[#D9D9D9] text-[#2B2B40]  rounded-full py-1 px-4 drop-shadow-xl"
-                :"text-white/50 w-full text-end cursor-pointer text-sm font-normal "
+        <div className="flex w-full items-center gap-1">
+          <button
+            onClick={handleClick}
+            className={`${
+              selected.length > 0
+                ? "bg-[#D9D9D9] text-[#2B2B40]  rounded-full py-1 px-4 drop-shadow-xl"
+                : "text-white/50 w-full text-end cursor-pointer text-sm font-normal "
             } `}
-            >
-                {selected.length > 0 ? 
-                <MdOutlineClose className="rotate-45 text-[#2B2B40]" color="#2B2B40" />
-            : placeholder
-            }
-              
-            </button>
-            <div className="flex gap-1 max-w-full  ">
-              {(selected?.length > 0) && selected?.map(({ id, name }) => (
+          >
+            {selected.length > 0 ? (
+              <MdOutlineClose
+                className="rotate-45 text-[#2B2B40]"
+                color="#2B2B40"
+              />
+            ) : (
+              placeholder
+            )}
+          </button>
+          <div className="flex gap-1 max-w-full  ">
+            {selected?.length > 0 &&
+              selected?.map(({ id, name }) => (
                 <p className="flex items-center py-1 bg-[#D9D9D9] text-[#2B2B40] text-xs rounded-full px-1">
                   {name}
                   <IconButton
@@ -52,9 +55,8 @@ export default function MultipleSelect({
                   </IconButton>
                 </p>
               ))}
-            </div>
           </div>
-        
+        </div>
 
         <MdKeyboardArrowLeft className="text-white/50" />
       </div>

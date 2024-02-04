@@ -5,12 +5,12 @@ import IconButton from "@mui/material/IconButton";
 import MenuItem from "@mui/material/MenuItem";
 import { FormModal } from "../components/FormModal";
 import UploadFile from "../components/UploadFile";
-import CustomModal from "../components/Modals/CustomModal";
+import CustomModal from "../../../../Components/Modals/CustomModal";
 import { IoMdArrowDropright } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
 import SystemControler from "../../../../Components/System/SystemControler/SystemControler";
-import SuccessfullModal from "../components/Modals/SuccessfullModal";
-import CommentModel from "../components/Modals/CommentModel";
+import SuccessfullModal from "../../../../Components/Modals/SuccessfullModal";
+import CommentModel from "../../../../Components/Modals/CommentModel";
 export default function ShowProject() {
   const navigate = useNavigate();
   const [anchorEl, setAnchorEl] = useState(null);
