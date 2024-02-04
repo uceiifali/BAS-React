@@ -1,0 +1,257 @@
+.sytem-users {
+  width: 100%;
+  height: 801px;
+  border-radius: 19px;
+}
+
+
+
+.search-users {
+  background-color: #1E1E2D !important;
+  height: 801px;
+  border-radius: 19px;
+  padding: 10px;
+  overflow-y: scroll;
+}
+
+.search-users::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  background-color: #F5F5F5;
+}
+
+.search-users::-webkit-scrollbar {
+  width: 10px;
+  background-color: #F5F5F5;
+}
+
+.search-users::-webkit-scrollbar-thumb {
+  background-color: #F90;
+  background-image: -webkit-linear-gradient(45deg,
+      rgba(255, 255, 255, .2) 25%,
+      transparent 25%,
+      transparent 50%,
+      rgba(255, 255, 255, .2) 50%,
+      rgba(255, 255, 255, .2) 75%,
+      transparent 75%,
+      transparent)
+}
+
+
+.egypet-roles,
+.saudia-roles {
+  background-color: #2B2B40 !important;
+}
+
+.full-system input:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+
+
+.full-system .css-1ng70dv-control:hover {
+  border: unset !important;
+  box-shadow: none !important;
+}
+
+.full-system .css-1nmdiq5-menu {
+  background-color: #2B2B40 !important;
+}
+
+.full-system .egypet-roles:focus {
+  border: none !important;
+}
+
+.full-system .css-qbdosj-Input:hover {
+  opacity: 0 !important;
+}
+
+.full-system .css-1u001w8-control {
+  border: unset !important;
+  box-shadow: none !important;
+}
+
+.full-system .search {
+  color: #534D59 !important;
+}
+
+.full-system .search::placeholder {
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='15' height='15' viewBox='0 0 30 30  '><path fill='%23838D99' d='M13.22 14.63a8 8 0 1 1 1.41-1.41l4.29 4.29a1 1 0 1 1-1.41 1.41l-4.29-4.29zm-.66-2.07a6 6 0 1 0-8.49-8.49 6 6 0 0 0 8.49 8.49z'></path></svg>");
+  background-repeat: no-repeat;
+
+  background-size: 20px 20px;
+
+  border-radius: 5px;
+  color: #534D59 !important;
+
+
+  /* Set the text alignment to left */
+  direction: ltr !important;
+  font-family: Inter;
+  font-size: 12.353px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.Users-component .search:focus {
+  outline: none;
+  color: #534D59 !important;
+  box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.16);
+}
+
+.vector {
+  width: 17px;
+  height: 14.792px;
+}
+
+.Users-component .dropdown-toggle::after {
+  display: none !important
+}
+
+.Users-component .connected {
+  width: 8px;
+  height: 8px;
+  border-radius: 15px;
+  background: #75CC68;
+}
+
+.not-connected {
+  width: 8px;
+  height: 8px;
+  border-radius: 15px;
+  background: #9E0C1E;
+}
+
+.Users-component a:focus {
+  background-color: unset !important;
+}
+
+.user-img {
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+}
+
+.name-header {
+  width: 71px;
+  height: 17px;
+
+
+  font-size: 14px;
+}
+
+.show-employee {
+  border-radius: 19px !important;
+  background: #1E1E2D !important;
+  height: 801px !important;
+  overflow-y: auto;
+}
+
+
+.full-system .css-1dimb5e-singleValue {
+  color: rgba(217, 217, 217, 0.50) !important;
+
+}
+
+.export-bg {
+
+  border-radius: 3px !important;
+  background: rgba(217, 217, 217, 0.50) !important;
+  border: none !important;
+  font-size: 10px;
+}
+
+.user-Personal {
+
+  width: 81px !important;
+  height: 81px !important;
+  border-radius: 40.5px !important;
+}
+
+.Users-component .action-buttons {
+  margin-left: 5px;
+  width: 51px;
+  height: 25px;
+  cursor: pointer;
+}
+
+
+
+
+@media screen and (max-width:1400px) {
+  .name-heade {
+    font-size: 14px;
+  }
+
+  .genral-inf {
+    font-size: 14px !important;
+  }
+
+  .choose-inf {
+    margin-left: 20px !important;
+    margin-right: 20px !important;
+  }
+}
+
+.choose-inf {
+  position: relative;
+  cursor: pointer;
+}
+
+.choose-inf::after {
+  position: absolute;
+  content: "";
+  width: 100%;
+  height: 2px;
+  background-color: #534D59;
+  top: 100%;
+}
+
+.inf-type {
+  color: #D59921;
+  position: relative;
+
+}
+
+.golden-square {
+  border:1px solid rgba(213, 153, 33, 0.50) !important
+}
+
+.show-employee::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  background-color: #F5F5F5;
+} 
+
+.show-employee::-webkit-scrollbar {
+  width: 10px;
+  background-color: #F5F5F5;
+}
+
+.show-employee::-webkit-scrollbar-thumb {
+  background-color: #F90;
+  background-image: -webkit-linear-gradient(45deg,
+      rgba(255, 255, 255, .2) 25%,
+      transparent 25%,
+      transparent 50%,
+      rgba(255, 255, 255, .2) 50%,
+      rgba(255, 255, 255, .2) 75%,
+      transparent 75%,
+      transparent)
+}
+
+.No-Delete {
+  
+  background-color: #A83A3A !important;
+  border: unset !important;
+}
+.No-Delete:focus{
+border: unset !important;
+}
+.Delete-button{
+
+background-color: #D59921 !important;
+} 
+.name-header{
+
+}

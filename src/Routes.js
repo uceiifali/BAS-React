@@ -68,6 +68,7 @@ import ShowProject from "./Pages/System/PlanModel/Projects/ShowProject";
 import Plans from "./Pages/System/Plans";
 import PlansProjects from "./Pages/System/Plans/Projects";
 import AddProject from "./Pages/System/Plans/Projects/AddProject";
+import HrUsers from "./Components/System/Hr/UserDetails/HrUsers";
 
 const SignUP = lazy(() => import("./Pages/DashBoard/SignUP/SignUP"));
 const SignIn = lazy(() => import("./Pages/DashBoard/SignIn/SignIn"));
@@ -264,6 +265,10 @@ const router = createBrowserRouter([
             path: "/System/Hr/Employees/:CountryName",
             element: <AllEmployees />,
           },
+          {
+            path: "/System/Hr/Users",
+            element: <HrUsers />,
+          },
           { path: "/System/Hr/HolidayMangment", element: <HolidayMangment /> },
           {
             path: "/System/Hr/EmployeesServices",
@@ -294,13 +299,13 @@ const router = createBrowserRouter([
       //System Plans
       // {
       //   path: "/System/plans",
-        // element: (
-        //   <ProjectContextProvier>
-        //     <TableContextProvder>
-        //       <PlanModel />
-        //     </TableContextProvder>
-        //   </ProjectContextProvier>
-        // ),
+      // element: (
+      //   <ProjectContextProvier>
+      //     <TableContextProvder>
+      //       <PlanModel />
+      //     </TableContextProvder>
+      //   </ProjectContextProvier>
+      // ),
       //   children: [
       //     { index: true, element: <PlansAnalytics /> },
       //     {
@@ -344,7 +349,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/System/plans/projects/add-project",
-        element: (<AddProject/>),
+        element: <AddProject />,
       },
       {
         path: "/System/plans/show-project/:projectId",

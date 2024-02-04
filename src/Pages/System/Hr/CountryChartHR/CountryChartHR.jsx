@@ -5,6 +5,7 @@ import CountryColumnChart from "../../../../Components/System/Users/CountryChart
 import CountryDeprtamentSlider from "../../../../Components/System/Users/CountryChart/CountryDeprtamentSlider";
 import SearchCountryUsers from "../../../../Components/System/Users/SearchUsers/SearchCountryUsers";
 import { useEffect, useMemo, useState } from "react";
+import SearchUsers from "../../../../Components/System/Users/SearchUsers/SearchUsers";
 
 const CountryChartHR = () => {
   const { CountryName } = useParams();
@@ -25,7 +26,7 @@ const CountryChartHR = () => {
   return (
     <div className="row">
       <div className="col-md-4">
-        <SearchCountryUsers />
+        <SearchUsers />
       </div>
       <div className="col-md-8">
         <div className="country-Chart p-5">
