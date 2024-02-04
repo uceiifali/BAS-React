@@ -369,6 +369,7 @@ const router = createBrowserRouter([
           </ProjectContextProvier>
         ),
       },
+      
     ],
   },
 ]);
