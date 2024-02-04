@@ -9,6 +9,7 @@ import { AiOutlineCloseCircle } from "react-icons/ai";
 import { useContext } from "react";
 import { showAddUpdateUser } from "../../../../Context/CheckAddUpdateUserVisability";
 import FormDatePicker from "../../../FormDatePicker";
+import Image from "../../../Image";
 
 const AddUpdateUser = ({ id = null, setOpenUpdateUser, setOpenModal }) => {
   console.log(id);
@@ -369,7 +370,14 @@ const AddUpdateUser = ({ id = null, setOpenUpdateUser, setOpenModal }) => {
         </fieldset>
         <fieldset className="small-golden-square  w-75 pt-2 pb-2 px-4   mt-3 mx-auto">
           <legend className="text-center">كلمة المرور</legend>
-          <div className="row ">
+          <div className="flex justify-end">
+            <Image
+              className={"pointer"}
+              src={"/icons/update.png"}
+              alt={"update icon"}
+            />
+          </div>
+          <div className="row mb-3">
             <div className="col-md-6 ">
               <Input
                 label={"كلمه المرور"}

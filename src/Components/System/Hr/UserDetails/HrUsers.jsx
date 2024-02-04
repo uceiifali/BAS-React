@@ -17,12 +17,14 @@ import SearchUsers from "../../Users/SearchUsers/SearchUsers";
 import ProfessinollInformation from "../../Users/ProfessinollInformation/ProfessinollInformation";
 import { AddHrType } from "../../../../Context/AddHr";
 import Image from "../../../Image";
-import DeleteModal from "../../../../Pages/System/Settings/RemoveModal";
+import CustomModal from "../../../Modals/CustomModal";
+import SuccessfullModal from "../../../Modals/SuccessfullModal";
 
 const HrUsers = () => {
   const [employeeDetails, setEmployeeDetails] = useState("عن الموظف");
   const [editUser, setEditUser] = useState(false);
   const [deleteUser, setDeleteUser] = useState(false);
+  const [successfull, setSuccsesfull] = useState(false);
 
   const handleGetUserDetails = () => {};
 
@@ -49,9 +51,34 @@ const HrUsers = () => {
       };
     },
   };
+  const handleDelete = (arr, id) => {
+    // const filtedData = arr.filter((prev) => {
+    //   return prev.id !== id;
+    // });
+    // return filtedData
+
+    setDeleteUser(false);
+    setSuccsesfull(true);
+  };
   return (
     <div className="Users-component   w-100    text-white ">
-      {/* <DeleteModal title="التاكيد" show={deleteUser} /> */}
+      <CustomModal
+        title="التاكيد"
+        show={deleteUser}
+        handleSave={handleDelete}
+        message={"هل انت متاكد من الحذف"}
+        handleClose={() => {
+          setDeleteUser(false);
+        }}
+      />
+      <SuccessfullModal
+        show={successfull}
+        message={"تم حذف المستخدم بنجاح"}
+        handleClose={() => {
+          setSuccsesfull(false);
+          
+        }}
+      />
       <div
         style={{
           border: "1px solid #EFAA20 !important",
