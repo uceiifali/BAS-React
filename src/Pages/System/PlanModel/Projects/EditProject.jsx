@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import DatePicker from "react-datepicker";
 import { IoMdMore } from "react-icons/io";
 import {
-  Box,
+  FormControl,
   Button,
   IconButton,
   TextField,
@@ -22,10 +22,17 @@ import { InputLabel } from "../components/InputLabel";
 import TextEditor from "../../Plans/components/TextEditor";
 import { Link,useNavigate } from "react-router-dom";
 import SystemControler from "../../../../Components/System/SystemControler/SystemControler";
+import CustomSelect from "../components/CustomSelect";
+import { CiSearch } from "react-icons/ci";
+import { ProjectNames, Supervisors } from "../consts";
+import MultipleSelect from "../../Plans/components/MultipleSelect";
 export default function EditProject() {
   const navigate = useNavigate();
   const [anchorEl, setAnchorEl] = useState(null);
+  const [selected, setSelected] = useState([]);
+
   const [searchProjectName, setSearchProjectName] = useState("");
+  const [selectedProjectName, setSelectedProjectName] = useState("");
   let [recievedDate, setRecievedDate] = useState(null);
   let [recievingDate, setRecievingDate] = useState(null);
   return (
@@ -47,52 +54,86 @@ export default function EditProject() {
       </div>
 
       <div className="h-[690px] overflow-scroll scrollbar-none flex flex-col gap-4 ">
+        
+        
+        
+        
+        
+        
+        
+        
         <FormModal title={"بحث عن المشروع"}>
           <div className="grid grid-cols-12 justify-between">
             <div className="col-span-5">
-              <InputLabel id="new-project-name" label={"اسم المشروع"} />
-              <Select
-                fullWidth
-                size="small"
-                labelId="demo-simple-select-label"
-                id="demo-simple-select"
-                value={searchProjectName}
-                label="Select Project"
-                className="w-full text-white bg-[#2B2B40] rounded-[7px]"
-                onChange={(e) => {
-                  setSearchProjectName(e.target.value);
-                }}
-                inputProps={{ placeholder: "ابحث عن ...." }}
-                sx={{
-                  "& input::placeholder": {
-                    color: "white",
-                  },
-                  "& fieldset": {
-                    border: "none",
-                  },
-                  "& svg": {
-                    display: "none",
-                  },
-                }}
-              >
-                {/* <MenuItem selected>ابحث</MenuItem> */}
-                <MenuItem value={10}>مطاعم عشبة الليمون</MenuItem>
-                <MenuItem value={20}>مطاعم عشبة الليمون</MenuItem>
-                <MenuItem value={30}>مطاعم عشبة الليمون</MenuItem>
-              </Select>
+            <FormControl fullWidth>
+                  <InputLabel id="new-project-name" label={"اسم المشروع"} />
+
+                  <CustomSelect>
+                    <MenuItem disabled value="">
+                      <div className="w-full flex justify-between">
+                        <span>بحث ...</span>
+                        <CiSearch />
+                      </div>
+                    </MenuItem>
+                    {ProjectNames.map((name, index) => (
+                      <MenuItem
+                        key={index}
+                        value={name}
+                        onClick={(e) => setSelectedProjectName(name)}
+                        // style={getStyles(name, selectedItem, theme)}
+                      >
+                        {name}
+                      </MenuItem>
+                    ))}
+                  </CustomSelect>
+                </FormControl>
             </div>
           </div>
         </FormModal>
+
+
+
+
+
+
+
+
+
+
         <FormModal title={"تفاصيل المهمة"}>
                 <div className="grid grid-cols-12 mb-5">
                   <div className="col-span-5">
-                    <InputLabel id="new-project-name" label={"اسم المسؤل"} />
-                    <input
-                      id="new-project-name"
-                      type="text"
-                      className="w-full text-white p-2 bg-[#2B2B40] rounded-[7px]"
-                      placeholder="اختار اسم المشرف"
-                    />
+                  <InputLabel id="new-project-name" label={"اسم المسؤل"} />
+                    <MultipleSelect
+                      placeholder={"اختار اسم المشرف"}
+                      data={Supervisors}
+                      selected={selected}
+                      setSelected={setSelected}
+                    >
+                      {Supervisors?.map(({id,name,position,location,img},index) => (
+                        <MenuItem
+                        onClick={()=> {
+                          
+                          setSelected(prev => [...prev,{id,name}])
+                        }}
+                        key={id}
+                        disabled={selected?.map(selected=> selected.id).includes(id)}
+                        >
+                          <div className="flex items-center gap-2">
+                            <div className="w-8 h-8 rounded-full overflow-hidden">
+                              <img src={img} alt={""} title={name} className="w-full" />
+                            </div>
+                            <div className="">
+                              <div className="">
+                                <p className="text-white">{name}</p>
+                                <p className="text-[#D59921]">{position} / {location}  </p>
+                              </div>
+                            </div>
+                          </div>
+                          
+                        </MenuItem>
+                      ))}
+                    </MultipleSelect>
                   </div>
                 </div>
                 <div className="grid grid-cols-12 mb-5">

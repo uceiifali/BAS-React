@@ -67,12 +67,22 @@ export default function MultipleSelect({
         anchorEl={anchorEl}
         open={open}
         onClose={handleClose}
+        PaperProps={{
+          className: "scrollbar-none",
+        }}
         MenuListProps={{
           "aria-labelledby": "basic-button",
-
+          
+            sx:{
+              "& ul":{
+                overflowY: "scroll",
+              },
+              
+            },
           style: {
             maxHeight: 48 * 4.5,
-            width: "40ch",
+            width: "42.4ch",
+            
           },
         }}
         anchorOrigin={{
