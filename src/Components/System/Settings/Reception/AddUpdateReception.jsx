@@ -18,7 +18,7 @@ import { InputLabel } from "../../../../Pages/System/PlanModel/components/InputL
 import CustomSelect from "../../../../Pages/System/PlanModel/components/CustomSelect";
 import { CiSearch } from "react-icons/ci";
 import { ProjectNames } from "../../../../Pages/System/PlanModel/consts";
-import TimePickerButton from "../../../../Pages/TimePickerPage";
+import TimePickerButton from "../../../TimePickerPage";
 
 const ModalHeader = ({ title }) => {
   return (
