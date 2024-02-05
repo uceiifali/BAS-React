@@ -10,6 +10,9 @@ import moment from "moment/moment";
 import DataTableComponent from "../../../../Components/DataTableComponent.jsx";
 
 import ShowClientDetails from "../../../../Components/System/Clients/ShowClient/ShowClientDetails";
+import CustomTable from "../../../../Components/Table/index.jsx";
+import { TableRow } from "../../../../Components/Table/TableRow.jsx";
+import { TableCell } from "../../../../Components/Table/TableCell.jsx";
 
 const ClientDetails = () => {
   const [showProject, setShowProject] = useState(false);
@@ -299,12 +302,46 @@ const ClientDetails = () => {
               )}
             </div>
 
-            <div className="py-3        w-100  ">
-              <DataTableComponent
+            <div className="mt-3 !h-[400px] overflow-scroll scrollbar-none">
+
+              {/* <DataTableComponent
                 className={" border-golden  w-100  datatableComponent"}
                 columns={columns}
                 data={ClientDetailsTable}
-              />
+              /> */}
+              <CustomTable columns={columns} data={ClientDetailsTable}>
+                  {ClientDetailsTable && ClientDetailsTable.length > 0
+                    ? ClientDetailsTable.map(
+                        (
+                          {
+                            id,
+                            ProjectName,
+                            ProjectNumber,
+                            projectType,
+                            DeliverDate,
+                            status,
+                            display,
+                          },
+                          index
+                        ) => (
+                          <TableRow
+                            className={`my-2 border !border-[#efaa207f] ${
+                              index % 2 === 0 ? "bg-[#151521]" : ""
+                            }`}
+                            key={index}
+                          >
+                            <TableCell textColor="#ffffff7f">{id}</TableCell>
+                            <TableCell>{ProjectName}</TableCell>
+                            <TableCell>{ProjectNumber}</TableCell>
+                            <TableCell>{projectType}</TableCell>
+                            <TableCell>{DeliverDate}</TableCell>
+                            <TableCell>{status}</TableCell>
+                            <TableCell>{display}</TableCell>
+                          </TableRow>
+                        )
+                      )
+                    : null}
+                </CustomTable>
             </div>
 
             {showProject && (

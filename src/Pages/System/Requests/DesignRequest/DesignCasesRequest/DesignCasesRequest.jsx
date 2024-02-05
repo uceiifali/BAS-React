@@ -8,6 +8,9 @@ import ShowDesignRequest from "../../../../../Components/System/ShowRequest/Show
 import "./index.css";
 import DesignCasesChart from "../../../../../Components/System/Requests/DesignRequestChart/DesignCasesChart/DesignCasesChart";
 import Image from "../../../../../Components/Image.jsx";
+import { TableCell } from "../../../../../Components/Table/TableCell.jsx";
+import { TableRow } from "../../../../../Components/Table/TableRow.jsx";
+import CustomTable from "../../../../../Components/Table/index.jsx";
 const DesignCasesRequest = () => {
   const [showProject, setShowProject] = useState(false);
   const [editRequest, setEditRequest] = useState(false);
@@ -18,7 +21,7 @@ const DesignCasesRequest = () => {
 
   const DesignCasesProjects = Array.from({ length: 10 }).map((_, index) => {
     return {
-      id: 1,
+      id: index+1,
       ProjectName: "BSA",
       ProjectNumber: "53543",
       createdAt: "12-10-2023",
@@ -26,7 +29,7 @@ const DesignCasesRequest = () => {
       status: projectType,
       display: (
         <Image
-          src={process.env.PUBLIC_URL + "/icons/view.png"}
+          src={process.env.PUBLIC_URL + "/icons/view.svg"}
           onClick={() => {
             setShowProject(true);
           }}
@@ -36,7 +39,7 @@ const DesignCasesRequest = () => {
       ),
       edit: (
         <Image
-          src={process.env.PUBLIC_URL + "/edit.png"}
+          src={process.env.PUBLIC_URL + "/icons/edit.svg"}
           onClick={() => {
             setEditRequest(true);
           }}
@@ -109,6 +112,7 @@ const DesignCasesRequest = () => {
         setChartColor("#E40038  ");
 
         break;
+        default: break;
     }
   }, [DesignProjectType]);
 
@@ -154,12 +158,50 @@ const DesignCasesRequest = () => {
                   : null}
               </legend>
 
-              <div className="py-3    ">
-                <DataTableComponent
-                  className={" !h-[400px]  "}
+              <div className="mt-3 !h-[400px] overflow-scroll scrollbar-none">
+
+                {/* <DataTableComponent
+                  
                   columns={columns}
                   data={DesignCasesProjects}
-                />
+                /> */}
+                <CustomTable columns={columns} data={DesignCasesProjects}>
+                {DesignCasesProjects && DesignCasesProjects.length > 0
+            ? DesignCasesProjects.map(
+                (
+                  {
+                    id,
+                    ProjectName,
+                    ProjectNumber,
+                    createdAt,
+                    ProjectType,
+                    status,
+                    display,
+                    edit
+                    
+                  },
+                  index
+                ) => (
+                  <TableRow
+                    className={`my-2 border !border-[#efaa207f] ${
+                      index % 2 === 0 ? "bg-[#151521]" : ""
+                    }`}
+                    key={index}
+                  >
+                    <TableCell textColor="#ffffff7f">{id}</TableCell>
+                    <TableCell>{ProjectName}</TableCell>
+                    <TableCell>{ProjectNumber}</TableCell>
+                    <TableCell>{createdAt}</TableCell>
+                    <TableCell>{ProjectType}</TableCell>
+                    <TableCell>{status}</TableCell>
+                    
+                    <TableCell>{display}</TableCell>
+                    <TableCell>{edit}</TableCell>
+                  </TableRow>
+                )
+              )
+            : null}
+                </CustomTable>
               </div>
             </fieldset>
           </div>

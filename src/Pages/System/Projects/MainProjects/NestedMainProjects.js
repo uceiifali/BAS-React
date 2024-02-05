@@ -13,6 +13,9 @@ import ShowProjectComponent from "../../../../Components/System/Projects/ShowPro
 import EditProject from "../../../../Components/System/Projects/EditProject/EditProject";
 import { AddReportType } from "../../../../Context/AddReport.js";
 import Image from "../../../../Components/Image.jsx";
+import { TableCell } from "../../../../Components/Table/TableCell.jsx";
+import { TableRow } from "../../../../Components/Table/TableRow.jsx";
+import CustomTable from "../../../../Components/Table/index.jsx";
 const NestedMainProjects = () => {
   const [showProject, setShowProject] = useState(false);
   const [editProject, setEditProject] = useState(false);
@@ -23,7 +26,7 @@ const NestedMainProjects = () => {
   // handle table data components
   const NestedMainProjectsdata = Array.from({ length: 3 }).map((_, index) => {
     return {
-      id: 1,
+      id: index+1,
       ProjectName: "BSA",
       ProjectNumber: "53543",
       ClientType: "فردي",
@@ -31,7 +34,7 @@ const NestedMainProjects = () => {
       ProjectType: " تصميم",
       display: (
         <Image
-          src={process.env.PUBLIC_URL + "/icons/view.png"}
+          src={process.env.PUBLIC_URL + "/icons/view.svg"}
           onClick={() => {
             setShowProject(true);
           }}
@@ -41,7 +44,7 @@ const NestedMainProjects = () => {
       ),
       edit: (
         <Image
-          src={process.env.PUBLIC_URL + "/edit.png"}
+          src={process.env.PUBLIC_URL + "/icons/edit.svg"}
           onClick={() => {
             setEditProject(true);
           }}
@@ -77,6 +80,10 @@ const NestedMainProjects = () => {
     {
       name: "    عرض",
       selector: (row) => row.display,
+    },
+    {
+      name: "نوع المشروع",
+      selector: (row) => row.ProjectType,
     },
     {
       name: "  تعديل",
@@ -123,12 +130,48 @@ const NestedMainProjects = () => {
           <fieldset className="TableContainer  py-3 px-2 mx-auto mt-3">
             <legend className="text-center ">كل المشاريع</legend>
 
-            <div className="mt-3   ">
-              <DataTableComponent
+            <div className="mt-3 !h-[400px] overflow-scroll scrollbar-none">
+              {/* <DataTableComponent
                 className={"  !h-[400px]"}
                 columns={columns}
                 data={NestedMainProjectsdata}
-              />
+              /> */}
+              <CustomTable columns={columns} data={NestedMainProjectsdata}>
+                  {NestedMainProjectsdata && NestedMainProjectsdata.length > 0
+                    ? NestedMainProjectsdata.map(
+                        (
+                          {
+                            id,
+                            ProjectName,
+                            ProjectNumber,
+                            ClientType,
+                            createdAt,
+                            ProjectType,
+                            
+                            display,
+                            edit,
+                          },
+                          index
+                        ) => (
+                          <TableRow
+                            className={`my-2 border !border-[#efaa207f] ${
+                              index % 2 === 0 ? "bg-[#151521]" : ""
+                            }`}
+                            key={index}
+                          >
+                            <TableCell textColor="#ffffff7f">{id}</TableCell>
+                            <TableCell>{ProjectName}</TableCell>
+                            <TableCell>{ProjectNumber}</TableCell>
+                            <TableCell>{ClientType}</TableCell>
+                            <TableCell>{createdAt}</TableCell>
+                            <TableCell>{ProjectType}</TableCell>
+                            <TableCell>{display}</TableCell>
+                            <TableCell>{edit}</TableCell>
+                          </TableRow>
+                        )
+                      )
+                    : null}
+                </CustomTable>
             </div>
           </fieldset>
         </div>
