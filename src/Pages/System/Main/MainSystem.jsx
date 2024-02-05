@@ -7,7 +7,7 @@ import AllDeprtmentSlider from "../../../Components/System/Main/ِAllDeprtmentSL
 import DataTableComponent from "../../../Components/DataTableComponent.jsx";
 import { useParams } from "react-router-dom";
 import { useState } from "react";
-import { columns } from "../../../utils/consts.jsx";
+import { columns } from "../../../utiltis/consts.jsx";
 import style from "./MainSystem.module.css";
 export const MainSystem = () => {
   // define cleander value

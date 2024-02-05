@@ -1,5 +1,5 @@
 import { useState, useCallback } from "react";
-import validate, { isString } from '../utils/validation-rules';
+import validate, { isString } from '../utiltis/validation-rules';
 
 const UseSelect = (initialValue = '', validateRule = 'textInput', submitted) => {
   const [value, setValue] = useState(initialValue);

@@ -31,7 +31,7 @@ import DesignMultiSteps from "../Components/Client/Landing/MultiSteps/DesignMult
 import ReviewMultiSteps from "../Components/Client/Landing/MultiSteps/ReviewMultiSteps";
 import Image from "../Components/Image";
 import Footer from "../Components/HomePage/Footer";
-import { Services } from "../utils/consts";
+import { Services } from "../utiltis/consts";
 import ClientsSection from "../Components/HomePage/ClientSection/ClientsSection";
 
 const Home = () => {

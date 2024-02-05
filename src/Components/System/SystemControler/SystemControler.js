@@ -1,55 +1,46 @@
 import React, { useState } from "react";
 import IconButton from "@mui/material/IconButton";
 import Calculator from "../../../Pages/System/Plans/components/Calculator";
+import { Link } from "react-router-dom";
+import Image from "../../Image";
 const SystemControler = ({ child }) => {
   const [showCalculator, setShowCalculator] = useState(false);
   const handleCloseCalculator = () => setShowCalculator(false);
   const handleShowCalculator = () => setShowCalculator(true);
   return (
     <>
-    <div className="user-control-model mb-4 d-flex align-items-center x-4 justify-content-between">
-      <div className="me-2  w-100">{child}</div>
-      <div className="icons ms-3 d-flex gap-2">
-        <IconButton onClick={handleShowCalculator} aria-label="calculator">
-          <img
-            src={process.env.PUBLIC_URL + "/icons/Calculator.png"}
-            alt="Calculator img"
-            className="pointer system-notification mx-1"
-          />
-        </IconButton>
+      <div className="user-control-model px-4  mb-4 d-flex align-items-center justify-content-between">
+        <div className="  w-100">{child}</div>
+        <div className="icons  flex gap-1">
+          <IconButton onClick={handleShowCalculator} aria-label="calculator">
+            <Image
+              src={process.env.PUBLIC_URL + "/icons/Calculator.png"}
+              alt="Calculator Image"
+              className="pointer system-notification mx-1"
+            />
+          </IconButton>
 
+          <IconButton aria-label="messages">
+            <Link to={"/System/Chat/index"}>
+              <Image
+                src={process.env.PUBLIC_URL + "/icons/messages.png"}
+                alt="messages Image"
+                className="pointer system-notification mx-1"
+              />
+            </Link>
+          </IconButton>
 
-      
-
-
-
-
-
-
-        <IconButton aria-label="messages">
-          <img
-            src={process.env.PUBLIC_URL + "/icons/messages.png"}
-            alt="messages img"
-            className="pointer system-notification mx-1"
-          />
-        </IconButton>
-
-        <IconButton aria-label="notification">
-          <img
-            src={process.env.PUBLIC_URL + "/icons/notification.png"}
-            alt="notification img"
-            className="pointer system-notification mx-1"
-          />
-        </IconButton>
+          <IconButton aria-label="notification">
+            <Image
+              src={process.env.PUBLIC_URL + "/icons/notification.png"}
+              alt="notification Image"
+              className="pointer system-notification mx-1"
+            />
+          </IconButton>
+        </div>
       </div>
-    </div>
-    
-    
-    
-    <Calculator
-      show={showCalculator} 
-      onClose={handleCloseCalculator}
-      />
+
+      <Calculator show={showCalculator} onClose={handleCloseCalculator} />
     </>
   );
 };

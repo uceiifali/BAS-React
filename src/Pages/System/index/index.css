@@ -587,7 +587,7 @@
 .react-calendar__navigation:focus {
   background-color: #4355fa !important;
   color: white !important;
-} 
+}
 .react-calendar__navigation__arrow {
   display: none;
 }
@@ -607,7 +607,6 @@
   color: white !important;
   background-color: #4355fa !important;
 }
-
 
 .react-calendar__tile--active:enabled:hover,
 .react-calendar__year-view__months__month:hover {
@@ -668,4 +667,8 @@
 .accordion-item .accordion-collapse,
 .accordion-item .accordion-collapse.show {
   width: 100% !important;
+}
+
+.full-system .status .dropdown-toggle::after {
+  display: none !important;
 }

@@ -1,5 +1,5 @@
 import { useState, useCallback } from "react";
-import validate from '../utils/validation-rules';
+import validate from '../utiltis/validation-rules';
 
 const UseCheckbox = (initialValue, checkboxValue, validateRule, submitted = false) => {
   const [value, setValue] = useState(checkboxValue);

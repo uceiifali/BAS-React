@@ -187,6 +187,11 @@ a {
 
 }
 
+ .status .dropdown-toggle::after {
+ display: none!important;
+
+}
+
 
 .slider-Container img {
   border-radius: 10px;
