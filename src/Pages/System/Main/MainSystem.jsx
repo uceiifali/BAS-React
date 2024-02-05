@@ -9,6 +9,9 @@ import { useParams } from "react-router-dom";
 import { useState } from "react";
 import { columns } from "../../../utiltis/consts.jsx";
 import style from "./MainSystem.module.css";
+import { TableCell } from "../../../Components/Table/TableCell.jsx";
+import { TableRow } from "../../../Components/Table/TableRow.jsx";
+import CustomTable from "../../../Components/Table/index.jsx";
 export const MainSystem = () => {
   // define cleander value
   const [cleanderValue, setCleanderValue] = useState(false);
@@ -164,6 +167,7 @@ export const MainSystem = () => {
               </div>
             </div>
           </div>
+          
           <div className="row mx-auto">
             <div className="col-lg-8 col-md-12 mb-2 mx-auto">
               <div
@@ -237,12 +241,50 @@ export const MainSystem = () => {
                     <span> مشاريع</span>
                   </NavDropdown.Item>
                 </NavDropdown>
-                <div className="my-2 choosMainDeprtment">
-                  <DataTableComponent
+                <div className="mt-3 !h-[243px] overflow-scroll scrollbar-none">
+
+                  {/* <DataTableComponent
                     className={" !max-h-[243px]"}
                     columns={columns}
                     data={tableData}
-                  />
+                  /> */}
+                  <CustomTable 
+                  bordered={false}
+                  TableHeaderProps={{
+                    className: "bg-[#7676764D]"
+                  }}
+                  TableHeadProps={{
+                    className:"text-end text-[10px] border-none !font-semibold p-1 text-white"
+                  }}
+                  
+                  columns={columns} data={tableData}>
+                  {tableData && tableData.length > 0
+                    ? tableData.map(
+                        (
+                          {
+                            id,
+                            clientName,
+                            PhoneNumber,
+                            ClientType,
+                            email,
+                            status},
+                          index
+                        ) => (
+                          <TableRow
+                            className={`my-2  border-y !border-[#616161]`}
+                            key={index}
+                          >
+                            <TableCell cellClassName={"min-w-[10px]"} textColor="#ffffff7f">{id}</TableCell>
+                            <TableCell>{clientName}</TableCell>
+                            <TableCell>{PhoneNumber}</TableCell>
+                            <TableCell>{ClientType}</TableCell>
+                            <TableCell>{email}</TableCell>
+                            <TableCell>{status}</TableCell>
+                          </TableRow>
+                        )
+                      )
+                    : null}
+                </CustomTable>
                 </div>
               </div>
             </div>

@@ -8,6 +8,9 @@ import ShowDesignRequest from "../../../../Components/System/ShowRequest/ShowDes
 import EditDesignRequest from "../../../../Components/System/Requests/EditRequest/EditDesignRequest";
 import ConfirmPoper from "../../../../Components/System/ConfirmPoper";
 import Image from "../../../../Components/Image.jsx";
+import CustomTable from "../../../../Components/Table/index.jsx";
+import { TableRow } from "../../../../Components/Table/TableRow.jsx";
+import { TableCell } from "../../../../Components/Table/TableCell.jsx";
 const DesignRequest = () => {
   const [showProject, setShowProject] = useState(false);
   const [editRequest, setEditRequest] = useState(false);
@@ -25,7 +28,7 @@ const DesignRequest = () => {
       enStatus: "inProgress",
       display: (
         <Image
-          src={process.env.PUBLIC_URL + "/icons/view.png"}
+          src={process.env.PUBLIC_URL + "/icons/view.svg"}
           onClick={() => {
             setShowProject(true);
             SetDesignProjectType(DesignProjects[index]?.enStatus);
@@ -36,7 +39,7 @@ const DesignRequest = () => {
       ),
       edit: (
         <Image
-          src={process.env.PUBLIC_URL + "/edit.png"}
+          src={process.env.PUBLIC_URL + "/icons/edit.svg"}
           onClick={() => {
             setEditRequest(true);
           }}
@@ -106,12 +109,48 @@ const DesignRequest = () => {
             <fieldset className="TableContainer  py-3 px-2 mx-auto mt-3">
               <legend className="text-center ">طلبات ( تصميم )</legend>
 
-              <div className="mt-3   ">
-                <DataTableComponent
+              <div className="mt-3 !h-[400px] overflow-scroll scrollbar-none ">
+                <CustomTable columns={columns} data={DesignProjects}>
+                  {DesignProjects && DesignProjects.length > 0
+                    ? DesignProjects.map(
+                        (
+                          {
+                            id,
+                            ProjectName,
+                            ProjectNumber,
+                            createdAt,
+                            ProjectType,
+                            status,
+                            enStatus,
+                            display,
+                            edit,
+                          },
+                          index
+                        ) => (
+                          <TableRow
+                            className={`my-2 border !border-[#efaa207f] ${
+                              index % 2 === 0 ? "bg-[#151521]" : ""
+                            }`}
+                            key={index}
+                          >
+                            <TableCell textColor="#ffffff7f">{id}</TableCell>
+                            <TableCell>{ProjectName}</TableCell>
+                            <TableCell>{ProjectNumber}</TableCell>
+                            <TableCell>{createdAt}</TableCell>
+                            <TableCell>{ProjectType}</TableCell>
+                            <TableCell>{status}</TableCell>
+                            <TableCell>{display}</TableCell>
+                            <TableCell>{edit}</TableCell>
+                          </TableRow>
+                        )
+                      )
+                    : null}
+                </CustomTable>
+                {/* <DataTableComponent
                   className={"!h-[400px]"}
                   columns={columns}
                   data={DesignProjects}
-                />
+                /> */}
               </div>
             </fieldset>
           </div>

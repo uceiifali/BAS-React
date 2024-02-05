@@ -9,7 +9,7 @@ export default function TimePickerButton({ ...props }) {
   return (
     <div dir="ltr" className="">
       <LocalizationProvider dateAdapter={AdapterDayjs}>
-        <DemoContainer components={["TimePicker"]}>
+        <DemoContainer sx={{p: 0}} components={["TimePicker"]}>
           <TimePicker
             orientation="landscape"
             className="!border-8"
@@ -18,12 +18,19 @@ export default function TimePickerButton({ ...props }) {
               minutes: renderTimeViewClock,
               seconds: renderTimeViewClock,
             }}
-            slotProps={{
-              textField: { size: "small", variant: "filled" },
-              InputLabelProps: {
-                color: "#f",
+            sx={{
+              "& svg": {
+                color: "Rgba(255,255,255,0.5)"
               },
+              "& input":{
+                color: "white"
+
+              }
             }}
+            slotProps={{ textField: {size: 'medium', variant: 'filled'},InputLabelProps:{
+              color:"white"
+
+            } }}
             {...props}
           />
         </DemoContainer>

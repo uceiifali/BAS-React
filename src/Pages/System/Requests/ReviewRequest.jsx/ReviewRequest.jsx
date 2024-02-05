@@ -9,6 +9,9 @@ import ReviewRequestChart from "../../../../Components/System/Requests/ReviewReq
 import EditReviewRequest from "../../../../Components/System/Requests/EditRequest/EditReviewRequest";
 import ShowReviewRequest from "../../../../Components/System/ShowRequest/ShowReviewRequest";
 import Image from "../../../../Components/Image.jsx";
+import { TableCell } from "../../../../Components/Table/TableCell.jsx";
+import { TableRow } from "../../../../Components/Table/TableRow.jsx";
+import CustomTable from "../../../../Components/Table/index.jsx";
 const ReviewRequest = () => {
   const [showProject, setShowProject] = useState(false);
   const [editRequest, setEditRequest] = useState(false);
@@ -26,7 +29,7 @@ const ReviewRequest = () => {
       status: "قيد الا نتظار",
       display: (
         <Image
-          src={process.env.PUBLIC_URL + "/icons/view.png"}
+          src={process.env.PUBLIC_URL + "/icons/view.svg"}
           onClick={() => {
             setShowProject(true);
             SetReviewProjectType(DesignProjects[index]?.enStatus);
@@ -37,7 +40,7 @@ const ReviewRequest = () => {
       ),
       edit: (
         <Image
-          src={process.env.PUBLIC_URL + "/edit.png"}
+          src={process.env.PUBLIC_URL + "/icons/edit.svg"}
           onClick={() => {
             setEditRequest(true);
           }}
@@ -62,8 +65,16 @@ const ReviewRequest = () => {
       selector: (row) => row.ProjectNumber,
     },
     {
-      name: "  تاريخ الانشاء",
+      name: "  تاريخ الاستلام",
       selector: (row) => row.createdAt,
+    },
+    {
+      name: "  تاريخ التسليم",
+      selector: (row) => row.createdAt,
+    },
+    {
+      name: "نوع المشروع",
+      selector: (row) => row.ProjectType,
     },
 
     {
@@ -100,12 +111,49 @@ const ReviewRequest = () => {
             <fieldset className="TableContainer py-3 px-2 mx-auto mt-3">
               <legend className="text-center">طلبات ( اشراف )</legend>
 
-              <div className="mt-3">
-                <DataTableComponent
+              <div className="mt-3 !h-[400px] overflow-scroll scrollbar-none">
+                {/* <DataTableComponent
                   className={"!h-[400px]"}
                   columns={columns}
                   data={DesignProjects}
-                />
+                /> */}
+                <CustomTable columns={columns} data={DesignProjects}>
+                  {DesignProjects && DesignProjects.length > 0
+                    ? DesignProjects.map(
+                        (
+                          {
+                            id,
+                            ProjectName,
+                            ProjectNumber,
+                            createdAt,
+                            ProjectType,
+                            status,
+                            enStatus,
+                            display,
+                            edit,
+                          },
+                          index
+                        ) => (
+                          <TableRow
+                            className={`my-2 border !border-[#efaa207f] ${
+                              index % 2 === 0 ? "bg-[#151521]" : ""
+                            }`}
+                            key={index}
+                          >
+                            <TableCell textColor="#ffffff7f">{id}</TableCell>
+                            <TableCell>{ProjectName}</TableCell>
+                            <TableCell>{ProjectNumber}</TableCell>
+                            <TableCell>{createdAt}</TableCell>
+                            <TableCell>{createdAt}</TableCell>
+                            <TableCell>{ProjectType}</TableCell>
+                            <TableCell>{status}</TableCell>
+                            <TableCell>{display}</TableCell>
+                            <TableCell>{edit}</TableCell>
+                          </TableRow>
+                        )
+                      )
+                    : null}
+                </CustomTable>
               </div>
             </fieldset>
           </div>

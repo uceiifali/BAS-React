@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { Button, Form, Modal } from "react-bootstrap";
 import { Controller, useForm } from "react-hook-form";
+import { MenuItem } from "@mui/material";
 import Select from "../../../FormHandler/Select";
-import DatePicker from "react-datepicker";
+import { DatePicker } from "@mui/x-date-pickers/DatePicker";
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import TimePicker from "react-time-picker";
 import FormDatePicker from "../../../FormDatePicker";
 import AddAttachment from "../../AddAttachment";
@@ -10,6 +13,22 @@ import SaveButton from "../../../SaveButton";
 import styles from "./AddUpdateReception.module.css";
 import DeleteButton from "../../../DeleteButton";
 import Progress from "../../../Progress";
+import { FormModal } from "../../../../Pages/System/PlanModel/components/FormModal";
+import { InputLabel } from "../../../../Pages/System/PlanModel/components/InputLabel";
+import CustomSelect from "../../../../Pages/System/PlanModel/components/CustomSelect";
+import { CiSearch } from "react-icons/ci";
+import { ProjectNames } from "../../../../Pages/System/PlanModel/consts";
+import TimePickerButton from "../../../TimePickerPage";
+
+const ModalHeader = ({ title }) => {
+  return (
+    <Modal.Header className="border-none" closeButton>
+      <Modal.Title className="mx-auto border !border-[#EFAA20] rounded-[5px] p-2">
+        <p className="text-[#EFAA20] font-semibold text-xl">{title}</p>
+      </Modal.Title>
+    </Modal.Header>
+  );
+};
 
 const AddUpdateReciption = ({
   editVisit,
@@ -20,6 +39,11 @@ const AddUpdateReciption = ({
   status,
   id = null,
 }) => {
+  let [startMeeting, setStartMeeting] = useState(null);
+  let [endMeeting, setEndMeeting] = useState(null);
+
+  let [recievingDate, setRecievingDate] = useState(null);
+  const [selectedSupervisor, setSelectedSupervisor] = useState("");
   const [attachment, setAttachment] = useState(false);
   const [addVisit, setAddVisit] = useState(true);
   const {
@@ -42,6 +66,7 @@ const AddUpdateReciption = ({
     console.log("addUpdateRec is open");
   }, []);
   return (
+    <LocalizationProvider dateAdapter={AdapterDayjs}>
     <div>
       {id && editVisit && status === "Exports" && (
         <Modal
@@ -49,7 +74,7 @@ const AddUpdateReciption = ({
           show={editVisit}
           onHide={() => setEditVisit(false)}
           aria-labelledby=" example-modal-sizes-title-lg"
-          className={`systemModal ${styles.ReciptionModal}   overflow-y-scroll `}
+          className={`systemModal ${styles.ReciptionModal} scrollbar-none  overflow-y-scroll `}
         >
           <div className="mx-auto py-2 px-4 flex justify-center items-center rounded-md border-1 border-[#EFAA20]">
             <p className="text-[#EFAA20] text-xl font-semibold">
@@ -239,7 +264,7 @@ const AddUpdateReciption = ({
           show={editVisit}
           onHide={() => setEditVisit(false)}
           aria-labelledby=" example-modal-sizes-title-lg"
-          className={`systemModal ${styles.ReciptionModal}   overflow-y-scroll `}
+          className={`systemModal ${styles.ReciptionModal}  scrollbar-none overflow-y-scroll `}
         >
           <div className="mx-auto w-[139px] h-[43px] flex justify-center items-center rounded-md border-1 border-[#EFAA20]">
             <p className="text-white"> تعديل الزيارة الواردة</p>
@@ -380,21 +405,39 @@ const AddUpdateReciption = ({
           </Form>
         </Modal>
       )}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
       {!id && show && ReciptionType === "Exports" && (
         <Modal
           size="lg"
           show={show}
           onHide={() => setShow(false)}
           aria-labelledby=" example-modal-sizes-title-lg"
-          className={`systemModal ${styles.ReciptionModal}   overflow-y-scroll `}
+          className={`systemModal `}
+          contentClassName="scrollbar-none overflow-y-scroll p-4"
         >
-          <div className="mx-auto w-[139px] h-[43px] flex justify-center items-center rounded-md border-1 border-[#EFAA20]">
+          <ModalHeader title={"اضافة زيارة"} />
+
+          {/* <div className="mx-auto w-[139px] h-[43px] flex justify-center items-center rounded-md border-1 border-[#EFAA20]">
             <p className="text-white">اضافة زيارة صادرة</p>
-          </div>
+          </div> */}
           <Form onSubmit={handleSubmit(handleAddvisit)}>
-            <fieldset className="fieldBorder container   mx-auto  p-3 my-3">
-              <legend className="text-center">معلومات الزيارة</legend>
-              <div class="grid grid-cols-2 gap-4 mb-3">
+            <FormModal title={"معلومات الزيارة"}>
+              <div class="grid grid-cols-3 gap-4 mb-3">
                 <Controller
                   name="visitType"
                   className="w-100"
@@ -423,15 +466,35 @@ const AddUpdateReciption = ({
                   )}
                 />
 
-                <Form.Group>
-                  <Form.Label> اسم الشخص</Form.Label>
-                  <input
+                <Form.Group className="col-span-2">
+                  <InputLabel id="username" label={"اسم الشخص"} />
+                  <CustomSelect>
+                    <MenuItem disabled value="">
+                      <div className="w-full flex justify-between">
+                        <span>بحث ...</span>
+                        <CiSearch />
+                      </div>
+                    </MenuItem>
+                    {ProjectNames.map((name, index) => (
+                      <MenuItem
+                        key={index}
+                        value={name}
+                        onClick={(e) => setSelectedSupervisor(name)}
+                        // style={getStyles(name, selectedItem, theme)}
+                      >
+                        {name}
+                      </MenuItem>
+                    ))}
+                  </CustomSelect>
+
+                  {/* <input
                     className="form-control h-[37px]"
                     placeholder="ادخل اسم الشخص"
                     {...register("personName")}
-                  />
+                  /> */}
                 </Form.Group>
               </div>
+
               <div class="grid grid-cols-2 gap-4 mb-3">
                 <Controller
                   name="identity"
@@ -472,8 +535,29 @@ const AddUpdateReciption = ({
 
               <div class="grid grid-cols-3 gap-4 mb-3">
                 <Form.Group>
-                  <Form.Label> تاريخ الزيارة</Form.Label>
-                  <Controller
+                <InputLabel id="recieving-date" label={"تاريخ الزيارة"} />
+                    <DatePicker
+                      id="recieving-date"
+                      selected={recievingDate}
+                      placeholder="تاريخ الزيارة"
+                      onChange={(date) => setRecievingDate(date)}
+                      dateFormat="dd-MM-yyyy"
+                      className="w-full bg-[#2B2B40] rounded-[7px]"
+                      
+                      sx={{
+                        "& fieldset": {
+                          border: "none",
+                        },
+                        "& input": {
+                          color: "white",
+                        },
+                        "& svg": {
+                          color: "Rgba(255,255,255,0.5)",
+                        },
+                      }}
+                    />
+                  {/* <Form.Label> تاريخ الزيارة</Form.Label> */}
+                  {/* <Controller
                     control={control}
                     name="date-input"
                     render={({ field }) => (
@@ -483,11 +567,19 @@ const AddUpdateReciption = ({
                         date={field.value}
                       />
                     )}
-                  />
+                  /> */}
                 </Form.Group>
                 <Form.Group>
-                  <Form.Label> وقت الزياره من</Form.Label>
-                  <Controller
+                  <InputLabel id="recieving-date" label={"وقت الزياره من"} />
+                  <TimePickerButton
+                    value={startMeeting}
+                    placeholder="اختر"
+                    onChange={(time) => setStartMeeting(time)}
+                    className="w-100 form-control !text-white" 
+                    />
+
+
+                  {/* <Controller
                     control={control}
                     name="startVisitTime"
                     render={({ field }) => (
@@ -498,11 +590,19 @@ const AddUpdateReciption = ({
                         className="w-100 form-control"
                       />
                     )}
-                  />
+                  /> */}
                 </Form.Group>
                 <Form.Group>
-                  <Form.Label> وقت الزياره الي</Form.Label>
-                  <Controller
+                  <InputLabel id="recieving-date" label={"وقت الزياره الي"} />
+
+                  <TimePickerButton
+                    value={endMeeting}
+                    
+                    placeholder="اختر"
+                    onChange={(time) => setEndMeeting(time)}
+                    className="w-100 form-control !text-white" 
+                    />
+                  {/* <Controller
                     control={control}
                     name="EndVisitTime"
                     render={({ field }) => (
@@ -513,12 +613,11 @@ const AddUpdateReciption = ({
                         className="w-100 form-control"
                       />
                     )}
-                  />
+                  /> */}
                 </Form.Group>
               </div>
-            </fieldset>
-            <fieldset className="fieldBorder container mx-auto  p-3 my-3 ">
-              <legend className="text-center">تفاصيل الزيارة</legend>
+            </FormModal>
+            <FormModal title={"تفاصيل الزيارة"}>
               <Form.Group className="my-3">
                 <Form.Label>سبب الزيارة</Form.Label>
                 <textarea
@@ -539,14 +638,13 @@ const AddUpdateReciption = ({
                   placeholder="اكتب  ملاحظات .................................."
                 />
               </Form.Group>
-            </fieldset>
-            <fieldset className="fieldBorder container mx-auto  p-3 my-3 ">
-              <legend className="text-center">تفاصيل الزيارة</legend>
+            </FormModal>
+            <FormModal title={"المرفقات"}>
               <AddAttachment
                 attachment={attachment}
                 setAttachment={setAttachment}
               />
-            </fieldset>
+            </FormModal>
             <div className="flex justify-center gap-4">
               <DeleteButton />
               <SaveButton />
@@ -554,17 +652,28 @@ const AddUpdateReciption = ({
           </Form>
         </Modal>
       )}
+
+
+
+
+
+
+
+
+
+
       {!id && show && ReciptionType === "Imports" && (
         <Modal
           size="lg"
           show={show}
           onHide={() => setShow(false)}
           aria-labelledby=" example-modal-sizes-title-lg"
-          className={`systemModal ${styles.ReciptionModal}   overflow-y-scroll `}
+          className={`systemModal ${styles.ReciptionModal}  scrollbar-none overflow-y-scroll `}
         >
-          <div className="mx-auto w-[139px] h-[43px] flex justify-center items-center rounded-md border-1 border-[#EFAA20]">
+          <ModalHeader title={"اضافة زيارة"} />
+          {/* <div className="mx-auto w-[139px] h-[43px] flex justify-center items-center rounded-md border-1 border-[#EFAA20]">
             <p className="text-white">اضافة الزيارة الواردة</p>
-          </div>
+          </div> */}
           <Form onSubmit={handleSubmit(handleAddvisit)}>
             <fieldset className="fieldBorder container   mx-auto  p-3 my-3">
               <legend className="text-center">معلومات الزيارة</legend>
@@ -619,7 +728,28 @@ const AddUpdateReciption = ({
 
               <div class="grid grid-cols-3 gap-4 mb-3">
                 <Form.Group>
-                  <Form.Label> تاريخ الزيارة</Form.Label>
+                <InputLabel id="recieving-date" label={"تاريخ الزيارة"} />
+                    <DatePicker
+                      id="recieving-date"
+                      selected={recievingDate}
+                      placeholder="تاريخ الزيارة"
+                      onChange={(date) => setRecievingDate(date)}
+                      dateFormat="dd-MM-yyyy"
+                      className="w-full bg-[#2B2B40] rounded-[7px]"
+                      
+                      sx={{
+                        "& fieldset": {
+                          border: "none",
+                        },
+                        "& input": {
+                          color: "white",
+                        },
+                        "& svg": {
+                          color: "Rgba(255,255,255,0.5)",
+                        },
+                      }}
+                    />
+                  {/* <Form.Label> تاريخ الزيارة</Form.Label>
                   <Controller
                     control={control}
                     name="date-input"
@@ -630,10 +760,17 @@ const AddUpdateReciption = ({
                         date={field.value}
                       />
                     )}
-                  />
+                  /> */}
                 </Form.Group>
                 <Form.Group>
-                  <Form.Label> وقت الزياره من</Form.Label>
+                <InputLabel id="recieving-date" label={"وقت الزياره من"} />
+                  <TimePickerButton
+                    value={startMeeting}
+                    placeholder="اختر"
+                    onChange={(time) => setStartMeeting(time)}
+                    className="w-100 form-control !text-white" 
+                    />
+                  {/* <Form.Label> وقت الزياره من</Form.Label>
                   <Controller
                     control={control}
                     name="startVisitTime"
@@ -645,10 +782,19 @@ const AddUpdateReciption = ({
                         className="w-100 form-control"
                       />
                     )}
-                  />
+                  /> */}
                 </Form.Group>
                 <Form.Group>
-                  <Form.Label> وقت الزياره الي</Form.Label>
+                <InputLabel id="recieving-date" label={"وقت الزياره الي"} />
+
+<TimePickerButton
+  value={endMeeting}
+  
+  placeholder="اختر"
+  onChange={(time) => setEndMeeting(time)}
+  className="w-100 form-control !text-white" 
+  />
+                  {/* <Form.Label> وقت الزياره الي</Form.Label>
                   <Controller
                     control={control}
                     name="EndVisitTime"
@@ -660,7 +806,7 @@ const AddUpdateReciption = ({
                         className="w-100 form-control"
                       />
                     )}
-                  />
+                  /> */}
                 </Form.Group>
               </div>
             </fieldset>
@@ -703,6 +849,7 @@ const AddUpdateReciption = ({
       )}
       {/* {!id && !show && editVisit && <Progress />} */}
     </div>
+    </LocalizationProvider>
   );
 };
 
