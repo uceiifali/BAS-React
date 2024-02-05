@@ -1,9 +1,10 @@
 .add-user-button {
-
-    width: 201px !important;
-    height: 38px !important;
-    background-color: #2B2B40 !important;
-    font-size: 16px !important;
-    border: none !important;
-    box-shadow: unset !important;
+  color: white !important;
+  width: 201px !important;
+  height: 38px !important;
+  background-color: #2b2b40 !important;
+  font-size: 16px !important;
+  border-radius: 10px !important;
+  border: none !important;
+  box-shadow: unset !important;
 }

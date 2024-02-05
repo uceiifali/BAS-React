@@ -1,7 +1,7 @@
 import React from "react";
 import DatePicker from "react-datepicker";
 import { CiCalendar } from "react-icons/ci";
-function CustomInput({ value, onClick,  }) {
+function CustomInput({ value, onClick }) {
   return (
     <div className="input-group form-date-picker-group">
       <input
@@ -12,14 +12,15 @@ function CustomInput({ value, onClick,  }) {
         readOnly
       />
       <div className="input-group-append">
+        {/* !border-none */}
         <span onClick={onClick} className="input-group-text  pointer">
-          <CiCalendar color="#FFF" className="border-none" />
+          <CiCalendar color="#FFF" className=" " />
         </span>
       </div>
     </div>
   );
 }
-const FormDatePicker = ({ date, setDate, placeholderText ,onChange}) => {
+const FormDatePicker = ({ date, setDate, placeholderText, onChange }) => {
   return (
     <DatePicker
       selected={date}

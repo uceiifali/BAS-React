@@ -1,14 +1,14 @@
 import React from "react";
+import Calendar from "react-calendar";
 import SystemControler from "../../../Components/System/SystemControler/SystemControler";
-import style from "./MainSystem.module.css";
 import { Container, Image, NavDropdown } from "react-bootstrap";
 import SystemLineChart from "../../../Components/System/Main/SystemLineChart";
 import AllDeprtmentSlider from "../../../Components/System/Main/ِAllDeprtmentSLider";
 import DataTableComponent from "../../../Components/DataTableComponent.jsx";
 import { useParams } from "react-router-dom";
 import { useState } from "react";
-import Calendar from "react-calendar";
 import { columns } from "../../../utils/consts.jsx";
+import style from "./MainSystem.module.css";
 export const MainSystem = () => {
   // define cleander value
   const [cleanderValue, setCleanderValue] = useState(false);
@@ -48,8 +48,8 @@ export const MainSystem = () => {
       <div className={`${style.MainSystem}  d-flex justify-center w-100  `}>
         <div className={`${style.mainBackground} `}></div>
         <Container className="position-absolute z-3">
-          <div className="row mx-auto ">
-            <div className="col-md-6">
+          <div className=" grid descktop:grid-cols-2 laptop:grid-cols-5  gap-2 mx-auto">
+            <div className=" laptop:col-span-2  ">
               <div className={`item   p-3  ${style.cardsBackground}`}>
                 <div className="row">
                   <div className="col-md-6 mb-3">
@@ -150,14 +150,14 @@ export const MainSystem = () => {
                 </div>
               </div>
             </div>
-            <div className="col-md-6">
+            <div className=" laptop:col-span-3 ">
               <div className={`item  p-0  ${style.cardsBackground}`}>
                 <div
-                  className={` systemLineChart d-flex  h-75 w-100 p-0 m-0  ${style.systemLineChart} align-items-center flex-column`}
+                  className={` systemLineChart flex justify-center  h-4/5  w-100 p-0 m-0  ${style.systemLineChart} align-items-center flex-column`}
                 >
                   <SystemLineChart />
                 </div>
-                <div className="w-90  mx-2 mt-1    overflow-x-auto">
+                <div className="w-90  mx-auto mt-1    overflow-x-auto">
                   {" "}
                   <AllDeprtmentSlider />
                 </div>
@@ -239,7 +239,7 @@ export const MainSystem = () => {
                 </NavDropdown>
                 <div className="my-2 choosMainDeprtment">
                   <DataTableComponent
-                    className={" max-h-[243px]"}
+                    className={" !max-h-[243px]"}
                     columns={columns}
                     data={tableData}
                   />

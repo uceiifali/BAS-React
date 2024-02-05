@@ -97,7 +97,7 @@ const EmployeesServices = () => {
             <div className={`${style.servicesTypesContainer} `}>
               <SearchComponent />
               <p className="text-white mt-2">كل الخدمات</p>
-              <div className="d-flex my-3 gap-3">
+              <div className="d-flex my-3 gap-3  border !border-transparent hover:!border-[#EFAA20] pointer">
                 <div className={`${style.pdfbackground} `}>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -142,7 +142,7 @@ const EmployeesServices = () => {
                 </div>
                 <p className="text-white">طلب اجازة</p>
               </div>
-              <div className="d-flex my-3 gap-3">
+              <div className="d-flex my-3 gap-3  border !border-transparent hover:!border-[#EFAA20] pointer">
                 <div className={`${style.pdfbackground} `}>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"

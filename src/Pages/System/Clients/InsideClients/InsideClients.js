@@ -16,7 +16,7 @@ const InsideClients = () => {
             <div className='col-md-3 all-clients-search-container'>
 
 
-                <SearchComponent background={"#161620 !important"} />
+                <SearchComponent />
 
                 <div className='d-flex justify-content-between mt-4 w-100'>
                     <Link to={"/System/Allclients"} className='pointer' >
@@ -56,22 +56,22 @@ const InsideClients = () => {
                 </div>
 
                 <div className='all-clints-search-driver inside-Search'></div>
-                <Link to={"/System/ClintDetails/1"}>
-                    <div className='clintName'>
+                <Link  to={"/System/ClintDetails/1"}>
+                    <div className='clintName '>
                         <p className='text-white mb-0'>سلطان عبد الله</p>
                         <p className='clint-type '>فردى</p>
 
                     </div>
                 </Link>
-                <Link to={"/System/ClintDetails/2"}>
-                    <div className='clintName'>
+                <Link  to={"/System/ClintDetails/2"}>
+                    <div  className='clintName '>
                         <p className='text-white mb-0'> فهد عبد الرحمن</p>
                         <p className='clint-type '>مستسمر</p>
 
                     </div>
 
                 </Link>
-                <Link to={"/System/ClintDetails/3"}><div className='clintName'>
+                <Link  to={"/System/ClintDetails/3"}><div className='clintName '>
                     <p className='text-white mb-0'>  سعود بن حمد </p>
                     <p className='clint-type '>شركة </p>
 

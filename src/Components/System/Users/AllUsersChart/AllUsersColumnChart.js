@@ -92,7 +92,12 @@ class AllUsersColumnChart extends React.Component {
         };
     }
 
-
+    componentDidMount() {
+        const text = document.querySelectorAll(
+          "text.apexcharts-text.apexcharts-datalabel-value"
+        );
+        text[0].setAttribute("fill", "#FFFFFF");
+      }
 
     render() {
         return (

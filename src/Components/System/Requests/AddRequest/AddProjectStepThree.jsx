@@ -16,6 +16,7 @@ import ConfirmPoper from "../../ConfirmPoper";
 const AddProjectStepThree = (props) => {
   // Design Data
   // context variabules
+  const { pagePath } = props;
   const {
     userData,
     setUserData,
@@ -70,7 +71,7 @@ const AddProjectStepThree = (props) => {
       instrumentNumber.value &&
       instrumentNumber.isValid &&
       InstrumentAttachments?.name &&
-      checkProjectType == "تصميم"
+      checkProjectType === "تصميم"
     ) {
       const updatedUserData = {
         ...userData,
@@ -129,7 +130,7 @@ const AddProjectStepThree = (props) => {
   const [confirmSubmit, setConfirmSubmit] = useState(false);
 
   // check Review validation
-
+  console.log(checkProjectType)
   useMemo(() => {
     if (
       licenseNumber.isValid &&
@@ -138,7 +139,7 @@ const AddProjectStepThree = (props) => {
       licenseDeed.value &&
       licenseDate &&
       licenseAttachments?.name &&
-      checkProjectType == "الاشراف علي التنفيذ"
+      checkProjectType === "الاشراف علي التنفيذ"
     ) {
       signalParent(true);
       const updatedUserData = {
@@ -182,19 +183,29 @@ const AddProjectStepThree = (props) => {
 
   return (
     <fieldset className="addProjectStep step-three mx-auto">
-      {checkProjectType == "تصميم" ? (
+      {checkProjectType === "تصميم" ? (
         <legend className="text-center"> اضافة بيانات الوكالة </legend>
       ) : (
         <legend className="text-center">اضافة بيانات الرخصة </legend>
       )}
 
-      {checkProjectType == "تصميم" ? (
+      {checkProjectType === "تصميم" ? (
         <Form className=" row w-100 m-auto ">
           <div className="col-md-6 mb-4">
-            <Input label={" الوكيل "} {...agent.bind} mandatory />
+            <Input
+              className="h-[37px]"
+              label={" الوكيل "}
+              {...agent.bind}
+              mandatory
+            />
           </div>
           <div className="col-md-6 mb-4">
-            <Input label={" رقم الوكيل "} {...agencyNumber.bind} mandatory />
+            <Input
+              className="h-[37px]"
+              label={" رقم الوكيل "}
+              {...agencyNumber.bind}
+              mandatory
+            />
           </div>
 
           <div className="col-md-6 mb-4">
@@ -212,7 +223,12 @@ const AddProjectStepThree = (props) => {
           </div>
 
           <div className="col-md-6 mb-4">
-            <Input label={"رقم الصك"} {...instrumentNumber.bind} mandatory />
+            <Input
+              className="h-[37px]"
+              label={"رقم الصك"}
+              {...instrumentNumber.bind}
+              mandatory
+            />
           </div>
           <div className="col-md-6 mb-4">
             <Form.Group controlId="formBasicImage">
@@ -252,6 +268,7 @@ const AddProjectStepThree = (props) => {
         <Form className="row w-100 m-auto ">
           <div className="col-md-6 mb-4">
             <Input
+              className="h-[37px]"
               placeholder="ادخل رقم الرخصة"
               label={" رقم الرخصة "}
               {...licenseNumber.bind}
@@ -260,6 +277,7 @@ const AddProjectStepThree = (props) => {
           </div>
           <div className="col-md-6 mb-4">
             <Input
+              className="h-[37px]"
               placeholder="ادخل سند الرخصة"
               label={" سند الرخصة  "}
               {...licenseDeed.bind}

@@ -8,6 +8,7 @@ import { showAddUpdateUser } from "../../../../Context/CheckAddUpdateUserVisabil
 import Pdf from "../../../Pdf";
 import PdfImage from "../../../PdfImage";
 import EditReviewReport from "../EditReviewReport/EditReviewReport";
+import DeleteModal from "../../../../Pages/System/Settings/RemoveModal";
 
 const ShowReviewReport = ({ setShowReport }) => {
   const searchProject = UseInput("", "");
@@ -27,7 +28,7 @@ const ShowReviewReport = ({ setShowReport }) => {
 
   return (
     <>
-      {deleteReport && (
+      {/* {deleteReport && (
         <Modal
           className="submitSystemPoper"
           size="lg"
@@ -104,7 +105,13 @@ const ShowReviewReport = ({ setShowReport }) => {
             </div>
           </Modal.Body>
         </Modal>
-      )}
+      )} */}
+
+      <DeleteModal
+        title={"التاكيد"}
+        show={deleteReport}
+        handleClose={handleDeleteReport}
+      />
       {editReport && (
         <EditReviewReport
           editReport={editReport}

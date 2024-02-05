@@ -28,15 +28,6 @@ class PieChart extends React.Component {
           },
           autoSelected: "download",
         },
-
-        colors: this.props.colors,
-        stroke: {
-          show: false, // Set this to false to remove the border of the donut segments
-        },
-        dataLabels: {
-          enabled: false,
-        },
-
         plotOptions: {
           pie: {
             donut: {
@@ -44,17 +35,23 @@ class PieChart extends React.Component {
                 show: true,
                 total: {
                   show: true,
-                  color: "#FFF",
-                  label: "",
+                  label: this.props.label,
+                  color: "#fff",
                   formatter: (val) => {
-                    // console.log(" val is " + val);
-                    return  "message";
-
+                    return "100%";
                   },
                 },
               },
             },
           },
+        },
+
+        colors: this.props.colors,
+        stroke: {
+          show: false, // Set this to false to remove the border of the donut segments
+        },
+        dataLabels: {
+          enabled: false,
         },
 
         responsive: [
@@ -78,6 +75,12 @@ class PieChart extends React.Component {
         },
       },
     };
+  }
+  componentDidMount() {
+    const text = document.querySelectorAll(
+      "text.apexcharts-text.apexcharts-datalabel-value"
+    );
+    text[0].setAttribute("fill", "#FFFFFF");
   }
 
   render() {

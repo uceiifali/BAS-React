@@ -1,15 +1,11 @@
 import React from "react";
-import Input from "../FormHandler/Input";
 
-export const SearchComponent = ({ background, width, className }) => {
+export const SearchComponent = ({ background, width, className, value }) => {
   return (
     <div className="d-flex  w-100  mt-3  justify-content-center">
-      <Input
-        background={background}
-        height="37.06px"
-        width={width}
-        className={`border-0  search ${className}`}
-        placeholder="Search..."
+      <input
+        className={`border-0  bg-[#1B1B29] rounded-[7.721px] h-[37.06px] !text-white p-3 search ${className}`}
+        placeholder="بحث..."
       />
     </div>
   );

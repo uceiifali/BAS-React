@@ -204,6 +204,9 @@ a {
 .h-100px {
   height: 100px;
 }
+.h-90{
+  height: 90%;
+}
 
 .landing button {
   padding: 10px 25px;

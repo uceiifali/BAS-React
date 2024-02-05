@@ -10,6 +10,7 @@ import PdfImage from "../../../PdfImage";
 import EditReviewReport from "../EditReviewReport/EditReviewReport";
 import DataTableComponent from "../../../DataTableComponent";
 import Image from "../../../Image";
+import DeleteModal from "../../../../Pages/System/Settings/RemoveModal";
 
 const ShowDesignReport = ({ setShowReport }) => {
   const searchProject = UseInput("", "");
@@ -131,7 +132,7 @@ const ShowDesignReport = ({ setShowReport }) => {
 
   return (
     <>
-      {deleteReport && (
+      {/* {deleteReport && (
         <Modal
           className="submitSystemPoper"
           size="lg"
@@ -208,7 +209,12 @@ const ShowDesignReport = ({ setShowReport }) => {
             </div>
           </Modal.Body>
         </Modal>
-      )}
+      )} */}
+      <DeleteModal
+        title={"التاكيد"}
+        show={deleteReport}
+        handleClose={handleDeleteReport}
+      />
 
       {openNotes && (
         <Modal

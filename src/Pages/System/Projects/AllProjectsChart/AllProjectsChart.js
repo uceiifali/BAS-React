@@ -12,7 +12,7 @@ const AllProjectsChart = () => {
     return (
         <div className=' p-4 d-flex gap-5 AllRequests  align-items-center flex-column'>
             <div className='AllRequestsPieChartContainer w-100  d-flex align-items-center justify-content-center' >
-                <PieChart colors={["#EFAA20", "#E40038", "#03795D"]} width={500} labels={["قيد التنفيذ 60 ", "معلقة 20 ", "منتهية 20"]} series={[6, 3, 1]} />
+                <PieChart label="كل المشاريع" colors={["#EFAA20", "#E40038", "#03795D"]} width={500} labels={["قيد التنفيذ 60 ", "معلقة 20 ", "منتهية 20"]} series={[6, 3, 1]} />
 
             </div>
             <div className='AllRequestsLineChartContainer w-100  d-flex align-items-center justify-content-center' >

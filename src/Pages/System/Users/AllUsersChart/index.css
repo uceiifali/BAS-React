@@ -25,9 +25,10 @@
     height: 95%;
     border-radius: 17.573px;
     background: #151521;
-    width: 90%;
+    width: 95%;
     margin: auto;
     overflow-x  : hidden;
+    overflow-y: hidden;
 
 }
 .country-Chart{

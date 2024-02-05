@@ -13,7 +13,7 @@ function SuccessfullModal({ message, show, handleClose }) {
       >
         <Modal.Header className=" py-2 !rounded-[0px] !justify-center border-none">
           <div className="w-32 ">
-          <img src="/correct.gif" alt="successfully" className="w-full " />
+            <img src="/correct.gif" alt="successfully" className="w-full " />
           </div>
         </Modal.Header>
         <Modal.Body>
