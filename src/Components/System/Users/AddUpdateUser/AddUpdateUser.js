@@ -144,7 +144,7 @@ const AddUpdateUser = ({ id = null, setOpenUpdateUser, setOpenModal }) => {
   };
 
   return (
-    <div className="addUpdateUser P-4">
+    <div className="addUpdateUser yellow-scroll  P-4">
       {showSubmitPoper && (
         <Modal
           className="submitSystemPoper"
@@ -156,7 +156,7 @@ const AddUpdateUser = ({ id = null, setOpenUpdateUser, setOpenModal }) => {
           <Modal.Body>
             <div className="d-flex justify-content-center w-100">
               {" "}
-              <img
+              <Image
                 src={process.env.PUBLIC_URL + "/correct.gif"}
                 width={120}
                 height={120}
@@ -223,35 +223,29 @@ const AddUpdateUser = ({ id = null, setOpenUpdateUser, setOpenModal }) => {
               تعديل المستخدم{" "}
             </legend>
           )}
-          <div className="row    ">
-            <div className="col-md-4 col-sm-6  d-flex justify-content-center  mb-2">
+          <div className="grid grid-cols-3 gap-4   mx-2 ">
+            <div className=" d-flex justify-content-center  mb-2">
               <Input
                 label="الاسم الاول"
                 {...firstName.bind}
-                width="190px"
-                height="37px"
                 placeholder="ادخل الاسم الاول"
               />
             </div>
-            <div className="col-md-4 col-sm-6 mb-2 d-flex justify-content-center">
+            <div className="mb-2 d-flex justify-content-center">
               <Input
                 label="الاسم  الاخير"
                 {...lastName.bind}
-                width="190px"
-                height="37px"
                 placeholder="ادخل الاسم الاخير"
               />
             </div>
-            <div className="col-md-4 col-sm-6 mb-2 d-flex justify-content-center">
+            <div className="mb-2 d-flex justify-content-center">
               <Input
                 label="الاسم  المستخدم "
                 {...userName.bind}
-                width="190px"
-                height="37px"
                 placeholder="ادخل اسم المستخدم"
               />
             </div>
-            <div className="col-md-4 col-sm-6 mb-2 d-flex justify-content-center">
+            <div className="mb-2 d-flex justify-content-center">
               <Select
                 label="النوع"
                 options={genderOptions}
@@ -259,21 +253,21 @@ const AddUpdateUser = ({ id = null, setOpenUpdateUser, setOpenModal }) => {
                 placeholder="النوع"
               />
             </div>
-            <div className="col-md-4 col-sm-6 mb-2 d-flex justify-content-center">
+            <div className="mb-2 d-flex justify-content-center">
               <Input
                 label="البريد الالكتروني"
                 {...email.bind}
                 placeholder="ادخل البريد الالكتروني"
               />
             </div>
-            <div className="col-md-4 col-sm-6 mb-2 d-flex justify-content-center">
+            <div className=" mb-2 d-flex justify-content-center">
               <Input
                 label=" رقم الجوال"
                 {...phone.bind}
                 placeholder="ادخل رقم الجوال"
               />
             </div>
-            <div className="col-md-4 col-sm-6 mb-2 d-flex justify-content-center">
+            <div className=" mb-2 d-flex justify-content-center">
               <Select
                 label=" البلد "
                 {...country.bind}
@@ -281,17 +275,17 @@ const AddUpdateUser = ({ id = null, setOpenUpdateUser, setOpenModal }) => {
                 placeholder="  ادخل البلد"
               />
             </div>
-            <div className="col-md-4 col-sm-6 mb-2 d-flex justify-content-center">
+            <div className=" mb-2 d-flex justify-content-center">
               <Input
                 label=" المدينه "
                 {...city.bind}
                 placeholder="  ادخل المدينه"
               />
             </div>
-            <div className="col-md-4 col-sm-6 mb-2 d-flex justify-content-center">
+            <div className=" mb-2 d-flex justify-content-center">
               <Input label="الحي " {...area.bind} placeholder="  ادخل الحي" />
             </div>
-            <div className="col-md-4 col-sm-6 mb-2 d-flex justify-content-center">
+            <div className=" mb-2 d-flex justify-content-center">
               <Form.Group
                 className="licenseDate-container"
                 controlId="licenseDate"
@@ -309,7 +303,7 @@ const AddUpdateUser = ({ id = null, setOpenUpdateUser, setOpenModal }) => {
                 />
               </Form.Group>
             </div>
-            <div className="col-md-4 col-sm-6 mb-2 d-flex justify-content-center">
+            <div className=" mb-2 d-flex justify-content-center">
               <Select
                 label=" القسم "
                 {...department.bind}
@@ -317,7 +311,7 @@ const AddUpdateUser = ({ id = null, setOpenUpdateUser, setOpenModal }) => {
                 placeholder="  ادخل القسم"
               />
             </div>
-            <div className="col-md-4 col-sm-6 mb-2 d-flex justify-content-center">
+            <div className=" mb-2 d-flex justify-content-center">
               <Select
                 label=" الصلاحية "
                 {...role.bind}
@@ -325,7 +319,7 @@ const AddUpdateUser = ({ id = null, setOpenUpdateUser, setOpenModal }) => {
                 placeholder="  اختار الصلاحية"
               />
             </div>
-            <div className="col-md-4 col-sm-6 mb-2 d-flex justify-content-center">
+            <div className=" mb-2 d-flex justify-content-center">
               <Form.Group
                 className="licenseDate-container"
                 controlId="licenseDate"
@@ -343,14 +337,14 @@ const AddUpdateUser = ({ id = null, setOpenUpdateUser, setOpenModal }) => {
                 />
               </Form.Group>
             </div>
-            <div className="col-md-4 col-sm-6 mb-2 d-flex justify-content-center">
+            <div className=" mb-2 d-flex justify-content-center">
               <Input
                 label="رقم الهوية "
                 {...instrumentNumber.bind}
                 placeholder="  ادخل رقم الهوية"
               />
             </div>
-            <div className="col-md-4 col-sm-6 mb-2 d-flex justify-content-center">
+            <div className=" mb-2 d-flex justify-content-center">
               <Form.Group
                 className="licenseDate-container"
                 controlId="licenseDate"
