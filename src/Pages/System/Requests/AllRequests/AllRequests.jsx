@@ -29,7 +29,7 @@ const AllRequests = () => {
     inProgress: false,
     waiting: false,
     rejected: false,
-  });
+  }); 
   const [view, setView] = useState(false);
   const { pathname } = useLocation();
   const pagePath = pathname.split("/System/Requests/")[1];

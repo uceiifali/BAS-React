@@ -19,13 +19,15 @@ import { AddHrType } from "../../../../Context/AddHr";
 import Image from "../../../Image";
 import CustomModal from "../../../Modals/CustomModal";
 import SuccessfullModal from "../../../Modals/SuccessfullModal";
+import UpdatePassword from "../../../Modals/UpdatePassword";
 
 const HrUsers = () => {
   const [employeeDetails, setEmployeeDetails] = useState("عن الموظف");
   const [editUser, setEditUser] = useState(false);
   const [deleteUser, setDeleteUser] = useState(false);
+  const [upgradeUser, setUpgradeUser] = useState(false);
   const [successfull, setSuccsesfull] = useState(false);
-
+  const [message, setMessage] = useState("");
   const handleGetUserDetails = () => {};
 
   const colourStyles = {
@@ -56,27 +58,31 @@ const HrUsers = () => {
     //   return prev.id !== id;
     // });
     // return filtedData
-
     setDeleteUser(false);
+    setMessage("تم الحذف بنجاح ");
+    setSuccsesfull(true);
+  };
+  const handleUpgrade = () => {
+    setUpgradeUser(false);
+    setMessage("تم تحديث كلمة السر بنجاح");
     setSuccsesfull(true);
   };
   return (
     <div className="Users-component   w-100    text-white ">
       <CustomModal
-        title="التاكيد"
+        title="هل انت متاكد من الحذف"
         show={deleteUser}
         handleSave={handleDelete}
-        message={"هل انت متاكد من الحذف"}
         handleClose={() => {
           setDeleteUser(false);
         }}
       />
+      <UpdatePassword show={upgradeUser} handleSave={handleUpgrade} />
       <SuccessfullModal
         show={successfull}
-        message={"تم حذف المستخدم بنجاح"}
+        message={message}
         handleClose={() => {
           setSuccsesfull(false);
-          
         }}
       />
       <div
@@ -119,7 +125,12 @@ const HrUsers = () => {
                     <div className="flex gap-1">
                       <div className="d-flex align-items-center ">
                         <Image
-                          src={`${process.env.PUBLIC_URL + "/icons/more.png"}`}
+                          onClick={() => {
+                            setUpgradeUser(true);
+                          }}
+                          src={`${
+                            process.env.PUBLIC_URL + "/icons/update.png"
+                          }`}
                           alt="user Image "
                           className="action-buttons  "
                         />

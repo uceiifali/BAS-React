@@ -155,28 +155,24 @@ const ReviewCasesRequest = () => {
           </div>
         </div>
       )}
-    
-        {editRequest && (
-              <div className="AllRequests-scroll">
+
+      {editRequest && (
+        <div className="AllRequests-scroll">
           <EditReviewRequest
             editRequest={editRequest}
             setEditRequest={setEditRequest}
             setConfirmPoper={setConfirmUpdate}
           />
-          </div>
-        )}
-        {ConfirmUpdate && (
-            
-        
-          <ConfirmPoper
-            confirmPoper={ConfirmUpdate}
-            setConfirmPoper={setConfirmUpdate}
-            setEditRequest={setEditRequest}
-            text={"تم تعديل الطلب فى المشاريع بنجاح  "}
-          />
-        )}
-    
-  
+        </div>
+      )}
+      {ConfirmUpdate && (
+        <ConfirmPoper
+          confirmPoper={ConfirmUpdate}
+          setConfirmPoper={setConfirmUpdate}
+          setEditRequest={setEditRequest}
+          text={"تم تعديل الطلب فى المشاريع بنجاح  "}
+        />
+      )}
     </div>
   );
 };

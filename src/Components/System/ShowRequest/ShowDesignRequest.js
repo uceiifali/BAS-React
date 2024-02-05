@@ -6,11 +6,16 @@ import EditDesignRequest from "../Requests/EditRequest/EditDesignRequest";
 import ConfirmPoper from "../ConfirmPoper";
 import DeleteModal from "../../../Pages/System/Settings/RemoveModal";
 import Image from "../../Image";
+import CustomModal from "../../Modals/CustomModal";
+import SuccessfullModal from "../../Modals/SuccessfullModal";
+import CommentModel from "../../Modals/CommentModel";
 const ShowDesignRequest = ({ setShowProject, DesignProjectType }) => {
   const [showImg, setShowImg] = useState(false);
   const [imgSrc, setImgSrc] = useState(
     `${process.env.PUBLIC_URL}/icons/show.png`
   );
+
+  const [message, setMessage] = useState("");
   const [acceptRequest, setAcceptRequest] = useState(false);
   const [ConfirmAcceptRequest, setConfirmAcceptRequest] = useState(false);
   const [refuseRequest, setRefuseRequest] = useState(false);
@@ -20,16 +25,27 @@ const ShowDesignRequest = ({ setShowProject, DesignProjectType }) => {
   const [ConfirmUpdate, setConfirmUpdate] = useState(false);
   const [deleteRequest, setDeleteRequest] = useState(false);
   const handleAcceptRequest = () => {
-    setConfirmAcceptRequest(true);
-
     // after check accept request
     setAcceptRequest(false);
+    setMessage("تم قبول الطلب بنجاح");
+
+    setConfirmAcceptRequest(true);
   };
-  const handleRefuseRequest = () => {
+  const handleLeaveComment = () => {
     //confirm Refuse Request
     setConfirmRefuseRequest(false);
     setFinishedRefuse(true);
+    setMessage("تم رفض الطلب بنجاح");
   };
+  const handleRefuse = () => {
+    setRefuseRequest(false);
+    setConfirmRefuseRequest(true);
+  };
+  // const handleFinishRefuse = () => {
+  //   setFinishedRefuse(false);
+  //   setMessage("تم حذف الطلب بنجاح");
+  //   setConfirmRefuseRequest(true);
+  // };
 
   const handleDeleteRequest = () => {
     //after making sure that the request is deleted
@@ -54,254 +70,50 @@ const ShowDesignRequest = ({ setShowProject, DesignProjectType }) => {
         </Modal>
       )}
 
-      {acceptRequest && (
-        <Modal
-          className="submitSystemPoper"
-          size="lg"
-          aria-labelledby="contained-modal-title-vcenter"
-          onHide={() => setAcceptRequest(false)}
-          show={acceptRequest}
-        >
-          <Modal.Body className="d-flex align-items-center">
-            <div className="d-flex w-75 flex-column mx-auto mt-3 justify-content-center align-items-center ">
-              {
-                <p className="text-white" style={{ fontSize: "30px" }}>
-                  {" "}
-                  هل انت متاكد من قبول هذا الطلب{" "}
-                </p>
-              }
-              <div className="d-flex justify-content-center mt-3 gap-3">
-                <Button
-                  onClick={() => {
-                    handleAcceptRequest();
-                  }}
-                  className="Delete-button"
-                >
-                  نعم
-                </Button>
+      <CustomModal
+        show={acceptRequest}
+        title={"التاكيد"}
+        handleClose={() => {
+          setAcceptRequest(false);
+        }}
+        handleSave={handleAcceptRequest}
+        message={"هل انت متاكد من قبول الطلب"}
+      />
+      <SuccessfullModal
+        show={finishedRefuse||ConfirmAcceptRequest}
+        message={message}
+        handleClose={() => {
+          setConfirmAcceptRequest(false);
+          setConfirmRefuseRequest(false);
+          setFinishedRefuse(false);
+        }}
+      />
+      <CustomModal
+        show={refuseRequest}
+        title={"التاكيد"}
+        handleClose={() => {
+          setRefuseRequest(false);
+        }}
+        handleSave={handleRefuse}
+        message={"هل انت متاكد من  انك تريد رفض الطلب"}
+      />
 
-                <Button
-                  onClick={() => {
-                    setAcceptRequest(false);
-                  }}
-                  className="No-Delete"
-                >
-                  لا
-                </Button>
-              </div>
-            </div>
-          </Modal.Body>
-        </Modal>
-      )}
-      {ConfirmAcceptRequest && (
-        <Modal
-          className="submitSystemPoper"
-          size="lg"
-          aria-labelledby="contained-modal-title-vcenter"
-          onHide={() => setConfirmAcceptRequest(false)}
-          show={ConfirmAcceptRequest}
-        >
-          <Modal.Body>
-            <div className="d-flex justify-content-center w-100">
-              {" "}
-              <Image
-                src={process.env.PUBLIC_URL + "/correct.gif"}
-                width={120}
-                height={120}
-                className="my-3"
-                color="#E1B67C"
-              />
-            </div>
+      <CommentModel
+        show={confirmRefuseRequest}
+        message={"اترك سبب الرفض"}
+        handleClose={() => {
+          setConfirmRefuseRequest(false);
+        }}
+        handleSave={handleLeaveComment}
+      />
 
-            <div className="d-flex w-75 flex-column mx-auto mt-3 justify-content-center align-items-center ">
-              {
-                <p className="text-white" style={{ fontSize: "30px" }}>
-                  {" "}
-                  تم قبول الطلب بنجاح{" "}
-                </p>
-              }
-              <Button
-                onClick={() => {
-                  setConfirmAcceptRequest(false);
-                }}
-                className="sumbmitAddUpdateUser"
-              >
-                حفظ
-              </Button>
-            </div>
-          </Modal.Body>
-        </Modal>
-      )}
-
-      {refuseRequest && (
-        <Modal
-          className="submitSystemPoper"
-          size="lg"
-          aria-labelledby="contained-modal-title-vcenter"
-          onHide={() => setRefuseRequest(false)}
-          show={refuseRequest}
-        >
-          <Modal.Body className="d-flex align-items-center">
-            <div className="d-flex w-75 flex-column mx-auto mt-3 justify-content-center align-items-center ">
-              {
-                <p className="text-white" style={{ fontSize: "30px" }}>
-                  {" "}
-                  هل انت متاكد من رفض هذا الطلب{" "}
-                </p>
-              }
-              <div className="d-flex justify-content-center mt-3 gap-3">
-                <Button
-                  onClick={() => {
-                    setRefuseRequest(false);
-                    setConfirmRefuseRequest(true);
-                  }}
-                  className="Delete-button"
-                >
-                  نعم
-                </Button>
-
-                <Button
-                  onClick={() => {
-                    setRefuseRequest(false);
-                  }}
-                  className="No-Delete"
-                >
-                  لا
-                </Button>
-              </div>
-            </div>
-          </Modal.Body>
-        </Modal>
-      )}
-      {confirmRefuseRequest && (
-        <Modal
-          className="submitSystemPoper leaveComment"
-          size="lg"
-          aria-labelledby="contained-modal-title-vcenter"
-          onHide={() => setConfirmRefuseRequest(false)}
-          show={confirmRefuseRequest}
-        >
-          <Modal.Body>
-            <div className="w-100   mt-3 ">
-              {
-                <p className="text-white" style={{ fontSize: "30px" }}>
-                  {" "}
-                  اترك تعليقاً ....{" "}
-                </p>
-              }
-
-              <Form className="w-100">
-                <textarea
-                  className="form-control w-100"
-                  rows={5}
-                  placeholder="اترك تعليقاً ...."
-                />
-
-                <div className="d-flex justify-content-center my-3">
-                  <Button
-                    onClick={() => {
-                      handleRefuseRequest();
-                    }}
-                    className="sumbmitAddUpdateUser"
-                  >
-                    حفظ
-                  </Button>
-                </div>
-              </Form>
-            </div>
-          </Modal.Body>
-        </Modal>
-      )}
-
-      {finishedRefuse && (
-        <Modal
-          className="submitSystemPoper"
-          size="lg"
-          aria-labelledby="contained-modal-title-vcenter"
-          onHide={() => setFinishedRefuse(false)}
-          show={finishedRefuse}
-        >
-          <Modal.Body>
-            <div className="d-flex justify-content-center w-100">
-              {" "}
-              <Image
-                src={process.env.PUBLIC_URL + "/correct.gif"}
-                width={120}
-                height={120}
-                className="my-3"
-                color="#E1B67C"
-              />
-            </div>
-
-            <div className="d-flex w-75 flex-column mx-auto mt-3 justify-content-center align-items-center ">
-              {
-                <p className="text-white" style={{ fontSize: "30px" }}>
-                  {" "}
-                  تم رفض الطلب بنجاح{" "}
-                </p>
-              }
-              <Button
-                onClick={() => {
-                  setFinishedRefuse(false);
-                }}
-                className="sumbmitAddUpdateUser"
-              >
-                حفظ
-              </Button>
-            </div>
-          </Modal.Body>
-        </Modal>
-      )}
       <DeleteModal
         title={"التاكيد"}
         show={deleteRequest}
         handleClose={handleDeleteRequest}
       />
 
-      {/* {deleteRequest && <Modal
-        className='submitSystemPoper'
-        size="lg"
-        aria-labelledby="contained-modal-title-vcenter"
-        onHide={() => setDeleteRequest(false)}
-        show={deleteRequest}
-      >
-
-        <Modal.Body className='d-flex align-items-center'>
-
-
-          <div className='d-flex w-75 flex-column mx-auto mt-3 justify-content-center align-items-center '>
-            {<p className='text-white' style={{ fontSize: "30px" }}>  هل انت متاكد من حذف هذا الطلب </p>}
-            <div className='d-flex justify-content-center mt-3 gap-3'>
-
-              <Button
-
-                onClick={() => {
-                  setDeleteRequest(false)
-                  handleDeleteRequest()
-
-
-                }}
-                className='Delete-button'>نعم</Button>
-
-              <Button
-
-                onClick={() => {
-                  setDeleteRequest(false)
-
-                }}
-                className='No-Delete'>لا</Button>
-
-            </div>
-
-          </div>
-        </Modal.Body>
-
-
-      </Modal >
-
-      } */}
-
-      {editRequest && (
+      {/* {editRequest && (
         <EditDesignRequest
           editRequest={editRequest}
           setEditRequest={setEditRequest}
@@ -315,7 +127,7 @@ const ShowDesignRequest = ({ setShowProject, DesignProjectType }) => {
           setEditRequest={setEditRequest}
           text={"تم تعديل الطلب فى المشاريع بنجاح  "}
         />
-      )}
+      )} */}
 
       <div className="border-golden">
         <div className="row px-2 py-3">
@@ -362,13 +174,7 @@ const ShowDesignRequest = ({ setShowProject, DesignProjectType }) => {
           <div className="col-md-6  mb-2">
             {DesignProjectType == "inProgress" ? (
               <div className="d-flex align-items-center  gap-3">
-                <Image
-                  className="pointer editIcon"
-                  onClick={() => {
-                    setEditRequest(true);
-                  }}
-                  src={process.env.PUBLIC_URL + "/icons/edit.png"}
-                />
+                
 
                 <NavDropdown
                   title={
@@ -423,13 +229,7 @@ const ShowDesignRequest = ({ setShowProject, DesignProjectType }) => {
                   }}
                   src={process.env.PUBLIC_URL + "/icons/declince.png"}
                 />
-                <Image
-                  className="pointer "
-                  onClick={() => {
-                    setEditRequest(true);
-                  }}
-                  src={process.env.PUBLIC_URL + "/icons/editIcon.png"}
-                />
+              
               </div>
             ) : DesignProjectType === "rejected" ? (
               <div className="d-flex gap-3">
@@ -441,13 +241,7 @@ const ShowDesignRequest = ({ setShowProject, DesignProjectType }) => {
                   src={process.env.PUBLIC_URL + "/icons/confirm.png"}
                 />
 
-                <Image
-                  className="pointer "
-                  onClick={() => {
-                    setEditRequest(true);
-                  }}
-                  src={process.env.PUBLIC_URL + "/icons/editIcon.png"}
-                />
+
 
                 <Image
                   className="pointer delete-icon"

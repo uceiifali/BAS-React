@@ -11,7 +11,7 @@ const SearchUsers = () => {
     <div>
       <div className="search-users ">
         <div className="d-flex justify-content-between align-items-center m-2">
-          <p className="text-center my-3   ">كل الموظفين</p>
+          <p className="text-center my-3 text-white   ">كل الموظفين</p>
           <NavDropdown
             title={
               <svg
@@ -49,7 +49,7 @@ const SearchUsers = () => {
         {users.map((user, index) => (
           <Link
             to={"/System/Hr/Users"}
-            key={index}
+            key={index}  
             className="tab d-flex  py-1 "
           >
             <Image

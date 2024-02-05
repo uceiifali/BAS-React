@@ -1,10 +1,10 @@
 import { useState } from "react";
 import Button from "react-bootstrap/Button";
-import {FormControl,TextField } from '@mui/material';
+import { FormControl, TextField } from "@mui/material";
 import Modal from "react-bootstrap/Modal";
 import { InputLabel } from "../../Pages/System/PlanModel/components/InputLabel";
 // import CloseBtn from "/assets/icons/Rejected.svg"
-function CommentModel({ message, show, handleClose,handleSave }) {
+function CommentModel({ message, show, handleClose, handleSave }) {
   return (
     <>
       <Modal
@@ -14,10 +14,10 @@ function CommentModel({ message, show, handleClose,handleSave }) {
         size="lg"
       >
         <Modal.Body>
-        <FormControl fullWidth>
-        <InputLabel id="comment" label={message} size={20} />
+          <FormControl fullWidth>
+            <InputLabel id="comment" label={message} size={20} />
 
-        {/* <InputLabel 
+            {/* <InputLabel 
         sx={{
             fontSize: "20px",
             fontWeight: 500,
@@ -25,33 +25,30 @@ function CommentModel({ message, show, handleClose,handleSave }) {
             textAlign: "right"
         }}
         id="comment">{message}</InputLabel> */}
-<TextField 
+            <TextField
               size="small"
-              id="new-project" 
+              id="new-project"
               multiline
               rows={4}
-              placeholder={message} 
-              variant="outlined" 
-              
+              placeholder={message}
+              variant="outlined"
               sx={{
-                my:1,
+                my: 1,
                 border: "1px solid #EFAA2080",
                 "& fieldset": {
-                    border: "none",
-                    
-                  },
+                  border: "none",
+                },
               }}
               inputProps={{
                 sx: {
-                    color: "white",
-                    py:"10px"
-                    // borderRadius:'7px',
-                }
+                  color: "white",
+                  py: "10px",
+                  // borderRadius:'7px',
+                },
               }}
               className=" text-white bg-[#2B2B40] rounded-[7px]"
-              />
-        </FormControl>
-          
+            />
+          </FormControl>
         </Modal.Body>
         <Modal.Footer className="border-none">
           <Button
