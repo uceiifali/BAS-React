@@ -1,0 +1,12 @@
+.userSenderMessage {
+  border-radius: 14.22px 14.22px 14.22px 0px;
+}
+.userReciverMessage{
+    border-radius: 14.22px 14.22px 0px 14.22px;
+}
+.sendMessagelabel ,.sendMessageinput {
+    color: white !important;
+    display: flex !important;
+    justify-content: start !important;
+    
+}

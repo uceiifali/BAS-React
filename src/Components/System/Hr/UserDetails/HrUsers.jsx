@@ -31,6 +31,8 @@ const HrUsers = () => {
   const handleGetUserDetails = () => {};
 
   const colourStyles = {
+
+
     placeholder: (defaultStyles) => {
       return {
         ...defaultStyles,

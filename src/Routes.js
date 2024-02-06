@@ -227,7 +227,7 @@ const router = createBrowserRouter([
           },
           // { path: "/System/Projects/Main/ReportManagement", element: <ReportManagement /> },
           {
-            path: "/System/Projects/ReportManagement/:projectType",
+            path: "/System/Projects/Main/ReportManagement/:projectType",
             element: <NestedReportMangment />,
           },
           {
