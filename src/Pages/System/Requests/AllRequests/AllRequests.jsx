@@ -29,7 +29,7 @@ const AllRequests = () => {
     inProgress: false,
     waiting: false,
     rejected: false,
-  }); 
+  });
   const [view, setView] = useState(false);
   const { pathname } = useLocation();
   const pagePath = pathname.split("/System/Requests/")[1];
@@ -53,7 +53,7 @@ const AllRequests = () => {
     <div className="all-Requests h-100">
       <SystemControler
         child={
-          view && (pagePath === "Design" || pagePath === "Review") ? (
+          view ? (
             <p
               onClick={() => {
                 handleClose();
@@ -291,15 +291,7 @@ const AllRequests = () => {
             }
           />
         </div>
-        <div className="col-md-9 ">
-          {view && pagePath === "Design" ? (
-            <AddRequest pagePath={"Design"} />
-          ) : view && pagePath === "Review" ? (
-            <AddRequest pagePath={"Review"} />
-          ) : (
-            <Outlet />
-          )}
-        </div>
+        <div className="col-md-9 ">{view ? <AddRequest /> : <Outlet />}</div>
       </div>
     </div>
   );

@@ -70,8 +70,9 @@ const HrUsers = () => {
   return (
     <div className="Users-component   w-100    text-white ">
       <CustomModal
-        title="هل انت متاكد من الحذف"
+        title="التاكيد"
         show={deleteUser}
+        message={"هل انت متاكد من الحذف"}
         handleSave={handleDelete}
         handleClose={() => {
           setDeleteUser(false);

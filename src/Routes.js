@@ -69,6 +69,9 @@ import Plans from "./Pages/System/Plans";
 import PlansProjects from "./Pages/System/Plans/Projects";
 import AddProject from "./Pages/System/Plans/Projects/AddProject";
 import HrUsers from "./Components/System/Hr/UserDetails/HrUsers";
+import ChatIndex from "./Pages/System/Chat/ChatIndex";
+import AllChats from "./Pages/System/Chat/AllChats";
+import UserChat from "./Pages/System/Chat/UserChat";
 
 const SignUP = lazy(() => import("./Pages/DashBoard/SignUP/SignUP"));
 const SignIn = lazy(() => import("./Pages/DashBoard/SignIn/SignIn"));
@@ -369,7 +372,15 @@ const router = createBrowserRouter([
           </ProjectContextProvier>
         ),
       },
-      
+      // system Chat
+      {
+        path: "",
+        element: <ChatIndex />,
+        children: [
+          { path: "/System/Chat/index", element: <AllChats /> },
+          { path: "/System/Chat/:country/:id", element: <UserChat /> },
+        ],
+      },
     ],
   },
 ]);

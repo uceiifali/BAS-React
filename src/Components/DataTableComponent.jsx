@@ -28,7 +28,7 @@ const customStyles = {
       paddingRight: "5px",
       color: "#FFF",
       overFlow: "auto",
-      maxWidth:70,
+      maxWidth: 70,
     },
   },
   headCells: {
@@ -45,8 +45,7 @@ const customStyles = {
       padding: "10px",
       color: "#FFF",
       overFlow: "auto",
-      maxWidth:70,
-
+      maxWidth: 70,
     },
   },
 
