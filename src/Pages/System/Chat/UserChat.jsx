@@ -31,7 +31,7 @@ const UserChat = () => {
   const handleEmojee = (emojes) => {
     console.log(emojes.emoji);
   };
-  
+
   // handle input chat
   const [text, setText] = useState("");
   function handleOnEnter(text) {
@@ -60,7 +60,7 @@ const UserChat = () => {
         </div>
       </div>
       <div className="chat-container mb-2 p-2 overflow-y-auto overflow-x-hidden h-[537px] border !border-[#D5992180]  scrollbar-none  !scrollbar-track-[transparent] !scrollbar-thin !scrollbar-thumb-[#D9D9D9] mt-4">
-        <div className="my-2  flex justify-end gap-3">
+        <div className="my-3 reciver  flex justify-end gap-3">
           <div
             className={`${style.userSenderMessage}  p-[14.22px] w-[241.67px] h-[41.43px] bg-[#151521] `}
           >
@@ -72,7 +72,7 @@ const UserChat = () => {
             className={"w-[40px] h-[40px] rounded-[50%]"}
           />
         </div>
-        <div className="my-2  flex justify-start gap-3">
+        <div className="my-3  sender flex justify-start gap-3">
           <Image
             src={"/People/habeeb.jpg"}
             alt={"user img"}
@@ -90,7 +90,9 @@ const UserChat = () => {
       >
         <InputEmoji
           value={text}
-          onChange={setText}
+          onChange={(...prev) => {
+            setText(prev + text);
+          }}
           cleanOnEnter
           onEnter={handleOnEnter}
           language={"ar" | "en"}
