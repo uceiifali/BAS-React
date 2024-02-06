@@ -126,7 +126,7 @@ const DesignCasesRequest = () => {
   return (
     <>
       {showProject ? (
-        <div className="AllRequests-scroll">
+        <div className="AllRequests-scroll scrollbar-none">
           (
           <ShowDesignRequest
             DesignProjectType={DesignProjectType}
@@ -209,7 +209,7 @@ const DesignCasesRequest = () => {
       )}
 
       {editRequest && (
-        <div className="AllRequests-scroll">
+        <div className="AllRequests-scroll scrollbar-none">
           <EditDesignRequest
             editRequest={editRequest}
             setEditRequest={setEditRequest}

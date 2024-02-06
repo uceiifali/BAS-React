@@ -91,7 +91,7 @@ const DesignRequest = () => {
   return (
     <>
       {showProject ? (
-        <div className="AllRequests-scroll">
+        <div className="AllRequests-scroll scrollbar-none">
           {console.log("project should be disyplayed")}
 
           <ShowDesignRequest
@@ -157,7 +157,7 @@ const DesignRequest = () => {
         </div>
       )}
       {editRequest && (
-        <div className="AllRequests-scroll ">
+        <div className="AllRequests-scroll scrollbar-none">
           <EditDesignRequest
             editRequest={editRequest}
             setEditRequest={setEditRequest}
@@ -166,7 +166,7 @@ const DesignRequest = () => {
         </div>
       )}
       {ConfirmUpdate && (
-        <div className="AllRequests-scroll ">
+        <div className="AllRequests-scroll scrollbar-none">
           <ConfirmPoper
             confirmPoper={ConfirmUpdate}
             setConfirmPoper={setConfirmUpdate}

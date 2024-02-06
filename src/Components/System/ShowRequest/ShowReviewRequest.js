@@ -320,21 +320,21 @@ const ShowReviewRequest = ({ setShowProject, ReviewProjectType }) => {
         <div className="row px-2 py-3">
           <div className="col-md-8 mb-2">
             <p className="text-white">
-              اسم المشروع : <span>BSA</span>{" "}
+              اسم المشروع : <span className="text-white/30">BSA</span>{" "}
             </p>
           </div>
           <div className="col-md-4   mb-2">
-            <div>
-              <Button className="export-bg  ms-2 ">تصدير CSV </Button>
-              <Button className="export-bg ms-2"> تصدير Excel </Button>
+            <div className="flex gap-1">
+              <button className="bg-[#D9D9D980] text-white text-sm py-1 px-3 rounded-[3px]">تصدير CSV </button>
+              <button className="bg-[#D9D9D980] text-white text-sm py-1 px-3 rounded-[3px]"> تصدير Excel </button>
             </div>
           </div>
           <div className="col-md-8   mb-2">
             <p className="text-white">
-              نوع المشروع : <span>الاشراف</span>{" "}
+              نوع المشروع : <span className="text-white/30">الاشراف</span>{" "}
             </p>
           </div>
-          <div className="col-md-3 mb-2">
+          <div className="col-md-4 mb-2">
             <p className="text-white">
               {" "}
               الحالة :
@@ -352,7 +352,7 @@ const ShowReviewRequest = ({ setShowProject, ReviewProjectType }) => {
           <div className="col-md-8 mb-2">
             <p className="text-white">
               {" "}
-              رقم الطلب : <span> 0123</span>{" "}
+              رقم الطلب : <span className="text-white/30"> 0123</span>{" "}
             </p>
           </div>
 
