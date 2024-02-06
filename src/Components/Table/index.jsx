@@ -4,23 +4,26 @@ import { TableRow } from "./TableRow";
 import { TableHead } from "./TableHead";
 
 export default function CustomTable({
-     columns,
-      data,
-       children ,
-       TableHeaderProps,
-       TableRowProps,
-       TableHeadProps,
-       ...props
-    }) {
+  columns,
+  data,
+  children,
+  TableHeaderProps,
+  TableRowProps,
+  TableHeadProps,
+  ...props
+}) {
   return (
     <>
       <Table bordered hover responsive {...props}>
-        <TableHeader className="bg-[#151521] border !border-[#efaa207f]" {...TableHeaderProps}>
+        <TableHeader
+          className="bg-[#151521] border !border-[#efaa207f]"
+          {...TableHeaderProps}
+        >
           <TableRow {...TableRowProps}>
             {columns?.map(({ name }, index) => (
-              <TableHead 
-              className="text-end text-[11px] border-none !font-semibold p-2 !text-[#EFAA20]"
-              {...TableHeadProps} 
+              <TableHead
+                className="text-end text-[11px] border-none !font-semibold p-2 !text-[#EFAA20]"
+                {...TableHeadProps}
               >
                 {name}
               </TableHead>
@@ -76,5 +79,3 @@ export default function CustomTable({
     </>
   );
 }
-
-

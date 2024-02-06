@@ -69,7 +69,7 @@ export const AddMeeting = ({ view, setView }) => {
         chooseDepartment={chooseDepartment}
         setChooseDeprtmant={setChooseDeprtmant}
       />
-      {view && (
+   
         <Modal
           size="lg"
           show={view}
@@ -283,7 +283,7 @@ export const AddMeeting = ({ view, setView }) => {
             </Form>
           </Container>
         </Modal>
-      )}
+
     </div>
   );
 };
