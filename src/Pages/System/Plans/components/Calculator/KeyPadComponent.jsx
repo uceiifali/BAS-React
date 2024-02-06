@@ -17,7 +17,7 @@ const Button = ({ bgColor, name, children, onClick,cols="col-span-1" }) => {
 
 const KeyPadComponent = ({ onClick }) => {
   return (
-    <div className="grid grid-cols-4 bg-[#1E1E2D]">
+    <div className="w-full grid grid-cols-4 bg-[#1E1E2D]">
       <Button
         bgColor={"#FF9F0A"}
         name={"/"}

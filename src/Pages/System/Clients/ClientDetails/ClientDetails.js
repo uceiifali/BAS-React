@@ -152,6 +152,12 @@ const ClientDetails = () => {
           <button className="text-xs font-medium bg-[#D9D9D980] text-white w-20 py-1 rounded-[3px]">تصدير CSV </button>
           <button className="text-xs font-medium bg-[#D9D9D980] text-white w-20 py-1 rounded-[3px]"> تصدير Excel </button>
         </div>
+        <div className="flex justify-end gap-2 ">
+          <button className="mt-2 ms-5 flex justify-center gap-1 text-xs font-medium bg-[#9E0C1E] text-white w-20 py-1 rounded-[3px]">
+            حذف
+            <img src="/icons/delete.svg" alt=""/>
+            </button>
+        </div>
         <div className="d-flex flex-column gap-2">
           
             <div className="d-flex gap-2">
