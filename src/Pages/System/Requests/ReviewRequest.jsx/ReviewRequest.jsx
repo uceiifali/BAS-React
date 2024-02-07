@@ -90,7 +90,6 @@ const ReviewRequest = () => {
       selector: (row) => row.edit,
     },
   ];
-  console.log(editRequest);
 
   return (
     <>

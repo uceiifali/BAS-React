@@ -126,7 +126,7 @@ const ReviewCasesRequest = () => {
   return (
     <div className=" p-3">
       {showProject ? (
-        <div className="AllRequests-scroll scrollbar-none">
+        <div className="AllRequests-scroll h-[600px] scrollbar-none">
           <ShowReviewRequest
             ReviewProjectType={ReviewProjectType}
             setShowProject={setShowProject}
