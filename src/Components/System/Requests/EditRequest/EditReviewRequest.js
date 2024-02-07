@@ -120,55 +120,7 @@ const EditReviewRequest = ({
 
 
 
-              <fieldset className="p-1 mx-auto border-golden w-90 ">
-                <legend className="text-center">بيانات المشروع</legend>
-
-                <div className="row w-100">
-                  <div className=" col-md-7 mb-4">
-                    <Input
-                      className="w-100 "
-                      label={"اسم المالك"}
-                      {...ownerName.bind}
-                      mandatory
-                    />
-                  </div>
-                  <div className=" col-md-7 mb-4">
-                    <Input
-                      label={" موقع المشروع "}
-                      {...buildingLocation.bind}
-                      mandatory
-                    />
-                  </div>
-                  <div className=" col-md-6 mb-4">
-                    <Select
-                      label={" المدينة"}
-                      {...city.bind}
-                      options={KSACites}
-                      mandatory
-                    />
-                  </div>
-
-                  <div className=" col-md-6 mb-4">
-                    <Input label={" الحي"} {...Area.bind} mandatory />
-                  </div>
-
-                  <div className=" col-md-6 mb-4">
-                    <Input
-                      label={" رقم القطعة"}
-                      {...pieceNumber.bind}
-                      mandatory
-                    />
-                  </div>
-
-                  <div className=" col-md-6 mb-4">
-                    <Input
-                      label={" رقم المخطط"}
-                      {...ChartNumber.bind}
-                      mandatory
-                    />
-                  </div>
-                </div>
-              </fieldset>
+              
               <FormModal title={"بيانات المشروع"}>
 
                 <div className="row w-100">
