@@ -132,7 +132,7 @@ const AllMeetings = () => {
 
       <div 
       // className={styles.cleanderbg}
-      className="bg-[#1E1E2D] h-[801px] rounded-[17px]"
+      className="bg-[#1E1E2D] h-[801px] rounded-[17px] meeting scrollbar-none overflow-scroll"
       >
         <AddMeeting view={view} setView={setView} />
 
@@ -146,7 +146,8 @@ const AllMeetings = () => {
           onEventDrop={moveEvent}
           onEventResize={resizeEvent}
           draggableAccessor={(event) => true}
-          style={{ height: "100%" }}
+          
+          style={{ height: "100%", margin: "0px", padding: '10px' }}
           messages={{
             week: "أسبوع",
             work_week: "أسبوع العمل",
