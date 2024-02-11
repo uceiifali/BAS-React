@@ -9,6 +9,10 @@ import DownloadButton from "../../Buttons/DownloadButton.jsx";
 import CustomModal from "../../Modals/CustomModal.jsx";
 import CommentModel from "../../Modals/CommentModel.jsx";
 import SuccessfullModal from "../../Modals/SuccessfullModal.jsx";
+import { TableCell } from "../../Table/TableCell.jsx";
+import { TableRow } from "../../Table/TableRow.jsx";
+import CustomTable from "../../Table/index.jsx";
+import Image from "../../Image.jsx";
 // import { Document, Page } from 'react-pdf';
 
 const ShowProjectComponent = ({ showProject, setShowProject }) => {
@@ -20,6 +24,7 @@ const ShowProjectComponent = ({ showProject, setShowProject }) => {
     `${process.env.PUBLIC_URL}/icons/show.png`
   );
   const [pageNumber, setPageNumber] = useState(1);
+  const [openCliam, setOpenClaim] = useState(false);
 
   const { ProjectTime, ProjectType } = useParams();
   const [numPages, setNumPages] = useState();
@@ -38,37 +43,42 @@ const ShowProjectComponent = ({ showProject, setShowProject }) => {
   // Data table data
   const columns = [
     {
-      name: "الدفعات  ",
+      name: "م",
       selector: (row) => row.Payments,
     },
     {
-      name: " نوع الدفعة",
+      name: "الدفعات",
+      selector: (row) => row.Payments,
+    },
+    {
+      name: "نوع الدفعة",
       selector: (row) => row.PaymentType,
     },
     {
-      name: "  تاريخ الاستحقاق ",
+      name: "تاريخ الاستحقاق ",
       selector: (row) => row.recivedDate,
     },
     {
-      name: "   الحالة",
+      name: "الحالة",
       selector: (row) => row.status,
     },
     {
-      name: "   المطالبة",
+      name: "المطالبة",
       selector: (row) => row.claim,
     },
     {
-      name: "   الفاتوره",
+      name: "الفاتوره",
       selector: (row) => row.bill,
     },
   ];
   const ShowProjectsData = Array.from({ length: 2 }).map((_, index) => {
     return {
+      id: index+1,
       Payments: "1500 ريال",
       PaymentType: " القيمة الافتتاحية",
       recivedDate: " مع العقد",
       status: (
-        <div className="d-flex flex-column justfiy-content-center">
+        <div className="flex flex-col justfiy-center items-center">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="17"
@@ -101,11 +111,11 @@ const ShowProjectComponent = ({ showProject, setShowProject }) => {
               </clipPath>
             </defs>
           </svg>
-          <p>تم الدفع</p>
+          <p className="text-center">تم الدفع</p>
         </div>
       ),
       claim: (
-        <div>
+        <div onClick={()=> setOpenClaim(true)}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="17"
@@ -661,6 +671,56 @@ const ShowProjectComponent = ({ showProject, setShowProject }) => {
           </Modal.Body>
         </Modal>
       )}
+
+{openCliam && (
+            <Modal
+              className="d-flex claimModal align-items-center jusify-content-center"
+              size="lg"
+              aria-labelledby="contained-modal-title-vcenter"
+              onHide={() => setOpenClaim(false)}
+              show={openCliam}
+            >
+              <Modal.Body className="d-flex align-items-center">
+                <Image
+                  src={`${process.env.PUBLIC_URL + "/FinancalRequest.png"}`}
+                  alt="FinancalRequest png"
+                  width={650}
+                  height={700}
+                />
+              </Modal.Body>
+            </Modal>
+          )}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
       <div className="border-golden">
         <div className="grid grid-cols-12 gap-y-2 p-3">
           {/* <Document file="../../../../public/examplepdf.pdf" onLoadSuccess={onDocumentLoadSuccess}>
@@ -876,6 +936,8 @@ const ShowProjectComponent = ({ showProject, setShowProject }) => {
           </div>
         </div>
       </div>
+
+      <div className="overflow-y-scroll scrollbar-none p-3 h-[600px]">
       <fieldset className="showProjectBorder pb-3 ">
         <legend className="text-center">معلومات عامة</legend>
         <div className="d-flex w-90 m-auto justify-content-between">
@@ -1020,7 +1082,7 @@ const ShowProjectComponent = ({ showProject, setShowProject }) => {
 
       <fieldset className="showProjectBorder p-2 ">
         <legend className="text-center"> معلومات الدفع </legend>
-        <div className="d-flex mx-2 justify-content-between ">
+        <div className="d-flex text-start m-2 justify-content-between ">
           <p className="text-white">
             المبلغ الاجمالى : <span className="main-text"> 1000 ريال</span>
           </p>
@@ -1029,7 +1091,7 @@ const ShowProjectComponent = ({ showProject, setShowProject }) => {
             عدد الدفعات : <span className="main-text"> 2</span>
           </p>
         </div>
-        <div className="d-flex mx-2 justify-content-between">
+        <div className="d-flex text-start m-2 justify-content-between">
           <p className="text-white">
             {" "}
             المبلغ المتبقى : <span className="main-text"> 0ريال </span>
@@ -1039,11 +1101,40 @@ const ShowProjectComponent = ({ showProject, setShowProject }) => {
             عدد الدفعات المتبقى : <span className="main-text"> 0</span>
           </p>
         </div>
-        <DataTableComponent
-          className={"my-2 overflow-x-hidden overflow-y-auto"}
-          columns={columns}
-          data={ShowProjectsData}
-        />
+
+        <CustomTable columns={columns} data={ShowProjectsData}>
+                  {ShowProjectsData && ShowProjectsData.length > 0
+                    ? ShowProjectsData.map(
+                        (
+                          {
+                            id,
+                            Payments,
+                            PaymentType,
+                            recivedDate,
+                            status,
+                            claim,
+                            bill,
+                          },
+                          index
+                        ) => (
+                          <TableRow
+                            className={`my-2 border !border-[#efaa207f] ${
+                              index % 2 === 0 ? "bg-[#151521]" : ""
+                            }`}
+                            key={index}
+                          >
+                            <TableCell textColor="#ffffff7f">{id}</TableCell>
+                            <TableCell>{Payments}</TableCell>
+                            <TableCell>{PaymentType}</TableCell>
+                            <TableCell>{recivedDate}</TableCell>
+                            <TableCell>{status}</TableCell>
+                            <TableCell>{claim}</TableCell>
+                            <TableCell>{bill}</TableCell>
+                          </TableRow>
+                        )
+                      )
+                    : null}
+                </CustomTable>
       </fieldset>
       <div className="showProjectBorder p-2 ">
         <p className="text-white"> ملاحظات الدفع </p>
@@ -1065,6 +1156,30 @@ const ShowProjectComponent = ({ showProject, setShowProject }) => {
           حفظ
         </Button>
       </div>
+      </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     </div>
   );
 };
