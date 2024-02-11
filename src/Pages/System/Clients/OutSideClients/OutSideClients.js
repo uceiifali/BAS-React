@@ -101,7 +101,7 @@ const OutSideClients = () => {
           </div>
         </Link> */}
       </div>
-      <div className="col-span-8     category-client-Component">
+      <div className="col-span-9     category-client-Component">
         <div className="insideChart p-4 h-100 d-flex  justify-content-between  align-items-center flex-column">
           <div className="AllRequestsPieChartContainer w-100  d-flex flex-column align-items-center justify-content-center">
             <p className="text-white" style={{ fontSize: "24px" }}>

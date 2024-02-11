@@ -35,7 +35,7 @@ const InsideClients = () => {
 
         <div className="d-flex justify-content-between mt-4 w-100">
           <Link to={"/System/Allclients"} className="pointer">
-            <p className=" text-white ">كل العملاء</p>
+            <p className=" text-white px-2">كل العملاء</p>
           </Link>
           <NavDropdown
             title={
@@ -84,7 +84,7 @@ const InsideClients = () => {
         <div className="all-clints-search-driver inside-Search"></div>
         {Clients.map(({ id, name, type, path }) => (
           <Link to={path} key={id}>
-            <div className="border !border-transparent hover:!border-[#efaa2080] p-1.5 mb-1">
+            <div className="border !border-transparent hover:!border-[#efaa2080] p-2 mb-1">
               <p className="text-white text-sm font-medium">{name}</p>
               <p className="text-[#FFFFFF4D] text-xs font-normal">{type}</p>
             </div>
@@ -105,7 +105,7 @@ const InsideClients = () => {
                 </div>
                 </Link> */}
       </div>
-      <div className="col-span-8     category-client-Component">
+      <div className="col-span-9     category-client-Component">
         <div className="insideChart p-4 h-100 d-flex  justify-content-between  align-items-center flex-column">
           <div className="AllRequestsPieChartContainer w-100  d-flex flex-column align-items-center justify-content-center">
             <p className="text-white" style={{ fontSize: "24px" }}>
