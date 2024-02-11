@@ -589,7 +589,7 @@ export const ProfileMenu = ({ show }) => {
           </div>
           <div className="bg-[#D5992133] h-[1px] w-full my-2"></div>
           <div className="mt-2 mb-3 mx-2">
-            <Link className="w-full " to="Profile/id">
+            <Link className="w-full " to="Profile/2424">
               <div>
                 <p className="text-sm text-white">صفحتى الشخصية</p>
               </div>
