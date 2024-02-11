@@ -22,7 +22,7 @@ const SystemIndex = () => {
       </header>
 
       <section className="container px-10 flex justify-between gap-3 py-2 ">
-        <div className="max-w-xs  !verflow-x-visible">
+        <div className="max-w-xs ">
           <AsideBar />
         </div>
         <main className="w-full transition-all">
