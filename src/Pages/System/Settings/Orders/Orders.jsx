@@ -320,9 +320,9 @@ const Orders = () => {
   // console.log("subCategory: ",subCategory?.subCategories?.push({id:3,name:"new Val"}));
   // console.log("subCategory: ", subCategory);
   return (
-    <section className="">
-      <div className="grid grid-cols-4 gap-4">
-        <div className="bg-[#1E1E2D]  rounded-[19px]">
+    <section className="h-full">
+      <div className="grid grid-cols-12 gap-2 h-full">
+        <div className="bg-[#1E1E2D] col-span-3 rounded-[19px]">
           <div className="p-2 ">
             <p className="w-full text-white text-right my-2">الطلبات</p>
             <div className="flex flex-col gap-2">
@@ -341,7 +341,7 @@ const Orders = () => {
         </div>
 
         {category && (
-          <div className="bg-[#1E1E2D]  rounded-[19px]">
+          <div className="bg-[#1E1E2D] col-span-3 rounded-[19px]">
             <div className=" flex flex-col gap-2">
               <div className="p-3">
                 <SearchButton />
@@ -364,7 +364,7 @@ const Orders = () => {
         )}
 
         {subCategory && (
-          <div className="bg-[#1E1E2D] flex flex-col rounded-[19px] col-span-2 ">
+          <div className="bg-[#1E1E2D] flex flex-col rounded-[19px] col-span-6 ">
             <div className="py-4 px-14">
               <button
                 onClick={handleShow}

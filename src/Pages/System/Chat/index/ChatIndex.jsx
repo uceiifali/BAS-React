@@ -116,8 +116,8 @@ const ChatIndex = () => {
   return (
     <div>
       <SystemControler />
-      <div className="grid grid-cols-4 gap-4">
-        <div className="bg-[#1E1E2D] h-[801px] p-2 rounded-[19px]">
+      <div className="grid grid-cols-12 gap-2">
+        <div className="col-span-3 bg-[#1E1E2D] h-[801px] p-2 rounded-[19px]">
           <p className="text-white mt-2 text-[15px]">كل المستخدمين</p>
           <div
             onClick={() => {
@@ -142,7 +142,7 @@ const ChatIndex = () => {
             <p className="text-[#FFFFFF]"> مصر</p>
           </div>
         </div>
-        <div className="bg-[#1E1E2D] p-2 h-[801px] rounded-[19px] overflow-x-hidden overflow-y-auto scrollbar-none !scrollbar-track-[transparent] !scrollbar-thin !scrollbar-thumb-[#D9D9D9]">
+        <div className="col-span-3 bg-[#1E1E2D] p-2 h-[801px] rounded-[19px] overflow-x-hidden overflow-y-auto scrollbar-none !scrollbar-track-[transparent] !scrollbar-thin !scrollbar-thumb-[#D9D9D9]">
           <SearchComponent className={"!w-3/4 mx-auto"} />
           <div className="my-2 flex justify-between">
             <p
@@ -275,7 +275,7 @@ const ChatIndex = () => {
           )}
   
         </div>
-        <div className="col-span-2 bg-[#1E1E2D] h-[801px] rounded-[19px]">
+        <div className="col-span-6 bg-[#1E1E2D] h-[801px] rounded-[19px]">
           <Outlet />
         </div>
       </div>
