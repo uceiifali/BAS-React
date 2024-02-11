@@ -65,7 +65,7 @@ const Genralnformation = () => {
 
 
   return (
-    <div className='genralnformation overflow-y-auto py-3 px-2'>
+    <div className='genralnformation overflow-y-auto  px-2'>
       <ShowHolidayComponent setShowHoliday={setShowHoliday} ShowHoliday={ShowHoliday} />
 
       <div className='flex flex-col gap-3'>
