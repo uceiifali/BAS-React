@@ -56,16 +56,17 @@ const AsideBar = () => {
 
   return (
     <div
-      className={` asidePar   !overflow-x-visible !scrollbar-none   rounded-[19px]  relative flex items-center  w-full   `}
+      className={` asidePar   !overflow-x-visible !scrollbar-none   rounded-[19px]  relative flex items-center  w-full h-full   `}
       style={{ direction: rtl ? "rtl" : "ltr" }}
     >
       <ProfileMenu show={openProfile} />
       <Sidebar
         transitionDuration={800}
+        width="300px"
         collapsedWidth="100px !important"
         rootStyles={{
           color: "#FFF",
-          // height: "897px",
+          height: "100%",
           border: "2px solid #EFAA20 !important",
           borderRadius: "19px",
           overflow: "hidden",
@@ -73,7 +74,7 @@ const AsideBar = () => {
         collapsed={collapsed}
         rtl={rtl}
         backgroundColor="#1E1E2D"
-        className="  w-100"
+        // className="  w-100"
         color="#FFF"
       >
         <div className="d-flex collapsed-handler mx-2 mt-2 justify-end">

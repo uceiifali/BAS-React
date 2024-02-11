@@ -37,7 +37,7 @@ const Settings = () => {
   };
   console.log("settingType: ", settingType);
   return (
-    <div className="w-full">
+    <div className="w-full h-full">
       <SystemControler
         child={
           <button
@@ -103,7 +103,7 @@ const Settings = () => {
           show={show}
         />
       ) : null}
-      <div>
+      <div className="h-full">
         <Outlet />
       </div>
     </div>
