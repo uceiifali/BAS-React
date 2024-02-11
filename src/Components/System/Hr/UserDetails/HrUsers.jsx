@@ -23,7 +23,7 @@ import UpdatePassword from "../../../Modals/UpdatePassword";
 import DownloadButton from "../../../Buttons/DownloadButton";
 
 const HrUsers = () => {
-  const [employeeDetails, setEmployeeDetails] = useState("عن الموظف");
+  const [employeeDetails, setEmployeeDetails] = useState("aboutEmpolyee");
   const [editUser, setEditUser] = useState(false);
   const [deleteUser, setDeleteUser] = useState(false);
   const [upgradeUser, setUpgradeUser] = useState(false);
@@ -165,10 +165,10 @@ const HrUsers = () => {
                   </div>
                 </div>
 
-                <div className="main-text choose-inf position-relative d-flex justify-content-between mx-5 my-3">
+                <div className="main-text choose-inf relative flex px-3 my-3">
                   <p
-                    className={`genral-inf ${
-                      employeeDetails === "عن الموظف" && "inf-type"
+                    className={`genral-inf flex-1 text-center py-2 border-b-2 ${
+                      employeeDetails === "aboutEmpolyee"? "inf-type !border-[#D59921]": "!border-white/30"
                     }`}
                     onClick={() => {
                       setEmployeeDetails("aboutEmpolyee");
@@ -178,9 +178,8 @@ const HrUsers = () => {
                     عن الموظف
                   </p>
                   <p
-                    className={`genral-inf ${
-                      employeeDetails === "ProfessinollInformation" &&
-                      "inf-type"
+                    className={`genral-inf flex-1 text-center py-2 border-b-2 ${
+                      employeeDetails === "ProfessinollInformation" ? "inf-type !border-[#D59921]": "!border-white/30"
                     }`}
                     onClick={() => {
                       setEmployeeDetails("ProfessinollInformation");
@@ -189,8 +188,8 @@ const HrUsers = () => {
                     معلومات مهنية
                   </p>
                   <p
-                    className={`genral-inf ${
-                      employeeDetails === "AccountaingInformation" && "inf-type"
+                    className={`genral-inf flex-1 text-center py-2 border-b-2 ${
+                      employeeDetails === "AccountaingInformation" ? "inf-type !border-[#D59921]": "!border-white/30"
                     }`}
                     onClick={() => {
                       setEmployeeDetails("AccountaingInformation");
