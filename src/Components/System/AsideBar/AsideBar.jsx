@@ -566,11 +566,18 @@ export const ProfileMenu = ({ show }) => {
   return (
     <>
       <div
-        className={`absolute  z-10  border !border-[#2B2B40] left-[0]  top-50% transition-all ease-in-out duration-500 overflow-hidden bg-[#1E1E2D] rounded-[14px] w-[0px] h-[0] opacity-0 Z-10${
+        className={`absolute p-2  z-10  border !border-[#2B2B40] right-[0]  !top-[50%] transition-all ease-in-out duration-500 overflow-hidden bg-[#1E1E2D] rounded-[14px] w-[0px] h-[0] opacity-0 Z-10${
           show && " !h-[245px] !w-[100%] !opacity-100"
         } `}
       >
-        GDFDGDGF
+        <div  className="mx-2">
+          {/* should be user img */}
+          <Image
+            src="/People/Badr.png"
+            alt="user img"
+            className={"w-[51px] h-[51px] rounded-[50%]"}
+          />
+        </div>
       </div>
     </>
   );
