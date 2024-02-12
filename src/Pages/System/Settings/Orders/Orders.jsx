@@ -9,7 +9,6 @@ import MenuItem from "@mui/material/MenuItem";
 import SearchButton from "../SearchButton";
 import SettingContext from "../../../../Context/SettingContext";
 
-
 const EditIcon = () => {
   return (
     <svg
@@ -299,6 +298,7 @@ const OrdersData = [
 const settingtypes = ["uses", "service", "type"];
 const Orders = () => {
   const [show, setShow] = useState(false);
+  const { setSettingType } = useContext(SettingContext);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -307,6 +307,11 @@ const Orders = () => {
   const [activeMyHome, setActiveMyHome] = useState(1);
   const [category, setCategory] = useState(null);
   const [subCategory, setSubCategory] = useState(null);
+
+  useEffect(() => {
+    setSettingType("uses");
+  }, []);
+
   useEffect(() => {
     setCategory(OrdersData.find((order) => order.id == activeOrder));
   }, [activeOrder]);
