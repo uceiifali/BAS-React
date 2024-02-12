@@ -309,7 +309,8 @@ const Reception = () => {
                 openPdf={openPdf}
                 setOpenPdf={setOpenPdf}
                 pdfSrc={""}
-                text="الصادر"
+                width="53.36px"
+                height={"35px"}
               />
               <p className="text-base text-[#ffffff80] ">الصادر</p>
             </div>
@@ -356,11 +357,14 @@ const Reception = () => {
             }      pointer`}
           >
             <div className="flex items-center gap-2 text-sm text-[#ffffff80] ">
+              <div></div>
               <PdfImage
                 openPdf={openPdf}
                 setOpenPdf={setOpenPdf}
                 pdfSrc={""}
-                text="الصادر"
+                width="53.36px"
+                height={"35px"}
+  
               />
               <p className="text-base text-[#ffffff80] ">الوارد</p>
             </div>

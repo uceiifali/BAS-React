@@ -2,25 +2,30 @@ import React, { useMemo } from "react";
 import Pdf from "./Pdf";
 import Image from "./Image";
 
-const PdfImage = ({ openPdf, setOpenPdf, text = "", pdfSrc }) => {
+const PdfImage = ({
+  openPdf,
+  setOpenPdf,
+  text = "",
+  pdfSrc,
+  width,
+  height,
+}) => {
   return (
     <div>
       {openPdf && pdfSrc && (
         <Pdf PdfFile={pdfSrc} openPdf={openPdf} setOpenPdf={setOpenPdf} />
       )}
       <div
-        className="
-      bg-[#2B2B40]
-      py-1
+        className={` bg-[#2B2B40] py-1
       px-3
-      w-[99.81px]
-      h-[53px]
+      w-[${width}]
+      h-[${height}]
       flex justify-center
       items-center
       rounded-md
       pointer
       overflow-hidden
-      "
+      `}
         onClick={() => {
           setOpenPdf(true);
         }}

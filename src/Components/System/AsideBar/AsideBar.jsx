@@ -59,7 +59,7 @@ const AsideBar = () => {
       className={` asidePar   !overflow-x-visible !scrollbar-none   rounded-[19px]  relative flex items-center  w-full h-full   `}
       style={{ direction: rtl ? "rtl" : "ltr" }}
     >
-      <ProfileMenu show={openProfile} />
+      <ProfileMenu show={openProfile} setShow={setOpenProfile} />
       <Sidebar
         transitionDuration={800}
         width="300px"
@@ -563,8 +563,7 @@ export const SettingsMenu = ({ openSettingsMenu, handleCloseMenu }) => {
   );
 };
 
-export const ProfileMenu = ({ show }) => {
-  console.log("show" + show);
+export const ProfileMenu = ({ show, setShow }) => {
   return (
     <>
       <div
@@ -588,28 +587,40 @@ export const ProfileMenu = ({ show }) => {
             </div>
           </div>
           <div className="bg-[#D5992133] h-[1px] w-full my-2"></div>
-          <div className="mt-2 mb-3 mx-2">
+          <div onClick={() => setShow(false)} className="mt-2 mb-3 mx-2">
             <Link className="w-full " to="Profile/2424">
               <div>
                 <p className="text-sm text-white">صفحتى الشخصية</p>
               </div>
             </Link>
           </div>
-          <div className="mt-2  flex justify-between items-center pointer h-[33px] mb-3 mx-2">
+          <div
+            onClick={() => setShow(false)}
+            className="mt-2  flex justify-between items-center pointer h-[33px] mb-3 mx-2"
+          >
             <p className=" text-sm text-white">مشاريعي</p>
             <Badge badgeContent={2} color="error"></Badge>
           </div>
 
-          <div className="mt-2 flex justify-between items-center pointer h-[33px] mb-3 mx-2">
+          <div
+            onClick={() => setShow(false)}
+            className="mt-2 flex justify-between items-center pointer h-[33px] mb-3 mx-2"
+          >
             <p className="text-sm text-white"> محادثاتى</p>
             <Badge badgeContent={3} color="error"></Badge>
           </div>
 
-          <div className="mt-2 pointer h-[33px] mb-3 mx-2 flex justify-between">
+          <div
+            onClick={() => setShow(false)}
+            className="mt-2 pointer h-[33px] mb-3 mx-2 flex justify-between"
+          >
             <p className="text-white">اللغة</p>
             <FaCaretDown color="#fff" />
           </div>
-          <div className="mt-2 pointer h-[33px] mb-3 mx-2">
+          <div
+            onClick={() => setShow(false)}
+            className="mt-2 pointer h-[33px] mb-3 mx-2"
+          >
             <p className="text-sm text-white"> تسجيل الخروج</p>
           </div>
           <div

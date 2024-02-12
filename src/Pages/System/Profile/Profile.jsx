@@ -66,10 +66,11 @@ const Profile = () => {
                 <FormControl className="mb-3">
                   <InputLabel htmlFor="first-Name" label={"الاسم الاول"} />
                   <TextField
+                    disabled
                     size="small"
                     id="first-Name"
                     name="first-Name"
-                    placeholder="الاسم الاول"
+           
                     variant="outlined"
                     sx={{
                       "& fieldset": {
@@ -89,10 +90,11 @@ const Profile = () => {
                 <FormControl className="mb-3">
                   <InputLabel htmlFor="last-Name" label={"الاسم الاخير "} />
                   <TextField
+                    disabled
                     size="small"
                     id="last-Name"
                     name="last-Name"
-                    placeholder="الاسم الاخير"
+
                     variant="outlined"
                     sx={{
                       "& fieldset": {
@@ -111,10 +113,11 @@ const Profile = () => {
                 <FormControl className="mb-3">
                   <InputLabel htmlFor="user-Name" label={"اسم المستخدم"} />
                   <TextField
+                    disabled
                     size="small"
                     id="user-Name"
                     name="user-Name"
-                    placeholder="الاسم الاخير"
+  
                     variant="outlined"
                     sx={{
                       "& fieldset": {
@@ -136,10 +139,10 @@ const Profile = () => {
                     label={"البريد الالكترونى "}
                   />
                   <TextField
+                    disabled
                     size="small"
                     id="user-email"
                     name="user-email"
-                    placeholder="البريد الالكتروني"
                     variant="outlined"
                     sx={{
                       "& fieldset": {
@@ -158,10 +161,10 @@ const Profile = () => {
                 <FormControl className="mb-3">
                   <InputLabel htmlFor="user-phone" label={"رقم الجوال"} />
                   <TextField
+                    disabled
                     size="small"
                     id="user-phone"
                     name="user-phone"
-                    placeholder="رقم الجوال"
                     variant="outlined"
                     sx={{
                       "& fieldset": {
@@ -178,47 +181,34 @@ const Profile = () => {
                   />
                 </FormControl>
                 <FormControl>
-                  <InputLabel id="birthDate" label={"تاريخ الزيارة"} />
-                  <DatePicker
-                    id="birthDate"
-                    selected={birthDate}
-                    name="birthDate"
-                    placeholder="تاريخ الزيارة"
-                    onChange={(date) => setBirthDate(date)}
-                    dateFormat="dd-MM-yyyy"
-                    className="w-full bg-[#2B2B40] rounded-[7px]"
+                  <InputLabel id="visit-Date" label={"تاريخ الزيارة"} />
+                  <TextField
+                    disabled
+                    size="small"
+                    id="visit-Date"
+                    name="visit-Date"
+                    variant="outlined"
                     sx={{
                       "& fieldset": {
                         border: "none",
                       },
-                      "& input": {
+                    }}
+                    inputProps={{
+                      sx: {
                         color: "white",
-                      },
-                      "& svg": {
-                        color: "Rgba(255,255,255,0.5)",
+                        py: "10px",
                       },
                     }}
+                    className=" text-white bg-[#2B2B40] rounded-[7px]"
                   />
-                  {/* <Form.Label> تاريخ الزيارة</Form.Label> */}
-                  {/* <Controller
-                    control={control}
-                    name="date-input"
-                    render={({ field }) => (
-                      <FormDatePicker
-                        placeholderText="اختر"
-                        onChange={(date) => field.onChange(date)}
-                        date={field.value}
-                      />
-                    )}
-                  /> */}
                 </FormControl>
                 <FormControl className="mb-3">
                   <InputLabel htmlFor="city" label={"المدينة "} />
                   <TextField
+                    disabled
                     size="small"
                     id="city"
                     name="city"
-                    placeholder="المدينة "
                     variant="outlined"
                     sx={{
                       "& fieldset": {
@@ -237,10 +227,10 @@ const Profile = () => {
                 <FormControl className="mb-3">
                   <InputLabel htmlFor="area" label={"الحي "} />
                   <TextField
+                    disabled
                     size="small"
                     id="area"
                     name="area"
-                    placeholder="الحي "
                     variant="outlined"
                     sx={{
                       "& fieldset": {
@@ -259,11 +249,11 @@ const Profile = () => {
                 <FormControl className="mb-3">
                   <InputLabel htmlFor="level" label={"الصلاحية"} />
                   <TextField
-                    value={"مدير مكتب"}
+                    disabled
+            
                     size="small"
                     id="level"
                     name="level"
-                    placeholder="الصلاحية "
                     variant="outlined"
                     sx={{
                       "& fieldset": {
@@ -282,10 +272,10 @@ const Profile = () => {
                 <FormControl className="mb-3">
                   <InputLabel htmlFor="IdNumber" label={"رقم الهوية "} />
                   <TextField
+                    disabled
                     size="small"
                     id="IdNumber"
                     name="IdNumber"
-                    placeholder="رقم الهوية "
                     variant="outlined"
                     sx={{
                       "& fieldset": {
@@ -303,35 +293,35 @@ const Profile = () => {
                 </FormControl>
                 <FormControl className="mb-3">
                   <InputLabel htmlFor="IdDate" label={"تاريخ الهوية "} />
-                  <DatePicker
-                    id="idDate"
-                    selected={idDate}
-                    name="idDate"
-                    placeholder="تاريخ الزيارة"
-                    onChange={(date) => setIdDate(date)}
-                    dateFormat="dd-MM-yyyy"
-                    className="w-full bg-[#2B2B40] rounded-[7px]"
+                  <TextField
+                    disabled
+                    size="small"
+                    id="IdDate"
+                    name="IdDate"
+                    placeholder="تاريخ الهوية "
+                    variant="outlined"
                     sx={{
                       "& fieldset": {
                         border: "none",
                       },
-                      "& input": {
+                    }}
+                    inputProps={{
+                      sx: {
                         color: "white",
-                      },
-                      "& svg": {
-                        color: "Rgba(255,255,255,0.5)",
+                        py: "10px",
                       },
                     }}
+                    className=" text-white bg-[#2B2B40] rounded-[7px]"
                   />
                 </FormControl>
                 <FormControl className="mb-3">
                   <InputLabel htmlFor="password" label={" كلمة المرور "} />
                   <TextField
+                    disabled
                     size="small"
                     id="password"
                     type="password"
                     name="password"
-                    placeholder=" كلمة المرور "
                     variant="outlined"
                     sx={{
                       "& fieldset": {
@@ -354,7 +344,7 @@ const Profile = () => {
 
               <FormControl className="!w-full">
                 <InputLabel htmlFor="password" label={" نبذة عني  "} />
-                <textarea cols={5} rows={5} className="form-control !w-full" />
+                <textarea cols={5} rows={5} disabled className="form-control overflow-hidden !w-full" />
               </FormControl>
             </fieldset>
             <fieldset className="border p-4 my-4 !border-[#D5992133] w-3/4 mx-auto">
@@ -368,6 +358,8 @@ const Profile = () => {
                       onClick={() => {
                         setOpenPdf(true);
                       }}
+                      width="99.81px"
+                      height="53px"
                       openPdf={openPdf}
                       setOpenPdf={setOpenPdf}
                       pdfSrc={"/example.pdf"}
@@ -375,9 +367,6 @@ const Profile = () => {
                     <p className="text-white">اسم الملف</p>
                   </div>
                   <div className="flex mx-3 items-center gap-3">
-                    <div className="bg-[#9E0C1E] flex justify-center items-center  rounded-[3px] pointer w-[22px] h-[25px]">
-                      <RiDeleteBin6Line color="#fff" size={15} />
-                    </div>
                     <div className="bg-[#03795D] flex justify-center items-center  rounded-[3px] pointer w-[22px] h-[25px]">
                       <FaDownload color="#fff" size={15} />
                     </div>
@@ -389,6 +378,8 @@ const Profile = () => {
                       onClick={() => {
                         setOpenPdf(true);
                       }}
+                      width="99.81px"
+                      height="53px"
                       openPdf={openPdf}
                       setOpenPdf={setOpenPdf}
                       pdfSrc={"/example.pdf"}
@@ -396,9 +387,6 @@ const Profile = () => {
                     <p className="text-white">اسم الملف</p>
                   </div>
                   <div className="flex mx-3 items-center gap-3">
-                    <div className="bg-[#9E0C1E] flex justify-center items-center  rounded-[3px] pointer w-[22px] h-[25px]">
-                      <RiDeleteBin6Line color="#fff" size={15} />
-                    </div>
                     <div className="bg-[#03795D] flex justify-center items-center  rounded-[3px] pointer w-[22px] h-[25px]">
                       <FaDownload color="#fff" size={15} />
                     </div>
