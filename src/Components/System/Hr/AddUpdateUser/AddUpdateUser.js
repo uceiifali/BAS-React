@@ -173,7 +173,7 @@ const AddUpdateUser = ({ id = null }) => {
   };
 
   return (
-    <div className="bg-[#1E1E2D] rounded-[19px] border !border-[#EFAA20] h-full overflow-y-auto p-2 scrollbar-none">
+    <div className="bg-[#1E1E2D] rounded-[19px] border !border-[#EFAA20] max-h-[801px] overflow-y-auto p-2 scrollbar-none">
       {showSubmitPoper && (
         <Modal
           className="submitSystemPoper"
