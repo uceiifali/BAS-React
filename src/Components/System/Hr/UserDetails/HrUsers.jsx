@@ -32,8 +32,6 @@ const HrUsers = () => {
   const handleGetUserDetails = () => {};
 
   const colourStyles = {
-
-
     placeholder: (defaultStyles) => {
       return {
         ...defaultStyles,
@@ -107,7 +105,7 @@ const HrUsers = () => {
                 <div className="show-employee-header  ">
                   <div className="d-flex justify-content-between">
                     <p className="golden">مدير قسم / البرمجة</p>
-                    <div>
+                    <div className="flex gap-3">
                       <DownloadButton>تصدير CSV </DownloadButton>
                       <DownloadButton> تصدير Excel </DownloadButton>
                     </div>
@@ -168,7 +166,9 @@ const HrUsers = () => {
                 <div className="main-text choose-inf relative flex px-3 my-3">
                   <p
                     className={`genral-inf flex-1 text-center py-2 border-b-2 ${
-                      employeeDetails === "aboutEmpolyee"? "inf-type !border-[#D59921]": "!border-white/30"
+                      employeeDetails === "aboutEmpolyee"
+                        ? "inf-type !border-[#D59921]"
+                        : "!border-white/30"
                     }`}
                     onClick={() => {
                       setEmployeeDetails("aboutEmpolyee");
@@ -179,7 +179,9 @@ const HrUsers = () => {
                   </p>
                   <p
                     className={`genral-inf flex-1 text-center py-2 border-b-2 ${
-                      employeeDetails === "ProfessinollInformation" ? "inf-type !border-[#D59921]": "!border-white/30"
+                      employeeDetails === "ProfessinollInformation"
+                        ? "inf-type !border-[#D59921]"
+                        : "!border-white/30"
                     }`}
                     onClick={() => {
                       setEmployeeDetails("ProfessinollInformation");
@@ -189,7 +191,9 @@ const HrUsers = () => {
                   </p>
                   <p
                     className={`genral-inf flex-1 text-center py-2 border-b-2 ${
-                      employeeDetails === "AccountaingInformation" ? "inf-type !border-[#D59921]": "!border-white/30"
+                      employeeDetails === "AccountaingInformation"
+                        ? "inf-type !border-[#D59921]"
+                        : "!border-white/30"
                     }`}
                     onClick={() => {
                       setEmployeeDetails("AccountaingInformation");

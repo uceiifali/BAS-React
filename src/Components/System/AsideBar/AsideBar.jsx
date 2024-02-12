@@ -71,7 +71,7 @@ const AsideBar = () => {
           borderRadius: "19px",
           overflow: "hidden",
         }}
-        collapsed={collapsed}
+        collapsed={width < 1025 ? true : collapsed}
         rtl={rtl}
         backgroundColor="#1E1E2D"
         // className="  w-100"
@@ -604,10 +604,15 @@ export const ProfileMenu = ({ show, setShow }) => {
 
           <div
             onClick={() => setShow(false)}
-            className="mt-2 flex justify-between items-center pointer h-[33px] mb-3 mx-2"
+            className="mt-2  pointer h-[33px] mb-3 mx-2"
           >
-            <p className="text-sm text-white"> محادثاتى</p>
-            <Badge badgeContent={3} color="error"></Badge>
+            <Link
+              className="flex justify-between items-center"
+              to="/System/Chat/index"
+            >
+              <p className="text-sm text-white"> محادثاتى</p>
+              <Badge badgeContent={3} color="error"></Badge>
+            </Link>
           </div>
 
           <div

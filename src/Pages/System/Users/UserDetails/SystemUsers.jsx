@@ -75,7 +75,7 @@ const SystemUsers = () => {
                   <p className="text-[#D59921] mb-5 font-medium">
                     مدير قسم / البرمجة
                   </p>
-                  <div className="flex gap-1">
+                  <div className="flex gap-3">
                     <DownloadButton>تصدير CSV </DownloadButton>
                     <DownloadButton> تصدير Excel </DownloadButton>
                   </div>

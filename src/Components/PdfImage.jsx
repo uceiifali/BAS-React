@@ -7,6 +7,7 @@ const PdfImage = ({
   setOpenPdf,
   text = "",
   pdfSrc,
+  className,
   width,
   height,
 }) => {
@@ -24,6 +25,7 @@ const PdfImage = ({
       items-center
       rounded-md
       pointer
+      ${className}
       overflow-hidden
       `}
         onClick={() => {
