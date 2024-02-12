@@ -19,7 +19,7 @@ const AllCLients = () => {
 
   console.log(active);
   return (
-    <section className="h-100">
+    <section className="h-full">
       <SystemControler />
       <div className="grid grid-cols-12 gap-2 h-full">
         <div className="col-span-3 h-full">
