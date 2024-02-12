@@ -21,14 +21,14 @@ import Pdf from "../../../../Components/Pdf.jsx";
 
 const ClientDetails = () => {
   const [viewInvoice, setViewInvoice] = useState(false);
-  const [openDeleteModal,setOpenDeleteModal] = useState(false)
-  const [openDeleteSuccessModal,setOpenDeleteSuccessModal] = useState(false)
+  const [openDeleteModal, setOpenDeleteModal] = useState(false);
+  const [openDeleteSuccessModal, setOpenDeleteSuccessModal] = useState(false);
   const [openCliam, setOpenClaim] = useState(false);
   const [showProject, setShowProject] = useState(false);
   const [showClient, setShowClinet] = useState(false);
   const ClientDetailsTable = Array.from({ length: 2 }).map((_, index) => {
     return {
-      id: index+1,
+      id: index + 1,
       ProjectName: "BSA",
       ProjectNumber: "53543",
       projectType: "تصميم",
@@ -67,9 +67,12 @@ const ClientDetails = () => {
         </div>
       ),
       Invoice: (
-        <div className="pointer" onClick={() => {
-          setViewInvoice(true);
-        }}>
+        <div
+          className="pointer"
+          onClick={() => {
+            setViewInvoice(true);
+          }}
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="17"
@@ -129,22 +132,23 @@ const ClientDetails = () => {
     },
   ];
   const Clients = [
-    {id: 1,name: "سلطان عبد الله",type: "فردى"},
-    {id: 2,name: "فهد عبد الرحمن",type: "مستسمر"},
-    {id: 3,name: "سعود بن حمد",type: "شركة"},
-  ]
+    { id: 1, name: "سلطان عبد الله", type: "فردى" },
+    { id: 2, name: "فهد عبد الرحمن", type: "مستسمر" },
+    { id: 3, name: "سعود بن حمد", type: "شركة" },
+  ];
   const [currentMonth, setCurrentMonth] = useState(false);
   const [employeeDetails, setEmployeeDetails] = useState("معلومات عامة");
   const [Montlyhwork, setMontlyhwork] = useState(new Date());
   console.log(Montlyhwork);
   return (
     <div className="grid grid-cols-12 gap-2 h-full ">
-      <div className="col-span-3 bg-[#1E1E2D] rounded-[19px] ">
-        <SearchComponent background={"#161620 !important"} />
+      <div className="col-span-4 all-clients-search-container">
+        <SearchComponent />
 
         <div className="d-flex justify-content-between mt-4 w-100">
-          <p className=" text-white ">كل العملاء</p>
-
+          <Link to={"/System/Allclients"} className="pointer">
+            <p className=" text-white px-2">كل العملاء</p>
+          </Link>
           <NavDropdown
             title={
               <svg
@@ -163,25 +167,25 @@ const ClientDetails = () => {
             className="fs-5 "
           >
             <NavDropdown.Item
-              className="text-end  d-flex justify-content-between  align-items-center"
+              className="text-end d-flex justify-content-between  align-items-center"
               href="#action/3.2"
             >
               <span> فردي</span>
             </NavDropdown.Item>
             <NavDropdown.Item
-              className="text-end  d-flex justify-content-between align-items-center"
+              className="text-end d-flex justify-content-between align-items-center"
               href="#action/3.3"
             >
               <span> شركه</span>
             </NavDropdown.Item>
             <NavDropdown.Item
-              className="text-end  d-flex justify-content-between align-items-center"
+              className="text-end d-flex justify-content-between align-items-center"
               href="#action/3.3"
             >
               <span> تجاري</span>
             </NavDropdown.Item>
             <NavDropdown.Item
-              className="text-end  d-flex justify-content-between align-items-center"
+              className="text-end d-flex justify-content-between align-items-center"
               href="#action/3.3"
             >
               <span> مستثمر</span>
@@ -189,49 +193,46 @@ const ClientDetails = () => {
           </NavDropdown>
         </div>
 
-        <div className="all-clints-search-driver"></div>
-        {
-          Clients.map(({id,name,type})=> (
-        <Link to={`/System/ClintDetails/${id}`} key={id}>
-          <div className="p-2 clintName border !border-transparent hover:!border-[#EFAA20]">
-            <p className="text-white mb-0">{name}</p>
-            <p className="clint-type ">{type}</p>
-          </div>
-        </Link>
-
-          ))
-        }
-        
+        <div className="all-clints-search-driver inside-Search"></div>
+        {Clients.map(({ id, name, type, path }) => (
+          <Link to={path} key={id}>
+            <div className="border !border-transparent hover:!border-[#efaa2080] p-2 mb-1">
+              <p className="text-white text-sm font-medium">{name}</p>
+              <p className="text-[#FFFFFF4D] text-xs font-normal">{type}</p>
+            </div>
+          </Link>
+        ))}
       </div>
-      <div className="col-span-9  p-3   bg-[#1E1E2D] rounded-[19px]">
+      <div className="col-span-8  p-3   bg-[#1E1E2D] rounded-[19px]">
         <div className="flex justify-end gap-2 ">
           <DownloadButton>تصدير CSV </DownloadButton>
           <DownloadButton> تصدير Excel </DownloadButton>
         </div>
         <div className="flex justify-end gap-2 ">
-          <button onClick={()=> setOpenDeleteModal(true)} className="mt-2 ms-5 flex justify-center gap-1 text-xs font-medium bg-[#9E0C1E] text-white w-20 py-1 rounded-[3px]">
+          <button
+            onClick={() => setOpenDeleteModal(true)}
+            className="mt-2 ms-5 flex justify-center gap-1 text-xs font-medium bg-[#9E0C1E] text-white w-20 py-1 rounded-[3px]"
+          >
             حذف
-            <img src="/icons/delete.svg" alt=""/>
-            </button>
+            <img src="/icons/delete.svg" alt="" />
+          </button>
         </div>
         <div className="d-flex flex-column gap-2">
-          
-            <div className="d-flex gap-2">
-            <img src="/icons/clients/User.svg" alt=""/>
-              <p className="text-white text-base font-semibold">سلطان عبد الله</p>
-            </div>
-            <div className="d-flex  gap-2">
-            <img src="/icons/clients/type.svg" alt=""/>
-              <p className="text-sm font-medium">فردي</p>
-            </div>
-            <div className="d-flex  gap-2">
-            
-            <img src="/icons/clients/phone.svg" alt=""/>
-
-              <p className="text-sm font-medium">01123456789 </p>
-            </div>
+          <div className="d-flex gap-2">
+            <img src="/icons/clients/User.svg" alt="" />
+            <p className="text-white text-base font-semibold">سلطان عبد الله</p>
           </div>
-        
+          <div className="d-flex  gap-2">
+            <img src="/icons/clients/type.svg" alt="" />
+            <p className="text-sm font-medium">فردي</p>
+          </div>
+          <div className="d-flex  gap-2">
+            <img src="/icons/clients/phone.svg" alt="" />
+
+            <p className="text-sm font-medium">01123456789 </p>
+          </div>
+        </div>
+
         <div className="main-text choose-inf position-relative d-flex gap-3 mx-2 my-3">
           <p
             className={`genral-inf pb-2 ${
@@ -347,68 +348,63 @@ const ClientDetails = () => {
             </div>
 
             <div className="mt-3 !h-[400px] overflow-scroll scrollbar-none">
-
               {/* <DataTableComponent
                 className={" border-golden  w-100  datatableComponent"}
                 columns={columns}
                 data={ClientDetailsTable}
               /> */}
               <CustomTable columns={columns} data={ClientDetailsTable}>
-                  {ClientDetailsTable && ClientDetailsTable.length > 0
-                    ? ClientDetailsTable.map(
-                        (
-                          {
-                            id,
-                            ProjectName,
-                            ProjectNumber,
-                            projectType,
-                            DeliverDate,
-                            status,
-                            display,
-                            Claim,
-                            Invoice,
-                          },
-                          index
-                        ) => (
-                          <TableRow
-                            className={`my-2 border !border-[#efaa207f] ${
-                              index % 2 === 0 ? "bg-[#151521]" : ""
-                            }`}
-                            key={index}
-                          >
-                            <TableCell textColor="#ffffff7f">{id}</TableCell>
-                            <TableCell>{ProjectName}</TableCell>
-                            <TableCell>{ProjectNumber}</TableCell>
-                            <TableCell>{projectType}</TableCell>
-                            <TableCell>{DeliverDate}</TableCell>
-                            <TableCell>{status}</TableCell>
-                            <TableCell>{display}</TableCell>
-                            <TableCell>{Claim}</TableCell>
-                            <TableCell>{Invoice}</TableCell>
-                          </TableRow>
-                        )
+                {ClientDetailsTable && ClientDetailsTable.length > 0
+                  ? ClientDetailsTable.map(
+                      (
+                        {
+                          id,
+                          ProjectName,
+                          ProjectNumber,
+                          projectType,
+                          DeliverDate,
+                          status,
+                          display,
+                          Claim,
+                          Invoice,
+                        },
+                        index
+                      ) => (
+                        <TableRow
+                          className={`my-2 border !border-[#efaa207f] ${
+                            index % 2 === 0 ? "bg-[#151521]" : ""
+                          }`}
+                          key={index}
+                        >
+                          <TableCell textColor="#ffffff7f">{id}</TableCell>
+                          <TableCell>{ProjectName}</TableCell>
+                          <TableCell>{ProjectNumber}</TableCell>
+                          <TableCell>{projectType}</TableCell>
+                          <TableCell>{DeliverDate}</TableCell>
+                          <TableCell>{status}</TableCell>
+                          <TableCell>{display}</TableCell>
+                          <TableCell>{Claim}</TableCell>
+                          <TableCell>{Invoice}</TableCell>
+                        </TableRow>
                       )
-                    : null}
-                </CustomTable>
+                    )
+                  : null}
+              </CustomTable>
 
-
-            <Pdf
-            PdfFile={`${process.env.PUBLIC_URL + "/example.pdf"}`}
-            width={800}
-            height={800}
-            openPdf={openCliam}
-            setOpenPdf={setOpenClaim}
-          />
-            <Pdf
-            PdfFile={`${process.env.PUBLIC_URL + "/example.pdf"}`}
-            width={800}
-            height={800}
-            openPdf={viewInvoice}
-            setOpenPdf={setViewInvoice}
-          />
-
-
-                
+              <Pdf
+                PdfFile={`${process.env.PUBLIC_URL + "/example.pdf"}`}
+                width={800}
+                height={800}
+                openPdf={openCliam}
+                setOpenPdf={setOpenClaim}
+              />
+              <Pdf
+                PdfFile={`${process.env.PUBLIC_URL + "/example.pdf"}`}
+                width={800}
+                height={800}
+                openPdf={viewInvoice}
+                setOpenPdf={setViewInvoice}
+              />
             </div>
 
             {showProject && (
@@ -419,11 +415,7 @@ const ClientDetails = () => {
             )}
           </div>
         )}
-      </div>
-
-
-
-
+      </div>  
 
       {/* {openCliam && (
             <Modal
@@ -461,19 +453,17 @@ const ClientDetails = () => {
               </Modal.Body>
             </Modal>
           )} */}
-          
 
-<CustomModal
+      <CustomModal
         title="التاكيد"
         show={openDeleteModal}
         message={"هل انت متاكد من حذف المشروع"}
         handleSave={() => {
-          setOpenDeleteModal(false)
-          setOpenDeleteSuccessModal(true)
+          setOpenDeleteModal(false);
+          setOpenDeleteSuccessModal(true);
         }}
         handleClose={() => {
-          setOpenDeleteModal(false)
-            
+          setOpenDeleteModal(false);
         }}
       />
       <SuccessfullModal
@@ -483,11 +473,6 @@ const ClientDetails = () => {
           setOpenDeleteSuccessModal(false);
         }}
       />
-
-
-
-
-
     </div>
   );
 };

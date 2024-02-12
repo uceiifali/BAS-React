@@ -1390,3 +1390,7 @@ color: white;
 .rbc-time-header .rbc-label{
   display: none;
 }
+
+.modal-backdrop{
+  background: transparent !important;
+}

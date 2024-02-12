@@ -90,20 +90,7 @@ const InsideClients = () => {
             </div>
           </Link>
         ))}
-        {/* <Link  to={"/System/ClintDetails/2"}>
-                    <div  className='clintName '>
-                        <p className='text-white mb-0'> فهد عبد الرحمن</p>
-                        <p className='clint-type '>مستسمر</p>
-
-                    </div>
-
-                </Link>
-                <Link  to={"/System/ClintDetails/3"}><div className='clintName '>
-                    <p className='text-white mb-0'>  سعود بن حمد </p>
-                    <p className='clint-type '>شركة </p>
-
-                </div>
-                </Link> */}
+          
       </div>
       <div className="col-span-8     category-client-Component">
         <div className="insideChart p-4 h-100 d-flex  justify-content-between  align-items-center flex-column">

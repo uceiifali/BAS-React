@@ -19,8 +19,6 @@ const PdfImage = ({
       <div
         className={` bg-[#2B2B40] py-1
       px-3
-      w-[${width}]
-      h-[${height}]
       flex justify-center
       items-center
       rounded-md
@@ -28,6 +26,11 @@ const PdfImage = ({
       ${className}
       overflow-hidden
       `}
+      style={{
+        width:`${width}px`,
+        height:`${height}px`,
+        
+      }}
         onClick={() => {
           setOpenPdf(true);
         }}
