@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import "./index.css";
+import { MenuItem,FormControl } from "@mui/material";
+
 import Input from "../../../FormHandler/Input";
 import { UseInput, UseSelect } from "../../../../hooks";
 import Select from "../../../FormHandler/Select";
@@ -12,6 +14,9 @@ import { AddHrType } from "../../../../Context/AddHr";
 import FormDatePicker from "../../../FormDatePicker";
 import AddAttachment from "../../AddAttachment";
 import Image from "../../../Image";
+import { InputLabel } from "../../../../Pages/System/PlanModel/components/InputLabel";
+import CustomSelect from "../../../../Pages/System/PlanModel/components/CustomSelect";
+import { CiSearch } from "react-icons/ci";
 
 const AddUpdateUser = ({ id = null }) => {
   const { openHr, setOpenHr, HrType, setHrType } = useContext(AddHrType);
@@ -143,6 +148,11 @@ const AddUpdateUser = ({ id = null }) => {
   );
 
   const instrumentNumber = UseInput("", "number", true);
+  const [selectedGender,setSelectedGender] = useState("")
+  const [selectedCountry,setSelectedCountry] = useState("")
+  const [selectedDepartment,setSelectedDepartment] = useState("")
+  const [selectedRole,setSelectedRole] = useState("")
+  const [selectedLevel,setSelectedLevel] = useState("")
   const [instrumentDate, setInstrumentDate] = useState(null);
   const [birthDate, setBirthDate] = useState(null);
   const [showSubmitPoper, SetShowSubmitPoper] = useState(false);
@@ -163,7 +173,7 @@ const AddUpdateUser = ({ id = null }) => {
   };
 
   return (
-    <div className="addUpdateUser overflow-y-auto P-4">
+    <div className="bg-[#1E1E2D] rounded-[19px] border !border-[#EFAA20] h-full overflow-y-auto p-2 scrollbar-none">
       {showSubmitPoper && (
         <Modal
           className="submitSystemPoper"
@@ -263,12 +273,41 @@ const AddUpdateUser = ({ id = null }) => {
               />
             </div>
             <div className=" mb-2 flex justify-center">
-              <Select
+              {/* <Select
                 label="النوع"
                 options={genderOptions}
                 {...gender.bind}
                 placeholder="النوع"
-              />
+              /> */}
+
+<FormControl fullWidth>
+                  <InputLabel id="username" label={"النوع"} />
+                  <CustomSelect>
+                    <MenuItem disabled value="">
+                      <div className="w-full flex justify-between">
+                        <span>بحث ...</span>
+                        <CiSearch />
+                      </div>
+                    </MenuItem>
+                    {genderOptions.map(({label,value}, index) => (
+                      <MenuItem
+                        key={index}
+                        value={value}
+                        onClick={(e) => setSelectedGender(value)}
+                        // style={getStyles(name, selectedItem, theme)}
+                      >
+                        {label}
+                      </MenuItem>
+                    ))}
+                  </CustomSelect>
+
+</FormControl>
+
+
+
+
+
+
             </div>
             <div className=" mb-2 flex justify-center">
               <Input
@@ -285,12 +324,41 @@ const AddUpdateUser = ({ id = null }) => {
               />
             </div>
             <div className=" mb-2 flex justify-center">
-              <Select
+              {/* <Select
                 label=" البلد "
                 {...country.bind}
                 options={countryOption}
                 placeholder="  ادخل البلد"
-              />
+              /> */}
+<FormControl fullWidth>
+
+                <InputLabel id="username" label={"البلد"} />
+                  <CustomSelect>
+                    <MenuItem disabled value="">
+                      <div className="w-full flex justify-between">
+                        <span>بحث ...</span>
+                        <CiSearch />
+                      </div>
+                    </MenuItem>
+                    {countryOption.map(({label,value}, index) => (
+                      <MenuItem
+                        key={index}
+                        value={value}
+                        onClick={(e) => setSelectedCountry(value)}
+                        // style={getStyles(name, selectedItem, theme)}
+                      >
+                        {label}
+                      </MenuItem>
+                    ))}
+                  </CustomSelect>
+</FormControl>
+
+
+
+
+
+
+
             </div>
             <div className=" mb-2 flex justify-center">
               <Input
@@ -302,7 +370,7 @@ const AddUpdateUser = ({ id = null }) => {
             <div className=" mb-2 flex justify-center">
               <Input label="الحي " {...area.bind} placeholder="  ادخل الحي" />
             </div>
-            <div className=" mb-2 flex justify-center">
+            <div className="">
               <Form.Group
                 className="licenseDate-container"
                 controlId="licenseDate"
@@ -310,38 +378,130 @@ const AddUpdateUser = ({ id = null }) => {
                 <Form.Label className="d-flex gap-2 align-items-center">
                   تاريخ الميلاد
                 </Form.Label>
+                
                 <FormDatePicker
                   date={birthDate}
                   setDate={setBirthDate}
                   placeholderText={" ادخل تاريخ الميلاد "}
                 />
               </Form.Group>
+
+
+
+
+
+
+
+
+
+
+              
             </div>
             <div className=" mb-2 flex justify-center">
-              <Select
+              {/* <Select
                 label=" القسم "
                 {...department.bind}
                 options={departmentOption}
                 placeholder="  ادخل القسم"
-              />
+              /> */}
+              <FormControl fullWidth>
+                  <InputLabel id="username" label={"القسم"} />
+                  <CustomSelect>
+                    <MenuItem disabled value="">
+                      <div className="w-full flex justify-between">
+                        <span>بحث ...</span>
+                        <CiSearch />
+                      </div>
+                    </MenuItem>
+                    {departmentOption.map(({label,value}, index) => (
+                      <MenuItem
+                        key={index}
+                        value={value}
+                        onClick={(e) => setSelectedDepartment(value)}
+                        // style={getStyles(name, selectedItem, theme)}
+                      >
+                        {label}
+                      </MenuItem>
+                    ))}
+                  </CustomSelect>
+
+              </FormControl>
+
+
+
+
+
             </div>
             <div className=" mb-2 flex justify-center">
-              <Select
+              {/* <Select
                 label=" الصلاحية "
                 {...role.bind}
                 options={roleOption}
                 placeholder="  اختار الصلاحية"
-              />
+              /> */}
+              <FormControl fullWidth>
+                  <InputLabel id="username" label={"الصلاحية"} />
+                  <CustomSelect>
+                    <MenuItem disabled value="">
+                      <div className="w-full flex justify-between">
+                        <span>بحث ...</span>
+                        <CiSearch />
+                      </div>
+                    </MenuItem>
+                    {roleOption.map(({label,value}, index) => (
+                      <MenuItem
+                        key={index}
+                        value={value}
+                        onClick={(e) => setSelectedRole(value)}
+                        // style={getStyles(name, selectedItem, theme)}
+                      >
+                        {label}
+                      </MenuItem>
+                    ))}
+                  </CustomSelect>
+
+              </FormControl>
+
+
+
+
             </div>
             <div className=" mb-2 flex justify-center">
-              <Select
+              {/* <Select
                 label=" المستوى "
                 {...level.bind}
                 options={levelOption}
                 placeholder="  اختار الصلاحية"
-              />
+              /> */}
+<FormControl fullWidth>
+                  <InputLabel id="username" label={"المستوى"} />
+                  <CustomSelect>
+                    <MenuItem disabled value="">
+                      <div className="w-full flex justify-between">
+                        <span>بحث ...</span>
+                        <CiSearch />
+                      </div>
+                    </MenuItem>
+                    {levelOption.map(({label,value}, index) => (
+                      <MenuItem
+                        key={index}
+                        value={value}
+                        onClick={(e) => setSelectedLevel(value)}
+                        // style={getStyles(name, selectedItem, theme)}
+                      >
+                        {label}
+                      </MenuItem>
+                    ))}
+                  </CustomSelect>
+
+</FormControl>
+
+
+
+
+
             </div>
-            <div className=" mb-2 flex justify-center">
+            <div className="">
               <Form.Group
                 className="licenseDate-container"
                 controlId="licenseDate"
@@ -363,7 +523,7 @@ const AddUpdateUser = ({ id = null }) => {
                 placeholder="  ادخل رقم الهوية"
               />
             </div>
-            <div className=" mb-2 flex justify-center">
+            <div className="">
               <Form.Group
                 className="licenseDate-container"
                 controlId="licenseDate"
@@ -452,7 +612,7 @@ const AddUpdateUser = ({ id = null }) => {
                 placeholder=" ادخل نسبة الزيادة  "
               />
             </div>
-            <div className="col-md-4 col-sm-6 mb-2 d-flex justify-content-center">
+            <div className="col-md-4 col-sm-6">
               <Form.Group>
                 <Form.Label>بداية من شهر</Form.Label>
                 <FormDatePicker
@@ -585,9 +745,9 @@ const AddUpdateUser = ({ id = null }) => {
         )}
 
         <div className="d-flex w-75 mx-auto my-3 justify-content-end">
-          <Button type="submit" className="sumbmitAddUpdateUser">
+          <button type="submit" className="bg-[#EFAA20] text-[#1E1E2D] hover:bg-[#2B2B40] hover:text-white border !border-[#EFAA20] py-1 px-6 rounded-[6px]">
             حفظ
-          </Button>
+          </button>
         </div>
       </Form>
     </div>
