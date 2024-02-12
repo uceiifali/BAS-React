@@ -9,7 +9,7 @@ const SystemIndex = () => {
   const { collapsed, setCollapsed } = useContext(SideBarProvider);
   return (
     <section className="full-system system-bg min-h-screen">
-      <header className="container-lg">
+      <header className="container px-10">
         <nav className="flex justify-end">
           <div className="">
             <Image
