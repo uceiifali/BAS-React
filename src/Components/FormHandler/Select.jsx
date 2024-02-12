@@ -41,7 +41,8 @@ const Select = React.forwardRef((props, ref) => {
         Zindex: 99999,
         backgroundColor: isFocused ? OptionbackgroundColor : "",
       }),
-      placeholder: (styles) => ({ ...styles }),
+      placeholder: (styles) => ({ ...styles, color: "#fff" }),
+      value: (styles) => ({ ...styles, color: "#fff" }),
     };
     if (small) {
       options = {
@@ -66,6 +67,7 @@ const Select = React.forwardRef((props, ref) => {
           }),
         },
       };
+     
     }
 
     return options;

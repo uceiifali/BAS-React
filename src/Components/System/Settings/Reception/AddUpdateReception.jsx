@@ -61,6 +61,7 @@ const AddUpdateReciption = ({
     console.log(data);
     setShow(false);
   };
+
   useEffect(() => {
     console.log(ReciptionType);
     console.log("addUpdateRec is open");
@@ -68,6 +69,7 @@ const AddUpdateReciption = ({
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
       <div>
+        {/* // edit export */}
         {id && editVisit && status === "Exports" && (
           <Modal
             size="lg"
@@ -88,45 +90,44 @@ const AddUpdateReciption = ({
                   معلومات الزيارة
                 </legend>
                 <div class="grid grid-cols-2 gap-4 mb-3">
-                  {/* <Controller
-                  name="visitType"
-                  className="w-100"
-                  control={control}
-                  render={({ onChange, value, name, ref, field }) => (
-                    <Select
-                      label="نوع الزيارة"
-                      inputRef={ref}
-                      placeholder="اختر.."
-                      className="w-100"
-                      classNames={"border-0 "}
-                      
-                      options={[
-                        {
-                          value: "واردة",
-                          label: "واردة",
-                        },
-                        {
-                          value: "صادرة",
-                          label: "صادرة",
-                        },
-                      ]}
-                      onChange={onChange}
-                      {...field}
-                      name={name}
-                    />
-                  )}
-                /> */}
-                  <div className="">
+                  <Controller
+                    name="visitType"
+                    className="w-100"
+                    control={control}
+                    render={({ onChange, value, name, ref, field }) => (
+                      <Select
+                        label="نوع الزيارة"
+                        inputRef={ref}
+                        placeholder="اختر.."
+                        className="w-100"
+                        classNames={"border-0 "}
+                        options={[
+                          {
+                            value: "واردة",
+                            label: "واردة",
+                          },
+                          {
+                            value: "صادرة",
+                            label: "صادرة",
+                          },
+                        ]}
+                        onChange={onChange}
+                        {...field}
+                        name={name}
+                      />
+                    )}
+                  />
+                  {/* <div className="">
                     <p className="mb-2">نوع الزياره</p>
                     <select
                       class="form-select border-none bg-[#2B2B40]"
                       aria-label="Default select example"
                     >
                       {/* <option selected>Open this select menu</option> */}
-                      <option value="1">واردة</option>
+                  {/* <option value="1">واردة</option>
                       <option value="2">صادرة</option>
                     </select>
-                  </div>
+                  </div> */}
                   <Form.Group>
                     <Form.Label> اسم الشخص</Form.Label>
                     <input
@@ -255,13 +256,15 @@ const AddUpdateReciption = ({
                   setAttachment={setAttachment}
                 />
               </fieldset>
-              <div className="flex justify-center gap-4">
+              <div className="flex my-2  justify-center gap-4">
                 <DeleteButton />
-                <SaveButton />
+                <SaveButton type="submit" />
               </div>
             </Form>
           </Modal>
         )}
+        {/* // edit import */}
+
         {id && editVisit && status === "Imports" && (
           <Modal
             size="lg"
@@ -402,13 +405,14 @@ const AddUpdateReciption = ({
                   setAttachment={setAttachment}
                 />
               </fieldset>
-              <div className="flex justify-center gap-4">
+              <div className="flex my-2  justify-center gap-4">
                 <DeleteButton />
-                <SaveButton />
+                <SaveButton type="submit" />
               </div>
             </Form>
           </Modal>
         )}
+        {/* // add export */}
 
         {!id && show && ReciptionType === "Exports" && (
           <Modal
@@ -416,8 +420,7 @@ const AddUpdateReciption = ({
             show={show}
             onHide={() => setShow(false)}
             aria-labelledby=" example-modal-sizes-title-lg"
-            className={`systemModal `}
-            contentClassName="scrollbar-none overflow-y-scroll p-4"
+            className={`systemModal   scrollbar-none overflow-y-auto`}
           >
             <ModalHeader title={"اضافة زيارة"} />
 
@@ -631,13 +634,14 @@ const AddUpdateReciption = ({
                   setAttachment={setAttachment}
                 />
               </FormModal>
-              <div className="flex justify-center gap-4">
+              <div className="flex my-2 justify-center gap-4">
                 <DeleteButton />
-                <SaveButton />
+                <SaveButton type="submit" />
               </div>
             </Form>
           </Modal>
         )}
+        {/* // add import */}
 
         {!id && show && ReciptionType === "Imports" && (
           <Modal
@@ -815,14 +819,13 @@ const AddUpdateReciption = ({
                   setAttachment={setAttachment}
                 />
               </fieldset>
-              <div className="flex justify-center gap-4">
+              <div className="flex my-2  justify-center gap-4">
                 <DeleteButton />
-                <SaveButton />
+                <SaveButton type="submit" />
               </div>
             </Form>
           </Modal>
         )}
-        {/* {!id && !show && editVisit && <Progress />} */}
       </div>
     </LocalizationProvider>
   );
