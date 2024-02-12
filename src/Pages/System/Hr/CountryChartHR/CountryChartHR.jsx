@@ -29,7 +29,7 @@ const CountryChartHR = () => {
         <SearchUsers />
       </div>
       <div className="col-span-8">
-        <div className="country-Chart p-5">
+        <div className="country-Chart py-5">
           <div className="d-flex justify-content-center flex-column align-items-center">
             <div className="d-flex  mx-auto gap-4   justify-center">
               <p className=" text-center text-xl   text-white mb-4">    
