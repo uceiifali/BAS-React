@@ -7,6 +7,7 @@ import AddNewOrders from "../../../Components/AddNewBtn/Settings/AddNewOrders";
 
 import AddUpdateReciption from "../../../Components/System/Settings/Reception/AddUpdateReception";
 import SettingContext from "../../../Context/SettingContext";
+import AddNewAccounating from "../../../Components/AddNewBtn/Settings/AddNewAccounating";
 const Settings = () => {
   const { settingType, setSettingType, ReciptionType, setReciptionType } =
     useContext(SettingContext);
@@ -75,9 +76,9 @@ const Settings = () => {
           show={show}
         />
       ) : pagePath === "Accounating" ? (
-        <AddNewTimeLine
+        <AddNewAccounating
           handleClose={handleClose}
-          title={"This is Accounating Page"}
+          title={"اضافة بند جديد"}
           show={show}
         />
       ) : pagePath === "CitizenServices" &&
