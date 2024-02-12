@@ -76,6 +76,7 @@ export const AddMeeting = ({ view, setView }) => {
           onHide={() => setView(false)}
           aria-labelledby=" example-modal-sizes-title-lg"
           className="systemModal mettingModal   "
+          contentClassName="scroll"
         >
           <Container>
             <div className="d-flex justify-content-between">
@@ -113,6 +114,7 @@ export const AddMeeting = ({ view, setView }) => {
               {selectMeetingType.value.value === "مع قسم" && (
                 <div className="col-md-6 d-flex align-items-end  justify-content-center mb-4">
                   <Button
+                  type="button"
                     className="w-100 ChooseDeprtmant  bg-[#2B2B40]"
                     onClick={() => {
                       setChooseDeprtmant(true);
@@ -144,7 +146,7 @@ export const AddMeeting = ({ view, setView }) => {
                 <FormControl>
                   <FormLabel
                     className="text-white "
-                    id="demo-radio-buttons-group-label"
+                    // id="demo-radio-buttons-group-label"
                   >
                     {" "}
                     مكان الاجتماع
@@ -271,13 +273,15 @@ export const AddMeeting = ({ view, setView }) => {
 
               <div className="d-flex justify-content-center">
                 <button
+                type="button"
                   onClick={(e) => {
                     handleAddMeeting();
                   }}
                   className="  mt-4 sumbmitAddUpdateUser border-0 disabled "
                 >
                   {" "}
-                  {Submitted ? <Progress isSmall /> : " حفظ"}{" "}
+                  {/* {Submitted ? <Progress isSmall /> : " حفظ"}{" "} */}
+                   حفظ
                 </button>
               </div>
             </Form>
