@@ -1,5 +1,5 @@
 import myAxiosInstance from "../https";
 
 export const userLogin = async (userData) => {
-  return await myAxiosInstance.post("/user/login", userData);
+  return myAxiosInstance.post("/user/login", userData);
 };
