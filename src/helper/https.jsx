@@ -18,6 +18,7 @@ myAxiosInstance.interceptors.request.use(
     // exp on auth
     if (Cookies.get("accessToken")) {
       config.headers.append("authes", `BSA__${Cookies.get("accessToken")}`);
+      config.headers["authes"] = `BSA__${Cookies.get("accessToken")}`;
     }
     config.headers["Content-Type"] = "application/json";
 
