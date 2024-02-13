@@ -584,7 +584,7 @@ export const ProfileMenu = ({ show, setShow }) => {
         } `}
       >
         <div className="relative">
-          <div className="mx-2 flex gap-3">
+          <div className="mx-2 flex gap-2">
             {/* should be user img */}
             <Image
               src="/People/Badr.png"
@@ -628,12 +628,12 @@ export const ProfileMenu = ({ show, setShow }) => {
             </Link>
           </div>
 
-          <div className="mt-2 pointer relative h-[33px] mb-3 mx-2 flex item-center justify-between">
+          <div className="mt-2 pointer relative h-[33px] mb-3 mx-1 flex items-center justify-between">
             <p className="text-white">اللغة </p>
 
             {lang === "ar" ? (
               <div
-                onClick={() => setLang("ar")}
+                onClick={handlelang}
                 dir="rtl"
                 className="w-full my-3 mx-2  flex   justify-end gap-3 "
               >
@@ -646,7 +646,7 @@ export const ProfileMenu = ({ show, setShow }) => {
               </div>
             ) : (
               <div
-                onClick={() => setLang("en")}
+                onClick={handlelang}
                 dir="rtl"
                 className="w-full my-3 mx-2  flex   justify-end gap-3 "
               >
@@ -666,7 +666,7 @@ export const ProfileMenu = ({ show, setShow }) => {
             >
               {" "}
               <div
-                onClick={handleChangeLang}
+                onClick={()=> setLang("ar")}
                 dir="rtl"
                 className="w-full my-3 mx-2  flex   justify-end gap-3 "
               >
@@ -678,7 +678,7 @@ export const ProfileMenu = ({ show, setShow }) => {
                 />
               </div>
               <div
-                onClick={handleChangeLang}
+               onClick={()=> setLang("en")}
                 dir="rtl"
                 className="w-full my-3 mx-2  flex   justify-end gap-3 "
               >
