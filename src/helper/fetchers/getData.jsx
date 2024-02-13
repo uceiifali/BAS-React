@@ -1,6 +1,3 @@
-import myAxiosInstance from "../https"
+import myAxiosInstance from "../https";
 
-export const getAllCategories = async() =>{
-        const categories = await myAxiosInstance("category")
-        return categories.data.category
-}
+export const getAllCategories = () => myAxiosInstance("category");

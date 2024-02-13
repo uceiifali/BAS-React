@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import myAxiosInstance from "../../../../helper/https";
 import SearchButton from "../SearchButton";
 import { OptionsButton } from "./Test";
+import { FormModal } from "../../PlanModel/components/FormModal";
 
 export default function Orders() {
   const [isLoading, setIsLoading] = useState(false);
@@ -46,7 +47,9 @@ export default function Orders() {
             <p className="w-full px-2 text-white text-right mt-2">
               {"استخدام المشروع"}
             </p>
-            {categories?.map(({ _id, name }, index) => (
+            {categories?.length > 0 ?
+            
+            categories?.map(({ _id, name }, index) => (
               <div
                 className={`flex w-full justify-between items-center px-2 text-[#ffffff80] border hover:!border-[#EFAA20] text-base ${"!border-[#EFAA20]"}`}
                 key={_id}
@@ -62,11 +65,13 @@ export default function Orders() {
                 </button>
                 <OptionsButton />
               </div>
-            ))}
+            )): 
+            <p className="text-white text-2xl text-center">{"لا يوجد بيانات لعرضها"}</p>
+            }
           </div>
         </div>
         <div className="bg-[#1E1E2D] flex flex-col rounded-[19px] col-span-6 ">
-          <div className="py-4 px-14 h-full flex flex-col">
+          <div className="py-4 px-4 h-full flex flex-col">
             <button
               // onClick={handleShow}
               className="flex flex-col justify-center items-center gap-1 w-full bg-[#2B2B40] p-2 border !border-[#EFAA20] !border-dashed rounded-xl"
@@ -92,14 +97,16 @@ export default function Orders() {
             </button>
 
             <div className="p-2 flex-1">
-              <div
+              {/* <div
                 className={`relative h-full py-4  px-2 border !border-[#d5992133] `}
-              >
-                <p className="absolute p-2 left-1/2 top-0 -translate-x-1/2 -mt-1 -translate-y-1/2 bg-[#1E1E2D] text-white text-[13px] font-semibold">
-                  {"subCategory?.name"}
-                </p>
+              > */}
+                <FormModal title={"subCategory?.name"} className={"h-full"}>
+
+                
                 <div className="h-full overflow-y-scroll scrollbar-thin scrollbar-thumb-[#C8D0D0] scrollbar-track-transparent">
-                  {subCategories?.map(({ _id, name }) => (
+                  {
+                    subCategories?.length > 0?
+                  subCategories?.map(({ _id, name }) => (
                     <div
                       className={`flex w-full justify-between items-center px-2 text-[#ffffff80] border hover:!border-[#EFAA20] text-base ${" !border-transparent"}`}
                       key={_id}
@@ -116,9 +123,11 @@ export default function Orders() {
                       </button>
                       <OptionsButton />
                     </div>
-                  ))}
+                  )):
+                  <p className="text-white text-2xl text-center">{"لا يوجد بيانات لعرضها"}</p>}
                 </div>
-              </div>
+                </FormModal>
+              {/* </div> */}
             </div>
           </div>
         </div>
