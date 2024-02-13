@@ -17,10 +17,11 @@ myAxiosInstance.interceptors.request.use(
     // Add an Authorization header to the request
     // exp on auth
     // if (localStorage.getItem("SOME_TOKEN")) {
-    //   config.headers.append(
-    //     "Authorization",
-    //     "Bearer " + localStorage.getItem("SOME_TOKEN")
-    //   );
+      // config.headers.append(
+      //   "authes",
+      //   "BSA__eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1Y2IzNjA0Zjk2OGQ4YTU4ZDk3MzUxZSIsImZpcnN0TmFtZSI6ImpvaG4iLCJsYXN0TmFtZSI6ImRvZSIsInVzZXJOYW1lIjoiam9obmRvZUBCc2ExMiIsInJvbGUiOiLZhdiv2YrYsSIsInN0YXR1cyI6ItmF2KrYtdmEIiwiaWF0IjoxNzA3ODI1NzQzLCJleHAiOjE3MDc5MTIxNDN9.myQpwtn-vVHGg9byuzkCZHzaIffIc5srNfPMGA_-NBM"
+      // );
+      config.headers['authes'] = "BSA__eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1Y2IzNjA0Zjk2OGQ4YTU4ZDk3MzUxZSIsImZpcnN0TmFtZSI6ImpvaG4iLCJsYXN0TmFtZSI6ImRvZSIsInVzZXJOYW1lIjoiam9obmRvZUBCc2ExMiIsInJvbGUiOiLZhdiv2YrYsSIsInN0YXR1cyI6ItmF2KrYtdmEIiwiaWF0IjoxNzA3ODI1NzQzLCJleHAiOjE3MDc5MTIxNDN9.myQpwtn-vVHGg9byuzkCZHzaIffIc5srNfPMGA_-NBM";
     // }
     // config.headers["Content-Type"] = "application/json";
 
