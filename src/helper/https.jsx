@@ -14,14 +14,10 @@ export const myAxiosInstance = axios.create({
 // Add a request interceptor
 myAxiosInstance.interceptors.request.use(
   async (config) => {
-    // Add an Authorization header to the request
-    // exp on auth
     if (Cookies.get("accessToken")) {
-      config.headers.append("authes", `BSA__${Cookies.get("accessToken")}`);
       config.headers["authes"] = `BSA__${Cookies.get("accessToken")}`;
     }
     config.headers["Content-Type"] = "application/json";
-
     return config;
   },
   (error) => {
