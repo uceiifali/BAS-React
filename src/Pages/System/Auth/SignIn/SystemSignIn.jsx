@@ -13,17 +13,19 @@ import myAxiosInstance from "../../../../helper/https";
 import { toast } from "react-toastify";
 import Cookies from "js-cookie";
 import Progress from "../../../../Components/Progress";
+import { userLogin } from "../../../../helper/fetchers/Login";
 
 const SystemSignIn = () => {
   const [morningNightMode, setMorningNightMode] = useState("morning");
   const [checked, setChecked] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
+  // const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
   const {
     register,
     handleSubmit,
     watch,
-    formState: { errors },
+
+    formState: { errors, isSubmitting },
   } = useForm();
 
   const MaterialUISwitch = styled(Switch)(({ theme }) => ({
@@ -83,31 +85,19 @@ const SystemSignIn = () => {
     }
   };
   const onSubmit = async (userData) => {
-   console.log(userData)
-    setIsLoading(true);
     try {
-      const { data } = await myAxiosInstance({
-        url: "/user/login",
-        method: "POST",
-        data: userData,
-        
-      });
+      const { data } = await userLogin(userData);
       console.log(data);
-      if (data.message == "user login Done") {
-        setIsLoading(false);
+      if (data.success) {
         Cookies.set("accessToken", data.accessToken);
         navigate("/System/index");
       } else {
-        setIsLoading(false);
         toast.error(data?.message);
       }
-    } catch ({response}) {
-      setIsLoading(false);
+    } catch ({ response }) {
       toast.error(response?.data?.message);
- 
-
     } finally {
-
+      // write any code here
     }
   };
 
@@ -175,7 +165,7 @@ const SystemSignIn = () => {
               }}
             >
               {" "}
-              {isLoading ? <Progress isSmall /> : " الدخول الي الحساب"}
+              {isSubmitting ? <Progress isSmall /> : " الدخول الي الحساب"}
             </Button>
           </Form>
         </div>
