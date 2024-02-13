@@ -633,7 +633,7 @@ export const ProfileMenu = ({ show, setShow }) => {
 
             {lang === "ar" ? (
               <div
-                onClick={setLang("ar")}
+                onClick={() => setLang("ar")}
                 dir="rtl"
                 className="w-full my-3 mx-2  flex   justify-end gap-3 "
               >
@@ -646,7 +646,7 @@ export const ProfileMenu = ({ show, setShow }) => {
               </div>
             ) : (
               <div
-                onClick={setLang("en")}
+                onClick={() => setLang("en")}
                 dir="rtl"
                 className="w-full my-3 mx-2  flex   justify-end gap-3 "
               >
