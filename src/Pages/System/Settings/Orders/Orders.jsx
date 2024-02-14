@@ -8,7 +8,7 @@ import { toast } from "react-toastify";
 import { getAllCategories } from "../../../../helper/fetchers/Categories";
 import { useQueryClient } from "react-query";
 import {
-  useAddCategory,
+  
   useDeleteCategory,
   useGetAllCategories,
   useUpdateCategory,
@@ -30,8 +30,9 @@ const UpdateModal = ({ id ,show,setShow}) => {
   const [successfull, setSuccsesfull] = useState(false);
   
   const handleClose = () => setShow(false);
-  
+  const queryClient = useQueryClient();
   const { mutate: updateMutation } = useUpdateCategory(() => {
+    queryClient.invalidateQueries("category");
     setSuccsesfull(true)
   }, id);
   return (
@@ -63,8 +64,9 @@ const UpdateSubModal = ({ categoryId,subId ,show,setShow}) => {
   const [successfull, setSuccsesfull] = useState(false);
   
   const handleClose = () => setShow(false);
-  
+  const queryClient = useQueryClient();
   const { mutate: updateMutation } = useUpdateSubCategory(() => {
+    queryClient.invalidateQueries("sub-category");
     setSuccsesfull(true)
   },categoryId,subId);
   return (
@@ -239,7 +241,8 @@ const SubCategoriesList = ({ category }) => {
   const handleShow = () => setShow(true);
   const handleClose = () => setShow(false);
   const { data } = useGetAllSubCategories(category._id);
-  const { mutate: deleteMutation } = useDeleteSubCategory();
+  const queryClient = useQueryClient();
+  const { mutate: deleteMutation } = useDeleteSubCategory(()=>{});
 
   console.log("allSubCategories: ", category?.subcategories);
 
