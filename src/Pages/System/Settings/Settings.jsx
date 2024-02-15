@@ -13,6 +13,7 @@ import AddModal from "./AddModal";
 import { useAddCategory } from "../../../hooks/fetchers/Categories";
 import SuccessfullModal from "../../../Components/Modals/SuccessfullModal";
 import { useQueryClient } from "react-query";
+import { useAddService } from "../../../hooks/fetchers/Services";
 
 const Settings = () => {
   const {
@@ -28,8 +29,13 @@ const Settings = () => {
   const queryClient = useQueryClient();
   // ***********************************
   const [newCategory, setNewCategory] = useState("");
-  const { mutate, isSuccess, isError, error } = useAddCategory(() => {
+  const [newService, setNewService] = useState("");
+  const { mutate: mutateCategory, isSuccess, isError, error } = useAddCategory(() => {
     queryClient.invalidateQueries("category");
+    setSuccsesfull(true);
+  });
+  const { mutate: mutateService } = useAddService(() => {
+    queryClient.invalidateQueries("services");
     setSuccsesfull(true);
   });
   // ***********************************
@@ -137,7 +143,20 @@ const Settings = () => {
           handleClose={handleClose}
           setNewValue={setNewCategory}
           handleSave={() => {
-            mutate({ name: newCategory });
+            mutateCategory({ name: newCategory });
+
+            handleClose();
+          }}
+        />
+      )}
+      {orderType === 2 && (
+        <AddModal
+          title={"اضافة جديدة"}
+          show={show}
+          handleClose={handleClose}
+          setNewValue={setNewService}
+          handleSave={() => {
+            mutateService({ name: newService });
 
             handleClose();
           }}
