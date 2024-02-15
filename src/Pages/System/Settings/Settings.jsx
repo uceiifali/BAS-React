@@ -13,17 +13,29 @@ import AddModal from "./AddModal";
 import { useAddCategory } from "../../../hooks/fetchers/Categories";
 import SuccessfullModal from "../../../Components/Modals/SuccessfullModal";
 import { useQueryClient } from "react-query";
+import { useAddService } from "../../../hooks/fetchers/Services";
 
 const Settings = () => {
-  const { settingType, setSettingType, ReciptionType, setReciptionType } =
-    useContext(SettingContext);
+  const {
+    settingType,
+    setSettingType,
+    ReciptionType,
+    setReciptionType,
+    orderType,
+    setOrderType,
+  } = useContext(SettingContext);
   const [successfull, setSuccsesfull] = useState(false);
   const [errorModal, setErrorModal] = useState(false);
   const queryClient = useQueryClient();
   // ***********************************
   const [newCategory, setNewCategory] = useState("");
-  const { mutate, isSuccess, isError, error } = useAddCategory(() => {
+  const [newService, setNewService] = useState("");
+  const { mutate: mutateCategory, isSuccess, isError, error } = useAddCategory(() => {
     queryClient.invalidateQueries("category");
+    setSuccsesfull(true);
+  });
+  const { mutate: mutateService } = useAddService(() => {
+    queryClient.invalidateQueries("services");
     setSuccsesfull(true);
   });
   // ***********************************
@@ -56,7 +68,7 @@ const Settings = () => {
     }
     // handleOpen()
   };
-  console.log("settingType: ", settingType);
+  // console.log("settingType: ", settingType);
   return (
     <div className="">
       <SystemControler
@@ -124,17 +136,32 @@ const Settings = () => {
           show={show}
         />
       ) : null} */}
-      <AddModal
-        title={"اضافة جديدة"}
-        show={show}
-        handleClose={handleClose}
-        setNewValue={setNewCategory}
-        handleSave={() => {
-          mutate({ name: newCategory });
+      {orderType === 1 && (
+        <AddModal
+          title={"اضافة جديدة"}
+          show={show}
+          handleClose={handleClose}
+          setNewValue={setNewCategory}
+          handleSave={() => {
+            mutateCategory({ name: newCategory });
 
-          handleClose();
-        }}
-      />
+            handleClose();
+          }}
+        />
+      )}
+      {orderType === 2 && (
+        <AddModal
+          title={"اضافة جديدة"}
+          show={show}
+          handleClose={handleClose}
+          setNewValue={setNewService}
+          handleSave={() => {
+            mutateService({ name: newService });
+
+            handleClose();
+          }}
+        />
+      )}
       <SuccessfullModal
         show={successfull}
         message={"تمت الاضافة بنجاح"}
@@ -151,7 +178,7 @@ const Settings = () => {
         }}
       />
 
-      <div className=" !h-full">
+      <div className="h-full">
         <Outlet />
       </div>
     </div>
