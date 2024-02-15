@@ -19,7 +19,7 @@ const SystemIndex = () => {
   }, [user]);
 
   return (
-    <section className="full-system system-bg min-h-screen">
+    <section className="full-system system-bg min-h-screen  flex flex-col">
       <header className="container px-10">
         <nav className="flex justify-end">
           <div className="">
@@ -32,11 +32,11 @@ const SystemIndex = () => {
         </nav>
       </header>
 
-      <section className="container   !min-h-screen !h-full  px-10 flex justify-between gap-3 py-2 ">
-        <div className="max-w-xs  !min-h-screen  !h-full">
+      <section className="container flex-1 px-10 flex gap-3">
+        <div className="max-w-xs transition-all">
           <AsideBar />
         </div>
-        <main className="flex-1    !min-h-screen !h-full transition-all">
+        <main className="flex-1">
           <Outlet />
         </main>
       </section>

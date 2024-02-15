@@ -114,9 +114,9 @@ export default function Orders() {
   console.log("data: ", data?.data?.category);
 
   return (
-    <section className="h-full">
-      <div className="grid grid-cols-12 gap-2 h-full">
-        <div className="bg-[#1E1E2D] col-span-3 rounded-[19px]">
+    <section className="!h-full">
+      <div className="grid grid-cols-12 gap-2 !h-full">
+        <div className="bg-[#1E1E2D] col-span-3 !h-full rounded-[19px]">
           <div className="p-2 ">
             <p className="w-full text-white text-right my-2">الطلبات</p>
             <div className="flex flex-col gap-2">
@@ -130,7 +130,7 @@ export default function Orders() {
           </div>
         </div>
 
-        <div className="bg-[#1E1E2D] col-span-3 rounded-[19px]">
+        <div className="bg-[#1E1E2D] col-span-3 !h-full rounded-[19px]">
           <div className=" flex flex-col gap-2">
             <div className="p-3">
               <SearchButton />
