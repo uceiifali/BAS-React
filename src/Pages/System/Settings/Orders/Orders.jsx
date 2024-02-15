@@ -8,7 +8,6 @@ import { toast } from "react-toastify";
 import { getAllCategories } from "../../../../helper/fetchers/Categories";
 import { useQueryClient } from "react-query";
 import {
-  
   useDeleteCategory,
   useGetAllCategories,
   useUpdateCategory,
@@ -25,19 +24,18 @@ import SuccessfullModal from "../../../../Components/Modals/SuccessfullModal";
 import { OptionsButton } from "../OptionsButton";
 const settingtypes = ["uses", "service", "type"];
 
-const UpdateModal = ({ id ,show,setShow}) => {
+const UpdateModal = ({ id, show, setShow }) => {
   const [newCategory, setNewCategory] = useState("");
   const [successfull, setSuccsesfull] = useState(false);
-  
+
   const handleClose = () => setShow(false);
   const queryClient = useQueryClient();
   const { mutate: updateMutation } = useUpdateCategory(() => {
     queryClient.invalidateQueries("category");
-    setSuccsesfull(true)
+    setSuccsesfull(true);
   }, id);
   return (
     <>
-      
       <AddModal
         title={"تعديل"}
         show={show}
@@ -59,19 +57,22 @@ const UpdateModal = ({ id ,show,setShow}) => {
     </>
   );
 };
-const UpdateSubModal = ({ categoryId,subId ,show,setShow}) => {
+const UpdateSubModal = ({ categoryId, subId, show, setShow }) => {
   const [newCategory, setNewCategory] = useState("");
   const [successfull, setSuccsesfull] = useState(false);
-  
+
   const handleClose = () => setShow(false);
   const queryClient = useQueryClient();
-  const { mutate: updateMutation } = useUpdateSubCategory(() => {
-    queryClient.invalidateQueries("sub-category");
-    setSuccsesfull(true)
-  },categoryId,subId);
+  const { mutate: updateMutation } = useUpdateSubCategory(
+    () => {
+      queryClient.invalidateQueries("sub-category");
+      setSuccsesfull(true);
+    },
+    categoryId,
+    subId
+  );
   return (
     <>
-      
       <AddModal
         title={"تعديل"}
         show={show}
@@ -98,35 +99,41 @@ export default function Orders() {
   const [category, setCategory] = useState({});
   const [show, setShow] = useState(false);
   const handleShow = () => setShow(true);
-  const { data, isLoading } = useGetAllCategories();
+  const { data, isLoading, isSuccess } = useGetAllCategories();
   const { mutate: deleteMutation } = useDeleteCategory();
 
   const [activeCategories, setActiveCategories] = useState([]);
-  const { setSettingType } = useContext(SettingContext);
+  const { setSettingType, orderType, setOrderType } =
+    useContext(SettingContext);
   useEffect(() => {
     setSettingType("uses");
   }, []);
   useEffect(() => {
-    myAxiosInstance("category").then((data) => {
-      setCategory(data?.data?.category[0]);
-    });
-  }, [isLoading]);
-  console.log("isLoading: ", isLoading);
-  console.log("category: ", category);
-  console.log("data: ", data?.data?.category);
+    isSuccess && setCategory(data?.data?.category[0]);
+  }, [isSuccess]);
 
   return (
     <section className="h-full">
       <div className="grid grid-cols-12 gap-2 h-full">
         <div className="bg-[#1E1E2D] col-span-3 rounded-[19px]">
           <div className="p-2 ">
-            <p className="w-full text-white text-right my-2">الطلبات</p>
-            <div className="flex flex-col gap-2">
+            <p className="w-full text-white text-right my-3">الطلبات</p>
+            <div className="flex flex-col gap-3">
               <button
-                onClick={() => alert({ name: "نون الف" })}
-                className={`add-user-button px-2 text-right !w-full border hover:!border-[#EFAA20] rounded-md  `}
+                onClick={() => setOrderType(1)}
+                className={`add-user-button px-2 text-right !w-full border hover:!border-[#EFAA20] rounded-md ${
+                  orderType === 1 ? "!border-[#EFAA20]" : ""
+                } `}
               >
                 {"استخدام المشروع"}
+              </button>
+              <button
+                onClick={() => setOrderType(2)}
+                className={`add-user-button px-2 text-right !w-full border hover:!border-[#EFAA20] rounded-md ${
+                  orderType === 2 ? "!border-[#EFAA20]" : ""
+                } `}
+              >
+                {"خدمات المشروع"}
               </button>
             </div>
           </div>
@@ -138,45 +145,56 @@ export default function Orders() {
               <SearchButton />
             </div>
             <p className="w-full px-2 text-white text-right mt-2">
-              {"استخدام المشروع"}
+              {orderType === 1
+                ? "كل استخدمات المشروع"
+                : orderType === 2
+                ? "كل خدمات المشروع"
+                : orderType === 3
+                ? "نوع المشروع"
+                : null}
             </p>
-            {data?.data?.category?.length > 0 ? (
-              data?.data?.category?.map(({ _id, name }, index) => (
-                <div
-                  className={`flex w-full justify-between items-center px-2 text-[#ffffff80] border hover:!border-[#EFAA20] text-base ${
-                    activeCategories == _id
-                      ? "!border-[#EFAA20]"
-                      : "!border-transparent"
-                  }`}
-                  key={_id}
-                >
-                  <button
-                    // onClick={() => setActive(index)}
-                    onClick={() => {
-                      setActiveCategories(_id);
-                      setCategory(data?.data?.category[index]);
-                    }}
-                    className="w-full"
-                  >
-                    <p className="w-full text-white text-right my-3">{name}</p>
-                  </button>
-                  
-                  <UpdateModal id={_id} show={show} setShow={setShow}/>
-                  <OptionsButton
-                    id={_id}
-                    onUpdate={handleShow}
-                    onDelete={() => deleteMutation(_id)}
-                  />
-                </div>
-              ))
-            ) : (
-              <p className="text-white text-2xl text-center">
-                {"لا يوجد بيانات لعرضها"}
-              </p>
+            {orderType === 1 && (
+              <>
+                {data?.data?.category?.length > 0 ? (
+                  data?.data?.category?.map(({ _id, name }, index) => (
+                    <div
+                      className={`flex w-full justify-between items-center px-2 text-[#ffffff80] border hover:!border-[#EFAA20] text-base ${
+                        activeCategories === _id
+                          ? "!border-[#EFAA20]"
+                          : "!border-transparent"
+                      }`}
+                      key={_id}
+                    >
+                      <button
+                        onClick={() => {
+                          setActiveCategories(_id);
+                          setCategory(data?.data?.category[index]);
+                        }}
+                        className="w-full"
+                      >
+                        <p className="w-full text-white text-right my-3">
+                          {name}
+                        </p>
+                      </button>
+
+                      <UpdateModal id={_id} show={show} setShow={setShow} />
+                      <OptionsButton
+                        id={_id}
+                        onUpdate={handleShow}
+                        onDelete={() => deleteMutation(_id)}
+                      />
+                    </div>
+                  ))
+                ) : (
+                  <p className="text-white text-2xl text-center">
+                    {"لا يوجد بيانات لعرضها"}
+                  </p>
+                )}
+              </>
             )}
           </div>
         </div>
-        <SubCategoriesDesign category={category} />
+        {orderType === 1 && <SubCategoriesDesign category={category} />}
       </div>
     </section>
   );
@@ -242,7 +260,7 @@ const SubCategoriesList = ({ category }) => {
   const handleClose = () => setShow(false);
   const { data } = useGetAllSubCategories(category._id);
   const queryClient = useQueryClient();
-  const { mutate: deleteMutation } = useDeleteSubCategory(()=>{});
+  const { mutate: deleteMutation } = useDeleteSubCategory(() => {});
 
   console.log("allSubCategories: ", category?.subcategories);
 
@@ -262,20 +280,18 @@ const SubCategoriesList = ({ category }) => {
             >
               <p className="w-full text-white text-right my-3">{name}</p>
             </button>
-            <UpdateSubModal categoryId={category?._id} subId={_id} show={show} setShow={setShow}/>
+            <UpdateSubModal
+              categoryId={category?._id}
+              subId={_id}
+              show={show}
+              setShow={setShow}
+            />
 
-            <OptionsButton 
-              
-              
+            <OptionsButton
               id={_id}
               onUpdate={handleShow}
-              onDelete={() => deleteMutation([category._id,_id])}
-             />
-
-
-
-
-
+              onDelete={() => deleteMutation([category._id, _id])}
+            />
           </div>
         ))
       ) : (

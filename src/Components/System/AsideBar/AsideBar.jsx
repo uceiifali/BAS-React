@@ -42,12 +42,12 @@ const AsideBar = () => {
     // if you use screens from tablet collapse the sidebar
     if (width < 1025) {
       setCollapsed(true);
-      console.log("closed due to small width");
+      // console.log("closed due to small width");
     } else {
       setCollapsed(false);
-      console.log("opend due to small width");
+      // console.log("opend due to small width");
     }
-    console.log(window.innerWidth);
+    // console.log(window.innerWidth);
     // clear the use Effect
     return () => {
       window.removeEventListener("resize", getSize);
@@ -132,8 +132,8 @@ const AsideBar = () => {
                     height="65"
                     rx="10.5"
                     stroke="#434362"
-                    stroke-linejoin="round"
-                    stroke-dasharray="3 3"
+                    strokeLinejoin="round"
+                    strokeDasharray="3 3"
                   />
                   <text fill="white   ">
                     <tspan
@@ -172,8 +172,8 @@ const AsideBar = () => {
                     height="65"
                     rx="10.5"
                     stroke="#434362"
-                    stroke-linejoin="round"
-                    stroke-dasharray="3 3"
+                    strokeLinejoin="round"
+                    strokeDasharray="3 3"
                   />
                   <text fill="white   ">
                     <tspan
@@ -207,8 +207,8 @@ const AsideBar = () => {
               <div className="col-md-4 ">
                 <div className="system-item">
                   <Link to="/System/index">
-                    <div class="system-card">
-                      <div class="card__content d-flex justify-content-center align-items-center  flex-column  ">
+                    <div className="system-card">
+                      <div className="card__content d-flex justify-content-center align-items-center  flex-column  ">
                         <Image
                           src={
                             process.env.PUBLIC_URL +
@@ -227,8 +227,8 @@ const AsideBar = () => {
               <div className="col-md-4 ">
                 <div className="system-item">
                   <Link to={"/System/Clients/index"}>
-                    <div class="system-card">
-                      <div class="card__content d-flex justify-content-center align-items-center  flex-column  ">
+                    <div className="system-card">
+                      <div className="card__content d-flex justify-content-center align-items-center  flex-column  ">
                         <Image
                           src={
                             process.env.PUBLIC_URL +
@@ -246,8 +246,8 @@ const AsideBar = () => {
               <div className="col-md-4 ">
                 <div className="system-item">
                   <Link to="/System/Users/index">
-                    <div class="system-card">
-                      <div class="card__content d-flex justify-content-center align-items-center  flex-column  ">
+                    <div className="system-card">
+                      <div className="card__content d-flex justify-content-center align-items-center  flex-column  ">
                         <Image
                           src={
                             process.env.PUBLIC_URL +
@@ -265,8 +265,8 @@ const AsideBar = () => {
               <div className="col-md-4 ">
                 <div className="system-item">
                   <Link to="/System/Requests/index">
-                    <div class="system-card">
-                      <div class="card__content d-flex justify-content-center align-items-center  flex-column  ">
+                    <div className="system-card">
+                      <div className="card__content d-flex justify-content-center align-items-center  flex-column  ">
                         <Image
                           src={
                             process.env.PUBLIC_URL +
@@ -284,8 +284,8 @@ const AsideBar = () => {
               <div className="col-md-4 ">
                 <div className="system-item">
                   <Link to={"/System/Projects/index"}>
-                    <div class="system-card">
-                      <div class="card__content d-flex justify-content-center align-items-center  flex-column  ">
+                    <div className="system-card">
+                      <div className="card__content d-flex justify-content-center align-items-center  flex-column  ">
                         <Image
                           src={
                             process.env.PUBLIC_URL +
@@ -303,8 +303,8 @@ const AsideBar = () => {
               <div className="col-md-4 ">
                 <div className="system-item">
                   <Link to={"/System/plans"}>
-                    <div class="system-card">
-                      <div class="card__content d-flex justify-content-center align-items-center  flex-column  ">
+                    <div className="system-card">
+                      <div className="card__content d-flex justify-content-center align-items-center  flex-column  ">
                         <Image
                           src={
                             process.env.PUBLIC_URL +
@@ -322,8 +322,8 @@ const AsideBar = () => {
               <div className="col-md-4 ">
                 <div className="system-item">
                   <Link to={"/System/Meetings/index"}>
-                    <div class="system-card">
-                      <div class="card__content d-flex justify-content-center align-items-center  flex-column  ">
+                    <div className="system-card">
+                      <div className="card__content d-flex justify-content-center align-items-center  flex-column  ">
                         <Image
                           src={
                             process.env.PUBLIC_URL +
@@ -341,8 +341,8 @@ const AsideBar = () => {
               <div className="col-md-4 ">
                 <div className="system-item">
                   <Link to={"/System/Hr/index"}>
-                    <div class="system-card">
-                      <div class="card__content d-flex justify-content-center align-items-center  flex-column  ">
+                    <div className="system-card">
+                      <div className="card__content d-flex justify-content-center align-items-center  flex-column  ">
                         <Image
                           src={
                             process.env.PUBLIC_URL + "/icons/asideIcons/hr.png"
@@ -359,8 +359,8 @@ const AsideBar = () => {
               <div className="col-md-4 ">
                 <div className="system-item">
                   <Link to={"/System/Accounating/index"}>
-                    <div class="system-card">
-                      <div class="card__content d-flex justify-content-center align-items-center  flex-column  ">
+                    <div className="system-card">
+                      <div className="card__content d-flex justify-content-center align-items-center  flex-column  ">
                         <Image
                           src={
                             process.env.PUBLIC_URL +
@@ -378,8 +378,8 @@ const AsideBar = () => {
               <div className="col-md-4 ">
                 <div className="system-item">
                   <Link to={"/System/Chat/index"}>
-                    <div class="system-card">
-                      <div class="card__content d-flex justify-content-center align-items-center  flex-column  ">
+                    <div className="system-card">
+                      <div className="card__content d-flex justify-content-center align-items-center  flex-column  ">
                         <Image
                           src={
                             process.env.PUBLIC_URL +
@@ -397,8 +397,8 @@ const AsideBar = () => {
               <div className="col-md-4 ">
                 <div className="system-item">
                   {/* <Link> */}
-                  <div class="system-card" onClick={handleOpenMenu}>
-                    <div class="card__content d-flex justify-content-center align-items-center  flex-column  ">
+                  <div className="system-card" onClick={handleOpenMenu}>
+                    <div className="card__content d-flex justify-content-center align-items-center  flex-column  ">
                       <Image
                         src={
                           process.env.PUBLIC_URL +
@@ -416,8 +416,8 @@ const AsideBar = () => {
               <div className="col-md-4 ">
                 <div className="system-item">
                   <Link>
-                    <div class="system-card">
-                      <div class="card__content d-flex justify-content-center align-items-center  flex-column  ">
+                    <div className="system-card">
+                      <div className="card__content d-flex justify-content-center align-items-center  flex-column  ">
                         <Image
                           src={
                             process.env.PUBLIC_URL +
@@ -464,8 +464,8 @@ export const SettingsMenu = ({ openSettingsMenu, handleCloseMenu }) => {
         <div className="col-md-4 ">
           <div className="system-item">
             <Link to="/System/Settings/Reception">
-              <div class="system-card">
-                <div class="card__content d-flex justify-content-center align-items-center  flex-column  ">
+              <div className="system-card">
+                <div className="card__content d-flex justify-content-center align-items-center  flex-column  ">
                   <Image
                     src={
                       process.env.PUBLIC_URL + "/icons/asideIcons/Reception.png"
@@ -482,8 +482,8 @@ export const SettingsMenu = ({ openSettingsMenu, handleCloseMenu }) => {
         <div className="col-md-4 ">
           <div className="system-item">
             <Link to="/System/Settings/Orders">
-              <div class="system-card">
-                <div class="card__content d-flex justify-content-center align-items-center  flex-column  ">
+              <div className="system-card">
+                <div className="card__content d-flex justify-content-center align-items-center  flex-column  ">
                   <Image
                     src={
                       process.env.PUBLIC_URL + "/icons/asideIcons/orders.png"
@@ -500,8 +500,8 @@ export const SettingsMenu = ({ openSettingsMenu, handleCloseMenu }) => {
         <div className="col-md-4 ">
           <div className="system-item">
             <Link to={"/System/Settings/Accounating"}>
-              <div class="system-card">
-                <div class="card__content d-flex justify-content-center align-items-center  flex-column  ">
+              <div className="system-card">
+                <div className="card__content d-flex justify-content-center align-items-center  flex-column  ">
                   <Image
                     src={
                       process.env.PUBLIC_URL +
@@ -519,8 +519,8 @@ export const SettingsMenu = ({ openSettingsMenu, handleCloseMenu }) => {
         <div className="col-md-4 ">
           <div className="system-item">
             <Link to={"/System/Settings/CitizenServices"}>
-              <div class="system-card">
-                <div class="card__content d-flex justify-content-center align-items-center  flex-column  ">
+              <div className="system-card">
+                <div className="card__content d-flex justify-content-center align-items-center  flex-column  ">
                   <Image
                     src={
                       process.env.PUBLIC_URL +
@@ -539,12 +539,12 @@ export const SettingsMenu = ({ openSettingsMenu, handleCloseMenu }) => {
           <div className="system-item">
             <Link to={"/System/Settings/TimeLine"}>
               <div
-                class="system-card"
+                className="system-card"
                 onClick={() => {
-                  console.log("Settings Clicked");
+                  // console.log("Settings Clicked");
                 }}
               >
-                <div class="card__content d-flex justify-content-center align-items-center  flex-column  ">
+                <div className="card__content d-flex justify-content-center align-items-center  flex-column  ">
                   <Image
                     src={
                       process.env.PUBLIC_URL + "/icons/asideIcons/TimePlan.png"
