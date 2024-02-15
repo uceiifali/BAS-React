@@ -22,6 +22,8 @@ import {
 } from "../../../../hooks/fetchers/SubCategory";
 import SuccessfullModal from "../../../../Components/Modals/SuccessfullModal";
 import { OptionsButton } from "../OptionsButton";
+import { useDeleteService, useGetAllServices, useUpdateService } from "../../../../hooks/fetchers/Services";
+import { useAddSubService, useDeleteSubService, useGetAllSubServices, useUpdateSubService } from "../../../../hooks/fetchers/SubService";
 const settingtypes = ["uses", "service", "type"];
 
 const UpdateModal = ({ id, show, setShow }) => {
@@ -95,14 +97,101 @@ const UpdateSubModal = ({ categoryId, subId, show, setShow }) => {
   );
 };
 
+
+
+const UpdateServiceModal = ({ id, show, setShow }) => {
+  const [newService, setNewService] = useState("");
+  const [successfull, setSuccsesfull] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const queryClient = useQueryClient();
+  const { mutate: updateMutation } = useUpdateService(() => {
+    queryClient.invalidateQueries("services");
+    setSuccsesfull(true);
+  }, id);
+  return (
+    <>
+      <AddModal
+        title={"تعديل"}
+        show={show}
+        handleClose={handleClose}
+        setNewValue={setNewService}
+        handleSave={() => {
+          updateMutation({ name: newService });
+
+          handleClose();
+        }}
+      />
+      <SuccessfullModal
+        show={successfull}
+        message={"تم التعديل بنجاح"}
+        handleClose={() => {
+          setSuccsesfull(false);
+        }}
+      />
+    </>
+  );
+};
+const UpdateSubServiceModal = ({ serviceId, subId, show, setShow }) => {
+  const [newService, setNewService] = useState("");
+  const [successfull, setSuccsesfull] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const queryClient = useQueryClient();
+  const { mutate: updateMutation } = useUpdateSubService(
+    () => {
+      queryClient.invalidateQueries("sub-service");
+      setSuccsesfull(true);
+    },
+    serviceId,
+    subId
+  );
+  return (
+    <>
+      <AddModal
+        title={"تعديل"}
+        show={show}
+        handleClose={handleClose}
+        setNewValue={setNewService}
+        handleSave={() => {
+          updateMutation({ name: newService });
+
+          handleClose();
+        }}
+      />
+      <SuccessfullModal
+        show={successfull}
+        message={"تم التعديل بنجاح"}
+        handleClose={() => {
+          setSuccsesfull(false);
+        }}
+      />
+    </>
+  );
+};
+
+
+
+
+
+
 export default function Orders() {
   const [category, setCategory] = useState({});
+  const [service, setService] = useState({});
   const [show, setShow] = useState(false);
   const handleShow = () => setShow(true);
   const { data, isLoading, isSuccess } = useGetAllCategories();
-  const { mutate: deleteMutation } = useDeleteCategory();
+  const {
+    data: servicesData,
+    isLoading: servicesIsLoading,
+    isSuccess: servicesIsSuccess,
+  } = useGetAllServices();
+
+  const { mutate: deleteCategoryMutation } = useDeleteCategory();
+  const { mutate: deleteServiceMutation } = useDeleteService();
 
   const [activeCategories, setActiveCategories] = useState([]);
+  const [activeServices, setActiveServices] = useState([]);
   const { setSettingType, orderType, setOrderType } =
     useContext(SettingContext);
   useEffect(() => {
@@ -110,8 +199,10 @@ export default function Orders() {
   }, []);
   useEffect(() => {
     isSuccess && setCategory(data?.data?.category[0]);
-  }, [isSuccess]);
-
+    servicesIsSuccess && setService(servicesData?.data?.services[0])
+    // console.log("servicesData: ",servicesData);
+  }, [isSuccess,servicesIsSuccess]);
+  console.log("servicesData: ", servicesData?.data?.services);
   return (
     <section className="h-full">
       <div className="grid grid-cols-12 gap-2 h-full">
@@ -153,7 +244,7 @@ export default function Orders() {
                 ? "نوع المشروع"
                 : null}
             </p>
-            {orderType === 1 && (
+            {orderType === 1 ? (
               <>
                 {data?.data?.category?.length > 0 ? (
                   data?.data?.category?.map(({ _id, name }, index) => (
@@ -181,7 +272,7 @@ export default function Orders() {
                       <OptionsButton
                         id={_id}
                         onUpdate={handleShow}
-                        onDelete={() => deleteMutation(_id)}
+                        onDelete={() => deleteCategoryMutation(_id)}
                       />
                     </div>
                   ))
@@ -191,14 +282,67 @@ export default function Orders() {
                   </p>
                 )}
               </>
-            )}
+            ) : orderType === 2 ? (
+              <>
+                {servicesData?.data?.services?.length > 0 ? (
+                  servicesData?.data?.services?.map(({ _id, name }, index) => (
+                    <div
+                      className={`flex w-full justify-between items-center px-2 text-[#ffffff80] border hover:!border-[#EFAA20] text-base ${
+                        activeServices === _id
+                          ? "!border-[#EFAA20]"
+                          : "!border-transparent"
+                      }`}
+                      key={_id}
+                    >
+                      <button
+                        onClick={() => {
+                          setActiveServices(_id);
+                          setService(servicesData?.data?.services[index]);
+                        }}
+                        className="w-full"
+                      >
+                        <p className="w-full text-white text-right my-3">
+                          {name}
+                        </p>
+                      </button>
+
+                      <UpdateServiceModal id={_id} show={show} setShow={setShow} />
+                      <OptionsButton
+                    id={_id}
+                    onUpdate={handleShow}
+                    onDelete={() => deleteServiceMutation(_id)}
+                  />
+                    </div>
+                  ))
+                ) : (
+                  <p className="text-white text-2xl text-center">
+                    {"لا يوجد بيانات لعرضها"}
+                  </p>
+                )}
+              </>
+            ) : null}
           </div>
         </div>
-        {orderType === 1 && <SubCategoriesDesign category={category} />}
+        <div className="bg-[#1E1E2D] flex flex-col rounded-[19px] col-span-6 ">
+          {orderType === 1 && <SubCategoriesDesign category={category} />}
+          {orderType === 2 && <SubServicesDesign service={service} />}
+        </div>
       </div>
     </section>
   );
 }
+
+const AddNewButton = ({ ...props }) => {
+  return (
+    <button
+      className="flex flex-col justify-center items-center gap-1 w-full bg-[#2B2B40] p-2 border !border-[#EFAA20] !border-dashed rounded-xl"
+      {...props}
+    >
+      <IoIosAdd fontSize={35} color="#EFAA20" />
+      <p className=" text-white">أضافة جديدة</p>
+    </button>
+  );
+};
 
 const SubCategoriesDesign = ({ category }) => {
   const [show, setShow] = useState(false);
@@ -213,42 +357,35 @@ const SubCategoriesDesign = ({ category }) => {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   return (
-    <div className="bg-[#1E1E2D] flex flex-col rounded-[19px] col-span-6 ">
-      <div className="py-4 px-4 h-full flex flex-col">
-        <button
-          onClick={handleShow}
-          className="flex flex-col justify-center items-center gap-1 w-full bg-[#2B2B40] p-2 border !border-[#EFAA20] !border-dashed rounded-xl"
-        >
-          <IoIosAdd fontSize={35} color="#EFAA20" />
-          <p className=" text-white">أضافة جديدة</p>
-        </button>
-        <AddModal
-          title={"اضافة جديدة"}
-          show={show}
-          handleClose={handleClose}
-          setNewValue={setNewSubCategory}
-          handleSave={() => {
-            mutate({ name: newSubcategory });
+    <div className="py-4 px-4 h-full flex flex-col">
+      <AddNewButton onClick={handleShow} />
 
-            handleClose();
-          }}
-        />
-        <div className="p-2 flex-1">
-          {/* <div
+      <AddModal
+        title={"اضافة جديدة"}
+        show={show}
+        handleClose={handleClose}
+        setNewValue={setNewSubCategory}
+        handleSave={() => {
+          mutate({ name: newSubcategory });
+
+          handleClose();
+        }}
+      />
+      <div className="p-2 flex-1">
+        {/* <div
         className={`relative h-full py-4  px-2 border !border-[#d5992133] `}
       > */}
-          <FormModal title={category?.name} className={"h-full"}>
-            <SubCategoriesList category={category} />
-            <SuccessfullModal
-              show={successfull}
-              message={"تمت الاضافة بنجاح"}
-              handleClose={() => {
-                setSuccsesfull(false);
-              }}
-            />
-          </FormModal>
-          {/* </div> */}
-        </div>
+        <FormModal title={category?.name} className={"h-full"}>
+          <SubCategoriesList category={category} />
+          <SuccessfullModal
+            show={successfull}
+            message={"تمت الاضافة بنجاح"}
+            handleClose={() => {
+              setSuccsesfull(false);
+            }}
+          />
+        </FormModal>
+        {/* </div> */}
       </div>
     </div>
   );
@@ -258,7 +395,7 @@ const SubCategoriesList = ({ category }) => {
   const [show, setShow] = useState(false);
   const handleShow = () => setShow(true);
   const handleClose = () => setShow(false);
-  const { data } = useGetAllSubCategories(category._id);
+  
   const queryClient = useQueryClient();
   const { mutate: deleteMutation } = useDeleteSubCategory(() => {});
 
@@ -291,6 +428,107 @@ const SubCategoriesList = ({ category }) => {
               id={_id}
               onUpdate={handleShow}
               onDelete={() => deleteMutation([category._id, _id])}
+            />
+          </div>
+        ))
+      ) : (
+        <p className="text-white text-2xl text-center">
+          {"لا يوجد بيانات لعرضها"}
+        </p>
+      )}
+    </div>
+  );
+};
+
+
+
+
+
+const SubServicesDesign = ({ service }) => {
+  const [show, setShow] = useState(false);
+  const [newSubService, setNewSubService] = useState({});
+  const queryClient = useQueryClient();
+  const [successfull, setSuccsesfull] = useState(false);
+  const { mutate } = useAddSubService(() => {
+    queryClient.invalidateQueries("sub-service");
+    setSuccsesfull(true);
+  }, service._id);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+  return (
+    <div className="py-4 px-4 h-full flex flex-col">
+      <AddNewButton onClick={handleShow} />
+
+      <AddModal
+        title={"اضافة جديدة"}
+        show={show}
+        handleClose={handleClose}
+        setNewValue={setNewSubService}
+        handleSave={() => {
+          mutate({ name: newSubService });
+
+          handleClose();
+        }}
+      />
+      <div className="p-2 flex-1">
+        {/* <div
+        className={`relative h-full py-4  px-2 border !border-[#d5992133] `}
+      > */}
+        <FormModal title={service?.name} className={"h-full"}>
+          <SubServicesList service={service} />
+          <SuccessfullModal
+            show={successfull}
+            message={"تمت الاضافة بنجاح"}
+            handleClose={() => {
+              setSuccsesfull(false);
+            }}
+          />
+        </FormModal>
+        {/* </div> */}
+      </div>
+    </div>
+  );
+};
+
+
+const SubServicesList = ({ service }) => {
+  const [show, setShow] = useState(false);
+  const handleShow = () => setShow(true);
+  const handleClose = () => setShow(false);
+  
+  const queryClient = useQueryClient();
+  const { mutate: deleteMutation } = useDeleteSubService(() => {});
+
+  console.log("allSubServices: ", service?.subservices);
+
+  return (
+    <div className="h-full overflow-y-scroll scrollbar-none">
+      {service?.subservices?.length > 0 ? (
+        service?.subservices?.map(({ _id, name }) => (
+          <div
+            className={`flex w-full justify-between items-center px-2 text-[#ffffff80] border hover:!border-[#EFAA20] text-base ${" !border-transparent"}`}
+            key={_id}
+          >
+            <button
+              //  onClick={() =>
+              //   setActive(index)
+              // }
+              className="w-full"
+            >
+              <p className="w-full text-white text-right my-3">{name}</p>
+            </button>
+            <UpdateSubServiceModal
+              serviceId={service?._id}
+              subId={_id}
+              show={show}
+              setShow={setShow}
+            />
+
+            <OptionsButton
+              id={_id}
+              onUpdate={handleShow}
+              onDelete={() => deleteMutation([service._id, _id])}
             />
           </div>
         ))
