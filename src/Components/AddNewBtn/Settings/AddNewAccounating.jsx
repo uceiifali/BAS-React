@@ -2,27 +2,38 @@ import { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import FormControl from "@mui/material/FormControl";
-import FormLabel from "@mui/material/FormLabel";
-import FormHelperText from "@mui/material/FormHelperText";
+// import FormLabel from "@mui/material/FormLabel";
+// import FormHelperText from "@mui/material/FormHelperText";
 import { InputLabel } from "../../../Pages/System/PlanModel/components/InputLabel";
 export default function AddNewAccounating({
   title,
   show,
   handleClose,
-  arr,
+  onSave,
+  setData,
   id,
 }) {
   const [name, setName] = useState("");
   const [desc, setDesc] = useState("");
-  const handleSave = () => {
-    // arr((prev) => {
-    //   // console.log(prev.subCategories)
-    //   return prev.map((item) =>
-    //     item.id == id ? { ...item, name: inputVal } : item
-    //   );
-    //   // {...prev,subCategories: [...prev.subCategories,{id:prev.subCategories.length+1,name:inputVal}] }
+  // const [image, setImage] = useState("");
+  const handleSubmit = () => {
+    var formdata = new FormData();
+    formdata.append("name", name);
+
+    console.log(name)
+    formdata.append("descraption", desc);
+    // formdata.append("image", );
+    console.log("name", name);
+    console.log("descraption", desc);
+    // console.log("image", image, name);
+    setData(formdata)
+
+    // console.log({
+    //   "name": name,
+    //   "descraption": desc
     // });
-    handleClose();
+
+
   };
   return (
     <Modal
@@ -68,7 +79,9 @@ export default function AddNewAccounating({
         <FormControl fullWidth className="mb-3">
           <InputLabel size={18} label={"ارفاق صورة"} className={"mb-3"} />
           <label className="bg-[#161622] flex justify-center items-center rounded-[7px] py-5">
-            <input type="file" name="" id="" className="hidden" />
+            <input type="file" name="" id="" className="hidden" 
+            // onChange={(e)=> setImage(e.target.files[0])} 
+            />
             <img src="/upload-icon.svg" alt="upload" />
           </label>
         </FormControl>
@@ -76,7 +89,11 @@ export default function AddNewAccounating({
       <Modal.Footer className="border-none">
         <Button
           className="mx-auto py-1 px-14 font-semibold text-[15px] border !border-[#EFAA20] text-[#2B2B40] hover:text-white bg-[#EFAA20] hover:bg-[#2B2B40]"
-          onClick={handleSave}
+          onClick={() => {
+            handleSubmit();
+            onSave();
+            handleClose();
+          }}
         >
           حفظ
         </Button>

@@ -5,11 +5,13 @@ import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import { IoMdMore } from "react-icons/io";
 import { PiImageThin } from "react-icons/pi";
+import { useQueryClient } from "react-query";
+
 import RemoveModal from "../RemoveModal";
 import ViewModel from "../ViewModel";
 import UpdateModal from "../UpdateModal";
 import SearchButton from "../SearchButton";
-import { useGetAllClauses } from "../../../../hooks/fetchers/Clause";
+import { useAddClause, useDeleteClause, useGetAllClauses, useUpdateClause } from "../../../../hooks/fetchers/Clause";
 const DownloadIcon = ({ color }) => {
   return (
     <svg
@@ -106,15 +108,20 @@ const termsData = [
   { id: 4, name: "تأمينات" },
   { id: 5, name: "اخري" },
 ];
-const OptionsButton = ({setTerms,id}) => {
-const [showDelete, setShowDelete] = useState(false);
-const [showView, setShowView] = useState(false);
-const [showUpdate, setShowUpdate] = useState(false);
+const OptionsButton = ({ setTerms, id , data}) => {
+  const [clause, setClause] = useState({});
+  const [showDelete, setShowDelete] = useState(false);
+  const [showView, setShowView] = useState(false);
+  const [showUpdate, setShowUpdate] = useState(false);
   const [anchorEl, setAnchorEl] = useState(null);
-
+  const { mutate: deleteMutation} = useDeleteClause()
   const open = Boolean(anchorEl);
-  
-  
+  const queryClient = useQueryClient();
+
+  const { mutate: mutateUpdateClause } = useUpdateClause(() => {
+    queryClient.invalidateQueries("clause");
+    // setSuccsesfull(true);
+  },id);
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
@@ -126,19 +133,19 @@ const [showUpdate, setShowUpdate] = useState(false);
     setShowUpdate(true);
     // handleCloseDelete();
     console.log("Delete");
-}
+  };
   const handleCloseDelete = () => setShowDelete(false);
   const handleShowDelete = () => {
     setShowDelete(true);
     // handleCloseDelete();
     console.log("Delete");
-}
+  };
   const handleCloseView = () => setShowView(false);
   const handleShowView = () => {
     setShowView(true);
     // handleCloseDelete();
     console.log("Delete");
-}
+  };
   return (
     <div>
       <IconButton
@@ -157,27 +164,29 @@ const [showUpdate, setShowUpdate] = useState(false);
         onClose={handleClose}
         MenuListProps={{
           "aria-labelledby": "basic-button",
+          sx:{
+            bgcolor: "white"
+          }
         }}
-        classes="bg-red-200"
       >
         <MenuItem
-          className="border min-w-[133px] text-right"
+          className="border min-w-[133px] text-right text-black"
           sx={{ gap: 1 }}
           onClick={handleShowView}
         >
           {" "}
           <ViewIcon /> <span>عرض</span>{" "}
         </MenuItem>
-        <MenuItem
-          className="border min-w-[133px] text-right"
+        {/* <MenuItem
+          className="border min-w-[133px] text-right text-black"
           sx={{ gap: 1 }}
           onClick={handleClose}
         >
           {" "}
           <DownloadIcon /> <span>تحميل</span>{" "}
-        </MenuItem>
+        </MenuItem> */}
         <MenuItem
-          className="border min-w-[133px] text-right"
+          className="border min-w-[133px] text-right text-black"
           sx={{ gap: 1 }}
           onClick={handleShowUpdate}
         >
@@ -185,7 +194,7 @@ const [showUpdate, setShowUpdate] = useState(false);
           <EditIcon /> <span>تعديل</span>{" "}
         </MenuItem>
         <MenuItem
-          className="border min-w-[133px] text-right"
+          className="border min-w-[133px] text-right text-black"
           sx={{ gap: 1 }}
           onClick={handleShowDelete}
         >
@@ -194,26 +203,33 @@ const [showUpdate, setShowUpdate] = useState(false);
         </MenuItem>
       </Menu>
       <RemoveModal
-                title={"التأكيد"}
-                show={showDelete}
-                handleClose={handleCloseDelete}
-                arr={setTerms}
-                id={id}
-              />
+        title={"التأكيد"}
+        show={showDelete}
+        handleClose={handleCloseDelete}
+        
+        onSave={()=>{
+          deleteMutation(id)
+        }}
+      />
       <ViewModel
-                title={"عرض البند"}
-                show={showView}
-                handleClose={handleCloseView}
-                arr={setTerms}
-                id={id}
-              />
+        title={"عرض البند"}
+        show={showView}
+        handleClose={handleCloseView}
+        data={data}
+        id={id}
+      />
       <UpdateModal
-                title={"تعديل البند"}
-                show={showUpdate}
-                handleClose={handleCloseUpdate}
-                arr={setTerms}
-                id={id}
-              />
+        title={"تعديل البند"}
+        show={showUpdate}
+        handleClose={handleCloseUpdate}
+        data={data}
+        setData={setClause}
+        
+          onSave={()=> {
+            console.log("Mutated Clause: ",clause);
+            mutateUpdateClause(clause)
+          }}
+      />
     </div>
   );
 };
@@ -231,7 +247,7 @@ const OrderBtn = ({ title, active, setActive, index }) => {
     </button>
   );
 };
-const SubCategoryBtn = ({ title, active, setActive, index,setTerms }) => {
+const SubCategoryBtn = ({ title, active, setActive, index, setTerms }) => {
   return (
     <div
       className={`flex w-full justify-between items-center px-2 text-[#ffffff80] border hover:!border-[#EFAA20] text-base ${
@@ -246,16 +262,14 @@ const SubCategoryBtn = ({ title, active, setActive, index,setTerms }) => {
   );
 };
 function Accounating() {
-
-  const {data , isLoading} = useGetAllClauses()
-  const [clauses,setClauses] = useState([])  
+  const { data, isLoading } = useGetAllClauses();
+  const [clauses, setClauses] = useState([]);
   const [active, setActive] = useState(1);
 
-useEffect(()=>{
-  setClauses(data?.data?.clause)
-},[isLoading])
-
-
+  useEffect(() => {
+    setClauses(data?.data?.clause);
+    console.log("clause: ", data?.data?.clause);
+  }, [isLoading]);
 
   return (
     <section className=" h-full">
@@ -274,7 +288,7 @@ useEffect(()=>{
           </div>
         </div>
         <div className="bg-[#1E1E2D] col-span-9 flex flex-col rounded-[19px]  ">
-        <div className="p-3">
+          <div className="p-3">
             <SearchButton />
           </div>
           <div className="p-3 mt-3 flex-1">
@@ -287,17 +301,21 @@ useEffect(()=>{
                 {"كل بنود التقارير"}
               </p>
               <div className="h-full overflow-y-scroll scrollbar-thin scrollbar-thumb-[#C8D0D0] scrollbar-track-transparent">
-                {clauses?.map(({ id, name,image }) => (
+                {clauses?.map(({ _id, name,descraption, image },index) => (
                   <div
-                  className={`flex w-full justify-between items-center px-2 text-[#ffffff80] border hover:!border-[#EFAA20] text-base ${"!border-transparent"}`}
-                >
-                  <button 
-                  // onClick={() => setActive(index)} 
-                  className="w-full">
-                    <p className="w-full text-white text-right my-3">{name}</p>
-                  </button>
-                  <OptionsButton setTerms={setClauses} id={id}  />
-                </div>
+                    key={_id}
+                    className={`flex w-full justify-between items-center px-2 text-[#ffffff80] border hover:!border-[#EFAA20] text-base ${"!border-transparent"}`}
+                  >
+                    <button
+                      // onClick={() => setActive(index)}
+                      className="w-full"
+                    >
+                      <p className="w-full text-white text-right my-3">
+                        {name}
+                      </p>
+                    </button>
+                    <OptionsButton data={clauses[index]} setTerms={setClauses} id={_id} />
+                  </div>
                 ))}
               </div>
             </div>

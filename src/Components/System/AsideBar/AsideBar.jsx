@@ -210,8 +210,8 @@ const AsideBar = () => {
                 <div className="col-md-4 ">
                   <div className="system-item">
                     <Link to="/System/index">
-                      <div class="system-card">
-                        <div class="card__content d-flex justify-content-center align-items-center  flex-column  ">
+                      <div className="system-card">
+                        <div className="card__content d-flex justify-content-center align-items-center  flex-column  ">
                           <Image
                             src={
                               process.env.PUBLIC_URL +
@@ -230,8 +230,8 @@ const AsideBar = () => {
                 <div className="col-md-4 ">
                   <div className="system-item">
                     <Link to={"/System/Clients/index"}>
-                      <div class="system-card">
-                        <div class="card__content d-flex justify-content-center align-items-center  flex-column  ">
+                      <div className="system-card">
+                        <div className="card__content d-flex justify-content-center align-items-center  flex-column  ">
                           <Image
                             src={
                               process.env.PUBLIC_URL +
@@ -249,8 +249,8 @@ const AsideBar = () => {
                 <div className="col-md-4 ">
                   <div className="system-item">
                     <Link to="/System/Users/index">
-                      <div class="system-card">
-                        <div class="card__content d-flex justify-content-center align-items-center  flex-column  ">
+                      <div className="system-card">
+                        <div className="card__content d-flex justify-content-center align-items-center  flex-column  ">
                           <Image
                             src={
                               process.env.PUBLIC_URL +
@@ -268,8 +268,8 @@ const AsideBar = () => {
                 <div className="col-md-4 ">
                   <div className="system-item">
                     <Link to="/System/Requests/index">
-                      <div class="system-card">
-                        <div class="card__content d-flex justify-content-center align-items-center  flex-column  ">
+                      <div className="system-card">
+                        <div className="card__content d-flex justify-content-center align-items-center  flex-column  ">
                           <Image
                             src={
                               process.env.PUBLIC_URL +
@@ -287,8 +287,8 @@ const AsideBar = () => {
                 <div className="col-md-4 ">
                   <div className="system-item">
                     <Link to={"/System/Projects/index"}>
-                      <div class="system-card">
-                        <div class="card__content d-flex justify-content-center align-items-center  flex-column  ">
+                      <div className="system-card">
+                        <div className="card__content d-flex justify-content-center align-items-center  flex-column  ">
                           <Image
                             src={
                               process.env.PUBLIC_URL +
@@ -306,8 +306,8 @@ const AsideBar = () => {
                 <div className="col-md-4 ">
                   <div className="system-item">
                     <Link to={"/System/plans"}>
-                      <div class="system-card">
-                        <div class="card__content d-flex justify-content-center align-items-center  flex-column  ">
+                      <div className="system-card">
+                        <div className="card__content d-flex justify-content-center align-items-center  flex-column  ">
                           <Image
                             src={
                               process.env.PUBLIC_URL +
@@ -325,8 +325,8 @@ const AsideBar = () => {
                 <div className="col-md-4 ">
                   <div className="system-item">
                     <Link to={"/System/Meetings/index"}>
-                      <div class="system-card">
-                        <div class="card__content d-flex justify-content-center align-items-center  flex-column  ">
+                      <div className="system-card">
+                        <div className="card__content d-flex justify-content-center align-items-center  flex-column  ">
                           <Image
                             src={
                               process.env.PUBLIC_URL +
@@ -344,8 +344,8 @@ const AsideBar = () => {
                 <div className="col-md-4 ">
                   <div className="system-item">
                     <Link to={"/System/Hr/index"}>
-                      <div class="system-card">
-                        <div class="card__content d-flex justify-content-center align-items-center  flex-column  ">
+                      <div className="system-card">
+                        <div className="card__content d-flex justify-content-center align-items-center  flex-column  ">
                           <Image
                             src={
                               process.env.PUBLIC_URL +
@@ -363,8 +363,8 @@ const AsideBar = () => {
                 <div className="col-md-4 ">
                   <div className="system-item">
                     <Link to={"/System/Accounating/index"}>
-                      <div class="system-card">
-                        <div class="card__content d-flex justify-content-center align-items-center  flex-column  ">
+                      <div className="system-card">
+                        <div className="card__content d-flex justify-content-center align-items-center  flex-column  ">
                           <Image
                             src={
                               process.env.PUBLIC_URL +
@@ -382,8 +382,8 @@ const AsideBar = () => {
                 <div className="col-md-4 ">
                   <div className="system-item">
                     <Link to={"/System/Chat/index"}>
-                      <div class="system-card">
-                        <div class="card__content d-flex justify-content-center align-items-center  flex-column  ">
+                      <div className="system-card">
+                        <div className="card__content d-flex justify-content-center align-items-center  flex-column  ">
                           <Image
                             src={
                               process.env.PUBLIC_URL +
@@ -401,8 +401,8 @@ const AsideBar = () => {
                 <div className="col-md-4 ">
                   <div className="system-item">
                     {/* <Link> */}
-                    <div class="system-card" onClick={handleOpenMenu}>
-                      <div class="card__content d-flex justify-content-center align-items-center  flex-column  ">
+                    <div className="system-card" onClick={handleOpenMenu}>
+                      <div className="card__content d-flex justify-content-center align-items-center  flex-column  ">
                         <Image
                           src={
                             process.env.PUBLIC_URL +
@@ -420,8 +420,8 @@ const AsideBar = () => {
                 <div className="col-md-4 ">
                   <div className="system-item">
                     <Link>
-                      <div class="system-card">
-                        <div class="card__content d-flex justify-content-center align-items-center  flex-column  ">
+                      <div className="system-card">
+                        <div className="card__content d-flex justify-content-center align-items-center  flex-column  ">
                           <Image
                             src={
                               process.env.PUBLIC_URL +
