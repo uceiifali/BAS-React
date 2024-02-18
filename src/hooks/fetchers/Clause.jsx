@@ -20,7 +20,7 @@ export const useAddClause = (onSuccess) => {
     },
   });
 };
-export const useUpdateClause = (onSuccess, id) => {
+export const useUpdateClause = (onSuccess,id) => {
   return useMutation((data) => updateClause(id, data), {
     onSuccess,
     onError: (error) => {
