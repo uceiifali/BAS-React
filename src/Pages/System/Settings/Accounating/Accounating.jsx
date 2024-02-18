@@ -1,14 +1,17 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { SearchComponent } from "../../../../Components/SearchComponent/SearchComponent";
 import IconButton from "@mui/material/IconButton";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import { IoMdMore } from "react-icons/io";
 import { PiImageThin } from "react-icons/pi";
+import { useQueryClient } from "react-query";
+
 import RemoveModal from "../RemoveModal";
 import ViewModel from "../ViewModel";
 import UpdateModal from "../UpdateModal";
 import SearchButton from "../SearchButton";
+import { useAddClause, useDeleteClause, useGetAllClauses, useUpdateClause } from "../../../../hooks/fetchers/Clause";
 const DownloadIcon = ({ color }) => {
   return (
     <svg
@@ -105,15 +108,20 @@ const termsData = [
   { id: 4, name: "تأمينات" },
   { id: 5, name: "اخري" },
 ];
-const OptionsButton = ({setTerms,id}) => {
-const [showDelete, setShowDelete] = useState(false);
-const [showView, setShowView] = useState(false);
-const [showUpdate, setShowUpdate] = useState(false);
+const OptionsButton = ({ setTerms, id , data}) => {
+  const [clause, setClause] = useState({});
+  const [showDelete, setShowDelete] = useState(false);
+  const [showView, setShowView] = useState(false);
+  const [showUpdate, setShowUpdate] = useState(false);
   const [anchorEl, setAnchorEl] = useState(null);
-
+  const { mutate: deleteMutation} = useDeleteClause()
   const open = Boolean(anchorEl);
-  
-  
+  const queryClient = useQueryClient();
+
+  const { mutate: mutateUpdateClause } = useUpdateClause(() => {
+    queryClient.invalidateQueries("clause");
+    // setSuccsesfull(true);
+  },id);
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
@@ -125,19 +133,19 @@ const [showUpdate, setShowUpdate] = useState(false);
     setShowUpdate(true);
     // handleCloseDelete();
     console.log("Delete");
-}
+  };
   const handleCloseDelete = () => setShowDelete(false);
   const handleShowDelete = () => {
     setShowDelete(true);
     // handleCloseDelete();
     console.log("Delete");
-}
+  };
   const handleCloseView = () => setShowView(false);
   const handleShowView = () => {
     setShowView(true);
     // handleCloseDelete();
     console.log("Delete");
-}
+  };
   return (
     <div>
       <IconButton
@@ -156,27 +164,29 @@ const [showUpdate, setShowUpdate] = useState(false);
         onClose={handleClose}
         MenuListProps={{
           "aria-labelledby": "basic-button",
+          sx:{
+            bgcolor: "white"
+          }
         }}
-        classes="bg-red-200"
       >
         <MenuItem
-          className="border min-w-[133px] text-right"
+          className="border min-w-[133px] text-right text-black"
           sx={{ gap: 1 }}
           onClick={handleShowView}
         >
           {" "}
           <ViewIcon /> <span>عرض</span>{" "}
         </MenuItem>
-        <MenuItem
-          className="border min-w-[133px] text-right"
+        {/* <MenuItem
+          className="border min-w-[133px] text-right text-black"
           sx={{ gap: 1 }}
           onClick={handleClose}
         >
           {" "}
           <DownloadIcon /> <span>تحميل</span>{" "}
-        </MenuItem>
+        </MenuItem> */}
         <MenuItem
-          className="border min-w-[133px] text-right"
+          className="border min-w-[133px] text-right text-black"
           sx={{ gap: 1 }}
           onClick={handleShowUpdate}
         >
@@ -184,7 +194,7 @@ const [showUpdate, setShowUpdate] = useState(false);
           <EditIcon /> <span>تعديل</span>{" "}
         </MenuItem>
         <MenuItem
-          className="border min-w-[133px] text-right"
+          className="border min-w-[133px] text-right text-black"
           sx={{ gap: 1 }}
           onClick={handleShowDelete}
         >
@@ -193,26 +203,33 @@ const [showUpdate, setShowUpdate] = useState(false);
         </MenuItem>
       </Menu>
       <RemoveModal
-                title={"التأكيد"}
-                show={showDelete}
-                handleClose={handleCloseDelete}
-                arr={setTerms}
-                id={id}
-              />
+        title={"التأكيد"}
+        show={showDelete}
+        handleClose={handleCloseDelete}
+        
+        onSave={()=>{
+          deleteMutation(id)
+        }}
+      />
       <ViewModel
-                title={"عرض البند"}
-                show={showView}
-                handleClose={handleCloseView}
-                arr={setTerms}
-                id={id}
-              />
+        title={"عرض البند"}
+        show={showView}
+        handleClose={handleCloseView}
+        data={data}
+        id={id}
+      />
       <UpdateModal
-                title={"تعديل البند"}
-                show={showUpdate}
-                handleClose={handleCloseUpdate}
-                arr={setTerms}
-                id={id}
-              />
+        title={"تعديل البند"}
+        show={showUpdate}
+        handleClose={handleCloseUpdate}
+        data={data}
+        setData={setClause}
+        
+          onSave={()=> {
+            console.log("Mutated Clause: ",clause);
+            mutateUpdateClause(clause)
+          }}
+      />
     </div>
   );
 };
@@ -230,7 +247,7 @@ const OrderBtn = ({ title, active, setActive, index }) => {
     </button>
   );
 };
-const SubCategoryBtn = ({ title, active, setActive, index,setTerms }) => {
+const SubCategoryBtn = ({ title, active, setActive, index, setTerms }) => {
   return (
     <div
       className={`flex w-full justify-between items-center px-2 text-[#ffffff80] border hover:!border-[#EFAA20] text-base ${
@@ -240,13 +257,20 @@ const SubCategoryBtn = ({ title, active, setActive, index,setTerms }) => {
       <button onClick={() => setActive(index)} className="w-full">
         <p className="w-full text-white text-right my-3">{title}</p>
       </button>
-      <OptionsButton setTerms={setTerms} id={index}  />
+      {/* <OptionsButton setTerms={setTerms} id={index}  /> */}
     </div>
   );
 };
 function Accounating() {
-  const [terms,setTerms] = useState([...termsData])  
+  const { data, isLoading } = useGetAllClauses();
+  const [clauses, setClauses] = useState([]);
   const [active, setActive] = useState(1);
+
+  useEffect(() => {
+    setClauses(data?.data?.clause);
+    console.log("clause: ", data?.data?.clause);
+  }, [isLoading]);
+
   return (
     <section className=" h-full">
       <div className="grid grid-cols-12 gap-2 h-full">
@@ -264,7 +288,7 @@ function Accounating() {
           </div>
         </div>
         <div className="bg-[#1E1E2D] col-span-9 flex flex-col rounded-[19px]  ">
-        <div className="p-3">
+          <div className="p-3">
             <SearchButton />
           </div>
           <div className="p-3 mt-3 flex-1">
@@ -277,15 +301,21 @@ function Accounating() {
                 {"كل بنود التقارير"}
               </p>
               <div className="h-full overflow-y-scroll scrollbar-thin scrollbar-thumb-[#C8D0D0] scrollbar-track-transparent">
-                {terms?.map(({ id, name }) => (
-                  <SubCategoryBtn
-                    title={name}
-                    index={id}
-                    active={active}
-                    setActive={setActive}
-                    key={id}
-                    setTerms={setTerms} 
-                  />
+                {clauses?.map(({ _id, name,descraption, image },index) => (
+                  <div
+                    key={_id}
+                    className={`flex w-full justify-between items-center px-2 text-[#ffffff80] border hover:!border-[#EFAA20] text-base ${"!border-transparent"}`}
+                  >
+                    <button
+                      // onClick={() => setActive(index)}
+                      className="w-full"
+                    >
+                      <p className="w-full text-white text-right my-3">
+                        {name}
+                      </p>
+                    </button>
+                    <OptionsButton data={clauses[index]} setTerms={setClauses} id={_id} />
+                  </div>
                 ))}
               </div>
             </div>
