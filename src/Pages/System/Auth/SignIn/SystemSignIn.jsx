@@ -94,7 +94,7 @@ const SystemSignIn = () => {
         navigate("/System/index");
       }
     } catch ({ response }) {
-      if (response.status === 404 || response.status === 401) {
+      if (response?.status === 404 || response?.status === 401) {
         setNotFound("اسم المستخدم او كلمة المرور غير صحيحة");
       } else {
         toast.error(response?.data?.message);
