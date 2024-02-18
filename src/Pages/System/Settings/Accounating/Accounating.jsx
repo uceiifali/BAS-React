@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { SearchComponent } from "../../../../Components/SearchComponent/SearchComponent";
 import IconButton from "@mui/material/IconButton";
 import Menu from "@mui/material/Menu";
@@ -9,6 +9,7 @@ import RemoveModal from "../RemoveModal";
 import ViewModel from "../ViewModel";
 import UpdateModal from "../UpdateModal";
 import SearchButton from "../SearchButton";
+import { useGetAllClauses } from "../../../../hooks/fetchers/Clause";
 const DownloadIcon = ({ color }) => {
   return (
     <svg
@@ -240,13 +241,22 @@ const SubCategoryBtn = ({ title, active, setActive, index,setTerms }) => {
       <button onClick={() => setActive(index)} className="w-full">
         <p className="w-full text-white text-right my-3">{title}</p>
       </button>
-      <OptionsButton setTerms={setTerms} id={index}  />
+      {/* <OptionsButton setTerms={setTerms} id={index}  /> */}
     </div>
   );
 };
 function Accounating() {
-  const [terms,setTerms] = useState([...termsData])  
+
+  const {data , isLoading} = useGetAllClauses()
+  const [clauses,setClauses] = useState([])  
   const [active, setActive] = useState(1);
+
+useEffect(()=>{
+  setClauses(data?.data?.clause)
+},[isLoading])
+
+
+
   return (
     <section className=" h-full">
       <div className="grid grid-cols-12 gap-2 h-full">
@@ -277,15 +287,17 @@ function Accounating() {
                 {"كل بنود التقارير"}
               </p>
               <div className="h-full overflow-y-scroll scrollbar-thin scrollbar-thumb-[#C8D0D0] scrollbar-track-transparent">
-                {terms?.map(({ id, name }) => (
-                  <SubCategoryBtn
-                    title={name}
-                    index={id}
-                    active={active}
-                    setActive={setActive}
-                    key={id}
-                    setTerms={setTerms} 
-                  />
+                {clauses?.map(({ id, name,image }) => (
+                  <div
+                  className={`flex w-full justify-between items-center px-2 text-[#ffffff80] border hover:!border-[#EFAA20] text-base ${"!border-transparent"}`}
+                >
+                  <button 
+                  // onClick={() => setActive(index)} 
+                  className="w-full">
+                    <p className="w-full text-white text-right my-3">{name}</p>
+                  </button>
+                  <OptionsButton setTerms={setClauses} id={id}  />
+                </div>
                 ))}
               </div>
             </div>
