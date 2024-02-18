@@ -134,8 +134,8 @@ const AsideBar = () => {
                       height="65"
                       rx="10.5"
                       stroke="#434362"
-                      stroke-linejoin="round"
-                      stroke-dasharray="3 3"
+                      strokeLinejoin="round"
+                      strokeDasharray="3 3"
                     />
                     <text fill="white   ">
                       <tspan
@@ -174,8 +174,8 @@ const AsideBar = () => {
                       height="65"
                       rx="10.5"
                       stroke="#434362"
-                      stroke-linejoin="round"
-                      stroke-dasharray="3 3"
+                      strokeLinejoin="round"
+                      strokeDasharray="3 3"
                     />
                     <text fill="white   ">
                       <tspan
