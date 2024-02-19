@@ -56,7 +56,7 @@ const Settings = () => {
 
   useEffect(() => {
     setErrorModal(isError);
-    console.log(error?.message);
+    // console.log(error?.message);
   }, [isError]);
   let { pathname } = useLocation();
   let pagePath = pathname.split("/System/Settings/")[1];
@@ -204,8 +204,8 @@ const Settings = () => {
           setData={setClause}
           
           onSave={()=> {
-            // console.log("Mutated Clause: ",clause);
-            mutateClause(clause)
+            console.log("Mutated Clause: ",clause);
+            // mutateClause(clause)
           }}
         />
       ) : null}
