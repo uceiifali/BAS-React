@@ -17,7 +17,7 @@ import { useAddService } from "../../../hooks/fetchers/Services";
 import { useAddClause, useUpdateClause } from "../../../hooks/fetchers/Clause";
 
 const Settings = () => {
-  const [clause,setClause] = useState({})
+  const [clause, setClause] = useState({});
   const {
     settingType,
     setSettingType,
@@ -25,14 +25,18 @@ const Settings = () => {
     setReciptionType,
     orderType,
     setOrderType,
+    citizenServicesType,
+    setCitizenServicesType,
   } = useContext(SettingContext);
+  const [vacations, setVacations] = useState({});
+  const [services, setServices] = useState({});
   const [successfull, setSuccsesfull] = useState(false);
   const [errorModal, setErrorModal] = useState(false);
   const queryClient = useQueryClient();
   // ***********************************
   const [newCategory, setNewCategory] = useState("");
   const [newService, setNewService] = useState("");
-  
+
   const {
     mutate: mutateCategory,
     isSuccess,
@@ -50,7 +54,7 @@ const Settings = () => {
     queryClient.invalidateQueries("clause");
     setSuccsesfull(true);
   });
-  
+
   // ***********************************
   const [show, setShow] = useState(false);
 
@@ -64,7 +68,7 @@ const Settings = () => {
   const handleClose = () => {
     setShow(false);
     // handleCloseDelete();
-    console.log("Delete");
+    // console.log("Delete");
   };
   const handleAddButton = () => {
     handleOpen();
@@ -175,26 +179,50 @@ const Settings = () => {
           }}
         />
       )}
-      {orderType === 1 || orderType === 2 ? 
-    <>
-    <SuccessfullModal
-      show={successfull}
-      message={"تمت الاضافة بنجاح"}
-      handleClose={() => {
-        setSuccsesfull(false);
-      }}
-    />
-    <SuccessfullModal
-      status="error"
-      show={errorModal}
-      message={error?.message}
-      handleClose={() => {
-        setErrorModal(false);
-      }}
-    />
-    
-    </>  : null
-    }
+      {orderType === 1 || orderType === 2 ? (
+        <>
+          <SuccessfullModal
+            show={successfull}
+            message={"تمت الاضافة بنجاح"}
+            handleClose={() => {
+              setSuccsesfull(false);
+            }}
+          />
+          <SuccessfullModal
+            status="error"
+            show={errorModal}
+            message={error?.message}
+            handleClose={() => {
+              setErrorModal(false);
+            }}
+          />
+        </>
+      ) : null}
+      {citizenServicesType === 1 && pagePath === "CitizenServices" && (
+        <AddNewCitizenServices
+          handleClose={handleClose}
+          title={"اضافة نوع اجازة جديد"}
+          show={show}
+          setData={setVacations}
+          type={"vacations"}
+          // onSave={()=>{
+          //   console.log("vacations: ",vacations);
+          // }}
+        />
+      )}
+      {citizenServicesType === 2 && pagePath === "CitizenServices" && (
+        <AddNewCitizenServices
+          handleClose={handleClose}
+          title={"اضافة خدمة جديدة"}
+          show={show}
+          setData={setServices}
+          type={"services"}
+          // onSave={()=>{
+          //   console.log("services: ",services);
+          // }}
+        />
+      )}
+
       {/* *********************************** */}
       {pagePath === "Accounating" ? (
         <AddNewAccounating
@@ -202,9 +230,8 @@ const Settings = () => {
           title={"اضافة بند جديد"}
           show={show}
           setData={setClause}
-          
-          onSave={()=> {
-            console.log("Mutated Clause: ",clause);
+          onSave={() => {
+            console.log("Mutated Clause: ", clause);
             // mutateClause(clause)
           }}
         />

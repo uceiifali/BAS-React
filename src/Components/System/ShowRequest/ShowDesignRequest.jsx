@@ -13,6 +13,7 @@ import SuccessfullModal from "../../Modals/SuccessfullModal";
 import CommentModel from "../../Modals/CommentModel";
 import { IoMdMore } from "react-icons/io";
 import DownloadButton from "../../Buttons/DownloadButton";
+import PreviewImage from "../../Modals/PreviewImage";
 const ShowDesignRequest = ({ setShowProject, DesignProjectType }) => {
   const [showImg, setShowImg] = useState(false);
   const [imgSrc, setImgSrc] = useState(
@@ -59,20 +60,13 @@ const ShowDesignRequest = ({ setShowProject, DesignProjectType }) => {
   return (
     <div className="show-Design">
       {showImg && (
-        <Modal
-          size="lg"
-          show={showImg}
-          onHide={() => setShowImg(false)}
-          aria-labelledby="example-modal-sizes-title-lg"
-          className="   showRequestImg"
-        >
-          <Image
-            className="pointer w-100 h-100  instrutmentimg"
-            src={imgSrc}
-            alt="owner img"
-          />
-        </Modal>
+        <PreviewImage
+        onClose={() => setShowImg(false)}
+        showImg={showImg} 
+        imgSrc={imgSrc}
+        />
       )}
+        
 
       <CustomModal
         show={acceptRequest}
