@@ -1,7 +1,7 @@
 // 406
 
 import axios from "axios";
-import { toast } from "react-toastify";
+
 import config from "../Config/Config";
 import Cookies from "js-cookie";
 

@@ -76,8 +76,6 @@ export default function AddNewAccounating({
     for (const image of img) {
       formData.append("image", image);
     }
-   // formData.append("image", JSON.parse(img))
-    // formData.append("image", fileInput.current.files[0], "/C:/Users/assets/analysis-img.png.png");
     
     // setData(formData)
 console.log("data: ",data);
@@ -103,11 +101,13 @@ console.log("img: ",img);
       onHide={handleClose}
       size="lg"
     >
-      <form onSubmit={handleSubmit(onSubmit)} encType="multipart/form-data">
+      <form 
+        onSubmit={handleSubmit(onSubmit)} 
+        encType="multipart/form-data">
         <Modal.Header className="!justify-between border-none">
           <div className=""></div>
           <Modal.Title className="text-xl text-[#EFAA20] border !border-[#EFAA20] p-2 rounded-[5px] font-medium ">
-            {title}
+              {title}
           </Modal.Title>
           <Button
             className="p-0 bg-transparent hover:bg-transparent"
