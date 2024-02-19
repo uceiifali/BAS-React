@@ -15,6 +15,7 @@ import {
   defaultCountries,
 } from "react-international-phone";
 import { PhoneNumberUtil } from "google-libphonenumber";
+import { identity } from "@fullcalendar/core/internal";
 const AddProjectStepTwo = (props) => {
   const { userData, setUserData } = useContext(multiStepContext);
 
@@ -49,6 +50,12 @@ const AddProjectStepTwo = (props) => {
     "",
     "Select"
   );
+  const identityNumber = UseInput(
+    `${userData?.identityNumber ? userData.identityNumber : ""}`,
+    "identityNumber",
+    true
+  );
+
   const email = UseInput(
     `${userData?.email ? userData.email : ""}`,
     "email",
@@ -60,7 +67,7 @@ const AddProjectStepTwo = (props) => {
   const checkPhoneValidation = isPhoneValid(phone);
   const taxNumber = UseInput(
     `${userData?.taxNumber ? userData.taxNumber : ""} `,
-    "number",
+    "taxNumber",
     true
   );
   const [idPhoto, setIdPhoto] = useState();
@@ -92,7 +99,7 @@ const AddProjectStepTwo = (props) => {
 
   const countries = defaultCountries.filter((country) => {
     const { iso2 } = parseCountry(country);
-    return ["sa", "eg"].includes(iso2);
+    return ["sa"].includes(iso2);
   });
 
   //  vaildation
@@ -109,6 +116,8 @@ const AddProjectStepTwo = (props) => {
       identityType?.value.value &&
       email.value &&
       email.isValid &&
+      identityNumber.isValid &&
+      identityNumber.value &&
       idPhoto &&
       phone &&
       checkPhoneValidation
@@ -117,6 +126,7 @@ const AddProjectStepTwo = (props) => {
         ...userData,
         clientType: clientType.value.value,
         identityType: identityType.value.value,
+        identityNumber: identityNumber.value,
         email: email.value,
         idPhoto,
         phone,
@@ -131,6 +141,7 @@ const AddProjectStepTwo = (props) => {
         ...userData,
         clientType: clientType.value.value,
         identityType: identityType.value.vlaue,
+        identityNumber: identityNumber.value,
         email: email.value,
         idPhoto,
         taxNumber: taxNumber.value,
@@ -145,6 +156,7 @@ const AddProjectStepTwo = (props) => {
       idPhoto &&
       email.isValid &&
       checkPhoneValidation,
+    identityType.value,
   ]);
 
   useEffect(() => {
@@ -187,6 +199,14 @@ const AddProjectStepTwo = (props) => {
             mandatory
           />
         </div>
+        <div className="col-md-6 mb-4">
+          <Input
+            placeholder="ادخل  رقم الهوية"
+            label={"رقم الهوية"}
+            {...identityNumber.bind}
+            mandatory
+          />
+        </div>
 
         <div className="col-md-6 mb-4">
           <Form.Group controlId="formBasicImage">
@@ -223,7 +243,7 @@ const AddProjectStepTwo = (props) => {
               className="choose-file-input"
               placeholder="صورة الهويه"
               name="imageFile"
-              onChange={(e) => setIdPhoto(e.currentTarget.files[0].name)}
+              onChange={(e) => setIdPhoto(e.currentTarget.files[0])}
             />
           </Form.Group>
         </div>

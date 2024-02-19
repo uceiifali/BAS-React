@@ -17,10 +17,15 @@ import Select from "../../../FormHandler/Select";
 import { getAllServices } from "../../../../helper/fetchers/Services";
 export const AddProjectStepOne = (props) => {
   // context inputs
-  
+
   // const { pagePath } = props;
-  const { userData, setUserData,selectProjectType, setSelectedProjectType } =
-    useContext(multiStepContext);
+  const {
+    userData,
+    setUserData,
+    selectProjectType,
+    setSelectedProjectType,
+    
+  } = useContext(multiStepContext);
   //define inupts
 
   const ownerName = UseInput(
@@ -72,15 +77,15 @@ export const AddProjectStepOne = (props) => {
     setCategoryId(selectedCategoryId);
     setSubcategoryId(selectedSubcategoryId);
   };
-  const [serviceId, setServiceId] = useState();
+  const [servicesId, setServiceId] = useState();
   const [subservicesId, setsubServicesId] = useState();
   const handleServices = (e) => {
     const selectedOption = e.target.options[e.target.selectedIndex];
-    const selctedServicesId = selectedOption.getAttribute("serviceId");
+    const selctedServicesId = selectedOption.getAttribute("servicesId");
     const selectedSubservices = e.target.value;
     setServiceId(selctedServicesId);
     setsubServicesId(selectedSubservices);
-    console.log(serviceId);
+    console.log(servicesId);
     console.log(setsubServicesId);
   };
   const [projectType, setProjectType] = useState(
@@ -118,7 +123,7 @@ export const AddProjectStepOne = (props) => {
       projectType === 1 &&
       categoryId &&
       subcategoryId &&
-      serviceId &&
+      servicesId &&
       subservicesId
     ) {
       console.log("valid");
@@ -132,7 +137,7 @@ export const AddProjectStepOne = (props) => {
         projectType,
         categoryId,
         subcategoryId,
-        serviceId,
+        servicesId,
         subservicesId,
         projectName: projectName.value,
       };
@@ -152,7 +157,7 @@ export const AddProjectStepOne = (props) => {
         projectType,
         categoryId,
         subcategoryId,
-        serviceId,
+        servicesId,
         subservicesId,
         projectName: projectName.value,
       };
@@ -176,7 +181,7 @@ export const AddProjectStepOne = (props) => {
     chartNumber.isValid,
     categoryId,
     subcategoryId,
-    serviceId,
+    servicesId,
     subservicesId,
     projectName.value,
     projectType,
@@ -442,7 +447,7 @@ export const AddProjectStepOne = (props) => {
                             subservices.map(({ _id, name, serviceId }) => (
                               <option
                                 key={_id}
-                                serviceId={serviceId}
+                                servicesId={serviceId}
                                 value={_id}
                                 className="h-[37px] px-2"
                               >

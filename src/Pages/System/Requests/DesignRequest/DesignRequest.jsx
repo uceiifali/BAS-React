@@ -11,10 +11,15 @@ import Image from "../../../../Components/Image.jsx";
 import CustomTable from "../../../../Components/Table/index.jsx";
 import { TableRow } from "../../../../Components/Table/TableRow.jsx";
 import { TableCell } from "../../../../Components/Table/TableCell.jsx";
+import { useEffect } from "react";
+import { toast } from "react-toastify";
+import { getRequestsWithProjectType } from "../../../../helper/fetchers/Requests.jsx";
+import Progress from "../../../../Components/Progress.jsx";
 const DesignRequest = () => {
   const [showProject, setShowProject] = useState(false);
   const [editRequest, setEditRequest] = useState(false);
   const [ConfirmUpdate, setConfirmUpdate] = useState(false);
+  const [DesignRequests, setDesignRequests] = useState();
   const [DesignProjectType, SetDesignProjectType] = useState("");
 
   const DesignProjects = Array.from({ length: 10 }).map((_, index) => {
@@ -88,11 +93,27 @@ const DesignRequest = () => {
     },
   ];
 
+  const getDesignRequests = async () => {
+    try {
+      const { data } = await getRequestsWithProjectType(1);
+      console.log(data);
+      if (data?.success) {
+        setDesignRequests(data?.request);
+      } else {
+        console.log("Data retrieval failed");
+      }
+    } catch (error) {
+      toast.error(error?.response?.data?.message);
+    }
+  };
+  useEffect(() => {
+    getDesignRequests();
+  }, []);
+
   return (
     <>
       {showProject ? (
         <div className="AllRequests-scroll h-full scrollbar-none">
-          
           <ShowDesignRequest
             DesignProjectType={DesignProjectType}
             setShowProject={setShowProject}
@@ -109,42 +130,72 @@ const DesignRequest = () => {
               <legend className="text-center ">طلبات ( تصميم )</legend>
 
               <div className="mt-3 !h-[400px] overflow-scroll scrollbar-none ">
-                <CustomTable columns={columns} data={DesignProjects}>
-                  {DesignProjects && DesignProjects.length > 0
-                    ? DesignProjects.map(
-                        (
-                          {
-                            id,
-                            ProjectName,
-                            ProjectNumber,
-                            createdAt,
-                            ProjectType,
-                            status,
-                            enStatus,
-                            display,
-                            edit,
-                          },
-                          index
-                        ) => (
-                          <TableRow
-                            className={`my-2 border !border-[#efaa207f] ${
-                              index % 2 === 0 ? "bg-[#151521]" : ""
-                            }`}
-                            key={index}
-                          >
-                            <TableCell textColor="#ffffff7f">{id}</TableCell>
-                            <TableCell>{ProjectName}</TableCell>
-                            <TableCell>{ProjectNumber}</TableCell>
-                            <TableCell>{createdAt}</TableCell>
-                            <TableCell>{ProjectType}</TableCell>
-                            <TableCell>{status}</TableCell>
-                            <TableCell>{display}</TableCell>
-                            <TableCell>{edit}</TableCell>
-                          </TableRow>
+                {DesignRequests ? (
+                  <CustomTable columns={columns} data={DesignRequests}>
+                    {DesignRequests && DesignRequests.length > 0
+                      ? DesignRequests.map(
+                          (
+                            {
+                              _id,
+                              projectName,
+                              orderNumber,
+                              createdAt,
+                              projectType,
+                              status,
+                              enStatus,
+                              display,
+                              edit,
+                            },
+                            index
+                          ) => (
+                            <TableRow
+                              className={`my-2 border !border-[#efaa207f] ${
+                                index % 2 === 0 ? "bg-[#151521]" : ""
+                              }`}
+                              key={_id}
+                            >
+                              <TableCell textColor="#ffffff7f">{_id}</TableCell>
+                              <TableCell>{projectName}</TableCell>
+                              <TableCell>{orderNumber}</TableCell>
+                              <TableCell>{createdAt}</TableCell>
+                              <TableCell>تصميم</TableCell>
+                              <TableCell>{status}</TableCell>
+                              <TableCell>
+                                <Image
+                                  src={
+                                    process.env.PUBLIC_URL + "/icons/view.svg"
+                                  }
+                                  onClick={() => {
+                                    setShowProject(true);
+                                    SetDesignProjectType(
+                                      DesignProjects[index]?.enStatus
+                                    );
+                                  }}
+                                  className="display_project  rounded"
+                                  alt=" display project"
+                                />
+                              </TableCell>
+                              <TableCell>
+                                <Image
+                                  src={
+                                    process.env.PUBLIC_URL + "/icons/edit.svg"
+                                  }
+                                  onClick={() => {
+                                    setEditRequest(true);
+                                  }}
+                                  className=" edit_project  rounded"
+                                  alt=" edit project"
+                                />
+                              </TableCell>
+                            </TableRow>
+                          )
                         )
-                      )
-                    : null}
-                </CustomTable>
+                      : null}
+                  </CustomTable>
+                ) : (
+                  <Progress />
+                )}
+
                 {/* <DataTableComponent
                   className={"!h-[400px]"}
                   columns={columns}

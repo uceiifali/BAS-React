@@ -42,6 +42,7 @@ const AddProjectStepThree = (props) => {
     true
   );
   const [agencyAttachments, setAgencyAttachments] = useState(null);
+  const [notes, setNotes] = useState();
   const instrumentNumber = UseInput(
     `${userData.instrumentNumber ? userData.instrumentNumber : ""}`,
     "number",
@@ -49,6 +50,7 @@ const AddProjectStepThree = (props) => {
   );
   const [instrument, setInstrument] = useState(null);
   const [idPhoto, setIdPhoto] = useState();
+  console.log(notes);
 
   // check desing vaildation
   const [IsVaildState, setIsVaildState] = useState(false);
@@ -63,8 +65,7 @@ const AddProjectStepThree = (props) => {
       agent?.isValid &&
       agencyNumber?.value &&
       agencyNumber?.isValid &&
-      agencyNumber?.value &&
-      agencyAttachments?.name &&
+      agencyAttachments &&
       instrumentNumber.value &&
       instrumentNumber.isValid &&
       selectProjectType === 1
@@ -73,11 +74,14 @@ const AddProjectStepThree = (props) => {
         ...userData,
         agent: agent.value,
         agencyNumber: agencyNumber?.value,
-        agencyAttachments: agencyAttachments?.name,
+        agencyAttachments,
         instrumentNumber: instrumentNumber?.value,
+        notes,
       };
       setUserData(updatedUserData);
       setUserDataVaild(true);
+      signalParent(true);
+
 
       console.log(userData);
     } else {
@@ -85,8 +89,9 @@ const AddProjectStepThree = (props) => {
         ...userData,
         agent: agent.value,
         agencyNumber: agencyNumber?.value,
-        agencyAttachments: agencyAttachments?.name,
+        agencyAttachments,
         instrumentNumber: instrumentNumber?.value,
+        notes,
       };
 
       setUserData(updatedUserData);
@@ -99,9 +104,10 @@ const AddProjectStepThree = (props) => {
       agent?.isValid &&
       agencyNumber?.value &&
       agencyNumber?.isValid &&
-      agencyAttachments?.name &&
+      agencyAttachments &&
       instrumentNumber.value &&
       instrumentNumber.isValid,
+      notes,
   ]);
 
   // Review Data
@@ -112,12 +118,12 @@ const AddProjectStepThree = (props) => {
   );
   const licenseDeed = UseInput(
     `${userData.licenseDeed ? userData.licenseDeed : ""}`,
-    "number",
+    "licenseDeed",
     true
   );
   const [licenseDate, setlicenseDate] = useState(null);
-  const [licenseAttachments, setlicenseAttachments] = useState(null);
-  const [notes, setNotes] = useState("");
+  const [licenseAttachments, setlicenseAttachments] = useState();
+
   const [confirmSubmit, setConfirmSubmit] = useState(false);
   // check Review validation
   console.log(selectProjectType);
@@ -136,32 +142,33 @@ const AddProjectStepThree = (props) => {
         ...userData,
         licenseNumber: licenseNumber?.value,
         licenseDeed: licenseDeed?.value,
-        licenseDate: licenseDate,
+        licenseDate: moment(licenseDate?.value).format("YYYY-MM-DD"),
         licenseAttachments,
         notes,
       };
       setUserData(updatedUserData);
       setUserDataVaild(true);
     } else {
-      // const updatedUserData = {
-      //   ...userData,
-      //   licenseNumber: licenseNumber?.value,
-      //   licenseDeed: licenseDeed?.value,
-      //   licenseDate: licenseDate?.value,
-      //   licenseAttachments,
-      //   notes,
-      // };
-      // setUserData(updatedUserData);
+      const updatedUserData = {
+        ...userData,
+        licenseNumber: licenseNumber?.value,
+        licenseDeed: licenseDeed?.value,
+        licenseDate: moment(licenseDate?.value).format("YYYY-MM-DD"),
+        licenseAttachments,
+        notes,
+      };
+      setUserData(updatedUserData);
       signalParent(false);
       setUserDataVaild(false);
     }
   }, [
-    licenseNumber.isValid &&
-      licenseNumber.value &&
-      licenseDeed.isValid &&
-      licenseDeed.value &&
-      licenseDate &&
-      licenseAttachments,
+    licenseNumber.isValid,
+    licenseNumber.value,
+    licenseDeed.isValid,
+    licenseDeed.value,
+    licenseDate,
+    licenseAttachments,
+    notes,
   ]);
   useEffect(() => {
     signalParent(IsVaildState);
@@ -210,9 +217,7 @@ const AddProjectStepThree = (props) => {
                 type="file"
                 placeholder="      ارفاق الوكالة "
                 name="imageFile"
-                onChange={(e) =>
-                  setAgencyAttachments(e.currentTarget.files[0].name)
-                }
+                onChange={(e) => setAgencyAttachments(e.currentTarget.files[0])}
               />
             </Form.Group>
           </div>
@@ -225,7 +230,18 @@ const AddProjectStepThree = (props) => {
               mandatory
             />
           </div>
-
+          <div className="col-md-12 mb-4">
+            <Form.Label className="d-flex gap-2 align-items-center">
+              ملاحظاتك
+            </Form.Label>
+            <Form.Control
+              as="textarea"
+              multiple="multiple"
+              placeholder="ادخل ملاحظاتك ..."
+              style={{ height: "150px" }}
+              onChange={(e) => setNotes(e.target.value)}
+            />
+          </div>
           <div className="col-md-12 d-flex justify-content-end  align-items-end mb-4">
             <button
               disabled={!userDataVaild}
@@ -271,7 +287,7 @@ const AddProjectStepThree = (props) => {
                 <DatePicker
                   selected={licenseDate}
                   placeholderText=" ادخل تاريخ الرخصة "
-                  onChange={(date) => setlicenseDate(moment(date).format("YYYY-MM-DD"))}
+                  onChange={(date) => setlicenseDate(date)}
                   dateFormat="dd-MM-yyyy"
                   className="w-100 form-control"
                 />
@@ -291,7 +307,7 @@ const AddProjectStepThree = (props) => {
                 name="imageFile"
                 height="100px"
                 onChange={(e) =>
-                  setlicenseAttachments(e.currentTarget.files[0].name)
+                  setlicenseAttachments(e.currentTarget.files[0])
                 }
               />
             </Form.Group>
