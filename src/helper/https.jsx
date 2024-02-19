@@ -17,7 +17,7 @@ myAxiosInstance.interceptors.request.use(
     if (Cookies.get("accessToken")) {
       config.headers["authes"] = `BSA__${Cookies.get("accessToken")}`;
     }
-    config.headers["Content-Type"] = "application/json";
+    config.headers["Content-Type"] = "multipart/form-data";
     return config;
   },
   (error) => {

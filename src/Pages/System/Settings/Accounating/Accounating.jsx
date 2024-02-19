@@ -268,7 +268,7 @@ function Accounating() {
 
   useEffect(() => {
     setClauses(data?.data?.clause);
-    console.log("clause: ", data?.data?.clause);
+    // console.log("clause: ", data?.data?.clause);
   }, [isLoading]);
 
   return (
