@@ -16,6 +16,7 @@ import SettingContext from "../../../../Context/SettingContext";
 import { TableCell } from "../../../../Components/Table/TableCell";
 import { TableRow } from "../../../../Components/Table/TableRow";
 import CustomTable from "../../../../Components/Table";
+import { useGetAllReceptions } from "../../../../hooks/fetchers/Receptions";
 
 const EditIcon = () => {
   return (
@@ -165,6 +166,17 @@ const SubCategoryBtn = ({ title, active, setActive, index, setTerms }) => {
 };
 
 const Reception = () => {
+
+  const {data:receptionData} = useGetAllReceptions()
+
+
+
+
+
+
+
+
+
   const { ReciptionType, setReceptionType } = useContext(SettingContext);
   const [id, setId] = useState(null);
   const [visitsData, setVisitsData] = useState([]);
@@ -259,6 +271,13 @@ const Reception = () => {
   const handleClose = () => {
     setAnchorEl(null);
   };
+
+
+
+
+
+
+  console.log(receptionData?.data?.reception);
   return (
     <section className="Reception h-full">
       <ViewReception

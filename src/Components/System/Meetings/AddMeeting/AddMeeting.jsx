@@ -26,7 +26,7 @@ import { useForm } from "react-hook-form";
 import CustomSelect from "../../../../Pages/System/PlanModel/components/CustomSelect";
 import { CiSearch } from "react-icons/ci";
 import { InputLabel } from "../../../../Pages/System/PlanModel/components/InputLabel";
-import myAxiosInstance from "../../../../helper/https";
+import myAxiosInstance, { myAxiosJson } from "../../../../helper/https";
 export const AddMeeting = ({ view, setView }) => {
   const {
     register,
@@ -42,6 +42,7 @@ export const AddMeeting = ({ view, setView }) => {
   let [chooseDepartment, setChooseDeprtmant] = useState(false);
   let [meetingDetails, setMeetingDetails] = useState(false);
   let [meetingDate, setMeetingDate] = useState(null);
+  let [description, setDescription] = useState("");
   let [startMeeting, setStartMeeting] = useState(null);
   let [endMeeting, setEndMeeting] = useState(null);
   let [meetingPlace, setMeetingPlace] = useState("10:00");
@@ -76,14 +77,15 @@ export const AddMeeting = ({ view, setView }) => {
   const handleAddMeeting = () => {};
   const onSubmit = (data) => {
     const DataSent = {
-      meetingType: 1,
-      descraption: "this is ecent",
-      country: 1,
-      typeMeeting: 0, // 0 => offline , 1 => online
-      startDate: "2023-12-01",
-      endDate: "2024-12-01",
-      startTime: "2024-12-01",
-      endTime: "2024-01-12",
+      meetingType: data.meetingType === "شامل" ?  1 : data.meetingType === "مع قسم" ?  2 : null,
+      // descraption: description,
+      country: data.country === "الكل" ?  0 : data.country === "السعودية" ?  1 : data.country === "مصر"? 2 : null,
+      typeMeeting: selectedPlace, // 0 => offline , 1 => online
+      startDate: meetingDate,
+      // endDate: "2024-12-01",
+      meetingLink: data.meetingLink,
+      startTime: startMeeting,
+      endTime: endMeeting,
     };
     /*
     {
@@ -94,6 +96,7 @@ export const AddMeeting = ({ view, setView }) => {
    "startDate" : "2023-12-01",
    "endDate" : "2024-12-01",
    "startTime" : "2024-12-01",
+   "meetingLink": "",
    "endTime" : "2024-01-12",
     "employeId" : [{
         "_id" : "65d20292482491c1474c49c0"
@@ -101,7 +104,7 @@ export const AddMeeting = ({ view, setView }) => {
 
 }
      */
-    myAxiosInstance.post("event", DataSent)
+myAxiosJson.post("event", DataSent)
     .then(data => {
       console.log("event data: ",data);
     })
@@ -109,7 +112,7 @@ export const AddMeeting = ({ view, setView }) => {
       console.log(err);
     })
 
-    // console.log("Submitted Data: ", {...data});
+    // console.log("Submitted Data: ", DataSent);
     setView(false);
   };
   return (
@@ -220,10 +223,11 @@ export const AddMeeting = ({ view, setView }) => {
                 <CKEditor
                   onChange={(event, editor) => {
                     const data = editor.getData();
+                    setDescription(data)
                     console.log({ event, editor, data });
                   }}
                   editor={ClassicEditor}
-                  data="<h2>تفاصيل الاجتماع</h2>"
+                  // data="<h2>تفاصيل الاجتماع</h2>"
                   onBlur={(event, editor) => {
                     const data = editor.getData();
                     console.log({ event, editor, data });
@@ -273,21 +277,21 @@ export const AddMeeting = ({ view, setView }) => {
                     className="text-white flex gap-3 my-2"
                     onChange={(e) => {
                       setMeetingPlace(e.target.value);
-                      setSelectedPlace(2);
+                      setSelectedPlace(0);
                     }}
                     value="offline"
                     control={
                       <label
                         onClick={() => {
                           setMeetingPlace("offline");
-                          setSelectedPlace(2);
+                          setSelectedPlace(0);
                         }}
                         htmlFor="offline"
                         className={`w-5 h-5 rounded-[5px] bg-[#2B2B40] border ${
                           meetingPlace === "offline" ? "!border-[#EFAA20]" : ""
                         }`}
                       >
-                        {selectedPlace == 2 ? <FaCheck /> : null}{" "}
+                        {selectedPlace == 0 ? <FaCheck /> : null}{" "}
                         <Radio id="offline" sx={{ display: "none" }} />
                       </label>
                     }
@@ -297,8 +301,19 @@ export const AddMeeting = ({ view, setView }) => {
               </FormControl>
             </div>
             {meetingPlace === "online" && (
-              <div className="col-md-6 meetingLink d-flex align-items-center  justify-content-start mb-4">
-                <Input label={"لينك الاجتماع "} {...meetingLink.bind} />
+              <div className="col-md-6 meetingLink flex flex-col  mb-4">
+                <InputLabel
+                    size={18}
+                    label={"لينك الاجتماع "} 
+                    className={"mb-3"}
+                    mandatory
+                  />
+                <input 
+                className="bg-[#2B2B40] text-white w-full outline-none p-2 rounded-[7px]"
+                type="text"
+                // {...meetingLink.bind}
+                {...register("meetingLink")}
+                />
               </div>
             )}
             <div className="col-md-12  mb-4">
