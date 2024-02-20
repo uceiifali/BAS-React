@@ -61,15 +61,26 @@ const AddUpdateReciption = ({
   const handleAddvisit = (data) => {
     console.log(data);
     var formdata = new FormData();
+formdata.append("personVisit", "ميخا");
+formdata.append("phone", "+966505282277");
+formdata.append("visitLocation", "السعودية");
+formdata.append("typeVisit", "2");
+formdata.append("resoneVisit", "جايب اكل ");
+formdata.append("dateVist", "2025-07-25T14:34:50.600+00:00");
+formdata.append("timeOutVist", "2025-07-13T14:34:50.600+00:00");
+formdata.append("timeInVist", "2025-07-13T14:34:50.600+00:00");
+formdata.append("IdentityNumber", "12345678911");
+formdata.append("personType", "فردي");
     // formdata.append("fileVist", fileInput.files[0], "logo.png");
-    formdata.append("phone", data.phone);
-    formdata.append("visitLocation", data.visitPlace);
-    formdata.append("typeVisit", data.visitType.value === 'صادرة' ? "1" : data.visitType.value === 'واردة' ? "2" : null);
-    formdata.append("resoneVisit", data.visitReason);
-    formdata.append("dateVist", "2025-07-25T14:34:50.600+00:00");
-    formdata.append("timeOutVist", "2025-07-13T14:34:50.600+00:00");
-    formdata.append("timeInVist", "2025-07-13T14:34:50.600+00:00");
-    formdata.append("IdentityNumber", "12345678911");
+    // formdata.append("phone", data.phone);
+    // formdata.append("visitLocation", data.visitPlace);
+    // formdata.append("typeVisit", data.visitType.value === 'صادرة' ? "1" : data.visitType.value === 'واردة' ? "2" : null);
+    // formdata.append("resoneVisit", data.visitReason);
+    // formdata.append("dateVist", "2025-07-25T14:34:50.600+00:00");
+    // formdata.append("timeOutVist", "2025-07-13T14:34:50.600+00:00");
+    // formdata.append("timeInVist", "2025-07-13T14:34:50.600+00:00");
+    // formdata.append("IdentityNumber", "12345678911");
+    // formdata.append("personType", "فردي");
     // formdata.append("IdentityNumber", data.identity);
     /**
      identity
@@ -745,6 +756,17 @@ visitType: {value: 'واردة', label: 'واردة'}
                       {...register("ُEmployeeName")}
                     />
                   </Form.Group>
+                </div>
+                <div className="grid grid-cols-3 mb-3 gap-4">
+                  <Form.Group className="">
+                    <Form.Label>رقم تعريفى</Form.Label>
+                    <input
+                      className="form-control h-[37px]"
+                      {...register("IdentityNumber")}
+                      // placeholder="اكتب مكان الزياة"
+                    />
+                  </Form.Group>
+                  
                 </div>
                 <div className="grid grid-cols-3 mb-3 gap-4">
                   <Form.Group className="col-span-2">
