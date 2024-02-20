@@ -86,8 +86,13 @@ const SystemSignIn = () => {
     }
   };
   const onSubmit = async (userData) => {
+    // const formData = new FormData();
+    // formData.append("userName", userData.userName);
+    // formData.append("password", userData.password);
+
     try {
       const { data } = await userLogin(userData);
+
       console.log(data);
       if (data.success) {
         Cookies.set("accessToken", data.accessToken);
