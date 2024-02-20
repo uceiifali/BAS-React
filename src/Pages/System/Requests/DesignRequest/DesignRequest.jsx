@@ -15,6 +15,7 @@ import { useEffect } from "react";
 import { toast } from "react-toastify";
 import { getRequestsWithProjectType } from "../../../../helper/fetchers/Requests.jsx";
 import Progress from "../../../../Components/Progress.jsx";
+import moment from "moment";
 const DesignRequest = () => {
   const [showProject, setShowProject] = useState(false);
   const [editRequest, setEditRequest] = useState(false);
@@ -96,7 +97,6 @@ const DesignRequest = () => {
   const getDesignRequests = async () => {
     try {
       const { data } = await getRequestsWithProjectType(1);
-      console.log(data);
       if (data?.success) {
         setDesignRequests(data?.request);
       } else {
@@ -154,12 +154,22 @@ const DesignRequest = () => {
                               }`}
                               key={_id}
                             >
-                              <TableCell textColor="#ffffff7f">{_id}</TableCell>
+                              <TableCell textColor="#ffffff7f">
+                                {index + 1}
+                              </TableCell>
                               <TableCell>{projectName}</TableCell>
                               <TableCell>{orderNumber}</TableCell>
-                              <TableCell>{createdAt}</TableCell>
+                              <TableCell>
+                                {moment(createdAt).format("YYYY-MM-DD")}
+                              </TableCell>
                               <TableCell>تصميم</TableCell>
-                              <TableCell>{status}</TableCell>
+                              <TableCell>
+                                {status == 0
+                                  ? "في الانتظار"
+                                  : status == 1
+                                  ? "قيد التنفيذ"
+                                  : "مرفوضة"}
+                              </TableCell>
                               <TableCell>
                                 <Image
                                   src={

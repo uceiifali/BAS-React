@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { RiEdit2Line } from "react-icons/ri";
 import { Button, Form, Modal, NavDropdown } from "react-bootstrap";
-import IconButton from '@mui/material/IconButton';
+import IconButton from "@mui/material/IconButton";
 import "./index.css";
 import { useState } from "react";
 import EditDesignRequest from "../Requests/EditRequest/EditDesignRequest";
@@ -14,11 +14,14 @@ import CommentModel from "../../Modals/CommentModel";
 import { IoMdMore } from "react-icons/io";
 import DownloadButton from "../../Buttons/DownloadButton";
 import PreviewImage from "../../Modals/PreviewImage";
-const ShowDesignRequest = ({ setShowProject, DesignProjectType }) => {
+import { getDesignRequestsWithid } from "../../../helper/fetchers/Requests";
+import { toast } from "react-toastify";
+const ShowDesignRequest = ({ setShowProject, DesignProjectType, id }) => {
   const [showImg, setShowImg] = useState(false);
   const [imgSrc, setImgSrc] = useState(
     `${process.env.PUBLIC_URL}/icons/show.png`
   );
+  const [request, setRequest] = useState();
 
   const [message, setMessage] = useState("");
   const [acceptRequest, setAcceptRequest] = useState(false);
@@ -57,16 +60,35 @@ const ShowDesignRequest = ({ setShowProject, DesignProjectType }) => {
     setDeleteRequest(false);
   };
 
+  const getRequestWithid = async () => {
+    try {
+      const { data } = await getDesignRequestsWithid(id);
+      console.log(data);
+      if (data?.request) {
+        setRequest(data?.request);
+      } else {
+        console.log("Data retrieval failed");
+      }
+    } catch (error) {
+      toast.error(error?.response?.data?.message);
+    }
+  };
+
+  useEffect(() => {
+    getRequestWithid();
+    console.log("id is ");
+    console.log(id);
+  }, [id]);
+
   return (
     <div className="show-Design">
       {showImg && (
         <PreviewImage
-        onClose={() => setShowImg(false)}
-        showImg={showImg} 
-        imgSrc={imgSrc}
+          onClose={() => setShowImg(false)}
+          showImg={showImg}
+          imgSrc={imgSrc}
         />
       )}
-        
 
       <CustomModal
         show={acceptRequest}
@@ -118,14 +140,14 @@ const ShowDesignRequest = ({ setShowProject, DesignProjectType }) => {
           setConfirmPoper={setConfirmUpdate}
         />
       )}
-      {ConfirmUpdate && (
+      {/* {ConfirmUpdate && (
         <ConfirmPoper
           confirmPoper={ConfirmUpdate}
           setConfirmPoper={setConfirmUpdate}
           setEditRequest={setEditRequest}
           text={"تم تعديل الطلب فى المشاريع بنجاح  "}
         />
-      )}
+      )} */}
 
       <div className="border-golden mb-4">
         {/* <div className="row px-2 py-3">
@@ -269,13 +291,12 @@ const ShowDesignRequest = ({ setShowProject, DesignProjectType }) => {
             </p>
           </div>
           <div className="col-6 flex flex-col items-end gap-4">
-          <div className="flex gap-2 justify-start">
+            <div className="flex gap-2 justify-start">
               <DownloadButton>تصدير CSV </DownloadButton>
               <DownloadButton> تصدير Excel </DownloadButton>
             </div>
             <div className="">
-            <p className="text-white text-xl font-normal">
-                
+              <p className="text-white text-xl font-normal">
                 الحالة :
                 {DesignProjectType === "inProgress" ? (
                   <span>قيد التنفيذ</span>
@@ -290,21 +311,20 @@ const ShowDesignRequest = ({ setShowProject, DesignProjectType }) => {
             </div>
             <div className="flex items-center gap-2">
               <div className="">
-                <button onClick={()=> setEditRequest(true)} className="flex items-center gap-1 bg-[#19B159] rounded-[3px] text-white text-xs p-1">
+                <button
+                  onClick={() => setEditRequest(true)}
+                  className="flex items-center gap-1 bg-[#19B159] rounded-[3px] text-white text-xs p-1"
+                >
                   تعديل
-                  <RiEdit2Line/>
+                  <RiEdit2Line />
                   {/* <img src="/icons/edit.svg" alt="" className="filter invert" /> */}
                 </button>
               </div>
               <div className="">
                 {DesignProjectType == "inProgress" ? (
                   <div className="flex items-center gap-3">
-                    
-
                     <NavDropdown
-                      title={
-                          <IoMdMore color="white" fontSize={25} />
-                      }
+                      title={<IoMdMore color="white" fontSize={25} />}
                       className="fs-5 "
                     >
                       <NavDropdown.Item
@@ -343,7 +363,6 @@ const ShowDesignRequest = ({ setShowProject, DesignProjectType }) => {
                       }}
                       src={process.env.PUBLIC_URL + "/icons/declince.png"}
                     />
-                  
                   </div>
                 ) : DesignProjectType === "rejected" ? (
                   <div className="d-flex gap-3">
@@ -354,8 +373,6 @@ const ShowDesignRequest = ({ setShowProject, DesignProjectType }) => {
                       }}
                       src={process.env.PUBLIC_URL + "/icons/confirm.png"}
                     />
-
-
 
                     <Image
                       className="pointer delete-icon"
@@ -369,179 +386,175 @@ const ShowDesignRequest = ({ setShowProject, DesignProjectType }) => {
                   ""
                 )}
               </div>
-                  
             </div>
           </div>
         </div>
       </div>
 
       <div className="h-[600px] overflow-scroll scrollbar-none px-4">
-      
-      
-      
-      
-      <fieldset className="border-golden my-4 p-4">
-        <legend className="text-center">بيانات المشروع</legend>
-        <div className="row px-2">
-          <div className="col-md-6 mb-3">
-            <p className="text-white flex gap-2">
-              اسم المالك : <span className="text-white/30">BSA</span>
-            </p>
+        <fieldset className="border-golden my-4 p-4">
+          <legend className="text-center">بيانات المشروع</legend>
+          <div className="row px-2">
+            <div className="col-md-6 mb-3">
+              <p className="text-white flex gap-2">
+                اسم المالك : <span className="text-white/30">BSA</span>
+              </p>
+            </div>
+            <div className="col-md-6 mb-3">
+              <p className="text-white flex gap-2">
+                {" "}
+                موقع المشروع : <span className="text-white/30">السعودية</span>
+              </p>
+            </div>
+            <div className="col-md-6 mb-3">
+              <p className="text-white flex gap-2">
+                {" "}
+                المدينة : <span className="text-white/30">السعودية</span>
+              </p>
+            </div>
+            <div className="col-md-6 mb-3">
+              <p className="text-white flex gap-2">
+                {" "}
+                الحي : <span className="text-white/30">السعودية</span>
+              </p>
+            </div>
+            <div className="col-md-6 mb-3">
+              <p className="text-white flex gap-2">
+                {" "}
+                رقم القطعة : <span className="text-white/30">___ </span>
+              </p>
+            </div>
+            <div className="col-md-6 mb-3">
+              <p className="text-white flex gap-2">
+                {" "}
+                رقم المخطط : <span className="text-white/30">___ </span>
+              </p>
+            </div>
+            <div className="col-md-6 mb-3">
+              <p className="text-white flex gap-2">
+                {" "}
+                نوع المشروع : <span className="text-white/30">التصميم </span>
+              </p>
+            </div>
           </div>
-          <div className="col-md-6 mb-3">
-            <p className="text-white flex gap-2">
-              {" "}
-              موقع المشروع : <span className="text-white/30">السعودية</span>
-            </p>
+        </fieldset>
+
+        <fieldset className="border-golden my-4 p-4">
+          <legend className="text-center">بيانات المالك</legend>
+          <div className="row px-2">
+            <div className="col-md-6 mt-3">
+              <p className="text-white flex gap-2">
+                {" "}
+                نوع العميل : <span className="text-white/30">BSA</span>
+              </p>
+            </div>
+            <div className="col-md-6 mt-3">
+              <p className="text-white flex gap-2">
+                {" "}
+                رقم الشهادة الضربية :{" "}
+                <span className="text-white/30"> ــــــــــ </span>
+              </p>
+            </div>
+            <div className="col-md-6 mt-3">
+              <p className="text-white flex gap-2">
+                {" "}
+                نوع الهوية : <span className="text-white/30"></span>
+              </p>
+            </div>
+            <div className="col-md-6 mt-3">
+              <p className="text-white flex gap-2">
+                {" "}
+                البريد الالكتروني : <span className="text-white/30"> </span>
+              </p>
+            </div>
+            <div className="col-md-6 mt-3 mb-3">
+              <Image
+                className="pointer instrutmentimg "
+                onClick={() => {
+                  setShowImg(true);
+                }}
+                src={imgSrc}
+                alt="owner img"
+              />
+
+              <p className="text-white flex gap-2"> صورة الهوية </p>
+            </div>
+
+            <div className="col-md-6 mt-3">
+              <p className="text-white flex gap-2">
+                {" "}
+                رقم الجوال : <span className="text-white/30"> </span>
+              </p>
+            </div>
           </div>
-          <div className="col-md-6 mb-3">
-            <p className="text-white flex gap-2">
-              {" "}
-              المدينة : <span className="text-white/30">السعودية</span>
-            </p>
+        </fieldset>
+
+        <fieldset className="border-golden my-4 p-4">
+          <legend className="text-center">بيانات الوكيل</legend>
+          <div className="row px-2">
+            <div className="col-md-6 mt-3">
+              <p className="text-white flex gap-2">
+                {" "}
+                نوع العميل : <span className="text-white/30">BSA</span>
+              </p>
+            </div>
+            <div className="col-md-6 mt-3">
+              <p className="text-white flex gap-2">
+                {" "}
+                رقم الوكالة :{" "}
+                <span className="text-white/30"> ــــــــــ </span>
+              </p>
+            </div>
+            <div className="col-md-6 mt-3">
+              <p className="text-white flex gap-2">
+                {" "}
+                اسم الصك : <span className="text-white/30"></span>
+              </p>
+            </div>
+            <div className="col-md-6 mt-3">
+              <p className="text-white flex gap-2">
+                {" "}
+                رقم الصك : <span className="text-white/30"> </span>
+              </p>
+            </div>
+            <div className="col-md-6 mt-3 mb-3">
+              <Image
+                className="pointer instrutmentimg"
+                onClick={() => {
+                  setShowImg(true);
+                }}
+                src={imgSrc}
+                alt="owner img"
+              />
+
+              <p className="text-white"> صورة الصك </p>
+            </div>
+
+            <div className="col-md-6 mt-3 mb-3">
+              <Image
+                className="pointer instrutmentimg"
+                onClick={() => {
+                  setShowImg(true);
+                }}
+                src={imgSrc}
+                alt="owner img"
+              />
+
+              <p className="text-white"> صورة الوكالة </p>
+            </div>
           </div>
-          <div className="col-md-6 mb-3">
-            <p className="text-white flex gap-2">
-              {" "}
-              الحي : <span className="text-white/30">السعودية</span>
-            </p>
-          </div>
-          <div className="col-md-6 mb-3">
-            <p className="text-white flex gap-2">
-              {" "}
-              رقم القطعة : <span className="text-white/30">___ </span>
-            </p>
-          </div>
-          <div className="col-md-6 mb-3">
-            <p className="text-white flex gap-2">
-              {" "}
-              رقم المخطط : <span className="text-white/30">___ </span>
-            </p>
-          </div>
-          <div className="col-md-6 mb-3">
-            <p className="text-white flex gap-2">
-              {" "}
-              نوع المشروع : <span className="text-white/30">التصميم </span>
-            </p>
-          </div>
+        </fieldset>
+
+        <div className="my-3 mx-2 d-flex justify-content-end">
+          <button
+            onClick={() => {
+              setShowProject(false);
+            }}
+            className="bg-[#EFAA20] text-black transition-colors hover:bg-[#2B2B40] hover:!text-white border !border-[#EFAA20] py-1 px-5 rounded-[6px]"
+          >
+            موافق
+          </button>
         </div>
-      </fieldset>
-                  
-      <fieldset className="border-golden my-4 p-4">
-        <legend className="text-center">بيانات المالك</legend>
-        <div className="row px-2">
-          <div className="col-md-6 mt-3">
-            <p className="text-white flex gap-2">
-              {" "}
-              نوع العميل : <span className="text-white/30">BSA</span>
-            </p>
-          </div>
-          <div className="col-md-6 mt-3">
-            <p className="text-white flex gap-2">
-              {" "}
-              رقم الشهادة الضربية : <span className="text-white/30"> ــــــــــ </span>
-            </p>
-          </div>
-          <div className="col-md-6 mt-3">
-            <p className="text-white flex gap-2">
-              {" "}
-              نوع الهوية : <span className="text-white/30"></span>
-            </p>
-          </div>
-          <div className="col-md-6 mt-3">
-            <p className="text-white flex gap-2">
-              {" "}
-              البريد الالكتروني : <span className="text-white/30"> </span>
-            </p>
-          </div>
-          <div className="col-md-6 mt-3 mb-3">
-            <Image
-              className="pointer instrutmentimg "
-              onClick={() => {
-                setShowImg(true);
-              }}
-              src={imgSrc}
-              alt="owner img"
-            />
-
-            <p className="text-white flex gap-2"> صورة الهوية </p>
-          </div>
-
-          <div className="col-md-6 mt-3">
-            <p className="text-white flex gap-2">
-              {" "}
-              رقم الجوال : <span className="text-white/30"> </span>
-            </p>
-          </div>
-        </div>
-      </fieldset>
-
-
-      <fieldset className="border-golden my-4 p-4">
-        <legend className="text-center">بيانات الوكيل</legend>
-        <div className="row px-2">
-          <div className="col-md-6 mt-3">
-            <p className="text-white flex gap-2">
-              {" "}
-              نوع العميل : <span className="text-white/30">BSA</span>
-            </p>
-          </div>
-          <div className="col-md-6 mt-3">
-            <p className="text-white flex gap-2">
-              {" "}
-              رقم الوكالة : <span className="text-white/30"> ــــــــــ </span>
-            </p>
-          </div>
-          <div className="col-md-6 mt-3">
-            <p className="text-white flex gap-2">
-              {" "}
-              اسم الصك : <span className="text-white/30"></span>
-            </p>
-          </div>
-          <div className="col-md-6 mt-3">
-            <p className="text-white flex gap-2">
-              {" "}
-              رقم الصك : <span className="text-white/30"> </span>
-            </p>
-          </div>
-          <div className="col-md-6 mt-3 mb-3">
-            <Image
-              className="pointer instrutmentimg"
-              onClick={() => {
-                setShowImg(true);
-              }}
-              src={imgSrc}
-              alt="owner img"
-            />
-
-            <p className="text-white"> صورة الصك </p>
-          </div>
-
-          <div className="col-md-6 mt-3 mb-3">
-            <Image
-              className="pointer instrutmentimg"
-              onClick={() => {
-                setShowImg(true);
-              }}
-              src={imgSrc}
-              alt="owner img"
-            />
-
-            <p className="text-white"> صورة الوكالة </p>
-          </div>
-        </div>
-      </fieldset>
-
-      <div className="my-3 mx-2 d-flex justify-content-end">
-        <button
-          onClick={() => {
-            setShowProject(false);
-          }}
-          className="bg-[#EFAA20] text-black transition-colors hover:bg-[#2B2B40] hover:!text-white border !border-[#EFAA20] py-1 px-5 rounded-[6px]"
-        >
-          موافق
-        </button>
-      </div>
       </div>
     </div>
   );

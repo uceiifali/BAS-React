@@ -37,3 +37,31 @@ myAxiosInstance.interceptors.response.use(
   }
 );
 export default myAxiosInstance;
+
+export const myAxiosJson = axios.create({
+  baseURL: config.apiGateway?.URL,
+});
+myAxiosJson.interceptors.request.use(
+  async (config) => {
+    if (Cookies.get("accessToken")) {
+      config.headers["authes"] = `BSA__${Cookies.get("accessToken")}`;
+    }
+
+    config.headers["Content-Type"] = "application/json";
+    return config;
+  },
+  (error) => {
+    return Promise.reject(error);
+  }
+);
+myAxiosJson.interceptors.response.use(
+  (response) => response,
+  (error) => {
+    // if (error?.response?.status === 404) {
+    //   toast.error(error.response.data?.message);
+    //   // history.push("");
+    // }
+
+    return Promise.reject(error);
+  }
+);
