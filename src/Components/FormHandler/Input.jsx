@@ -1,7 +1,7 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 
-const Input = ({
+const Input = React.forwardRef(({
   label,
   validator,
   submitted,
@@ -20,7 +20,7 @@ const Input = ({
   name,
   borderColor = "#dee2e6",
   ...props
-}) => {
+},ref) => {
   let hasWarning = submitted && validator && !validator.valid;
 
   return (
@@ -46,6 +46,7 @@ const Input = ({
         className={`form-control h-[37px] ${className} ${
           submitted && validator && !validator.valid ? "is-invalid" : ""
         }`}
+        ref={ref}
         {...props}
       />
       {append && (
@@ -58,6 +59,6 @@ const Input = ({
       )}
     </div>
   );
-};
+});
 
 export default Input;
