@@ -22,6 +22,7 @@ const DesignRequest = () => {
   const [ConfirmUpdate, setConfirmUpdate] = useState(false);
   const [DesignRequests, setDesignRequests] = useState();
   const [DesignProjectType, SetDesignProjectType] = useState("");
+  const [id, setId] = useState(null);
 
   const DesignProjects = Array.from({ length: 10 }).map((_, index) => {
     return {
@@ -117,6 +118,7 @@ const DesignRequest = () => {
           <ShowDesignRequest
             DesignProjectType={DesignProjectType}
             setShowProject={setShowProject}
+            id={id}
           />
         </div>
       ) : (
@@ -180,6 +182,7 @@ const DesignRequest = () => {
                                     SetDesignProjectType(
                                       DesignProjects[index]?.enStatus
                                     );
+                                    setId(_id);
                                   }}
                                   className="display_project  rounded"
                                   alt=" display project"
