@@ -153,6 +153,17 @@ const Settings = () => {
           show={show}
         />
       ) : null} */}
+
+      {pagePath === "Reception" ? (
+        <AddUpdateReciption
+          handleClose={handleClose}
+          ReciptionType={ReciptionType}
+          id={null}
+          show={show}
+          setShow={setShow}
+        />
+      ) : null}
+
       {orderType === 1 && pagePath === "Orders" && (
         <AddModal
           title={"اضافة جديدة"}
