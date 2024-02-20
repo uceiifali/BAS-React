@@ -165,17 +165,20 @@ const SubCategoryBtn = ({ title, active, setActive, index, setTerms }) => {
   );
 };
 
+
+function convertDateFormat(dateString) {
+  const date = new Date(dateString);
+
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, "0"); // Month is 0-indexed, so add 1
+  const day = String(date.getDate()).padStart(2, "0");
+
+  return `${year}-${month}-${day}`;
+}
+
+
 const Reception = () => {
-
-  const {data:receptionData} = useGetAllReceptions()
-
-
-
-
-
-
-
-
+  const { data: receptionData } = useGetAllReceptions();
 
   const { ReciptionType, setReceptionType } = useContext(SettingContext);
   const [id, setId] = useState(null);
@@ -190,27 +193,21 @@ const Reception = () => {
   const columns = [
     {
       name: "م",
-      selector: (row) => row.id,
     },
     {
       name: "اسم الشخص",
-      selector: (row) => row.personName,
     },
     {
       name: "الجهة",
-      selector: (row) => row.Enterprise,
     },
     {
       name: "تاريخ الزيارة",
-      selector: (row) => row.visitDate,
     },
     {
       name: "عرض",
-      selector: (row) => row.view,
     },
     {
       name: "تعديل",
-      selector: (row) => row.edit,
     },
   ];
   const visits = Array.from({ length: 3 }).map((_, index) => {
@@ -271,11 +268,6 @@ const Reception = () => {
   const handleClose = () => {
     setAnchorEl(null);
   };
-
-
-
-
-
 
   console.log(receptionData?.data?.reception);
   return (
@@ -445,11 +437,22 @@ const Reception = () => {
                 columns={columns}
                 data={visits}
             /> */}
-            <CustomTable columns={columns} data={visits}>
-              {visits && visits.length > 0
-                ? visits.map(
+            <CustomTable
+              columns={columns}
+              data={receptionData?.data?.reception}
+            >
+              {receptionData?.data?.reception &&
+              receptionData?.data?.reception.length > 0
+                ? receptionData?.data?.reception.map(
                     (
-                      { id, personName, Enterprise, visitDate, view, edit },
+                      {
+                        id,
+                        IdentityNumber,
+                        visitLocation,
+                        visitDate,
+                        timeInVist,
+                        edit,
+                      },
                       index
                     ) => (
                       <TableRow
@@ -459,11 +462,39 @@ const Reception = () => {
                         key={index}
                       >
                         <TableCell textColor="#ffffff7f">{id}</TableCell>
-                        <TableCell>{personName}</TableCell>
-                        <TableCell>{Enterprise}</TableCell>
-                        <TableCell>{visitDate}</TableCell>
-                        <TableCell>{view}</TableCell>
-                        <TableCell>{edit}</TableCell>
+                        <TableCell>{IdentityNumber}</TableCell>
+                        <TableCell>{visitLocation}</TableCell>
+                        <TableCell>{convertDateFormat(timeInVist)}</TableCell>
+                        <TableCell>
+                          <div
+                            onClick={() => {
+                              setViewVisit(true);
+                            }}
+                          >
+                            <Image
+                              className="pointer"
+                              src={"/icons/view.svg"}
+                              alt="view image "
+                              width={30}
+                              height={30}
+                            />
+                          </div>
+                        </TableCell>
+                        <TableCell>
+                          <div
+                            onClick={() => {
+                              setEditVisit(true);
+                            }}
+                          >
+                            <Image
+                              className="pointer"
+                              alt={"editImg"}
+                              src={"/icons/edit.svg"}
+                              width={30}
+                              height={30}
+                            />
+                          </div>
+                        </TableCell>
                       </TableRow>
                     )
                   )
