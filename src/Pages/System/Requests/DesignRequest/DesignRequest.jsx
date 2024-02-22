@@ -57,7 +57,7 @@ const DesignRequest = () => {
     };
   });
 
-  console.log(DesignProjectType);
+
 
   const columns = [
     {
@@ -195,6 +195,7 @@ const DesignRequest = () => {
                                   }
                                   onClick={() => {
                                     setEditRequest(true);
+                                    setId(_id);
                                   }}
                                   className=" edit_project  rounded"
                                   alt=" edit project"
@@ -208,26 +209,24 @@ const DesignRequest = () => {
                 ) : (
                   <Progress />
                 )}
-
-                {/* <DataTableComponent
-                  className={"!h-[400px]"}
-                  columns={columns}
-                  data={DesignProjects}
-                /> */}
               </div>
             </fieldset>
           </div>
         </div>
       )}
-      {editRequest && (
-        <div className="AllRequests-scroll scrollbar-none">
-          <EditDesignRequest
-            editRequest={editRequest}
-            setEditRequest={setEditRequest}
-            setConfirmPoper={setConfirmUpdate}
-          />
-        </div>
-      )}
+
+      <div className="AllRequests-scroll scrollbar-none">
+        <EditDesignRequest
+          editRequest={editRequest}
+          id={id}
+          setEditRequest={setEditRequest}
+          setConfirmPoper={setConfirmUpdate}
+          handleClose={() => {
+            setEditRequest(false);
+          }}
+        />
+      </div>
+
       {ConfirmUpdate && (
         <div className="AllRequests-scroll scrollbar-none">
           <ConfirmPoper

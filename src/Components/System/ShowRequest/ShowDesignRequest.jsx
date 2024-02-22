@@ -45,9 +45,7 @@ import { staticImageSrc } from "../../../Config/Config";
 
 const ShowDesignRequest = ({ setShowProject, DesignProjectType, id }) => {
   const [showImg, setShowImg] = useState(false);
-  const [imgSrc, setImgSrc] = useState(
-    `${process.env.PUBLIC_URL}/icons/show.png`
-  );
+  const [imgSrc, setImgSrc] = useState(`${process.env.PUBLIC_URL}/icons/show.png`);
   const [request, setRequest] = useState();
 
   const [message, setMessage] = useState("");
@@ -98,13 +96,13 @@ const ShowDesignRequest = ({ setShowProject, DesignProjectType, id }) => {
   const handleDeleteRequest = async () => {
     try {
       const { data } = await softDeleteRequst(id);
-      if (data.success) {
+      if (data.status==204) {
         setDeleteRequest(false);
         setOpenSuccess(true);
         setMessage("تم حذف الطلب بنجاح");
-        // setShowProject(false)
       }
     } catch (error) {
+      setDeleteRequest(false);
       toast.error(error?.response?.data?.message);
     }
   };
@@ -130,13 +128,11 @@ const ShowDesignRequest = ({ setShowProject, DesignProjectType, id }) => {
 
   return (
     <div className="show-Design">
-      {showImg && (
-        <PreviewImage
-          onClose={() => setShowImg(false)}
-          showImg={showImg}
-          imgSrc={imgSrc}
-        />
-      )}
+      <PreviewImage
+        onClose={() => setShowImg(false)}
+        showImg={showImg}
+        imgSrc={imgSrc}
+      />
 
       <CustomModal
         show={acceptRequest}
@@ -150,7 +146,7 @@ const ShowDesignRequest = ({ setShowProject, DesignProjectType, id }) => {
         message={"هل انت متاكد من قبول الطلب"}
       />
       <SuccessfullModal
-        show={ openSuccess}
+        show={openSuccess}
         message={message}
         handleClose={() => {
           setOpenSuccess(false);
@@ -177,11 +173,14 @@ const ShowDesignRequest = ({ setShowProject, DesignProjectType, id }) => {
         handleSave={handleLeaveComment}
       />
 
-      <DeleteModal
-        title={"التاكيد"}
+      <CustomModal
         show={deleteRequest}
-        onSave={handleDeleteRequest}
-        handleClose={() => setDeleteRequest(false)}
+        title={"التاكيد"}
+        handleClose={() => {
+          setDeleteRequest(false);
+        }}
+        handleSave={handleDeleteRequest}
+        message={"هل انت متاكد من  انك تريد حذف الطلب"}
       />
 
       {editRequest && (
@@ -495,7 +494,7 @@ const ShowDesignRequest = ({ setShowProject, DesignProjectType, id }) => {
                   </span>
                 </p>
               </div>
-              <div className="col-md-6 mt-3">
+              <div className="col-md-12 mt-3">
                 <p className="text-white flex gap-2">
                   {" "}
                   ملاحظات :{" "}

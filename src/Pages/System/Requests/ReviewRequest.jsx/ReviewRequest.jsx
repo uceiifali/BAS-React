@@ -115,6 +115,7 @@ const ReviewRequest = () => {
           <ShowReviewRequest
             ReviewProjectType={ReviewProjectType}
             setShowProject={setShowProject}
+            id={id}
           />
         </div>
       ) : (
@@ -191,6 +192,7 @@ const ReviewRequest = () => {
                                   }
                                   onClick={() => {
                                     setEditRequest(true);
+                                    setId(_id);
                                   }}
                                   className=" edit_project  rounded"
                                   alt=" edit project"

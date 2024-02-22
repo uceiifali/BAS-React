@@ -26,39 +26,9 @@ const ReviewCasesRequest = () => {
   const [chartColor, setChartColor] = useState("");
   const [status, setStatus] = useState();
   const { ReviewProjectType } = useParams();
-  const ReviewCasesProjects = Array.from({ length: 10 }).map((_, index) => {
-    return {
-      id: index + 1,
-      ProjectName: "BSA",
-      ProjectNumber: "53543",
-      createdAt: "12-10-2023",
-      ProjectType: "تصميم",
-      status: projectType,
-      display: (
-        <img
-          src={process.env.PUBLIC_URL + "/icons/view.svg"}
-          onClick={() => {
-            setShowProject(true);
-          }}
-          className="display_project  rounded"
-          alt=" display project"
-        />
-      ),
-      edit: (
-        <img
-          src={process.env.PUBLIC_URL + "/icons/edit.svg"}
-          onClick={() => {
-            setEditRequest(true);
-          }}
-          className=" edit_project  rounded"
-          alt=" edit project"
-        />
-      ),
-    };
-  });
 
   console.log(projectTypeAR);
-  useEffect(() => {
+  useMemo(() => {
     switch (ReviewProjectType) {
       case "inProgress":
         setProjectType("inProgress");
@@ -76,7 +46,7 @@ const ReviewCasesRequest = () => {
       case "rejected":
         setProjectType("rejected");
         setProjectTypeAR("طلبات مرفوضة");
-        setChartColor("#E40038  ");
+        setChartColor("#E40038 ");
         setStatus(2);
 
         break;
@@ -136,7 +106,10 @@ const ReviewCasesRequest = () => {
   };
   useEffect(() => {
     getReviewRequests();
-  }, [status,ReviewProjectType]);
+  }, [status]);
+  useEffect(() => {
+    getReviewRequests();
+  }, [ReviewProjectType]);
 
   return (
     <div className=" p-3">
@@ -145,6 +118,7 @@ const ReviewCasesRequest = () => {
           <ShowReviewRequest
             ReviewProjectType={ReviewProjectType}
             setShowProject={setShowProject}
+            id={id}
           />
         </div>
       ) : (
@@ -170,9 +144,11 @@ const ReviewCasesRequest = () => {
               </legend>
 
               <div className="mt-3 !h-[400px] overflow-scroll scrollbar-none">
-                {reviewRequests ? (
+              
+
+                {reviewRequests ? ( // Check if reviewRequests is not null or undefined
                   <CustomTable columns={columns} data={reviewRequests}>
-                    {reviewRequests && reviewRequests.length > 0
+                    {reviewRequests && reviewRequests.length > 0 // Check if reviewRequests has elements
                       ? reviewRequests.map(
                           (
                             {
@@ -217,9 +193,6 @@ const ReviewCasesRequest = () => {
                                   }
                                   onClick={() => {
                                     setShowProject(true);
-                                    // se(
-                                    //   DesignProjects[index]?.enStatus
-                                    // );
                                     setId(_id);
                                   }}
                                   className="display_project  rounded"
@@ -241,10 +214,11 @@ const ReviewCasesRequest = () => {
                             </TableRow>
                           )
                         )
-                      : null}
+                      : null}{" "}
+                    {/* Render null if designRequests is empty */}
                   </CustomTable>
                 ) : (
-                  <Progress />
+                  <Progress /> // Render Progress if designRequests is null or undefined
                 )}
               </div>
             </fieldset>

@@ -4,21 +4,21 @@ import AllRequestsPieChart from "../../../../Components/System/Requests/AllReque
 import AllRequestLineChart from "../../../../Components/System/Requests/AllRequestlineChart/AllRequestLineChart";
 import { getAllRequests } from "../../../../helper/fetchers/Requests";
 export const AllRequestsCharts = () => {
-  const getRequests = async (userData) => {
-    try {
-      const { data } = await getAllRequests(userData);
-      console.log(data);
-      if (data.success) {
-      }
-    } catch ({ response }) {
-    } finally {
-      getRequests();
-      // write any code here
-    }
-  };
-  useEffect(() => {
-    getRequests()
-  }, [getRequests]);
+  // const getRequests = async (userData) => {
+  //   try {
+  //     const { data } = await getAllRequests(userData);
+  //     console.log(data);
+  //     if (data.success) {
+  //     }
+  //   } catch ({ response }) {
+  //   } finally {
+  //     getRequests();
+  //     // write any code here
+  //   }
+  // };
+  // useEffect(() => {
+  //   getRequests()
+  // }, [getRequests]);
 
   return (
     <div className="p-4 flex gap-5 AllRequests items-center h-100 flex-col">
