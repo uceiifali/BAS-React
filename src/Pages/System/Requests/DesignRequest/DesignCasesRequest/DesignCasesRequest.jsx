@@ -110,6 +110,7 @@ const DesignCasesRequest = () => {
       toast.error(error?.response?.data?.message);
     }
   };
+
   useEffect(() => {
     switch (DesignProjectType) {
       case "inProgress":
@@ -140,7 +141,7 @@ const DesignCasesRequest = () => {
   }, [DesignProjectType]);
   useEffect(() => {
     getDesignRequests();
-  }, [status]);
+  }, [status, DesignProjectType]);
 
   return (
     <>

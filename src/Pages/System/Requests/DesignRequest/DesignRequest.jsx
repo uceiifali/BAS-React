@@ -22,6 +22,7 @@ const DesignRequest = () => {
   const [ConfirmUpdate, setConfirmUpdate] = useState(false);
   const [DesignRequests, setDesignRequests] = useState();
   const [DesignProjectType, SetDesignProjectType] = useState("");
+  const [id, setId] = useState(null);
 
   const DesignProjects = Array.from({ length: 10 }).map((_, index) => {
     return {
@@ -56,7 +57,7 @@ const DesignRequest = () => {
     };
   });
 
-  console.log(DesignProjectType);
+
 
   const columns = [
     {
@@ -117,6 +118,7 @@ const DesignRequest = () => {
           <ShowDesignRequest
             DesignProjectType={DesignProjectType}
             setShowProject={setShowProject}
+            id={id}
           />
         </div>
       ) : (
@@ -180,6 +182,7 @@ const DesignRequest = () => {
                                     SetDesignProjectType(
                                       DesignProjects[index]?.enStatus
                                     );
+                                    setId(_id);
                                   }}
                                   className="display_project  rounded"
                                   alt=" display project"
@@ -192,6 +195,7 @@ const DesignRequest = () => {
                                   }
                                   onClick={() => {
                                     setEditRequest(true);
+                                    setId(_id);
                                   }}
                                   className=" edit_project  rounded"
                                   alt=" edit project"
@@ -205,26 +209,24 @@ const DesignRequest = () => {
                 ) : (
                   <Progress />
                 )}
-
-                {/* <DataTableComponent
-                  className={"!h-[400px]"}
-                  columns={columns}
-                  data={DesignProjects}
-                /> */}
               </div>
             </fieldset>
           </div>
         </div>
       )}
-      {editRequest && (
-        <div className="AllRequests-scroll scrollbar-none">
-          <EditDesignRequest
-            editRequest={editRequest}
-            setEditRequest={setEditRequest}
-            setConfirmPoper={setConfirmUpdate}
-          />
-        </div>
-      )}
+
+      <div className="AllRequests-scroll scrollbar-none">
+        <EditDesignRequest
+          editRequest={editRequest}
+          id={id}
+          setEditRequest={setEditRequest}
+          setConfirmPoper={setConfirmUpdate}
+          handleClose={() => {
+            setEditRequest(false);
+          }}
+        />
+      </div>
+
       {ConfirmUpdate && (
         <div className="AllRequests-scroll scrollbar-none">
           <ConfirmPoper

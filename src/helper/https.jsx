@@ -66,3 +66,31 @@ myAxiosJson.interceptors.response.use(
     return Promise.reject(error);
   }
 );
+
+export const myAxios = axios.create({
+  baseURL: config.apiGateway?.URL,
+});
+myAxios.interceptors.request.use(
+  async (config) => {
+    if (Cookies.get("accessToken")) {
+      config.headers["authes"] = `BSA__${Cookies.get("accessToken")}`;
+    }
+
+    config.headers["Content-Type"] = "application/json";
+    return config;
+  },
+  (error) => {
+    return Promise.reject(error);
+  }
+);
+myAxios.interceptors.response.use(
+  (response) => response,
+  (error) => {
+    // if (error?.response?.status === 404) {
+    //   toast.error(error.response.data?.message);
+    //   // history.push("");
+    // }
+
+    return Promise.reject(error);
+  }
+);

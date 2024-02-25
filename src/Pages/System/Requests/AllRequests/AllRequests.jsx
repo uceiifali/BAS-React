@@ -33,7 +33,7 @@ const AllRequests = () => {
 
   const { pathname } = useLocation();
   const pagePath = pathname.split("/System/Requests/")[1];
-  console.log(pagePath);
+
 
   const navigate = useNavigate();
 
