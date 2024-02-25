@@ -1,22 +1,22 @@
 import { useQuery, useMutation, useQueryClient } from "react-query";
 import {
-  addCategory,
-  deleteCategory,
-  getAllCategories,
-  updateCategory,
-} from "../../helper/fetchers/Categories";
+  getAllTasks,
+  addTask,
+  updateTask,
+  deleteTask,
+} from "../../helper/fetchers/Tasks";
 
 export const useGetAllCategories = () => {
-  const query = useQuery("category", getAllCategories);
+  const query = useQuery("task", getAllTasks);
 
   return query;
 };
 
 export const useAddCategory = (onSuccess) => {
   const queryClient = useQueryClient();
-  return useMutation((data) => addCategory(data), {
+  return useMutation((data) => addTask(data), {
     onSuccess: () => {
-      queryClient.invalidateQueries("category");
+      queryClient.invalidateQueries("task");
       onSuccess()
     },
     onError: (error) => {
@@ -26,9 +26,9 @@ export const useAddCategory = (onSuccess) => {
 };
 export const useUpdateCategory = (onSuccess, id) => {
   const queryClient = useQueryClient();
-  return useMutation((data) => updateCategory(id, data), {
+  return useMutation((data) => updateTask(id, data), {
     onSuccess: () => {
-      queryClient.invalidateQueries("category");
+      queryClient.invalidateQueries("task");
       onSuccess()
     },
     onError: (error) => {
@@ -38,9 +38,9 @@ export const useUpdateCategory = (onSuccess, id) => {
 };
 export const useDeleteCategory = () => {
   const queryClient = useQueryClient();
-  return useMutation(deleteCategory, {
+  return useMutation(deleteTask, {
     onSuccess: () => {
-      queryClient.invalidateQueries("category");
+      queryClient.invalidateQueries("task");
     },
     onError: (error) => {
       // Handle error

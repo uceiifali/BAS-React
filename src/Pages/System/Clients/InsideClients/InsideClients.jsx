@@ -6,7 +6,10 @@ import { NavDropdown } from "react-bootstrap";
 
 import InsideClientPieChart from "../../../../Components/System/Clients/InsideClientChart/InsideClientPieChart";
 import InsideClientLineChart from "../../../../Components/System/Clients/InsideClientChart/InsideClientLineChart";
+import { useGetAllClients } from "../../../../hooks/fetchers/Clients";
 const InsideClients = () => {
+  const {data: clientData } = useGetAllClients()
+  console.log("clientData: ",clientData);
   const Clients = [
     {
       id: 1,
@@ -82,11 +85,17 @@ const InsideClients = () => {
         </div>
 
         <div className="all-clints-search-driver inside-Search"></div>
-        {Clients.map(({ id, name, type, path }) => (
-          <Link to={path} key={id}>
+        {clientData?.map(({ _id, ownerName, clientType, path }) => (
+          <Link to={`/System/ClintDetails/${_id}`} key={_id}>
             <div className="border !border-transparent hover:!border-[#efaa2080] p-2 mb-1">
-              <p className="text-white text-sm font-medium">{name}</p>
-              <p className="text-[#FFFFFF4D] text-xs font-normal">{type}</p>
+              <p className="text-white text-base mb-1 font-medium">{ownerName}</p>
+              <p className="text-[#FFFFFF4D] text-xs font-normal">
+                {clientType === 1 ? "حكومي أو مستثمر" 
+                : clientType === 2 ? "شركة أو مؤسسة" 
+                : clientType === 3 ? "فردي" 
+                : null
+                }
+                </p>
             </div>
           </Link>
         ))}

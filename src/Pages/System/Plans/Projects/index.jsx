@@ -35,6 +35,7 @@ const columns2 = [
 ];
 
 export default function PlansProjects() {
+  
   const [fullWidthTable, setFullWidthTable] = useState(false);
   const navigate = useNavigate();
   const { projects, setProjects } = useContext(ProjectContext);

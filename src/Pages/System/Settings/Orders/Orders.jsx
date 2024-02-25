@@ -33,7 +33,7 @@ const UpdateModal = ({ id, show, setShow }) => {
   const handleClose = () => setShow(false);
   const queryClient = useQueryClient();
   const { mutate: updateMutation } = useUpdateCategory(() => {
-    queryClient.invalidateQueries("category");
+    
     setSuccsesfull(true);
   }, id);
   return (

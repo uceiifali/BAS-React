@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import "./index.css";
 import Accordion from "react-bootstrap/Accordion";
 import { Link } from "react-router-dom";
@@ -15,8 +15,10 @@ import { TreeSelect } from "primereact/treeselect";
 import { useEffect } from "react";
 import { MdKeyboardArrowDown } from "react-icons/md";
 import { AllCategories } from "../../AllCategories/AllCategories";
+import { UsersParamsContext } from "../../../../Context/UsersParamsContext";
 
 const AllUserCategories = ({ countryName = "السعودية" }) => {
+  const {params,setParams} = useContext(UsersParamsContext);
   const [openSaudiaUsers, setOpenSaudiaUsers] = useState(false);
   const [active, setActive] = useState();
 
@@ -38,6 +40,9 @@ const AllUserCategories = ({ countryName = "السعودية" }) => {
 
           <div className="pointer !w-full mt-0">
             {" "}
+            {/* 
+            role : enum: [        "موظف",        "مدير",        "مدقق",        "مدير المكتب",        "مدير قسم",        "محاسب",        مواردبشرية",        "أدارى",      ],
+            */}
             <div className="   d-flex  justify-content-center flex-column">
               <Accordion defaultActiveKey={openSaudiaUsers ? "0" : null}>
                 <Accordion.Item eventKey="0">
@@ -49,6 +54,7 @@ const AllUserCategories = ({ countryName = "السعودية" }) => {
                       }`}
                       onClick={() => {
                         handleOpenUsers();
+                        setParams({country: "السعودية"})
                         setActive(0);
                       }}
                     >
@@ -60,42 +66,32 @@ const AllUserCategories = ({ countryName = "السعودية" }) => {
 
                   <Accordion.Body>
                     <div className="tabs d-flex justify-content-center align-items-center flex-column">
-                      <Link to={"/System/users"}>
-                        <div className="tab  text-end w-100">مدير مكتب</div>
-                      </Link>
+                        <div className="tab  text-end w-100" onClick={()=> setParams({role: "مدير المكتب"})}>مدير مكتب</div>
 
                       <Accordion defaultActiveKey={null}>
                         <Accordion.Item eventKey="1">
-                          <Accordion.Header>
+                          <Accordion.Header onClick={()=> setParams({role: "مدير قسم"})}>
                             <div>مدير قسم</div>
                             <MdKeyboardArrowDown size={20} />
                           </Accordion.Header>
                           <Accordion.Body>
                             <div className="tabs d-flex  flex-column">
-                              <Link to={"/System/users"}>
                                 <div className="tab">مدني</div>
-                              </Link>
-                              <Link to={"/System/users"}>
                                 <div className="tab">معماري</div>
-                              </Link>
                             </div>
                           </Accordion.Body>
                         </Accordion.Item>
                       </Accordion>
                       <Accordion defaultActiveKey={null}>
                         <Accordion.Item eventKey="1">
-                          <Accordion.Header>
+                          <Accordion.Header onClick={()=> setParams({role: "موظف"})}>
                             <div className="text-start">موظف</div>
                             <MdKeyboardArrowDown size={20} />
                           </Accordion.Header>
                           <Accordion.Body>
                             <div className="tabs d-flex  flex-column">
-                              <Link to={"/System/users"}>
                                 <div className="tab">مدني</div>
-                              </Link>
-                              <Link to={"/System/users"}>
                                 <div className="tab">معماري</div>
-                              </Link>
                             </div>
                           </Accordion.Body>
                         </Accordion.Item>
@@ -114,6 +110,7 @@ const AllUserCategories = ({ countryName = "السعودية" }) => {
                       }`}
                       onClick={() => {
                         setActive(1);
+                        setParams({country: "مصر"})
                       }}
                     >
                       <div> مصر</div>
@@ -124,44 +121,32 @@ const AllUserCategories = ({ countryName = "السعودية" }) => {
 
                   <Accordion.Body>
                     <div className="tabs d-flex justify-content-center align-items-center flex-column">
-                      <Link to={"/System/users"}>
-                        <div className="tab  text-end w-100">مدير مكتب</div>
-                      </Link>
+                        <div className="tab  text-end w-100" onClick={()=> setParams({role: "مدير المكتب"})}>مدير مكتب</div>
                       <Accordion defaultActiveKey={null}>
                         <Accordion.Item eventKey="1">
-                          <Link to={"/System/users"}>
-                            <Accordion.Header>
-                              <div className="">مدير قسم</div>
+                            <Accordion.Header onClick={()=> setParams({role: "مدير قسم"})}>
+                              <div className="" >مدير قسم</div>
 
                               <MdKeyboardArrowDown size={20} />
                             </Accordion.Header>
-                          </Link>
                           <Accordion.Body>
                             <div className="tabs d-flex  flex-column">
-                              <Link to={"/System/users"}>
                                 <div className="tab">مدني</div>
-                              </Link>
-                              <Link to={"/System/users"}>
                                 <div className="tab">معماري</div>
-                              </Link>
                             </div>
                           </Accordion.Body>
                         </Accordion.Item>
                       </Accordion>
                       <Accordion defaultActiveKey={null}>
                         <Accordion.Item eventKey="1">
-                          <Accordion.Header>
+                          <Accordion.Header onClick={()=> setParams({role: "موظف"})}>
                             <div className="text-start">موظف</div>
                             <MdKeyboardArrowDown size={20} />
                           </Accordion.Header>
                           <Accordion.Body>
                             <div className="tabs d-flex  flex-column">
-                              <Link to={"/System/users"}>
                                 <div className="tab">مدني</div>
-                              </Link>
-                              <Link to={"/System/users"}>
                                 <div className="tab">معماري</div>
-                              </Link>
                             </div>
                           </Accordion.Body>
                         </Accordion.Item>

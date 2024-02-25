@@ -36,7 +36,7 @@ const SystemIndex = () => {
         <div className="max-w-xs !min-h-screen">
           <AsideBar />
         </div>
-        <main className="flex-1 !min-h-[calc(100vh-88px)] transition-all">
+        <main className="flex-1 !min-h-screen transition-all overflow-y-scroll scrollbar-none">
           <Outlet />
         </main>
       </section>

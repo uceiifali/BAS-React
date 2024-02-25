@@ -27,6 +27,7 @@ import { FaCheck } from "react-icons/fa6";
 import FormDatePicker from "../../../FormDatePicker";
 import DeleteButton from "../../../DeleteButton";
 import SaveButton from "../../../SaveButton";
+import { myAxiosJson } from "../../../../helper/https";
 // import ChooseDepartmentComponent from '../ChooseDepartmentComponent/chooseDeprtamentComponent'
 
 const EditDeleteMeeting = ({
@@ -309,7 +310,17 @@ const EditDeleteMeeting = ({
                   {" "}
                   {Submitted ? <Progress isSmall /> : " حفظ"}{" "}
                 </SaveButton>
-                <DeleteButton onClick={handleEditDeleteMeeting} />
+                <DeleteButton
+                
+                onClick={()=>{
+                  myAxiosJson.delete(`event/${id}`)
+                  .then(data=> {
+                    console.log(data);
+                  })
+                  .catch(error=>console.log(error))
+
+                  setShowEditDeleteModal(false);
+                }} />
               </div>
             </Form>
           </Container>

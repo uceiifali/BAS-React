@@ -15,6 +15,20 @@ import Image from "../../../../Components/Image.jsx";
 import CustomTable from "../../../../Components/Table/index.jsx";
 import { TableRow } from "../../../../Components/Table/TableRow.jsx";
 import { TableCell } from "../../../../Components/Table/TableCell.jsx";
+import { useGetAllProjects } from "../../../../hooks/fetchers/Projects.jsx";
+import { convertDateFormat } from "../../../../helper/utils.jsx";
+
+// projectStatus : enum[0, 1, 2]
+// 0: معلقة
+// 1:قيد التنفيذ
+// 2:منتهيىة
+
+// const projectStatus = {
+//   Waiting : 0,
+//   inProgress : 1,
+//   Done : 2
+// }
+
 const MainProjects = () => {
   const [showProject, setShowProject] = useState(false);
   const [editProject, setEditProject] = useState(false);
@@ -22,78 +36,49 @@ const MainProjects = () => {
 
   // Display all projects  data
 
-  const MainProjectsData = Array.from({ length: 10 }).map((_, index) => {
-    return {
-      id: index+1,
-      ProjectName: "BSA",
-      ProjectNumber: "53543",
-      ClientType: "فردي",
-      createdAt: "1-1-2024",
-      ProjectType: " تصميم",
-      display: (
-        <Image
-          src={process.env.PUBLIC_URL + "/icons/view.svg"}
-          onClick={() => {
-            setShowProject(true);
-          }}
-          className="display_project  rounded"
-          alt=" display project"
-        />
-      ),
-      edit: (
-        <Image
-          src={process.env.PUBLIC_URL + "/icons/edit.svg"}
-          onClick={() => {
-            setEditProject(true);
-            console.log(editProject);
-          }}
-          className=" edit_project  rounded"
-          alt=" edit project"
-        />
-      ),
-    };
-  });
+
   const columns = [
     {
       name: "م",
-      selector: (row) => row.id,
     },
     {
       name: "اسم المشروع",
-      selector: (row) => row.ProjectName,
     },
     {
       name: " رقم الطلب ",
-      selector: (row) => row.ProjectNumber,
     },
     {
       name: "  نوع  العميل",
-      selector: (row) => row.ClientType,
     },
 
     {
       name: "    تاريخ الانشاء",
-      selector: (row) => row.createdAt,
     },
 
     {
       name: "   نوع المشروع",
-      selector: (row) => row.ProjectType,
     },
     {
       name: "    عرض",
-      selector: (row) => row.display,
     },
     {
       name: "  تعديل",
-      selector: (row) => row.edit,
     },
   ];
 
   const { ProjectTime } = useParams();
-
+  console.log("ProjectTime: ",ProjectTime);
+  const { data: projects , isLoading } = useGetAllProjects();
+  const [filteredProjects,setFilteredProjects] = useState([])
+  const [project,setProject] = useState({})
+  // console.log("project: ", project);
   // get all the main projects
-
+  useEffect(()=>{
+    const filteredKey = ProjectTime === "Waiting" ? 0 : ProjectTime === "inProgress" ? 1 : ProjectTime === "Done" ? 2 : null
+    console.log("filteredKey: ",filteredKey);
+    const filteredData = projects?.filter(project => project.projectStatus == filteredKey)
+    setFilteredProjects(filteredData)
+  },[ProjectTime,isLoading])
   const getAllMainProjects = () => {};
   useEffect(() => {
     getAllMainProjects();
@@ -108,7 +93,6 @@ const MainProjects = () => {
             className={` ${styles.pieChartProjects} d-flex flex-column justify-content-center align-items-center`}
           >
             <PieChart
-    
               height={350}
               colors={["#EFAA20", "#E40038"]}
               series={[60, 30]}
@@ -125,42 +109,68 @@ const MainProjects = () => {
                 columns={columns}
                 data={MainProjectsData}
               /> */}
-              <CustomTable columns={columns} data={MainProjectsData}>
-                  {MainProjectsData && MainProjectsData.length > 0
-                    ? MainProjectsData.map(
-                        (
-                          {
-                            id,
-                            ProjectName,
-                            ProjectNumber,
-                            ClientType,
-                            createdAt,
-                            ProjectType,
-                            
-                            display,
-                            edit,
-                          },
-                          index
-                        ) => (
-                          <TableRow
-                            className={`my-2 border !border-[#efaa207f] ${
-                              index % 2 === 0 ? "bg-[#151521]" : ""
-                            }`}
-                            key={index}
-                          >
-                            <TableCell textColor="#ffffff7f">{id}</TableCell>
-                            <TableCell>{ProjectName}</TableCell>
-                            <TableCell>{ProjectNumber}</TableCell>
-                            <TableCell>{ClientType}</TableCell>
-                            <TableCell>{createdAt}</TableCell>
-                            <TableCell>{ProjectType}</TableCell>
-                            <TableCell>{display}</TableCell>
-                            <TableCell>{edit}</TableCell>
-                          </TableRow>
-                        )
+              <CustomTable columns={columns} data={filteredProjects}>
+                {filteredProjects && filteredProjects?.length > 0
+                  ? filteredProjects?.map(
+                      ({ _id, requestId, orderNumber, createdDate }, index) => (
+                        <TableRow
+                          className={`my-2 border !border-[#efaa207f] ${
+                            index % 2 === 0 ? "bg-[#151521]" : ""
+                          }`}
+                          key={_id}
+                        >
+                          <TableCell textColor="#ffffff7f">
+                            {index + 1}
+                          </TableCell>
+                          <TableCell>{requestId?.projectName}</TableCell>
+                          <TableCell>{orderNumber}</TableCell>
+                          <TableCell>
+                            {requestId?.clientType === 1
+                              ? "حكومي أو مستثمر"
+                              : requestId?.clientType === 2
+                              ? "شركة أو مؤسسة"
+                              : requestId?.clientType === 3
+                              ? "فردي"
+                              : null}
+                          </TableCell>
+                          <TableCell>
+                            {convertDateFormat(createdDate)}
+                          </TableCell>
+                          <TableCell>
+                            {requestId?.projectType === 1
+                              ? "تصميم"
+                              : requestId?.projectType === 2
+                              ? "اشراف علي التنفيذ"
+                              : null}
+                          </TableCell>
+                          <TableCell>
+                            <Image
+                              src={process.env.PUBLIC_URL + "/icons/view.svg"}
+                              onClick={() => {
+                                setShowProject(true);
+                                setProject(projects[index]);
+                              }}
+                              className="display_project  rounded"
+                              alt=" display project"
+                            />
+                          </TableCell>
+                          <TableCell>
+                            <Image
+                              src={process.env.PUBLIC_URL + "/icons/edit.svg"}
+                              onClick={() => {
+                                setEditProject(true);
+                                console.log(editProject);
+                              }}
+                              className=" edit_project  rounded"
+                              alt=" edit project"
+                            />
+                          </TableCell>
+                        </TableRow>
                       )
-                    : null}
-                </CustomTable>
+                    )
+                  : null}
+              </CustomTable>
+              {/* {!filteredProjects || !filteredProjects?.length > 0 && <p className="text-white text-2xl text-center">لا يوجد بيانات لعرضها</p>} */}
             </div>
           </fieldset>
         </div>
@@ -168,6 +178,7 @@ const MainProjects = () => {
         <ShowProjectComponent
           showProject={showProject}
           setShowProject={setShowProject}
+          data={project}
         />
       )}
 

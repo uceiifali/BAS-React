@@ -22,6 +22,7 @@ import getDay from "date-fns/getDay";
 import withDragAndDrop from "react-big-calendar/lib/addons/dragAndDrop";
 import "react-big-calendar/lib/addons/dragAndDrop/styles.css";
 import { getAllEvents } from "../../../../helper/fetchers/events";
+import { myAxiosJson } from "../../../../helper/https";
 
 const AllMeetings = () => {
   require("globalize/lib/cultures/globalize.culture.ar-AE");
@@ -74,8 +75,19 @@ const AllMeetings = () => {
       allDay: false,
     },
   ];
-  const [events, setEvents] = useState(allEvents);
-  const moveEvent = ({ event, start, end, isAllDay: droppedOnAllDaySlot }) => {
+  
+  const [events, setEvents] = useState([]);
+  useEffect(()=>{
+    myAxiosJson("event")
+    .then(data => {
+      setEvents(data?.data?.event)
+      console.log(data?.data?.event);
+    })
+    .catch(err => {
+      console.log(err);
+    })
+  })
+  const moveEvent = ({ event, startDate, endDate, isAllDay: droppedOnAllDaySlot }) => {
     const idx = events.indexOf(event);
     let allDay = event.allDay;
 
@@ -85,7 +97,7 @@ const AllMeetings = () => {
       allDay = false;
     }
 
-    const updatedEvent = { ...event, start, end, allDay };
+    const updatedEvent = { ...event, startDate, endDate, allDay };
 
     const nextEvents = [...events];
     nextEvents.splice(idx, 1, updatedEvent);
@@ -116,7 +128,7 @@ const AllMeetings = () => {
   useEffect(() => {}, []);
 
   return (
-    <div>
+    <div className="h-full">
       <EditDeleteMeeting
         id={selectedEventId}
         showEditDeleteModal={showEditDeleteModal}
@@ -137,10 +149,10 @@ const AllMeetings = () => {
           </>
         }
       />
-
+<div className="bg-[#1E1E2D] h-full rounded-[17px]">
       <div
         // className={styles.cleanderbg}
-        className="bg-[#1E1E2D] h-[801px] rounded-[17px] meeting scrollbar-none overflow-scroll"
+        className="bg-[#1E1E2D] h-[701px] rounded-[17px] meeting scrollbar-none overflow-scroll"
       >
         <AddMeeting view={view} setView={setView} />
 
@@ -154,7 +166,7 @@ const AllMeetings = () => {
           onEventDrop={moveEvent}
           onEventResize={resizeEvent}
           draggableAccessor={(event) => true}
-          style={{ height: "100%", margin: "0px", padding: "10px" }}
+          style={{ height: "100%", margin: "0px", padding: "20px" }}
           messages={{
             week: "أسبوع",
             work_week: "أسبوع العمل",
@@ -166,6 +178,7 @@ const AllMeetings = () => {
             agenda: "جدول أعمال",
           }}
         />
+      </div>
       </div>
     </div>
   );

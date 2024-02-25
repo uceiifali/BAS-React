@@ -15,6 +15,7 @@ import SuccessfullModal from "../../../Components/Modals/SuccessfullModal";
 import { useQueryClient } from "react-query";
 import { useAddService } from "../../../hooks/fetchers/Services";
 import { useAddClause, useUpdateClause } from "../../../hooks/fetchers/Clause";
+import AddReception from "../../../Components/System/Settings/Reception/AddReception";
 
 const Settings = () => {
   const [clause, setClause] = useState({});
@@ -32,7 +33,7 @@ const Settings = () => {
   const [services, setServices] = useState({});
   const [successfull, setSuccsesfull] = useState(false);
   const [errorModal, setErrorModal] = useState(false);
-  const queryClient = useQueryClient();
+  // const queryClient = useQueryClient();
   // ***********************************
   const [newCategory, setNewCategory] = useState("");
   const [newService, setNewService] = useState("");
@@ -43,15 +44,15 @@ const Settings = () => {
     isError,
     error,
   } = useAddCategory(() => {
-    queryClient.invalidateQueries("category");
+    // queryClient.invalidateQueries("category");
     setSuccsesfull(true);
   });
   const { mutate: mutateService } = useAddService(() => {
-    queryClient.invalidateQueries("services");
+    // queryClient.invalidateQueries("services");
     setSuccsesfull(true);
   });
   const { mutate: mutateClause } = useAddClause(() => {
-    queryClient.invalidateQueries("clause");
+    // queryClient.invalidateQueries("clause");
     setSuccsesfull(true);
   });
 
@@ -87,7 +88,7 @@ const Settings = () => {
   };
   // console.log("settingType: ", settingType);
   return (
-    <div className="">
+    <>
       <SystemControler
         child={
           <button
@@ -250,7 +251,7 @@ const Settings = () => {
       <div className="h-full">
         <Outlet />
       </div>
-    </div>
+    </>
   );
 };
 

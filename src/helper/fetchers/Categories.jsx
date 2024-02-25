@@ -1,8 +1,8 @@
-import myAxiosInstance from "../https";
+import { myAxiosJson } from "../https";
 
-export const getAllCategories = () => myAxiosInstance("category");
-export const addCategory = (data) => myAxiosInstance.post("category", data);
+export const getAllCategories = () => myAxiosJson("category");
+export const addCategory = (data) => myAxiosJson.post("category", data);
 export const updateCategory = (categoryId, data) =>
-  myAxiosInstance.patch(`category/${categoryId}`, data);
+  myAxiosJson.patch(`category/${categoryId}`, data);
 export const deleteCategory = (categoryId) =>
-  myAxiosInstance.delete(`category/${categoryId}`);
+  myAxiosJson.delete(`category/${categoryId}`);

@@ -1,9 +1,18 @@
 import React from "react";
-import { Form, Modal } from "react-bootstrap";
+import { Form, Modal, Button } from "react-bootstrap";
 import PdfImage from "../../../PdfImage";
 import SaveButton from "../../../SaveButton";
+import { convertDateFormat, convertTimeFormat } from "../../../../helper/utils";
+import { useDeleteReception } from "../../../../hooks/fetchers/Receptions";
 
-const ViewReception = ({ id = null, viewVisit, setViewVisit, status }) => {
+const ViewReception = ({
+  id = null,
+  viewVisit,
+  setViewVisit,
+  status,
+  data,
+}) => {
+  const {mutate: deleteReciptionMutation} = useDeleteReception()
   return (
     <div>
       {id && viewVisit && status === "Exports" && (
@@ -13,6 +22,7 @@ const ViewReception = ({ id = null, viewVisit, setViewVisit, status }) => {
           onHide={() => setViewVisit(false)}
           aria-labelledby=" example-modal-sizes-title-lg"
           className={`systemModal  !overflow-y-auto !scrollbar-none`}
+          contentClassName="border !border-[#EFAA20]"
         >
           <div className="mx-auto  flex justify-center items-center rounded-md border-1 border-[#EFAA20]">
             <p className="text-[#EFAA20] py-2 px-4 text-xl"> الزيارة الصادرة</p>
@@ -25,30 +35,36 @@ const ViewReception = ({ id = null, viewVisit, setViewVisit, status }) => {
               <div className="grid grid-cols-1  gap-4 mb-3">
                 <div className="flex justify-start gap-3">
                   <p className="text-white">اسم الشخص:</p>
-                  <span className="main-text">حبيب محمد</span>
+                  <span className="main-text">{data?.personVisit}</span>
                 </div>
               </div>
               <div className="grid grid-cols-2 gap-4 mb-3">
                 <div className="flex justify-start gap-3">
                   <p className="text-white">مكان الزيارة:</p>
-                  <span className="main-text">مصر </span>
+                  <span className="main-text">{data?.visitLocation}</span>
                 </div>
               </div>
 
               <div className="grid grid-cols-3 gap-4 mb-3">
                 <div className="flex gap-2">
                   <p className="text-white"> تاريخ الزيارة:</p>
-                  <span className="main-text">15-10-2023</span>
+                  <span className="main-text">
+                    {convertDateFormat(data?.dateVist)}
+                  </span>
                 </div>
 
                 <div className="flex justify-center gap-2 ">
                   <p className="text-white"> وقت الزياره من:</p>
-                  <span className="main-text">Am 12:10</span>
+                  <span className="main-text">
+                    {convertTimeFormat(data?.timeInVist)}
+                  </span>
                   <div />
                 </div>
                 <div className="flex justify-end gap-2">
                   <p className="text-white"> وقت الزياره الي:</p>
-                  <span className="main-text">Am 12:30</span>
+                  <span className="main-text">
+                    {convertTimeFormat(data?.timeOutVist)}
+                  </span>
                 </div>
               </div>
             </fieldset>
@@ -56,21 +72,15 @@ const ViewReception = ({ id = null, viewVisit, setViewVisit, status }) => {
               <legend className="text-center !text-base">تفاصيل الزيارة</legend>
               <Form.Group className="my-3">
                 <Form.Label>سبب الزيارة</Form.Label>
-                <textarea
-                  cols={5}
-                  rows={5}
-                  className="form-control"
-                  placeholder=" سبب الزيارة .................................."
-                />
+                <div className="form-control h-36 overflow-y-scroll scrollbar-none">
+                  {data?.resoneVisit}
+                </div>
               </Form.Group>
               <Form.Group className="my-3">
                 <Form.Label>ملاحظات </Form.Label>
-                <textarea
-                  cols={5}
-                  rows={5}
-                  className="form-control"
-                  placeholder="  ملاحظات .................................."
-                />
+                <div className="form-control h-36 overflow-y-scroll scrollbar-none">
+                  {"ملاحظات .................................."}
+                </div>
               </Form.Group>
             </fieldset>
             <fieldset className="fieldBorder container mx-auto  p-3 my-3 ">
@@ -79,11 +89,25 @@ const ViewReception = ({ id = null, viewVisit, setViewVisit, status }) => {
               <PdfImage width={"92px"} height={"92px"} />
             </fieldset>
             <div className="flex justify-center gap-4">
-              <SaveButton
+            <Button
                 onClick={() => {
                   setViewVisit(false);
                 }}
-              />
+                type="submit"
+                className="mx-auto py-1 px-14 font-semibold text-[15px] border !border-[#EFAA20] text-[#2B2B40] hover:text-white bg-[#EFAA20] hover:bg-[#2B2B40]"
+              >
+                حفظ
+              </Button>
+              <Button
+              onClick={()=>{
+                deleteReciptionMutation(data?._id)
+                setViewVisit(false);
+              }}
+                type="button"
+                className="mx-auto py-1 px-14 font-semibold text-[15px] border !border-[#BA0A0A] text-white hover:text-white bg-[#BA0A0A] hover:bg-[#2B2B40]"
+              >
+                حذف
+              </Button>
             </div>
           </Form>
         </Modal>
@@ -95,6 +119,7 @@ const ViewReception = ({ id = null, viewVisit, setViewVisit, status }) => {
           onHide={() => setViewVisit(false)}
           aria-labelledby=" example-modal-sizes-title-lg"
           className={`systemModal !overflow-y-auto !scrollbar-none `}
+          contentClassName="border !border-[#EFAA20] p-4"
         >
           <div className="mx-auto w-[139px] h-[43px] flex justify-center items-center rounded-md border-1 border-[#EFAA20]">
             <p className="text-white"> الزيارة الواردة</p>
@@ -105,13 +130,13 @@ const ViewReception = ({ id = null, viewVisit, setViewVisit, status }) => {
               <div className="grid grid-cols-1  gap-4 mb-3">
                 <div className="flex justify-start gap-3">
                   <p className="text-white">اسم الموظف:</p>
-                  <span className="main-text">حبيب محمد</span>
+                  <span className="main-text">{data?.personVisit}</span>
                 </div>
               </div>
               <div className="grid grid-cols-2 gap-4 mb-3">
                 <div className="flex justify-start gap-3">
                   <p className="text-white"> فئة الزائر:</p>
-                  <span className="main-text">مصر </span>
+                  <span className="main-text">{data?.visitLocation} </span>
                 </div>
                 <div className="flex justify-start gap-3">
                   <p className="text-white"> الجهة:</p>
@@ -122,17 +147,23 @@ const ViewReception = ({ id = null, viewVisit, setViewVisit, status }) => {
               <div className="grid grid-cols-3 gap-4 mb-3">
                 <div className="flex gap-2">
                   <p className="text-white"> تاريخ الزيارة:</p>
-                  <span className="main-text">15-10-2023</span>
+                  <span className="main-text">
+                    {convertDateFormat(data?.dateVist)}
+                  </span>
                 </div>
 
                 <div className="flex gap-2">
                   <p className="text-white"> وقت الزياره من:</p>
-                  <span className="main-text">Am 12:10</span>
+                  <span className="main-text">
+                    {convertTimeFormat(data?.timeInVist)}
+                  </span>
                   <div />
                 </div>
                 <div className="flex gap-2">
                   <p className="text-white"> وقت الزياره الي:</p>
-                  <span className="main-text">Am 12:30</span>
+                  <span className="main-text">
+                    {convertTimeFormat(data?.timeOutVist)}
+                  </span>
                 </div>
               </div>
             </fieldset>
@@ -140,21 +171,15 @@ const ViewReception = ({ id = null, viewVisit, setViewVisit, status }) => {
               <legend className="text-center">تفاصيل الزيارة</legend>
               <Form.Group className="my-3">
                 <Form.Label>سبب الزيارة</Form.Label>
-                <textarea
-                  cols={5}
-                  rows={5}
-                  className="form-control"
-                  placeholder="اكتب سبب الزيارة .................................."
-                />
+                <div className="form-control h-36 overflow-y-scroll scrollbar-none">
+                  {data?.resoneVisit}
+                </div>
               </Form.Group>
               <Form.Group className="my-3">
                 <Form.Label>ملاحظات </Form.Label>
-                <textarea
-                  cols={5}
-                  rows={5}
-                  className="form-control"
-                  placeholder="اكتب  ملاحظات .................................."
-                />
+                <div className="form-control h-36 overflow-y-scroll scrollbar-none">
+                  {"ملاحظات .................................."}
+                </div>
               </Form.Group>
             </fieldset>
             <fieldset className="fieldBorder container mx-auto  p-3 my-3 ">
@@ -199,11 +224,24 @@ const ViewReception = ({ id = null, viewVisit, setViewVisit, status }) => {
               </div>
             </fieldset>
             <div className="flex justify-center gap-4">
-              <SaveButton
+              <Button
                 onClick={() => {
                   setViewVisit(false);
                 }}
-              />
+                type="submit"
+                className="mx-auto py-1 px-14 font-semibold text-[15px] border !border-[#EFAA20] text-[#2B2B40] hover:text-white bg-[#EFAA20] hover:bg-[#2B2B40]"
+              >
+                حفظ
+              </Button>
+              <Button
+              onClick={()=>{
+                deleteReciptionMutation(data?._id)
+              }}
+                type="button"
+                className="mx-auto py-1 px-14 font-semibold text-[15px] border !border-[#BA0A0A] text-white hover:text-white bg-[#BA0A0A] hover:bg-[#2B2B40]"
+              >
+                حذف
+              </Button>
             </div>
           </Form>
         </Modal>

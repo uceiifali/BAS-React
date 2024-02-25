@@ -1,12 +1,21 @@
-import React from "react";
+import React, { useContext } from "react";
 
 import { NavDropdown } from "react-bootstrap";
 import "./index.css";
 import { SearchComponent } from "../../../SearchComponent/SearchComponent";
 import Image from "../../../Image";
 import { Link } from "react-router-dom";
+import { UsersParamsContext } from "../../../../Context/UsersParamsContext";
+import { getAllUsers } from "../../../../helper/fetchers/Users";
+import { useQuery } from "react-query";
+
 const SearchUsers = () => {
   const users = Array.from({ length: 15 });
+  const {params,setParams} = useContext(UsersParamsContext);
+
+  const { isLoading, error, data } = useQuery(['user', params], () =>
+  getAllUsers(params)
+  );
   return (
       <div className="search-users scrollbar-none p-0">
         <div className="d-flex justify-content-between align-items-center m-2">

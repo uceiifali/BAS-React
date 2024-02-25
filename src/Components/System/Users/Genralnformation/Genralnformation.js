@@ -7,7 +7,8 @@ import PersonalAttachments from "../PersonalAttachments/PersonalAttachments";
 import { TableCell } from "../../../Table/TableCell";
 import { TableRow } from "../../../Table/TableRow";
 import CustomTable from "../../../Table";
-const Genralnformation = () => {
+import { convertDateFormat } from "../../../../helper/utils";
+const Genralnformation = ({userData}) => {
   const { openHr, HrType } = useContext(AddHrType);
   const [ShowHoliday, setShowHoliday] = useState(false);
   const data = Array.from({ length: 2 }).map((_, index) => {
@@ -75,22 +76,22 @@ const Genralnformation = () => {
           <div className="w-full flex items-center justify-between gap-2">
             <p className="w-full">
               {" "}
-              الاسم الاول : <span className="main-text"> اسلام </span>
+              الاسم الاول : <span className="main-text"> {userData?.firstName} </span>
             </p>
             <p className="w-full text-end">
               {" "}
-              الاسم الاخير: <span className="main-text"> اسلام </span>
+              الاسم الاخير: <span className="main-text"> {userData?.lastName} </span>
             </p>
           </div>
 
           <div className="w-full flex items-center justify-between gap-2">
             <p className="w-full">
               {" "}
-              اسم المستخدم: <span className="main-text"> اسلام_ايهاب</span>
+              اسم المستخدم: <span className="main-text"> {userData?.userName}</span>
             </p>
             <p className="w-full text-end">
               {" "}
-              النوع: <span className="main-text"> ذكر</span>
+              النوع: <span className="main-text"> {userData?.gender === 1 ? "انثى" : userData?.gender === 2? "ذكر": null}</span>
             </p>
           </div>
 
@@ -98,29 +99,29 @@ const Genralnformation = () => {
             <p>
               {" "}
               البريد الالكتروني:{" "}
-              <span className="main-text"> Islam@bsa.com</span>
+              <span className="main-text">{userData?.email}</span>
             </p>{" "}
           </div>
 
           <div className="w-full flex items-center justify-between gap-2">
             <p className="w-full">
               {" "}
-              رقم الجوال : <span className="main-text"> 010123456789</span>
+              رقم الجوال : <span className="main-text"> {userData?.phone}</span>
             </p>
             <p className="w-full text-end">
               {" "}
-              البلد : <span className="main-text"> مصر</span>
+              البلد : <span className="main-text"> {userData?.country}</span>
             </p>
           </div>
 
           <p>
             {" "}
-            تاريخ الميلاد : <span className="main-text"> 15 - 10 -2023</span>
+            تاريخ الميلاد : <span className="main-text"> {convertDateFormat(userData?.dateOfBirth)}</span>
           </p>
           <div className="">
             <p>
               {" "}
-              الكود الوظيفي : <span className="main-text">1235</span>
+              الكود الوظيفي : <span className="main-text">{userData?.idNumber}</span>
             </p>{" "}
           </div>
         </div>
@@ -128,24 +129,24 @@ const Genralnformation = () => {
           <div className="">
             <p>
               {" "}
-              الصلاحية: <span className="main-text"> مدير قسم </span>
+              الصلاحية: <span className="main-text"> {userData?.role}</span>
             </p>{" "}
           </div>
           <div className="">
             <p>
               {" "}
-              القسم: <span className="main-text"> برمجة </span>
+              القسم: <span className="main-text">{userData?.department}</span>
             </p>{" "}
           </div>
           <div className="">
             <p>
-              بدأ العمل : <span className="main-text"> 15 - 10 - 2023</span>
+              بدأ العمل : <span className="main-text">{convertDateFormat(userData?.startWork)}</span>
             </p>{" "}
           </div>
           <div className="">
             <p>
               {" "}
-              المستوي : <span className="main-text">خبير </span>
+              المستوي : <span className="main-text">{userData?.level}</span>
             </p>{" "}
           </div>
         </div>

@@ -189,7 +189,7 @@ const AccountaingIndex = () => {
           />
         </div>
         <div className="col-span-9">
-          <div className={`${style.AccountaingIndexbg} yellow-scroll`}>
+          <div className={`${style.AccountaingIndexbg} scrollbar-none `}>
             <Outlet />
           </div>
         </div>

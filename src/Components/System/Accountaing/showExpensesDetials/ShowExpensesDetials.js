@@ -7,12 +7,16 @@ import { useState } from "react";
 import EditExpenses from "../EditExpenses/EditExpenses";
 import DeleteModal from "../../../../Pages/System/Settings/RemoveModal";
 import DownloadButton from "../../../Buttons/DownloadButton";
+import { convertDateFormat } from "../../../../helper/utils";
+import FIlePlaceholder from "../../../Attatchments/FIlePlaceholder";
+import { useDeleteBatche } from "../../../../hooks/fetchers/Batches";
 
-const ShowExpensesDetials = ({ setOpenDisplayDetials }) => {
+const ShowExpensesDetials = ({ setOpenDisplayDetials,data }) => {
   const { ExpensesType } = useParams();
   const [deletePoper, setDeletPoper] = useState(false);
   const [confirmDeletePoper, setConfirmDeletPoper] = useState(false);
   const [editExpenses, setEditExpenses] = useState(false);
+  const {mutate: mutateDelete} = useDeleteBatche()
   const handleDeleteRequest = () => {
     // after deleting revenues succefully
     setDeletPoper(false);
@@ -105,12 +109,21 @@ const ShowExpensesDetials = ({ setOpenDisplayDetials }) => {
         title={"التاكيد"}
         show={deletePoper}
         handleClose={handleDeleteRequest}
+        onSave={()=> {
+          mutateDelete(data._id,{
+            onSuccess: () => {
+              window.location.reload();
+            }
+          })
+          
+        }}
       />
 
       {editExpenses && (
         <EditExpenses
           editExpenses={editExpenses}
           setEditExpenses={setEditExpenses}
+          data={data}
         />
       )}
 
@@ -123,7 +136,7 @@ const ShowExpensesDetials = ({ setOpenDisplayDetials }) => {
               </p>
             ) : (
               <p className="text-white">
-                اسم الصنف : <span>BSA</span>{" "}
+                اسم الصنف : <span>{data.name}</span>{" "}
               </p>
             )}
           </div>
@@ -143,6 +156,7 @@ const ShowExpensesDetials = ({ setOpenDisplayDetials }) => {
                   setDeletPoper(true);
                 }}
                 src={process.env.PUBLIC_URL + "/icons/delete.png"}
+              alt=""
               />
 
               <img
@@ -151,6 +165,7 @@ const ShowExpensesDetials = ({ setOpenDisplayDetials }) => {
                   setEditExpenses(true);
                 }}
                 src={process.env.PUBLIC_URL + "/icons/edit.png"}
+                alt=""
               />
             </div>
           </div>
@@ -159,21 +174,21 @@ const ShowExpensesDetials = ({ setOpenDisplayDetials }) => {
       <fieldset className={`${style.discription} w-90 mx-auto p-3`}>
         <legend className="text-center w-30">الوصف</legend>
         <Form.Label className="text-white">الوصف : </Form.Label>
-        <textarea
-          disabled
-          placeholder="الوصف المرفق"
-          cols={30}
-          rows={5}
-          className="form-control"
-        />
+        <div
+          
+          
+          className="h-36 bg-[#2B2B40] text-white/50 p-2 rounded-[7px]"
+        >
+          {data?.description}
+        </div>
         <div className="row mt-2">
           <div className="col-md-6">
-            <p className="text-white">
+            <p className="text-white flex items-center gap-2">
               {ExpensesType === "ExpensesReports"
                 ? " تاريخ الاستحقاق :"
                 : " تاريخ الانشاء :"}
 
-              <span className="main-text"> 2023-10-15</span>
+              <span className="main-text">{convertDateFormat(data?.dateCreated)}</span>
             </p>
           </div>
           <div className="col-md-6">
@@ -182,31 +197,22 @@ const ShowExpensesDetials = ({ setOpenDisplayDetials }) => {
                 ? "  المبلغ :"
                 : "  كود الصنف :"}
 
-              <span className="main-text"> 1230</span>
+              <span className="main-text">{data?.codeBatche}</span>
             </p>
           </div>
         </div>
       </fieldset>
-      <fieldset className={`${style.attatchment}  w-90 mx-auto mt-3 p-3`}>
+      <fieldset className={`border !border-[#EFAA2080]  w-90 mx-auto mt-3 p-3 flex items-center gap-2`}>
         <legend className="text-center w-30">الملف المرفق</legend>
 
-        <div className="pdfbg">
-          <img
-            src={process.env.PUBLIC_URL + "/icons/Pdf.png"}
-            alt="pdf"
-            className="pdfImage"
-          />
-          <div
-            style={{ borderRadius: "7px" }}
-            className="bg-[#252538] d-flex justify-content-center "
-          >
-            {ExpensesType === "ExpensesReports" ? (
-              <p className="text-white mx-auto   mt-2   "> المصروفات </p>
-            ) : (
-              <p className="text-white mx-auto   mt-2   "> الصنف </p>
-            )}
-          </div>
-        </div>
+        
+
+        <FIlePlaceholder title={ExpensesType === "ExpensesReports" ? "المصروفات" : "الصنف"}/>        
+
+
+
+
+
       </fieldset>
 
       <div

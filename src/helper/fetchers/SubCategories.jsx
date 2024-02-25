@@ -1,14 +1,14 @@
-import myAxiosInstance from "../https";
+import { myAxiosJson } from "../https";
 
 export const getAllSubCategories = (categoryId) =>
-  myAxiosInstance(`category/${categoryId}/subcategory`);
+myAxiosJson(`category/${categoryId}/subcategory`);
 
 export const addSubCategory = (categoryId, data) =>
-  myAxiosInstance.post(`category/${categoryId}/subcategory`, data);
+myAxiosJson.post(`category/${categoryId}/subcategory`, data);
 
 export const updateSubCategory = (categoryId,subId, data) =>
-  myAxiosInstance.patch(`category/${categoryId}/subcategory/${subId}`, data);
+myAxiosJson.patch(`category/${categoryId}/subcategory/${subId}`, data);
 
 
 
-export const deleteSubCategory = ([categoryId, subId]) => myAxiosInstance.delete(`category/${categoryId}/subcategory/${subId}`);
+export const deleteSubCategory = ([categoryId, subId]) => myAxiosJson.delete(`category/${categoryId}/subcategory/${subId}`);

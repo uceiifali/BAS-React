@@ -27,12 +27,9 @@ const AllCLients = () => {
             child={
               <div className="d-flex  flex-column   align-items-center ">
                 <div className="mt-4 w-100">
-                  <Link
-                    className="!w-full pointer "
-                    to={"/System/Clients/index"}
-                  >
+                  
                     <p className=" text-white ">كل العملاء</p>
-                  </Link>
+                  
                 </div>
 
                 <div className="pointer w-full mt-0">

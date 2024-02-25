@@ -10,10 +10,15 @@ export const useGetAllSubCategories = (categoryId) => {
 };
 
 export const useAddSubCategory = (onSuccess,categoryId) => {
+    const queryClient = useQueryClient()
     // console.log("added to categoryId:",categoryId);
     return useMutation((subcategoryData) => addSubCategory(categoryId,subcategoryData),
         {
-            onSuccess,
+            onSuccess: () => {
+                queryClient.invalidateQueries("category");
+                queryClient.invalidateQueries('sub-category')
+                onSuccess()
+            },
             onError: (error) => {
                 // Handle error
             }
@@ -22,8 +27,13 @@ export const useAddSubCategory = (onSuccess,categoryId) => {
 }
 export const useUpdateSubCategory = (onSuccess,categoryId,subId) => {
     
+    const queryClient = useQueryClient()
     return useMutation((data) => updateSubCategory(categoryId,subId,data),{
-            onSuccess,
+        onSuccess: () => {
+            queryClient.invalidateQueries("category");
+            queryClient.invalidateQueries('sub-category')
+            onSuccess()
+        },
             onError: (error) => {
                 // Handle error
             }
@@ -38,6 +48,7 @@ export const useDeleteSubCategory = () => {
     return useMutation(deleteSubCategory,
         {
             onSuccess: () => {
+                queryClient.invalidateQueries("category");
                 queryClient.invalidateQueries('sub-category')
             },
             onError: (error) => {

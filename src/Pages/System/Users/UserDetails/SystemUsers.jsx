@@ -10,7 +10,7 @@ import { AccountaingInformation } from "../../../../Components/System/Users/Acco
 import { showAddUpdateUser } from "../../../../Context/CheckAddUpdateUserVisability";
 import AddUpdateUser from "../../../../Components/System/Users/AddUpdateUser/AddUpdateUser";
 import AddUserButton from "../../../../Components/System/AddUserButton/AddUserButton";
-import { Link } from "react-router-dom";
+import { Link,useParams } from "react-router-dom";
 import SystemControler from "../../../../Components/System/SystemControler/SystemControler";
 import AllUserCategories from "../../../../Components/System/Users/AllUserCategories/AllUserCategories";
 import SearchUsers from "../../../../Components/System/Users/SearchUsers/SearchUsers";
@@ -18,10 +18,14 @@ import ProfessinollInformation from "../../../../Components/System/Users/Profess
 import { AddHrType } from "../../../../Context/AddHr";
 import Image from "../../../../Components/Image";
 import DownloadButton from "../../../../Components/Buttons/DownloadButton";
-
+import SearchCountryUsers from "../../../../Components/System/Users/SearchUsers/SearchCountryUsers";
+import { useQuery } from "react-query";
+import myAxiosInstance, { myAxiosJson } from "../../../../helper/https";
 const SystemUsers = () => {
+  const {id: userId} = useParams()
+  const {data: userData} = useQuery("user-details", ()=> myAxiosJson(`user/${userId}`).then(data => data?.data?.user))
   const [employeeDetails, setEmployeeDetails] = useState("aboutEmpolyee");
-
+console.log(userData);
   const handleGetUserDetails = () => {};
 
   const colourStyles = {
@@ -63,7 +67,7 @@ const SystemUsers = () => {
                 <AllUserCategories />
               </div>
               <div className="">
-                <SearchUsers />
+                <SearchCountryUsers />
               </div>
             </div>
           </div>
@@ -73,7 +77,7 @@ const SystemUsers = () => {
               <div className="show-employee-header">
                 <div className="d-flex justify-content-between">
                   <p className="text-[#D59921] mb-5 font-medium">
-                    مدير قسم / البرمجة
+                  {userData?.role + " / " + userData?.department}
                   </p>
                   <div className="flex gap-3">
                     <DownloadButton>تصدير CSV </DownloadButton>
@@ -88,9 +92,9 @@ const SystemUsers = () => {
                       className="user-Personal  "
                     />
                     <div className="flex flex-col gap-2 me-3 ">
-                      <h2 className="name-header"> اسلام</h2>
-                      <p className="main-text">islam@bsa.com</p>
-                      <p className="name-header">01023456789</p>
+                      <h2 className="name-header">{userData?.userName}</h2>
+                      <p className="main-text">{userData?.email}</p>
+                      <p className="name-header">{userData?.phone}</p>
                     </div>
                   </div>
 
@@ -138,11 +142,11 @@ const SystemUsers = () => {
                 </p>
               </div>
               {employeeDetails === "aboutEmpolyee" ? (
-                <Genralnformation />
+                <Genralnformation userData={userData} />
               ) : employeeDetails === "ProfessinollInformation" ? (
-                <ProfessinollInformation />
+                <ProfessinollInformation userData={userData} />
               ) : (
-                <AccountaingInformation />
+                <AccountaingInformation userData={userData} />
               )}
             </div>
           </div>

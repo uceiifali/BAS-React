@@ -17,6 +17,7 @@ import { TableCell } from "../../../../Components/Table/TableCell";
 import { TableRow } from "../../../../Components/Table/TableRow";
 import CustomTable from "../../../../Components/Table";
 import { useGetAllReceptions } from "../../../../hooks/fetchers/Receptions";
+import { convertDateFormat } from "../../../../helper/utils";
 
 const EditIcon = () => {
   return (
@@ -166,15 +167,7 @@ const SubCategoryBtn = ({ title, active, setActive, index, setTerms }) => {
 };
 
 
-function convertDateFormat(dateString) {
-  const date = new Date(dateString);
 
-  const year = date.getFullYear();
-  const month = String(date.getMonth() + 1).padStart(2, "0"); // Month is 0-indexed, so add 1
-  const day = String(date.getDate()).padStart(2, "0");
-
-  return `${year}-${month}-${day}`;
-}
 
 
 const Reception = () => {
@@ -183,6 +176,7 @@ const Reception = () => {
   const { ReciptionType, setReceptionType } = useContext(SettingContext);
   const [id, setId] = useState(null);
   const [visitsData, setVisitsData] = useState([]);
+  const [visit, setVisit] = useState({});
   const [openPdf, setOpenPdf] = useState(false);
   const [active, setActive] = useState(0);
   const [status, setStatus] = useState("Exports");
@@ -277,6 +271,7 @@ const Reception = () => {
         status={status}
         viewVisit={viewVisit}
         setViewVisit={setViewVisit}
+        data={visit}
       />
       <AddUpdateReciption
         id={id}
@@ -367,7 +362,7 @@ const Reception = () => {
             }      pointer`}
           >
             <div className="flex items-center gap-2 text-sm text-[#ffffff80] ">
-              <div></div>
+              
               <PdfImage
                 openPdf={openPdf}
                 setOpenPdf={setOpenPdf}
@@ -450,6 +445,7 @@ const Reception = () => {
                         IdentityNumber,
                         visitLocation,
                         visitDate,
+                        personVisit,
                         timeInVist,
                         edit,
                       },
@@ -462,13 +458,14 @@ const Reception = () => {
                         key={index}
                       >
                         <TableCell textColor="#ffffff7f">{id}</TableCell>
-                        <TableCell>{IdentityNumber}</TableCell>
+                        <TableCell>{personVisit}</TableCell>
                         <TableCell>{visitLocation}</TableCell>
                         <TableCell>{convertDateFormat(timeInVist)}</TableCell>
                         <TableCell>
                           <div
                             onClick={() => {
                               setViewVisit(true);
+                              setVisit(receptionData?.data?.reception[index])
                             }}
                           >
                             <Image

@@ -2,7 +2,8 @@ import React from 'react'
 import { useState } from 'react'
 import DatePicker from "react-datepicker"
 import "./index.css"
-export const AccountaingInformation = () => {
+import { convertDateFormat } from '../../../../helper/utils'
+export const AccountaingInformation = ({userData}) => {
     const [Montlyhwork, setMontlyhwork] = useState(null)
     return (
         <div>
@@ -14,10 +15,10 @@ export const AccountaingInformation = () => {
                     <p className='mx-4 my-2'>الشهر الحالي</p>
                    
                 </div>
-                <p >المرتب الثابت : <span>0000</span></p>
+                <p >المرتب الثابت : <span>{userData?.basicSalary}</span></p>
                 <div className='d-flex  mt-4  justify-content-between'>
-                    <p> نسبة الزيادة : <span> ------</span></p>
-                    <p>  بداية من شهر    : <span> ------</span></p>
+                    <p> نسبة الزيادة : <span> {userData?.increaseSalary}</span></p>
+                    <p>  بداية من شهر    : <span>{convertDateFormat(userData?.startWork)}</span></p>
                 </div>
             </div>
       
