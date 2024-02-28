@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Form, Modal } from "react-bootstrap";
 import SaveButton from "../SaveButton";
 
-const AddAttachment = ({ attachment, setAttachment }) => {
+const AddAttachment = ({ attachment, setAttachment, multi }) => {
   const [openAddAttachemnt, setOpenAddAttachemnt] = useState(false);
   return (
     <div className="w-100 ">
@@ -27,7 +27,11 @@ const AddAttachment = ({ attachment, setAttachment }) => {
                 multiple={true}
                 htmlFor="formFile"
                 className={`chooseFile text-white`}
-                onChange={(e) => setAttachment(e.currentTarget.files[0])}
+                onChange={(e) =>
+                  multi
+                    ? setAttachment(e.currentTarget.files)
+                    : setAttachment(e.currentTarget.files[0])
+                }
               />
             </Form.Group>
             <div
